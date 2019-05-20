@@ -68,10 +68,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="CSS\IniciarSesion.css" />
+    <Content Include="CuentaPersonal.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CuentaPersonal.aspx.cs">
+      <DependentUpon>CuentaPersonal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuentaPersonal.aspx.designer.cs">
+      <DependentUpon>CuentaPersonal.aspx</DependentUpon>
+    </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
