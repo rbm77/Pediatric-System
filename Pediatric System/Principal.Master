@@ -9,7 +9,7 @@
     <title></title>
 
 
-  <%-- Bootstrap ultima version --%>
+    <%-- Bootstrap ultima version --%>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
@@ -26,13 +26,20 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-        <a class="navbar-brand font-weight-bolder text-white">Clínica Pediátrica Divino Niño</a>
+        <h3 class="text-white">Clínica Pediátrica Divino Niño</h3>
+        <%-- <a class="navbar-brand font-weight-bolder text-white">Clínica Pediátrica Divino Niño</a>--%>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+            </ul>
+
+            <ul class="navbar-nav float-lg-right">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">INICIO</a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">MI CUENTA</a>
                 </li>
@@ -40,6 +47,8 @@
                     <a class="nav-link" href="#">CERRAR SESIÓN</a>
                 </li>
             </ul>
+
+
         </div>
     </nav>
 
