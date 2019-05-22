@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="CSS\IniciarSesion.css" />
     <Content Include="CuentaPersonal.aspx" />
+    <Content Include="FichaBaseExpediente.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="JS\Calendario.js" />
     <Content Include="JS\Idioma.js" />
@@ -81,6 +82,13 @@
     </Compile>
     <Compile Include="CuentaPersonal.aspx.designer.cs">
       <DependentUpon>CuentaPersonal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FichaBaseExpediente.aspx.cs">
+      <DependentUpon>FichaBaseExpediente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FichaBaseExpediente.aspx.designer.cs">
+      <DependentUpon>FichaBaseExpediente.aspx</DependentUpon>
     </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
