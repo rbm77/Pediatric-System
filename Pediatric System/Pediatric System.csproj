@@ -70,6 +70,8 @@
     <Content Include="CSS\IniciarSesion.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="IniciarSesion.aspx" />
+    <Content Include="JS\Calendario.js" />
+    <Content Include="JS\Idioma.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +108,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
