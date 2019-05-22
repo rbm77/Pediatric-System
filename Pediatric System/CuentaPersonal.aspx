@@ -4,39 +4,94 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <br />
+
+    <div class="container-fluid col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
+        <div class="page-header">
+            <h2 class="text-info">Cuenta de Usuario</h2>
+        </div>
+    </div>
+
+    <hr style="color: #0056b2;" />
 
     <form>
 
         <br />
 
-        <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
+        <div class="container-fluid col-xs-12 col-sm-6 col-md-8 col-md-offset-2 bg-light border border-info rounded">
 
             <br />
 
             <div class="form-row">
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" placeholder="Nombre">
+                <div class="form-group col-md-6">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" class="form-control" id="nombre">
                 </div>
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" placeholder="Primer Apellido">
+                <div class="form-group col-md-6">
+                    <label for="primerApellido">Primer Apellido</label>
+                    <input type="text" class="form-control" id="primerApellido">
                 </div>
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" placeholder="Segundo Apellido">
+
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="segundoApellido">Segundo Apellido</label>
+                    <input type="text" class="form-control" id="segundoApellido">
                 </div>
-                <div class="form-group col-md-3">
-                    <input type="text" class="form-control" placeholder="Cédula">
+                <div class="form-group col-md-6">
+                    <label for="cedula">Cédula</label>
+                    <input type="text" class="form-control" id="cedula">
+                </div>
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="fechaNacimiento">Fecha de nacimiento</label>
+                    <input id="datepicker"/>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" class="form-control"id="telefono" />
                 </div>
             </div>
 
 
             <div class="form-row">
 
-                <div class="form-group col-md-3">
-                    <input id="datepicker" placeholder="Fecha de Nacimiento"/>
+                <div class="form-group col-md-6">
+                    <label for="correoElectronico">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correoElectronico" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="rol">Rol</label>
+                    <select class="browser-default custom-select" id="rol">
+                        <option value="medico">Médico</option>
+                        <option value="asistente">Asistente</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
                 </div>
             </div>
 
             <br />
+
+            <div class="form-row">
+
+                <div class="form-group col-md-3">
+
+                    <button type="button" class="btn btn-outline-success form-control">GUARDAR</button>
+
+                </div>
+
+                <div class="form-group col-md-3">
+
+                    <button type="button" class="btn btn-outline-danger form-control">CANCELAR</button>
+
+                </div>
+
+            </div>
 
         </div>
 
@@ -51,6 +106,4 @@
             format: 'dd/mm/yyyy'
         });
     </script>
-
-
 </asp:Content>
