@@ -44,7 +44,6 @@
 
     </form>
 
-
     <script>
         $('#datepicker').datepicker({
             uiLibrary: 'bootstrap4',
