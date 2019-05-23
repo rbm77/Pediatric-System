@@ -1,0 +1,36 @@
+﻿
+
+.progress-bar-container {
+    background-color: #bfbfbf;
+    height: 10px;
+    width: 100%;
+}
+
+.progress-bar {
+    background-color: #007680;
+    height: 10px;
+    width: 25%;
+    transition: all 0.5s ease;
+}
+
+.progress-bar-50 {
+    width: 50%;
+}
+
+.progress-bar-75 {
+    width: 75%;
+}
+
+.progress-bar-100 {
+    width: 100%;
+}
+
+/*.box-for-save {
+   container-fluid;
+    col-md-4;
+    col-md-offset-4;
+    bg-light;
+    border;
+    border-info;
+    rounded;
+}*/

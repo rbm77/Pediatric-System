@@ -67,11 +67,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CSS\expediente.css" />
     <Content Include="CSS\IniciarSesion.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="JS\Calendario.js" />
+    <Content Include="JS\expediente.js" />
     <Content Include="JS\Idioma.js" />
     <Content Include="Web.config" />
   </ItemGroup>
