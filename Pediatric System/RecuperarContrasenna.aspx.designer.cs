@@ -10,6 +10,6 @@
 namespace Pediatric_System {
     
     
-    public partial class IniciarSesion {
+    public partial class RecuperarContrasenna {
     }
 }
