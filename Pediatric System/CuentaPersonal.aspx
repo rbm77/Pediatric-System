@@ -50,11 +50,11 @@
 
                 <div class="form-group col-md-6">
                     <label for="fechaNacimiento">Fecha de nacimiento</label>
-                    <input id="datepicker"/>
+                    <input id="datepicker" />
                 </div>
                 <div class="form-group col-md-6">
                     <label for="telefono">Teléfono</label>
-                    <input type="tel" class="form-control"id="telefono" />
+                    <input type="tel" class="form-control" id="telefono" />
                 </div>
             </div>
 
@@ -75,23 +75,37 @@
                 </div>
             </div>
 
+            <div class="form-row">
+
+                <div class="form-group col-md-6">
+                    <label for="contrasenna">Contraseña</label>
+                    <input type="password" class="form-control" id="contrasenna" />
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="confirmar">Confirmar contraseña</label>
+                    <input type="password" class="form-control" id="confirmar" />
+                </div>
+            </div>
+
             <br />
 
             <div class="form-row">
 
                 <div class="form-group col-md-3">
 
-                    <button type="button" class="btn btn-outline-success form-control">GUARDAR</button>
+                    <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
 
                 </div>
 
                 <div class="form-group col-md-3">
 
-                    <button type="button" class="btn btn-outline-danger form-control">CANCELAR</button>
+                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
 
                 </div>
 
             </div>
+
+
 
         </div>
 
