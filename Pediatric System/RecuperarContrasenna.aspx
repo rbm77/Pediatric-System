@@ -31,7 +31,7 @@
 
             <br />
             <div class="form-row">
-                <div class="alert alert-info" role="alert">
+                <div class="alert alert-info col-lg-12 col-md-12 col-sm-12 col-xs-12" role="alert">
                     <p>Si desea acceder nuevamente al sistema, por favor ingrese la dirección de correo electrónico asociada a su cuenta de usuario. Posteriormente se le enviará un correo con una nueva contraseña.</p>
                     <hr />
                     <p class="mb-0">Una vez que tenga acceso al sistema le recomendamos cambiar su contraseña en las opciones de configuración de la cuenta.</p>

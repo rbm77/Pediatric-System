@@ -72,6 +72,7 @@
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="EstadoCuenta.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
+    <Content Include="GestionarAgenda.aspx" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="JS\Calendario.js" />
     <Content Include="JS\expediente.js" />
@@ -100,6 +101,13 @@
     </Compile>
     <Compile Include="FichaBaseExpediente.aspx.designer.cs">
       <DependentUpon>FichaBaseExpediente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GestionarAgenda.aspx.cs">
+      <DependentUpon>GestionarAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarAgenda.aspx.designer.cs">
+      <DependentUpon>GestionarAgenda.aspx</DependentUpon>
     </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
