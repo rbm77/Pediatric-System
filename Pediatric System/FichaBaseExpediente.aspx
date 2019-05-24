@@ -9,40 +9,26 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    <div class="container-fluid">
+    <div class="container-fluid col-10 col-auto">
+
         <br />
 
-        <div class="col-xs-12 col-sm-6 col-md-8 col-md-offset-2">
-            <div class="page-header">
-                <h2 class="text-info">Expediente</h2>
-            </div>
+        <div class="page-header">
+            <h2 class="text-info">Expediente</h2>
         </div>
 
+    </div>
 
-        <div class="row">
-            <div class="col-md-12" style="margin-top: 20px; padding:0px">
-                <div class="progress-bar-container">
-                    <div class="progress-bar"></div>
-                </div>
-            </div>
-        </div>
+    <hr style="color: #0056b2;" />
 
-        <br />
-        <br />
+    <div class="container-fluid col-10 col-auto">
 
         <form runat="server">
 
-            <!-- Confirmar para guardar el formulario !-->
-
-            <div class="boxSave row ">
-                <div class="col-md-4 offset-md-4 bg-light border border-info rounded">
-                    <div class="form-row text-center">
-                        <div class="form-group col-md-12">
-                            <asp:Label runat="server" Text="Guardar Informacion de Expediente" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <br />
-                            <br />
-                            <button class="btn btn-primary">Guardar</button>
-                        </div>
+            <div class="row" style="margin: 0px;">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; padding: 0px">
+                    <div class="progress-bar-container">
+                        <div class="progress-bar"></div>
                     </div>
                 </div>
             </div>
@@ -55,52 +41,47 @@
 
             <div class="step1">
 
-                <div class="container-fluid col-md-10 col-md-offset-1">
-                    <asp:Label class="container" runat="server" Text="Informacion Personal del Paciente" Style="font-size: 24px; font-weight: bold; color: dimgray"> </asp:Label>
+                <div class="row col-12">
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Informacion Personal del Paciente </label>
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
+                    <div class="form-row" style="margin-top: 15px;">
 
-                    <br />
-
-                    <asp:Label runat="server" Text="Nombre Completo" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4 col-lg-3 ">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</label>
+                            <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Primer Apellido">
-                        </div>
-
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Segundo Apellido">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Primer Apellido</label>
+                            <input type="text" class="form-control">
                         </div>
 
                     </div>
 
-                </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Segundo Apellido</label>
+                            <input type="text" class="form-control">
+                        </div>
 
-                <br />
-
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Cedula" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</label>
                             <input type="text" class="form-control" placeholder="1-0234-0456">
                         </div>
 
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Sexo" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Nacimiento</label>
+                            <input id="datepicker" placeholder="31/12/2018" />
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Sexo</label>
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Seleccionar Sexo</option>
                                 <option value="Femenino">Femenino</option>
@@ -108,84 +89,52 @@
                                 <option value="Otro">Otro</option>
                             </select>
                         </div>
-
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Fecha de Nacimiento" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input id="datepicker" placeholder="31/12/2018" />
-                        </div>
-
                     </div>
 
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Direccion</label>
 
-                    <br />
-
-                    <asp:Label runat="server" Text="Direccion" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-3">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Provincia</option>
                             </select>
-                        </div>
 
-                        <div class="form-group col-md-3">
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Canton</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-3">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Distrito</option>
                             </select>
                         </div>
-
                     </div>
-
                 </div>
 
-                <br />
-
-                <div class="container-fluid col-md-4 col-md-offset-4 bg-light border border-info rounded">
-
-                    <br />
-
+                <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
                     <div class="form-row ">
 
-                        <div class="form-group col-md-10">
-                            <asp:Label runat="server" Text="Foto del Paciente" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                            <br />
-                            <br />
-
-                            <asp:Image ID="Image1" Width="200" runat="server" />
-
-                            <br />
-                            <br />
-
-                            <div>
-                                <asp:FileUpload CssClass="form-control" ID="fuploadImagen" accept=".jpg" runat="server" />
-                            </div>
-
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Foto del Paciente</label>
+                            <asp:FileUpload CssClass="form-control" ID="fuploadImagen" accept=".jpg" runat="server" />
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="text-center">
                     <br />
-                    <input class="btn btn-primary next" type="button" onclick="siguienteStep1()" value="Siguiente" />
+                    <input class="btn btn-primary next" type="button" onclick="siguienteStep1()" value="Siguiente" style="background-color: #56baed; border: none; padding: 10px 50px;" />
                 </div>
-
             </div>
 
             <!-- ----------------------------------------------------------- !-->
@@ -193,235 +142,178 @@
             <!-- Datos para Informacion Personal del Encargado del Paciente !-->
 
             <div class="step2">
-
-                <div class="container-fluid col-md-10 col-md-offset-1  ">
-                    <asp:Label class="container" runat="server" Text="Informacion Personal del Encargado del Paciente" Style="font-size: 24px; font-weight: bold; color: dimgray"> </asp:Label>
+                <div class="row col-12">
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Informacion Personal del Encargado del Paciente </label>
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <asp:Label runat="server" Text="Nombre Completo" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4 col-lg-3 ">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</label>
+                            <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Primer Apellido">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Primer Apellido</label>
+                            <input type="text" class="form-control">
                         </div>
-
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Segundo Apellido">
-                        </div>
-
                     </div>
 
-                </div>
-
-                <br />
-
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Cedula" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input type="text" class="form-control" placeholder="1-0234-0456">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Segundo Apellido</label>
+                            <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Telefono" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Telefono</label>
                             <input type="text" class="form-control" placeholder="12345678">
                         </div>
 
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Correo Electronico" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electronico</label>
                             <input type="text" class="form-control" placeholder="ejm@gmail.com">
                         </div>
-
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Parentezco" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input type="text" class="form-control" placeholder="Padre, Madre, Encargado(a)...">
-                        </div>
-
                     </div>
 
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Parentezco</label>
+                            <input type="text" class="form-control" placeholder="Padre, Madre, Encargado(a)...">
+                        </div>
+                    </div>
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Direccion</label>
 
-                    <br />
-
-                    <asp:Label runat="server" Text="Direccion" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-3">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Provincia</option>
                             </select>
-                        </div>
 
-                        <div class="form-group col-md-3">
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Canton</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-3">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Distrito</option>
                             </select>
-
                         </div>
 
-                    </div>
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-row col-md-12">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <input type="text" class="form-control" placeholder="Otras Señas">
                         </div>
-
                     </div>
-
-                    <br />
-
                 </div>
 
                 <div class="text-center">
                     <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep2()">Anterior</a>
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="siguienteStep2()">Siguiente</a>
+                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep2()" style="background-color: #56baed; border: none; padding: 10px 50px;">Anterior</a>
+                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="siguienteStep2()" style="background-color: #56baed; border: none; padding: 10px 50px;">Siguiente</a>
                 </div>
-
             </div>
 
             <!-- Datos para Informacion Personal del Destinatario de la Factura!-->
 
             <div class="step3">
 
-                <div class="container-fluid col-md-10 col-md-offset-1  ">
-                    <asp:Label class="container" runat="server" Text="Informacion Personal del Destinatario de la Factura" Style="font-size: 24px; font-weight: bold; color: dimgray"> </asp:Label>
+                <div class="row col-12">
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Informacion Personal del Destinatario de Factura</label>
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <asp:Label runat="server" Text="Nombre Completo" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4 col-lg-3 ">
-                            <input type="text" class="form-control" placeholder="Nombre">
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</label>
+                            <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Primer Apellido">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Primer Apelido</label>
+                            <input type="text" class="form-control">
                         </div>
-
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Segundo Apellido">
-                        </div>
-
                     </div>
 
-                </div>
-
-                <br />
-
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Cedula" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input type="text" class="form-control" placeholder="1-0234-0456">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Segundo Apelido</label>
+                            <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Telefono" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</label>
+                            <input type="text" class="form-control" placeholder="1-0234-0456">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Telefono</label>
                             <input type="text" class="form-control" placeholder="12345678">
                         </div>
 
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Correo Electronico" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electronico</label>
                             <input type="text" class="form-control" placeholder="ejm@gmail.com">
                         </div>
-
                     </div>
-
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Direccion</label>
 
-                    <br />
-
-                    <asp:Label runat="server" Text="Direccion" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-3">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Provincia</option>
                             </select>
-                        </div>
 
-                        <div class="form-group col-md-3">
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Canton</option>
                             </select>
                         </div>
 
-                        <div class="form-group col-md-3">
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Distrito</option>
                             </select>
                         </div>
 
-                    </div>
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-row col-md-12">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <input type="text" class="form-control" placeholder="Otras Señas">
                         </div>
-
                     </div>
-
-                    <br />
-
                 </div>
 
                 <div class="text-center">
                     <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep3()">Anterior</a>
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="siguienteStep3()">Siguiente</a>
+                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep3()" style="background-color: #56baed; border: none; padding: 10px 50px;">Anterior</a>
+                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="siguienteStep3()" style="background-color: #56baed; border: none; padding: 10px 50px;">Siguiente</a>
                 </div>
 
             </div>
@@ -430,119 +322,238 @@
 
             <div class="step4">
 
-                <div class="container-fluid col-md-10 col-md-offset-1  ">
-                    <asp:Label class="container" runat="server" Text="Historia Clinica Pediatrica" Style="font-size: 24px; font-weight: bold; color: dimgray"> </asp:Label>
+                <div class="row col-12">
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Historia Clinica Pediatrica</label>
                 </div>
 
-                <br />
+                <div class="col-12 bg-light border border-info rounded">
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <asp:Label runat="server" Text="Antecedentes Perinatales" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4 col-lg-3 ">
-                            <input type="text" class="form-control" placeholder="Nombre">
-                        </div>
-
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Primer Apellido">
-                        </div>
-
-                        <div class="form-group col-md-4 col-lg-3">
-                            <input type="text" class="form-control" placeholder="Segundo Apellido">
-                        </div>
-
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Perinatales</label>
                     </div>
 
-                </div>
-
-                <br />
-
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Cedula" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input type="text" class="form-control" placeholder="1-0234-0456">
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Talla al nacer</label>
+                            <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Telefono" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input type="text" class="form-control" placeholder="12345678">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Peso al nacer</label>
+                            <input type="text" class="form-control">
                         </div>
-
-                        <div class="form-group col-md-4  col-lg-3">
-                            <asp:Label runat="server" Text="Correo Electronico" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-                            <input type="text" class="form-control" placeholder="ejm@gmail.com">
-                        </div>
-
                     </div>
 
-                </div>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Perimetro cefalico al nacer</label>
+                            <input type="text" class="form-control">
+                        </div>
 
-                <br />
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificacion APGAR</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
 
-                <div class="container-fluid col-md-8 col-md-offset-2 bg-light border border-info rounded">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Edad gestacional</label>
+                            <input type="text" class="form-control">
+                        </div>
 
-                    <br />
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificacion universal</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
 
-                    <asp:Label runat="server" Text="Direccion" Style="font-size: 16px; font-weight: bold; color: dimgray"> </asp:Label>
-
-                    <br />
-
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-group col-md-3">
-                            <select class="browser-default custom-select">
-                                <option value="" disabled selected>Provincia</option>
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                            <select class="estadoPerinatal browser-default custom-select">
+                                <option value="normal" selected>Normal</option>
+                                <option value="anormal">Anormal</option>
                             </select>
                         </div>
-
-                        <div class="form-group col-md-3">
-                            <select class="browser-default custom-select">
-                                <option value="" disabled selected>Canton</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group col-md-3">
-                            <select class="browser-default custom-select">
-                                <option value="" disabled selected>Distrito</option>
-                            </select>
-                        </div>
-
                     </div>
 
-                    <div class="form-row justify-content-center">
-
-                        <div class="form-row col-md-12">
-                            <input type="text" class="form-control" placeholder="Otras Señas">
+                    <div class="complicacionPerinatal form-row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Complicaciones</label>
+                            <input type="text" class="form-control">
                         </div>
-
                     </div>
 
-                    <br />
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Patologicos</label>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                            <select class="antecedentePatologico browser-default custom-select">
+                                <option value="ausentesPat" selected>Ausentes</option>
+                                <option value="presentesPat">Presentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionPatologicos form-row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Quirurgicos</label>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                            <select class="antecedenteQuirurgico browser-default custom-select">
+                                <option value="ausentesQui" selected>Ausentes</option>
+                                <option value="presentesQui">Presentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionQuirurgico form-row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Traumaticos</label>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                            <select class="antecedenteTraumatico browser-default custom-select">
+                                <option value="ausentesTrau" selected>Ausentes</option>
+                                <option value="presentesTrau">Presentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionTraumatico form-row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Heredo-Familiares</label>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Asma</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Diabetes</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Hipertension arterial</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Displidemia</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Enfermedades cardivasculares</label>
+                            <input type="text" class="form-control">
+                        </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Epilesia</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Pariente enfermo</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Otros</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Alergias</label>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Vacunas</label>
+                    </div>
+
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
 
                 </div>
+
+                <!-- Confirmar para guardar el formulario !-->
+
+                <div class="boxSave">
+                    <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
+                        <div class="form-row text-center">
+                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 15px;">
+                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Guardar Informacion de Expediente</label>
+                                <br />
+                                <br />
+                                <button class="btn btn-primary" style="background-color: #56baed; border: none; padding: 10px 50px;">Guardar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- --------------------------------------------------------- !-->
+
+                <br />
 
                 <div class="text-center">
                     <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep4()">Anterior</a>
+                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep4()" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom:15px;">Anterior</a>
                 </div>
 
             </div>
-
-            <!-- Fin del fromulario para expediente !-->
-
         </form>
+        <!-- Fin del fromulario para expediente !-->
 
     </div>
 
