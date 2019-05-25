@@ -1,10 +1,49 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="GestionarAgenda.aspx.cs" Inherits="Pediatric_System.GestionarAgenda" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-    
+    <br />
+
+    <div class="container-fluid col-10 col-auto">
+        <div class="page-header">
+            <h3 class="text-info">Agenda Semanal</h3>
+        </div>
+    </div>
+
+    <hr style="color: #0056b2;" />
+
+    <div class="container-fluid col-10">
+
+        <br />
+
+        <div class="form-row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <form id="form1" runat="server">
+
+                <asp:Calendar ID="Calendar1" runat="server"
+                    SelectionMode="DayWeek"
+                    ShowGridLines="True">
+
+                    <SelectedDayStyle BackColor="SkyBlue"
+                        ForeColor="White"></SelectedDayStyle>
+
+                </asp:Calendar>
+
+            </form>
+                </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <span class="help-block">Por favor seleccione la semana para la que desea observar la agenda.</span>
+                </div>
+        </div>
+
+    </div>
+
+
+
     <form>
 
         <div class="container-fluid col-10 col-auto table-responsive">
@@ -25,32 +64,56 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row"></th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger">
-      <%--                      <button type="button" class="btn btn-outline-success btn-block" data-toggle="modal" data-target="#exampleModal">
-                                
-                            </button>--%>
-                        </td>
+                        <th scope="row">4:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row"></th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light">
-
-                        </td>
+                        <th scope="row">5:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
                     </tr>
                     <tr>
-                        <th scope="row"></th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success">
-
-                        </td>
+                        <th scope="row">5:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">6:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">7:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -60,7 +123,6 @@
             </table>
 
         </div>
-
 
 
         <!-- Modal -->
@@ -121,7 +183,22 @@
                 </div>
             </div>
         </div>
+
+        <br />
+
+        <div class="container-fluid col-4 col-auto">
+            <button type="button" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
+        </div>
+
+        <br />
+
     </form>
+
+
+
+
+
+
     <script>
         $(document).on('click', '#disponible', function () {
             $("#agendar").removeAttr("disabled");
@@ -133,6 +210,11 @@
             $("#agendar").attr("disabled", "disabled");
             $("#correoElectronico").attr("disabled", "disabled");
         });
+
+
+
+
+
     </script>
 
 </asp:Content>
