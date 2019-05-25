@@ -73,7 +73,9 @@
     <Content Include="EstadoCuenta.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
     <Content Include="FichaConsultaPaciente.aspx" />
+    <Content Include="GestionarAgenda.aspx" />
     <Content Include="IniciarSesion.aspx" />
+    <Content Include="InicioMedico.aspx" />
     <Content Include="JS\Calendario.js" />
     <Content Include="JS\consulta.js" />
     <Content Include="JS\expediente.js" />
@@ -109,6 +111,12 @@
     </Compile>
     <Compile Include="FichaConsultaPaciente.aspx.designer.cs">
       <DependentUpon>FichaConsultaPaciente.aspx</DependentUpon>
+    <Compile Include="GestionarAgenda.aspx.cs">
+      <DependentUpon>GestionarAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GestionarAgenda.aspx.designer.cs">
+      <DependentUpon>GestionarAgenda.aspx</DependentUpon>
     </Compile>
     <Compile Include="IniciarSesion.aspx.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
@@ -116,6 +124,13 @@
     </Compile>
     <Compile Include="IniciarSesion.aspx.designer.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="InicioMedico.aspx.cs">
+      <DependentUpon>InicioMedico.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InicioMedico.aspx.designer.cs">
+      <DependentUpon>InicioMedico.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
