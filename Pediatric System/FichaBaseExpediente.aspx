@@ -231,6 +231,8 @@
                 </div>
             </div>
 
+            <!-- ----------------------------------------------------------- !-->
+
             <!-- Datos para Informacion Personal del Destinatario de la Factura!-->
 
             <div class="step3">
@@ -317,6 +319,8 @@
                 </div>
 
             </div>
+
+            <!-- ----------------------------------------------------------- !-->
 
             <!-- Datos para Historia Clinica Pediatrica !-->
 
@@ -455,6 +459,23 @@
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                            <select class="antecedenteFamiliar browser-default custom-select">
+                                <option value="ausentesFami" selected>Ausentes</option>
+                                <option value="presentesFami">Presentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionFamiliar form-row">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <%--<div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Asma</label>
                             <input type="text" class="form-control">
                         </div>
@@ -494,11 +515,25 @@
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Pariente enfermo</label>
                             <input type="text" class="form-control">
                         </div>
+                    </div>--%>
+
+                    <div style="margin-top: 15px;">
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Otros</label>
                     </div>
 
                     <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                           <select class="otrosExpediente browser-default custom-select">
+                                <option value="ausentesOtros" selected>Ausentes</option>
+                                <option value="presentesOtros">Presentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionOtro form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Otros</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
@@ -507,7 +542,17 @@
                         <label style="font-size: 20px; font-weight: bold; color: dimgray">Alergias</label>
                     </div>
 
-                    <div class="form-row" style="margin-top: 15px;">
+                     <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                           <select class="alergiasExpediente browser-default custom-select">
+                                <option value="ausentesAlergia" selected>Ausentes</option>
+                                <option value="presentesAlergia">Presentes</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionAlergia form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
                             <input type="text" class="form-control">
@@ -518,7 +563,17 @@
                         <label style="font-size: 20px; font-weight: bold; color: dimgray">Vacunas</label>
                     </div>
 
-                    <div class="form-row" style="margin-top: 15px;">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                           <select class="vacunasExpediente browser-default custom-select">
+                                <option value="normalVacunas" selected>Normal</option>
+                                <option value="anormalVacunas">Anormal</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="descripcionVacuna form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
                             <input type="text" class="form-control">
@@ -526,6 +581,8 @@
                     </div>
 
                 </div>
+
+                <!-- ----------------------------------------------------------- !-->
 
                 <!-- Confirmar para guardar el formulario !-->
 
@@ -548,7 +605,7 @@
 
                 <div class="text-center">
                     <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep4()" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom:15px;">Anterior</a>
+                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep4()" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom: 15px;">Anterior</a>
                 </div>
 
             </div>

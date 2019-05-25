@@ -10,6 +10,10 @@ $(document).ready(function () {
     $('.descripcionPatologicos').hide();
     $('.descripcionQuirurgico').hide();
     $('.descripcionTraumatico').hide();
+    $('.descripcionFamiliar').hide();
+    $('.descripcionOtro').hide();
+    $('.descripcionAlergia').hide();
+    $('.descripcionVacuna').hide();
 
     $(".step1 .next").on("click", function (e) {
         e.preventDefault();
@@ -56,6 +60,37 @@ $(document).ready(function () {
         }
     });
 
+    $(".antecedenteFamiliar").on("change", function () {
+        if (this.value == "ausentesFami") {
+            $('.descripcionFamiliar').hide();
+        } else {
+            $('.descripcionFamiliar').show();
+        }
+    });
+
+    $(".otrosExpediente").on("change", function () {
+        if (this.value == "ausentesOtros") {
+            $('.descripcionOtro').hide();
+        } else {
+            $('.descripcionOtro').show();
+        }
+    });
+
+    $(".alergiasExpediente").on("change", function () {
+        if (this.value == "ausentesAlergia") {
+            $('.descripcionAlergia').hide();
+        } else {
+            $('.descripcionAlergia').show();
+        }
+    });
+
+    $(".vacunasExpediente").on("change", function () {
+        if (this.value == "normalVacunas") {
+            $('.descripcionVacuna').hide();
+        } else {
+            $('.descripcionVacuna').show();
+        }
+    });
 
 });
 
