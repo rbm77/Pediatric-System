@@ -111,6 +111,7 @@
     </Compile>
     <Compile Include="FichaConsultaPaciente.aspx.designer.cs">
       <DependentUpon>FichaConsultaPaciente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GestionarAgenda.aspx.cs">
       <DependentUpon>GestionarAgenda.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
