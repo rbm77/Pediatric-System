@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace Pediatric_System
 {
-    public partial class InicioMedico : System.Web.UI.Page
+    public partial class AsociarPaciente : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

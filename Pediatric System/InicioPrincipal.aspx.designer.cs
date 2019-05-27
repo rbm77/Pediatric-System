@@ -10,6 +10,6 @@
 namespace Pediatric_System {
     
     
-    public partial class CuentaPaciente {
+    public partial class InicioPrincipal {
     }
 }
