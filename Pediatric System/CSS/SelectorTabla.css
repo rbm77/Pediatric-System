@@ -1,0 +1,7 @@
+﻿
+
+td:hover {
+    cursor: pointer;
+    border: 1px solid;
+    border-color: dodgerblue;
+}

@@ -68,10 +68,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AsociarPaciente.aspx" />
-    <Content Include="CSS\Buscador.css" />
     <Content Include="CrearReportes.aspx" />
     <Content Include="CSS\expediente.css" />
     <Content Include="CSS\IniciarSesion.css" />
+    <Content Include="CSS\SelectorTabla.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="EstadoCuenta.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
