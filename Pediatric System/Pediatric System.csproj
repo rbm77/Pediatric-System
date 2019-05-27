@@ -67,17 +67,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+
+    <Content Include="AsociarPaciente.aspx" />
+    <Content Include="CSS\Buscador.css" />
+
     <Content Include="CrearReportes.aspx" />
+
     <Content Include="CSS\expediente.css" />
     <Content Include="CSS\IniciarSesion.css" />
-    <Content Include="CuentaPaciente.aspx" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="EstadoCuenta.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
     <Content Include="FichaConsultaPaciente.aspx" />
     <Content Include="GestionarAgenda.aspx" />
     <Content Include="IniciarSesion.aspx" />
-    <Content Include="InicioMedico.aspx" />
+    <Content Include="InicioPrincipal.aspx" />
     <Content Include="JS\Calendario.js" />
     <Content Include="JS\consulta.js" />
     <Content Include="JS\expediente.js" />
@@ -89,6 +93,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+
+    <Compile Include="AsociarPaciente.aspx.cs">
+      <DependentUpon>AsociarPaciente.aspx</DependentUpon>
+    </Compile>
     
     <Compile Include="CrearReportes.aspx.cs">
       <DependentUpon>CrearReportes.aspx</DependentUpon>
@@ -99,10 +107,11 @@
     </Compile>
     <Compile Include="CuentaPaciente.aspx.cs">
       <DependentUpon>CuentaPaciente.aspx</DependentUpon>
+
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CuentaPaciente.aspx.designer.cs">
-      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
+    <Compile Include="AsociarPaciente.aspx.designer.cs">
+      <DependentUpon>AsociarPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="CuentaPersonal.aspx.cs">
       <DependentUpon>CuentaPersonal.aspx</DependentUpon>
@@ -146,12 +155,12 @@
     <Compile Include="IniciarSesion.aspx.designer.cs">
       <DependentUpon>IniciarSesion.aspx</DependentUpon>
     </Compile>
-    <Compile Include="InicioMedico.aspx.cs">
-      <DependentUpon>InicioMedico.aspx</DependentUpon>
+    <Compile Include="InicioPrincipal.aspx.cs">
+      <DependentUpon>InicioPrincipal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="InicioMedico.aspx.designer.cs">
-      <DependentUpon>InicioMedico.aspx</DependentUpon>
+    <Compile Include="InicioPrincipal.aspx.designer.cs">
+      <DependentUpon>InicioPrincipal.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaConsultas.aspx.cs">
       <DependentUpon>ListaConsultas.aspx</DependentUpon>

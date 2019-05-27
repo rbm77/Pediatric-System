@@ -21,22 +21,22 @@
         <br />
 
         <div class="form-row">
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="form-group">
                 <form id="form1" runat="server">
-
-                    <asp:Calendar ID="Calendar1" runat="server"
-                        SelectionMode="DayWeek"
-                        ShowGridLines="True">
-
-                        <SelectedDayStyle BackColor="SkyBlue"
-                            ForeColor="White"></SelectedDayStyle>
-
-                    </asp:Calendar>
-
+                    <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                        <ContentTemplate>
+                            <asp:Calendar ID="CalendFechaIni" runat="server" SelectionMode="DayWeek" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                                <OtherMonthDayStyle ForeColor="#999999" />
+                                <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
+                                <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
+                                <TodayDayStyle BackColor="#CCCCCC" />
+                            </asp:Calendar>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </form>
-            </div>
-            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                <span class="help-block">Por favor seleccione la semana para la que desea observar la agenda.</span>
             </div>
         </div>
 
@@ -157,7 +157,7 @@
                         <button class="btn btn-outline-primary form-control" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="agendar">
                             AGENDAR CITA
                         </button>
-                        
+
                         <br />
 
                         <div class="collapse" id="collapseExample">
