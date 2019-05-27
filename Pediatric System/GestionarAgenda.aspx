@@ -66,58 +66,58 @@
                     <tr>
                         <th scope="row">4:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                     </tr>
                     <tr>
                         <th scope="row">5:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
                         <th scope="row">5:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
                         <th scope="row">6:00 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                     </tr>
                     <tr>
                         <th scope="row">6:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
                         <th scope="row">7:00 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
                         <th scope="row">7:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                     </tr>
                 </tbody>
             </table>
