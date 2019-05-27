@@ -393,7 +393,7 @@
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="form-row">
                         <div class="clasificacionTamaño" style="margin-left: 10px;">
                             <div class="form-check form-check-inline">
@@ -419,12 +419,12 @@
                         </div>
                     </div>
 
-                    <div class="form-row" style="margin-top:15px;">
+                    <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Otras Complicaciones</label>
                             <select class="estadoPerinatal browser-default custom-select">
-                                <option value="normal" selected>Normal</option>
-                                <option value="anormal">Anormal</option>
+                                <option value="ausentes" selected>Ausentes</option>
+                                <option value="presentes">Presentes</option>
                             </select>
                         </div>
                     </div>

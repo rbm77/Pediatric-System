@@ -12,44 +12,21 @@
         <br />
 
         <div class="page-header">
-            <h2 class="text-info">Consulta Medica</h2>
+            <h2 class="text-info">Consulta Médica</h2>
         </div>
 
         <hr style="color: #0056b2;" />
-
-
-        <%--<div class="row col-12">
-            <label style="font-size: 24px; font-weight: bold; color: dimgray">Padecimiento Actual</label>
-        </div>--%>
-
-
-        <!-- Fecha y Hora y Padecimiento Actual !-->
-
-        <div class="col-12 bg-light border border-info rounded">
-            <div class="form-row" style="margin-top: 15px;">
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray">Padecimiento Actual</label>
-                    <input type="text" class="form-control">
-                </div>
-
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: center">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha y Hora</label>
-                </div>
-            </div>
-        </div>
-
-        <!-- ------------------------------------------------------------ !-->
 
         <!-- Inicio del titulo de los Tabs !-->
 
         <div style="margin-top: 15px">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Fisico</a>
+                    <a class="nav-link active" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Físico</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="segunda-parte-tab" data-toggle="tab" href="#ef-segunda-parte" role="tab" aria-controls="ef-segunda-parte" aria-selected="false">II Parte Examen Fisico</a>
+                    <a class="nav-link" id="segunda-parte-tab" data-toggle="tab" href="#ef-segunda-parte" role="tab" aria-controls="ef-segunda-parte" aria-selected="false">II Parte Examen Físico</a>
                 </li>
 
                 <li class="nav-item">
@@ -57,15 +34,15 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnostico Nutricional</a>
+                    <a class="nav-link" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnóstico Nutricional</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="analisis-tab" data-toggle="tab" href="#consulta-analisis" role="tab" aria-controls="consulta-analisis" aria-selected="false">Analisis</a>
+                    <a class="nav-link" id="analisis-tab" data-toggle="tab" href="#consulta-analisis" role="tab" aria-controls="consulta-analisis" aria-selected="false">Análisis</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="diagnostico-tab" data-toggle="tab" href="#consulta-diagnostico" role="tab" aria-controls="consulta-diagnostico" aria-selected="false">Impresion Diagnostica</a>
+                    <a class="nav-link" id="diagnostico-tab" data-toggle="tab" href="#consulta-diagnostico" role="tab" aria-controls="consulta-diagnostico" aria-selected="false">Impresión Diagnóstica</a>
                 </li>
 
                 <li class="nav-item">
@@ -84,7 +61,6 @@
 
             <div class="tab-pane fade show active" id="ef-primera-parte" role="tabpanel" aria-labelledby="ef-primera-parte-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Primera Parte del Examen Fisico</label>
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -100,7 +76,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Perimetro Cefalico</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Perímetro Cefálico</label>
                             <input type="text" class="form-control">
                         </div>
 
@@ -129,8 +105,20 @@
             <!-- Inicio de la Segunda Parte del Examen Fisico !-->
 
             <div class="tab-pane fade" id="ef-segunda-parte" role="tabpanel" aria-labelledby="ef-segunda-parte-tab" style="margin-bottom: 25px;">
+                <!-- Padecimiento Actual !-->
+
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Segunda Parte del Examen Fisico</label>
+                    <div class="form-row" style="margin-top: 15px;">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Padecimiento Actual</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ------------------------------------------------------------ !-->
+
+                <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -139,14 +127,14 @@
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado de hidratacion</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado de hidratación</label>
                             <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Ruidos cardiacos</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Ruidos cardíacos</label>
                             <input type="text" class="form-control" value="Normal">
                         </div>
 
@@ -170,7 +158,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Faringe</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Neurodesarrollo</label>
                             <input type="text" class="form-control" value="Normal">
                         </div>
 
@@ -182,7 +170,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Oidos</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Oídos</label>
                             <input type="text" class="form-control" value="Normal">
                         </div>
 
@@ -205,31 +193,18 @@
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Piel</label>
-                            <input type="text" class="form-control" value="Normal">
-                        </div>
-
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Neurodesarrollo</label>
-                            <input type="text" class="form-control" value="Normal">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Otros hallazgos</label>
                             <input type="text" class="form-control" value="No encontrados">
                         </div>
                     </div>
-
                 </div>
             </div>
             <!-- --------------------------------------------------------------------- !-->
 
             <!-- Inicio agregar examen de laboratorio !-->
 
-            <div class="tab-pane fade show active" id="examen-laboratorio" role="tabpanel" aria-labelledby="examen-laboratorio-tab" style="margin-bottom: 25px;">
+            <div class="tab-pane fade" id="examen-laboratorio" role="tabpanel" aria-labelledby="examen-laboratorio-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Adjuntar Examenes de Laboratorio</label>
 
@@ -250,7 +225,6 @@
 
             <div class="tab-pane fade" id="diagnostico-nutricional" role="tabpanel" aria-labelledby="diagnostico-nutricional-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Diagnostico Nutricional Antropometria</label>
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -303,11 +277,10 @@
 
             <div class="tab-pane fade" id="consulta-analisis" role="tabpanel" aria-labelledby="consulta-analisis-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Analisis</label>
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Comentario</label>
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Comentario</label>
                             <textarea class="form-control" rows="4"></textarea>
                         </div>
                     </div>
@@ -321,11 +294,10 @@
 
             <div class="tab-pane fade" id="consulta-diagnostico" role="tabpanel" aria-labelledby="consulta-diagnostico-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Impresion Diagnostica</label>
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Comentario</label>
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Comentario</label>
                             <textarea class="form-control" rows="4"></textarea>
                         </div>
                     </div>
@@ -343,7 +315,6 @@
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Plan</label>
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Comentario</label>
                             <textarea class="form-control" rows="4"></textarea>
                         </div>
                     </div>
@@ -436,7 +407,7 @@
                             <div class="form-check">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="hospitalizacion" value="refe-hospitalizacion">
-                                    <label class="form-check-label" for="referido-a-medicina-mixta" style="font-size: 16px; font-weight: bold; color: dimgray">Hospitalizacion</label>
+                                    <label class="form-check-label" for="referido-a-medicina-mixta" style="font-size: 16px; font-weight: bold; color: dimgray">Hospitalización</label>
                                 </div>
                             </div>
                         </div>
@@ -449,6 +420,12 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div style="margin-bottom: 25px; padding:0px;">
+                            <br />
+                            <a class="btn btn-primary" role="button" style="background-color: #56baed; border: none; padding: 10px 50px;">Guardar</a>
+                        </div>
+
 
                     </div>
 
@@ -469,36 +446,6 @@
 
                     <div class="datosReferenciaPrivada">
                         <div class="form-row" style="margin-top: 15px;">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Datos de la clinica </label>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Nombre de la clinica</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Nombre del medico</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Telefono del medico</label>
-                                <input type="text" class="form-control">
-                            </div>
-
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Codigo del medico</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-row" style="margin-top: 15px;">
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <label style="font-size: 16px; font-weight: bold; color: dimgray">Especialidad a que se refiere</label>
                                 <input type="text" class="form-control">
@@ -511,11 +458,11 @@
                                 <input type="text" class="form-control">
                             </div>
                         </div>
-                    </div>
 
-                    <div class="guardarReferencia" style="margin-bottom: 25px;">
-                        <br />
-                        <a class="btn btn-primary" role="button" style="background-color: #56baed; border: none; padding: 10px 50px;">Guardar</a>
+                        <div style="margin-bottom: 25px;">
+                            <br />
+                            <a class="btn btn-primary" role="button" style="background-color: #56baed; border: none; padding: 10px 50px;">Generar PDF</a>
+                        </div>
                     </div>
 
                 </div>
@@ -525,7 +472,6 @@
             <!-- --------------------------------------------------------------------- !-->
 
         </div>
-
     </div>
 
 

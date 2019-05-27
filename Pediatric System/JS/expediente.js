@@ -28,7 +28,7 @@ $(document).ready(function () {
     });
 
     $(".estadoPerinatal").on("change", function () {
-        if (this.value == "normal") {
+        if (this.value == "ausentes") {
             $('.complicacionPerinatal').hide();
         } else {
             $('.complicacionPerinatal').show();
