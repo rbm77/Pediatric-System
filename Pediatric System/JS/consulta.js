@@ -1,14 +1,38 @@
-﻿$("#datetime").datetimepicker({
-    format: 'yyyy-mm-dd hh:ii'
-});
+﻿
+$(document).ready(function () {
+    $(".datosReporteMedicinaMixta").hide();
+    $(".opciones-primera-vez").hide();
+    $(".datosReferenciaPrivada").hide();
+    $(".guardarReferencia").hide();
+    
+    $("#reporte-medicina-mixta").on("change", function () {
+        if ($('#reporte-medicina-mixta').prop('checked')) {
+            $('.datosReporteMedicinaMixta').show();
+            $(".guardarReferencia").show();
+        } else {
+            $('.datosReporteMedicinaMixta').hide();
+            $(".guardarReferencia").hide();
+        }
+    });
 
-$("#datetime").datetimepicker({
-    format: 'yyyy-mm-dd hh:ii',
-    autoclose: true
-});
+    $("#referencia-consulta-privada").on("change", function () {
+        if ($('#referencia-consulta-privada').prop('checked')) {
+            $('.datosReferenciaPrivada').show();
+            $(".guardarReferencia").show();
+        } else {
+            $('.datosReferenciaPrivada').hide();
+            $(".guardarReferencia").hide();
+        }
+    });
 
-$("#datetime").datetimepicker({
-    format: 'yyyy-mm-dd hh:ii',
-    autoclose: true,
-    todayBtn: true
+    $("input[name='frecuencia-medicina-mixta']").on("change", function () {
+        if ($("input[name='frecuencia-medicina-mixta']:checked").val() == "primera") {
+            $('.opciones-primera-vez').show();
+            $(".guardarReferencia").show();
+        } else {
+            $('.opciones-primera-vez').hide();
+            $(".guardarReferencia").hide();
+        }
+    });
+
 });
