@@ -53,6 +53,10 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link" id="examen-laboratorio-tab" data-toggle="tab" href="#examen-laboratorio" role="tab" aria-controls="examen-laboratorio" aria-selected="false">Examen de Laboratorio</a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnostico Nutricional</a>
                 </li>
 
@@ -78,7 +82,7 @@
 
             <!-- Inicio de la Primera Parte del Examen Fisico !-->
 
-            <div class="tab-pane fade show active" id="ef-primera-parte" role="tabpanel" aria-labelledby="ef-primera-parte-tab" style="margin-bottom:25px;">
+            <div class="tab-pane fade show active" id="ef-primera-parte" role="tabpanel" aria-labelledby="ef-primera-parte-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Primera Parte del Examen Fisico</label>
 
@@ -88,7 +92,7 @@
                             <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: center">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Peso</label>
                             <input type="text" class="form-control">
                         </div>
@@ -100,7 +104,7 @@
                             <input type="text" class="form-control">
                         </div>
 
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" style="text-align: center">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Temperatura</label>
                             <input type="text" class="form-control">
                         </div>
@@ -111,6 +115,11 @@
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">SO2</label>
                             <input type="text" class="form-control">
                         </div>
+
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">IMC</label>
+                            <input type="text" class="form-control">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -119,98 +128,98 @@
 
             <!-- Inicio de la Segunda Parte del Examen Fisico !-->
 
-            <div class="tab-pane fade" id="ef-segunda-parte" role="tabpanel" aria-labelledby="ef-segunda-parte-tab" style="margin-bottom:25px;">
+            <div class="tab-pane fade" id="ef-segunda-parte" role="tabpanel" aria-labelledby="ef-segunda-parte-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Segunda Parte del Examen Fisico</label>
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado de alerta</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado de hidratacion</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Ruidos cardiacos</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Campos pulmunares</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Abdomen</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Faringe</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Faringe</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Nariz</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Oidos</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">SNC</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Sistema Osteomuscular</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Piel</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Piel</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Neurodesarrollo</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="Normal">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Otros hallazgos</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="No encontrados">
                         </div>
                     </div>
 
@@ -218,9 +227,28 @@
             </div>
             <!-- --------------------------------------------------------------------- !-->
 
+            <!-- Inicio agregar examen de laboratorio !-->
+
+            <div class="tab-pane fade show active" id="examen-laboratorio" role="tabpanel" aria-labelledby="examen-laboratorio-tab" style="margin-bottom: 25px;">
+                <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Adjuntar Examenes de Laboratorio</label>
+
+                    <div class="form-row ">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="subirExamenFisico" aria-describedby="inputGroupFileAddon01" multiple>
+                                <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar">Seleccionar Archivo</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- -------------------------------------------------------------------- !-->
+
             <!-- Inicio del Diagnostico Nutricional !-->
 
-            <div class="tab-pane fade" id="diagnostico-nutricional" role="tabpanel" aria-labelledby="diagnostico-nutricional-tab" style="margin-bottom:25px;">
+            <div class="tab-pane fade" id="diagnostico-nutricional" role="tabpanel" aria-labelledby="diagnostico-nutricional-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Diagnostico Nutricional Antropometria</label>
 
@@ -273,7 +301,7 @@
 
             <!-- Inicio del Analisis !-->
 
-            <div class="tab-pane fade" id="consulta-analisis" role="tabpanel" aria-labelledby="consulta-analisis-tab" style="margin-bottom:25px;">
+            <div class="tab-pane fade" id="consulta-analisis" role="tabpanel" aria-labelledby="consulta-analisis-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Analisis</label>
 
@@ -291,7 +319,7 @@
 
             <!-- Inicio del Impresion Diagnostica !-->
 
-            <div class="tab-pane fade" id="consulta-diagnostico" role="tabpanel" aria-labelledby="consulta-diagnostico-tab" style="margin-bottom:25px;">
+            <div class="tab-pane fade" id="consulta-diagnostico" role="tabpanel" aria-labelledby="consulta-diagnostico-tab" style="margin-bottom: 25px;">
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Impresion Diagnostica</label>
 
@@ -309,7 +337,7 @@
 
             <!-- Inicio del Plan !-->
 
-            <div class="tab-pane fade" id="consulta-plan" role="tabpanel" aria-labelledby="consulta-plan-tab" style="margin-bottom:25px;">
+            <div class="tab-pane fade" id="consulta-plan" role="tabpanel" aria-labelledby="consulta-plan-tab" style="margin-bottom: 25px;">
 
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Plan</label>
@@ -485,7 +513,7 @@
                         </div>
                     </div>
 
-                    <div class="guardarReferencia" style="margin-bottom:25px;">
+                    <div class="guardarReferencia" style="margin-bottom: 25px;">
                         <br />
                         <a class="btn btn-primary" role="button" style="background-color: #56baed; border: none; padding: 10px 50px;">Guardar</a>
                     </div>

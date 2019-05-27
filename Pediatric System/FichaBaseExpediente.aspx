@@ -23,7 +23,7 @@
 
     <div class="container-fluid col-10 col-auto">
 
-        <form runat="server">
+        <form>
 
             <div class="row" style="margin: 0px;">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 20px; padding: 0px">
@@ -125,7 +125,11 @@
                     <div class="form-row ">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px;">Foto del Paciente</label>
-                            <asp:FileUpload CssClass="form-control" ID="fuploadImagen" accept=".jpg" runat="server" />
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="subirExamenFisico"
+                                    aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar">Seleccionar Archivo</label>
+                            </div>
                         </div>
                     </div>
 
@@ -407,7 +411,6 @@
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
                             <select class="antecedentePatologico browser-default custom-select">
                                 <option value="ausentesPat" selected>Ausentes</option>
                                 <option value="presentesPat">Presentes</option>
@@ -428,7 +431,6 @@
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
                             <select class="antecedenteQuirurgico browser-default custom-select">
                                 <option value="ausentesQui" selected>Ausentes</option>
                                 <option value="presentesQui">Presentes</option>
@@ -449,7 +451,6 @@
 
                     <div class="form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
                             <select class="antecedenteTraumatico browser-default custom-select">
                                 <option value="ausentesTrau" selected>Ausentes</option>
                                 <option value="presentesTrau">Presentes</option>
@@ -469,81 +470,62 @@
                         <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Heredo-Familiares</label>
                     </div>
 
-                    <div class="form-row" style="margin-top: 15px;">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
-                            <select class="antecedenteFamiliar browser-default custom-select">
-                                <option value="ausentesFami" selected>Ausentes</option>
-                                <option value="presentesFami">Presentes</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="descripcionFamiliar form-row">
-                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
-
-                    <%--<div class="form-row" style="margin-top: 15px;">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Asma</label>
-                            <input type="text" class="form-control">
+                    <div class="form-row">
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group ">
+                                <input class="form-check-input" type="checkbox" value="asma" id="asmaCheck">
+                                <label class="form-check-label" for="asmaCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Asma</label>
+                            </div>
                         </div>
 
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Diabetes</label>
-                            <input type="text" class="form-control">
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group">
+                                <input class="form-check-input" type="checkbox" value="diabetes" id="diabetesCheck">
+                                <label class="form-check-label" for="diabetesCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Diabetes</label>
+                            </div>
+                        </div>
+
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group">
+                                <input class="form-check-input" type="checkbox" value="hipertension" id="hipertencionCheck">
+                                <label class="form-check-label" for="hipertencionCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Hipertension Arterial</label>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Hipertension arterial</label>
-                            <input type="text" class="form-control">
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group ">
+                                <input class="form-check-input" type="checkbox" value="displidemia" id="displidemiaCheck">
+                                <label class="form-check-label" for="displidemiaCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Displidemia</label>
+                            </div>
                         </div>
 
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Displidemia</label>
-                            <input type="text" class="form-control">
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group">
+                                <input class="form-check-input" type="checkbox" value="epilepsia" id="epilepsiaCheck">
+                                <label class="form-check-label" for="epilepsiaCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Epilepsia</label>
+                            </div>
+                        </div>
+
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group">
+                                <input class="form-check-input" type="checkbox" value="cardiovascular" id="cardiovascularCheck">
+                                <label class="form-check-label" for="cardiovascularCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Enfermedades Cardiovasculares</label>
+                            </div>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Enfermedades cardivasculares</label>
-                            <input type="text" class="form-control">
-                        </div>
-
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Epilesia</label>
-                            <input type="text" class="form-control">
+                        <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
+                            <div class="form-group ">
+                                <input class="form-check-input" type="checkbox" value="otros" id="otrosCheck">
+                                <label class="form-check-label" for="otrosCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Otros</label>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-row">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Pariente enfermo</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>--%>
-
-                    <div style="margin-top: 15px;">
-                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Otros</label>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
-                            <select class="otrosExpediente browser-default custom-select">
-                                <option value="ausentesOtros" selected>Ausentes</option>
-                                <option value="presentesOtros">Presentes</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="descripcionOtro form-row" style="margin-top: 15px;">
+                    <div class="descripcionOtros form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
                             <input type="text" class="form-control">
@@ -556,7 +538,6 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
                             <select class="alergiasExpediente browser-default custom-select">
                                 <option value="ausentesAlergia" selected>Ausentes</option>
                                 <option value="presentesAlergia">Presentes</option>
@@ -577,15 +558,14 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
                             <select class="vacunasExpediente browser-default custom-select">
-                                <option value="normalVacunas" selected>Normal</option>
-                                <option value="anormalVacunas">Anormal</option>
+                                <option value="esquemaAlDia" selected>Al dia para la edad con esquema basico</option>
+                                <option value="pendientes">Pendientes</option>
                             </select>
                         </div>
                     </div>
 
-                    <div class="descripcionVacuna form-row" style="margin-top: 15px;">
+                    <div class="descripcionVacuna form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
                             <input type="text" class="form-control">
@@ -619,7 +599,6 @@
                     <br />
                     <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep4()" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom: 15px;">Anterior</a>
                 </div>
-
             </div>
         </form>
         <!-- Fin del fromulario para expediente !-->
