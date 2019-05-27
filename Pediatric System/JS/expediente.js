@@ -10,8 +10,7 @@ $(document).ready(function () {
     $('.descripcionPatologicos').hide();
     $('.descripcionQuirurgico').hide();
     $('.descripcionTraumatico').hide();
-    $('.descripcionFamiliar').hide();
-    $('.descripcionOtro').hide();
+    $('.descripcionOtros').hide();
     $('.descripcionAlergia').hide();
     $('.descripcionVacuna').hide();
 
@@ -60,19 +59,11 @@ $(document).ready(function () {
         }
     });
 
-    $(".antecedenteFamiliar").on("change", function () {
-        if (this.value == "ausentesFami") {
-            $('.descripcionFamiliar').hide();
+    $("#otrosCheck").on("change", function () {
+        if ($('#otrosCheck').prop('checked')) {
+            $('.descripcionOtros').show();
         } else {
-            $('.descripcionFamiliar').show();
-        }
-    });
-
-    $(".otrosExpediente").on("change", function () {
-        if (this.value == "ausentesOtros") {
-            $('.descripcionOtro').hide();
-        } else {
-            $('.descripcionOtro').show();
+            $('.descripcionOtros').hide();
         }
     });
 
@@ -85,11 +76,16 @@ $(document).ready(function () {
     });
 
     $(".vacunasExpediente").on("change", function () {
-        if (this.value == "normalVacunas") {
+        if (this.value == "esquemaAlDia") {
             $('.descripcionVacuna').hide();
         } else {
             $('.descripcionVacuna').show();
         }
+    });
+
+    $(".custom-file-input").on("change", function () {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
 });

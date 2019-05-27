@@ -67,8 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+
     <Content Include="AsociarPaciente.aspx" />
     <Content Include="CSS\Buscador.css" />
+
+    <Content Include="CrearReportes.aspx" />
+
     <Content Include="CSS\expediente.css" />
     <Content Include="CSS\IniciarSesion.css" />
     <Content Include="CuentaPersonal.aspx" />
@@ -82,12 +86,28 @@
     <Content Include="JS\consulta.js" />
     <Content Include="JS\expediente.js" />
     <Content Include="JS\Idioma.js" />
+    <Content Include="JS\listaConsultas.js" />
+    <Content Include="JS\reportes.js" />
+    <Content Include="ListaConsultas.aspx" />
     <Content Include="RecuperarContrasenna.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="AsociarPaciente.aspx.cs">
       <DependentUpon>AsociarPaciente.aspx</DependentUpon>
+    </Compile>
+    
+    <Compile Include="CrearReportes.aspx.cs">
+      <DependentUpon>CrearReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CrearReportes.aspx.designer.cs">
+      <DependentUpon>CrearReportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
+
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AsociarPaciente.aspx.designer.cs">
@@ -141,6 +161,13 @@
     </Compile>
     <Compile Include="InicioPrincipal.aspx.designer.cs">
       <DependentUpon>InicioPrincipal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaConsultas.aspx.cs">
+      <DependentUpon>ListaConsultas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaConsultas.aspx.designer.cs">
+      <DependentUpon>ListaConsultas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
