@@ -10,6 +10,6 @@
 namespace Pediatric_System {
     
     
-    public partial class FichaBaseExpediente {
+    public partial class InicioUsuarioExterno {
     }
 }
