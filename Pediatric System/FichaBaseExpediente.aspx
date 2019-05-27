@@ -381,14 +381,45 @@
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Edad gestacional</label>
                             <input type="text" class="form-control">
                         </div>
-
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificacion universal</label>
-                            <input type="text" class="form-control">
-                        </div>
                     </div>
 
                     <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificacion universal</label>
+                            <select class="clasificacionUniversalOpciones browser-default custom-select">
+                                <option value="termino" selected>Recién nacido de término</option>
+                                <option value="pretermino">Recién nacido de pretérmino</option>
+                                <option value="postermino">Recién nacido de postérmino</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="clasificacionTamaño" style="margin-left: 10px;">
+                            <div class="form-check form-check-inline">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-pequeño" value="pequeño>
+                                    <label class="form-check-label" for="opciones-tamaño" style="font-size: 16px; font-weight: bold; color: dimgray">Pequeño</label>
+                                </div>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-adecuado" value="adecuado" checked>
+                                    <label class="form-check-label" for="opciones-tamaño" style="font-size: 16px; font-weight: bold; color: dimgray">Adecuado</label>
+                                </div>
+                            </div>
+
+                            <div class="form-check form-check-inline">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-grande" value="grande">
+                                    <label class="form-check-label" for="opciones-tamaño" style="font-size: 16px; font-weight: bold; color: dimgray">Grande</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" style="margin-top:15px;">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
                             <select class="estadoPerinatal browser-default custom-select">
