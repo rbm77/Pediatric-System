@@ -398,7 +398,7 @@
                         <div class="clasificacionTamaño" style="margin-left: 10px;">
                             <div class="form-check form-check-inline">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-pequeño" value="pequeño>
+                                    <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-pequeño" value="pequeño">
                                     <label class="form-check-label" for="opciones-tamaño" style="font-size: 16px; font-weight: bold; color: dimgray">Pequeño</label>
                                 </div>
                             </div>
