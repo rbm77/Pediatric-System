@@ -102,14 +102,13 @@
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Provincia</option>
                             </select>
-
                         </div>
+
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
                                 <option value="" disabled selected>Canton</option>
                             </select>
                         </div>
-
                     </div>
 
                     <div class="form-row">
@@ -122,11 +121,24 @@
                 </div>
 
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
-                    <div class="form-row ">
 
+                    <div class="form-row ">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Foto del Paciente</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px;">Foto del Paciente</label>
                             <asp:FileUpload CssClass="form-control" ID="fuploadImagen" accept=".jpg" runat="server" />
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Vincular expediente antiguo</label>
+                            <input type="text" class="form-control" placeholder="URL del expdiente antiguo">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <a class="url" href="ListaConsultas.aspx" style="font-size: 16px; font-weight: bold; color: #56baed">Ver consultas del paciente</a>
                         </div>
                     </div>
                 </div>
@@ -233,7 +245,7 @@
 
             <!-- ----------------------------------------------------------- !-->
 
-            <!-- Datos para Informacion Personal del Destinatario de la Factura!-->
+            <!-- Datos para Informacion Personal del Destinatario de la Factura !-->
 
             <div class="step3">
 
@@ -524,7 +536,7 @@
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
-                           <select class="otrosExpediente browser-default custom-select">
+                            <select class="otrosExpediente browser-default custom-select">
                                 <option value="ausentesOtros" selected>Ausentes</option>
                                 <option value="presentesOtros">Presentes</option>
                             </select>
@@ -542,10 +554,10 @@
                         <label style="font-size: 20px; font-weight: bold; color: dimgray">Alergias</label>
                     </div>
 
-                     <div class="form-row">
+                    <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
-                           <select class="alergiasExpediente browser-default custom-select">
+                            <select class="alergiasExpediente browser-default custom-select">
                                 <option value="ausentesAlergia" selected>Ausentes</option>
                                 <option value="presentesAlergia">Presentes</option>
                             </select>
@@ -566,7 +578,7 @@
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <label style="font-size: 16px; font-weight: bold; color: dimgray">Estado</label>
-                           <select class="vacunasExpediente browser-default custom-select">
+                            <select class="vacunasExpediente browser-default custom-select">
                                 <option value="normalVacunas" selected>Normal</option>
                                 <option value="anormalVacunas">Anormal</option>
                             </select>
