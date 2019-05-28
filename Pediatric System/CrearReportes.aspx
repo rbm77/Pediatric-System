@@ -100,10 +100,10 @@
 
             <div class="form-row">
                 <div class="btnGenerarReporte form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
-                    <button type="submit" class="btn btn-outline-primary form-control">Generar PDF</button>
+                    <button type="submit" class="btn btn-outline-primary form-control">GENERAR PDF</button>
                 </div>
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
-                    <button type="submit" class="btn btn-outline-danger form-control">Regresar</button>
+                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
                 </div>
             </div>
         </form>

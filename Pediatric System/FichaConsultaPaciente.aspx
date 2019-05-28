@@ -422,7 +422,7 @@
                         </div>
 
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
-                            <input class="btn btn-outline-primary form-control" type="button" value="Enviar a reporte" />
+                            <input class="btn btn-outline-primary form-control" type="button" value="ENVIAR A REPORTE" />
                         </div>
                     </div>
 
@@ -455,7 +455,7 @@
                         </div>
 
                         <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
-                            <input class="btn btn-outline-primary form-control" type="button" value="Generar PDF" />
+                            <input class="btn btn-outline-primary form-control" type="button" value="GENERAR PDF" />
                         </div>
                     </div>
 

@@ -154,7 +154,7 @@
                 </div>--%>
 
                 <div class="offset-md-5 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
-                    <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep1()" value="Siguiente" />
+                    <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep1()" value="SIGUIENTE" />
                 </div>
             </div>
 
@@ -247,11 +247,11 @@
 
                 <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
                     <div class="offset-md-3 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep2()" value="Anterior" />
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep2()" value="ANTERIOR" />
                     </div>
 
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep2()" value="Siguiente" />
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep2()" value="SIGUIENTE" />
                     </div>
                 </div>
             </div>
@@ -339,11 +339,11 @@
 
                 <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
                     <div class="offset-md-3 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep3()" value="Anterior" />
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep3()" value="ANTERIOR" />
                     </div>
 
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep3()" value="Siguiente" />
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep3()" value="SIGUIENTE" />
                     </div>
                 </div>
 
@@ -619,7 +619,7 @@
                 </div>
                              
                 <div class="offset-md-6 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
-                    <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep4()" value="Anterior" />
+                    <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep4()" value="ANTERIOR" />
                 </div>
             </div>
 
