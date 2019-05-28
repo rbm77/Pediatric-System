@@ -44,16 +44,12 @@
             <table class="table table-hover table-responsive-sm">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: 50px; font-size: 16px; font-weight: bold; color: dimgray">Fecha</th>
-                        <th scope="col" style="width: 25px; font-size: 16px; font-weight: bold; color: dimgray">Cedula</th>
-                        <th scope="col" style="width: 25px; font-size: 16px; font-weight: bold; color: dimgray">Nombre Completo</th>
+                        <th scope="col" style="width: 50px; font-size: 16px; font-weight: bold; color: dimgray">Fecha de Consulta</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>05/28/2019</td>
-                        <td>6-0444-0297</td>
-                        <td>Fabian Jimenez Morales</td>
                     </tr>
                 </tbody>
             </table>
