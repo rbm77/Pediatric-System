@@ -142,19 +142,13 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <a class="url" href="ListaConsultas.aspx" style="font-size: 16px; font-weight: bold; color: #56baed">Ver consultas del paciente</a>
+                            <a class="url" href="ListaConsultas.aspx" style="font-size: 16px; font-weight: bold; color: #56baed;">Ver consultas del paciente</a>
                         </div>
                     </div>
                 </div>
 
-                <%--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6 offset-sm-5" style="margin-top: 15px; margin-bottom: 15px;">
-
-                    <button class="btn btn-outline-primary form-control" onclick="siguienteStep1()" href="javascript:;">Siguiente</button>
-
-                </div>--%>
-
-                <div class="offset-md-5 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
-                    <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep1()" value="SIGUIENTE" />
+                <div class="offset-md-5 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px">
+                    <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep1()" value="SIGUIENTE"/>
                 </div>
             </div>
 
@@ -617,26 +611,15 @@
                     </div>
 
                 </div>
-                             
-                <div class="offset-md-6 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
-                    <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep4()" value="ANTERIOR" />
+
+                <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
+                    <div class="btnGuardar form-group offset-md-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
+                    </div>
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep4()" value="ANTERIOR" />
+                    </div>
                 </div>
-            </div>
-
-            <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
-
-                <div class="btnGuardar form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
-
-                </div>
-
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-
-                </div>
-
             </div>
         </form>
         <!-- Fin del fromulario para expediente !-->
