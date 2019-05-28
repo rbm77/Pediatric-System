@@ -8,50 +8,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Inicio de Sesión</title>
 
-    <%-- Bootstrap ultima version --%>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="css/util.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!--===============================================================================================-->
 
-    <link rel="stylesheet" type="text/css" href="CSS/IniciarSesion.css" />
+
 
 </head>
-<body>
+<body style="background-color: #666666;">
 
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form">
+                    <span class="login100-form-title p-b-43">Iniciar Sesión
+                    </span>
 
-            <!-- Icon -->
-            <br />
-            <div id="fadeIn first">
-                <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-            </div>
 
-            <!-- Login Form -->
-            <form>
+                    <div class="wrap-input100 validate-input" data-validate="Se requiere un correo electrónico válido">
+                        <input class="input100" type="text" name="email" />
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Correo Electrónico</span>
+                    </div>
 
-                <div class="form-group col-md-12">
-                    <input type="email" id="email" class="form-control form-control-lg bg-light text-center" name="login" placeholder="Correo Electrónico" />
+
+                    <div class="wrap-input100 validate-input" data-validate="La contraseña es requerida">
+                        <input class="input100" type="password" name="pass" />
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Contraseña</span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+
+                        <div>
+                            <a href="#" class="txt1">Olvidó su contraseña?
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Ingresar
+                        </button>
+                    </div>
+                </form>
+
+                <div class="login100-more" style="background-image: url('images/bg-01.jpg');">
                 </div>
-
-                <div class="form-group col-md-12">
-                    <input type="password" id="password" class="form-control form-control-lg bg-light text-center" name="login" placeholder="Contraseña" />
-                </div>
-
-                
-                <input type="submit" class="fadeIn fourth" value="INGRESAR" />
-            </form>
-
-            <div id="formFooter">
-                <a class="underlineHover" href="#">Olvidé mi contraseña</a>
             </div>
-
-            <!-- Remind Passowrd -->
-
         </div>
     </div>
 
+
+    <div id="footer">
+        <div class="footer-copyright text-center py-3">
+            <a href="http://www.freepik.com">Imagen diseñada por jcomp / Freepik</a>
+        </div>
+    </div>
+
+
+    <!--===============================================================================================-->
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/bootstrap/js/popper.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/daterangepicker/moment.min.js"></script>
+    <script src="vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="js/main.js"></script>
+
 </body>
+
+
+
 </html>
