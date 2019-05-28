@@ -19,14 +19,14 @@
         <div class="container-fluid col-10 col-auto table-responsive">
 
             <div class="card">
-                <h5 class="card-header text-center">Expedientes Vinculados</h5>
+                <h5 class="card-header text-center" style="color: dimgray;">Expedientes Vinculados</h5>
                 <div class="card-body">
 
                     <table class="table table-hover">
                         <thead>
                             <tr class="bg-light">
-                                <th scope="col" style="width: 45%">Nombre Completo</th>
-                                <th scope="col" style="width: 45%">Cédula</th>
+                                <th scope="col" style="width: 45%; color: dimgray;">Nombre Completo</th>
+                                <th scope="col" style="width: 45%; color: dimgray;">Cédula</th>
                                 <th scope="col" style="width: 20%"></th>
                             </tr>
                         </thead>
@@ -54,12 +54,12 @@
                     <div class="form-row">
                         <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
 
-                            <button type="submit" class="btn btn-outline-success form-control">AGENDAR CITA</button>
+                            <button type="submit" class="btn btn-outline-primary form-control">AGENDAR CITA</button>
 
                         </div>
                         <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
 
-                            <button type="submit" class="btn btn-outline-success form-control">VER EXPEDIENTE</button>
+                            <button type="submit" class="btn btn-outline-primary form-control">VER EXPEDIENTE</button>
 
                         </div>
                     </div>

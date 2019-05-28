@@ -32,12 +32,12 @@
             <br />
             <div class="form-row">
                 <div class="alert col-lg-12 col-md-12 col-sm-12 col-xs-12" role="alert">
-                    <p>Si desea acceder nuevamente al sistema, por favor ingrese la dirección de correo electrónico asociada a su cuenta de usuario. Posteriormente se le enviará un correo con una nueva contraseña.</p>
+                    <p style="color: dimgray">Si desea acceder nuevamente al sistema, por favor ingrese la dirección de correo electrónico asociada a su cuenta de usuario. Posteriormente se le enviará un correo con una nueva contraseña.</p>
                     <hr />
-                    <p class="mb-0">Una vez que tenga acceso al sistema le recomendamos cambiar su contraseña en las opciones de configuración de la cuenta.</p>
+                    <p style="color: dimgray" class="mb-0">Una vez que tenga acceso al sistema le recomendamos cambiar su contraseña en las opciones de configuración de la cuenta.</p>
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="correo">Correo Electrónico</label>
+                    <label style="color: dimgray" for="correo">Correo Electrónico</label>
                     <input type="email" class="form-control" id="correo" />
                 </div>
             </div>
@@ -46,7 +46,7 @@
 
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-                    <button type="submit" class="btn btn-outline-success form-control">ENVIAR</button>
+                    <button type="submit" class="btn btn-outline-primary form-control">ENVIAR</button>
 
                 </div>
 

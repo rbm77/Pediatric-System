@@ -22,8 +22,8 @@
 
             <thead>
                 <tr>
-                    <th scope="col">Correo Electrónico</th>
-                    <th scope="col">Estado</th>
+                    <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
+                    <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Estado</th>
                 </tr>
             </thead>
             <tbody>

@@ -20,7 +20,8 @@
             <br />
 
             <div class="card">
-                <h5 class="card-header">Cuentas Asociadas</h5>
+                <label class="card-header" style="font-size: 20px; font-weight: bold; color: dimgray">Cuentas Asociadas</label>
+
                 <div class="card-body">
 
                     <div class="form-row">
@@ -41,7 +42,7 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="bg-light">
-                                <th scope="col" style="width: 90%">Correo Electrónico</th>
+                                <th scope="col" style="width: 90%; font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
                                 <th scope="col" style="width: 10%"></th>
                             </tr>
                         </thead>
@@ -66,7 +67,7 @@
             <br />
 
             <div class="card">
-                <h5 class="card-header">Expedientes</h5>
+                <label class="card-header" style="font-size: 20px; font-weight: bold; color: dimgray">Expedientes</label>
                 <div class="card-body">
 
                     <div class="form-row">
@@ -87,8 +88,8 @@
                     <table class="table table-hover">
                         <thead>
                             <tr class="bg-light">
-                                <th scope="col" style="width: 45%">Nombre Completo</th>
-                                <th scope="col" style="width: 45%">Cédula</th>
+                                <th scope="col" style="width: 45%; font-size: 16px; font-weight: bold; color: dimgray">Nombre Completo</th>
+                                <th scope="col" style="width: 45%; font-size: 16px; font-weight: bold; color: dimgray">Cédula</th>
                                 <th scope="col" style="width: 20%"></th>
                             </tr>
                         </thead>
@@ -115,22 +116,15 @@
             <br />
 
             <div class="form-row">
-
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                     <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
-
                 </div>
 
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
                     <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-
                 </div>
-
             </div>
-
-
         </div>
     </form>
 </asp:Content>
