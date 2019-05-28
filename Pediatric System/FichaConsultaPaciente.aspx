@@ -22,31 +22,31 @@
         <div style="margin-top: 15px">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Físico</a>
+                    <a onclick="ocultarBtnGuardarConsulta()" class="nav-link active" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Físico</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="segunda-parte-tab" data-toggle="tab" href="#ef-segunda-parte" role="tab" aria-controls="ef-segunda-parte" aria-selected="false">II Parte Examen Físico</a>
+                    <a onclick="ocultarBtnGuardarConsulta()" class="nav-link" id="segunda-parte-tab" data-toggle="tab" href="#ef-segunda-parte" role="tab" aria-controls="ef-segunda-parte" aria-selected="false">II Parte Examen Físico</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="examen-laboratorio-tab" data-toggle="tab" href="#examen-laboratorio" role="tab" aria-controls="examen-laboratorio" aria-selected="false">Examen de Laboratorio</a>
+                    <a onclick="ocultarBtnGuardarConsulta()" class="nav-link" id="examen-laboratorio-tab" data-toggle="tab" href="#examen-laboratorio" role="tab" aria-controls="examen-laboratorio" aria-selected="false">Examen de Laboratorio</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnóstico Nutricional</a>
+                    <a onclick="ocultarBtnGuardarConsulta()" class="nav-link" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnóstico Nutricional</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="analisis-tab" data-toggle="tab" href="#consulta-analisis" role="tab" aria-controls="consulta-analisis" aria-selected="false">Análisis</a>
+                    <a onclick="ocultarBtnGuardarConsulta()" class="nav-link" id="analisis-tab" data-toggle="tab" href="#consulta-analisis" role="tab" aria-controls="consulta-analisis" aria-selected="false">Análisis</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="diagnostico-tab" data-toggle="tab" href="#consulta-diagnostico" role="tab" aria-controls="consulta-diagnostico" aria-selected="false">Impresión Diagnóstica</a>
+                    <a onclick="ocultarBtnGuardarConsulta()" class="nav-link" id="diagnostico-tab" data-toggle="tab" href="#consulta-diagnostico" role="tab" aria-controls="consulta-diagnostico" aria-selected="false">Impresión Diagnóstica</a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" id="plan-tab" data-toggle="tab" href="#consulta-plan" role="tab" aria-controls="consulta-plan" aria-selected="false">Plan</a>
+                    <a onclick="mostrarBtnGuardarConsulta()" class="nav-link" id="plan-tab" data-toggle="tab" href="#consulta-plan" role="tab" aria-controls="consulta-plan" aria-selected="false">Plan</a>
                 </li>
             </ul>
         </div>
@@ -421,15 +421,10 @@
                             </div>
                         </div>
 
-                        <div style="margin-bottom: 25px; padding:0px;">
-                            <br />
-                            <a class="btn btn-primary" role="button" style="background-color: #56baed; border: none; padding: 10px 50px;">Guardar</a>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
+                            <input class="btn btn-outline-primary form-control" type="button" value="Enviar a reporte" />
                         </div>
-
-
                     </div>
-
-                    <!-- ---------------------------------------------------------- !-->
 
                     <!-- ---------------------------------------------------------------------- !-->
 
@@ -439,7 +434,7 @@
                         <div class="form-check">
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <input class="form-check-input" type="checkbox" id="referencia-consulta-privada" value="referencia-privada">
-                                <label class="form-check-label" for="referencia-consulta-privada" style="font-size: 16px; font-weight: bold; color: dimgray">Generar referencia medica externa de consulta privada</label>
+                                <label class="form-check-label" for="referencia-consulta-privada" style="font-size: 16px; font-weight: bold; color: dimgray">Generar referencia médica externa de consulta privada</label>
                             </div>
                         </div>
                     </div>
@@ -459,18 +454,24 @@
                             </div>
                         </div>
 
-                        <div style="margin-bottom: 25px;">
-                            <br />
-                            <a class="btn btn-primary" role="button" style="background-color: #56baed; border: none; padding: 10px 50px;">Generar PDF</a>
+                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
+                            <input class="btn btn-outline-primary form-control" type="button" value="Generar PDF" />
                         </div>
                     </div>
 
                 </div>
             </div>
+            <form>
+                <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
+                    <div class="btnGuardarConsulta form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
+                    </div>
 
-
-            <!-- --------------------------------------------------------------------- !-->
-
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 

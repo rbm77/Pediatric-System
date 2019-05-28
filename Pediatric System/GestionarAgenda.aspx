@@ -20,8 +20,8 @@
 
         <br />
 
-        <div class="form-row">
-            <div class="form-group">
+        <div class="form-row" style="text-align:center; display:block">
+            <div class="form-group" style="display:inline-block">
                 <form id="form1" runat="server">
                     <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -54,17 +54,17 @@
 
                 <thead>
                     <tr class="table-primary">
-                        <th scope="col">HORA</th>
-                        <th scope="col">LUNES</th>
-                        <th scope="col">MARTES</th>
-                        <th scope="col">MIÉRCOLES</th>
-                        <th scope="col">JUEVES</th>
-                        <th scope="col">VIERNES</th>
+                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">HORA</th>
+                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">LUNES</th>
+                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">MARTES</th>
+                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">MIÉRCOLES</th>
+                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">JUEVES</th>
+                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">VIERNES</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">4:30 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">4:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
@@ -72,7 +72,7 @@
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                     </tr>
                     <tr>
-                        <th scope="row">5:00 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">5:00 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
@@ -80,7 +80,7 @@
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
-                        <th scope="row">5:30 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">5:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
@@ -88,7 +88,7 @@
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
-                        <th scope="row">6:00 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">6:00 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
@@ -96,7 +96,7 @@
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                     </tr>
                     <tr>
-                        <th scope="row">6:30 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">6:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
@@ -104,7 +104,7 @@
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
-                        <th scope="row">7:00 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">7:00 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
@@ -112,7 +112,7 @@
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
                     </tr>
                     <tr>
-                        <th scope="row">7:30 pm</th>
+                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">7:30 pm</th>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
@@ -141,15 +141,15 @@
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="disponible" value="option1">
-                                <label class="form-check-label" for="inlineRadio1">DISPONIBLE</label>
+                                <label class="form-check-label" for="inlineRadio1" style="font-size: 16px; font-weight: bold; color: dimgray;">DISPONIBLE</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="deshabilitado" value="option2">
-                                <label class="form-check-label" for="inlineRadio2">DESHABILITADO</label>
+                                <label class="form-check-label" for="inlineRadio2" style="font-size: 16px; font-weight: bold; color: dimgray;">DESHABILITADO</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-                                <label class="form-check-label" for="inlineRadio3">OCUPADO</label>
+                                <label class="form-check-label" for="inlineRadio3" style="font-size: 16px; font-weight: bold; color: dimgray;">OCUPADO</label>
                             </div>
                         </div>
                         <br />

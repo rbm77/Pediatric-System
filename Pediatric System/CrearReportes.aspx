@@ -32,9 +32,7 @@
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Fin</label>
                         <input id="datepickerFin" placeholder="31/12/2018" />
                     </div>
-                    <%--</div>--%>
 
-                    <%--<div class="form-row">--%>
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Seleccionar reporte</label>
                         <select class="seleccionReporte browser-default custom-select">
@@ -44,29 +42,23 @@
                         </select>
                     </div>
                 </div>
-
-
-                <%--<div class="form-row col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 15px; text-align:center; display:inline-block">
-                <br />
-                <input class="btn btn-primary next" type="button" value="Aceptar" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom: 45px;" />
-            </div>--%>
             </div>
 
             <div class="visualizacionTitulo" style="margin-top: 25px;">
                 <div class="row col-12">
-                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Resultado</label>
+                    <label style="font-size: 20px; font-weight: bold; color: dimgray">Resultado</label>
                 </div>
             </div>
 
             <div class="card visualizacion-medicina-mixta">
 
                 <div class="card-body">
-                    <table class="table table-hover table-responsive-sm" >
+                    <table class="table table-hover table-responsive-sm">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 50px;">Identificador de Expediente</th>
-                                <th scope="col" style="width: 25px;">Frecuencia</th>
-                                <th scope="col" style="width: 25px;">Referido a</th>
+                                <th scope="col" style="width: 50px; font-size: 16px; font-weight: bold; color: dimgray">Identificador de Expediente</th>
+                                <th scope="col" style="width: 25px; font-size: 16px; font-weight: bold; color: dimgray">Frecuencia</th>
+                                <th scope="col" style="width: 25px; font-size: 16px; font-weight: bold; color: dimgray">Referido a</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -86,11 +78,11 @@
                     <table class="table table-hover table-responsive-md">
                         <thead>
                             <tr>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Enfermedad</th>
-                                <th scope="col">Sexo</th>
-                                <th scope="col">Edad (Meses)</th>
-                                <th scope="col">Dirección</th>
+                                <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Fecha</th>
+                                <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Enfermedad</th>
+                                <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Sexo</th>
+                                <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Edad (Meses)</th>
+                                <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Dirección</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -106,10 +98,14 @@
                 </div>
             </div>
 
-            <div class="btnGenerarReporte" style="margin-top: 25px; margin-bottom: 25px">
-                <input class="btn btn-primary next" type="button" value="Generar PDF" style="background-color: #56baed; border: none; padding: 10px 50px;" />
+            <div class="form-row">
+                <div class="btnGenerarReporte form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
+                    <button type="submit" class="btn btn-outline-primary form-control">Generar PDF</button>
+                </div>
+                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
+                    <button type="submit" class="btn btn-outline-danger form-control">Regresar</button>
+                </div>
             </div>
-
         </form>
     </div>
 

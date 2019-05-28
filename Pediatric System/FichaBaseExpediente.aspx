@@ -42,7 +42,7 @@
             <div class="step1">
 
                 <div class="row col-12">
-                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Informacion Personal del Paciente </label>
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Información Personal del Paciente </label>
                 </div>
 
                 <div class="col-12 bg-light border border-info rounded">
@@ -68,7 +68,7 @@
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cédula</label>
                             <input type="text" class="form-control" placeholder="1-0234-0456">
                         </div>
 
@@ -95,7 +95,7 @@
 
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
 
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Direccion</label>
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Dirección</label>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -106,7 +106,7 @@
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
-                                <option value="" disabled selected>Canton</option>
+                                <option value="" disabled selected>Cantón</option>
                             </select>
                         </div>
                     </div>
@@ -147,9 +147,14 @@
                     </div>
                 </div>
 
-                <div class="text-center">
-                    <br />
-                    <input class="btn btn-primary next" type="button" onclick="siguienteStep1()" value="Siguiente" style="background-color: #56baed; border: none; padding: 10px 50px;" />
+                <%--<div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6 offset-sm-5" style="margin-top: 15px; margin-bottom: 15px;">
+
+                    <button class="btn btn-outline-primary form-control" onclick="siguienteStep1()" href="javascript:;">Siguiente</button>
+
+                </div>--%>
+
+                <div class="offset-md-5 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
+                    <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep1()" value="Siguiente" />
                 </div>
             </div>
 
@@ -159,7 +164,7 @@
 
             <div class="step2">
                 <div class="row col-12">
-                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Informacion Personal del Encargado del Paciente </label>
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Información Personal del Encargado del Paciente </label>
                 </div>
 
                 <div class="col-12 bg-light border border-info rounded">
@@ -183,19 +188,19 @@
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cédula</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Telefono</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Teléfono</label>
                             <input type="text" class="form-control" placeholder="12345678">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electronico</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</label>
                             <input type="text" class="form-control" placeholder="ejm@gmail.com">
                         </div>
                     </div>
@@ -210,7 +215,7 @@
 
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
 
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Direccion</label>
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Dirección</label>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -221,7 +226,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
-                                <option value="" disabled selected>Canton</option>
+                                <option value="" disabled selected>Cantón</option>
                             </select>
                         </div>
 
@@ -240,10 +245,14 @@
                     </div>
                 </div>
 
-                <div class="text-center">
-                    <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep2()" style="background-color: #56baed; border: none; padding: 10px 50px;">Anterior</a>
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="siguienteStep2()" style="background-color: #56baed; border: none; padding: 10px 50px;">Siguiente</a>
+                <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
+                    <div class="offset-md-3 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep2()" value="Anterior" />
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep2()" value="Siguiente" />
+                    </div>
                 </div>
             </div>
 
@@ -254,7 +263,7 @@
             <div class="step3">
 
                 <div class="row col-12">
-                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Informacion Personal del Destinatario de Factura</label>
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Información Personal del Destinatario de Factura</label>
                 </div>
 
                 <div class="col-12 bg-light border border-info rounded">
@@ -278,19 +287,19 @@
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Cédula</label>
                             <input type="text" class="form-control" placeholder="1-0234-0456">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Telefono</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Teléfono</label>
                             <input type="text" class="form-control" placeholder="12345678">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electronico</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</label>
                             <input type="text" class="form-control" placeholder="ejm@gmail.com">
                         </div>
                     </div>
@@ -298,7 +307,7 @@
 
                 <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
 
-                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Direccion</label>
+                    <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Dirección</label>
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -309,7 +318,7 @@
                         </div>
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="browser-default custom-select">
-                                <option value="" disabled selected>Canton</option>
+                                <option value="" disabled selected>Cantón</option>
                             </select>
                         </div>
 
@@ -328,10 +337,14 @@
                     </div>
                 </div>
 
-                <div class="text-center">
-                    <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep3()" style="background-color: #56baed; border: none; padding: 10px 50px;">Anterior</a>
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="siguienteStep3()" style="background-color: #56baed; border: none; padding: 10px 50px;">Siguiente</a>
+                <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
+                    <div class="offset-md-3 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep3()" value="Anterior" />
+                    </div>
+
+                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <input class="btn btn-outline-primary form-control" type="button" onclick="siguienteStep3()" value="Siguiente" />
+                    </div>
                 </div>
 
             </div>
@@ -343,7 +356,7 @@
             <div class="step4">
 
                 <div class="row col-12">
-                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Historia Clinica Pediatrica</label>
+                    <label style="font-size: 24px; font-weight: bold; color: dimgray">Historia Clínica Pediátrica</label>
                 </div>
 
                 <div class="col-12 bg-light border border-info rounded">
@@ -366,12 +379,12 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Perimetro cefalico al nacer</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Perímetro cefélico al nacer</label>
                             <input type="text" class="form-control">
                         </div>
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificacion APGAR</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificación APGAR</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
@@ -385,7 +398,7 @@
 
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificacion universal</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Calificación universal</label>
                             <select class="clasificacionUniversalOpciones browser-default custom-select">
                                 <option value="termino" selected>Recién nacido de término</option>
                                 <option value="pretermino">Recién nacido de pretérmino</option>
@@ -437,7 +450,7 @@
                     </div>
 
                     <div style="margin-top: 15px;">
-                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Patologicos</label>
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Patológicos</label>
                     </div>
 
                     <div class="form-row" style="margin-top: 15px;">
@@ -451,13 +464,13 @@
 
                     <div class="descripcionPatologicos form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripción</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
 
                     <div style="margin-top: 15px;">
-                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Quirurgicos</label>
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Quirúrgicos</label>
                     </div>
 
                     <div class="form-row" style="margin-top: 15px;">
@@ -471,13 +484,13 @@
 
                     <div class="descripcionQuirurgico form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripción</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
 
                     <div style="margin-top: 15px;">
-                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Traumaticos</label>
+                        <label style="font-size: 20px; font-weight: bold; color: dimgray">Antecedentes Traumáticos</label>
                     </div>
 
                     <div class="form-row" style="margin-top: 15px;">
@@ -519,7 +532,7 @@
                         <div class="form-check col-lg-4 col-md-4 col-sm-12 col-xs-12" style="padding-left: 25px">
                             <div class="form-group">
                                 <input class="form-check-input" type="checkbox" value="hipertension" id="hipertencionCheck">
-                                <label class="form-check-label" for="hipertencionCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Hipertension Arterial</label>
+                                <label class="form-check-label" for="hipertencionCheck" style="font-size: 16px; font-weight: bold; color: dimgray">Hipertensión Arterial</label>
                             </div>
                         </div>
                     </div>
@@ -558,7 +571,7 @@
 
                     <div class="descripcionOtros form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripción</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
@@ -578,7 +591,7 @@
 
                     <div class="descripcionAlergia form-row" style="margin-top: 15px;">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripción</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
@@ -590,7 +603,7 @@
                     <div class="form-row">
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <select class="vacunasExpediente browser-default custom-select">
-                                <option value="esquemaAlDia" selected>Al dia para la edad con esquema basico</option>
+                                <option value="esquemaAlDia" selected>Al dia para la edad con esquema básico</option>
                                 <option value="pendientes">Pendientes</option>
                             </select>
                         </div>
@@ -598,38 +611,32 @@
 
                     <div class="descripcionVacuna form-row">
                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripcion</label>
+                            <label style="font-size: 16px; font-weight: bold; color: dimgray">Descripción</label>
                             <input type="text" class="form-control">
                         </div>
                     </div>
 
                 </div>
+                             
+                <div class="offset-md-6 form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
+                    <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep4()" value="Anterior" />
+                </div>
+            </div>
 
-                <!-- ----------------------------------------------------------- !-->
+            <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
 
-                <!-- Confirmar para guardar el formulario !-->
+                <div class="btnGuardar form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-                <div class="boxSave">
-                    <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px;">
-                        <div class="form-row text-center">
-                            <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12" style="margin-top: 15px;">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Guardar Informacion de Expediente</label>
-                                <br />
-                                <br />
-                                <button class="btn btn-primary" style="background-color: #56baed; border: none; padding: 10px 50px;">Guardar</button>
-                            </div>
-                        </div>
-                    </div>
+                    <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
+
                 </div>
 
-                <!-- --------------------------------------------------------- !-->
+                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-                <br />
+                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
 
-                <div class="text-center">
-                    <br />
-                    <a class="btn btn-primary" role="button" href="javascript:;" onclick="anteriorStep4()" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom: 15px;">Anterior</a>
                 </div>
+
             </div>
         </form>
         <!-- Fin del fromulario para expediente !-->

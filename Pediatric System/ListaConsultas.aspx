@@ -32,19 +32,19 @@
                 </div>
             </div>
 
-            <div class="form-row" style="margin-top: 15px;">
-                <br />
-                <input class="btn btn-primary next" type="button" value="Buscar" style="background-color: #56baed; border: none; padding: 10px 50px; margin-bottom: 25px;" />
+            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px;">
+                <button type="submit" class="btn btn-outline-primary form-control">BUSCAR</button>
             </div>
+
         </div>
 
-        <div style="margin-top: 15px; margin-bottom:15px">
+        <div style="margin-top: 15px; margin-bottom: 15px">
             <label style="font-size: 24px; font-weight: bold; color: dimgray">Lista de Consultas </label>
         </div>
 
-        <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px; margin-bottom:25px">
+        <div class="col-12 bg-light border border-info rounded" style="margin-top: 15px; margin-bottom: 25px">
             <div class="row col-12">
-                
+
                 <br />
                 <br />
                 <br />
@@ -53,7 +53,11 @@
             </div>
         </div>
 
-
+        <div class="form-row" style="margin-bottom: 15px; margin-top:15px">
+            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
+            </div>
+        </div>
 
     </div>
 

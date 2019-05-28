@@ -4,7 +4,7 @@ $(document).ready(function () {
     $(".step3").hide();
     $(".step4").hide();
 
-    $(".boxSave").hide();
+    $(".btnGuardar").hide();
 
     $('.complicacionPerinatal').hide();
     $('.descripcionPatologicos').hide();
@@ -102,6 +102,7 @@ function anteriorStep2() {
     $(".step1").show();
 
     $(".progress-bar").removeClass("progress-bar-50");
+    $(".btnGuardar").hide();
 }
 
 function siguienteStep2() {
@@ -116,6 +117,7 @@ function anteriorStep3() {
     $(".step2").show();
 
     $(".progress-bar").removeClass("progress-bar-75");
+    $(".btnGuardar").hide();
 }
 
 function siguienteStep3() {
@@ -124,7 +126,7 @@ function siguienteStep3() {
 
     $(".progress-bar").addClass("progress-bar-100");
 
-    $(".boxSave").show();
+    $(".btnGuardar").show();
 }
 
 function anteriorStep4() {
@@ -132,7 +134,6 @@ function anteriorStep4() {
     $(".step3").show();
 
     $(".progress-bar").removeClass("progress-bar-100");
-
-    $(".boxSave").hide();
+    $(".btnGuardar").hide();
 }
 
