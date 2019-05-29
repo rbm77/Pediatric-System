@@ -613,10 +613,10 @@
                 </div>
 
                 <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
-                    <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="form-group offset-md-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <input class="btn btn-outline-primary form-control" type="button" onclick="anteriorStep4()" value="ANTERIOR" />
                     </div>
-                    <div class="btnGuardar form-group offset-md-3 col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="btnGuardar form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
                     </div>
                 </div>
