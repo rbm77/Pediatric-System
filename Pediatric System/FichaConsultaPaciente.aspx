@@ -335,16 +335,16 @@
 
                     <!-- Inicio de reportar paciente a medicina mixta !-->
 
-                    <div class="datosReporteMedicinaMixta" style="margin-left: 45px">
+                    <div class="datosReporteMedicinaMixta">
                         <div class="form-row">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12" style="margin-left: 45px">
                                 <label style="font-size: 16px; font-weight: bold; color: dimgray">Frecuencia</label>
                             </div>
                         </div>
 
                         <!-- Tipos de frecuencia !-->
 
-                        <div class="form-row">
+                        <div class="form-row" style="margin-left: 45px">
                             <div class="form-check">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input class="form-check-input" type="radio" name="frecuencia-medicina-mixta" id="primera-vez" value="primera">
@@ -355,7 +355,7 @@
 
                         <!-- Tipos de primera vez !-->
 
-                        <div class="opciones-primera-vez" style="margin-left: 10px">
+                        <div class="opciones-primera-vez" style="margin-left: 55px">
                             <div class="form-row">
                                 <div class="form-check form-check-inline">
                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -375,7 +375,7 @@
 
                         <!-- ---------------------------------------------------------- !-->
 
-                        <div class="form-row">
+                        <div class="form-row" style="margin-left: 45px">
                             <div class="form-check">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input class="form-check-input" type="radio" name="frecuencia-medicina-mixta" id="subsecuente" value="subsecuen">
@@ -390,11 +390,11 @@
 
                         <div class="form-row">
                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <label style="font-size: 16px; font-weight: bold; color: dimgray">Referido a</label>
+                                <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-left: 45px">Referido a</label>
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row" style="margin-left: 45px">
                             <div class="form-check">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="especialista" value="refe-especialista">
@@ -403,7 +403,7 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row" style="margin-left: 45px">
                             <div class="form-check">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="hospitalizacion" value="refe-hospitalizacion">
@@ -412,7 +412,7 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row" style="margin-left: 45px">
                             <div class="form-check">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="otro-centro" value="refe-otro-centro">
@@ -421,7 +421,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px; padding-left:0px">
                             <input class="btn btn-outline-primary form-control" type="button" value="ENVIAR A REPORTE" />
                         </div>
                     </div>
@@ -454,7 +454,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-4 col-md-4 col-sm-4 col-xs-6" style="margin-top: 15px; margin-bottom: 15px;">
+                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 15px; margin-bottom: 15px; padding-left:0px">
                             <input class="btn btn-outline-primary form-control" type="button" value="GENERAR PDF" />
                         </div>
                     </div>
@@ -463,13 +463,12 @@
             </div>
             <form>
                 <div class="form-row" style="margin-top: 15px; margin-bottom: 15px;">
-                    <div class="btnGuardarConsulta form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                        <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
-                    </div>
-
                     <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
                         <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
                     </div>
+                    <div class="btnGuardarConsulta form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                        <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
+                    </div>                 
                 </div>
             </form>
         </div>

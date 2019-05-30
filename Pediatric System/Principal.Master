@@ -38,13 +38,13 @@
 
             <ul class="navbar-nav float-lg-right">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">INICIO</a>
+                    <a class="nav-link" href="#" style="color:antiquewhite">INICIO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">MI CUENTA</a>
+                    <a class="nav-link" href="#" style="color:antiquewhite">MI CUENTA</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">CERRAR SESIÓN</a>
+                    <a class="nav-link" href="#" style="color:antiquewhite">CERRAR SESIÓN</a>
                 </li>
             </ul>
 
