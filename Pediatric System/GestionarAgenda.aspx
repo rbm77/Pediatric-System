@@ -4,7 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <link rel="stylesheet" type="text/css" href="CSS/SelectorTabla.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -28,7 +27,7 @@
                     <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:Calendar ID="CalendFechaIni" runat="server" SelectionMode="DayWeek" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                            <asp:Calendar ID="calendario" runat="server" SelectionMode="DayWeek" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Selection_Change">
                                 <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                                 <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                                 <OtherMonthDayStyle ForeColor="#999999" />
@@ -52,6 +51,8 @@
 
             <br />
 
+            <label id="etiqueta" runat="server"></label>
+
             <table class="table table-bordered">
 
                 <thead>
@@ -67,7 +68,7 @@
                 <tbody>
                     <tr>
                         <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">4:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor:pointer"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
                         <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
@@ -187,7 +188,7 @@
         <br />
 
         <div class="container-fluid col-4 col-auto">
-            <button type="button" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
+            <button type="submit" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
         </div>
 
         <br />
@@ -212,5 +213,14 @@
         });
 
     </script>
+
+    <script language="C#" runat="server">
+
+      void Selection_Change(Object sender, EventArgs e) 
+      {
+         etiqueta.InnerText = "The selected date is " + calendario.SelectedDate.ToShortDateString();
+      }
+
+   </script>
 
 </asp:Content>
