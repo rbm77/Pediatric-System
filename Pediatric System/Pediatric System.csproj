@@ -70,8 +70,9 @@
     <Content Include="AsociarPaciente.aspx" />
     <Content Include="CrearReportes.aspx" />
     <Content Include="CSS\expediente.css" />
+    <Content Include="CSS\hora1.css" />
+    <Content Include="CSS\hora2.css" />
     <Content Include="CSS\main.css" />
-    <Content Include="CSS\SelectorTabla.css" />
     <Content Include="CSS\util.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="EstadoCuenta.aspx" />
@@ -94,11 +95,14 @@
     <Content Include="JS\Calendario.js" />
     <Content Include="JS\consulta.js" />
     <Content Include="JS\expediente.js" />
+    <Content Include="JS\hora1.js" />
+    <Content Include="JS\hora2.js" />
     <Content Include="JS\Idioma.js" />
     <Content Include="JS\listaConsultas.js" />
     <Content Include="JS\main.js" />
     <Content Include="JS\reportes.js" />
     <Content Include="ListaConsultas.aspx" />
+    <Content Include="MiAgenda.aspx" />
     <Content Include="RecuperarContrasenna.aspx" />
     <Content Include="vendor\animate\animate.css" />
     <Content Include="vendor\animsition\css\animsition.css" />
@@ -217,6 +221,13 @@
     <Compile Include="ListaConsultas.aspx.designer.cs">
       <DependentUpon>ListaConsultas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MiAgenda.aspx.cs">
+      <DependentUpon>MiAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiAgenda.aspx.designer.cs">
+      <DependentUpon>MiAgenda.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Principal.Master.cs">
       <DependentUpon>Principal.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -322,7 +333,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\BL\BL.csproj">
+      <Project>{199f5d66-14d6-4296-a276-5931ccb262a0}</Project>
+      <Name>BL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
