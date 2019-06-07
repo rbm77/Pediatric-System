@@ -3,7 +3,6 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -21,13 +20,15 @@
 
         <br />
 
-        <div class="form-row" style="text-align:center; display:block">
-            <div class="form-group" style="display:inline-block">
+        <div class="form-row" style="text-align: center; display: block">
+            <div class="form-group" style="display: inline-block">
                 <form id="form1" runat="server">
                     <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-                            <asp:Calendar ID="calendario" runat="server" SelectionMode="DayWeek" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px" OnSelectionChanged="Selection_Change">
+                            <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
+                                Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth"
+                                Width="350px" OnSelectionChanged="ActualizarAgenda">
                                 <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                                 <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                                 <OtherMonthDayStyle ForeColor="#999999" />
@@ -35,101 +36,165 @@
                                 <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
                                 <TodayDayStyle BackColor="#CCCCCC" />
                             </asp:Calendar>
+
+                            <%--  <asp:Label ID="miEtiqueta" runat="server" Text="Nada por ahora"></asp:Label>--%>
+
+                            <br />
+                            <br />
+
+
+                            <asp:Repeater ID="repetidor" runat="server">
+
+                                <HeaderTemplate>
+                                </HeaderTemplate>
+
+                                <ItemTemplate>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <%# DataBinder.Eval(Container.DataItem, "Hora")%>
+                                        </div>
+                                        <div class="col">
+                                        </div>
+                                    </div>
+
+                                </ItemTemplate>
+
+                            </asp:Repeater>
+
+
+
                         </ContentTemplate>
                     </asp:UpdatePanel>
+
+
+
+
+
+
+
+
                 </form>
             </div>
         </div>
+
 
     </div>
 
 
 
-    <form>
+    <%-- <form runat="server">--%>
 
-        <div class="container-fluid col-10 col-auto table-responsive">
+    <%-- <div class="container-fluid col-10 col-auto table-responsive">
+    --%>
 
-            <br />
+    <%--            <div class="form-row" style="text-align: center; display: block">
+                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-6" style="display: inline-block">
+                    <asp:Button type="button" runat="server" class="btn btn-outline-info form-control" Text="SEMANA ACTUAL" ID="Actual" />
+                </div>
+                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-6" style="display: inline-block">
+                    <asp:Button type="button" runat="server" class="btn btn-outline-info form-control" Text="SIGUIENTE SEMANA" ID="Siguiente" />
+                </div>
+            </div>--%>
 
-            <label id="etiqueta" runat="server"></label>
 
-            <table class="table table-bordered">
+    <%-- <div style="text-align: center; display: block">
+
+                <div class="btn-group btn-group-toggle col-lg-6 col-md-6 col-sm-6 col-xs-6" data-toggle="buttons">
+
+                    <label class="btn btn-outline-info form-control active">
+                        <input type="radio" name="options" id="option1" checked>
+                        SEMANA ACTUAL
+                    </label>
+                    <label class="btn btn-outline-info form-control">
+                        <input type="radio" name="options" id="option2">
+                        SIGUIENTE SEMANA
+                    </label>
+                </div>
+            </div>--%>
+
+
+
+    <br />
+
+    <%--          <table class="table table-bordered">
 
                 <thead>
-                    <tr class="table-primary">
-                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">HORA</th>
-                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">LUNES</th>
-                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">MARTES</th>
-                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">MIÉRCOLES</th>
-                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">JUEVES</th>
-                        <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray;">VIERNES</th>
-                    </tr>
-                </thead>
-                <tbody>
+                    <tr class="bg-info">
+                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Hora</th>
+                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Lunes</th>
+                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Martes</th>
+                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Miércoles</th>
+                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Jueves</th>
+                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Viernes</th>
+                        <%--                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Sábado</th>--%>
+    <%--        </tr>
+                </thead>--%>
+    <%--                <tbody>
                     <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">4:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor:pointer"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                    </tr>
-                    <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">5:00 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">4:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">5:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">5:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">6:00 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">5:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">6:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">6:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">7:00 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">6:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
                     </tr>
                     <tr>
-                        <th scope="row" style="font-size: 16px; font-weight: bold; color: dimgray;">7:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success"></td>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">7:00 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">7:30 pm</th>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
+                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
                     </tr>
                 </tbody>
-            </table>
+            </table>--%>
 
-        </div>
+    <%--        </div>--%>
 
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <%-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -183,24 +248,24 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>--%>
 
-        <br />
+    <br />
 
-        <div class="container-fluid col-4 col-auto">
-            <button type="submit" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
-        </div>
+    <div class="container-fluid col-4 col-auto">
+        <button type="submit" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
+    </div>
 
-        <br />
+    <br />
 
-    </form>
-
-
+    <%-- </form>--%>
 
 
 
 
-    <script>
+
+
+    <%--    <script>
         $(document).on('click', '#disponible', function () {
             $("#agendar").removeAttr("disabled");
             $("#correoElectronico").removeAttr("disabled");
@@ -212,15 +277,5 @@
             $("#correoElectronico").attr("disabled", "disabled");
         });
 
-    </script>
-
-    <script language="C#" runat="server">
-
-      void Selection_Change(Object sender, EventArgs e) 
-      {
-         etiqueta.InnerText = "The selected date is " + calendario.SelectedDate.ToShortDateString();
-      }
-
-   </script>
-
+    </script>--%>
 </asp:Content>

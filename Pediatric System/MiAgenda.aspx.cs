@@ -48,49 +48,49 @@ namespace Pediatric_System
         protected void Actualizar_Click(object sender, EventArgs e)
         {
 
-            estatica.Clear();
-            string inicio = horaInicio.Value;
-            string fin = horaFin.Value;
+        //    estatica.Clear();
+        //    string inicio = horaInicio.Value;
+        //    string fin = horaFin.Value;
 
-            if (lunes.Checked)
-            {
-                estatica.Add(new BLAgendaEstandar(lunes.Value, inicio, fin));
-            }
-            if (martes.Checked)
-            {
-                estatica.Add(new BLAgendaEstandar(martes.Value, inicio, fin));
-            }
-            if (miercoles.Checked)
-            {
-                estatica.Add(new BLAgendaEstandar(miercoles.Value, inicio, fin));
-            }
-            if (jueves.Checked)
-            {
-                estatica.Add(new BLAgendaEstandar(jueves.Value, inicio, fin));
-            }
-            if (viernes.Checked)
-            {
-                estatica.Add(new BLAgendaEstandar(viernes.Value, inicio, fin));
-            }
-            if (sabado.Checked)
-            {
-                estatica.Add(new BLAgendaEstandar(sabado.Value, inicio, fin));
-            }
-            MostrarAgenda();
-            Limpiar();
+        //    if (lunes.Checked)
+        //    {
+        //        estatica.Add(new BLAgendaEstandar(lunes.Value, inicio, fin));
+        //    }
+        //    if (martes.Checked)
+        //    {
+        //        estatica.Add(new BLAgendaEstandar(martes.Value, inicio, fin));
+        //    }
+        //    if (miercoles.Checked)
+        //    {
+        //        estatica.Add(new BLAgendaEstandar(miercoles.Value, inicio, fin));
+        //    }
+        //    if (jueves.Checked)
+        //    {
+        //        estatica.Add(new BLAgendaEstandar(jueves.Value, inicio, fin));
+        //    }
+        //    if (viernes.Checked)
+        //    {
+        //        estatica.Add(new BLAgendaEstandar(viernes.Value, inicio, fin));
+        //    }
+        //    if (sabado.Checked)
+        //    {
+        //        estatica.Add(new BLAgendaEstandar(sabado.Value, inicio, fin));
+        //    }
+        //    MostrarAgenda();
+        //    Limpiar();
         }
 
-        private void Limpiar()
-        {
-            horaInicio.Value = "";
-            horaFin.Value = "";
-            lunes.Checked = false;
-            martes.Checked = false;
-            miercoles.Checked = false;
-            jueves.Checked = false;
-            viernes.Checked = false;
-            sabado.Checked = false;
-        }
+        //private void Limpiar()
+        //{
+        //    horaInicio.Value = "";
+        //    horaFin.Value = "";
+        //    lunes.Checked = false;
+        //    martes.Checked = false;
+        //    miercoles.Checked = false;
+        //    jueves.Checked = false;
+        //    viernes.Checked = false;
+        //    sabado.Checked = false;
+        //}
 
     }
 }
