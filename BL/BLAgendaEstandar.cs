@@ -8,6 +8,7 @@ namespace BL
 {
     public class BLAgendaEstandar
     {
+        public string CodigoMedico { get; set; }
         public string Dia { get; set; }
         public string HoraInicio { get; set; }
         public string HoraFin { get; set; }
@@ -16,8 +17,9 @@ namespace BL
         {
 
         }
-        public BLAgendaEstandar(string dia, string horaInicio, string horaFin)
+        public BLAgendaEstandar(string codigoMedico, string dia, string horaInicio, string horaFin)
         {
+            this.CodigoMedico = codigoMedico;
             this.Dia = dia;
             this.HoraInicio = horaInicio;
             this.HoraFin = horaFin;
