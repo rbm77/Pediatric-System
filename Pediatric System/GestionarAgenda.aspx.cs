@@ -75,9 +75,17 @@ namespace Pediatric_System
 
         }
 
+        protected void calendario_DayRender(object sender, DayRenderEventArgs e)
+        {
+            DateTime hoy = DateTime.Now.Date;
 
+            DateTime limite = hoy.AddDays(7);
 
-
-
+            if ((e.Day.Date < hoy) || (e.Day.Date > limite))
+            {
+                e.Day.IsSelectable = false;
+                e.Cell.ForeColor = System.Drawing.Color.LightGray;
+            }
+        }
     }
 }

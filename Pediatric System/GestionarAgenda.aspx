@@ -10,7 +10,7 @@
 
     <div class="container-fluid col-10 col-auto">
         <div class="page-header">
-            <h3 class="text-info">Agenda Semanal</h3>
+            <h3 class="text-info">Citas</h3>
         </div>
     </div>
 
@@ -28,7 +28,7 @@
                         <ContentTemplate>
                             <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
                                 Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth"
-                                Width="350px" OnSelectionChanged="ActualizarAgenda">
+                                Width="350px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
                                 <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                                 <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
                                 <OtherMonthDayStyle ForeColor="#999999" />
