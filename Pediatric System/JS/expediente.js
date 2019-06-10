@@ -89,3 +89,4 @@ function mostrarBtnGuardarExpediente() {
 
 function ocultarBtnGuardarExpediente() {
     $(".btnGuardarExpediente").hide();
+}
