@@ -80,11 +80,11 @@
     </div>
 
 
-    <div id="footer">
+   <%-- <div id="footer">
         <div class="footer-copyright text-center py-3">
             <a href="http://www.freepik.com">Imagen diseñada por jcomp / Freepik</a>
         </div>
-    </div>
+    </div>--%>
 
 
     <!--===============================================================================================-->
