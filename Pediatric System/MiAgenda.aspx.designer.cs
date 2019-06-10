@@ -58,15 +58,6 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox viernes;
         
         /// <summary>
-        /// Control sabado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox sabado;
-        
-        /// <summary>
         /// Control horaInicio.
         /// </summary>
         /// <remarks>
@@ -94,22 +85,22 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button Actualizar;
         
         /// <summary>
-        /// Control Eliminar.
+        /// Control vistaAgenda.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Eliminar;
+        protected global::System.Web.UI.WebControls.GridView vistaAgenda;
         
         /// <summary>
-        /// Control contenedor.
+        /// Control Label1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl contenedor;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
         /// Control Regresar.
