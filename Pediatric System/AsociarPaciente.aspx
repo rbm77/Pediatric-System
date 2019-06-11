@@ -26,7 +26,6 @@
 
                     <div class="form-row">
                         <div class="form-group has-search col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <span class="fa fa-search form-control-feedback"></span>
                             <input type="search" class="form-control" placeholder="Correo Electrónico">
                         </div>
 
@@ -72,7 +71,6 @@
 
                     <div class="form-row">
                         <div class="form-group has-search col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <span class="fa fa-search form-control-feedback"></span>
                             <input type="search" class="form-control" placeholder="Nombre o Cédula">
                         </div>
 
