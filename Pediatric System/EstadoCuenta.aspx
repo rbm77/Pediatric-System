@@ -53,13 +53,13 @@
 
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="habilitado" checked>
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="habilitado" checked>
                             <label class="form-check-label" for="exampleRadios1">
                                 Habilitado
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="deshabilitado">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="deshabilitado">
                             <label class="form-check-label" for="exampleRadios2">
                                 Deshabilitado
                             </label>
