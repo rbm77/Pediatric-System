@@ -48,13 +48,29 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>fabianjm31@gmail.com</td>
+                    <td>
+
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="habilitado" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Habilitado
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="deshabilitado">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Deshabilitado
+                            </label>
+                        </div>
+
+                    </td>
+                </tr>
+               <%-- <tr>
                     <th scope="row"></th>
                     <td></td>
-                </tr>
-                <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                </tr>
+                </tr>--%>
             </tbody>
         </table>
 
