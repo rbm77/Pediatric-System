@@ -2613,9 +2613,9 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+    color: #fff;
+    background-color: #0d659e;
+    border-color: #79aade;
 }
 
 .btn-primary:hover {
@@ -6989,7 +6989,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-    background-color: #040A29 !important;
+    background-color: #292772 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -10674,7 +10674,7 @@ body {
 
 .sidebar {
     width: 90px !important;
-    background-color: #071124;
+    background-color: #040A29;
     min-height: calc(100vh - 82px);
 }
 
