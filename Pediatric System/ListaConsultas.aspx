@@ -23,12 +23,12 @@
             <div class="form-row" style="margin-top: 15px;">
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Inicio</label>
-                    <input id="datepickerInicio" placeholder="31/12/2018" />
+                    <input class="datepicker" placeholder="31/12/2018" />
                 </div>
 
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Fin</label>
-                    <input id="datepickerFin" placeholder="31/12/2018" />
+                    <input class="datepicker" placeholder="31/12/2018" />
                 </div>
             </div>
 
@@ -66,5 +66,13 @@
     </div>
 
     </div>
+
+    <script>
+        $('.datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es',
+            format: 'dd/mm/yyyy'
+        });
+    </script>
 
 </asp:Content>

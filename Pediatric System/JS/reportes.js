@@ -1,5 +1,7 @@
 ﻿$(document).ready(function () {
 
+
+
     $('.visualizacionTitulo').hide();
     $('.visualizacion-medicina-mixta').hide();
     $('.visualizacion-boleta-ve02').hide();
@@ -31,13 +33,7 @@
         }
     });
 
-    $('#datepickerInicio').datepicker({
-        uiLibrary: 'bootstrap4',
-        locale: 'es-es',
-        format: 'dd/mm/yyyy'
-    });
-
-    $('#datepickerFin').datepicker({
+    $('.datepicker').datepicker({
         uiLibrary: 'bootstrap4',
         locale: 'es-es',
         format: 'dd/mm/yyyy'
