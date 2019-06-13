@@ -41,11 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-
     <Compile Include="BLAgendaEstandar.cs" />
     <Compile Include="BLCita.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="BLCuenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -58,7 +55,6 @@
       <Project>{1c715e59-2442-418d-8d67-f3527fddae6f}</Project>
       <Name>TO</Name>
     </ProjectReference>
-
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
