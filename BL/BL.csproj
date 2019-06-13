@@ -41,9 +41,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+
     <Compile Include="BLAgendaEstandar.cs" />
     <Compile Include="BLCita.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+
+    <Compile Include="BLCuenta.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{8d16fabb-78c4-43fe-b267-1dcb2d118532}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TO\TO.csproj">
+      <Project>{1c715e59-2442-418d-8d67-f3527fddae6f}</Project>
+      <Name>TO</Name>
+    </ProjectReference>
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
