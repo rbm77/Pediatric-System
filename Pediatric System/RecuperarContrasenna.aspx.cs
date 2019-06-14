@@ -40,5 +40,10 @@ namespace Pediatric_System
             }
             return res.ToString();
         }
+
+        protected void BotonRegresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("IniciarSesion.aspx");
+        }
     }
 }
