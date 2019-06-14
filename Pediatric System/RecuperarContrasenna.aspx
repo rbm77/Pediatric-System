@@ -23,7 +23,7 @@
     </div>
 
 
-    <form>
+    <form runat ="server">
 
         <br />
 
@@ -38,18 +38,21 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label style="color: dimgray" for="correo">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="correo" />
+
+                    <asp:TextBox ID="txtCorreo" class="form-control" type="email" name="email" runat="server"></asp:TextBox>
+                    <%--<input type="email" class="form-control" id="txtCorreo" />--%>
                 </div>
             </div>
 
             <div class="form-row">
-
+                
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <button type="submit" class="btn btn-outline-primary form-control">ENVIAR</button>
-
+                    
+                    <%--<button type="submit" class="btn btn-outline-primary form-control">ENVIAR</button>--%>
+                    <asp:Button ID="BotonEnviar" class="btn btn-outline-primary form-control" runat="server" Text="ENVIAR" OnClick="BotonEnviar_Click" /> 
+                      
                 </div>
-
+                
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
                     <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>

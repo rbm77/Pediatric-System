@@ -90,7 +90,6 @@ namespace Pediatric_System
                 string contact = contacto.Text;
 
                 // Display the selected author.
-                Label1.Text = contact;
 
             }
 
