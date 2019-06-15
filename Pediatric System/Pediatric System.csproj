@@ -73,13 +73,13 @@
   <ItemGroup>
     <Content Include="AsociarPaciente.aspx" />
     <Content Include="CrearReportes.aspx" />
+    <Content Include="CSS\agenda.css" />
     <Content Include="CSS\expediente.css" />
     <Content Include="CSS\general.css" />
     <Content Include="CSS\hora1.css" />
     <Content Include="CSS\hora2.css" />
-    <Content Include="CSS\main.css" />
+    <Content Include="CSS\inicioSesion.css" />
     <Content Include="CSS\sb-admin.css" />
-    <Content Include="CSS\util.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="EstadoCuenta.aspx" />
