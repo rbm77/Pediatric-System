@@ -79,18 +79,18 @@ namespace Pediatric_System
             if (e.CommandName == "Eliminar")
             {
 
-                // Convert the row index stored in the CommandArgument
-                // property to an Integer.
-                int indice = Convert.ToInt32(e.CommandArgument);
+                //// Convert the row index stored in the CommandArgument
+                //// property to an Integer.
+                //int indice = Convert.ToInt32(e.CommandArgument);
 
-                // Get the last name of the selected author from the appropriate
-                // cell in the GridView control.
-                GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
-                TableCell contacto = filaSeleccionada.Cells[0];
-                string contact = contacto.Text;
+                //// Get the last name of the selected author from the appropriate
+                //// cell in the GridView control.
+                //GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
+                //TableCell contacto = filaSeleccionada.Cells[0];
+                //string contact = contacto.Text;
 
-                // Display the selected author.
-                Label1.Text = contact;
+                //// Display the selected author.
+                //Label1.Text = contact;
 
             }
 
