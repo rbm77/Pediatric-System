@@ -1,14 +1,6 @@
 ﻿
 $(document).ready(function () {
 
-    $('#datepicker').datepicker({
-        uiLibrary: 'bootstrap4',
-        locale: 'es-es',
-        format: 'dd/mm/yyyy'
-    });
-
-    $(".btnGuardarExpediente").hide();
-
     $('.complicacionPerinatal').hide();
     $('.descripcionPatologicos').hide();
     $('.descripcionQuirurgico').hide();
@@ -81,12 +73,9 @@ $(document).ready(function () {
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
+    //$('#datepicker').datepicker({
+    //    uiLibrary: 'bootstrap4',
+    //    locale: 'es-es',
+    //    format: 'dd/mm/yyyy'
+    //});
 });
-
-function mostrarBtnGuardarExpediente() {
-    $(".btnGuardarExpediente").show();
-}
-
-function ocultarBtnGuardarExpediente() {
-    $(".btnGuardarExpediente").hide();
-}

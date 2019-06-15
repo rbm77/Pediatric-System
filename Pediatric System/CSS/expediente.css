@@ -1,28 +1,41 @@
 ﻿
-
-.progress-bar-container {
-    background-color: #bfbfbf;
-    height: 10px;
-    width: 100%;
+.margen-general-1-top {
+    margin-top: 25px;
 }
 
-.progress-bar {
-    background-color: #007680;
-    height: 10px;
-    width: 25%;
-    transition: all 0.5s ease;
+.margen-general-2-top {
+    margin-top: 15px;
 }
 
-.progress-bar-50 {
-    width: 50%;
+.margen-general-1-botton {
+    margin-bottom: 15px;
 }
 
-.progress-bar-75 {
-    width: 75%;
+.padding-general-top {
+    padding-top: 15px;
 }
 
-.progress-bar-100 {
-    width: 100%;
+.padding-general-checkB {
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
+.padding-general-label {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.linea-divisoria-titulo {
+    color:dimgray;
+}
+.tabs-fichas {
+    color: dimgray;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.nombre-input {
+    font-size: 16px;  
+    color: dimgray;
+}
 
