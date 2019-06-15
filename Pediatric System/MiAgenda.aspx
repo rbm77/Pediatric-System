@@ -91,11 +91,11 @@
                             HeaderStyle-ForeColor="DimGray" GridLines="None" OnRowCommand="vistaAgenda_RowCommand">
 
                             <Columns>
-                                <asp:BoundField HeaderText="Día" DataField="Dia"/>
-                                <asp:BoundField HeaderText="Inicio" DataField="HoraInicio"/>
-                                <asp:BoundField HeaderText="Fin" DataField="HoraFin"/>
-                                <asp:ButtonField CommandName="Eliminar" Text="ELIMINAR" 
-                                    ControlStyle-CssClass="btn btn-outline-danger form-control" runat="server"/>
+                                <asp:BoundField HeaderText="Día" DataField="Dia" />
+                                <asp:BoundField HeaderText="Inicio" DataField="HoraInicio" />
+                                <asp:BoundField HeaderText="Fin" DataField="HoraFin" />
+                                <asp:ButtonField CommandName="Eliminar" Text="ELIMINAR"
+                                    ControlStyle-CssClass="btn btn-outline-danger form-control" runat="server" />
 
 
                             </Columns>
@@ -170,12 +170,15 @@
                     </div>
                 </div>
             </div>
+        </div>
     </form>
 
 
-
-
-
+<%--
+          <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb"
+        type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"
+        warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+"/>
+--%>
 
 
 
