@@ -26,5 +26,18 @@ namespace DAO
                 myTOCuenta.tipo = reader["TIPO"].ToString();
             }
         }
+
+
+        public void recuperarContraseña(TOCuenta myTOCuenta)
+        {
+            string sql = "update CUENTA set CONTRASENA = @Contraseña where CORREO = @Correo";
+            SqlCommand command = new SqlCommand(sql, conexion);
+            command.Parameters.AddWithValue("@Correo", myTOCuenta.correo);
+            command.Parameters.AddWithValue("@Contraseña", myTOCuenta.contrasena);
+            conexion.Open();
+            command.ExecuteNonQuery();
+            //SqlDataReader reader = command.ExecuteReader();
+            conexion.Close();
+        }
     }
 }
