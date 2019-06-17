@@ -29,6 +29,13 @@ namespace BL
             this.tipo = miTOCuenta.tipo;
             this.estado = miTOCuenta.estado;
         }
+
+        public void actualizarContraseña()
+        {
+            miTOCuenta.correo = this.correo;
+            miTOCuenta.contrasena = this.contrasena;
+            miDAOCuenta.recuperarContraseña(miTOCuenta);
+        }
     }
 
 

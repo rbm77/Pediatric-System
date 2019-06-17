@@ -25,7 +25,7 @@
                     <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Inicio</label>
                     <input class="datepicker" placeholder="31/12/2018" />
                 </div>
-
+                
                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Fin</label>
                     <input class="datepicker" placeholder="31/12/2018" />

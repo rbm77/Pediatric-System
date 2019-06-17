@@ -1,256 +1,178 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="GestionarAgenda.aspx.cs" Inherits="Pediatric_System.GestionarAgenda" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="GestionarAgenda.aspx.cs" Inherits="Pediatric_System.GestionarAgenda" EnableEventValidation="false" %>
 
-
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <link rel="stylesheet" href="CSS/agenda.css" />
+    <link rel="stylesheet" href="CSS/expediente.css" />
+    <%--   <link rel="stylesheet" href="CSS/inicioSesion.css" />--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <br />
 
-    <div class="container-fluid col-10 col-auto">
+    <div class="container-fluid col-11 col-auto">
         <div class="page-header">
-            <h3 class="text-info">Citas</h3>
+            <h3 class="text-info">Mi Agenda</h3>
+
         </div>
     </div>
 
     <hr style="color: #0056b2;" />
 
-    <div class="container-fluid col-10">
+     <br />
 
-        <br />
-
-        <div class="form-row" style="text-align: center; display: block">
-            <div class="form-group" style="display: inline-block">
-                <form id="form1" runat="server">
-                    <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
-                            <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
-                                Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth"
-                                Width="350px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
-                                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                                <OtherMonthDayStyle ForeColor="#999999" />
-                                <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
-                                <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
-                                <TodayDayStyle BackColor="#CCCCCC" />
-                            </asp:Calendar>
-
-                            <%--  <asp:Label ID="miEtiqueta" runat="server" Text="Nada por ahora"></asp:Label>--%>
-
-                            <br />
-                            <br />
+    <div class="container-fluid col-11 col-auto">
 
 
-                            <asp:Repeater ID="repetidor" runat="server">
+        <%--        <div class="form-row" style="text-align: center; display: block">
+            <div class="form-group" style="display: inline-block">--%>
+        <form id="form1" runat="server">
 
-                                <HeaderTemplate>
-                                </HeaderTemplate>
+            <%--El scriptmanager se utiliza para manejar las peticiones ajax--%>
+            <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
 
-                                <ItemTemplate>
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <%# DataBinder.Eval(Container.DataItem, "Hora")%>
-                                        </div>
-                                        <div class="col">
-                                        </div>
+
+
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+
+                   
+
+                        <div class="container-fluid border rounded">
+
+                            <div class="form-row" style="text-align: center; display: block">
+                                <div class="form-group" style="display: inline-block">
+
+
+
+                                    <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
+                                        Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" NextPrevFormat="FullMonth"
+                                        OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
+                                        <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                                        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                                        <OtherMonthDayStyle ForeColor="#999999" />
+                                        <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
+                                        <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
+                                        <TodayDayStyle BackColor="#CCCCCC" />
+                                    </asp:Calendar>
+
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="table-responsive">
+
+                                <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
+                                    Style="text-align: center" AutoGenerateColumns="true" HeaderStyle-CssClass="thead-light"
+                                    HeaderStyle-ForeColor="DimGray" GridLines="None"
+                                    OnSelectedIndexChanged="vistaAgenda_SelectedIndexChanged"
+                                    OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">
+                                </asp:GridView>
+
+                            </div>
+
+                        </div>
+                 
+                    <asp:HiddenField ID="campoEscondido" runat="server" />
+
+
+
+                    <asp:ModalPopupExtender ID="modalEdicion" runat="server"
+                        PopupControlID="panelContenido" TargetControlID="campoEscondido"
+                        CancelControlID="CerrarModal" BackgroundCssClass="modalBackground">
+                    </asp:ModalPopupExtender>
+
+
+                    <asp:Panel ID="panelContenido" runat="server" CssClass="modal-content container-fluid col-11 col-auto
+                                  modal-dialog-scrollable">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" runat="server" id="exampleModalLabel">CITA</h5>
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+
+                        </div>
+                        <div class="modal-body">
+
+
+
+                            <div class="form-row margen-general-1-top">
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label for="fecha" class="nombre-label">Fecha</label>
+                                        <asp:TextBox runat="server" ID="fecha" CssClass="form-control"></asp:TextBox>
                                     </div>
+                                </div>
 
-                                </ItemTemplate>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label for="hora" class="nombre-label">Hora</label>
+                                        <asp:TextBox runat="server" ID="hora" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
 
-                            </asp:Repeater>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label for="nombre" class="nombre-label">Nombre Completo</label>
+                                        <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label for="edad" class="nombre-label">Edad</label>
+                                        <asp:TextBox runat="server" ID="edad" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label for="correo" class="nombre-label">Correo Electrónico</label>
+                                        <asp:TextBox runat="server" ID="correo" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label for="telefono" class="nombre-label">Número Telefónico</label>
+                                        <asp:TextBox runat="server" ID="telefono" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
 
 
+                            <asp:Button ID="btnCrear" runat="server" Text="CREAR CITA" CssClass="btn btn-outline-success form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" />
 
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-
-
+                            <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR CITA" CssClass="btn btn-outline-danger form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" />
 
 
+                        </div>
 
 
+                    </asp:Panel>
 
+                </ContentTemplate>
+            </asp:UpdatePanel>
+        </form>
 
-                </form>
-            </div>
-        </div>
 
 
     </div>
 
-
-
-    <%-- <form runat="server">--%>
-
-    <%-- <div class="container-fluid col-10 col-auto table-responsive">
-    --%>
-
-    <%--            <div class="form-row" style="text-align: center; display: block">
-                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-6" style="display: inline-block">
-                    <asp:Button type="button" runat="server" class="btn btn-outline-info form-control" Text="SEMANA ACTUAL" ID="Actual" />
-                </div>
-                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-6" style="display: inline-block">
-                    <asp:Button type="button" runat="server" class="btn btn-outline-info form-control" Text="SIGUIENTE SEMANA" ID="Siguiente" />
-                </div>
-            </div>--%>
-
-
-    <%-- <div style="text-align: center; display: block">
-
-                <div class="btn-group btn-group-toggle col-lg-6 col-md-6 col-sm-6 col-xs-6" data-toggle="buttons">
-
-                    <label class="btn btn-outline-info form-control active">
-                        <input type="radio" name="options" id="option1" checked>
-                        SEMANA ACTUAL
-                    </label>
-                    <label class="btn btn-outline-info form-control">
-                        <input type="radio" name="options" id="option2">
-                        SIGUIENTE SEMANA
-                    </label>
-                </div>
-            </div>--%>
-
-
+    <br />
 
     <br />
 
-    <%--          <table class="table table-bordered">
 
-                <thead>
-                    <tr class="bg-info">
-                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Hora</th>
-                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Lunes</th>
-                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Martes</th>
-                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Miércoles</th>
-                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Jueves</th>
-                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Viernes</th>
-                        <%--                        <th scope="col" style="font-size: 18px; font-weight: bold; color: white; width: 14%; text-align: center; border: 2px solid;">Sábado</th>--%>
-    <%--        </tr>
-                </thead>--%>
-    <%--                <tbody>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">4:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">5:00 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">5:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">6:00 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">6:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">7:00 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                    <tr>
-                        <th class="bg-info" scope="row" style="font-size: 16px; font-weight: bold; color: white; text-align: center; border: 2px solid white;">7:30 pm</th>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-light" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-danger" style="cursor: pointer; border: 2px solid white;"></td>
-                        <td data-toggle="modal" data-target="#exampleModal" class="table-success" style="cursor: pointer; border: 2px solid white;"></td>
-                    </tr>
-                </tbody>
-            </table>--%>
-
-    <%--        </div>--%>
-
-
-    <!-- Modal -->
-    <%-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">ESTADO</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-
-                        <div class="container-fluid">
-
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="disponible" value="option1">
-                                <label class="form-check-label" for="inlineRadio1" style="font-size: 16px; font-weight: bold; color: dimgray;">DISPONIBLE</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="deshabilitado" value="option2">
-                                <label class="form-check-label" for="inlineRadio2" style="font-size: 16px; font-weight: bold; color: dimgray;">DESHABILITADO</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" disabled>
-                                <label class="form-check-label" for="inlineRadio3" style="font-size: 16px; font-weight: bold; color: dimgray;">OCUPADO</label>
-                            </div>
-                        </div>
-                        <br />
-
-                        <button class="btn btn-outline-primary form-control" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="agendar">
-                            AGENDAR CITA
-                        </button>
-
-                        <br />
-
-                        <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                    <label for="correoElectronico">Correo Electrónico</label>
-                                    <input type="email" class="form-control" id="correoElectronico" />
-                                </div>
-                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                    <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
-
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <button class="btn btn-outline-danger form-control" type="button" id="cancelar">
-                            CANCELAR CITA
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>--%>
-
-    <br />
 
     <div class="container-fluid col-4 col-auto">
         <button type="submit" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
@@ -258,24 +180,9 @@
 
     <br />
 
-    <%-- </form>--%>
 
 
 
 
 
-
-    <%--    <script>
-        $(document).on('click', '#disponible', function () {
-            $("#agendar").removeAttr("disabled");
-            $("#correoElectronico").removeAttr("disabled");
-        });
-
-
-        $(document).on('click', '#deshabilitado', function () {
-            $("#agendar").attr("disabled", "disabled");
-            $("#correoElectronico").attr("disabled", "disabled");
-        });
-
-    </script>--%>
 </asp:Content>
