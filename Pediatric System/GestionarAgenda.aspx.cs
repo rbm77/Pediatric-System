@@ -12,6 +12,7 @@ namespace Pediatric_System
 {
     public partial class GestionarAgenda : System.Web.UI.Page
     {
+        private static DateTime diaSeleccionado = DateTime.Now; 
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -19,6 +20,9 @@ namespace Pediatric_System
 
         protected void ActualizarAgenda(Object sender, EventArgs e)
         {
+
+            diaSeleccionado = calendario.SelectedDate;
+
             //DateTime fechaSeleccionada = calendario.SelectedDate;
 
             ////string diaSeleccionado = fechaSeleccionada.ToString("dddd", new CultureInfo("es-ES"));
@@ -183,7 +187,22 @@ namespace Pediatric_System
         protected void vistaAgenda_SelectedIndexChanged(object sender, EventArgs e)
         {
             GridViewRow row = vistaAgenda.SelectedRow;
-            //Label1.Text = "You selected " + row.Cells[0].Text + ".";
+            string estadoSeleccionado = row.Cells[1].Text;
+
+            if (estadoSeleccionado.Equals("Ocupado"))
+            {
+                btnCrear.Visible = false;
+                btnCancelar.Visible = true;
+            } else
+            {
+                btnCancelar.Visible = false;
+                btnCrear.Visible = true;
+            }
+
+            fecha.Text = diaSeleccionado.ToShortDateString();
+            hora.Text = row.Cells[0].Text;
+            hora.Enabled = false;
+            fecha.Enabled = false;
             modalEdicion.Show();
 
         }
