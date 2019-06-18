@@ -1,0 +1,79 @@
+﻿.linea-divisoria-titulo {
+    color: dimgray;
+}
+
+
+.margen-general-1-bottom {
+    margin-bottom: 15px;
+}
+
+.margen-general-2-top {
+    margin-top: 15px;
+}
+
+.margen-general-1-top {
+    margin-top: 25px;
+}
+
+.margen-1-radioB {
+    padding-left: 45px;
+}
+
+.margen-2-radioB {
+    padding-left: 55px;
+}
+
+.padding-general-bottom {
+    padding-bottom: 35px;
+}
+
+.padding-general-top {
+    padding-top: 35px;
+}
+
+
+.padding-general-inicio-bottom {
+    padding-bottom: 20px;
+}
+
+.padding-general-inicio-top {
+    padding-top: 20px;
+}
+
+
+.padding-card {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.margin-card {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.padding-general-label {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.nombre-input {
+    font-size: 16px;
+    color: dimgray;
+}
+
+.tabs-fichas {
+    color: dimgray;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.general-card {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.btnGuardarConsulta {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: right;
+}

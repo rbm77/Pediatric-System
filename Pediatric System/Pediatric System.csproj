@@ -74,8 +74,8 @@
     <Content Include="AsociarPaciente.aspx" />
     <Content Include="CrearReportes.aspx" />
     <Content Include="CSS\agenda.css" />
+    <Content Include="CSS\consulta.css" />
     <Content Include="CSS\expediente.css" />
-    <Content Include="CSS\general.css" />
     <Content Include="CSS\hora1.css" />
     <Content Include="CSS\hora2.css" />
     <Content Include="CSS\inicioSesion.css" />
