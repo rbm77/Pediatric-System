@@ -7,13 +7,30 @@
     margin-top: 15px;
 }
 
-.margen-general-1-botton {
+.margen-general-1-bottom {
     margin-bottom: 15px;
 }
 
-.padding-general-top {
-    padding-top: 15px;
+
+
+.padding-general-bottom {
+    padding-bottom: 35px;
 }
+
+.padding-general-top {
+    padding-top: 35px;
+}
+
+
+.padding-general-inicio-top{
+    padding-top: 20px;
+}
+
+.padding-general-inicio-bottom {
+    padding-bottom: 20px;
+}
+
+
 
 .padding-general-checkB {
     padding-left: 50px;
@@ -25,9 +42,26 @@
     padding-right: 20px;
 }
 
+.general-card {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.padding-card {
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.margin-card {
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+
 .linea-divisoria-titulo {
     color:dimgray;
 }
+
 .tabs-fichas {
     color: dimgray;
     font-weight: bold;
@@ -39,3 +73,14 @@
     color: dimgray;
 }
 
+.btnGuardarExpediente {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: right;
+}
+
+.btnVerConsultas {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    float: right;
+}

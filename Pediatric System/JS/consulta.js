@@ -4,7 +4,6 @@ $(document).ready(function () {
     $(".opciones-primera-vez").hide();
     $(".datosReferenciaPrivada").hide();
     $(".guardarReferencia").hide();
-    $(".btnGuardarConsulta").hide();
     
     $("#reporte-medicina-mixta").on("change", function () {
         if ($('#reporte-medicina-mixta').prop('checked')) {
@@ -42,11 +41,3 @@ $(document).ready(function () {
     });
 
 });
-
-function mostrarBtnGuardarConsulta() {
-    $(".btnGuardarConsulta").show();
-}
-
-function ocultarBtnGuardarConsulta() {
-    $(".btnGuardarConsulta").hide();
-}
