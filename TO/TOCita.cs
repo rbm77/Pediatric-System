@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
+namespace TO
 {
-    public class BLCita
+    public class TOCita
     {
         public string CodigoMedico { get; set; }
         public string Nombre { get; set; }
@@ -16,11 +16,11 @@ namespace BL
         public string Fecha { get; set; }
         public string Hora { get; set; }
 
-        public BLCita()
+        public TOCita()
         {
 
         }
-        public BLCita(string codigoMedico, string nombre, string edad, string correo, int telefono, string fecha, string hora)
+        public TOCita(string codigoMedico, string nombre, string edad, string correo, int telefono, string fecha, string hora)
         {
             this.CodigoMedico = codigoMedico;
             this.Correo = correo;
@@ -30,7 +30,5 @@ namespace BL
             this.Fecha = fecha;
             this.Hora = hora;
         }
-
-
     }
 }
