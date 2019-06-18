@@ -49,6 +49,10 @@
     </Compile>
     <Compile Include="TOCita.cs" />
     <Compile Include="TOCuenta.cs" />
+    <Compile Include="TODireccion.cs" />
+    <Compile Include="TOEncargado_Facturante.cs" />
+    <Compile Include="TOExpediente.cs" />
+    <Compile Include="TOHistoriaClinica.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
