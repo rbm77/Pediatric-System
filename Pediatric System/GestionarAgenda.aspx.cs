@@ -23,19 +23,42 @@ namespace Pediatric_System
 
             diaSeleccionado = calendario.SelectedDate;
 
+            List<BLCita> blLista = new List<BLCita>();
+
+            string fechaSeleccionada = diaSeleccionado.ToShortDateString();
+
+            ManejadorCita manejador = new ManejadorCita();
+
+            string confirmacion = manejador.CargarCitas(blLista, "777", fechaSeleccionada);
+
+            string colorMensaje = "success";
+
+            if (confirmacion.Contains("error"))
+            {
+                colorMensaje = "danger";
+            }
+
+
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+
             //DateTime fechaSeleccionada = calendario.SelectedDate;
 
             ////string diaSeleccionado = fechaSeleccionada.ToString("dddd", new CultureInfo("es-ES"));
 
             List<Elemento> agenda = new List<Elemento>();
-            List<BLCita> citasDia = new List<BLCita>();
+            
 
-            citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "5:00 PM"));
-            citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "6:00 PM"));
-            citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "6:30 PM"));
-            citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "7:30 PM"));
+            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "5:00 PM"));
+            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "6:00 PM"));
+            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "6:30 PM"));
+            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "7:30 PM"));
 
             //BLAgendaEstandar disponibilidad = ObtenerHorario(diaSeleccionado);
+            
             BLAgendaEstandar disponibilidad = new BLAgendaEstandar("777", "Lunes", "4:30 PM", "8:00 PM");
             DateTime horaInicio = DateTime.Parse(disponibilidad.HoraInicio);
             DateTime horaFin = DateTime.Parse(disponibilidad.HoraFin);
@@ -49,7 +72,7 @@ namespace Pediatric_System
 
                 temporal = temporal.AddMinutes(30);
 
-                foreach (BLCita cita in citasDia)
+                foreach (BLCita cita in blLista)
                 {
                     if ((cita.Hora).Equals(t))
                     {
@@ -118,9 +141,9 @@ namespace Pediatric_System
             //disponibilidad.Add(new BLAgendaEstandar("777", "Viernes", "18:00", "19:30"));
 
             List<BLCita> citas = new List<BLCita>();
-            citas.Add(new BLCita("777", "richardbomo26@gmail.com1", "207850434", "Varicela1", new DateTime(2019, 6, 6), "19:00"));
-            citas.Add(new BLCita("777", "richardbomo26@gmail.com2", "207850434", "Varicela2", new DateTime(2019, 6, 7), "18:30"));
-            citas.Add(new BLCita("777", "richardbomo26@gmail.com3", "207850434", "Varicela3", new DateTime(2019, 6, 10), "16:00"));
+            //citas.Add(new BLCita("777", "richardbomo26@gmail.com1", "207850434", "Varicela1", new DateTime(2019, 6, 6), "19:00"));
+            //citas.Add(new BLCita("777", "richardbomo26@gmail.com2", "207850434", "Varicela2", new DateTime(2019, 6, 7), "18:30"));
+            //citas.Add(new BLCita("777", "richardbomo26@gmail.com3", "207850434", "Varicela3", new DateTime(2019, 6, 10), "16:00"));
 
 
 
@@ -166,18 +189,15 @@ namespace Pediatric_System
 
                 if (estado.Equals("Ocupado"))
                 {
-                    e.Row.BackColor = System.Drawing.Color.LightCoral;
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#fbf4f4");
                 }
                 else
                 {
-                    e.Row.BackColor = System.Drawing.Color.LightGreen;
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#f3fbf1");
                 }
 
 
-
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(vistaAgenda, "Select$" + e.Row.RowIndex, true);
-                //e.Row.Attributes.Add("data-toggle", "modal");
-                //e.Row.Attributes.Add("data-target", "#exampleModal");
 
             }
 
@@ -186,6 +206,9 @@ namespace Pediatric_System
 
         protected void vistaAgenda_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            mensajeConfirmacion.Visible = false;
+
             GridViewRow row = vistaAgenda.SelectedRow;
             string estadoSeleccionado = row.Cells[1].Text;
 
@@ -206,5 +229,53 @@ namespace Pediatric_System
             modalEdicion.Show();
 
         }
+
+        protected void btnCrear_Click(object sender, EventArgs e)
+        {
+
+
+            // Recuperación de los campos de texto
+
+            string nombreTxt = nombre.Text.Trim();
+            string edadTxt = edad.Text.Trim();
+            string correoTxt = correo.Text.Trim();
+            int telefonoTxt = int.Parse(telefono.Text.Trim());
+            string fechaTxt = fecha.Text.Trim();
+            string horaTxt = hora.Text.Trim();
+
+            // Enviar datos para guardar en la base de datos
+
+            ManejadorCita manejador = new ManejadorCita();
+
+            string confirmacion = manejador.CrearCita("777", nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaTxt);
+
+            string colorMensaje = "success";
+
+            if (confirmacion.Contains("error"))
+            {
+                colorMensaje = "danger";
+            }
+
+
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+
+            LimpiarCampos();
+
+        }
+
+        private void LimpiarCampos()
+        {
+            nombre.Text = "";
+            edad.Text = "";
+            correo.Text = "";
+            telefono.Text = "";
+            fecha.Text = "";
+            hora.Text = "";
+        }
+
     }
 }

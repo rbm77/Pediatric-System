@@ -21,7 +21,7 @@
 
     <hr style="color: #0056b2;" />
 
-     <br />
+    <br />
 
     <div class="container-fluid col-11 col-auto">
 
@@ -39,45 +39,49 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
-                   
-
-                        <div class="container-fluid border rounded">
-
-                            <div class="form-row" style="text-align: center; display: block">
-                                <div class="form-group" style="display: inline-block">
 
 
-
-                                    <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
-                                        Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" NextPrevFormat="FullMonth"
-                                        OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
-                                        <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                        <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                                        <OtherMonthDayStyle ForeColor="#999999" />
-                                        <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
-                                        <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
-                                        <TodayDayStyle BackColor="#CCCCCC" />
-                                    </asp:Calendar>
+                    <div class="container-fluid border rounded">
 
 
+                        <div class="form-row" style="text-align: center; display: block">
+                            <div class="form-group" style="display: inline-block">
 
-                                </div>
-                            </div>
+                                <br />
+
+                                <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
+                                    Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" NextPrevFormat="FullMonth"
+                                    OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
+                                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                                    <OtherMonthDayStyle ForeColor="#999999" />
+                                    <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
+                                    <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
+                                    <TodayDayStyle BackColor="#CCCCCC" />
+                                </asp:Calendar>
 
 
-                            <div class="table-responsive">
-
-                                <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
-                                    Style="text-align: center" AutoGenerateColumns="true" HeaderStyle-CssClass="thead-light"
-                                    HeaderStyle-ForeColor="DimGray" GridLines="None"
-                                    OnSelectedIndexChanged="vistaAgenda_SelectedIndexChanged"
-                                    OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">
-                                </asp:GridView>
 
                             </div>
+                        </div>
+
+
+                        <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
+
+
+                        <div class="table-responsive">
+
+                            <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
+                                Style="text-align: center" AutoGenerateColumns="true" HeaderStyle-CssClass="bg-light"
+                                HeaderStyle-ForeColor="DimGray" GridLines="None"
+                                OnSelectedIndexChanged="vistaAgenda_SelectedIndexChanged"
+                                OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">
+                            </asp:GridView>
 
                         </div>
-                 
+
+                    </div>
+
                     <asp:HiddenField ID="campoEscondido" runat="server" />
 
 
@@ -150,14 +154,18 @@
                         <div class="modal-footer">
 
 
-                            <asp:Button ID="btnCrear" runat="server" Text="CREAR CITA" CssClass="btn btn-outline-success form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" />
+                            <asp:Button ID="btnCrear" runat="server" Text="CREAR CITA" 
+                                CssClass="btn btn-outline-success form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6"
+                                OnClick="btnCrear_Click">
+
+                               
+
+                            </asp:Button>
 
                             <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR CITA" CssClass="btn btn-outline-danger form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" />
 
 
                         </div>
-
-
                     </asp:Panel>
 
                 </ContentTemplate>
@@ -180,7 +188,21 @@
 
     <br />
 
+    <script>
 
+
+        $(document).ready(function () {
+            $("#btnCrear").click(function () {
+                // disable button
+                $(this).prop("disabled", true);
+                // add spinner to button
+                $(this).html(
+                    `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> CARGANDO...`
+                );
+            });
+        });
+
+    </script>
 
 
 
