@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Pediatric_System.Reportes {
+
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
