@@ -23,13 +23,13 @@
                 <form class="login100-form validate-form" runat="server" style="padding-top: 30px">
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                      <span style="margin: auto">
-                         <asp:Image ID="Image1" runat="server" ImageUrl="images/icon1.png"
+                         <asp:Image ID="Image1" runat="server" ImageUrl="images/Logo_letras_azules.png"
                              runat="server" Width="342px" AlternateText="Imagen no disponible" ImageAlign="TextTop" Height="233px" />
                      </span>
                     <br />
                     <br />
                     <br />
-                    <span class="login100-form-title p-b-43">Iniciar Sesión</span><br />
+                    <span class="login100-form-title p-b-43">Inicio Sesión</span><br />
                     <div class="wrap-input100 validate-input" data-validate="Se requiere un correo electrónico válido">
 
 
