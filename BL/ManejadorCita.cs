@@ -28,6 +28,13 @@ namespace BL
             return confirmacion;
         }
 
+        /// <summary>
+        /// Obtiene una lista de citas en una fecha particular
+        /// </summary>
+        /// <param name="blLista">Lista de citas</param>
+        /// <param name="codigoMedico">Codigo del medico</param>
+        /// <param name="fecha">Fecha de cita</param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
         public string CargarCitas(List<BLCita> blLista, string codigoMedico, string fecha)
         {
             List<TOCita> toLista = new List<TOCita>();
@@ -42,6 +49,11 @@ namespace BL
             return confirmacion;
         }
 
+        /// <summary>
+        /// Convierte un objeto TOCita a un objeto BLCita
+        /// </summary>
+        /// <param name="toCita">CitaTO</param>
+        /// <returns>Retorna un nuevo objeto de BLCita</returns>
         private BLCita Convertir(TOCita toCita)
         {
             BLCita blCita = new BLCita(toCita.CodigoMedico, toCita.Nombre, toCita.Edad, toCita.Correo,
