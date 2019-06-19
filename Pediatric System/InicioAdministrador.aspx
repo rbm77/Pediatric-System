@@ -35,7 +35,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
 
-                                            <button type="button" class="btn btn-outline-primary form-control">CREAR CUENTA</button>
+                                            <button type="button" class="btn btn-neutro form-control">CREAR CUENTA</button>
 
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
 
-                                            <button type="submit" class="btn btn-outline-primary form-control">GESTIONAR ESTADOS</button>
+                                            <button type="submit" class="btn btn-neutro form-control">GESTIONAR ESTADOS</button>
 
                                         </div>
                                     </div>
