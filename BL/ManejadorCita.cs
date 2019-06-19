@@ -41,7 +41,7 @@ namespace BL
             DAOCita dao = new DAOCita();
             string confirmacion = dao.CargarCitas(toLista, codigoMedico, fecha);
 
-            foreach(TOCita toCita in toLista)
+            foreach (TOCita toCita in toLista)
             {
                 blLista.Add(Convertir(toCita));
             }

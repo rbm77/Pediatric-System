@@ -88,6 +88,14 @@ namespace DAO
             return confirmacion;
         }
 
+
+        /// <summary>
+        /// Obtiene una lista de citas de la base de datos
+        /// </summary>
+        /// <param name="toLista">Lista de citas</param>
+        /// <param name="codigoMedico">Codigo del medico</param>
+        /// <param name="fecha">Fecha de la cita</param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
         public string CargarCitas(List<TOCita> toLista, string codigoMedico, string fecha)
         {
             // Se abre la conexión
@@ -117,9 +125,11 @@ namespace DAO
                 comando.Parameters.AddWithValue("@cod", codigoMedico);
                 comando.Parameters.AddWithValue("@fecha", fecha);
 
-                // Se ejecuta el comando y se realiza un commit de la transacción
+                // Se ejecuta el comando 
 
                 SqlDataReader lector = comando.ExecuteReader();
+
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de citas
 
                 if (lector.HasRows)
                 {

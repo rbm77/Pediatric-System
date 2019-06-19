@@ -72,7 +72,7 @@
                         <div class="table-responsive">
 
                             <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
-                                Style="text-align: center" AutoGenerateColumns="true" HeaderStyle-CssClass="thead-light"
+                                Style="text-align: center" AutoGenerateColumns="true" HeaderStyle-CssClass="bg-light"
                                 HeaderStyle-ForeColor="DimGray" GridLines="None"
                                 OnSelectedIndexChanged="vistaAgenda_SelectedIndexChanged"
                                 OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">

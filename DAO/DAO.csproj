@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOAgendaEstandar.cs" />
     <Compile Include="DAOCita.cs" />
     <Compile Include="DAOCuenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
