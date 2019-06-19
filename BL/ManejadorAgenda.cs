@@ -53,5 +53,18 @@ namespace BL
             }
             return toAgenda;
         }
+
+        public string CargarDisponibilidad(BLAgendaEstandar diaSeleccionado)
+        {
+            string confirmacion = "Error";
+            DAOAgendaEstandar dao = new DAOAgendaEstandar();
+            TOAgendaEstandar toDisponibilidad = new TOAgendaEstandar();
+            toDisponibilidad.CodigoMedico = diaSeleccionado.CodigoMedico;
+            toDisponibilidad.Dia = diaSeleccionado.Dia;
+            confirmacion = dao.CargarDisponibilidad(toDisponibilidad);
+            diaSeleccionado.HoraInicio = toDisponibilidad.HoraInicio;
+            diaSeleccionado.HoraFin = toDisponibilidad.HoraFin;
+            return confirmacion;
+        }
     }
 }

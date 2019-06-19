@@ -23,17 +23,89 @@ namespace Pediatric_System
 
             diaSeleccionado = calendario.SelectedDate;
 
-            List<BLCita> blLista = new List<BLCita>();
+            string codigoMedico = "777";
+
+            List<BLCita> listaCitas = new List<BLCita>();
 
             string fechaSeleccionada = diaSeleccionado.ToShortDateString();
 
-            ManejadorCita manejador = new ManejadorCita();
+            ManejadorCita manejadorCita = new ManejadorCita();
 
-            string confirmacion = manejador.CargarCitas(blLista, "777", fechaSeleccionada);
+            string confirmacion = manejadorCita.CargarCitas(listaCitas, codigoMedico, fechaSeleccionada);
 
+            MostrarMensaje(confirmacion);
+
+            // Si no hubo problema al cargar las citas se procede a cargar la disponibilidad
+
+            if (!confirmacion.Contains("error"))
+            {
+
+                // Se obtiene la agenda de disponibilidad del medico para el dia seleccionado
+
+                ManejadorAgenda manejadorAgenda = new ManejadorAgenda();
+
+                string nombreDia = diaSeleccionado.ToString("dddd", new CultureInfo("es-ES"));
+
+                BLAgendaEstandar blDia = new BLAgendaEstandar();
+
+                blDia.CodigoMedico = codigoMedico;
+                blDia.Dia = nombreDia;
+
+                confirmacion = manejadorAgenda.CargarDisponibilidad(blDia);
+
+                MostrarMensaje(confirmacion);
+
+
+                    // Se crea una lista de items a mostrar en el grid
+
+                    List<ListaItem> agenda = new List<ListaItem>();
+
+
+                    BLAgendaEstandar disponibilidad = new BLAgendaEstandar("777", "Lunes", "4:30 PM", "8:00 PM");
+                
+
+                    DateTime horaInicio = DateTime.Parse(disponibilidad.HoraInicio);
+                    DateTime horaFin = DateTime.Parse(disponibilidad.HoraFin);
+                    DateTime temporal = horaInicio;
+                    string t = "";
+                    string estado = "";
+                    while (temporal < horaFin)
+                    {
+                        t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
+                        estado = "Disponible";
+
+                        temporal = temporal.AddMinutes(30);
+
+                        foreach (BLCita cita in listaCitas)
+                        {
+                            if ((cita.Hora).Equals(t))
+                            {
+                                estado = "Ocupado";
+
+                            }
+                        }
+
+                        agenda.Add(new ListaItem(t, estado));
+                    }
+
+
+                    vistaAgenda.DataSource = agenda;
+                    vistaAgenda.DataBind();
+
+
+            }
+        }
+
+
+        private void MostrarMensaje(string confirmacion)
+        {
             string colorMensaje = "success";
 
             if (confirmacion.Contains("error"))
+            {
+                colorMensaje = "danger";
+            }
+            if (confirmacion.Contains(""))
             {
                 colorMensaje = "danger";
             }
@@ -44,68 +116,7 @@ namespace Pediatric_System
                 " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
                 " <span aria-hidden=\"true\">&times;</span> </button> </div>";
             mensajeConfirmacion.Visible = true;
-
-            //DateTime fechaSeleccionada = calendario.SelectedDate;
-
-            ////string diaSeleccionado = fechaSeleccionada.ToString("dddd", new CultureInfo("es-ES"));
-
-            List<Elemento> agenda = new List<Elemento>();
-            
-
-            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "5:00 PM"));
-            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "6:00 PM"));
-            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "6:30 PM"));
-            //citasDia.Add(new BLCita("fa", "dsa", "sad", "das", DateTime.Now, "7:30 PM"));
-
-            //BLAgendaEstandar disponibilidad = ObtenerHorario(diaSeleccionado);
-            
-            BLAgendaEstandar disponibilidad = new BLAgendaEstandar("777", "Lunes", "4:30 PM", "8:00 PM");
-            DateTime horaInicio = DateTime.Parse(disponibilidad.HoraInicio);
-            DateTime horaFin = DateTime.Parse(disponibilidad.HoraFin);
-            DateTime temporal = horaInicio;
-            string t = "";
-            string estado = "";
-            while (temporal < horaFin)
-            {
-                t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
-                estado = "Disponible";
-
-                temporal = temporal.AddMinutes(30);
-
-                foreach (BLCita cita in blLista)
-                {
-                    if ((cita.Hora).Equals(t))
-                    {
-                        estado = "Ocupado";
-
-                    }
-                }
-
-                agenda.Add(new Elemento(t, estado));
-            }
-
-
-            vistaAgenda.DataSource = agenda;
-            vistaAgenda.DataBind();
-
-
-
-
-
-
-            //int diaSemana = (int)fechaSeleccionada.DayOfWeek;
-
-            //List<DateTime> semana = ObtenerSemana(fechaSeleccionada, diaSemana);
-
-            //List<BLCita> citas = new List<BLCita>();
-            //citas.Add(new BLCita("777", "richardbomo26@gmail.com1", "207850434", "Varicela1", new DateTime(2019, 6, 6), "19:00"));
-            //citas.Add(new BLCita("777", "richardbomo26@gmail.com2", "207850434", "Varicela2", new DateTime(2019, 6, 7), "18:30"));
-            //citas.Add(new BLCita("777", "richardbomo26@gmail.com3", "207850434", "Varicela3", new DateTime(2019, 6, 10), "16:00"));
-
-            //vistaAgenda.DataSource = citas;
-            //vistaAgenda.DataBind();
         }
-
 
         //private List<DateTime> ObtenerSemana(DateTime fechaSeleccionada, int diaSemana)
         //{
@@ -162,16 +173,16 @@ namespace Pediatric_System
                 e.Cell.ForeColor = System.Drawing.Color.LightGray;
             }
         }
-        private class Elemento
+        private class ListaItem
         {
             public string Hora { get; set; }
             public string Estado { get; set; }
 
-            public Elemento()
+            public ListaItem()
             {
 
             }
-            public Elemento(string hora, string estado)
+            public ListaItem(string hora, string estado)
             {
                 this.Hora = hora;
                 this.Estado = estado;
@@ -193,7 +204,7 @@ namespace Pediatric_System
                 }
                 else
                 {
-                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#f3fbf1");
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#e8f9e8");
                 }
 
 
