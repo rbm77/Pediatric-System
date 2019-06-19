@@ -4,9 +4,10 @@ td {
 }
 
 .resaltado:hover {
-    background-color: cornsilk;
+    
     border-bottom: solid;
-    color: cornsilk;
+    border-color: cornsilk;
+    color: steelblue;
 }
 
 .modalBackground {

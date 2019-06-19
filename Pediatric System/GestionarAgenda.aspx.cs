@@ -189,18 +189,15 @@ namespace Pediatric_System
 
                 if (estado.Equals("Ocupado"))
                 {
-                    e.Row.BackColor = System.Drawing.Color.LightCoral;
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#fbf4f4");
                 }
                 else
                 {
-                    e.Row.BackColor = System.Drawing.Color.LightGreen;
+                    e.Row.BackColor = System.Drawing.ColorTranslator.FromHtml("#f3fbf1");
                 }
 
 
-
                 e.Row.Attributes["onclick"] = ClientScript.GetPostBackClientHyperlink(vistaAgenda, "Select$" + e.Row.RowIndex, true);
-                //e.Row.Attributes.Add("data-toggle", "modal");
-                //e.Row.Attributes.Add("data-target", "#exampleModal");
 
             }
 

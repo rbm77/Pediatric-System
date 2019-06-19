@@ -8,7 +8,38 @@
     <script src="JS/selectorHora.js"></script>
 
 
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+            function EndRequestHandler(sender, args) {
+
+                $('.clockpicker').clockpicker({
+                    'default': 'now',
+                    vibrate: true,
+                    placement: "down",
+                    align: "right",
+                    autoclose: true,
+                    twelvehour: true
+                });
+                $('.clockpicker2').clockpicker({
+                    'default': 'now',
+                    vibrate: true,
+                    placement: "down",
+                    align: "right",
+                    autoclose: true,
+                    twelvehour: true
+                });
+
+            }
+
+        });
+    </script>
+
 </asp:Content>
+
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
@@ -37,7 +68,6 @@
                     <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
-
 
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="lunes" value="Lunes" runat="server">
@@ -84,6 +114,7 @@
                                 </div>
                             </div>
 
+                            <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
                             <div class="table-responsive">
                                 <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
@@ -104,7 +135,9 @@
 
                             </div>
 
+
                         </ContentTemplate>
+
                     </asp:UpdatePanel>
 
 
@@ -122,16 +155,10 @@
         </div>
     </form>
 
-
-
-
-
-
-
-
-
+    <br />
 
     <script type="text/javascript">
+
         $('.clockpicker').clockpicker({
             'default': 'now',
             vibrate: true,
@@ -148,8 +175,8 @@
             autoclose: true,
             twelvehour: true
         });
+
     </script>
 
-    <br />
 
 </asp:Content>

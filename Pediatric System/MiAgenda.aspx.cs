@@ -12,52 +12,73 @@ namespace Pediatric_System
     public partial class MiAgenda : System.Web.UI.Page
     {
 
-        private List<BLAgendaEstandar> estatica = new List<BLAgendaEstandar>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
-        }
-
-        private void MostrarAgenda()
-        {
-            vistaAgenda.DataSource = estatica;
-            vistaAgenda.DataBind();
-            vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-            //repetidor.DataSource = estatica;
-            //repetidor.DataBind();
-
-
+            
         }
 
         protected void Actualizar_Click(object sender, EventArgs e)
         {
 
-            estatica.Clear();
-            string inicio = horaInicio.Value;
-            string fin = horaFin.Value;
+            // Obtener datos de entrada
+
+            string codigoMedico = "777";
+
+            string inicio = horaInicio.Value.Trim();
+            string fin = horaFin.Value.Trim();
+
+            List<BLAgendaEstandar> agenda = new List<BLAgendaEstandar>();
 
             if (lunes.Checked)
             {
-                estatica.Add(new BLAgendaEstandar("777", lunes.Value, inicio, fin));
+                agenda.Add(new BLAgendaEstandar(codigoMedico, lunes.Value, inicio , fin));
             }
             if (martes.Checked)
             {
-                estatica.Add(new BLAgendaEstandar("777", martes.Value, inicio, fin));
+                agenda.Add(new BLAgendaEstandar(codigoMedico, martes.Value, inicio, fin));
             }
             if (miercoles.Checked)
             {
-                estatica.Add(new BLAgendaEstandar("777", miercoles.Value, inicio, fin));
+                agenda.Add(new BLAgendaEstandar(codigoMedico, miercoles.Value, inicio, fin));
             }
             if (jueves.Checked)
             {
-                estatica.Add(new BLAgendaEstandar("777", jueves.Value, inicio, fin));
+                agenda.Add(new BLAgendaEstandar(codigoMedico, jueves.Value, inicio, fin));
             }
             if (viernes.Checked)
             {
-                estatica.Add(new BLAgendaEstandar("777", viernes.Value, inicio, fin));
+                agenda.Add(new BLAgendaEstandar(codigoMedico, viernes.Value, inicio, fin));
             }
-            MostrarAgenda();
+
+            // Se envian los datos para almacenar en base de datos
+
+            ManejadorAgenda manejador = new ManejadorAgenda();
+
+            string confirmacion = manejador.ActualizarAgenda(agenda);
+
+            string colorMensaje = "success";
+
+            if (confirmacion.Contains("error"))
+            {
+                colorMensaje = "danger";
+            }
+
+
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+
+
+
+            // Se muestra la agenda
+
+            vistaAgenda.DataSource = agenda;
+            vistaAgenda.DataBind();
+            vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
+
             Limpiar();
         }
 
