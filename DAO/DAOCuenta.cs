@@ -10,7 +10,7 @@ namespace DAO
 {
   public  class DAOCuenta
     {
-        SqlConnection conexion = new SqlConnection("server=. ; database=Clinica ; integrated security = true");
+        SqlConnection conexion = new SqlConnection(Properties.Settings.Default.ConnectionWeb);
 
         public void buscar(TOCuenta myTOCuenta)
         {

@@ -9,5 +9,12 @@
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
       <Value Profile="(Default)">Data Source =.; Initial Catalog = Clinica;Integrated Security = true</Value>
     </Setting>
+    <Setting Name="ConnectionWeb" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;ConnectionString&gt;"Data Source=SQL7005.site4now.net;Initial Catalog=DB_A49CE1_PediatricSystem;User Id=DB_A49CE1_PediatricSystem_admin;Password=pediatrica123;"&lt;/ConnectionString&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">"Data Source=SQL7005.site4now.net;Initial Catalog=DB_A49CE1_PediatricSystem;User Id=DB_A49CE1_PediatricSystem_admin;Password=pediatrica123;"</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

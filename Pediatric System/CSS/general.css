@@ -1,2 +1,43 @@
 ﻿body {
 }
+
+#wrapper #content-wrapper {
+    padding-top: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.mb-20 {
+    margin-bottom: 20px;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: #1D5E93 !important;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: rgba(0, 147, 162, 0.75) !important ;
+}
+#page-title {
+    padding: 0px 0px 10px 25px !important;
+}
+.text-overflow {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.page-header {
+    border: 0 none;
+    color: #050505;
+    font-size: 2.2em;
+    font-weight: 400;
+    margin: 0;
+    padding: 10px 0;
+}
+.card-dash {
+    text-align: center;
+    background-color: whitesmoke !important;
+    color: #1D5E93;
+}
+
+
+
+
