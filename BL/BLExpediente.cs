@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using TO;
-using DAO;
-
 namespace BL
 {
     public class BLExpediente
@@ -14,7 +11,7 @@ namespace BL
         public string Nombre { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
-        public decimal Cedula { get; set; }
+        public string Cedula { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Sexo { get; set; }
         public string Foto { get; set; }
@@ -25,7 +22,7 @@ namespace BL
 
         }
 
-        public BLExpediente (string nombre, string primerApellido, string segundoApellido, decimal cedula, DateTime fechaNacimiento, string sexo, string foto, string expediente)
+        public BLExpediente (string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, string foto, string expediente)
         {
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
