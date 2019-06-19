@@ -132,5 +132,83 @@ namespace DAO
             return confirmacion;
         }
 
+        public string CargarDisponibilidad(TOAgendaEstandar diaSeleccionado)
+        {
+            // Se abre la conexión
+
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
+            string confirmacion = "La agenda se cargó exitosamente";
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT HORA_INICIO, HORA_FIN FROM DISPONIBILIDAD_MEDICO WHERE CODIGO_MEDICO = @codigo AND DIA = @dia;", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@codigo", diaSeleccionado.CodigoMedico);
+                comando.Parameters.AddWithValue("@dia", diaSeleccionado.Dia);
+
+                // Se ejecuta el comando 
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en el objeto TOAgendaEstandar
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        diaSeleccionado.HoraInicio = lector["HORA_INICIO"].ToString();
+                        diaSeleccionado.HoraFin = lector["HORA_FIN"].ToString();
+                    }
+                }
+
+                lector.Close();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
+
+
     }
 }
