@@ -682,7 +682,7 @@
             </div>
 
             <div class="btnGuardarExpediente form-group col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                <asp:Button ID="btnGuardar" runat="server" Text="GUARDAR" CssClass="btn btn-outline-success form-control"></asp:Button>
+                <asp:Button ID="btnGuardar" runat="server" Text="GUARDAR" CssClass="btn btn-guardar form-control"></asp:Button>
             </div>
         </form>
 

@@ -38,6 +38,56 @@
     color: #1D5E93;
 }
 
+.btn-guardar {
+    color: #FFFFFF;
+    background-color: #4CAF50;
+    width: 150px;
+}
+.btn-guardar:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: #FFFFFF;
+}
+.btn-eliminar {
+    color: #FFFFFF;
+    background-color: #f44336;
+    width: 150px;
+}
+.btn-eliminar:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: #FFFFFF;
+}
+.sticky-footer .container {
+    margin-right: 0px;
+    margin-left: 250px;
+    text-align: right;
+    color: white;
+}
+.btn-neutro {
+    color: #FFFFFF;
+    background-color: #1ca5ac;
+    width: 100%;
+}
+.btn-neutro:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: #FFFFFF;
+}
+.btn-regresar {
+    color: #FFFFFF;
+    background-color: #8b8b8b;
+    width: 150px;
+}
+.btn-regresar:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color: #FFFFFF;
+}
+.form-control:focus {
+    color: #fcfdff !important;
+    background-color: #1D5E93 !important;
+    border-color: #80bdff !important;
+}
+
+
+
 
 
 

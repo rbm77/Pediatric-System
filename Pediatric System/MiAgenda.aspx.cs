@@ -11,7 +11,7 @@ namespace Pediatric_System
 {
     public partial class MiAgenda : System.Web.UI.Page
     {
-
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -80,6 +80,8 @@ namespace Pediatric_System
             vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
 
             Limpiar();
+
+          
         }
 
         private void Limpiar()
