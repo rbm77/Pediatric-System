@@ -68,14 +68,14 @@
                             <div class="form-row">
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Nombre</label>
+                                        <label class="nombre-input">Nombre</label>
                                         <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Primer Apellido</label>
+                                        <label class="nombre-input">Primer Apellido</label>
                                         <asp:TextBox runat="server" ID="primerApellido" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
@@ -89,21 +89,21 @@
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Cédula</label>
+                                        <label class="nombre-input">Cédula</label>
                                         <asp:TextBox runat="server" ID="cedula" CssClass="form-control" placeholder="102340567"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Fecha de Nacimiento</label>
+                                        <label class="nombre-input">Fecha de Nacimiento</label>
                                         <asp:TextBox runat="server" ID="fechaNacimiento" CssClass="form-control datepicker" placeholder="31/12/2019"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Sexo</label>
+                                        <label class="nombre-input">Sexo</label>
                                         <asp:DropDownList ID="sexo" runat="server" CssClass="custom-select">
                                             <asp:ListItem Value="femenino"> Femenino </asp:ListItem>
                                             <asp:ListItem Value="masculino"> Masculino </asp:ListItem>
@@ -117,7 +117,7 @@
                         <div class="form-row general-card padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="card">
-                                    <label class="nombre-label card-header">Dirección</label>
+                                    <label class="nombre-input card-header">Dirección</label>
 
                                     <div class="form-row card-body padding-general-top">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -159,7 +159,7 @@
                                         <div class="form-row ">
                                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <label class="nombre-label">Foto del Paciente</label>
+                                                    <label class="nombre-input">Foto del Paciente</label>
                                                     <div class="custom-file">
                                                         <asp:FileUpload ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
                                                         <%--<input type="file" class="custom-file-input" id="subirFotoPaciente"
@@ -171,7 +171,7 @@
 
                                             <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <label class="nombre-label">Vincular expediente</label>
+                                                    <label class="nombre-input">Vincular expediente</label>
                                                     <asp:TextBox runat="server" ID="VincExpediente" CssClass="form-control" placeholder="URL del expdiente antiguo"></asp:TextBox>
                                                 </div>
                                             </div>

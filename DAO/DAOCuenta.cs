@@ -10,7 +10,7 @@ namespace DAO
 {
   public  class DAOCuenta
     {
-        SqlConnection conexion = new SqlConnection(Properties.Settings.Default.ConnectionWeb);
+        SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
         public void buscar(TOCuenta myTOCuenta)
         {
