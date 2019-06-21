@@ -15,7 +15,10 @@ namespace Pediatric_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                MostrarAgenda(new List<BLAgendaEstandar>(), "777");
+            }
         }
 
         protected void Actualizar_Click(object sender, EventArgs e)
@@ -51,17 +54,42 @@ namespace Pediatric_System
                 agenda.Add(new BLAgendaEstandar(codigoMedico, viernes.Value, inicio, fin));
             }
 
-            // Se envian los datos para almacenar en base de datos
+            MostrarAgenda(agenda, codigoMedico);
+
+          
+        }
+
+        private void MostrarAgenda(List<BLAgendaEstandar> agenda, string codigo)
+        {
 
             ManejadorAgenda manejador = new ManejadorAgenda();
 
-            string confirmacion = manejador.ActualizarAgenda(agenda);
+            string confirmacion = manejador.ActualizarAgenda(agenda, codigo);
 
             string colorMensaje = "success";
 
             if (confirmacion.Contains("error"))
             {
                 colorMensaje = "danger";
+            }
+            else
+            {
+                // Si la agenda esta vacia no muestra el grid
+
+                if (agenda.Count == 0)
+                {
+                    confirmacion = "En este momento no cuenta un horario laboral";
+                } else
+                {
+                    // Se muestra la agenda
+
+                    vistaAgenda.DataSource = agenda;
+                    vistaAgenda.DataBind();
+                    vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
+
+                    Limpiar();
+                }
+
             }
 
 
@@ -72,17 +100,8 @@ namespace Pediatric_System
             mensajeConfirmacion.Visible = true;
 
 
-
-            // Se muestra la agenda
-
-            vistaAgenda.DataSource = agenda;
-            vistaAgenda.DataBind();
-            vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
-
-            Limpiar();
-
-          
         }
+
 
         private void Limpiar()
         {

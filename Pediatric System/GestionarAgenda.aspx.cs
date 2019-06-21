@@ -12,16 +12,29 @@ namespace Pediatric_System
 {
     public partial class GestionarAgenda : System.Web.UI.Page
     {
+        // El dia seleccionado corresponde a la fecha que se selecciona en el calendario
+
         private static DateTime diaSeleccionado = DateTime.Now; 
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            // La primera vez que se carga la pagina se debe mostrar la agenda del dia actual
 
+            if (!IsPostBack)
+            {
+                MostrarAgenda(diaSeleccionado, "");
+            }
+            
         }
 
-        protected void ActualizarAgenda(Object sender, EventArgs e)
+        /// <summary>
+        /// Obtiene el horario del medico y las citas que estan agendadas para una fecha en particular
+        /// </summary>
+        /// <param name="fecha">Fecha</param>
+        /// <param name="presionoBoton">Presiono boton</param>
+        private void MostrarAgenda(DateTime fecha, string presionoBoton)
         {
-
-            diaSeleccionado = calendario.SelectedDate;
+            diaSeleccionado = fecha;
 
             string codigoMedico = "777";
 
@@ -61,6 +74,10 @@ namespace Pediatric_System
                 if (!confirmacion.Contains("error"))
                 {
 
+                    // Se crea una lista de items a mostrar en el grid
+
+                    List<ListaItem> agenda = new List<ListaItem>();
+
                     //  Si la lista de citas y de disponibilidad esta vacia
 
                     if ((listaCitas.Count == 0) && (blDia.HoraInicio == null))
@@ -73,17 +90,20 @@ namespace Pediatric_System
                     {
 
 
-                        DateTime horaInicio = DateTime.Parse(blDia.HoraInicio);
-                        DateTime horaFin = DateTime.Parse(blDia.HoraFin);
-                        DateTime temporal = horaInicio;
+                        DateTime horaInicio = DateTime.Now;
+                        DateTime horaFin = DateTime.Now;
+                        DateTime temporal = DateTime.Now;
+
+                        if (blDia.HoraInicio != null)
+                        {
+                            horaInicio = DateTime.Parse(blDia.HoraInicio);
+                            horaFin = DateTime.Parse(blDia.HoraFin);
+                            temporal = horaInicio;
+                        }
 
                         string t = "";
                         string estado = "";
 
-
-                        // Se crea una lista de items a mostrar en el grid
-
-                        List<ListaItem> agenda = new List<ListaItem>();
 
 
                         // Si la lista de citas esta vacia pero hay disponibilidad
@@ -128,25 +148,47 @@ namespace Pediatric_System
                             confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " tiene citas pendientes";
 
 
+                            // Primero se incluye la disponibilidad
+
                             while (temporal < horaFin)
                             {
                                 t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
-                                estado = "Disponible";
 
                                 temporal = temporal.AddMinutes(30);
 
-                                foreach (BLCita cita in listaCitas)
-                                {
-                                    if ((cita.Hora).Equals(t))
-                                    {
-                                        estado = "Ocupado";
-
-                                    }
-                                }
-
-                                agenda.Add(new ListaItem(t, estado));
+                                agenda.Add(new ListaItem(t, "Disponible"));
                             }
 
+
+                            // Luego se incluyen las citas 
+
+                            bool existe = false;
+
+                            foreach (BLCita cita in listaCitas)
+                            {
+
+                                foreach (ListaItem elemento in agenda)
+                                {
+                                    if (elemento.Hora.Equals(cita.Hora))
+                                    {
+                                        elemento.Estado = "Ocupado";
+                                        existe = true;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        existe = false;
+                                    }
+                                }
+                                if (existe == false)
+                                {
+                                    agenda.Add(new ListaItem(cita.Hora, "Ocupado"));
+                                }
+                            }
+
+                            // Se ordena la lista
+
+                            agenda.Sort((x, y) => string.Compare(x.Hora, y.Hora));
                         }
 
                         vistaAgenda.DataSource = agenda;
@@ -155,10 +197,29 @@ namespace Pediatric_System
                     }
                 }
             }
+
+            if(!presionoBoton.Equals(""))
+            {
+                confirmacion = presionoBoton;
+            }
+
             MostrarMensaje(confirmacion);
         }
 
+        /// <summary>
+        /// Actualiza el grid que muestra la agenda del medico
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void ActualizarAgenda(Object sender, EventArgs e)
+        {
+            MostrarAgenda(calendario.SelectedDate, "");
+        }
 
+        /// <summary>
+        /// Muestra un alert con el mensaje de confirmacion de la transaccion recien ejecutada
+        /// </summary>
+        /// <param name="confirmacion">Mensaje de Confirmacion</param>
         private void MostrarMensaje(string confirmacion)
         {
             string colorMensaje = "success";
@@ -176,49 +237,11 @@ namespace Pediatric_System
             mensajeConfirmacion.Visible = true;
         }
 
-        //private List<DateTime> ObtenerSemana(DateTime fechaSeleccionada, int diaSemana)
-        //{
-        //    if (diaSemana == 0)
-        //    {
-        //        diaSemana = 7;
-        //    }
-        //    List<DateTime> semana = new List<DateTime>();
-
-        //    semana.Add(fechaSeleccionada);
-
-        //    for (int j = diaSemana - 1; j >= 1; j--)
-        //    {
-        //        semana.Add(fechaSeleccionada.AddDays(j - diaSemana));
-        //    }
-
-        //    for (int i = diaSemana + 1; i <= 6; i++)
-        //    {
-        //        semana.Add(fechaSeleccionada.AddDays(i - diaSemana));
-        //    }
-
-        //    semana.Sort();
-
-        //    return semana;
-        //} 
-
-        private void MostrarAgenda()
-        {
-            //List<BLAgendaEstandar> disponibilidad = new List<BLAgendaEstandar>();
-            //disponibilidad.Add(new BLAgendaEstandar("777", "Lunes", "16:00", "18:30"));
-            //disponibilidad.Add(new BLAgendaEstandar("777", "Martes", "17:30", "19:30"));
-            //disponibilidad.Add(new BLAgendaEstandar("777", "Jueves", "16:30", "20:00"));
-            //disponibilidad.Add(new BLAgendaEstandar("777", "Viernes", "18:00", "19:30"));
-
-            List<BLCita> citas = new List<BLCita>();
-            //citas.Add(new BLCita("777", "richardbomo26@gmail.com1", "207850434", "Varicela1", new DateTime(2019, 6, 6), "19:00"));
-            //citas.Add(new BLCita("777", "richardbomo26@gmail.com2", "207850434", "Varicela2", new DateTime(2019, 6, 7), "18:30"));
-            //citas.Add(new BLCita("777", "richardbomo26@gmail.com3", "207850434", "Varicela3", new DateTime(2019, 6, 10), "16:00"));
-
-
-
-
-        }
-
+        /// <summary>
+        /// Muestra el componente de calendario segun las especificaciones de requerimientos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void calendario_DayRender(object sender, DayRenderEventArgs e)
         {
             DateTime hoy = DateTime.Now.Date;
@@ -231,6 +254,9 @@ namespace Pediatric_System
                 e.Cell.ForeColor = System.Drawing.Color.LightGray;
             }
         }
+        /// <summary>
+        /// Esta clase corresponde a los objetos que seran listados en el grid de la agenda
+        /// </summary>
         private class ListaItem
         {
             public string Hora { get; set; }
@@ -249,7 +275,11 @@ namespace Pediatric_System
         }
 
 
-
+        /// <summary>
+        /// Muestra el grid segun las especificaciones de los parametros que recibe
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void vistaAgenda_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
@@ -273,6 +303,11 @@ namespace Pediatric_System
 
         }
 
+        /// <summary>
+        /// Muestra el modal para crear o cancelar una cita, al seleccionar un elemento de la agenda
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void vistaAgenda_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -285,6 +320,11 @@ namespace Pediatric_System
             {
                 btnCrear.Visible = false;
                 btnCancelar.Visible = true;
+
+                // 
+
+
+
             } else
             {
                 btnCancelar.Visible = false;
@@ -299,9 +339,13 @@ namespace Pediatric_System
 
         }
 
+        /// <summary>
+        /// Envia los datos del formulario a base de datos para almacenar una nueva cita
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnCrear_Click(object sender, EventArgs e)
         {
-
 
             // Recuperación de los campos de texto
 
@@ -318,24 +362,15 @@ namespace Pediatric_System
 
             string confirmacion = manejador.CrearCita("777", nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaTxt);
 
-            string colorMensaje = "success";
-
-            if (confirmacion.Contains("error"))
-            {
-                colorMensaje = "danger";
-            }
-
-
-            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
-                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
-                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion.Visible = true;
-
             LimpiarCampos();
+
+            MostrarAgenda(diaSeleccionado, confirmacion);
 
         }
 
+        /// <summary>
+        /// Vacia los campos de texto
+        /// </summary>
         private void LimpiarCampos()
         {
             nombre.Text = "";

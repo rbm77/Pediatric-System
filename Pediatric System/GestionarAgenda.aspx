@@ -33,9 +33,6 @@
             <%--El scriptmanager se utiliza para manejar las peticiones ajax--%>
             <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
 
-
-
-
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
