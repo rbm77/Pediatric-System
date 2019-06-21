@@ -46,7 +46,7 @@
 
     <div class="container-fluid col-10 col-auto">
         <div class="page-header">
-            <h3 class="text-info">Agenda Laboral Estándar</h3>
+            <h3 class="text-info">Agenda Laboral</h3>
         </div>
     </div>
 
