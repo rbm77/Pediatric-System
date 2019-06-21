@@ -35,10 +35,36 @@
                         <div class="col-xs-6 col-sm-3 col-md-6  mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <div class="card-body card-dash">
-                                    <div class="mr-5">Expedientes</div>
+                                    <i class="fas fa-user-check fa-4x"></i>
                                 </div>
                                 <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">View Details</span>
+                                    <span class="float-left">Consultas</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-md-push-2 mb-20">
+                            <div class="card text-white o-hidden h-100">
+                                <div class="card-body card-dash">
+                                    <i class="fas fa-plus-circle fa-3x"></i>
+                                </div>
+                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                    <span class="float-left">Nuevo Expediente</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
+                            <div class="card text-white o-hidden h-100">
+                                <div class="card-body card-dash">
+                                    <i class="far fa-id-card fa-4x"></i>
+                                </div>
+                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                    <span class="float-left">Expedientes</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>

@@ -93,7 +93,7 @@
 
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
 
-                    <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
+                    <button type="submit" class="btn btn-guardar form-control">GUARDAR</button>
 
                 </div>
 

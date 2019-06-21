@@ -2041,12 +2041,12 @@ pre code {
 }
 
 .form-control:focus {
-  color: #495057;
+    /* color: #495057;
   background-color: #fff;
   border-color: #80bdff;
   outline: 0;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);*/
 }
 
 .form-control::-webkit-input-placeholder {
@@ -2598,9 +2598,9 @@ textarea.form-control {
 }
 
 .btn:focus, .btn.focus {
-  outline: 0;
+    /*/outline: 0;
   -webkit-box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);*/
 }
 
 .btn.disabled, .btn:disabled {
@@ -10849,12 +10849,12 @@ body {
   width: 100%;
   margin-bottom: 0;
   /* Override default `<label>` margin */
-  line-height: 1.5;
-  color: #495057;
-  border: 1px solid transparent;
-  border-radius: 0.25rem;
-  -webkit-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
+    line-height: 1.5;
+    color: #495057;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    -webkit-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
 }
 
 .form-label-group input::-webkit-input-placeholder {
@@ -10898,7 +10898,7 @@ footer.sticky-footer {
   bottom: 0;
   width: calc(100% - 90px);
   height: 60px;
-  background-color: #e9ecef;
+  background-color: #6f99bc;
 }
 
 footer.sticky-footer .copyright {

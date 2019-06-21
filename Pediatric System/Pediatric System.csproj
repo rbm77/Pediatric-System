@@ -79,9 +79,12 @@
     <Content Include="CSS\agenda.css" />
     <Content Include="CSS\consulta.css" />
     <Content Include="CSS\expediente.css" />
+    <Content Include="CSS\general.css" />
     <Content Include="CSS\hora1.css" />
     <Content Include="CSS\hora2.css" />
     <Content Include="CSS\inicioSesion.css" />
+    <Content Include="CSS\loading-btn.css" />
+    <Content Include="CSS\loading.css" />
     <Content Include="CSS\sb-admin.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="Dashboard.aspx" />
@@ -1644,6 +1647,7 @@
     <Content Include="GestionarAgenda.aspx" />
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\icons\favicon.ico" />
+    <Content Include="images\Loading_2.gif" />
     <Content Include="images\Logo_letras_azules.png" />
     <Content Include="images\logo_letras_blancas_pediatric_System.jpeg" />
     <Content Include="IniciarSesion.aspx" />
