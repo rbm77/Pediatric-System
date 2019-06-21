@@ -33,7 +33,6 @@ namespace Pediatric_System
 
             string confirmacion = manejadorCita.CargarCitas(listaCitas, codigoMedico, fechaSeleccionada);
 
-            MostrarMensaje(confirmacion);
 
             // Si no hubo problema al cargar las citas se procede a cargar la disponibilidad
 
@@ -44,7 +43,13 @@ namespace Pediatric_System
 
                 ManejadorAgenda manejadorAgenda = new ManejadorAgenda();
 
-                string nombreDia = diaSeleccionado.ToString("dddd", new CultureInfo("es-ES"));
+                string nombreDia = diaSeleccionado.ToString("dddd", new CultureInfo("es-ES")).ToUpperInvariant();
+                string nombreMes = diaSeleccionado.ToString("MMMM", new CultureInfo("es-ES")).ToUpperInvariant();
+                int numeroDia = diaSeleccionado.Day;
+
+                nombreDia = nombreDia.Substring(0, 1).ToUpper() + nombreDia.Substring(1).ToLower();
+                nombreMes = nombreMes.Substring(0, 1).ToUpper() + nombreMes.Substring(1).ToLower();
+
 
                 BLAgendaEstandar blDia = new BLAgendaEstandar();
 
@@ -53,47 +58,104 @@ namespace Pediatric_System
 
                 confirmacion = manejadorAgenda.CargarDisponibilidad(blDia);
 
-                MostrarMensaje(confirmacion);
+                if (!confirmacion.Contains("error"))
+                {
 
+                    //  Si la lista de citas y de disponibilidad esta vacia
 
-                    // Se crea una lista de items a mostrar en el grid
-
-                    List<ListaItem> agenda = new List<ListaItem>();
-
-
-                    BLAgendaEstandar disponibilidad = new BLAgendaEstandar("777", "Lunes", "4:30 PM", "8:00 PM");
-                
-
-                    DateTime horaInicio = DateTime.Parse(disponibilidad.HoraInicio);
-                    DateTime horaFin = DateTime.Parse(disponibilidad.HoraFin);
-                    DateTime temporal = horaInicio;
-                    string t = "";
-                    string estado = "";
-                    while (temporal < horaFin)
+                    if ((listaCitas.Count == 0) && (blDia.HoraInicio == null))
                     {
-                        t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
-                        estado = "Disponible";
 
-                        temporal = temporal.AddMinutes(30);
+                        confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " no hay eventos";
 
-                        foreach (BLCita cita in listaCitas)
+                    }
+                    else
+                    {
+
+
+                        DateTime horaInicio = DateTime.Parse(blDia.HoraInicio);
+                        DateTime horaFin = DateTime.Parse(blDia.HoraFin);
+                        DateTime temporal = horaInicio;
+
+                        string t = "";
+                        string estado = "";
+
+
+                        // Se crea una lista de items a mostrar en el grid
+
+                        List<ListaItem> agenda = new List<ListaItem>();
+
+
+                        // Si la lista de citas esta vacia pero hay disponibilidad
+
+                        if ((listaCitas.Count == 0) && (blDia.HoraInicio != null))
                         {
-                            if ((cita.Hora).Equals(t))
-                            {
-                                estado = "Ocupado";
 
+                            confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " no tiene citas pendientes";
+
+
+                            while (temporal < horaFin)
+                            {
+                                t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
+
+                                temporal = temporal.AddMinutes(30);
+
+                                agenda.Add(new ListaItem(t, "Disponible"));
                             }
+
+
                         }
 
-                        agenda.Add(new ListaItem(t, estado));
+                        // Si no hay disponibilidad pero si hay citas pedientes
+
+                        if ((listaCitas.Count > 0) && (blDia.HoraInicio == null))
+                        {
+
+                            confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " tiene citas pendientes";
+
+                            foreach (BLCita cita in listaCitas)
+                            {
+                                agenda.Add(new ListaItem(cita.Hora, "Ocupado"));
+                            }
+
+                        }
+
+                        // Si hay disponibilidad y citas
+
+                        if ((listaCitas.Count > 0) && (blDia.HoraInicio != null))
+                        {
+
+                            confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " tiene citas pendientes";
+
+
+                            while (temporal < horaFin)
+                            {
+                                t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
+                                estado = "Disponible";
+
+                                temporal = temporal.AddMinutes(30);
+
+                                foreach (BLCita cita in listaCitas)
+                                {
+                                    if ((cita.Hora).Equals(t))
+                                    {
+                                        estado = "Ocupado";
+
+                                    }
+                                }
+
+                                agenda.Add(new ListaItem(t, estado));
+                            }
+
+                        }
+
+                        vistaAgenda.DataSource = agenda;
+                        vistaAgenda.DataBind();
+
                     }
-
-
-                    vistaAgenda.DataSource = agenda;
-                    vistaAgenda.DataBind();
-
-
+                }
             }
+            MostrarMensaje(confirmacion);
         }
 
 
@@ -102,10 +164,6 @@ namespace Pediatric_System
             string colorMensaje = "success";
 
             if (confirmacion.Contains("error"))
-            {
-                colorMensaje = "danger";
-            }
-            if (confirmacion.Contains(""))
             {
                 colorMensaje = "danger";
             }
