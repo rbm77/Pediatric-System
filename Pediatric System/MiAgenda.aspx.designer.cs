@@ -82,7 +82,7 @@ namespace Pediatric_System {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText horaInicio;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl horaInicio;
         
         /// <summary>
         /// Control horaFin.
@@ -91,7 +91,7 @@ namespace Pediatric_System {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText horaFin;
+        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl horaFin;
         
         /// <summary>
         /// Control form_actualizar.

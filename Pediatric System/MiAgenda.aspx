@@ -123,12 +123,12 @@
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="input-group clockpicker">
-                                        <input type="text" class="form-control" placeholder="Hora de Inicio" id="horaInicio" runat="server">
+                                        <input type="time" class="form-control" placeholder="Hora de Inicio" id="horaInicio" runat="server">
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                     <div class="input-group clockpicker2">
-                                        <input type="text" class="form-control" placeholder="Hora de Fin" id="horaFin" runat="server">
+                                        <input type="time" class="form-control" placeholder="Hora de Fin" id="horaFin" runat="server">
                                     </div>
                                 </div>
 
