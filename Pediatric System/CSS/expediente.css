@@ -63,14 +63,14 @@
     color:dimgray;
 }
 
-.tabs-fichas {
-    color: dimgray;
-    font-weight: bold;
-    font-size: larger;
-}
-
 .nombre-input {
     font-size: 16px;  
+    color: dimgray;
+}
+
+.info-paciente {
+    font-weight: bold;
+    font-size: 16px;
     color: dimgray;
 }
 
@@ -80,8 +80,21 @@
     float: right;
 }
 
+.alinearBtnConsulta {
+    text-align: right;
+    display: block
+}
+
+.alinearBtnGuardarExp {
+    text-align: right;
+    display: block
+}
+
 .btnVerConsultas {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    float: right;
+    width: 170px;
+}
+
+.ubicacionBtn {
+    display: inline-block;
+    padding-right: 0px;
 }

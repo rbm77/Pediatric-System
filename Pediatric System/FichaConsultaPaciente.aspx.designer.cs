@@ -11,5 +11,32 @@ namespace Pediatric_System {
     
     
     public partial class FichaConsultaPaciente {
+        
+        /// <summary>
+        /// verConsultas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button verConsultas;
+        
+        /// <summary>
+        /// regresar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button regresar;
+        
+        /// <summary>
+        /// guardarConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button guardarConsulta;
     }
 }
