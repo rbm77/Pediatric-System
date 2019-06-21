@@ -20,12 +20,12 @@ namespace BL
         /// </summary>
         /// <param name="agenda">Agenda</param>
         /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
-        public string ActualizarAgenda(List<BLAgendaEstandar> agenda)
+        public string ActualizarAgenda(List<BLAgendaEstandar> agenda, string codigo)
         {
             string confirmacion = "Error";
             DAOAgendaEstandar dao = new DAOAgendaEstandar();
             List<TOAgendaEstandar> toAgenda = Convertir(agenda);
-            confirmacion = dao.ActualizarAgenda(toAgenda);
+            confirmacion = dao.ActualizarAgenda(toAgenda, codigo);
 
             // Se limpia y carga la lista de agenda con la nueva actualizacion
 
@@ -54,6 +54,11 @@ namespace BL
             return toAgenda;
         }
 
+        /// <summary>
+        ///  Obtiene los dias laborales del medico y su respectivo horario
+        /// </summary>
+        /// <param name="diaSeleccionado">Dia seleccionado</param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
         public string CargarDisponibilidad(BLAgendaEstandar diaSeleccionado)
         {
             string confirmacion = "Error";

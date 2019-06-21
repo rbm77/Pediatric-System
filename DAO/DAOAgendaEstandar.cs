@@ -18,7 +18,7 @@ namespace DAO
         /// </summary>
         /// <param name="agenda">Agenda</param>
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
-        public string ActualizarAgenda(List<TOAgendaEstandar> agenda)
+        public string ActualizarAgenda(List<TOAgendaEstandar> agenda, string codigo)
         {
             // Se abre la conexión
 
@@ -39,7 +39,7 @@ namespace DAO
 
                 string sentencia = "UPDATE DISPONIBILIDAD_MEDICO SET HORA_INICIO = @inicio, HORA_FIN = @fin WHERE CODIGO_MEDICO = @codigo AND DIA = @dia IF @@ROWCOUNT = 0 INSERT INTO DISPONIBILIDAD_MEDICO(CODIGO_MEDICO, DIA, HORA_INICIO, HORA_FIN) VALUES(@codigo, @dia, @inicio, @fin);";
 
-                string codigoMedico = "";
+                string codigoMedico = codigo;
                 string dia = "";
                 string horaInicio = "";
                 string horaFin = "";
@@ -53,7 +53,6 @@ namespace DAO
 
                 foreach (TOAgendaEstandar elemento in agenda)
                 {
-                    codigoMedico = elemento.CodigoMedico;
                     dia = elemento.Dia;
                     horaInicio = elemento.HoraInicio;
                     horaFin = elemento.HoraFin;
@@ -132,6 +131,11 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Obtiene los dias laborales del medico y su respectivo horario
+        /// </summary>
+        /// <param name="diaSeleccionado">Dia seleccionado</param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
         public string CargarDisponibilidad(TOAgendaEstandar diaSeleccionado)
         {
             // Se abre la conexión
