@@ -13,6 +13,24 @@ namespace Pediatric_System {
     public partial class FichaBaseExpediente {
         
         /// <summary>
+        /// form_actualizar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_actualizar;
+        
+        /// <summary>
+        /// verConsultas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button verConsultas;
+        
+        /// <summary>
         /// nombre control.
         /// </summary>
         /// <remarks>
@@ -47,6 +65,24 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cedula;
+        
+        /// <summary>
+        /// validacionFormatoCedulaPaciente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator validacionFormatoCedulaPaciente;
+        
+        /// <summary>
+        /// validacionVacioCedulaPaciente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator validacionVacioCedulaPaciente;
         
         /// <summary>
         /// fechaNacimiento control.
@@ -85,12 +121,21 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox VincExpediente;
         
         /// <summary>
-        /// btnGuardar control.
+        /// regresar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        protected global::System.Web.UI.WebControls.Button regresar;
+        
+        /// <summary>
+        /// guardarExpediente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button guardarExpediente;
     }
 }

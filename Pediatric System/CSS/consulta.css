@@ -7,6 +7,14 @@
     margin-bottom: 15px;
 }
 
+.margen-general-2-bottom {
+    margin-bottom: 0px;
+}
+
+.margen-general-3-top {
+    margin-top: 22px;
+}
+
 .margen-general-2-top {
     margin-top: 15px;
 }
@@ -61,12 +69,6 @@
     color: dimgray;
 }
 
-.tabs-fichas {
-    color: dimgray;
-    font-weight: bold;
-    font-size: larger;
-}
-
 .general-card {
     padding-right: 20px;
     padding-left: 20px;
@@ -76,4 +78,24 @@
     margin-top: 15px;
     margin-bottom: 15px;
     float: right;
+}
+
+.info-paciente {
+    font-weight: bold;
+    font-size: 16px;
+    color: dimgray;
+}
+
+.btnVerGenerarDiagnostico {
+    width: 50%;
+}
+
+.alinearBtnGuardarCon {
+    text-align: right;
+    display: block
+}
+
+.ubicacionBtn {
+    display: inline-block;
+    padding-right: 0px;
 }
