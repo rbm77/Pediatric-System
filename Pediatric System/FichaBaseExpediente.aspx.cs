@@ -40,11 +40,11 @@ namespace Pediatric_System
                 colorMensaje = "danger";
             }
 
-            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+            mensajeConfirmacion1.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
                 "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
                 " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
                 " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion.Visible = true;
+            mensajeConfirmacion1.Visible = true;
         }
 
         //private void MostrarMensaje(string confirmacion)

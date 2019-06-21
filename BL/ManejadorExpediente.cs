@@ -17,7 +17,9 @@ namespace BL
             //DAOExpediente dao = new DAOExpediente();
             //string confirmacion = dao.CrearExpediente(nuevoExpediente);
             //return confirmacion;
-            return "";
+
+            return "arreglar";
+
         }
     }
 }
