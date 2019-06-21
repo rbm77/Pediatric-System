@@ -136,7 +136,7 @@
 
                             <div class="form-row" style="text-align: center; display: block">
                                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6 " runat="server" style="display: inline-block" id="form_actualizar">
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro form-control" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro " Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
                                     <div class="lds-spinner">
                                         <div></div>
                                         <div></div>

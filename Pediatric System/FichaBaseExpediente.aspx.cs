@@ -31,8 +31,8 @@ namespace Pediatric_System
             // Enviar datos para guardar en BD
 
             ManejadorExpediente manejador = new ManejadorExpediente();
-            string confirmacion = manejador.crearExpediente(nombreTxt, primerApellidoTxt, segundoApellidoTxt, cedulaTxt, fechaNacimientoTxt, sexoTxt, fotoTxt, vincularExpedienteTxt);
-
+            //string confirmacion = manejador.crearExpediente(nombreTxt, primerApellidoTxt, segundoApellidoTxt, cedulaTxt, fechaNacimientoTxt, sexoTxt, fotoTxt, vincularExpedienteTxt);
+            string confirmacion = "";
             string colorMensaje = "success";
 
             if (confirmacion.Contains("error"))
