@@ -10,40 +10,57 @@
 
     <script type="text/javascript">
 
+        //function prueba() {
+
+        //    //$('.clockpicker').clockpicker({
+        //    //    'default': 'now',
+        //    //    vibrate: true,
+        //    //    placement: "down",
+        //    //    align: "right",
+        //    //    autoclose: true,
+        //    //    twelvehour: true
+        //    //});
+        //    //$('.clockpicker2').clockpicker({
+        //    //    'default': 'now',
+        //    //    vibrate: true,
+        //    //    placement: "down",
+        //    //    align: "right",
+        //    //    autoclose: true,
+        //    //    twelvehour: true
+        //    //});
 
 
+        //}
 
 
+            //$(document).ready(function () {
+
+            //    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+            //    function EndRequestHandler(sender, args) {
+
+            //        $('.clockpicker').clockpicker({
+            //            'default': 'now',
+            //            vibrate: true,
+            //            placement: "down",
+            //            align: "right",
+            //            autoclose: true,
+            //            twelvehour: true
+            //        });
+            //        $('.clockpicker2').clockpicker({
+            //            'default': 'now',
+            //            vibrate: true,
+            //            placement: "down",
+            //            align: "right",
+            //            autoclose: true,
+            //            twelvehour: true
+            //        });
+
+            //    }
+
+            //});
 
 
-        $(document).ready(function () {
-
-            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-
-            function EndRequestHandler(sender, args) {
-
-                $('.clockpicker').clockpicker({
-                    'default': 'now',
-                    vibrate: true,
-                    placement: "down",
-                    align: "right",
-                    autoclose: true,
-                    twelvehour: true
-                });
-                $('.clockpicker2').clockpicker({
-                    'default': 'now',
-                    vibrate: true,
-                    placement: "down",
-                    align: "right",
-                    autoclose: true,
-                    twelvehour: true
-                });
-
-            }
-
-        });
-
-        
 
     </script>
 
@@ -180,26 +197,26 @@
 
     <br />
 
-    <script type="text/javascript">
+<%--    <script type="text/javascript">
 
-        $('.clockpicker').clockpicker({
-            'default': 'now',
-            vibrate: true,
-            placement: "down",
-            align: "right",
-            autoclose: true,
-            twelvehour: true
-        });
-        $('.clockpicker2').clockpicker({
-            'default': 'now',
-            vibrate: true,
-            placement: "down",
-            align: "right",
-            autoclose: true,
-            twelvehour: true
-        });
+            $('.clockpicker').clockpicker({
+                'default': 'now',
+                vibrate: true,
+                placement: "down",
+                align: "right",
+                autoclose: true,
+                twelvehour: true
+            });
+            $('.clockpicker2').clockpicker({
+                'default': 'now',
+                vibrate: true,
+                placement: "down",
+                align: "right",
+                autoclose: true,
+                twelvehour: true
+            });
 
-    </script>
+    </script>--%>
 
 
 </asp:Content>
