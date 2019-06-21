@@ -5,60 +5,52 @@
     <link rel="stylesheet" href="CSS/hora1.css">
     <script src="JS/hora1.js"></script>
     <script src="JS/hora2.js"></script>
-    <script src="JS/selectorHora.js"></script>
 
 
     <script type="text/javascript">
 
-        //function prueba() {
 
-        //    //$('.clockpicker').clockpicker({
-        //    //    'default': 'now',
-        //    //    vibrate: true,
-        //    //    placement: "down",
-        //    //    align: "right",
-        //    //    autoclose: true,
-        //    //    twelvehour: true
-        //    //});
-        //    //$('.clockpicker2').clockpicker({
-        //    //    'default': 'now',
-        //    //    vibrate: true,
-        //    //    placement: "down",
-        //    //    align: "right",
-        //    //    autoclose: true,
-        //    //    twelvehour: true
-        //    //});
+        function pageLoad() {
+
+            $('.clockpicker').clockpicker({
+                'default': 'now',
+                vibrate: true,
+                placement: "down",
+                align: "right",
+                autoclose: true,
+                twelvehour: true
+            });
+            $('.clockpicker2').clockpicker({
+                'default': 'now',
+                vibrate: true,
+                placement: "down",
+                align: "right",
+                autoclose: true,
+                twelvehour: true
+            });
+
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(endReq);
+            function endReq(sender, args) {
+                $        $('.clockpicker').clockpicker({
+                    'default': 'now',
+                    vibrate: true,
+                    placement: "down",
+                    align: "right",
+                    autoclose: true,
+                    twelvehour: true
+                });
+                $('.clockpicker2').clockpicker({
+                    'default': 'now',
+                    vibrate: true,
+                    placement: "down",
+                    align: "right",
+                    autoclose: true,
+                    twelvehour: true
+                });
+            }
 
 
-        //}
-
-
-            //$(document).ready(function () {
-
-            //    Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-
-            //    function EndRequestHandler(sender, args) {
-
-            //        $('.clockpicker').clockpicker({
-            //            'default': 'now',
-            //            vibrate: true,
-            //            placement: "down",
-            //            align: "right",
-            //            autoclose: true,
-            //            twelvehour: true
-            //        });
-            //        $('.clockpicker2').clockpicker({
-            //            'default': 'now',
-            //            vibrate: true,
-            //            placement: "down",
-            //            align: "right",
-            //            autoclose: true,
-            //            twelvehour: true
-            //        });
-
-            //    }
-
-            //});
+        }
 
 
 
@@ -91,7 +83,17 @@
 
                 <div class="card-body">
 
-                    <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
+                    <asp:ScriptManager ID="scriptmng" runat="server" EnableCdn="true">
+
+                        <Scripts>
+
+                            
+
+                        </Scripts>
+
+                    </asp:ScriptManager>
+
+
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
@@ -122,13 +124,19 @@
                             <div class="form-row">
 
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="input-group clockpicker">
-                                        <input type="time" class="form-control" placeholder="Hora de Inicio" id="horaInicio" runat="server">
+                                    <div class="input-group">
+
+                                        <asp:TextBox ID="clockpicker" runat="server" CssClass="form-control clockpicker"></asp:TextBox>
+
+                                        <%--                                        <input type="text" class="form-control" placeholder="Hora de Inicio" id="horaInicio" runat="server">--%>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="input-group clockpicker2">
-                                        <input type="time" class="form-control" placeholder="Hora de Fin" id="horaFin" runat="server">
+                                    <div class="input-group">
+
+                                        <asp:TextBox ID="clockpicker2" runat="server" CssClass="form-control clockpicker"></asp:TextBox>
+
+                                        <%--                                        <input type="text" class="form-control" placeholder="Hora de Fin" id="horaFin" runat="server">--%>
                                     </div>
                                 </div>
 
@@ -175,7 +183,6 @@
 
                             </div>
 
-
                         </ContentTemplate>
 
                     </asp:UpdatePanel>
@@ -193,30 +200,52 @@
                 </div>
             </div>
         </div>
+
+
     </form>
 
     <br />
 
-<%--    <script type="text/javascript">
+    <%-- <script type="text/javascript">
 
-            $('.clockpicker').clockpicker({
-                'default': 'now',
-                vibrate: true,
-                placement: "down",
-                align: "right",
-                autoclose: true,
-                twelvehour: true
-            });
-            $('.clockpicker2').clockpicker({
-                'default': 'now',
-                vibrate: true,
-                placement: "down",
-                align: "right",
-                autoclose: true,
-                twelvehour: true
-            });
+        $('.clockpicker').clockpicker({
+            'default': 'now',
+            vibrate: true,
+            placement: "down",
+            align: "right",
+            autoclose: true,
+            twelvehour: true
+        });
+        $('.clockpicker2').clockpicker({
+            'default': 'now',
+            vibrate: true,
+            placement: "down",
+            align: "right",
+            autoclose: true,
+            twelvehour: true
+        });
+
+
+        //    Sys.Application.add_load(function () {
+
+        //        $('.clockpicker').clockpicker({
+        //            'default': 'now',
+        //            vibrate: true,
+        //            placement: "down",
+        //            align: "right",
+        //            autoclose: true,
+        //            twelvehour: true
+        //        });
+        //        $('.clockpicker2').clockpicker({
+        //            'default': 'now',
+        //            vibrate: true,
+        //            placement: "down",
+        //            align: "right",
+        //            autoclose: true,
+        //            twelvehour: true
+        //        });
+
+        //});
 
     </script>--%>
-
-
 </asp:Content>

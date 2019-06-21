@@ -30,8 +30,8 @@ namespace Pediatric_System
 
             string codigoMedico = "777";
 
-            string inicio = horaInicio.Value.Trim();
-            string fin = horaFin.Value.Trim();
+            string inicio = clockpicker.Text.Trim();
+            string fin = clockpicker2.Text.Trim();
 
             List<BLAgendaEstandar> agenda = new List<BLAgendaEstandar>();
 
@@ -107,8 +107,8 @@ namespace Pediatric_System
 
         private void Limpiar()
         {
-            horaInicio.Value = "";
-            horaFin.Value = "";
+            clockpicker.Text = "";
+            clockpicker2.Text = "";
             lunes.Checked = false;
             martes.Checked = false;
             miercoles.Checked = false;
