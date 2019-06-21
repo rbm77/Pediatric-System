@@ -695,9 +695,11 @@
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6 ubicacionBtn" runat="server">
                     <asp:Button type="button" runat="server" CssClass="btn btn-regresar form-control" Text="REGRESAR" ID="regresar" />
 
-                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar form-control" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar form-control" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" OnClick="guardarExpediente_Click" />
                 </div>
             </div>
+
+            <asp:Literal ID="mensajeConfirmacion" runat="server"></asp:Literal>
 
         </form>
 
