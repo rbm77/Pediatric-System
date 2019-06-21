@@ -76,22 +76,22 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox viernes;
         
         /// <summary>
-        /// Control horaInicio.
+        /// Control clockpicker.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl horaInicio;
+        protected global::System.Web.UI.WebControls.TextBox clockpicker;
         
         /// <summary>
-        /// Control horaFin.
+        /// Control clockpicker2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl horaFin;
+        protected global::System.Web.UI.WebControls.TextBox clockpicker2;
         
         /// <summary>
         /// Control form_actualizar.
