@@ -19,6 +19,9 @@ namespace Pediatric_System
             {
                 MostrarAgenda(new List<BLAgendaEstandar>(), "777");
             }
+
+            ClientScript.RegisterStartupScript(this.GetType(), "myScript", "MostrarOcultarDiv();", true);
+
         }
 
         protected void Actualizar_Click(object sender, EventArgs e)
