@@ -22,6 +22,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Image Image1;
         
         /// <summary>
+        /// mensajeConfirmacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
+        
+        /// <summary>
         /// txtCorreo control.
         /// </summary>
         /// <remarks>
@@ -47,14 +56,5 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button botonLogin;
-        
-        /// <summary>
-        /// lblFallo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFallo;
     }
 }

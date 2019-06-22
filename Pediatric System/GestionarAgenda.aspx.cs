@@ -105,10 +105,7 @@ namespace Pediatric_System
             {
                 colorMensaje = "danger";
             }
-            if (confirmacion.Contains(""))
-            {
-                colorMensaje = "danger";
-            }
+           
 
 
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +

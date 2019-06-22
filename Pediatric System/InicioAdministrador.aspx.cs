@@ -13,5 +13,10 @@ namespace Pediatric_System
         {
 
         }
+
+        protected void botonCrearCuenta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CuentaPersonal.aspx");
+        }
     }
 }

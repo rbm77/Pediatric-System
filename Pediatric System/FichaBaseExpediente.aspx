@@ -501,7 +501,7 @@
                                             <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Otras Complicaciones</label>
-                                                    <select class="estadoPerinatal browser-default custom-select">
+                                                    <select  class="estadoPerinatal browser-default custom-select">
                                                         <option value="ausentes" selected>Ausentes</option>
                                                         <option value="presentes">Presentes</option>
                                                     </select>
@@ -512,7 +512,7 @@
                                                 <div class="padding-general-label">
                                                     <div class="complicacionPerinatal">
                                                         <label class="nombre-input">Complicaciones</label>
-                                                        <textarea class="form-control"></textarea>
+                                                        <textarea id="complicacionPerinatal" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -580,7 +580,7 @@
                                                     <label class="form-check-label nombre-input" for="otrosCheck">Otros</label>
                                                     <div class="descripcionOtros">
                                                         <label class="nombre-input">Descripción</label>
-                                                        <textarea class="form-control"></textarea>
+                                                        <textarea id= "descripcionOtros" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -604,7 +604,7 @@
                                                 </select>
                                                 <div class="descripcionPatologicos margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionPatologicos" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -624,7 +624,7 @@
                                                 </select>
                                                 <div class="descripcionQuirurgico margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionQuirurgico"class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -646,7 +646,7 @@
                                                 </select>
                                                 <div class="descripcionTraumatico margen-general-2-top">
                                                     <label class="nombre-input">Descripcion</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionTraumatico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -666,7 +666,7 @@
                                                 </select>
                                                 <div class="descripcionAlergia form-row" style="margin-top: 15px;">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id= "descripcionAlergia" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
