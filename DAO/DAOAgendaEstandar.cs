@@ -20,17 +20,35 @@ namespace DAO
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
         public string ActualizarAgenda(List<TOAgendaEstandar> agenda, string codigo)
         {
+            string confirmacion = "La agenda se actualizó exitosamente";
+
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la agenda";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar la agenda";
+                return confirmacion;
             }
 
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Actualizar la agenda");
-            string confirmacion = "La agenda se actualizó exitosamente";
+            
 
             try
             {
@@ -138,17 +156,36 @@ namespace DAO
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
         public string CargarDisponibilidad(TOAgendaEstandar diaSeleccionado)
         {
+            string confirmacion = "La agenda se cargó exitosamente";
+
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                return confirmacion;
             }
 
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
-            string confirmacion = "La agenda se cargó exitosamente";
+
+
 
             try
             {
@@ -212,6 +249,95 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Elimina el dia seleccionado de la agenda laboral
+        /// </summary>
+        /// <param name="codigoMedico">Codigo Medico</param>
+        /// <param name="dia">Dia</param>
+        /// <returns>Retorna un mensaje indicando si la transaccion se realizo</returns>
+        public string EliminarHorario(string codigoMedico, string dia)
+        {
+            string confirmacion = "La agenda se actualizó exitosamente";
+
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la agenda";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar la agenda";
+                return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Eliminar horario");
+
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                string sentencia = "DELETE FROM DISPONIBILIDAD_MEDICO WHERE CODIGO_MEDICO = @codigo AND DIA = @dia;";
+
+                SqlCommand comando = new SqlCommand(sentencia, conexion);
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar y se ejecuta el comando
+
+                comando.Parameters.AddWithValue("@codigo", codigoMedico);
+                comando.Parameters.AddWithValue("@dia", dia);
+
+                comando.ExecuteNonQuery();
+
+
+
+                // Se realiza un commit de la transacción
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la agenda";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
 
 
     }
