@@ -80,12 +80,8 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     color: #FFFFFF;
 }
-.form-control:focus {
-    color: #fcfdff !important;
-    background-color: #1D5E93 !important;
-    border-color: #80bdff !important;
-}
-.form-control:focus ~ .lds-spinner {
+
+.btn:focus ~ .lds-spinner {
     display: inline-block !important;
 }
 .lds-spinner {

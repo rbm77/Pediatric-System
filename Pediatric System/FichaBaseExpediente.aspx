@@ -39,7 +39,7 @@
                         <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <div class="alinearBtnConsulta">
                                 <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro form-control btnVerConsultas" Text="CONSULTAS" ID="verConsultas" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnVerConsultas" Text="CONSULTAS" ID="verConsultas" />
                                 </div>
                             </div>
                         </div>
