@@ -17,8 +17,7 @@ namespace Pediatric_System
             Session["Cuenta"] = null;
         }
 
-        protected void ButtonLogin_Click(object sender, EventArgs e)
-        {
+        protected void ButtonLogin_Click(object sender, EventArgs e){
             try
             {
                 BLCuenta miBLCuenta = new BLCuenta();
@@ -26,28 +25,59 @@ namespace Pediatric_System
                 miBLCuenta.contrasena = txtContra.Text;
                 miBLCuenta.buscar();
                 //metodo de verificacion, si es positivo entra y cambia vista, si es negativo borra campos y muestra label 
-                if (miBLCuenta.estado == "Activo" && miBLCuenta.tipo == "Doctor")
-                {
+                if (miBLCuenta.estado == "Activo"){
                     Session["Cuenta"] = miBLCuenta.correo;
-                    Response.Redirect("InicioPrincipal.aspx");
-                } else
-                {
+                    switch (miBLCuenta.tipo)
+                    {
+                        case "Medico":
+                            Response.Redirect("InicioPrincipal.aspx");
+                            break;
+                        case "Administrador":
+                            Response.Redirect("InicioAdministrador.aspx");
+                            break;
+                        case "Paciente":
+                            Response.Redirect("InicioUsuarioExterno.aspx");
+                            break;
+                    }
+                } else {                
                     txtContra.Text = "";
                     txtCorreo.Text = "";
-                    lblFallo.Visible = true;
-                    lblFallo.Text = "La cuenta no esta prro";
+                    mensajeConfirmacion.Text = "<div class=\"alert alert-danger alert-dismissible fade show\" " +
+         "role=\"alert\"> <strong></strong>" + "Contraseña o correo incorrectob" + "<button" +
+    " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+    " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+                    mensajeConfirmacion.Visible = true;
                 }
-
             }
             catch (Exception)
             {
                 txtContra.Text = "";
                 txtCorreo.Text = "";
                 throw;
-            }
-            
-
-           
+            }   
         }
+
+
+        private void MostrarMensaje(string confirmacion)
+        {
+            string colorMensaje = "success";
+            if (confirmacion.Contains("error"))
+            {
+                colorMensaje = "danger";
+            }
+            if (confirmacion.Contains(""))
+            {
+                colorMensaje = "danger";
+            }
+
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+        }
+
+
+
     }
 }
