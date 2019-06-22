@@ -14,7 +14,7 @@ namespace Pediatric_System
     {
         // El dia seleccionado corresponde a la fecha que se selecciona en el calendario
 
-        private static DateTime diaSeleccionado = DateTime.Now; 
+        private static DateTime diaSeleccionado = DateTime.Now;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +24,7 @@ namespace Pediatric_System
             {
                 MostrarAgenda(diaSeleccionado, "");
             }
-            
+
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Pediatric_System
                             }
 
 
-                            // Luego se incluyen las citas 
+                            // Luego se incluyen las citas
 
                             bool existe = false;
 
@@ -229,6 +229,7 @@ namespace Pediatric_System
             {
                 colorMensaje = "danger";
             }
+
 
 
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +

@@ -21,11 +21,25 @@ namespace BL
         DAOCuenta miDAOCuenta = new DAOCuenta();
 
 
+
+        public string insertarCuenta()
+        {
+            string confirmacion = "Error";
+            miTOCuenta.correo = this.correo;
+            miTOCuenta.contrasena = this.contrasena;
+            miTOCuenta.tipo = this.tipo;
+            miTOCuenta.estado = "Activo";
+            confirmacion = miDAOCuenta.InsertarCuenta(miTOCuenta);
+            return confirmacion;
+
+        }
+
+
         public void buscar()
         {
             miTOCuenta.correo = this.correo;
             miTOCuenta.contrasena = this.contrasena;
-            miDAOCuenta.buscar(miTOCuenta);
+            miDAOCuenta.buscarCuentaConContraseña(miTOCuenta);
             this.tipo = miTOCuenta.tipo;
             this.estado = miTOCuenta.estado;
         }
