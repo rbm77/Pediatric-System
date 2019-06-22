@@ -4,9 +4,6 @@ td {
 }
 
 .resaltado:hover {
-    
-    border-bottom: solid;
-    border-color: cornsilk;
     color: steelblue;
 }
 
