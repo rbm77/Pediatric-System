@@ -104,10 +104,6 @@
                     </div>
 
 
-
-
-
-
                     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                         <ContentTemplate>
 
@@ -116,12 +112,11 @@
                             <div class="form-row" style="text-align: center; display: block">
                                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6 " runat="server" style="display: inline-block" id="form_actualizar">
 
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro form-control" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
+
                                     <br />
                                     <br />
 
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro " Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
-}
                                     <div class="lds-spinner">
                                         <div></div>
                                         <div></div>
@@ -151,8 +146,10 @@
                                         <asp:BoundField HeaderText="Día" DataField="Dia" ControlStyle-Width="25%" />
                                         <asp:BoundField HeaderText="Inicio" DataField="HoraInicio" ControlStyle-Width="25%" />
                                         <asp:BoundField HeaderText="Fin" DataField="HoraFin" ControlStyle-Width="25%" />
+
                                         <asp:ButtonField HeaderText="Acción" CommandName="Eliminar"
-                                            ControlStyle-CssClass="btn btn-eliminar form-control fas fa-trash-alt" runat="server" ControlStyle-Width="25%" />
+                                            ControlStyle-CssClass="btn btn-eliminar fas fa-trash-alt" runat="server" ControlStyle-Width="25%" />
+
                                     </Columns>
                                 </asp:GridView>
 
@@ -172,7 +169,7 @@
 
                 <div class="form-row" style="text-align: right; display: block; margin-right: 15px;">
                     <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
-                        <asp:Button type="button" runat="server" class="btn btn-regresar  form-control" Text="REGRESAR" ID="Regresar" />
+                        <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" />
                     </div>
                 </div>
             </div>
