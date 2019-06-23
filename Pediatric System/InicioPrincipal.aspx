@@ -9,7 +9,7 @@
 
     <div class="container-fluid col-10 col-auto">
         <div class="page-header">
-            <h3 class="text-info">Inicio</h3>
+            <h3 class="text-info">Expedientes</h3>
         </div>
     </div>
 
@@ -18,26 +18,13 @@
     <form>
         <br />
 
-        <div class="container-fluid col-10 col-auto table-responsive">
+        <div class="container-fluid col-11 col-auto table-responsive">
 
             <div class="card">
-                <h5 class="card-header text-center" style="color: dimgray;">Lista de Expedientes</h5>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i> Lista de Expedientes</h5>
                 <div class="card-body">
-
-                    <div class="form-row">
-                        <div class="form-group has-search col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                            <input type="search" class="form-control" placeholder="Nombre o Cédula">
-                        </div>
-
-
-                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                            <button type="submit" class="btn btn-neutro form-control">BUSCAR</button>
-
-                        </div>
-
-                    </div>
-                    <table class="table table-hover">
+                    <div class="table-responsive">
+                    <table class="table table-hover" id="dataTable">
                         <thead>
                             <tr class="bg-light">
                                 <th scope="col" style="color: dimgray;">Nombre Completo</th>
@@ -55,6 +42,7 @@
                             </tr>
                         </tbody>
                     </table>
+                        </div>
 
                     <hr style="color: #0056b2;" />
                     <br />

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/css/gijgo.min.css" />
     <script src="JS/Calendario.js"></script>
     <script src="JS/Idioma.js"></script>
-
+    <link href="JS/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
     <!-- Fuentes-->
     <link href="fonts/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 
@@ -28,8 +28,6 @@
     <link href="CSS/sb-admin.css" rel="stylesheet" />
     <link href="CSS/general.css" rel="stylesheet" />
 
-    <link href="CSS/loading.css" rel="stylesheet" />
-    <link href="CSS/loading-btn.css" rel="stylesheet" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -190,11 +188,13 @@
     <!-- Core plugin JavaScript-->
     <script src="JS/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugin JavaScript
-  <script src="vendor/datatables/jquery.dataTables.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>-->
+    <!-- Page level plugin JavaScript-->
+    <script src="JS/datatables/jquery.dataTables.js"></script>
+    <script src="JS/datatables/dataTables.bootstrap4.js"></script>
 
     <!-- Custom scripts for all pages-->
     <script src="JS/sb-admin.js"></script>
+
+    <script src="JS/demo/datatables-demo.js"></script>
 </body>
 </html>
