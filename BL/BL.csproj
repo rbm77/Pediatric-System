@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLAdministrativo.cs" />
     <Compile Include="BLAgendaEstandar.cs" />
     <Compile Include="BLCita.cs" />
     <Compile Include="BLCuenta.cs" />
@@ -49,6 +50,8 @@
     <Compile Include="BLEnviarCorreo.cs" />
     <Compile Include="BLExpediente.cs" />
     <Compile Include="BLHistoriaClinica.cs" />
+    <Compile Include="BLMedico.cs" />
+    <Compile Include="BLPersonal.cs" />
     <Compile Include="ManejadorAgenda.cs" />
     <Compile Include="ManejadorCita.cs" />
     <Compile Include="ManejadorExpediente.cs" />

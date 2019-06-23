@@ -14,7 +14,7 @@ namespace Pediatric_System
     {
         // El dia seleccionado corresponde a la fecha que se selecciona en el calendario
 
-        private static DateTime diaSeleccionado = DateTime.Now; 
+        private static DateTime diaSeleccionado = DateTime.Now;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -24,7 +24,7 @@ namespace Pediatric_System
             {
                 MostrarAgenda(diaSeleccionado, "");
             }
-            
+
         }
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Pediatric_System
                             }
 
 
-                            // Luego se incluyen las citas 
+                            // Luego se incluyen las citas
 
                             bool existe = false;
 
@@ -191,10 +191,11 @@ namespace Pediatric_System
                             agenda.Sort((x, y) => string.Compare(x.Hora, y.Hora));
                         }
 
-                        vistaAgenda.DataSource = agenda;
-                        vistaAgenda.DataBind();
-
                     }
+
+                    vistaAgenda.DataSource = agenda;
+                    vistaAgenda.DataBind();
+                    //  vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
                 }
             }
 
@@ -228,6 +229,7 @@ namespace Pediatric_System
             {
                 colorMensaje = "danger";
             }
+
 
 
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
@@ -303,41 +305,6 @@ namespace Pediatric_System
 
         }
 
-        /// <summary>
-        /// Muestra el modal para crear o cancelar una cita, al seleccionar un elemento de la agenda
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected void vistaAgenda_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-            mensajeConfirmacion.Visible = false;
-
-            GridViewRow row = vistaAgenda.SelectedRow;
-            string estadoSeleccionado = row.Cells[1].Text;
-
-            if (estadoSeleccionado.Equals("Ocupado"))
-            {
-                btnCrear.Visible = false;
-                btnCancelar.Visible = true;
-
-                // 
-
-
-
-            } else
-            {
-                btnCancelar.Visible = false;
-                btnCrear.Visible = true;
-            }
-
-            fecha.Text = diaSeleccionado.ToShortDateString();
-            hora.Text = row.Cells[0].Text;
-            hora.Enabled = false;
-            fecha.Enabled = false;
-            modalEdicion.Show();
-
-        }
 
         /// <summary>
         /// Envia los datos del formulario a base de datos para almacenar una nueva cita
@@ -354,13 +321,13 @@ namespace Pediatric_System
             string correoTxt = correo.Text.Trim();
             int telefonoTxt = int.Parse(telefono.Text.Trim());
             string fechaTxt = fecha.Text.Trim();
-            string horaTxt = hora.Text.Trim();
+            string horaT = horaTxt.Text.Trim();
 
             // Enviar datos para guardar en la base de datos
 
             ManejadorCita manejador = new ManejadorCita();
 
-            string confirmacion = manejador.CrearCita("777", nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaTxt);
+            string confirmacion = manejador.CrearCita("777", nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaT);
 
             LimpiarCampos();
 
@@ -378,8 +345,51 @@ namespace Pediatric_System
             correo.Text = "";
             telefono.Text = "";
             fecha.Text = "";
-            hora.Text = "";
+            horaTxt.Text = "";
         }
 
+
+        /// <summary>
+        /// Muestra el modal para crear o cancelar una cita, al seleccionar un elemento de la agenda
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void vistaAgenda_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            if (e.CommandName == "Seleccionar")
+            {
+                int indice = Convert.ToInt32(e.CommandArgument);
+
+                GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
+                TableCell estado = filaSeleccionada.Cells[1];
+                TableCell hora = filaSeleccionada.Cells[0];
+                string estadoSeleccionado = estado.Text;
+                string horaSeleccionada = hora.Text;
+
+                mensajeConfirmacion.Visible = false;
+
+
+                if (estadoSeleccionado.Equals("Ocupado"))
+                {
+                    btnCrear.Visible = false;
+                    btnCancelar.Visible = true;
+
+                }
+                else
+                {
+                    btnCancelar.Visible = false;
+                    btnCrear.Visible = true;
+                }
+
+                fecha.Text = diaSeleccionado.ToShortDateString();
+                horaTxt.Text = horaSeleccionada;
+                horaTxt.Enabled = false;
+                fecha.Enabled = false;
+                modalEdicion.Show();
+
+            }
+
+        }
     }
 }

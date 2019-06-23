@@ -40,13 +40,12 @@
 
                     <div class="container-fluid border rounded">
 
-
                         <div class="form-row" style="text-align: center; display: block">
                             <div class="form-group" style="display: inline-block">
 
                                 <br />
 
-                                <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
+  <%--                              <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
                                     Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" NextPrevFormat="FullMonth"
                                     OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
                                     <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
@@ -55,7 +54,20 @@
                                     <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
                                     <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
                                     <TodayDayStyle BackColor="#CCCCCC" />
-                                </asp:Calendar>
+                                </asp:Calendar>--%>
+
+
+
+                                
+                            <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="white" BorderWidth="1px" Font-Names="Verdana" Font-Size="11pt" ForeColor="#1e5f93" Height="200px" NextPrevFormat="FullMonth" Width="400px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
+                                <DayHeaderStyle />
+                                <NextPrevStyle/>
+                                <OtherMonthDayStyle ForeColor="#999999" />
+                                <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
+                                <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#1ca5ac" />
+                                <TodayDayStyle BackColor="#CCCCCC" />
+                            </asp:Calendar>
+
 
 
 
@@ -69,13 +81,30 @@
                         <div class="table-responsive">
 
                             <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
-                                Style="text-align: center" AutoGenerateColumns="true" HeaderStyle-CssClass="bg-light"
+                                Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="bg-light"
                                 HeaderStyle-ForeColor="DimGray" GridLines="None"
-                                OnSelectedIndexChanged="vistaAgenda_SelectedIndexChanged"
+                                OnRowCommand="vistaAgenda_RowCommand"
                                 OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">
+
+
+                                <Columns>
+                                    <asp:BoundField HeaderText="Hora" DataField="Hora" ControlStyle-Width="33.3%" />
+                                    <asp:BoundField HeaderText="Estado" DataField="Estado" ControlStyle-Width="33.3%" />
+
+
+                                    <asp:ButtonField HeaderText="Acción" CommandName="Seleccionar"
+                                        ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="33.3%" />
+
+                                </Columns>
+
+
+
+
+
                             </asp:GridView>
 
                         </div>
+
 
                     </div>
 
@@ -115,7 +144,7 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label for="hora" class="nombre-label">Hora</label>
-                                        <asp:TextBox runat="server" ID="hora" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="horaTxt" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -150,40 +179,69 @@
                         </div>
                         <div class="modal-footer">
 
+                            <div class="form-group" style="text-align: center; display: inline-block">
 
-                            <asp:Button ID="btnCrear" runat="server" Text="CREAR CITA" 
-                                CssClass="btn btn-outline-success form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6"
-                                OnClick="btnCrear_Click">
+                                <asp:Button type="button" runat="server" class="btn btn-guardar" Text="CREAR CITA" ID="btnCrear" OnClick="btnCrear_Click" />
 
-                               
+                                <br />
+                                <br />
 
-                            </asp:Button>
+                                <div class="lds-spinner">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
 
-                            <asp:Button ID="btnCancelar" runat="server" Text="CANCELAR CITA" CssClass="btn btn-outline-danger form-control form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" />
+                            <div class="form-group" style="text-align: center; display: inline-block">
 
+                                <asp:Button type="button" runat="server" class="btn btn-eliminar" Text="CANCELAR CITA" ID="btnCancelar" />
 
+                                <br />
+                                <br />
+
+                                <div class="lds-spinner">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
                         </div>
                     </asp:Panel>
 
                 </ContentTemplate>
             </asp:UpdatePanel>
+
+            <br />
+            <div class="form-row" style="text-align: right; display: block">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
+                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" />
+                </div>
+            </div>
+
         </form>
 
 
 
     </div>
-
-    <br />
-
-    <br />
-
-
-
-    <div class="container-fluid col-4 col-auto">
-        <button type="submit" class="btn btn-outline-danger form-control col-lg-12 col-md-12 col-sm-12 col-xs-12">REGRESAR</button>
-    </div>
-
-    <br />
 
     <script>
 
