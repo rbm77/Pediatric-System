@@ -22,7 +22,7 @@ namespace BL
         /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
         public string ActualizarAgenda(List<BLAgendaEstandar> agenda, string codigo)
         {
-            string confirmacion = "Error";
+            string confirmacion = "error";
             DAOAgendaEstandar dao = new DAOAgendaEstandar();
             List<TOAgendaEstandar> toAgenda = Convertir(agenda);
             confirmacion = dao.ActualizarAgenda(toAgenda, codigo);
@@ -61,7 +61,7 @@ namespace BL
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
         public string CargarDisponibilidad(BLAgendaEstandar diaSeleccionado)
         {
-            string confirmacion = "Error";
+            string confirmacion = "error";
             DAOAgendaEstandar dao = new DAOAgendaEstandar();
             TOAgendaEstandar toDisponibilidad = new TOAgendaEstandar();
             toDisponibilidad.CodigoMedico = diaSeleccionado.CodigoMedico;
@@ -71,5 +71,20 @@ namespace BL
             diaSeleccionado.HoraFin = toDisponibilidad.HoraFin;
             return confirmacion;
         }
+
+        /// <summary>
+        /// Elimina el dia seleccionado de la agenda laboral
+        /// </summary>
+        /// <param name="codigoMedico">Codigo Medico</param>
+        /// <param name="dia">Dia</param>
+        /// <returns>Retorna un mensaje indicando si la transaccion se realizo</returns>
+        public string EliminarHorario(string codigoMedico, string dia)
+        {
+            string confirmacion = "error";
+            DAOAgendaEstandar dao = new DAOAgendaEstandar();
+            confirmacion = dao.EliminarHorario(codigoMedico, dia);
+            return confirmacion;
+        }
+
     }
 }

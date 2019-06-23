@@ -112,13 +112,13 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox fecha;
         
         /// <summary>
-        /// Control hora.
+        /// Control horaTxt.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox hora;
+        protected global::System.Web.UI.WebControls.TextBox horaTxt;
         
         /// <summary>
         /// Control nombre.
@@ -173,5 +173,14 @@ namespace Pediatric_System {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCancelar;
+        
+        /// <summary>
+        /// Control Regresar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Regresar;
     }
 }

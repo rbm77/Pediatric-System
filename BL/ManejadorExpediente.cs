@@ -11,14 +11,12 @@ namespace BL
 {
     public class ManejadorExpediente
     {
-        public string crearExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, string foto, string expedienteAnti)
+        public string crearExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expedienteAnti)
         {
-            //TOExpediente nuevoExpediente = new TOExpediente(nombre, primerApellido, segundoApellido, cedula, fechaNacimiento, sexo, foto, expedienteAnti);
-            //DAOExpediente dao = new DAOExpediente();
-            //string confirmacion = dao.CrearExpediente(nuevoExpediente);
-            //return confirmacion;
-
-            return "arreglar";
+            TOExpediente nuevoExpediente = new TOExpediente(nombre, primerApellido, segundoApellido, cedula, fechaNacimiento, sexo, foto, expedienteAnti);
+            DAOExpediente dao = new DAOExpediente();
+            string confirmacion = dao.CrearExpediente(nuevoExpediente);
+            return confirmacion;
 
         }
     }

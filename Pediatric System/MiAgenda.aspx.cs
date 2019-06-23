@@ -17,12 +17,15 @@ namespace Pediatric_System
         {
             if (!IsPostBack)
             {
-                MostrarAgenda(new List<BLAgendaEstandar>(), "777");
+                MostrarAgenda(new List<BLAgendaEstandar>(), "777", true);
             }
-
-            ClientScript.RegisterStartupScript(this.GetType(), "myScript", "prueba();", true);
         }
 
+        /// <summary>
+        /// Actualiza el grid cada vez que se presiona sobre el boton
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Actualizar_Click(object sender, EventArgs e)
         {
 
@@ -56,12 +59,19 @@ namespace Pediatric_System
                 agenda.Add(new BLAgendaEstandar(codigoMedico, viernes.Value, inicio, fin));
             }
 
-            MostrarAgenda(agenda, codigoMedico);
+            MostrarAgenda(agenda, codigoMedico, false);
 
-          
+            ScriptManager.RegisterStartupScript(this, GetType(), "Limpiar campos de texto", "limpiar();", true);
+
         }
 
-        private void MostrarAgenda(List<BLAgendaEstandar> agenda, string codigo)
+        /// <summary>
+        /// Muestra el los dias laborales en el grid
+        /// </summary>
+        /// <param name="agenda"></param>
+        /// <param name="codigo"></param>
+        /// <param name="primeraVez"></param>
+        private void MostrarAgenda(List<BLAgendaEstandar> agenda, string codigo, bool primeraVez)
         {
 
             ManejadorAgenda manejador = new ManejadorAgenda();
@@ -81,6 +91,8 @@ namespace Pediatric_System
                 if (agenda.Count == 0)
                 {
                     confirmacion = "En este momento no cuenta un horario laboral";
+                    vistaAgenda.DataSource = agenda;
+                    vistaAgenda.DataBind();
                 } else
                 {
                     // Se muestra la agenda
@@ -88,12 +100,17 @@ namespace Pediatric_System
                     vistaAgenda.DataSource = agenda;
                     vistaAgenda.DataBind();
                     vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
-
                     Limpiar();
+                    UpdatePanel2.Update();
+
+                    if (primeraVez)
+                    {
+                        confirmacion = "La agenda se cargó exitosamente";
+                    }
+
                 }
 
             }
-
 
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
                 "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
@@ -105,10 +122,11 @@ namespace Pediatric_System
         }
 
 
+        /// <summary>
+        /// Reinicia los valores de los campos de entrada
+        /// </summary>
         private void Limpiar()
         {
-            clockpicker.Text = "";
-            clockpicker2.Text = "";
             lunes.Checked = false;
             martes.Checked = false;
             miercoles.Checked = false;
@@ -117,24 +135,44 @@ namespace Pediatric_System
 
         }
 
+        /// <summary>
+        /// Elimina el dia seleccionado en el grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void vistaAgenda_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
             if (e.CommandName == "Eliminar")
             {
+                string codigoMedico = "777";
+                ManejadorAgenda manejador = new ManejadorAgenda();
 
-                //// Convert the row index stored in the CommandArgument
-                //// property to an Integer.
-                //int indice = Convert.ToInt32(e.CommandArgument);
+                int indice = Convert.ToInt32(e.CommandArgument);
 
-                //// Get the last name of the selected author from the appropriate
-                //// cell in the GridView control.
-                //GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
-                //TableCell contacto = filaSeleccionada.Cells[0];
-                //string contact = contacto.Text;
+                GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
+                TableCell nombreDia = filaSeleccionada.Cells[0];
+                string dia = nombreDia.Text.Replace("&#233;", "é");
 
-                //// Display the selected author.
-                //Label1.Text = contact;
+                
+                string confirmacion = manejador.EliminarHorario(codigoMedico, dia);
+                string colorMensaje = "";
+
+                if (confirmacion.Contains("error"))
+                {
+                    colorMensaje = "danger";
+                    mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+                    "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+                    " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                    " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+                    mensajeConfirmacion.Visible = true;
+
+                }
+                else
+                {
+                    MostrarAgenda(new List<BLAgendaEstandar>(), codigoMedico, false);
+                    ScriptManager.RegisterStartupScript(this, GetType(), "Limpiar campos de texto", "limpiar();", true);
+                }
 
             }
 

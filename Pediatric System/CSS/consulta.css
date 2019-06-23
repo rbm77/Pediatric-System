@@ -1,7 +1,4 @@
-﻿.linea-divisoria-titulo {
-    color: dimgray;
-}
-
+﻿
 
 .margen-general-1-bottom {
     margin-bottom: 15px;
@@ -98,4 +95,23 @@
 .ubicacionBtn {
     display: inline-block;
     padding-right: 0px;
+}
+
+.alinearFoto {
+    text-align: center;
+    display: block
+}
+
+.alinearBtnExpFin {
+    text-align: right;
+    display: block
+}
+
+.ubicacionBtn {
+    display: inline-block;
+    padding-right: 0px;
+}
+
+.btnsExpFin {
+    width: 170px;
 }

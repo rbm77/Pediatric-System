@@ -21,17 +21,36 @@ namespace DAO
         /// <returns>Retorna un mensaje de confirmación indicando si se realizó la transacción</returns>
         public string CrearCita(TOCita nuevaCita)
         {
+            string confirmacion = "La cita se ingresó exitosamente en el sistema";
+
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo ingresar la cita en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo ingresar la cita en el sistema";
+                return confirmacion;
             }
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nueva cita");
-            string confirmacion = "La cita se ingresó exitosamente en el sistema";
+            SqlTransaction transaccion = conexion.BeginTransaction("Ingresar nueva cita");
+
+
 
             try
             {
@@ -98,17 +117,36 @@ namespace DAO
         /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
         public string CargarCitas(List<TOCita> toLista, string codigoMedico, string fecha)
         {
+            string confirmacion = "Las citas se cargaron exitosamente";
+
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar las citas";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar las citas";
+                return confirmacion;
             }
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar citas");
-            string confirmacion = "Las citas se cargaron exitosamente";
+            SqlTransaction transaccion = conexion.BeginTransaction("Ingresar nueva cita");
+
+
 
             try
             {

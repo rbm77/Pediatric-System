@@ -28,19 +28,27 @@
 
                         <div class="form-group col-lg-2 col-md-6 col-sm-6 col-xs-6">
                             <label class="info-paciente">Cédula: </label>
-                            <label class="nombre-input"></label>
+                            <label class="nombre-input">604440297</label>
                         </div>
 
                         <div class="form-group col-lg-1 col-md-6 col-sm-6 col-xs-6">
                             <label class="info-paciente">Edad: </label>
-                            <label class="nombre-input"></label>
+                            <label class="nombre-input">21</label>
                         </div>
 
                         <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
                             <div class="alinearBtnConsulta">
                                 <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnVerConsultas" Text="CONSULTAS" ID="verConsultas" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="CONSULTAS" ID="verConsultas" />
+
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="NUEVA CONSULTA" ID="Button1" />
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="alinearFoto">
+                                <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
                             </div>
                         </div>
                     </div>
@@ -188,9 +196,7 @@
                                                     <label class="nombre-input">Foto del Paciente</label>
                                                     <div class="custom-file">
                                                         <asp:FileUpload ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
-                                                        <%--<input type="file" class="custom-file-input" id="subirFotoPaciente"
-                                                            aria-describedby="inputGroupFileAddon01">--%>
-                                                        <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar">Seleccionar Archivo</label>
+                                                        <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -451,7 +457,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <label class="nombre-input">Edad gestacional</label>                                                   
+                                                    <label class="nombre-input">Edad gestacional</label>
                                                     <input type="text" class="form-control">
                                                 </div>
                                             </div>
@@ -524,7 +530,7 @@
                                                 <div class="padding-general-label">
                                                     <div class="complicacionPerinatal">
                                                         <label class="nombre-input">Complicaciones</label>
-                                                        <textarea class="form-control"></textarea>
+                                                        <textarea id="complicacionPerinatal" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -590,7 +596,7 @@
                                                     <label class="form-check-label nombre-input" for="otrosCheck">Otros</label>
                                                     <div class="descripcionOtros">
                                                         <label class="nombre-input">Descripción</label>
-                                                        <textarea class="form-control"></textarea>
+                                                        <textarea id="descripcionOtros" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -614,7 +620,7 @@
                                                 </select>
                                                 <div class="descripcionPatologicos margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionPatologicos" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -634,7 +640,7 @@
                                                 </select>
                                                 <div class="descripcionQuirurgico margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionQuirurgico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -656,7 +662,7 @@
                                                 </select>
                                                 <div class="descripcionTraumatico margen-general-2-top">
                                                     <label class="nombre-input">Descripcion</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionTraumatico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -676,7 +682,7 @@
                                                 </select>
                                                 <div class="descripcionAlergia form-row" style="margin-top: 15px;">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea class="form-control"></textarea>
+                                                    <textarea id="descripcionAlergia" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -693,9 +699,9 @@
 
             <div class="form-row alinearBtnGuardarExp">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar form-control" Text="REGRESAR" ID="regresar" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
 
-                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar form-control" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" OnClick="guardarExpediente_Click" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" OnClick="guardarExpediente_Click" />
                 </div>
             </div>
 

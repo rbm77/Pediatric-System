@@ -1,121 +1,127 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="CuentaPersonal.aspx.cs" Inherits="Pediatric_System.CuentaPersonal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-    <br />
-
-    <div class="container-fluid col-10 col-auto">
-        <div class="page-header">
-            <h3 class="text-info">Cuenta de Usuario</h3>
+    
+    <div class="container-fluid col-11 col-auto">
+        <br>
+        <div class="page-header margen-general-2-top">
+            <h2 class="text-info">Cuenta de Usuario</h2>
         </div>
+
+        <hr class="linea-divisoria-titulo" />
+
+        <form runat="server">
+            <div class="tab-content" id="myTabContent">
+
+                <!-- Datos para la Informacion Personal del Paciente !-->
+
+                <div class="tab-pane fade show active margen-general-1-bottom" id="info-personal-paciente" role="tabpanel" aria-labelledby="info-personal-paciente-tab">
+
+                    <div class="col-12 border rounded margen-general-2-top">
+                        <br>
+                        <div class="margen-general-1-top padding-general-inicio-bottom">
+                            <div class="form-row">
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-input">Nombre</label>
+                                        <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-input">Apellido</label>
+                                        <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-input">Cédula</label>
+                                        <asp:TextBox runat="server" ID="txtCedula" CssClass="form-control" placeholder="102340567"></asp:TextBox>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-input">Rol</label>
+
+
+                                     <%--   <select  class="seleccionarRol browser-default custom-select" name="SeleccionarRol">
+                                                    <option value="Medico" >Médico</option>
+                                                    <option value="Asistente">Asistente</option>
+                                                   <option value="Administrador" selected>Administrador</option>
+                                                </select>--%>
+                                     
+                                        <asp:DropDownList ID="Rol" runat="server" AutoPostBack="true" CssClass="custom-select" OnSelectedIndexChanged="Rol_SelectedIndexChanged">
+                                            <asp:ListItem Value="Administrador"> Administrador </asp:ListItem>
+                                            <asp:ListItem Value="Asistente"> Asistente </asp:ListItem>
+                                            <asp:ListItem Value="Medico"> Medico </asp:ListItem>
+                                            
+                                        </asp:DropDownList>
+                                    </div>
+                                </div>
+
+                                   <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-label">Correo</label>
+                                        <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-label">Telefono</label>
+                                        <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+
+                                   <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <label class="nombre-label">Codigo Medico</label>
+                                        <asp:TextBox  runat="server" ID="txtCodigo" Enabled="false" CssClass="form-control"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <!-- ----------------------------------------------------------- !-->
+
+            </div>
+            <br>
+            <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+                <asp:Button ID="btnGuardar" runat="server" Text="GUARDAR" CssClass="btn btn-guardar form-control" OnClick="btnGuardar_Click"></asp:Button>
+            </div>
+        </form>
+
     </div>
 
-    <hr style="color: #0056b2;" />
-
-    <form>
-
-        <br />
-
-        <div class="container-fluid col-10 col-auto bg-light border border-info">
-
-            <br />
-
-            <div class="form-row">
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="nombre" style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</label>
-                    <input type="text" class="form-control" id="nombre">
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="primerApellido" style="font-size: 16px; font-weight: bold; color: dimgray">Primer Apellido</label>
-                    <input type="text" class="form-control" id="primerApellido">
-                </div>
-
-            </div>
-
-
-            <div class="form-row">
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="segundoApellido" style="font-size: 16px; font-weight: bold; color: dimgray">Segundo Apellido</label>
-                    <input type="text" class="form-control" id="segundoApellido">
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="cedula" style="font-size: 16px; font-weight: bold; color: dimgray">Cédula</label>
-                    <input type="text" class="form-control" id="cedula">
-                </div>
-            </div>
-
-            <div class="form-row">
-
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="fechaNacimiento" style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de nacimiento</label>
-                    <input id="datepicker" />
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="telefono" style="font-size: 16px; font-weight: bold; color: dimgray">Teléfono</label>
-                    <input type="tel" class="form-control" id="telefono" />
-                </div>
-            </div>
-
-
-            <div class="form-row">
-
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="correoElectronico" style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="correoElectronico" />
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="rol" style="font-size: 16px; font-weight: bold; color: dimgray">Rol</label>
-                    <select class="browser-default custom-select" id="rol">
-                        <option value="medico">Médico</option>
-                        <option value="asistente">Asistente</option>
-                        <option value="administrador">Administrador</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-row">
-
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="contrasenna" style="font-size: 16px; font-weight: bold; color: dimgray">Contraseña</label>
-                    <input type="password" class="form-control" id="contrasenna" />
-                </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label for="confirmar" style="font-size: 16px; font-weight: bold; color: dimgray">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="confirmar" />
-                </div>
-            </div>
-
-            <br />
-
-            <div class="form-row">
-
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <button type="submit" class="btn btn-guardar form-control">GUARDAR</button>
-
-                </div>
-
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-
-                </div>
-
-            </div>
-
-                 </div>
-
-        <br />
-
-    </form>
-
     <script>
-        $('#datepicker').datepicker({
+        $('.datepicker').datepicker({
             uiLibrary: 'bootstrap4',
             locale: 'es-es',
             format: 'dd/mm/yyyy'
         });
+        
+        //$(".seleccionarRol").on("change", function () {
+        //    if (this.value == "Medico") {
+        //        document.getElementById('txtCodigo').innerHTML = "enabled"
+        //        //document.getElementById('txtCodigo').disabled = true;
+        //    } else {
+        //        document.getElementById('txtCodigo').innerHTML = "disabled"
+        //        // document.getElementById("txtCodigo").disabled = true;
+        //    }
+        //});
+      
+      
     </script>
+
 </asp:Content>

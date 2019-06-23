@@ -13,7 +13,7 @@
 
     <hr style="color: #0056b2;" />
 
-    <form>
+    <form runat ="server">
 
         <div class="container-fluid col-10 col-auto">
 
@@ -34,8 +34,9 @@
                                     </p>
                                     <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
-
-                                            <button type="button" class="btn btn-neutro form-control">CREAR CUENTA</button>
+                                            <asp:Button ID="botonCrearCuenta" class ="btn btn-neutro form-control" runat="server" Text="Crear Cuenta" OnClick="botonCrearCuenta_Click" />
+                                            <%--<asp:Button  ID="botonCrearCuenta"  class =" btn-neutro form-control runat="server" Text="Crear Cuenta" />--%>
+                                           <%-- <button type="button" class ="btn btn-neutro form-control">CREAR CUENTA</button>--%>
 
                                         </div>
                                     </div>
