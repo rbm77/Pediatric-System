@@ -1,0 +1,40 @@
+﻿.margen-general-2-top {
+    margin-top: 15px;
+}
+
+.info-paciente {
+    font-weight: bold;
+    font-size: 16px;
+    color: dimgray;
+}
+
+.nombre-input {
+    font-size: 16px;
+    color: dimgray;
+}
+
+.alinearFoto {
+    text-align: center;
+    display: block
+}
+
+.margen-general-1-bottom {
+    margin-bottom: 15px;
+}
+
+.padding-general-inicio-top {
+    padding-top: 20px;
+}
+
+.padding-general-bottom {
+    padding-bottom: 35px;
+}
+
+.padding-general-top {
+    padding-top: 35px;
+}
+
+.padding-general-label {
+    padding-left: 20px;
+    padding-right: 20px;
+}

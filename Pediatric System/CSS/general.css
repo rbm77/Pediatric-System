@@ -42,11 +42,12 @@
     color: #FFFFFF;
     background-color: #4CAF50;
     width: 150px;
+    margin-bottom: 5px;
 }
-.btn-guardar:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-    color: #FFFFFF;
-}
+    .btn-guardar:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        color: #FFFFFF;
+    }
 .btn-eliminar {
     color: #FFFFFF;
     background-color: #f44336;
@@ -66,6 +67,7 @@
     color: #FFFFFF;
     background-color: #1ca5ac;
     width: 100%;
+    margin-bottom: 5px;
 }
 .btn-neutro:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
@@ -75,10 +77,12 @@
     color: #FFFFFF;
     background-color: #8b8b8b;
     width: 150px;
+    margin-bottom: 5px;
 }
 .btn-regresar:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
     color: #FFFFFF;
+    margin-bottom: 5px;
 }
 
 .btn:focus ~ .lds-spinner {
@@ -154,6 +158,11 @@
   transform: rotate(330deg);
   animation-delay: 0s;
 }
+
+.linea-divisoria-titulo {
+    color: dimgray;
+}
+
 @keyframes lds-spinner {
   0% {
     opacity: 1;
@@ -162,6 +171,8 @@
     opacity: 0;
   }
 }
+
+
 
 
 

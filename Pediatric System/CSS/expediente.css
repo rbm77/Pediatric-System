@@ -90,11 +90,16 @@
     display: block
 }
 
-.btnVerConsultas {
+.btnsConsulta {
     width: 170px;
 }
 
 .ubicacionBtn {
     display: inline-block;
     padding-right: 0px;
+}
+
+.alinearFoto {
+    text-align: center;
+    display: block
 }
