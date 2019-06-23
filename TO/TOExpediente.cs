@@ -14,7 +14,7 @@ namespace TO
         public string Cedula { get; set; }
         public DateTime FechaNacimiento { get; set; }
         public string Sexo { get; set; }
-        public string Foto { get; set; }
+        public byte[] Foto { get; set; }
         public string ExpedienteAntiguo { get; set; }
 
         public TOExpediente()
@@ -22,7 +22,7 @@ namespace TO
 
         }
 
-        public TOExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, string foto, string expediente)
+        public TOExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente)
         {
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
