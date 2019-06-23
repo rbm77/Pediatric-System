@@ -613,7 +613,7 @@
                                                     <option value="presentesPat">Presentes</option>
                                                 </select>
                                                 <div class="descripcionPatologicos margen-general-2-top">
-                                                    <label class="nombre-input">Descripción</label>
+                                                    <label class="nombre-input desPatPre">Descripción</label>
                                                     <textarea class="form-control"></textarea>
                                                 </div>
                                             </div>
