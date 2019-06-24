@@ -21,24 +21,33 @@
             <div class="margen-general-2-top">
                 <div class="col-12">
                     <div class="form-row">
-                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <label class="info-paciente">Paciente: </label>
-                            <label class="nombre-input">Fabian Jimenez Morales</label>
+                        <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                            <div class="alinearFoto">
+                                <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
+                            </div>
                         </div>
 
-                        <div class="form-group col-lg-2 col-md-6 col-sm-6 col-xs-6">
-                            <label class="info-paciente">Cédula: </label>
-                            <label class="nombre-input">604440297</label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="form-row">
+                                <label class="info-paciente">Paciente: </label>
+                                <label class="nombre-input">Fabian Jimenez Morales</label>
+                            </div>
+
+
+                            <div class="form-row padding-info-exp">
+                                <label class="info-paciente">Cédula: </label>
+                                <label class="nombre-input">604440297</label>
+                            </div>
+
+                            <div class="form-row padding-info-exp">
+                                <label class="info-paciente">Edad: </label>
+                                <label class="nombre-input">21</label>
+                            </div>
                         </div>
 
-                        <div class="form-group col-lg-1 col-md-6 col-sm-6 col-xs-6">
-                            <label class="info-paciente">Edad: </label>
-                            <label class="nombre-input">21</label>
-                        </div>
-
-                        <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-3 col-md-10 col-sm-12 col-xs-12">
                             <div class="alinearBtnConsulta">
-                                <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
+                                <div class="form-group ubicacionBtn" runat="server">
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="CONSULTAS" ID="verConsultas" />
 
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="NUEVA CONSULTA" ID="Button1" />
@@ -46,11 +55,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="alinearFoto">
-                                <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>

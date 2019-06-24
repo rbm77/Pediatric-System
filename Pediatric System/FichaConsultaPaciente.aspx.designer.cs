@@ -13,6 +13,15 @@ namespace Pediatric_System {
     public partial class FichaConsultaPaciente {
         
         /// <summary>
+        /// imgPreview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPreview;
+        
+        /// <summary>
         /// form_actualizar control.
         /// </summary>
         /// <remarks>
@@ -40,13 +49,31 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button Button2;
         
         /// <summary>
-        /// imgPreview control.
+        /// fotoPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPreview;
+        protected global::System.Web.UI.WebControls.FileUpload fotoPaciente;
+        
+        /// <summary>
+        /// verExamen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button verExamen;
+        
+        /// <summary>
+        /// nuevoExamen control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button nuevoExamen;
         
         /// <summary>
         /// verConsultas control.

@@ -23,22 +23,31 @@
             <div class="margen-general-2-top">
                 <div class="col-12">
                     <div class="form-row">
-                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <label class="info-paciente">Paciente: </label>
-                            <label class="nombre-input">Fabian Jimenez Morales</label>
+
+                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="alinearFoto">
+                                <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
+                            </div>
                         </div>
 
-                        <div class="form-group col-lg-2 col-md-6 col-sm-6 col-xs-6">
-                            <label class="info-paciente">Cédula: </label>
-                            <label class="nombre-input"></label>
+                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-row">
+                                <label class="info-paciente">Paciente: </label>
+                                <label class="nombre-input">Fabian Jimenez Morales</label>
+                            </div>
+
+                            <div class="form-row padding-info-exp">
+                                <label class="info-paciente">Cédula: </label>
+                                <label class="nombre-input"></label>
+                            </div>
+
+                            <div class="form-row padding-info-exp">
+                                <label class="info-paciente">Edad: </label>
+                                <label class="nombre-input"></label>
+                            </div>
                         </div>
 
-                        <div class="form-group col-lg-1 col-md-6 col-sm-6 col-xs-6">
-                            <label class="info-paciente">Edad: </label>
-                            <label class="nombre-input"></label>
-                        </div>
-
-                        <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-3 col-md-10 col-sm-12 col-xs-12">
                             <div class="alinearBtnExpFin">
                                 <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="EXPEDIENTE" ID="Button1" />
@@ -48,18 +57,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="alinearFoto">
-                                <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
 
             <!-- Inicio del titulo de los Tabs !-->
 
-            <div class="margen-general-3-top">
+            <div>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link active nombre-input" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Físico</a>
@@ -272,18 +277,51 @@
 
                 <!-- Inicio agregar examen de laboratorio !-->
 
-                <div class="tab-pane fade" id="examen-laboratorio" role="tabpanel" aria-labelledby="examen-laboratorio-tab">
-                    <div class="col-12 border rounded">
-                        <label style="font-size: 16px; font-weight: bold; color: dimgray; margin-top: 15px">Adjuntar Examenes de Laboratorio</label>
+                <div class="tab-pane fade margen-general-1-bottom" id="examen-laboratorio" role="tabpanel" aria-labelledby="examen-laboratorio-tab">
 
-                        <div class="form-row ">
-                            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="subirExamenFisico" aria-describedby="inputGroupFileAddon01" multiple>
-                                    <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar">Seleccionar Archivo</label>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard">
+                        <div class="card">
+                            <label class="card-header nombre-input">Adjuntar Exámenes de Laboratorio</label>
+
+                            <div class="card-body">                               
+                                <div id="examenPrincipal">
+                                    <div class="form-row border rounded campoGeneralExamen">
+                                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="padding-general-label">
+                                                <label class="nombre-input">Imagen del Examen</label>
+                                                <div class="custom-file">
+                                                    <asp:FileUpload ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
+                                                    <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar"></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                            <div class="padding-general-label">
+                                                <label class="nombre-input">Descripción</label>
+                                                <input class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                                            <div class="alinearBtnImagen">
+                                                <div class="form-group ubicacionBtn">
+                                                    <label class="nombre-input"></label>
+                                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnVerExamen" Text="VER EXAMEN" ID="verExamen" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="alinearBtnNuevoExamen">
+                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnNuevoExamen" runat="server">
+                                        <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="ADJUNTAR OTRO EXAMEN" ID="nuevoExamen" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -363,16 +401,20 @@
 
                 <!-- Inicio del Analisis !-->
 
+
                 <div class="tab-pane fade margen-general-1-bottom" id="consulta-analisis" role="tabpanel" aria-labelledby="consulta-analisis-tab">
-                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
-                        <div class="form-row margen-general-2-top padding-general-bottom">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="padding-general-label">
-                                    <label class="nombre-input">Comentario</label>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard">
+                        <div class="card">
+                            <label class="card-header nombre-input">Comentario</label>
+
+                            <div class="card-body">
+                                <div class="padding-general-label padding-general-inicio-bottom padding-general-inicio-top">
                                     <textarea class="form-control" rows="4"></textarea>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -381,7 +423,22 @@
                 <!-- Inicio del Impresion Diagnostica !-->
 
                 <div class="tab-pane fade margen-general-1-bottom" id="consulta-diagnostico" role="tabpanel" aria-labelledby="consulta-diagnostico-tab">
-                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard">
+                        <div class="card">
+                            <label class="card-header nombre-input">Comentario</label>
+
+                            <div class="card-body">
+                                <div class="padding-general-label padding-general-inicio-bottom padding-general-inicio-top">
+                                    <textarea class="form-control" rows="4"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <%--<div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
                         <div class="form-row margen-general-2-top padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="padding-general-label">
@@ -390,7 +447,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
 
                 <!-- --------------------------------------------------------------------- !-->

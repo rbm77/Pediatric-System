@@ -1,0 +1,31 @@
+﻿.alinearBtnRegresar {
+    text-align: right;
+    display: block;
+}
+
+.alinearBtnNuevo {
+    text-align: center;
+    display: block;
+}
+
+.ubicacionBtnRegresar {
+    display: inline-block;
+    padding-right: 0px;
+}
+
+.ubicacionBtnNuevo {
+    display: inline-block;
+}
+
+.btnNuevoExpediente {
+    width: 250px;
+}
+
+.margen-general-1-bottom {
+    margin-bottom: 15px;
+}
+
+.paddingSidesCard {
+    padding-left: 0px;
+    padding-right: 0px;
+}
