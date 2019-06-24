@@ -40,39 +40,49 @@
 
                     <div class="container-fluid border rounded">
 
-                        <div class="form-row" style="text-align: center; display: block">
+                        <div class="form-row table-responsive" style="text-align: center; display: block">
                             <div class="form-group" style="display: inline-block">
 
                                 <br />
 
-  <%--                              <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px"
-                                    Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" NextPrevFormat="FullMonth"
-                                    OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
-                                    <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                    <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                                <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="white" BorderWidth="1px" Font-Names="Verdana" Font-Size="11pt" ForeColor="#1e5f93" Height="200px" NextPrevFormat="FullMonth" Width="400px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
+                                    <DayHeaderStyle />
+                                    <NextPrevStyle />
                                     <OtherMonthDayStyle ForeColor="#999999" />
                                     <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
-                                    <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#16ACB8" />
+                                    <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#1ca5ac" />
                                     <TodayDayStyle BackColor="#CCCCCC" />
-                                </asp:Calendar>--%>
-
-
-
-                                
-                            <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="white" BorderWidth="1px" Font-Names="Verdana" Font-Size="11pt" ForeColor="#1e5f93" Height="200px" NextPrevFormat="FullMonth" Width="400px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
-                                <DayHeaderStyle />
-                                <NextPrevStyle/>
-                                <OtherMonthDayStyle ForeColor="#999999" />
-                                <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
-                                <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#1ca5ac" />
-                                <TodayDayStyle BackColor="#CCCCCC" />
-                            </asp:Calendar>
-
-
-
+                                </asp:Calendar>
 
                             </div>
                         </div>
+
+                        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                            <ProgressTemplate>
+
+                                <div class="form-row" style="text-align: center; display: block">
+                                    <div class="form-group" style="display: inline-block">
+
+                                        <div class="lds-spinner align-content-center" style="display: inline-block">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </ProgressTemplate>
+                        </asp:UpdateProgress>
+
 
 
                         <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
@@ -227,8 +237,14 @@
                         </div>
                     </asp:Panel>
 
+
+
                 </ContentTemplate>
             </asp:UpdatePanel>
+
+
+
+
 
             <br />
             <div class="form-row" style="text-align: right; display: block">
