@@ -69,7 +69,7 @@
                                      <i style="color: #1d5e93"   class="far fa-calendar-alt fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="MiAgenda.aspx">
-                                    <span class="float-left">Agenda</span>
+                                    <span class="float-left">Administrar Agenda</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>
@@ -82,7 +82,7 @@
                                     <i style="color: #1d5e93"  class="fas fa-user-plus fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="AsociarPaciente.aspx">
-                                    <span class="float-left">Asociar Paciente</span>
+                                    <span class="float-left">Asociar Paciente-Cuenta</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>
