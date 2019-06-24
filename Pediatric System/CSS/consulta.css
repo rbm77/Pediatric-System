@@ -45,6 +45,10 @@
     padding-top: 20px;
 }
 
+.padding-info-exp {
+    padding-top: 15px;
+}
+
 
 .padding-card {
     padding-right: 20px;
@@ -103,7 +107,7 @@
 }
 
 .alinearBtnExpFin {
-    text-align: right;
+    text-align: center;
     display: block
 }
 
@@ -113,5 +117,41 @@
 }
 
 .btnsExpFin {
-    width: 170px;
+    width: 180px;
+}
+
+.alinearBtnImagen {
+    text-align: center;
+    display: block
+}
+
+.paddingSidesCard {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.campoGeneralExamen {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+.btnVerExamen {
+    margin-bottom: -15px;
+}
+
+.alinearBtnNuevoExamen {
+    text-align: center;
+    display: block;
+}
+
+.ubicacionBtnNuevoExamen {
+    display: inline-block;
+}
+
+.btnNuevaConsulta {
+    width: 230px;
 }

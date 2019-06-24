@@ -5,17 +5,10 @@
     <script type="text/javascript" src="JS/listaConsultas.js"></script>
     <link href="CSS/listaConsultas.css" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container-fluid col-11 col-auto">
-
-        <br />
 
         <div class="page-header">
             <h2 class="text-info">Consultas</h2>
@@ -30,102 +23,93 @@
             <div class="margen-general-2-top">
                 <div class="col-12">
                     <div class="form-row">
-                        <div class="form-group col-lg-3 col-md-12 col-sm-12 col-xs-12">
-                            <label class="info-paciente">Paciente: </label>
-                            <label class="nombre-input">Fabian Jimenez Morales</label>
-                        </div>
 
-                        <div class="form-group col-lg-2 col-md-4 col-sm-6 col-xs-6">
-                            <label class="info-paciente">Cédula: </label>
-                            <label class="nombre-input"></label>
-                        </div>
-
-                        <div class="form-group col-lg-1 col-md-4 col-sm-6 col-xs-6">
-                            <label class="info-paciente">Edad: </label>
-                            <label class="nombre-input"></label>
-                        </div>
-
-                        <%--<div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                            <div class="alinearBtnExpFin">
-                                <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="EXPEDIENTE" ID="Button1" />
-
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="FINALIZAR CONSULTA" ID="Button2" />
-                                </div>
-                            </div>
-                        </div>--%>
-
-                        <div class="form-group col-lg-6 col-md-4 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <div class="alinearFoto">
                                 <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
-
-
-
-            <div class="col-12 margen-general-1-bottom">
-                <div class="margen-general-2-top padding-general-bottom">
-                    <div class="card">
-                        <label class="card-header text-center nombre-input">Lista de Consultas</label>
-                        <div class="card-body padding-general-top">
+                        <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
-                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="padding-general-label">
-                                        <asp:TextBox placeholder="Fecha de Inicio" runat="server" ID="fechaInicio" CssClass="form-control datepicker1"></asp:TextBox>
-                                    </div>
-                                </div>
+                                <label class="info-paciente">Paciente: </label>
+                                <label class="nombre-input">Fabian Jimenez Morales</label>
+                                <br />
+                            </div>
 
-                                <div class="form-group col-lg-5 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="padding-general-label">
-                                        <asp:TextBox placeholder="Fecha de Fin" runat="server" ID="fechaFin" CssClass="form-control datepicker2"></asp:TextBox>
-                                    </div>
-                                </div>
+                            <div class="form-row padding-info-exp">
+                                <br />
+                                <label class="info-paciente">Cédula: </label>
+                                <label class="nombre-input"></label>
+                            </div>
 
-                                <div class="form-group col-lg-2 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="padding-general-label">
-                                        <asp:Button CssClass="btn btn-neutro" ID="buscarFechas" runat="server" Text="BUSCAR" />
-                                    </div>
-                                </div>
+                            <div class="form-row padding-info-exp">
+                                <br />
+                                <label class="info-paciente">Edad: </label>
+                                <label class="nombre-input"></label>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
 
+
+
+            <div class="col-12 margen-general-1-bottom paddingSidesCard">
                 <div>
 
-                    <div class="card lista-resultados-columna" style="margin-top: 25px">
+                    <div class="table-responsive">
 
-                        <div class="card-body">
-                            <table class="table table-hover table-responsive-sm">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" style="width: 50px; font-size: 16px; font-weight: bold; color: dimgray">Fecha de Consulta</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>05/28/2019</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="card">
+                            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-clipboard"></i> Lista de Consultas</h5>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="dataTable">
+                                        <thead>
+                                            <tr class="bg-light">
+                                                <th scope="col" style="color: dimgray;">Paciente</th>
+                                                <th scope="col" style="color: dimgray;">Fecha</th>
+                                                <th scope="col" style="color: dimgray;">Doctor</th>
+                                                <th scope="col" style="color: dimgray;">Acción</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Richard Bolaños Moya</td>
+                                                <td>06/12/2018</td>
+                                                <td>Marcos Soto</td>
+                                                <td>Pendiente</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fabian Jimenez Morales</td>
+                                                <td>12/08/2017</td>
+                                                <td>Marcos Soto</td>
+                                                <td>Pendiente</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <br />
+                            </div>
+
+                            <div class="alinearBtnNuevo">
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnNuevo" runat="server">
+
+                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="NUEVA CONSULTA" ID="nuevoExpediente" />
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                    <div class="form-row" style="margin-bottom: 15px; margin-top: 15px">
-                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <button type="submit" class="btn btn-outline-primary form-control">CREAR NUEVA CONSULTA</button>
-                        </div>
-                        <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                            <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-                        </div>
-                    </div>
-
                 </div>
             </div>
+
+            <div class="form-row alinearBtnRegresar">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                </div>
+            </div>
+
         </form>
     </div>
 

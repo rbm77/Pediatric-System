@@ -84,11 +84,14 @@
     <Content Include="CSS\hora2.css" />
     <Content Include="CSS\inicioSesion.css" />
     <Content Include="CSS\listaConsultas.css" />
+    <Content Include="CSS\listaExpedientes.css" />
     <Content Include="CSS\loading-btn.css" />
     <Content Include="CSS\loading.css" />
     <Content Include="CSS\sb-admin.css" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="EditarContrasena.aspx" />
+    <Content Include="EditarCuentaPersonal.aspx" />
     <Content Include="EstadoCuenta.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
     <Content Include="FichaConsultaPaciente.aspx" />
@@ -1710,6 +1713,20 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarContrasena.aspx.cs">
+      <DependentUpon>EditarContrasena.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarContrasena.aspx.designer.cs">
+      <DependentUpon>EditarContrasena.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditarCuentaPersonal.aspx.cs">
+      <DependentUpon>EditarCuentaPersonal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditarCuentaPersonal.aspx.designer.cs">
+      <DependentUpon>EditarCuentaPersonal.aspx</DependentUpon>
     </Compile>
     <Compile Include="EstadoCuenta.aspx.cs">
       <DependentUpon>EstadoCuenta.aspx</DependentUpon>

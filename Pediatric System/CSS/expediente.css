@@ -30,6 +30,10 @@
     padding-bottom: 20px;
 }
 
+.padding-info-exp {
+    padding-top: 15px;
+}
+
 
 
 .padding-general-checkB {
@@ -81,7 +85,7 @@
 }
 
 .alinearBtnConsulta {
-    text-align: right;
+    text-align: center;
     display: block
 }
 
@@ -91,7 +95,7 @@
 }
 
 .btnsConsulta {
-    width: 170px;
+    width: 180px;
 }
 
 .ubicacionBtn {

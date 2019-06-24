@@ -38,3 +38,31 @@
     padding-left: 20px;
     padding-right: 20px;
 }
+
+.alinearBtnRegresar {
+    text-align: right;
+    display: block;
+}
+
+.alinearBtnNuevo {
+    text-align: center;
+    display: block;
+}
+
+.ubicacionBtnRegresar {
+    display: inline-block;
+    padding-right: 0px;
+}
+
+.ubicacionBtnNuevo {
+    display: inline-block;
+}
+
+.btnNuevaConsulta {
+    width: 250px;
+}
+
+.paddingSidesCard {
+    padding-left: 0px;
+    padding-right: 0px;
+}

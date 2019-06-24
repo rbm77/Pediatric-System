@@ -13,13 +13,13 @@ namespace Pediatric_System {
     public partial class FichaBaseExpediente {
         
         /// <summary>
-        /// form_actualizar control.
+        /// imgPreview control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_actualizar;
+        protected global::System.Web.UI.WebControls.Image imgPreview;
         
         /// <summary>
         /// verConsultas control.
@@ -38,15 +38,6 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
-        
-        /// <summary>
-        /// imgPreview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPreview;
         
         /// <summary>
         /// nombre control.

@@ -10,70 +10,34 @@
 namespace Pediatric_System {
     
     
-    public partial class CuentaPersonal {
+    public partial class EditarContrasena {
         
         /// <summary>
-        /// txtNombre control.
+        /// txtContraseñaActual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        protected global::System.Web.UI.WebControls.TextBox txtContraseñaActual;
         
         /// <summary>
-        /// txtApellido control.
+        /// txtContraseñaNueva1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApellido;
+        protected global::System.Web.UI.WebControls.TextBox txtContraseñaNueva1;
         
         /// <summary>
-        /// txtCedula control.
+        /// txtContraseñaNueva2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCedula;
-        
-        /// <summary>
-        /// Rol control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Rol;
-        
-        /// <summary>
-        /// txtCorreo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCorreo;
-        
-        /// <summary>
-        /// txtTelefono control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
-        
-        /// <summary>
-        /// txtCodigo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCodigo;
+        protected global::System.Web.UI.WebControls.TextBox txtContraseñaNueva2;
         
         /// <summary>
         /// mensajeConfirmacion control.

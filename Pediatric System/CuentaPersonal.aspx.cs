@@ -58,7 +58,7 @@ namespace Pediatric_System
             switch (tipo)
             {
                 case "Medico":
-                   miBLMedico.insertarMedico();
+                    miBLMedico.insertarMedico();
              break;
                 case "Asistente":
                     miBLAdministrativo.insertarAdministrativo();
@@ -68,6 +68,11 @@ namespace Pediatric_System
                     break;
             }
 
+            mensajeConfirmacion.Text = "<div class=\"alert alert-success alert-dismissible fade show\" " +
+          "role=\"alert\"> <strong></strong>" + "Cuenta Creada Correctamente" + "<button" +
+          " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+          " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
             txtCorreo.Text = "";
             txtNombre.Text = "";
             txtApellido.Text = "";
@@ -87,5 +92,6 @@ namespace Pediatric_System
                 txtCodigo.Enabled = false;
             }
         }
+
     }
 }

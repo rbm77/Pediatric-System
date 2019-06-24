@@ -77,6 +77,71 @@ namespace DAO
         }
 
 
+
+        public void editarContrasena(TOCuenta miTOCuenta)
+        {
+            // Se abre la conexión
+
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Editar contraseña");
+           // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("UPDATE CUENTA SET CONTRASENA = @con WHERE CORREO = @cor;", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@cor", miTOCuenta.correo);
+                comando.Parameters.AddWithValue("@con", miTOCuenta.contrasena);
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                  //  confirmacion = "Ocurrió un error y no se pudo ingresar la cuenta";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+           // return confirmacion;
+        }
+
+
         public string InsertarCuenta(TOCuenta miTOCuenta)
         {
             // Se abre la conexión
@@ -143,5 +208,81 @@ namespace DAO
             }
             return confirmacion;
         }
+
+        public Boolean revisarContrasena(TOCuenta miTOCuenta)
+        {
+            // Se abre la conexión
+
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Revisar Contraseña");
+            Boolean valor = false;
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT CONTRASENA FROM CUENTA WHERE CORREO = @cor;", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@cor", miTOCuenta.correo);
+
+
+
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+
+                SqlDataReader reader = comando.ExecuteReader();
+                if (reader.Read())
+                {
+                   if (reader["CONTRASENA"].ToString() == miTOCuenta.contrasena)
+                    {
+                        valor = true;
+                    } 
+                  
+                }
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return valor;
+        }
+
+
+
+
+
     }
 }

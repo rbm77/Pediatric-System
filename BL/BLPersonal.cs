@@ -29,5 +29,16 @@ namespace BL
             miTOPersonal.telefono = this.telefono;
             miDAOPersonal.insertarPersonal(miTOPersonal);
         }
+
+
+        public void editarPersonal()
+        {
+            miTOPersonal.correo = this.correo;
+            miTOPersonal.nombre = this.nombre;
+            miTOPersonal.apellido = this.apellido;
+            miTOPersonal.cedula = this.cedula;
+            miTOPersonal.telefono = this.telefono;
+            miDAOPersonal.editarPersonal(miTOPersonal);
+        }
     }
 }

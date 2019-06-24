@@ -22,30 +22,21 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Image imgPreview;
         
         /// <summary>
-        /// fechaInicio control.
+        /// nuevoExpediente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fechaInicio;
+        protected global::System.Web.UI.WebControls.Button nuevoExpediente;
         
         /// <summary>
-        /// fechaFin control.
+        /// regresar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fechaFin;
-        
-        /// <summary>
-        /// buscarFechas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buscarFechas;
+        protected global::System.Web.UI.WebControls.Button regresar;
     }
 }

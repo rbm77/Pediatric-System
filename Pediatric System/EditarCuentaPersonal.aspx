@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="CuentaPersonal.aspx.cs" Inherits="Pediatric_System.CuentaPersonal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="EditarCuentaPersonal.aspx.cs" Inherits="Pediatric_System.EditarCuentaPersonal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -47,23 +47,10 @@
                                 </div>
 
 
-                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Rol</label>
-
-
-                                     <%--   <select  class="seleccionarRol browser-default custom-select" name="SeleccionarRol">
-                                                    <option value="Medico" >Médico</option>
-                                                    <option value="Asistente">Asistente</option>
-                                                   <option value="Administrador" selected>Administrador</option>
-                                                </select>--%>
-                                     
-                                        <asp:DropDownList ID="Rol" runat="server" AutoPostBack="true" CssClass="custom-select" OnSelectedIndexChanged="Rol_SelectedIndexChanged">
-                                            <asp:ListItem Value="Administrador"> Administrador </asp:ListItem>
-                                            <asp:ListItem Value="Asistente"> Asistente </asp:ListItem>
-                                            <asp:ListItem Value="Medico"> Medico </asp:ListItem>
-                                            
-                                        </asp:DropDownList>
+                                        <label class="nombre-label">Rol</label>
+                                        <asp:TextBox runat="server" ID="Tipo" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
@@ -82,8 +69,8 @@
 
                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Codigo Medico</label>
-                                        <asp:TextBox  runat="server" ID="txtCodigo" Enabled="false" CssClass="form-control"></asp:TextBox>
+                                        <asp:Label class="nombre-label" ID="lblCodigo" Visible="false" runat="server" Text="Codigo Medico"></asp:Label>                                     
+                                        <asp:TextBox  runat="server" ID="txtCodigo" Visible="false" Enabled="false" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -96,10 +83,11 @@
                 <!-- ----------------------------------------------------------- !-->
 
             </div>
+            <br>
                     <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal> 
             <br>
             <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                <asp:Button ID="btnGuardar" runat="server" Text="GUARDAR" CssClass="btn btn-guardar form-control" OnClick="btnGuardar_Click"></asp:Button>
+                <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar form-control" OnClick="btnEditar_Click"></asp:Button>
             </div>
         </form>
 

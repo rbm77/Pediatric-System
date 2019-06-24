@@ -10,96 +10,96 @@
 namespace Pediatric_System {
     
     
-    public partial class FichaConsultaPaciente {
+    public partial class EditarCuentaPersonal {
         
         /// <summary>
-        /// imgPreview control.
+        /// txtNombre control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgPreview;
+        protected global::System.Web.UI.WebControls.TextBox txtNombre;
         
         /// <summary>
-        /// form_actualizar control.
+        /// txtApellido control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form_actualizar;
+        protected global::System.Web.UI.WebControls.TextBox txtApellido;
         
         /// <summary>
-        /// Button1 control.
+        /// txtCedula control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox txtCedula;
         
         /// <summary>
-        /// Button2 control.
+        /// Tipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button2;
+        protected global::System.Web.UI.WebControls.TextBox Tipo;
         
         /// <summary>
-        /// fotoPaciente control.
+        /// txtCorreo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload fotoPaciente;
+        protected global::System.Web.UI.WebControls.TextBox txtCorreo;
         
         /// <summary>
-        /// verExamen control.
+        /// txtTelefono control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button verExamen;
+        protected global::System.Web.UI.WebControls.TextBox txtTelefono;
         
         /// <summary>
-        /// nuevoExamen control.
+        /// lblCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nuevoExamen;
+        protected global::System.Web.UI.WebControls.Label lblCodigo;
         
         /// <summary>
-        /// verConsultas control.
+        /// txtCodigo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button verConsultas;
+        protected global::System.Web.UI.WebControls.TextBox txtCodigo;
         
         /// <summary>
-        /// regresar control.
+        /// mensajeConfirmacion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button regresar;
+        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
         
         /// <summary>
-        /// guardarConsulta control.
+        /// btnEditar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button guardarConsulta;
+        protected global::System.Web.UI.WebControls.Button btnEditar;
     }
 }
