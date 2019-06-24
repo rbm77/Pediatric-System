@@ -10,7 +10,7 @@
 namespace Pediatric_System {
     
     
-    public partial class CuentaPersonal {
+    public partial class EditarCuentaPersonal {
         
         /// <summary>
         /// txtNombre control.
@@ -40,13 +40,13 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox txtCedula;
         
         /// <summary>
-        /// Rol control.
+        /// Tipo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Rol;
+        protected global::System.Web.UI.WebControls.TextBox Tipo;
         
         /// <summary>
         /// txtCorreo control.
@@ -67,6 +67,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox txtTelefono;
         
         /// <summary>
+        /// lblCodigo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCodigo;
+        
+        /// <summary>
         /// txtCodigo control.
         /// </summary>
         /// <remarks>
@@ -85,12 +94,12 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
         
         /// <summary>
-        /// btnGuardar control.
+        /// btnEditar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGuardar;
+        protected global::System.Web.UI.WebControls.Button btnEditar;
     }
 }

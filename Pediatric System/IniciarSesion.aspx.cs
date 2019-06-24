@@ -27,6 +27,7 @@ namespace Pediatric_System
                 //metodo de verificacion, si es positivo entra y cambia vista, si es negativo borra campos y muestra label 
                 if (miBLCuenta.estado == "Activo"){
                     Session["Cuenta"] = miBLCuenta.correo;
+                    Session["Rol"] = miBLCuenta.tipo;
                     switch (miBLCuenta.tipo)
                     {
                         case "Medico":
@@ -38,12 +39,15 @@ namespace Pediatric_System
                         case "Paciente":
                             Response.Redirect("InicioUsuarioExterno.aspx");
                             break;
+                        case "Asistente":
+                            Response.Redirect("InicioPrincipal.aspx");
+                            break;
                     }
                 } else {                
                     txtContra.Text = "";
                     txtCorreo.Text = "";
                     mensajeConfirmacion.Text = "<div class=\"alert alert-danger alert-dismissible fade show\" " +
-         "role=\"alert\"> <strong></strong>" + "Contraseña o correo incorrectob" + "<button" +
+         "role=\"alert\"> <strong></strong>" + "Contraseña o correo incorrecto" + "<button" +
     " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
     " <span aria-hidden=\"true\">&times;</span> </button> </div>";
                     mensajeConfirmacion.Visible = true;
