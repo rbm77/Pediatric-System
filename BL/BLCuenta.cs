@@ -50,6 +50,23 @@ namespace BL
             miTOCuenta.contrasena = this.contrasena;
             miDAOCuenta.recuperarContraseña(miTOCuenta);
         }
+
+        public Boolean revisarContrasena()
+        {
+            miTOCuenta.correo = this.correo;
+            miTOCuenta.contrasena = this.contrasena;
+
+            return miDAOCuenta.revisarContrasena(miTOCuenta);
+        }
+
+        public void editarContrasena()
+        {
+            miTOCuenta.correo = this.correo;
+            miTOCuenta.contrasena = this.contrasena;
+
+            miDAOCuenta.editarContrasena(miTOCuenta);
+        }
+       
     }
 
 
