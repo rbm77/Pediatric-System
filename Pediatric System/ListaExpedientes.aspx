@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="InicioPrincipal.aspx.cs" Inherits="Pediatric_System.InicioPrincipal" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="ListaExpedientes.aspx.cs" Inherits="Pediatric_System.InicioPrincipal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -47,8 +47,8 @@
                     <hr style="color: #0056b2;" />
                     <br />
 
-                    <div class="form-row">
-                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                    <div class="form-row" style="text-align: right; display: block">
+                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12" style="display: inline-block">
 
                             <button type="submit" class="btn btn-neutro form-control">CREAR EXPEDIENTE</button>
 
@@ -59,8 +59,8 @@
 
            
 
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Modal >
+            <div-- class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div-->
 
         </div>
 

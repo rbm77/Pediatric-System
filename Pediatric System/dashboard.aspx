@@ -4,27 +4,28 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <br />
+    <br />
     <div class="container-fluid col-10 col-auto">
         <div class="page-header">
             <h3 class="text-info">Pediatric System</h3>
+
         </div>
     </div>
-      <hr style="color: #0056b2;" />
+    <hr style="color: #0056b2;" />
     <!-- Icon Cards-->
     <div class="row clearfix">
-        <div class="col-md-12 ">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
             <div class="row">
-                <div class="col-sm-4 col-md-6">
+                <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5">
                     <div class="row clearfix">
 
 
-                        <div class="col-xs-12 col-sm-6 col-md-6 mb-20">
+                        <div class=" offset-xl-1 col-xl-10 col-lg-12 col-md-12 col-sm-12 mb-20">
                             <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                    <i class="far fa-id-card fa-4x"></i>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                <a class="card-body card-dash" href="ListaExpedientes.aspx">
+                                    <i style="color: #1d5e93" class="far fa-id-card fa-4x"></i>
+                                </a>
+                                <a class="card-footer text-white clearfix small z-1" href="ListaExpedientes.aspx">
                                     <span class="float-left">Expedientes</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
@@ -32,39 +33,26 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-sm-3 col-md-6  mb-20">
+                        <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                    <i class="fas fa-user-check fa-4x"></i>
-                                </div>
+                                <a class="card-body card-dash" href="#">
+                                    <i style="color: #1d5e93"  class="fas fa-user-check fa-4x"></i>
+                                </a>
                                 <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">Consultas</span>
+                                    <span class="float-left">Consultas Activas</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-md-push-2 mb-20">
+                        <div class=" col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                    <i class="fas fa-plus-circle fa-3x"></i>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                <a class="card-body card-dash" href="FichaBaseExpediente.aspx">
+                                    <i style="color: #1d5e93"  class="fas fa-plus-circle fa-4x"></i>
+                                </a>
+                                <a class="card-footer text-white clearfix small z-1" href="FichaBaseExpediente.aspx">
                                     <span class="float-left">Nuevo Expediente</span>
-                                    <span class="float-right">
-                                        <i class="fas fa-angle-right"></i>
-                                    </span>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 col-md-4 mb-20">
-                            <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                    <i class="far fa-id-card fa-4x"></i>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">Expedientes</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>
@@ -73,14 +61,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-8  col-md-6">
+                <div class="offset-xl-1 col-xl-5 offset-lg-1 col-lg-5 offset-md-1 col-md-5 offset-sm-1 col-sm-5">
                     <div class="row clearfix">
-                        <div class="col-xs-6 col-sm-3 col-md-6  mb-20">
+                        <div class=" col-sm-12 col-xl-6 col-lg-12 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                    <i class="far fa-calendar-check fa-4x"></i>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                <a class="card-body card-dash" href="MiAgenda.aspx">
+                                     <i style="color: #1d5e93"   class="far fa-calendar-alt fa-4x"></i>
+                                </a>
+                                <a class="card-footer text-white clearfix small z-1" href="MiAgenda.aspx">
                                     <span class="float-left">Agenda</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
@@ -88,24 +76,37 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-sm-3 col-md-6  mb-20">
+                        <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                    <div class="mr-5">Expedientes</div>
-                                </div>
-                                <a class="card-footer text-white clearfix small z-1" href="#">
-                                    <span class="float-left">View Details</span>
+                                <a class="card-body card-dash" href="AsociarPaciente.aspx">
+                                    <i style="color: #1d5e93"  class="fas fa-user-plus fa-4x"></i>
+                                </a>
+                                <a class="card-footer text-white clearfix small z-1" href="AsociarPaciente.aspx">
+                                    <span class="float-left">Asociar Paciente</span>
                                     <span class="float-right">
                                         <i class="fas fa-angle-right"></i>
                                     </span>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-xs-6 col-sm-3 col-md-6  mb-20">
+                        <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
-                                <div class="card-body card-dash">
-                                   <i class="fas fa-chart-pie fa-4x"></i>
-                                </div>
+                                <a class="card-body card-dash" href="GestionarAgenda.aspx">
+                                   <i style="color: #1d5e93"  class="far fa-calendar-check fa-4x"></i>                                   
+                                </a>
+                                <a class="card-footer text-white clearfix small z-1" href="GestionarAgenda.aspx">
+                                    <span class="float-left">Citas</span>
+                                    <span class="float-right">
+                                        <i class="fas fa-angle-right"></i>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12  mb-20">
+                            <div class="card text-white o-hidden h-100">
+                                <a class="card-body card-dash">
+                                    <i style="color: #1d5e93"  class="fas fa-chart-pie fa-4x"></i>
+                                </a>
                                 <a class="card-footer text-white clearfix small z-1" href="#">
                                     <span class="float-left">Reportes</span>
                                     <span class="float-right">
@@ -118,4 +119,5 @@
                 </div>
             </div>
         </div>
+    </div>
 </asp:Content>

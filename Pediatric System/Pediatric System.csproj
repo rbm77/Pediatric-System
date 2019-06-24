@@ -1654,7 +1654,7 @@
     <Content Include="images\logo_letras_blancas_pediatric_System.jpeg" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="InicioAdministrador.aspx" />
-    <Content Include="InicioPrincipal.aspx" />
+    <Content Include="ListaExpedientes.aspx" />
     <Content Include="InicioUsuarioExterno.aspx" />
     <Content Include="JS\Calendario.js" />
     <Content Include="JS\consulta.js" />
@@ -1753,12 +1753,12 @@
     <Compile Include="InicioAdministrador.aspx.designer.cs">
       <DependentUpon>InicioAdministrador.aspx</DependentUpon>
     </Compile>
-    <Compile Include="InicioPrincipal.aspx.cs">
-      <DependentUpon>InicioPrincipal.aspx</DependentUpon>
+    <Compile Include="ListaExpedientes.aspx.cs">
+      <DependentUpon>ListaExpedientes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="InicioPrincipal.aspx.designer.cs">
-      <DependentUpon>InicioPrincipal.aspx</DependentUpon>
+    <Compile Include="ListaExpedientes.aspx.designer.cs">
+      <DependentUpon>ListaExpedientes.aspx</DependentUpon>
     </Compile>
     <Compile Include="InicioUsuarioExterno.aspx.cs">
       <DependentUpon>InicioUsuarioExterno.aspx</DependentUpon>

@@ -10743,7 +10743,7 @@ body {
     position: static !important;
     margin: 0 1rem;
     top: 0;
-    background-color: rgb(168, 194, 219) !important;
+    background-color: #4b6c88 !important;
   }
   .sidebar .nav-item.dropdown .dropdown-toggle::after {
     display: block;
