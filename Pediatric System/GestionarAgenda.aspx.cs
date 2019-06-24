@@ -15,6 +15,7 @@ namespace Pediatric_System
         // El dia seleccionado corresponde a la fecha que se selecciona en el calendario
 
         private static DateTime diaSeleccionado = DateTime.Now;
+        private static List<BLCita> listaCitas = new List<BLCita>();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,7 +26,12 @@ namespace Pediatric_System
                 MostrarAgenda(diaSeleccionado, "");
             }
 
+            calendario.DayStyle.Height = new Unit(40);
+            calendario.DayStyle.Width = new Unit(150);
+            calendario.DayStyle.HorizontalAlign = HorizontalAlign.Center;
+            calendario.DayStyle.VerticalAlign = VerticalAlign.Middle;
         }
+
 
         /// <summary>
         /// Obtiene el horario del medico y las citas que estan agendadas para una fecha en particular
@@ -38,7 +44,7 @@ namespace Pediatric_System
 
             string codigoMedico = "777";
 
-            List<BLCita> listaCitas = new List<BLCita>();
+            listaCitas.Clear();
 
             string fechaSeleccionada = diaSeleccionado.ToShortDateString();
 
@@ -215,6 +221,7 @@ namespace Pediatric_System
         protected void ActualizarAgenda(Object sender, EventArgs e)
         {
             MostrarAgenda(calendario.SelectedDate, "");
+            
         }
 
         /// <summary>
@@ -346,6 +353,12 @@ namespace Pediatric_System
             telefono.Text = "";
             fecha.Text = "";
             horaTxt.Text = "";
+
+            nombre.Enabled = true;
+            edad.Enabled = true;
+            correo.Enabled = true;
+            telefono.Enabled = true;
+
         }
 
 
@@ -356,6 +369,7 @@ namespace Pediatric_System
         /// <param name="e"></param>
         protected void vistaAgenda_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            LimpiarCampos();
 
             if (e.CommandName == "Seleccionar")
             {
@@ -375,6 +389,25 @@ namespace Pediatric_System
                     btnCrear.Visible = false;
                     btnCancelar.Visible = true;
 
+                    // Se cargan los datos de la cita seleccionada
+
+                    BLCita cita = CargarCita(horaSeleccionada);
+
+                    if(cita != null)
+                    {
+                        nombre.Text = cita.Nombre;
+                        edad.Text = cita.Edad;
+                        correo.Text = cita.Correo;
+                        telefono.Text = cita.Telefono + "";
+                    } else
+                    {
+                        MostrarMensaje("Ocurrió un error y no se pudo cargar los datos de la cita");
+                    }
+
+                    nombre.Enabled = false;
+                    edad.Enabled = false;
+                    correo.Enabled = false;
+                    telefono.Enabled = false;
                 }
                 else
                 {
@@ -391,5 +424,23 @@ namespace Pediatric_System
             }
 
         }
+
+        /// <summary>
+        /// Recupera la cita seleccionada de la lista de citas
+        /// </summary>
+        /// <param name="hora"></param>
+        /// <returns>Retorna la cita seleccionada</returns>
+        private BLCita CargarCita(string hora)
+        {
+            foreach (BLCita cita in listaCitas)
+            {
+                if (cita.Hora.Equals(hora))
+                {
+                    return cita;
+                }
+            }
+            return null;
+        }
+
     }
 }

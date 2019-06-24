@@ -167,10 +167,15 @@
 
                 <br />
 
-                <div class="form-row" style="text-align: right; display: block; margin-right: 15px;">
-                    <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
-                        <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" />
-                    </div>
+
+            </div>
+
+            <br />
+
+
+            <div class="form-row" style="text-align: right; display: block">
+                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
+                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" />
                 </div>
             </div>
         </div>
