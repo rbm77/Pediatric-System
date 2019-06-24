@@ -6,6 +6,7 @@
     <link href="CSS/listaConsultas.css" rel="stylesheet" />
 
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <div class="container-fluid col-11 col-auto">
@@ -13,7 +14,7 @@
         <div class="page-header">
             <h2 class="text-info">Consultas</h2>
         </div>
-
+        
         <hr class="linea-divisoria-titulo" />
 
         <!-- ---------------------------------------------------- !-->

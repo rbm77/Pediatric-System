@@ -62,14 +62,14 @@
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Telefono</label>
+                                        <label class="nombre-label">Teléfono</label>
                                         <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <asp:Label class="nombre-label" ID="lblCodigo" Visible="false" runat="server" Text="Codigo Medico"></asp:Label>                                     
+                                        <asp:Label class="nombre-label" ID="lblCodigo" Visible="false" runat="server" Text="Código Médico"></asp:Label>                                     
                                         <asp:TextBox  runat="server" ID="txtCodigo" Visible="false" Enabled="false" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
@@ -87,7 +87,7 @@
                     <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal> 
             <br>
             <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar form-control" OnClick="btnEditar_Click"></asp:Button>
+                <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar" OnClick="btnEditar_Click"></asp:Button>
             </div>
         </form>
 
