@@ -31,7 +31,7 @@ namespace Pediatric_System
                     switch (miBLCuenta.tipo)
                     {
                         case "Medico":
-                            Response.Redirect("InicioPrincipal.aspx");
+                            Response.Redirect("Dashboard.aspx");
                             break;
                         case "Administrador":
                             Response.Redirect("InicioAdministrador.aspx");
