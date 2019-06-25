@@ -53,9 +53,7 @@
                                     </p>
                                     <div class="form-row">
                                         <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
-
-                                            <button type="submit" class="btn btn-neutro form-control">GESTIONAR ESTADOS</button>
-
+                                            <asp:Button ID="btnGestionarCuentas" runat="server" class="btn btn-neutro form-control" Text="GESTIONAR ESTADOS" OnClick="btnGestionarCuentas_Click"  />
                                         </div>
                                     </div>
                                 </div>

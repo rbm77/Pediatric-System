@@ -34,108 +34,23 @@
                         <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover"
                             Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
                             <Columns>
-                                <asp:BoundField DataField="Correo" HeaderText="Correo" />
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                                <asp:BoundField DataField="Cedula" HeaderText="Cedula" />
+                                <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                                <asp:BoundField DataField="Correo" HeaderText="Correo" />
+                                <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
+                               
+                                 <asp:TemplateField HeaderText="Acciones">
+                                <ItemTemplate>
+                                  <asp:Button ID="btnEditar" runat="server" Text="Editar" />
+                                  <asp:Button ID="btnEstado" runat="server" Text="Estado" />
+                                </ItemTemplate>
+                                </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
                     </div>
                 </form>
-
-
-
-
-
-
-
-
-
-                <%--<asp:Repeater ID="rptCustomers" runat="server">
-            <HeaderTemplate>
-                <div class="table-responsive">
-                    <table class="table table-hover" id="dataTable">
-                        <thead>
-                            <tr class="bg-light">
-                            <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
-                            <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</th>
-                            <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</th>
-                        </tr> 
-
-                        </thead>
-                </div>
-            </HeaderTemplate>
-            <ItemTemplate>
-                 <tbody>
-                <tr>
-                    <td>
-                        <asp:Label ID="lblCorreo" runat="server" Text='<%# Eval("Correo") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("Nombre") %>' />
-                    </td>
-                    <td>
-                        <asp:Label ID="lblCedula" runat="server" Text='<%# Eval("Cedula") %>' />
-                    </td>
-                </tr>
-                     </tbody>
-            </ItemTemplate>
-            <FooterTemplate>
-                </table>
-            </FooterTemplate>
-        </asp:Repeater>--%>
             </div>
         </div>
-
-
-
-
-
-        <%--        <table class="table table-striped" id="dataTable" >
-
-            <thead>
-                <tr>
-                    <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
-                    <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</th>
-                    <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Estado</th>
-                </tr>
-            </thead>
-            <tbody>
-                 <% 
-
-                     foreach (var per in listaPersonal)
-                     {%>
-                <tr>
-                    <td><% per.correo.ToString(); %></td>
-                    <td><% per.nombre.ToString(); %></td>
-  
-                </tr>
- <% }%>
-               <%-- <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                </tr>--%>
-        <%--            </tbody>
-        </table>--%>
     </div>
-
     <br />
-
-    <%--    <div class="container-fluid col-10 col-auto">
-
-        <div class="form-row">
-
-            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
-
-            </div>
-
-            <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-
-            </div>
-
-        </div>
-    </div>--%>
 </asp:Content>
