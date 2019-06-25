@@ -20,7 +20,9 @@ namespace BL
         TOAdministrativo miTOAdministrativo = new TOAdministrativo();
         DAOAdministrativo miDAOAdministrativo = new DAOAdministrativo();
 
-
+        /// <summary>
+        /// Inserta un usuario personal de tipo administrativo
+        /// </summary>
         public void insertarAdministrativo()
         {
             miTOAdministrativo.correo = this.correo;
@@ -31,6 +33,9 @@ namespace BL
             miDAOAdministrativo.insertarAdministrativo(miTOAdministrativo);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void buscarAdministrativo()
         {
             miTOAdministrativo.correo = this.correo;
