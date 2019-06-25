@@ -27,11 +27,11 @@
         <br />
 
         <div class="card">
-            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
+            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>  Lista de Cuentas de Personal</h5>
             <div class="card-body">
                 <form id="form1" runat="server">
                     <div>
-                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover"
+                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table" Style="text-align: center"
                             Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
                             <Columns>
                                 <asp:BoundField DataField="Correo" HeaderText="Correo" />
