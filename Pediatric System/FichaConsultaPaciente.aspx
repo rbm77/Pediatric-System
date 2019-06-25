@@ -639,9 +639,9 @@
 
             <div class="form-row alinearBtnGuardarCon">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar form-control" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
 
-                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar form-control" Text="GUARDAR" ID="guardarConsulta" ValidationGroup="validarConsulta" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarConsulta" ValidationGroup="validarConsulta" />
                 </div>
             </div>
         </form>
