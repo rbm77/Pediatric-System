@@ -20,7 +20,7 @@
 
         <form runat="server">
 
-            <div class="margen-general-2-top">
+            <div class="margen-general-2-top" runat="server" id="informacionPaciente">
                 <div class="col-12">
                     <div class="form-row">
 
@@ -33,7 +33,7 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input">Fabian Jimenez Morales</label>
+                                <label class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
@@ -50,14 +50,12 @@
                         <div class="form-group col-lg-3 col-md-10 col-sm-12 col-xs-12">
                             <div class="alinearBtnExpFin">
                                 <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="EXPEDIENTE" ID="Button1" />
+                                    <%--<asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="EXPEDIENTE" ID="Button1" />--%>
 
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="FINALIZAR CONSULTA" ID="Button2" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="FINALIZAR CONSULTA" ID="finalizarConsulta" OnClick="finalizarConsulta_Click" />
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -641,9 +639,9 @@
 
             <div class="form-row alinearBtnGuardarCon">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar form-control" Text="REGRESAR" ID="regresar" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
 
-                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar form-control" Text="GUARDAR" ID="guardarConsulta" ValidationGroup="validarConsulta" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarConsulta" ValidationGroup="validarConsulta" />
                 </div>
             </div>
         </form>

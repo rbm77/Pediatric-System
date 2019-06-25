@@ -15,7 +15,7 @@
 
     <form>
 
-        <div class="container-fluid col-10 col-auto table-responsive">
+        <div class="container-fluid col-11 col-auto table-responsive">
 
             <br />
 
@@ -98,5 +98,11 @@
                 </div>
             </div>
         </div>
+
+        <%--<div class="form-row" style="text-align: right; display: block; padding-right: 0px;" runat="server">
+                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+
+                <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" />
+            </div>--%>
     </form>
 </asp:Content>

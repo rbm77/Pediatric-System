@@ -11,7 +11,18 @@ namespace Pediatric_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+           
+        }
 
+        protected void regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("FichaBaseExpediente.aspx");
+        }
+
+        protected void nuevoConsulta_Click(object sender, EventArgs e)
+        {
+            Session["pagina"] = "consultas-nueva";
+            Response.Redirect("FichaConsultaPaciente.aspx");
         }
     }
 }

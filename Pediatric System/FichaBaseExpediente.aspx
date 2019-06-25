@@ -18,7 +18,7 @@
         <hr class="linea-divisoria-titulo" />
 
         <form runat="server">
-            <div class="margen-general-2-top">
+            <div class="margen-general-2-top" runat="server" id="informacionPaciente">
                 <div class="col-12">
                     <div class="form-row">
                         <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
@@ -30,27 +30,27 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input">Fabian Jimenez Morales</label>
+                                <label class="nombre-input"></label>
                             </div>
 
 
                             <div class="form-row padding-info-exp">
                                 <label class="info-paciente">Cédula: </label>
-                                <label class="nombre-input">604440297</label>
+                                <label class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
                                 <label class="info-paciente">Edad: </label>
-                                <label class="nombre-input">21</label>
+                                <label class="nombre-input"></label>
                             </div>
                         </div>
 
                         <div class="form-group col-lg-3 col-md-10 col-sm-12 col-xs-12">
                             <div class="alinearBtnConsulta">
                                 <div class="form-group ubicacionBtn" runat="server">
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="CONSULTAS" ID="verConsultas" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="CONSULTAS" ID="verConsultas" OnClick="verConsultas_Click" />
 
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="NUEVA CONSULTA" ID="Button1" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="NUEVA CONSULTA" ID="nuevaConsulta" OnClick="nuevaConsulta_Click" />
                                 </div>
                             </div>
                         </div>
@@ -704,7 +704,7 @@
 
             <div class="form-row alinearBtnGuardarExp">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
 
                     <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" OnClick="guardarExpediente_Click" />
                 </div>

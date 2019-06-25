@@ -13,5 +13,15 @@ namespace Pediatric_System
         {
 
         }
+
+        protected void finalizarConsulta_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaConsultas.aspx");
+        }
+
+        protected void regresar_Click(object sender, EventArgs e)
+        {
+                Response.Redirect("ListaConsultas.aspx");
+        }
     }
 }
