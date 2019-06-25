@@ -19,8 +19,8 @@ namespace Pediatric_System
             {
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 //bind the gridview data
-                gvCustomers.DataSource = listaPersonal;
-                gvCustomers.DataBind();
+                gridCuentas.DataSource = listaPersonal;
+                gridCuentas.DataBind();
             }
 
         }

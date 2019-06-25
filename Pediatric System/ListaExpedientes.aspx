@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="ListaExpedientes.aspx.cs" Inherits="Pediatric_System.InicioPrincipal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=gridExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "full_numbers"
+            });
+        });
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -15,35 +25,46 @@
 
     <hr style="color: #0056b2;" />
 
-    <form>
+    <form runat="server">
         <br />
 
         <div class="container-fluid col-11 col-auto table-responsive">
 
             <div class="card">
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i> Lista de Expedientes</h5>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
                 <div class="card-body">
-                    <div class="table-responsive">
-                    <table class="table table-hover" id="dataTable">
-                        <thead>
-                            <tr class="bg-light">
-                                <th scope="col" style="color: dimgray;">Nombre Completo</th>
-                                <th scope="col" style="color: dimgray;">Cédula</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Richard Bolaños Moya</td>
-                                <td>2-0785-0434</td>
-                            </tr>
-                            <tr>
-                                <td>Fabian Jimenez Morales</td>
-                                <td>2-0264-0478</td>
-                            </tr>
-                            
-                        </tbody>
-                    </table>
-                        </div>
+                    <div>                        
+
+                        <asp:GridView ID="gridExpedientes" runat="server" CssClass="table table-hover"
+                            AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                            HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%">
+
+                            <Columns>
+                                <asp:BoundField HeaderText="Paciente" DataField="Nombre" ControlStyle-Width="25%" />
+                                <asp:BoundField HeaderText="Sexo" DataField="Sexo" ControlStyle-Width="25%" />
+                            </Columns>
+                        </asp:GridView>
+
+                        <%--<table class="table table-hover" id="dataTable">
+                            <thead>
+                                <tr class="bg-light">
+                                    <th scope="col" style="color: dimgray;">Nombre Completo</th>
+                                    <th scope="col" style="color: dimgray;">Cédula</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Richard Bolaños Moya</td>
+                                    <td>2-0785-0434</td>
+                                </tr>
+                                <tr>
+                                    <td>Fabian Jimenez Morales</td>
+                                    <td>2-0264-0478</td>
+                                </tr>
+
+                            </tbody>
+                        </table>--%>
+                    </div>
 
                     <hr style="color: #0056b2;" />
                     <br />
@@ -58,7 +79,7 @@
                 </div>
             </div>
 
-           
+
 
             <!-- Modal >
             <div-- class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

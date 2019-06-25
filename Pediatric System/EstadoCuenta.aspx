@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="EstadoCuenta.aspx.cs" Inherits="Pediatric_System.EstadoCuenta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <script type="text/javascript">
+    <script type="text/javascript">
         $(function () {
-            $('[id*=gvCustomers]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            $('[id*=gridCuentas]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
                 "responsive": true,
                 "sPaginationType": "full_numbers"
             });
@@ -30,17 +30,17 @@
             <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
             <div class="card-body">
                 <form id="form1" runat="server">
-    <div>
-        <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" class="table table-striped"
-            Width="100%">
-            <Columns>
-                <asp:BoundField DataField="Correo" HeaderText="Customer ID" />
-                <asp:BoundField DataField="Nombre" HeaderText="Name" />
-                <asp:BoundField DataField="Cedula" HeaderText="Country" />
-            </Columns>
-        </asp:GridView>
-    </div>
-    </form>
+                    <div>
+                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover"
+                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
+                            <Columns>
+                                <asp:BoundField DataField="Correo" HeaderText="Correo" />
+                                <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
+                                <asp:BoundField DataField="Cedula" HeaderText="Cedula" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+                </form>
 
 
 
