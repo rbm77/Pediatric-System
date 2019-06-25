@@ -31,11 +31,26 @@ namespace BL
             miTOCuenta.correo = this.correo;
             miTOCuenta.contrasena = this.contrasena;
             miTOCuenta.tipo = this.tipo;
-            miTOCuenta.estado = "Activo";
+            miTOCuenta.estado = "Habilitada";
             confirmacion = miDAOCuenta.InsertarCuenta(miTOCuenta);
             return confirmacion;
 
         }
+
+
+        /// <summary>
+        /// Busca los datos de una cuenta segun un correo ingresado
+        /// </summary>
+        public void buscarCuentaPorCorreo()
+        {
+            miTOCuenta.correo = this.correo;
+            miDAOCuenta.buscarCuentaPorCorreo(miTOCuenta);
+            this.tipo = miTOCuenta.tipo;
+            this.estado = miTOCuenta.estado;
+        }
+
+
+
 
         /// <summary>
         /// Busca que exista la relacion entre una cuenta y una contraseña
