@@ -39,10 +39,7 @@ namespace Pediatric_System
                 {
                     mensajeAviso("danger", "La contraseña actual no coincide");
                 }
-
-
             }
-
         }
 
         public void mensajeAviso(String color, String texto)

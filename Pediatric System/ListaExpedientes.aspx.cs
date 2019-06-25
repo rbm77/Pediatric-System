@@ -10,8 +10,11 @@ namespace Pediatric_System
 {
     public partial class InicioPrincipal : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+
             //if (Session["Cuenta"] == null) { Response.Redirect("IniciarSesion.aspx"); }
 
             ManejadorExpediente manejador = new ManejadorExpediente();
@@ -23,6 +26,17 @@ namespace Pediatric_System
                 gridExpedientes.DataSource = expedientes;
                 gridExpedientes.DataBind();
             }
+        }
+
+        protected void nuevoExpediente_Click(object sender, EventArgs e)
+        {
+            Session["pagina"] = "listaExpedientes-Nuevo";
+            Response.Redirect("FichaBaseExpediente.aspx");
+        }
+
+        protected void regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
         }
     }
 }

@@ -14,8 +14,19 @@ namespace Pediatric_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
+            //{
+            //    verConsultas.Visible = false;
+            //    nuevaConsulta.Visible = false;
+            //    informacionPaciente.Visible = false;
+            //}
 
-
+            if ((string)Session["pagina"] == "dashboard")
+            {
+                verConsultas.Visible = false;
+                nuevaConsulta.Visible = false;
+                informacionPaciente.Visible = false;
+            }
         }
         
         protected void guardarExpediente_Click(object sender, EventArgs e)
@@ -66,7 +77,24 @@ namespace Pediatric_System
             return imagenOoriginal;
 
         }
-        
+
+        protected void verConsultas_Click(object sender, EventArgs e)
+        {
+            Session["pagina"] = "expediente-verConsulta";
+            Response.Redirect("ListaConsultas.aspx");
+        }
+
+        protected void nuevaConsulta_Click(object sender, EventArgs e)
+        {
+            Session["pagina"] = "expediente-nuevaConsulta";
+            Response.Redirect("FichaConsultaPaciente.aspx");
+        }
+
+        protected void regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ListaExpedientes.aspx");
+        }
+
 
         //private void MostrarMensaje(string confirmacion)
         //{

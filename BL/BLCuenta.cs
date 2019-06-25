@@ -21,7 +21,10 @@ namespace BL
         DAOCuenta miDAOCuenta = new DAOCuenta();
 
 
-
+        /// <summary>
+        /// Inserta una cuenta en la Base de Datos
+        /// </summary>
+        /// <returns>Retorna un mensaje de confirmacion o Error en caso de no poder insertar la cuenta</returns>
         public string insertarCuenta()
         {
             string confirmacion = "Error";
@@ -34,7 +37,9 @@ namespace BL
 
         }
 
-
+        /// <summary>
+        /// Busca que exista la relacion entre una cuenta y una contraseña
+        /// </summary>
         public void buscar()
         {
             miTOCuenta.correo = this.correo;
@@ -44,6 +49,10 @@ namespace BL
             this.estado = miTOCuenta.estado;
         }
 
+        /// <summary>
+        /// Actualiza la contraseña actual de la cuenta por una contraseña nueva autogenerada que es 
+        /// enviada al correo para recuperar
+        /// </summary>
         public void actualizarContraseña()
         {
             miTOCuenta.correo = this.correo;
@@ -51,6 +60,10 @@ namespace BL
             miDAOCuenta.recuperarContraseña(miTOCuenta);
         }
 
+        /// <summary>
+        /// Revisa que la contraseña ingresada sea la correcta de la cuenta que desea editarla
+        /// </summary>
+        /// <returns>Retorna un valor Boolean en caso de que la contraseña sea correcta o no</returns>
         public Boolean revisarContrasena()
         {
             miTOCuenta.correo = this.correo;
@@ -59,6 +72,9 @@ namespace BL
             return miDAOCuenta.revisarContrasena(miTOCuenta);
         }
 
+        /// <summary>
+        /// Actualiza la contraseña de una cuenta segun una nueva contraseña ingresada
+        /// </summary>
         public void editarContrasena()
         {
             miTOCuenta.correo = this.correo;
@@ -66,7 +82,7 @@ namespace BL
 
             miDAOCuenta.editarContrasena(miTOCuenta);
         }
-       
+
     }
 
 

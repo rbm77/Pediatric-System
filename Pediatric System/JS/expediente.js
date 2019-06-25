@@ -11,9 +11,7 @@ $(document).ready(function () {
     document.getElementById("descripcionAlergia").disabled = "true";
   //  document.getElementById("txtCodigo").disabled = "true";
   //  document.getElementById("descripcionVacuna").disabled = "true";
-    //$('.descripcionVacuna').hide();
-   
-    
+    //$('.descripcionVacuna').hide();  
 
 
     $(".estadoPerinatal").on("change", function () {
@@ -100,4 +98,6 @@ $(document).ready(function () {
     //    locale: 'es-es',
     //    format: 'dd/mm/yyyy'
     //});
+    
+        
 });

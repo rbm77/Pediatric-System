@@ -29,3 +29,36 @@
     padding-left: 0px;
     padding-right: 0px;
 }
+
+.alinearBtnNuevo {
+    text-align: center;
+    display: block;
+    margin-bottom: -10px;
+}
+
+.btnNuevoExpediente {
+    width: 180px;
+}
+
+.margen-general-2-top {
+    margin-top: 15px;
+}
+
+.paddingSidesCard {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.ubicacionBtnNuevo {
+    display: inline-block;
+}
+
+.alinearBtnRegresar {
+    text-align: right;
+    display: block;
+}
+
+.ubicacionBtnRegresar {
+    display: inline-block;
+    padding-right: 0px;
+}

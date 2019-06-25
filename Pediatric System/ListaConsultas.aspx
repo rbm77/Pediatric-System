@@ -14,14 +14,14 @@
         <div class="page-header">
             <h2 class="text-info">Consultas</h2>
         </div>
-        
+
         <hr class="linea-divisoria-titulo" />
 
         <!-- ---------------------------------------------------- !-->
 
         <form runat="server">
 
-            <div class="margen-general-2-top">
+            <div class="margen-general-2-top" runat="server" id="informacionPaciente">
                 <div class="col-12">
                     <div class="form-row">
 
@@ -34,7 +34,7 @@
                         <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input">Fabian Jimenez Morales</label>
+                                <label class="nombre-input"></label>
                                 <br />
                             </div>
 
@@ -76,16 +76,16 @@
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>Richard Bolaños Moya</td>
-                                                <td>06/12/2018</td>
-                                                <td>Marcos Soto</td>
-                                                <td>Pendiente</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                             <tr>
-                                                <td>Fabian Jimenez Morales</td>
-                                                <td>12/08/2017</td>
-                                                <td>Marcos Soto</td>
-                                                <td>Pendiente</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -96,7 +96,7 @@
                             <div class="alinearBtnNuevo">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnNuevo" runat="server">
 
-                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="NUEVA CONSULTA" ID="nuevoExpediente" />
+                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="NUEVA CONSULTA" ID="nuevoConsulta" OnClick="nuevoConsulta_Click" />
                                 </div>
                             </div>
 
@@ -107,7 +107,7 @@
 
             <div class="form-row alinearBtnRegresar">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
                 </div>
             </div>
 

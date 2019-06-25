@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-   public class BL_ManejadorPersonal
+    public class BL_ManejadorPersonal
     {
         public string correo { set; get; }
         public string nombre { set; get; }

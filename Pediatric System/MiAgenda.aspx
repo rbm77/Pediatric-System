@@ -83,41 +83,33 @@
                     <br />
 
                     <div class="form-row">
+                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                            <div class="padding-general-label">
+                                <input type="text" class="form-control clockpicker" id="clockpicker" placeholder="Hora de Inicio" runat="server" />
 
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="input-group">
-
-                                <asp:TextBox ID="clockpicker" runat="server" CssClass="form-control clockpicker"></asp:TextBox>
-
-                                <%--                                        <input type="text" class="form-control" placeholder="Hora de Inicio" id="horaInicio" runat="server">--%>
-                            </div>
-                        </div>
-                        <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                            <div class="input-group">
-
-                                <asp:TextBox ID="clockpicker2" runat="server" CssClass="form-control clockpicker"></asp:TextBox>
-
-                                <%--                                        <input type="text" class="form-control" placeholder="Hora de Fin" id="horaFin" runat="server">--%>
                             </div>
                         </div>
 
-                    </div>
+                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12">
+                            <div class="padding-general-label">
+                                <input type="text" class="form-control clockpicker" id="clockpicker2" placeholder="Hora de Fin" runat="server" />
+
+                            </div>
+                        </div>
+                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                            <ContentTemplate>
 
 
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                        <ContentTemplate>
 
+                                <%--                                <div class="form-row" style="text-align: center; display: block">--%>
+                                <div runat="server" style="display: inline-block; padding-left: 5px; width: 150px" id="form_actualizar">
 
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
 
-                            <div class="form-row" style="text-align: center; display: block">
-                                <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6 " runat="server" style="display: inline-block" id="form_actualizar">
-
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro"  Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
 
                                     <br />
-                                    <br />
 
-                                    <div class="lds-spinner">
+                                    <div class="lds-spinner" style="padding-left: 42px">
                                         <div></div>
                                         <div></div>
                                         <div></div>
@@ -131,8 +123,24 @@
                                         <div></div>
                                         <div></div>
                                     </div>
+
                                 </div>
-                            </div>
+                                <%--</div>--%>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </div>
+
+
+
+
+
+
+
+                    <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                        <ContentTemplate>
+
+
+
 
                             <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
@@ -169,13 +177,12 @@
 
 
             </div>
-
             <br />
 
 
             <div class="form-row" style="text-align: right; display: block">
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
-                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" />
+                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" OnClick="Regresar_Click" />
                 </div>
             </div>
         </div>

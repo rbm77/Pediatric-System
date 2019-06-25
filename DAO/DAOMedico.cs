@@ -8,14 +8,14 @@ using System.Data;
 using TO;
 namespace DAO
 {
-   public class DAOMedico
+    public class DAOMedico
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
         /// <summary>
         /// Inserta un Medico en la ase de datos
         /// </summary>
-        /// <param name="miTOMedico"></param>
+        /// <param name="miTOMedico">Recibe los un objeto con los datos del medico que se desea ingresar</param>
         public void insertarMedico(TOMedico miTOMedico)
         {
             // Se abre la conexión
@@ -25,7 +25,7 @@ namespace DAO
             }
             // Se inicia una nueva transacción
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
-            string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            //  string confirmacion = "El Medico se ingresó exitosamente en el sistema";
             try
             {
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
@@ -36,7 +36,7 @@ namespace DAO
                 comando.Transaction = transaccion;
 
                 // Se asigna un valor a los parámetros del comando a ejecutar
-               
+
                 comando.Parameters.AddWithValue("@cod", miTOMedico.codigo);
                 comando.Parameters.AddWithValue("@cor", miTOMedico.correo);
                 comando.Parameters.AddWithValue("@nom", miTOMedico.nombre);
@@ -66,7 +66,7 @@ namespace DAO
                 }
                 finally
                 {
-                    confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
+                    // confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
                 }
             }
             finally
@@ -76,11 +76,14 @@ namespace DAO
                     conexion.Close();
                 }
             }
-         
+
         }
 
 
-        //________________
+        /// <summary>
+        /// Busca un medico dentro de la base de datos segun un correo
+        /// </summary>
+        /// <param name="miTOMedico">Recibe un objeto que contiene los atributos de la cuenta que se desea buscar</param>
 
         public void buscarMedico(TOMedico miTOMedico)
         {
@@ -94,7 +97,7 @@ namespace DAO
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Buscar Medico");
-           // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
@@ -109,13 +112,14 @@ namespace DAO
 
                 // Se asigna un valor a los parámetros del comando a ejecutar
 
-               
+
 
                 // Se ejecuta el comando y se realiza un commit de la transacción
 
                 SqlDataReader lector = comando.ExecuteReader();
                 if (lector.HasRows)
                 {
+                    // Se asignado los valores a un objeto segun los atributos seleccionados 
                     while (lector.Read())
                     {
                         miTOMedico.nombre = lector["NOMBRE"].ToString();
@@ -142,6 +146,7 @@ namespace DAO
             }
             finally
             {
+                // Se finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -150,7 +155,10 @@ namespace DAO
 
         }
 
-
+        /// <summary>
+        /// Edita los datos de un medico dentro de la base de datos
+        /// </summary>
+        /// <param name="miTOMedico">Recibe un objeto que posee los atributos de la cuetna que se desea editar</param>
         public void editarMedico(TOMedico miTOMedico)
         {
             // Se abre la conexión
@@ -163,7 +171,7 @@ namespace DAO
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
-            string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
@@ -206,11 +214,12 @@ namespace DAO
                 }
                 finally
                 {
-                    confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
+                    //  confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
                 }
             }
             finally
             {
+                // Se finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();

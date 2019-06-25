@@ -33,8 +33,8 @@ namespace Pediatric_System
 
             string codigoMedico = "777";
 
-            string inicio = clockpicker.Text.Trim();
-            string fin = clockpicker2.Text.Trim();
+            string inicio = clockpicker.Value.Trim();
+            string fin = clockpicker2.Value.Trim();
 
             List<BLAgendaEstandar> agenda = new List<BLAgendaEstandar>();
 
@@ -102,6 +102,7 @@ namespace Pediatric_System
                     vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
                     Limpiar();
                     UpdatePanel2.Update();
+                    UpdatePanel1.Update();
 
                     if (primeraVez)
                     {
@@ -178,6 +179,15 @@ namespace Pediatric_System
 
 
 
+        }
+        /// <summary>
+        /// Redirecciona a la página de inicio del rol médico o asistente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
         }
     }
 }

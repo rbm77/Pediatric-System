@@ -8,7 +8,7 @@ using DAO;
 
 namespace BL
 {
-   public class BLMedico
+    public class BLMedico
     {
         public string codigo;
         public string correo;
@@ -20,7 +20,9 @@ namespace BL
         TOMedico miTOMedico = new TOMedico();
         DAOMedico miDAOMedico = new DAOMedico();
 
-
+        /// <summary>
+        /// Inserta un Medico dentro de la base de datos
+        /// </summary>
         public void insertarMedico()
         {
             miTOMedico.codigo = this.codigo;
@@ -28,9 +30,13 @@ namespace BL
             miTOMedico.nombre = this.nombre;
             miTOMedico.apellido = this.apellido;
             miTOMedico.cedula = this.cedula;
-            miTOMedico.telefono = this.telefono;     
+            miTOMedico.telefono = this.telefono;
             miDAOMedico.insertarMedico(miTOMedico);
         }
+
+        /// <summary>
+        /// Busca un medico segun su correo asignado
+        /// </summary>
         public void buscarMedico()
         {
             miTOMedico.correo = this.correo;
@@ -42,7 +48,9 @@ namespace BL
             this.codigo = miTOMedico.codigo;
         }
 
-
+        /// <summary>
+        /// Edita un medico segun el correo asignado
+        /// </summary>
         public void editarMedico()
         {
             miTOMedico.codigo = this.codigo;

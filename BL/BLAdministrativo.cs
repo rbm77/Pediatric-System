@@ -8,9 +8,8 @@ using DAO;
 
 namespace BL
 {
-   public class BLAdministrativo
+    public class BLAdministrativo
     {
-
         public string correo;
         public string nombre;
         public string apellido;
@@ -20,7 +19,9 @@ namespace BL
         TOAdministrativo miTOAdministrativo = new TOAdministrativo();
         DAOAdministrativo miDAOAdministrativo = new DAOAdministrativo();
 
-
+        /// <summary>
+        /// Inserta un usuario personal de tipo administrativo
+        /// </summary>
         public void insertarAdministrativo()
         {
             miTOAdministrativo.correo = this.correo;
@@ -31,6 +32,9 @@ namespace BL
             miDAOAdministrativo.insertarAdministrativo(miTOAdministrativo);
         }
 
+        /// <summary>
+        /// Busca un Administrador basaco en un correo
+        /// </summary>
         public void buscarAdministrativo()
         {
             miTOAdministrativo.correo = this.correo;
@@ -41,6 +45,9 @@ namespace BL
             this.telefono = miTOAdministrativo.telefono;
         }
 
+        /// <summary>
+        /// Edita un administrador basado en un correo
+        /// </summary>
         public void editarAdministrativo()
         {
             miTOAdministrativo.correo = this.correo;

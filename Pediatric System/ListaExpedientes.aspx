@@ -4,12 +4,14 @@
 
     <script type="text/javascript">
         $(function () {
-            $('[id*=gridExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            $('[id*=gridExpediente]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
                 "responsive": true,
                 "sPaginationType": "numbers"
             });
         });
     </script>
+
+    <link href="CSS/listaExpedientes.css" rel="stylesheet" />
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -17,69 +19,52 @@
 
     <br />
 
-    <div class="container-fluid col-10 col-auto">
-        <div class="page-header">
-            <h3 class="text-info">Expedientes</h3>
+    <div class="container-fluid col-11 col-auto">
+        <div class="page-header margen-general-2-top">
+            <h2 class="text-info">Expedientes</h2>
         </div>
-    </div>
 
-    <hr style="color: #0056b2;" />
+        <hr class="linea-divisoria-titulo" />
 
-    <form runat="server">
-        <br />
 
-        <div class="container-fluid col-11 col-auto table-responsive">
 
-            <div class="card">
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
-                <div class="card-body">
-                    <div>                        
 
-                        <asp:GridView ID="gridExpedientes" runat="server" CssClass="table table-hover"
-                            AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                            HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%">
+        <form runat="server">
 
-                            <Columns>
-                                <asp:BoundField HeaderText="Paciente" DataField="Nombre" ControlStyle-Width="25%" />
-                                <asp:BoundField HeaderText="Sexo" DataField="Sexo" ControlStyle-Width="25%" />
-                            </Columns>
-                        </asp:GridView>
+            <div class="col-12 margen-general-1-bottom paddingSidesCard">
+                <div class="table-responsive">
+                    <div class="card">
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
+                        <div class="card-body">
+                            <div>
 
-                        <%--<table class="table table-hover" id="dataTable">
-                            <thead>
-                                <tr class="bg-light">
-                                    <th scope="col" style="color: dimgray;">Nombre Completo</th>
-                                    <th scope="col" style="color: dimgray;">Cédula</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Richard Bolaños Moya</td>
-                                    <td>2-0785-0434</td>
-                                </tr>
-                                <tr>
-                                    <td>Fabian Jimenez Morales</td>
-                                    <td>2-0264-0478</td>
-                                </tr>
+                                <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
+                                    AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                                    HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%">
 
-                            </tbody>
-                        </table>--%>
-                    </div>
+                                    <Columns>
+                                        <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
+                                        <asp:BoundField HeaderText="Cedula" DataField="Cedula" />
+                                        <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
+                                        <asp:ButtonField HeaderText="Acción" CommandName="Eliminar"
+                                            ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
+                                    </Columns>
+                                </asp:GridView>
 
-                    <hr style="color: #0056b2;" />
-                    <br />
+                            </div>
 
-                    <div class="form-row" style="text-align: right; display: block">
-                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12" style="display: inline-block">
+                            <br />
 
-                            <button type="submit" class="btn btn-neutro form-control">CREAR EXPEDIENTE</button>
 
+                            <div class="alinearBtnNuevo">
+                                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12 ubicacionBtnNuevo">
+                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevoExpediente" Text="NUEVO EXPEDIENTE" ID="nuevoExpediente" OnClick="nuevoExpediente_Click" />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-
 
             <!-- Modal >
             <div-- class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -115,13 +100,13 @@
                 </div>
             </div-->
 
-        </div>
+            <div class="form-row alinearBtnRegresar">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
+                </div>
+            </div>
 
-        <br />
-        <br />
-
-    </form>
-
-
+        </form>
+    </div>
 
 </asp:Content>

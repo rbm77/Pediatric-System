@@ -57,7 +57,7 @@ namespace BL
         /// </summary>
         /// <param name="toExpediente"></param>
         /// <returns>El objeto de tipo BLExpediente convertido</returns>
-        private BLExpediente convertirExpedientes (TOExpediente toExpediente)
+        private BLExpediente convertirExpedientes(TOExpediente toExpediente)
         {
             BLExpediente blExpediente = new BLExpediente(toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo);
             return blExpediente;

@@ -13,6 +13,15 @@ namespace Pediatric_System {
     public partial class ListaConsultas {
         
         /// <summary>
+        /// informacionPaciente control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl informacionPaciente;
+        
+        /// <summary>
         /// imgPreview control.
         /// </summary>
         /// <remarks>
@@ -22,13 +31,13 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Image imgPreview;
         
         /// <summary>
-        /// nuevoExpediente control.
+        /// nuevoConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nuevoExpediente;
+        protected global::System.Web.UI.WebControls.Button nuevoConsulta;
         
         /// <summary>
         /// regresar control.

@@ -82,7 +82,7 @@ namespace Pediatric_System {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox clockpicker;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText clockpicker;
         
         /// <summary>
         /// clockpicker2 control.
@@ -91,16 +91,16 @@ namespace Pediatric_System {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox clockpicker2;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText clockpicker2;
         
         /// <summary>
-        /// UpdatePanel1 control.
+        /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel3;
         
         /// <summary>
         /// form_actualizar control.
@@ -119,6 +119,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Actualizar;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// mensajeConfirmacion control.

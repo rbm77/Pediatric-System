@@ -1,7 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="CuentaPersonal.aspx.cs" Inherits="Pediatric_System.CuentaPersonal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
+         <link rel="stylesheet" href="CSS/agenda.css" />
+    <link rel="stylesheet" href="CSS/expediente.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
@@ -14,13 +15,22 @@
         <hr class="linea-divisoria-titulo" />
 
         <form runat="server">
+                        <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link nombre-input" id="info-personal-paciente-tab" " href="EstadoCuenta.aspx" role="tab" aria-controls="info-personal-paciente" aria-selected="false">Lista Cuentas</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link active nombre-input" id="info-personal-encargado-tab"  href="CuentaPersonal.aspx" role="tab" aria-controls="info-personal-encargado" aria-selected="true">Crear Cuentas</a>
+                    </li>
+</ul>
             <div class="tab-content" id="myTabContent">
 
                 <!-- Datos para la Informacion Personal del Paciente !-->
 
                 <div class="tab-pane fade show active margen-general-1-bottom" id="info-personal-paciente" role="tabpanel" aria-labelledby="info-personal-paciente-tab">
 
-                    <div class="col-12 border rounded margen-general-2-top">
+                    <div class="col-12 border rounded margen-general-0-top">
                         <br>
                         <div class="margen-general-1-top padding-general-inicio-bottom">
                             <div class="form-row">
@@ -111,7 +121,7 @@
             locale: 'es-es',
             format: 'dd/mm/yyyy'
         });
-        
+
         //$(".seleccionarRol").on("change", function () {
         //    if (this.value == "Medico") {
         //        document.getElementById('txtCodigo').innerHTML = "enabled"
@@ -121,8 +131,8 @@
         //        // document.getElementById("txtCodigo").disabled = true;
         //    }
         //});
-      
-      
+
+
     </script>
 
 </asp:Content>
