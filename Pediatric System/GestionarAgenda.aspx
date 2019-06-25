@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="GestionarAgenda.aspx.cs" Inherits="Pediatric_System.GestionarAgenda" EnableEventValidation="false" %>
+﻿<%@ Page Culture="es-ES" Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="GestionarAgenda.aspx.cs" Inherits="Pediatric_System.GestionarAgenda" EnableEventValidation="false" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
@@ -214,7 +214,7 @@
 
                             <div class="form-group" style="text-align: center; display: inline-block">
 
-                                <asp:Button type="button" runat="server" class="btn btn-eliminar" Text="CANCELAR CITA" ID="btnCancelar" />
+                                <asp:Button type="button" runat="server" class="btn btn-eliminar" Text="CANCELAR CITA" ID="btnCancelar" OnClick="btnCancelar_Click" />
 
                                 <br />
                                 <br />
@@ -249,7 +249,7 @@
             <br />
             <div class="form-row" style="text-align: right; display: block">
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
-                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" />
+                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" OnClick="Regresar_Click" />
                 </div>
             </div>
 

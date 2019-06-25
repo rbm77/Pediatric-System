@@ -215,5 +215,100 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Elimina una cita de la base de datos
+        /// </summary>
+        /// <param name="codigoMedico"></param>
+        /// <param name="fecha"></param>
+        /// <param name="hora"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string CancelarCita(string codigoMedico, string fecha, string hora)
+        {
+
+
+            string confirmacion = "La cita se canceló exitosamente exitosamente";
+
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cancelar la cita";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cancelar la cita";
+                return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cancelar cita");
+
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                string sentencia = "DELETE FROM CITA WHERE CODIGO_MEDICO = @codigo AND FECHA = @fecha AND HORA = @hora;";
+
+                SqlCommand comando = new SqlCommand(sentencia, conexion);
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar y se ejecuta el comando
+
+                comando.Parameters.AddWithValue("@codigo", codigoMedico);
+                comando.Parameters.AddWithValue("@fecha", fecha);
+                comando.Parameters.AddWithValue("@hora", hora);
+
+                comando.ExecuteNonQuery();
+
+
+
+                // Se realiza un commit de la transacción
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cancelar la cita";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+
+        }
+
     }
 }
