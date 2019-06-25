@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="EstadoCuenta.aspx.cs" Inherits="Pediatric_System.EstadoCuenta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+        $(function () {
+            $('[id*=gvCustomers]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "full_numbers"
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -18,67 +26,101 @@
 
         <br />
 
-        <table class="table table-striped">
+        <div class="card">
+            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
+            <div class="card-body">
+                <form id="form1" runat="server">
+    <div>
+        <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" class="table table-striped"
+            Width="100%">
+            <Columns>
+                <asp:BoundField DataField="Correo" HeaderText="Customer ID" />
+                <asp:BoundField DataField="Nombre" HeaderText="Name" />
+                <asp:BoundField DataField="Cedula" HeaderText="Country" />
+            </Columns>
+        </asp:GridView>
+    </div>
+    </form>
+
+
+
+
+
+
+
+
+
+                <%--<asp:Repeater ID="rptCustomers" runat="server">
+            <HeaderTemplate>
+                <div class="table-responsive">
+                    <table class="table table-hover" id="dataTable">
+                        <thead>
+                            <tr class="bg-light">
+                            <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
+                            <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</th>
+                            <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Cedula</th>
+                        </tr> 
+
+                        </thead>
+                </div>
+            </HeaderTemplate>
+            <ItemTemplate>
+                 <tbody>
+                <tr>
+                    <td>
+                        <asp:Label ID="lblCorreo" runat="server" Text='<%# Eval("Correo") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblNombre" runat="server" Text='<%# Eval("Nombre") %>' />
+                    </td>
+                    <td>
+                        <asp:Label ID="lblCedula" runat="server" Text='<%# Eval("Cedula") %>' />
+                    </td>
+                </tr>
+                     </tbody>
+            </ItemTemplate>
+            <FooterTemplate>
+                </table>
+            </FooterTemplate>
+        </asp:Repeater>--%>
+            </div>
+        </div>
+
+
+
+
+
+        <%--        <table class="table table-striped" id="dataTable" >
 
             <thead>
                 <tr>
                     <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
+                    <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Nombre</th>
                     <th scope="col" style="font-size: 16px; font-weight: bold; color: dimgray">Estado</th>
                 </tr>
             </thead>
             <tbody>
+                 <% 
+
+                     foreach (var per in listaPersonal)
+                     {%>
                 <tr>
-                    <td>richardbomo26@gmail.com</td>
-                    <td>
-
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="habilitado" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Habilitado
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="deshabilitado">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Deshabilitado
-                            </label>
-                        </div>
-
-                    </td>
+                    <td><% per.correo.ToString(); %></td>
+                    <td><% per.nombre.ToString(); %></td>
+  
                 </tr>
-                <tr>
-                    <td>fabianjm31@gmail.com</td>
-                    <td>
-
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="habilitado" checked>
-                            <label class="form-check-label" for="exampleRadios1">
-                                Habilitado
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios4" value="deshabilitado">
-                            <label class="form-check-label" for="exampleRadios2">
-                                Deshabilitado
-                            </label>
-                        </div>
-
-                    </td>
-                </tr>
+ <% }%>
                <%-- <tr>
                     <th scope="row"></th>
                     <td></td>
                 </tr>--%>
-            </tbody>
-        </table>
-
+        <%--            </tbody>
+        </table>--%>
     </div>
 
     <br />
 
-    <div class="container-fluid col-10 col-auto">
+    <%--    <div class="container-fluid col-10 col-auto">
 
         <div class="form-row">
 
@@ -95,6 +137,5 @@
             </div>
 
         </div>
-    </div>
-
+    </div>--%>
 </asp:Content>

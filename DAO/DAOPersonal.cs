@@ -12,6 +12,7 @@ namespace DAO
    public class DAOPersonal
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
+        List<TOPersonal> lista = new List<TOPersonal>();
         public void insertarPersonal(TOPersonal miTOPersonal)
         {
             // Se abre la conexión
@@ -145,6 +146,93 @@ namespace DAO
 
         }
 
+
+
+        public List<TOPersonal> buscarListaPersonal()
+        {
+           
+            // Se abre la conexión
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
+            //string confirmacion = "La cita se ingresó exitosamente en el sistema";
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT * FROM PERSONAL", conexion);
+
+                comando.Transaction = transaccion;
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    while (reader != null && reader.Read())
+                    {
+                        TOPersonal miTOPersonal = new TOPersonal();
+                           miTOPersonal.correo = reader["CUE_CORREO"].ToString();
+                            miTOPersonal.nombre = reader["NOMBRE"].ToString();
+                            miTOPersonal.apellido = reader["APELLIDO"].ToString();
+                            miTOPersonal.cedula = Int32.Parse(reader["CEDULA"].ToString());
+                            miTOPersonal.telefono = Int32.Parse(reader["TELEFONO"].ToString());
+                          
+                            lista.Add(miTOPersonal);
+                    }
+                }
+
+
+
+
+                //foreach (var resultado in reader.Read())
+                //{
+                //    miTOPersonal.correo = reader["CUE_CORREO"].ToString();
+                //    miTOPersonal.nombre = reader["NOMBRE"].ToString();
+                //    miTOPersonal.apellido = reader["APELLIDO"].ToString();
+                //    miTOPersonal.cedula = Int32.Parse(reader["CEDULA"].ToString());
+                //    miTOPersonal.telefono = Int32.Parse(reader["TELEFONO"].ToString());
+                //    miTOPersonal.toLista.Add(miTOPersonal);
+                //}
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    //confirmacion = "Ocurrió un error y no se pudo ingresar el personal";
+                }
+            }
+
+            finally
+            {
+                
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return lista;
+        }
 
 
     }
