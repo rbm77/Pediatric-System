@@ -11,23 +11,23 @@ namespace DAO
    public class DAOMedico
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
+
+        /// <summary>
+        /// Inserta un Medico en la ase de datos
+        /// </summary>
+        /// <param name="miTOMedico"></param>
         public void insertarMedico(TOMedico miTOMedico)
         {
             // Se abre la conexión
-
             if (conexion.State != ConnectionState.Open)
             {
                 conexion.Open();
             }
-
             // Se inicia una nueva transacción
-
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
             string confirmacion = "El Medico se ingresó exitosamente en el sistema";
-
             try
             {
-
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("INSERT INTO MEDICO (Codigo_Medico, CUE_Correo, Nombre, Apellido, Cedula,Telefono, Especialidad) VALUES (@cod, @cor, @nom, @ape, @ced, @tel, @esp);", conexion);

@@ -17,7 +17,7 @@ namespace Pediatric_System
 
 
         }
-
+        
         protected void guardarExpediente_Click(object sender, EventArgs e)
         {
             // Recuperar campos de texto

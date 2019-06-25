@@ -40,7 +40,7 @@
                                 </div>
                                   <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Repetir Contraseña</label>
+                                        <label class="nombre-input">Confirmar Contraseña</label>
                                         <asp:TextBox runat="server" ID="txtContraseñaNueva2" TextMode="Password" CssClass="form-control" required="required"></asp:TextBox>
                                     </div>
                                       <br>
@@ -57,7 +57,7 @@
                     <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal> 
             <br>
             <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-guardar form-control" OnClick="btnGuardar_Click"></asp:Button>
+                <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-guardar" OnClick="btnGuardar_Click"></asp:Button>
             </div>
         </form>
 

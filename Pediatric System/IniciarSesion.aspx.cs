@@ -40,7 +40,7 @@ namespace Pediatric_System
                             Response.Redirect("InicioUsuarioExterno.aspx");
                             break;
                         case "Asistente":
-                            Response.Redirect("InicioPrincipal.aspx");
+                            Response.Redirect("Dashboard.aspx");
                             break;
                     }
                 } else {                
