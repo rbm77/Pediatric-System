@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BL;
 
 namespace Pediatric_System
 {
@@ -12,6 +13,10 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             //if (Session["Cuenta"] == null) { Response.Redirect("IniciarSesion.aspx"); }
+
+            ManejadorExpediente manejador = new ManejadorExpediente();
+            List<BLExpediente> expedientes = new List<BLExpediente>();
+            manejador.cargarListaExpedientes(expedientes);
         }
     }
 }

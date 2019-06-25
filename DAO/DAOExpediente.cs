@@ -13,6 +13,11 @@ namespace DAO
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
+        /// <summary>
+        /// Insertar un objeto expediente en la BD
+        /// </summary>
+        /// <param name="nuevoExpediente"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
         public string CrearExpediente(TOExpediente nuevoExpediente)
         {
             // Abrir la conexion
@@ -78,7 +83,96 @@ namespace DAO
 
             return confirmacion;
         }
+
+        /// <summary>
+        /// Obtiene la lista de los registros que estan en la tabla Expediente 
+        /// </summary>
+        /// <param name="toListaExpediente"></param>
+        /// <returns></returns>
+        public string CargarListaExpedientes(List<TOExpediente> toListaExpediente)
+        {
+            string confirmacion = "Los expedientes se cargaron exitosamente";
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar Expedientes");
+
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE", conexion);
+
+                comando.Transaction = transaccion;
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        TOExpediente expediente = new TOExpediente();
+                        expediente.Nombre = lector["NOMBRE"].ToString();
+                        expediente.PrimerApellido = lector["PRIMER_APELLIDO"].ToString();
+                        expediente.SegundoApellido = lector["SEGUNDO_APELLIDO"].ToString();
+                        expediente.Cedula = lector["CEDULA_EXPEDIENTE"].ToString();
+                        expediente.Sexo = lector["SEXO"].ToString();
+
+                        toListaExpediente.Add(expediente);
+
+                        //TOExpediente expediente = new TOExpediente(lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
+                        //    DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString());
+                        //toListaExpediente.Add(expediente);
+                    }
+                }
+
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar las citas";
+                }
+            }
+
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
     }
+}
 
 
     //    public string CrearExpediente (TOExpediente nuevoExpediente, TODireccion nuevaDireccionPaciente, TODireccion nuevaDireccionEncargado, TODireccion nuevaDireccionFactura, TOHistoriaClinica nuevaHistoriaClinica1, TOHistoriaClinica nuevaHistoriaClinica2)
@@ -198,5 +292,5 @@ namespace DAO
     //        return confirmacion;
     //    }
     //}
-}
+
 
