@@ -6,7 +6,7 @@
         $(function () {
             $('[id*=gridExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
                 "responsive": true,
-                "sPaginationType": "full_numbers"
+                "sPaginationType": "numbers"
             });
         });
     </script>

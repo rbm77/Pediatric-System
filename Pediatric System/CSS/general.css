@@ -24,6 +24,14 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+.pagination .page-item.active .page-link {
+    background-color: #1ca5ac !important;
+    border-color: #1ca5ac !important;
+}
+
+.sidebar .dropdown-item:hover, .dropdown-item:focus {
+    background-color: #758ba1;
+}
 .page-header {
     border: 0 none;
     color: #050505;
