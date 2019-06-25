@@ -13,7 +13,7 @@
 
     <hr style="color: #0056b2;" />
 
-    <form>
+    <form runat="server">
 
         <div class="container-fluid col-11 col-auto table-responsive">
 
@@ -87,22 +87,14 @@
 
             <br />
 
-            <div class="form-row">
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <button type="submit" class="btn btn-outline-success form-control">GUARDAR</button>
-                </div>
-
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-                </div>
-            </div>
-        </div>
-
-        <%--<div class="form-row" style="text-align: right; display: block; padding-right: 0px;" runat="server">
-                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+            <div class="form-row" style="text-align: right; display: block; padding-right: 0px;" runat="server">
+                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
 
                 <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" />
-            </div>--%>
+            </div>
+
+        </div>
+
+
     </form>
 </asp:Content>

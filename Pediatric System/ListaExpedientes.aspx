@@ -34,7 +34,7 @@
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
                 <div class="table-responsive">
                     <div class="card">
-                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>  Lista de Expedientes</h5>
                         <div class="card-body">
                             <div>
 
@@ -44,7 +44,7 @@
 
                                     <Columns>
                                         <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
-                                        <asp:BoundField HeaderText="Cedula" DataField="Cedula" />
+                                        <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
                                         <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
                                         <asp:ButtonField HeaderText="Acción" CommandName="Eliminar"
                                             ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
