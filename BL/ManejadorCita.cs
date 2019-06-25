@@ -60,5 +60,21 @@ namespace BL
                 toCita.Telefono, toCita.Fecha, toCita.Hora);
             return blCita;
         }
+
+        /// <summary>
+        /// Elimina una cita de la base de datos
+        /// </summary>
+        /// <param name="codigoMedico"></param>
+        /// <param name="fecha"></param>
+        /// <param name="hora"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string CancelarCita(string codigoMedico, string fecha, string hora)
+        {
+            string confirmacion = "error";
+            DAOCita dao = new DAOCita();
+            confirmacion = dao.CancelarCita(codigoMedico, fecha, hora);
+            return confirmacion;
+        }
+
     }
 }
