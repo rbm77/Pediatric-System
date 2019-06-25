@@ -140,9 +140,6 @@
 
                         </div>
                         <div class="modal-body">
-
-
-
                             <div class="form-row margen-general-1-top">
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
