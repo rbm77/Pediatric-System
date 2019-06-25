@@ -41,8 +41,8 @@
                                
                                  <asp:TemplateField HeaderText="Acciones">
                                 <ItemTemplate>
-                                  <asp:Button ID="btnEditar" runat="server" Text="Editar" />
-                                  <asp:Button ID="btnEstado" runat="server" Text="Estado" />
+                                  <asp:Button ID="btnEditar" runat="server" ClientIDMode= Static Text="Editar" />
+                                  <asp:Button ID="btnEstado" runat="server" ClientIDMode= Static Text="Estado" />
                                 </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
