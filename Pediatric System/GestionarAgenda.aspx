@@ -14,7 +14,7 @@
 
     <div class="container-fluid col-11 col-auto">
         <div class="page-header">
-            <h3 class="text-info">Mi Agenda</h3>
+            <h3 class="text-info">Citas</h3>
 
         </div>
     </div>
