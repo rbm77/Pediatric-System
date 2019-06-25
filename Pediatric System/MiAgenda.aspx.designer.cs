@@ -94,11 +94,7 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputText clockpicker2;
         
         /// <summary>
-
-        /// Control UpdatePanel3.
-
-        /// UpdatePanel1 control.
-
+        /// UpdatePanel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -125,20 +121,16 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button Actualizar;
         
         /// <summary>
-
-        /// Control UpdatePanel1.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// Control mensajeConfirmacion.
-
         /// mensajeConfirmacion control.
-
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

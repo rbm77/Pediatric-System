@@ -36,7 +36,7 @@
                         <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <a class="card-body card-dash" href="#">
-                                    <i style="color: #1d5e93"  class="fas fa-user-check fa-4x"></i>
+                                    <i style="color: #1d5e93" class="fas fa-user-check fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="#">
                                     <span class="float-left">Consultas Activas</span>
@@ -49,7 +49,7 @@
                         <div class=" col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <a class="card-body card-dash" href="FichaBaseExpediente.aspx">
-                                    <i style="color: #1d5e93"  class="fas fa-plus-circle fa-4x"></i>
+                                    <i style="color: #1d5e93" class="fas fa-plus-circle fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="FichaBaseExpediente.aspx">
                                     <span class="float-left">Nuevo Expediente</span>
@@ -66,7 +66,7 @@
                         <div class=" col-sm-12 col-xl-6 col-lg-12 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <a class="card-body card-dash" href="MiAgenda.aspx">
-                                     <i style="color: #1d5e93"   class="far fa-calendar-alt fa-4x"></i>
+                                    <i style="color: #1d5e93" class="far fa-calendar-alt fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="MiAgenda.aspx">
                                     <span class="float-left">Administrar Agenda</span>
@@ -79,7 +79,7 @@
                         <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <a class="card-body card-dash" href="AsociarPaciente.aspx">
-                                    <i style="color: #1d5e93"  class="fas fa-user-plus fa-4x"></i>
+                                    <i style="color: #1d5e93" class="fas fa-user-plus fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="AsociarPaciente.aspx">
                                     <span class="float-left">Asociar Paciente-Cuenta</span>
@@ -92,7 +92,7 @@
                         <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <a class="card-body card-dash" href="GestionarAgenda.aspx">
-                                   <i style="color: #1d5e93"  class="far fa-calendar-check fa-4x"></i>                                   
+                                    <i style="color: #1d5e93" class="far fa-calendar-check fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="GestionarAgenda.aspx">
                                     <span class="float-left">Citas</span>
@@ -105,7 +105,7 @@
                         <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12  mb-20">
                             <div class="card text-white o-hidden h-100">
                                 <a class="card-body card-dash">
-                                    <i style="color: #1d5e93"  class="fas fa-chart-pie fa-4x"></i>
+                                    <i style="color: #1d5e93" class="fas fa-chart-pie fa-4x"></i>
                                 </a>
                                 <a class="card-footer text-white clearfix small z-1" href="#">
                                     <span class="float-left">Reportes</span>

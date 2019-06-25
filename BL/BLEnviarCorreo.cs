@@ -7,7 +7,7 @@ using System.Net.Mail;
 
 namespace BL
 {
-   public class BLEnviarCorreo
+    public class BLEnviarCorreo
     {
         Boolean estado = true;
         String merror;

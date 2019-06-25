@@ -8,7 +8,7 @@ using DAO;
 
 namespace BL
 {
-   public class BLAdministrativo
+    public class BLAdministrativo
     {
         public string correo;
         public string nombre;

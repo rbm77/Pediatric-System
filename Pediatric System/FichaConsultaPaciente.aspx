@@ -281,7 +281,7 @@
                         <div class="card">
                             <label class="card-header nombre-input">Adjuntar Exámenes de Laboratorio</label>
 
-                            <div class="card-body">                               
+                            <div class="card-body">
                                 <div id="examenPrincipal">
                                     <div class="form-row border rounded campoGeneralExamen">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">

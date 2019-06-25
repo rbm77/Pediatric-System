@@ -52,7 +52,7 @@ namespace BL
             this.AP_OtrasComplicacionesDescripcion = apDescripcionOtras;
         }
 
-        public BLHistoriaClinica(string ced, Boolean hfAsma, Boolean hfDiabetes, Boolean hfHipertension, Boolean hfCardiovas, Boolean hfDisplidemia, Boolean hfEpilepsia, Boolean hfOtros, string hfDescripcionOtros, Boolean apatEstado, string apatDescripcion, 
+        public BLHistoriaClinica(string ced, Boolean hfAsma, Boolean hfDiabetes, Boolean hfHipertension, Boolean hfCardiovas, Boolean hfDisplidemia, Boolean hfEpilepsia, Boolean hfOtros, string hfDescripcionOtros, Boolean apatEstado, string apatDescripcion,
             Boolean atEstado, string atDescripcion, Boolean aqEstado, string aqDescripcion, Boolean alergias, string descripcionAlergias)
         {
             this.Cedula = ced;

@@ -173,8 +173,8 @@ namespace DAO
                 {
                     while (lector.Read())
                     {
-                        TOCita cita = new TOCita(lector["CODIGO_MEDICO"].ToString(), lector["NOMBRE"].ToString(), 
-                            lector["EDAD"].ToString(), lector["CORREO"].ToString(), 
+                        TOCita cita = new TOCita(lector["CODIGO_MEDICO"].ToString(), lector["NOMBRE"].ToString(),
+                            lector["EDAD"].ToString(), lector["CORREO"].ToString(),
                             int.Parse(lector["TELEFONO"].ToString()), lector["FECHA"].ToString(),
                             lector["HORA"].ToString());
 

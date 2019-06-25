@@ -23,7 +23,7 @@
     </div>
 
 
-    <form runat ="server">
+    <form runat="server">
 
         <br />
 
@@ -45,18 +45,17 @@
             </div>
 
             <div class="form-row">
-                
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    
-                    <%--<button type="submit" class="btn btn-outline-primary form-control">ENVIAR</button>--%>
-                    <asp:Button ID="BotonEnviar" class="btn btn-outline-primary form-control" runat="server" Text="ENVIAR" OnClick="BotonEnviar_Click" /> 
-                      
-                </div>
-                
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                     <asp:Button ID="BotonRegresar" class="btn btn-outline-danger form-control" runat="server" Text="Regresar" OnClick="BotonRegresar_Click" /> 
-                    <%--<button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>--%>
 
+                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+
+                    <%--<button type="submit" class="btn btn-outline-primary form-control">ENVIAR</button>--%>
+                    <asp:Button ID="BotonEnviar" class="btn btn-outline-primary form-control" runat="server" Text="ENVIAR" OnClick="BotonEnviar_Click" />
+
+                </div>
+
+                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <asp:Button ID="BotonRegresar" class="btn btn-outline-danger form-control" runat="server" Text="Regresar" OnClick="BotonRegresar_Click" />
+                    <%--<button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>--%>
                 </div>
 
             </div>

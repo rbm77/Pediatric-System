@@ -17,12 +17,12 @@ namespace BL
         public byte[] Foto { get; set; }
         public string ExpedienteAntiguo { get; set; }
 
-        public BLExpediente ()
+        public BLExpediente()
         {
 
         }
 
-        public BLExpediente (string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente)
+        public BLExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente)
         {
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;

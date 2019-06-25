@@ -8,7 +8,7 @@ using DAO;
 
 namespace BL
 {
-   public class BLMedico
+    public class BLMedico
     {
         public string codigo;
         public string correo;
@@ -30,7 +30,7 @@ namespace BL
             miTOMedico.nombre = this.nombre;
             miTOMedico.apellido = this.apellido;
             miTOMedico.cedula = this.cedula;
-            miTOMedico.telefono = this.telefono;     
+            miTOMedico.telefono = this.telefono;
             miDAOMedico.insertarMedico(miTOMedico);
         }
 

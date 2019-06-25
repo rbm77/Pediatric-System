@@ -121,7 +121,7 @@
             locale: 'es-es',
             format: 'dd/mm/yyyy'
         });
-        
+
         //$(".seleccionarRol").on("change", function () {
         //    if (this.value == "Medico") {
         //        document.getElementById('txtCodigo').innerHTML = "enabled"
@@ -131,8 +131,8 @@
         //        // document.getElementById("txtCodigo").disabled = true;
         //    }
         //});
-      
-      
+
+
     </script>
 
 </asp:Content>

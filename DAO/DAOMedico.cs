@@ -8,7 +8,7 @@ using System.Data;
 using TO;
 namespace DAO
 {
-   public class DAOMedico
+    public class DAOMedico
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
@@ -25,7 +25,7 @@ namespace DAO
             }
             // Se inicia una nueva transacción
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
-          //  string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            //  string confirmacion = "El Medico se ingresó exitosamente en el sistema";
             try
             {
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
@@ -36,7 +36,7 @@ namespace DAO
                 comando.Transaction = transaccion;
 
                 // Se asigna un valor a los parámetros del comando a ejecutar
-               
+
                 comando.Parameters.AddWithValue("@cod", miTOMedico.codigo);
                 comando.Parameters.AddWithValue("@cor", miTOMedico.correo);
                 comando.Parameters.AddWithValue("@nom", miTOMedico.nombre);
@@ -66,7 +66,7 @@ namespace DAO
                 }
                 finally
                 {
-                   // confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
+                    // confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
                 }
             }
             finally
@@ -76,14 +76,14 @@ namespace DAO
                     conexion.Close();
                 }
             }
-         
+
         }
 
 
-      /// <summary>
-      /// Busca un medico dentro de la base de datos segun un correo
-      /// </summary>
-      /// <param name="miTOMedico">Recibe un objeto que contiene los atributos de la cuenta que se desea buscar</param>
+        /// <summary>
+        /// Busca un medico dentro de la base de datos segun un correo
+        /// </summary>
+        /// <param name="miTOMedico">Recibe un objeto que contiene los atributos de la cuenta que se desea buscar</param>
 
         public void buscarMedico(TOMedico miTOMedico)
         {
@@ -97,7 +97,7 @@ namespace DAO
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Buscar Medico");
-           // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
@@ -112,7 +112,7 @@ namespace DAO
 
                 // Se asigna un valor a los parámetros del comando a ejecutar
 
-               
+
 
                 // Se ejecuta el comando y se realiza un commit de la transacción
 
@@ -171,7 +171,7 @@ namespace DAO
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
-           // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
@@ -214,7 +214,7 @@ namespace DAO
                 }
                 finally
                 {
-                  //  confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
+                    //  confirmacion = "Ocurrió un error y no se pudo ingresar el medico";
                 }
             }
             finally

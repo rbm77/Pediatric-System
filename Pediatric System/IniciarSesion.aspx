@@ -8,8 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
     <title>Inicio de Sesión</title>
-     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
     <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
@@ -32,9 +32,9 @@
                     <br />
                     <br />
                     <br />
-                    
+
                     <span class="login100-form-title p-b-43">Inicio Sesión</span><br />
-                    <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal> 
+                    <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
                     <div class="wrap-input100 validate-input" data-validate="Se requiere un correo electrónico válido">
 
 
@@ -65,9 +65,10 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
              
                             <br />
-                      
+
                         <br />
-&nbsp;</div>
+                        &nbsp;
+                    </div>
                 </form>
 
                 <div class="login100-more" style="background-image: url('images/bg-01.jpg');">

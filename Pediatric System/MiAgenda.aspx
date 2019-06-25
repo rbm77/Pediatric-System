@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="MiAgenda.aspx.cs" Inherits="Pediatric_System.MiAgenda"%>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="MiAgenda.aspx.cs" Inherits="Pediatric_System.MiAgenda" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -99,34 +99,33 @@
                         <asp:UpdatePanel ID="UpdatePanel3" runat="server">
                             <ContentTemplate>
 
-                 
 
-                                        <%--                                <div class="form-row" style="text-align: center; display: block">--%>
-                                        <div runat="server" style="display: inline-block; padding-left: 5px; width: 150px" id="form_actualizar">
 
-                                            <asp:Button type="button" runat="server" class="btn btn-neutro" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
+                                <%--                                <div class="form-row" style="text-align: center; display: block">--%>
+                                <div runat="server" style="display: inline-block; padding-left: 5px; width: 150px" id="form_actualizar">
 
-                                          
-                                            <br />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
 
-                                            <div class="lds-spinner" style="padding-left: 42px">
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                                <div></div>
-                                            </div>
 
-                                        </div>
-                                        <%--</div>--%>
- 
+                                    <br />
+
+                                    <div class="lds-spinner" style="padding-left: 42px">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+
+                                </div>
+                                <%--</div>--%>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </div>
@@ -183,7 +182,7 @@
 
             <div class="form-row" style="text-align: right; display: block">
                 <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
-                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" OnClick="Regresar_Click"/>
+                    <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Regresar" OnClick="Regresar_Click" />
                 </div>
             </div>
         </div>

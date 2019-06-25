@@ -82,7 +82,7 @@ namespace BL
 
             miDAOCuenta.editarContrasena(miTOCuenta);
         }
-       
+
     }
 
 

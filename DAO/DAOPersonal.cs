@@ -9,7 +9,7 @@ using TO;
 
 namespace DAO
 {
-   public class DAOPersonal
+    public class DAOPersonal
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
         List<TOPersonal> lista = new List<TOPersonal>();
@@ -28,10 +28,10 @@ namespace DAO
                 conexion.Open();
             }
 
-         // Se inicia una nueva transacción
+            // Se inicia una nueva transacción
 
-           SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
-         //string confirmacion = "La cita se ingresó exitosamente en el sistema";
+            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
+            //string confirmacion = "La cita se ingresó exitosamente en el sistema";
 
             try
             {
@@ -41,7 +41,7 @@ namespace DAO
                 SqlCommand comando = new SqlCommand("INSERT INTO PERSONAL (CUE_Correo, Nombre, Apellido, Cedula,Telefono) VALUES (@cor, @nom, @ape, @ced, @tel);", conexion);
 
 
-               comando.Transaction = transaccion;
+                comando.Transaction = transaccion;
 
                 // Se asigna un valor a los parámetros del comando a ejecutar
 
@@ -84,8 +84,8 @@ namespace DAO
                     conexion.Close();
                 }
             }
-       
-    }
+
+        }
 
         /// <summary>
         /// Edita una cuenta de tipo personal
@@ -165,7 +165,7 @@ namespace DAO
         /// <returns>Retorna la lista de cuetas de tipo personal</returns>
         public List<TOPersonal> buscarListaPersonal()
         {
-           
+
             // Se abre la conexión
             if (conexion.State != ConnectionState.Open)
             {
@@ -198,13 +198,13 @@ namespace DAO
                     while (reader != null && reader.Read())
                     {
                         TOPersonal miTOPersonal = new TOPersonal();
-                           miTOPersonal.correo = reader["CUE_CORREO"].ToString();
-                            miTOPersonal.nombre = reader["NOMBRE"].ToString();
-                            miTOPersonal.apellido = reader["APELLIDO"].ToString();
-                            miTOPersonal.cedula = Int32.Parse(reader["CEDULA"].ToString());
-                            miTOPersonal.telefono = Int32.Parse(reader["TELEFONO"].ToString());
-                          
-                            lista.Add(miTOPersonal);
+                        miTOPersonal.correo = reader["CUE_CORREO"].ToString();
+                        miTOPersonal.nombre = reader["NOMBRE"].ToString();
+                        miTOPersonal.apellido = reader["APELLIDO"].ToString();
+                        miTOPersonal.cedula = Int32.Parse(reader["CEDULA"].ToString());
+                        miTOPersonal.telefono = Int32.Parse(reader["TELEFONO"].ToString());
+
+                        lista.Add(miTOPersonal);
                     }
                 }
             }

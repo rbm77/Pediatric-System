@@ -99,10 +99,10 @@
                     </div>
                 </div>
             </div-->
-            
+
             <div class="form-row alinearBtnRegresar">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click"/>
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
                 </div>
             </div>
 

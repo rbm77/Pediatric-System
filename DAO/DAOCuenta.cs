@@ -9,7 +9,7 @@ using TO;
 
 namespace DAO
 {
-  public  class DAOCuenta
+    public class DAOCuenta
     {
         //Se establece la propiedad de conexion con la base de datos
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
@@ -31,7 +31,7 @@ namespace DAO
 
                 SqlCommand comando = new SqlCommand("select * from Cuenta where CORREO = @Correo and CONTRASENA = @Contraseña", conexion);
                 comando.Transaction = transaccion;
-              
+
                 // Asignar un valor a los parametros del comando a ejecutar
 
                 comando.Parameters.AddWithValue("@Correo", myTOCuenta.correo);
@@ -190,7 +190,7 @@ namespace DAO
                 comando.Transaction = transaccion;
 
                 // Se asigna un valor a los parámetros del comando a ejecutar
-             
+
                 comando.Parameters.AddWithValue("@cor", miTOCuenta.correo);
                 comando.Parameters.AddWithValue("@con", miTOCuenta.contrasena);
                 comando.Parameters.AddWithValue("@tip", miTOCuenta.tipo);
@@ -275,11 +275,11 @@ namespace DAO
                 SqlDataReader reader = comando.ExecuteReader();
                 if (reader.Read())
                 {
-                   if (reader["CONTRASENA"].ToString() == miTOCuenta.contrasena)
+                    if (reader["CONTRASENA"].ToString() == miTOCuenta.contrasena)
                     {
                         valor = true;
-                    } 
-                  
+                    }
+
                 }
 
             }

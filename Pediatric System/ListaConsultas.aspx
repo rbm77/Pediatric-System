@@ -14,7 +14,7 @@
         <div class="page-header">
             <h2 class="text-info">Consultas</h2>
         </div>
-        
+
         <hr class="linea-divisoria-titulo" />
 
         <!-- ---------------------------------------------------- !-->
@@ -34,7 +34,7 @@
                         <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input"> </label>
+                                <label class="nombre-input"></label>
                                 <br />
                             </div>
 
@@ -62,7 +62,7 @@
                     <div class="table-responsive">
 
                         <div class="card">
-                            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-clipboard"></i>  Lista de Consultas</h5>
+                            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-clipboard"></i>Lista de Consultas</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="dataTable">
@@ -96,7 +96,7 @@
                             <div class="alinearBtnNuevo">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnNuevo" runat="server">
 
-                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="NUEVA CONSULTA" ID="nuevoConsulta" OnClick="nuevoConsulta_Click"/>
+                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="NUEVA CONSULTA" ID="nuevoConsulta" OnClick="nuevoConsulta_Click" />
                                 </div>
                             </div>
 
