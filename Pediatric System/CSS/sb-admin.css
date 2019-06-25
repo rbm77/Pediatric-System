@@ -6991,7 +6991,7 @@ button.bg-light:focus {
 }
 
 .bg-dark {
-    background-color: #eaeff3 !important;
+    background-color: #dae7f1 !important;
 }
 
 a.bg-dark:hover, a.bg-dark:focus,
@@ -10900,7 +10900,7 @@ footer.sticky-footer {
   bottom: 0;
   width: calc(100% - 90px);
   height: 60px;
-  background-color: #6f99bc;
+  background-color: #dae7f1;
 }
 
 footer.sticky-footer .copyright {
