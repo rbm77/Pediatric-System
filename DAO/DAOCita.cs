@@ -11,7 +11,7 @@ namespace DAO
 {
     public class DAOCita
     {
-
+        //Se establece la propiedad de conexion con la base de datos
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
         /// <summary>

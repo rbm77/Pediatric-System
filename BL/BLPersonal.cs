@@ -19,7 +19,9 @@ namespace BL
         public List<BL_ManejadorPersonal> listaPersonal = new List<BL_ManejadorPersonal>();
 
 
-
+        /// <summary>
+        /// Inserta una cuenta de tipo personal
+        /// </summary>
         public void insertarPersonal()
         {
             miTOPersonal.correo = this.correo;
@@ -30,7 +32,9 @@ namespace BL
             miDAOPersonal.insertarPersonal(miTOPersonal);
         }
 
-
+        /// <summary>
+        /// Edita una cuenta de tipo personal
+        /// </summary>
         public void editarPersonal()
         {
             miTOPersonal.correo = this.correo;
@@ -41,6 +45,10 @@ namespace BL
             miDAOPersonal.editarPersonal(miTOPersonal);
         }
 
+        /// <summary>
+        /// Llena una lista con cada una de las cuentas de tipo personal
+        /// </summary>
+        /// <returns>Retorna la lista con cuentas de personal</returns>
         public List<BL_ManejadorPersonal> buscarListaPersonal()
         {
             List<TOPersonal> listaTransferencia = miDAOPersonal.buscarListaPersonal();

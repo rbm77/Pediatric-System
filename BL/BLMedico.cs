@@ -20,7 +20,9 @@ namespace BL
         TOMedico miTOMedico = new TOMedico();
         DAOMedico miDAOMedico = new DAOMedico();
 
-
+        /// <summary>
+        /// Inserta un Medico dentro de la base de datos
+        /// </summary>
         public void insertarMedico()
         {
             miTOMedico.codigo = this.codigo;
@@ -31,6 +33,10 @@ namespace BL
             miTOMedico.telefono = this.telefono;     
             miDAOMedico.insertarMedico(miTOMedico);
         }
+
+        /// <summary>
+        /// Busca un medico segun su correo asignado
+        /// </summary>
         public void buscarMedico()
         {
             miTOMedico.correo = this.correo;
@@ -42,7 +48,9 @@ namespace BL
             this.codigo = miTOMedico.codigo;
         }
 
-
+        /// <summary>
+        /// Edita un medico segun el correo asignado
+        /// </summary>
         public void editarMedico()
         {
             miTOMedico.codigo = this.codigo;

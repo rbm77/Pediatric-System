@@ -11,10 +11,16 @@ namespace DAO
 {
   public  class DAOCuenta
     {
+        //Se establece la propiedad de conexion con la base de datos
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
+        /// <summary>
+        /// Busca que el correo y la contraseña de una cuenta coincida
+        /// </summary>
+        /// <param name="myTOCuenta">Se recibe un objeto que contiene los datos a buscar</param>
         public void buscarCuentaConContraseña(TOCuenta myTOCuenta)
         {
+            // Se abre la conexión
             if (conexion.State != ConnectionState.Open)
             {
                 conexion.Open();
@@ -24,8 +30,8 @@ namespace DAO
             {
 
                 SqlCommand comando = new SqlCommand("select * from Cuenta where CORREO = @Correo and CONTRASENA = @Contraseña", conexion);
-
                 comando.Transaction = transaccion;
+              
                 // Asignar un valor a los parametros del comando a ejecutar
 
                 comando.Parameters.AddWithValue("@Correo", myTOCuenta.correo);
@@ -56,6 +62,7 @@ namespace DAO
             }
             finally
             {
+                // Finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -63,21 +70,35 @@ namespace DAO
             }
         }
 
-
+        /// <summary>
+        /// Sustituye la contraseña por un valor aleatorio que es enviado por mensaje de correo
+        /// </summary>
+        /// <param name="myTOCuenta">Recibe un objeto con los atributos de la cuenta que se desea modificar</param>
         public void recuperarContraseña(TOCuenta myTOCuenta)
         {
+            //Comando de actualizacion
             string sql = "update CUENTA set CONTRASENA = @Contraseña where CORREO = @Correo";
             SqlCommand command = new SqlCommand(sql, conexion);
+
+            // Asignar un valor a los parametros del comando a ejecutar
             command.Parameters.AddWithValue("@Correo", myTOCuenta.correo);
             command.Parameters.AddWithValue("@Contraseña", myTOCuenta.contrasena);
+
+            // Se abre la conexion
             conexion.Open();
+
+            // Se ejecuta el comando
             command.ExecuteNonQuery();
-            //SqlDataReader reader = command.ExecuteReader();
+
+            //Se cierra la conexion
             conexion.Close();
         }
 
 
-
+        /// <summary>
+        /// Edita la contraseña de una cuenta segun la nueva contraseña ingresada
+        /// </summary>
+        /// <param name="miTOCuenta">Recibe un objeto con los atributos de la cuenta que se desea modificar</param>
         public void editarContrasena(TOCuenta miTOCuenta)
         {
             // Se abre la conexión
@@ -90,7 +111,6 @@ namespace DAO
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Editar contraseña");
-           // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
@@ -128,20 +148,23 @@ namespace DAO
                 }
                 finally
                 {
-                  //  confirmacion = "Ocurrió un error y no se pudo ingresar la cuenta";
                 }
             }
             finally
             {
+                //Se finaliza la conezion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
                 }
             }
-           // return confirmacion;
         }
 
-
+        /// <summary>
+        /// Inserta una cuenta a la base de datos
+        /// </summary>
+        /// <param name="miTOCuenta">Recibe un objeto que posee los atributos de la cuenta</param>
+        /// <returns>Retorna un mensaje para confirmar la insercion de la cuenta</returns>
         public string InsertarCuenta(TOCuenta miTOCuenta)
         {
             // Se abre la conexión
@@ -173,8 +196,6 @@ namespace DAO
                 comando.Parameters.AddWithValue("@tip", miTOCuenta.tipo);
                 comando.Parameters.AddWithValue("@est", miTOCuenta.estado);
 
-
-
                 // Se ejecuta el comando y se realiza un commit de la transacción
 
                 comando.ExecuteNonQuery();
@@ -186,7 +207,6 @@ namespace DAO
             {
                 try
                 {
-
                     // En caso de un error se realiza un rollback a la transacción
 
                     transaccion.Rollback();
@@ -201,6 +221,7 @@ namespace DAO
             }
             finally
             {
+                // Se finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -209,6 +230,11 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Revisa que la contraseña recibida concida con los datos de la cuenta
+        /// </summary>
+        /// <param name="miTOCuenta">Se recibe un objeto con los atributos de la cuenta que interesa validad</param>
+        /// <returns>Retorna un valor booleano segun sea que la contraseña coincida o no</returns>
         public Boolean revisarContrasena(TOCuenta miTOCuenta)
         {
             // Se abre la conexión
@@ -272,6 +298,7 @@ namespace DAO
             }
             finally
             {
+                // Se finaliza la conezion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -279,10 +306,5 @@ namespace DAO
             }
             return valor;
         }
-
-
-
-
-
     }
 }

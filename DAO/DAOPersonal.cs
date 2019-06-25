@@ -13,6 +13,12 @@ namespace DAO
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
         List<TOPersonal> lista = new List<TOPersonal>();
+
+
+        /// <summary>
+        /// Inserta una cuenta de tipo personal
+        /// </summary>
+        /// <param name="miTOPersonal">Recibe un objeto que posee los atributos de la cuenta que se desea ingresar</param>
         public void insertarPersonal(TOPersonal miTOPersonal)
         {
             // Se abre la conexión
@@ -22,10 +28,10 @@ namespace DAO
                 conexion.Open();
             }
 
-    // Se inicia una nueva transacción
+         // Se inicia una nueva transacción
 
-    SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
-    //string confirmacion = "La cita se ingresó exitosamente en el sistema";
+           SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
+         //string confirmacion = "La cita se ingresó exitosamente en el sistema";
 
             try
             {
@@ -72,6 +78,7 @@ namespace DAO
             }
             finally
             {
+                // Finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -80,6 +87,10 @@ namespace DAO
        
     }
 
+        /// <summary>
+        /// Edita una cuenta de tipo personal
+        /// </summary>
+        /// <param name="miTOPersonal">Recibe un objeto que posee los atributos de la cuenta que se desea editar</param>
         public void editarPersonal(TOPersonal miTOPersonal)
         {
             // Se abre la conexión
@@ -138,6 +149,7 @@ namespace DAO
             }
             finally
             {
+                // Finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -147,7 +159,10 @@ namespace DAO
         }
 
 
-
+        /// <summary>
+        /// Llena una lista con cada una de las cuetnas de tipo personal dentro de la base de datos
+        /// </summary>
+        /// <returns>Retorna la lista de cuetas de tipo personal</returns>
         public List<TOPersonal> buscarListaPersonal()
         {
            
@@ -179,6 +194,7 @@ namespace DAO
 
                 using (SqlDataReader reader = comando.ExecuteReader())
                 {
+                    // Añade una cuenta a la lista por cada una de las encontrada en la base de datos
                     while (reader != null && reader.Read())
                     {
                         TOPersonal miTOPersonal = new TOPersonal();
@@ -191,19 +207,6 @@ namespace DAO
                             lista.Add(miTOPersonal);
                     }
                 }
-
-
-
-
-                //foreach (var resultado in reader.Read())
-                //{
-                //    miTOPersonal.correo = reader["CUE_CORREO"].ToString();
-                //    miTOPersonal.nombre = reader["NOMBRE"].ToString();
-                //    miTOPersonal.apellido = reader["APELLIDO"].ToString();
-                //    miTOPersonal.cedula = Int32.Parse(reader["CEDULA"].ToString());
-                //    miTOPersonal.telefono = Int32.Parse(reader["TELEFONO"].ToString());
-                //    miTOPersonal.toLista.Add(miTOPersonal);
-                //}
             }
             catch (Exception)
             {
@@ -225,7 +228,7 @@ namespace DAO
 
             finally
             {
-                
+                // Finaliza la conexion
                 if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
@@ -233,7 +236,5 @@ namespace DAO
             }
             return lista;
         }
-
-
     }
 }
