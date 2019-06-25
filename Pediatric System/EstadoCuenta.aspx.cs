@@ -15,29 +15,20 @@ namespace Pediatric_System
         BLPersonal miBLPersonal = new BLPersonal();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!this.IsPostBack)
+            if (!Page.IsPostBack)
             {
-                this.BindRepeater();
+                listaPersonal = miBLPersonal.buscarListaPersonal();
+                //bind the gridview data
+                gvCustomers.DataSource = listaPersonal;
+                gvCustomers.DataBind();
             }
-          
+
         }
 
 
-        private void BindRepeater()
-        {
 
 
-            listaPersonal = miBLPersonal.buscarListaPersonal();
-
-                        //DataTable dt = new DataTable();
-                        //sda.Fill(dt);
-                        rptCustomers.DataSource = listaPersonal;
-                        rptCustomers.DataBind();
-                    
-                
-            
-        }
-
+    
         //public List<BL_ManejadorPersonal> retornarLista()
         //{
         //    return 

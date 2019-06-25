@@ -1,6 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="EstadoCuenta.aspx.cs" Inherits="Pediatric_System.EstadoCuenta" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+     <script type="text/javascript">
+        $(function () {
+            $('[id*=gvCustomers]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "full_numbers"
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -18,10 +26,31 @@
 
         <br />
 
-         <div class="card">
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i> Lista de Cuentas de Personal</h5>
-                <div class="card-body">
-        <asp:Repeater ID="rptCustomers" runat="server">
+        <div class="card">
+            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
+            <div class="card-body">
+                <form id="form1" runat="server">
+    <div>
+        <asp:GridView ID="gvCustomers" runat="server" AutoGenerateColumns="false" class="table table-striped"
+            Width="100%">
+            <Columns>
+                <asp:BoundField DataField="Correo" HeaderText="Customer ID" />
+                <asp:BoundField DataField="Nombre" HeaderText="Name" />
+                <asp:BoundField DataField="Cedula" HeaderText="Country" />
+            </Columns>
+        </asp:GridView>
+    </div>
+    </form>
+
+
+
+
+
+
+
+
+
+                <%--<asp:Repeater ID="rptCustomers" runat="server">
             <HeaderTemplate>
                 <div class="table-responsive">
                     <table class="table table-hover" id="dataTable">
@@ -53,9 +82,9 @@
             <FooterTemplate>
                 </table>
             </FooterTemplate>
-        </asp:Repeater>
-                        </div>
+        </asp:Repeater>--%>
             </div>
+        </div>
 
 
 
