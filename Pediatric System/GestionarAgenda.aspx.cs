@@ -23,7 +23,7 @@ namespace Pediatric_System
 
             if (!IsPostBack)
             {
-                MostrarAgenda(diaSeleccionado, "");
+                MostrarAgenda(DateTime.Now, "");
             }
 
             calendario.DayStyle.Height = new Unit(40);
@@ -117,12 +117,13 @@ namespace Pediatric_System
                         if ((listaCitas.Count == 0) && (blDia.HoraInicio != null))
                         {
 
+
                             confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " no tiene citas pendientes";
 
 
                             while (temporal < horaFin)
                             {
-                                t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
+                                t = ConvertirFormato(temporal);
 
                                 temporal = temporal.AddMinutes(30);
 
@@ -158,7 +159,7 @@ namespace Pediatric_System
 
                             while (temporal < horaFin)
                             {
-                                t = temporal.ToString("h:mm tt").Replace("p. m.", "PM").Replace("a. m.", "AM");
+                                t = ConvertirFormato(temporal);
 
                                 temporal = temporal.AddMinutes(30);
 
@@ -441,6 +442,68 @@ namespace Pediatric_System
             }
             return null;
         }
+        /// <summary>
+        /// Redirecciona a la pagina de inicio del rol medico o asistente
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void Regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
 
+        /// <summary>
+        /// Convierte el formato de la hora
+        /// </summary>
+        /// <param name="temporal"></param>
+        /// <returns>Retorna el nuevo formato de la hora</returns>
+        private string ConvertirFormato(DateTime temporal)
+        {
+            string nuevo = "";
+
+            nuevo = temporal.TimeOfDay.ToString();
+
+            string[] lista = nuevo.Split(':');
+
+            int hora = int.Parse(lista[0]);
+
+            if(hora >= 12)
+            {
+                return (hora-12) + ":" +  lista[1] + " PM";
+            }
+            else
+            {
+                if(hora == 0)
+                {
+                    return "12" + ":" + lista[1] + " AM";
+                }
+                return hora + ":" + lista[1] + " AM";
+            }
+
+            return nuevo;
+        }
+
+        /// <summary>
+        /// Elimina una cita de la base de datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            // Recuperación de los campos de texto
+
+            string fechaTxt = fecha.Text.Trim();
+            string horaT = horaTxt.Text.Trim();
+
+            // Enviar datos para guardar en la base de datos
+
+            ManejadorCita manejador = new ManejadorCita();
+
+            string confirmacion = manejador.CancelarCita("777", fechaTxt, horaT);
+
+            LimpiarCampos();
+
+            MostrarAgenda(diaSeleccionado, confirmacion);
+        }
     }
 }
