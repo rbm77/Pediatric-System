@@ -128,18 +128,18 @@ namespace DAO
                 {
                     while (lector.Read())
                     {
-                        TOExpediente expediente = new TOExpediente();
-                        expediente.Nombre = lector["NOMBRE"].ToString();
-                        expediente.PrimerApellido = lector["PRIMER_APELLIDO"].ToString();
-                        expediente.SegundoApellido = lector["SEGUNDO_APELLIDO"].ToString();
-                        expediente.Cedula = lector["CEDULA_EXPEDIENTE"].ToString();
-                        expediente.Sexo = lector["SEXO"].ToString();
+                        //TOExpediente expediente = new TOExpediente();
+                        //expediente.Nombre = lector["NOMBRE"].ToString();
+                        //expediente.PrimerApellido = lector["PRIMER_APELLIDO"].ToString();
+                        //expediente.SegundoApellido = lector["SEGUNDO_APELLIDO"].ToString();
+                        //expediente.Cedula = lector["CEDULA_EXPEDIENTE"].ToString();
+                        //expediente.Sexo = lector["SEXO"].ToString();
 
-                        toListaExpediente.Add(expediente);
-
-                        //TOExpediente expediente = new TOExpediente(lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
-                        //    DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString());
                         //toListaExpediente.Add(expediente);
+
+                        TOExpediente expediente = new TOExpediente(lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA_EXPEDIENTE"].ToString(),
+                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString());
+                        toListaExpediente.Add(expediente);
                     }
                 }
 

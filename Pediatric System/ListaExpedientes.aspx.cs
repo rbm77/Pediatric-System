@@ -17,6 +17,12 @@ namespace Pediatric_System
             ManejadorExpediente manejador = new ManejadorExpediente();
             List<BLExpediente> expedientes = new List<BLExpediente>();
             manejador.cargarListaExpedientes(expedientes);
+
+            if (!Page.IsPostBack)
+            {
+                gridExpedientes.DataSource = expedientes;
+                gridExpedientes.DataBind();
+            }
         }
     }
 }

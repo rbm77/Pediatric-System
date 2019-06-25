@@ -1,6 +1,16 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="ListaExpedientes.aspx.cs" Inherits="Pediatric_System.InicioPrincipal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=gridExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "full_numbers"
+            });
+        });
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -23,17 +33,17 @@
             <div class="card">
                 <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
                 <div class="card-body">
-                    <div class="table-responsive tablaExpedientes">
+                    <div>                        
 
-                        <%--<asp:GridView ID="dataTable" runat="server" CssClass="table table-hover"
+                        <asp:GridView ID="gridExpedientes" runat="server" CssClass="table table-hover"
                             AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                            HeaderStyle-ForeColor="DimGray" GridLines="None">
+                            HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%">
 
                             <Columns>
                                 <asp:BoundField HeaderText="Paciente" DataField="Nombre" ControlStyle-Width="25%" />
                                 <asp:BoundField HeaderText="Sexo" DataField="Sexo" ControlStyle-Width="25%" />
                             </Columns>
-                        </asp:GridView>--%>
+                        </asp:GridView>
 
                         <%--<table class="table table-hover" id="dataTable">
                             <thead>
