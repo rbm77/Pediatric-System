@@ -18,5 +18,10 @@ namespace Pediatric_System
         {
             Response.Redirect("CuentaPersonal.aspx");
         }
+
+        protected void btnGestionarCuentas_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EstadoCuenta.aspx");
+        }
     }
 }
