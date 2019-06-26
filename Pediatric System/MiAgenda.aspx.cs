@@ -58,6 +58,15 @@ namespace Pediatric_System
             {
                 agenda.Add(new BLAgendaEstandar(codigoMedico, viernes.Value, inicio, fin));
             }
+            if (sabado.Checked)
+            {
+                agenda.Add(new BLAgendaEstandar(codigoMedico, sabado.Value, inicio, fin));
+            }
+            if (domingo.Checked)
+            {
+                agenda.Add(new BLAgendaEstandar(codigoMedico, domingo.Value, inicio, fin));
+            }
+
 
             MostrarAgenda(agenda, codigoMedico, false);
 
@@ -133,6 +142,8 @@ namespace Pediatric_System
             miercoles.Checked = false;
             jueves.Checked = false;
             viernes.Checked = false;
+            sabado.Checked = false;
+            domingo.Checked = false;
 
         }
 

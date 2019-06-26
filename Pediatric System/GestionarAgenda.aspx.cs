@@ -27,9 +27,9 @@ namespace Pediatric_System
             }
 
             calendario.DayStyle.Height = new Unit(40);
-            calendario.DayStyle.Width = new Unit(150);
-            calendario.DayStyle.HorizontalAlign = HorizontalAlign.Center;
-            calendario.DayStyle.VerticalAlign = VerticalAlign.Middle;
+            //calendario.DayStyle.Width = new Unit(100);
+            //calendario.DayStyle.HorizontalAlign = HorizontalAlign.Center;
+            //calendario.DayStyle.VerticalAlign = VerticalAlign.Middle;
         }
 
 
@@ -258,7 +258,7 @@ namespace Pediatric_System
 
             DateTime limite = hoy.AddDays(6);
 
-            if ((e.Day.Date < hoy) || (e.Day.Date > limite) || (e.Day.IsWeekend))
+            if ((e.Day.Date < hoy) || (e.Day.Date > limite))
             {
                 e.Day.IsSelectable = false;
                 e.Cell.ForeColor = System.Drawing.Color.LightGray;
