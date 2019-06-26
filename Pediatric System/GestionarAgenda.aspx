@@ -36,26 +36,9 @@
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
 
-
-
                     <div class="container-fluid border rounded">
 
-                        <div class="form-row table-responsive" style="text-align: center; display: block">
-                            <div class="form-group" style="display: inline-block">
-
-                                <br />
-
-                                <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="white" BorderWidth="1px" Font-Names="Verdana" Font-Size="11pt" ForeColor="#1e5f93" Height="200px" NextPrevFormat="FullMonth" Width="400px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
-                                    <DayHeaderStyle />
-                                    <NextPrevStyle />
-                                    <OtherMonthDayStyle ForeColor="#999999" />
-                                    <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
-                                    <TitleStyle BackColor="White" Font-Bold="True" Font-Size="12pt" ForeColor="#1ca5ac" />
-                                    <TodayDayStyle BackColor="#CCCCCC" />
-                                </asp:Calendar>
-
-                            </div>
-                        </div>
+                        <br />
 
                         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
                             <ProgressTemplate>
@@ -83,38 +66,55 @@
                             </ProgressTemplate>
                         </asp:UpdateProgress>
 
-
+                       
 
                         <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
 
-                        <div class="table-responsive">
+                        <div class="form-row">
 
-                            <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
-                                Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="bg-light"
-                                HeaderStyle-ForeColor="DimGray" GridLines="None"
-                                OnRowCommand="vistaAgenda_RowCommand"
-                                OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">
+                            <div class="form-group col-lg-5 col-md-12 col-sm-12 col-xs-12" style="display: inline-block">
+
+                                <div class="table-responsive" style="text-align: center">
+
+                                    <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="white" BorderWidth="1px" Font-Names="Verdana" Font-Size="11pt" ForeColor="#1e5f93" Height="200px" NextPrevFormat="ShortMonth" Width="350px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
+                                        <DayHeaderStyle Font-Bold="false"/>
+                                        <NextPrevStyle Font-Bold="false"/>
+                                        <OtherMonthDayStyle ForeColor="#999999" />
+                                        <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
+                                        <TitleStyle BackColor="White" Font-Bold="false" Font-Size="12pt" ForeColor="#1ca5ac" />
+                                        <TodayDayStyle BackColor="#CCCCCC" />
+                                    </asp:Calendar>
+
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-lg-7 col-md-12 col-sm-12 col-xs-12" style="display: inline-block">
+
+                                <div class="table-responsive">
+
+                                    <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
+                                        Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="bg-light"
+                                        HeaderStyle-ForeColor="DimGray" GridLines="None"
+                                        OnRowCommand="vistaAgenda_RowCommand"
+                                        OnRowDataBound="vistaAgenda_RowDataBound" RowStyle-CssClass="resaltado">
+                                        <Columns>
+                                            <asp:BoundField HeaderText="Hora" DataField="Hora" ControlStyle-Width="33.3%" />
+                                            <asp:BoundField HeaderText="Estado" DataField="Estado" ControlStyle-Width="33.3%" />
+                                            <asp:ButtonField HeaderText="Acción" CommandName="Seleccionar"
+                                                ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="33.3%" />
+                                        </Columns>
+                                    </asp:GridView>
+
+                                </div>
+
+                            </div>
 
 
-                                <Columns>
-                                    <asp:BoundField HeaderText="Hora" DataField="Hora" ControlStyle-Width="33.3%" />
-                                    <asp:BoundField HeaderText="Estado" DataField="Estado" ControlStyle-Width="33.3%" />
 
-
-                                    <asp:ButtonField HeaderText="Acción" CommandName="Seleccionar"
-                                        ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="33.3%" />
-
-                                </Columns>
-
-
-
-
-
-                            </asp:GridView>
 
                         </div>
-
 
                     </div>
 
@@ -256,21 +256,6 @@
 
     </div>
 
-    <script>
-
-
-        $(document).ready(function () {
-            $("#btnCrear").click(function () {
-                // disable button
-                $(this).prop("disabled", true);
-                // add spinner to button
-                $(this).html(
-                    `<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> CARGANDO...`
-                );
-            });
-        });
-
-    </script>
 
 
 

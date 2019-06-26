@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="MiAgenda.aspx.cs" Inherits="Pediatric_System.MiAgenda" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="stylesheet" href="CSS/hora1.css">
@@ -12,6 +14,7 @@
         function limpiar() {
 
             $('.clockpicker').val('');
+            $('.duracion').val('');
 
         }
 
@@ -20,8 +23,6 @@
 
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-
 
     <br />
 
@@ -56,78 +57,92 @@
 
                         <ContentTemplate>
 
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="lunes" value="Lunes" runat="server" name="diaSemana">
-                                <label class="form-check-label" for="lunes">Lunes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="martes" value="Martes" runat="server" name="diaSemana">
-                                <label class="form-check-label" for="martes">Martes</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="miercoles" value="Miércoles" runat="server" name="diaSemana">
-                                <label class="form-check-label" for="miercoles">Miércoles</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="jueves" value="Jueves" runat="server" name="diaSemana">
-                                <label class="form-check-label" for="jueves">Jueves</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="viernes" value="Viernes" runat="server" name="diaSemana">
-                                <label class="form-check-label" for="viernes">Viernes</label>
-                            </div>
+                            <div class="form-row">
 
-                        </ContentTemplate>
-                    </asp:UpdatePanel>
-                    <br />
-                    <br />
+                                <div class="form-group col-lg-10 col-md-10 col-sm-10 col-xs-12">
 
-                    <div class="form-row">
-                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12">
-                            <div class="padding-general-label">
-                                <input type="text" class="form-control clockpicker" id="clockpicker" placeholder="Hora de Inicio" runat="server" />
-
-                            </div>
-                        </div>
-
-                        <div class="form-group col-lg-5 col-md-6 col-sm-12 col-xs-12">
-                            <div class="padding-general-label">
-                                <input type="text" class="form-control clockpicker" id="clockpicker2" placeholder="Hora de Fin" runat="server" />
-
-                            </div>
-                        </div>
-                        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-                            <ContentTemplate>
-
-
-
-                                <%--                                <div class="form-row" style="text-align: center; display: block">--%>
-                                <div runat="server" style="display: inline-block; padding-left: 5px; width: 150px" id="form_actualizar">
-
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
-
-
-                                    <br />
-
-                                    <div class="lds-spinner" style="padding-left: 42px">
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
-                                        <div></div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="lunes" value="Lunes" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="lunes">Lunes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="martes" value="Martes" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="martes">Martes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="miercoles" value="Miércoles" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="miercoles">Miércoles</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" style="padding-left: 30px" type="checkbox" id="jueves" value="Jueves" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="jueves">Jueves</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="viernes" value="Viernes" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="viernes">Viernes</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="sabado" value="Sabado" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="sabado">Sábado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="domingo" value="Domingo" runat="server" name="diaSemana">
+                                        <label class="form-check-label" for="domingo">Domingo</label>
                                     </div>
 
                                 </div>
-                                <%--</div>--%>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
+
+                                <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+                                    <ContentTemplate>
+
+
+
+
+                                        <%--                                <div class="form-row" style="text-align: center; display: block">--%>
+                                        <div runat="server" style="display: inline-block; padding-left: 5px; width: 150px" id="form_actualizar">
+
+                                            <asp:Button type="button" runat="server" class="btn btn-neutro" Text="ACTUALIZAR" ID="Actualizar" OnClick="Actualizar_Click" />
+
+                                        </div>
+
+
+
+                                    </ContentTemplate>
+                                </asp:UpdatePanel>
+
+                            </div>
+
+
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+
+                    <br />
+
+                    <div class="form-row">
+                        <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="padding-general-label">
+                                <label class="nombre-input">Hora de Inicio</label>
+                                <input type="text" class="form-control clockpicker" id="clockpicker" runat="server" />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="padding-general-label">
+                                <label class="nombre-input">Hora de Fin</label>
+                                <input type="text" class="form-control clockpicker" id="clockpicker2" runat="server" />
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <div class="padding-general-label">
+                                <label class="nombre-input">Duración de la cita (minutos)</label>
+                                <input type="number" class="form-control duracion" id="duracion" step="10" runat="server" />
+                            </div>
+                        </div>
+
+
+
+
+
                     </div>
 
 
@@ -144,6 +159,58 @@
 
                             <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
+                            <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="UpdatePanel3">
+                                <ProgressTemplate>
+
+                                    <div class="form-row" style="text-align: center; display: block">
+                                        <div class="form-group" style="display: inline-block">
+
+                                            <div class="lds-spinner align-content-center" style="display: inline-block">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
+
+
+                            <asp:UpdateProgress ID="UpdateProgress2" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                                <ProgressTemplate>
+
+                                    <div class="form-row" style="text-align: center; display: block">
+                                        <div class="form-group" style="display: inline-block">
+
+                                            <div class="lds-spinner align-content-center" style="display: inline-block">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
 
                             <div class="table-responsive">
                                 <asp:GridView ID="vistaAgenda" runat="server" CssClass="table"
@@ -196,18 +263,15 @@
         $('.clockpicker').clockpicker({
             'default': 'now',
             vibrate: true,
-            placement: "down",
+            placement: "top",
             align: "right",
             autoclose: true,
             twelvehour: true,
-            afterHourSelect: function () {
-                console.log("after show");
-            }
         });
         $('.clockpicker2').clockpicker({
             'default': 'now',
             vibrate: true,
-            placement: "down",
+            placement: "top",
             align: "right",
             autoclose: true,
             twelvehour: true
