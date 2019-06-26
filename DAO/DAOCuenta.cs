@@ -306,5 +306,75 @@ namespace DAO
             }
             return valor;
         }
+
+        /// <summary>
+        /// Busca los datos de una cuenta segun el correo ingresado
+        /// </summary>
+        /// <param name="miTOCuenta">Se recibe un ojbeto con el atributo de correo</param>
+        public void buscarCuentaPorCorreo(TOCuenta miTOCuenta)
+        {
+            // Se abre la conexión
+
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Revisar Contraseña");
+            Boolean valor = false;
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT * FROM CUENTA WHERE CORREO = @cor;", conexion);
+
+                comando.Parameters.AddWithValue("@cor", miTOCuenta.correo);
+
+                comando.Transaction = transaccion;
+
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+
+                SqlDataReader lector = comando.ExecuteReader();
+                if (lector.HasRows)
+                {
+                    // Se asignado los valores a un objeto segun los atributos seleccionados 
+                    while (lector.Read())
+                    {
+                        miTOCuenta.tipo = lector["TIPO"].ToString();
+                        miTOCuenta.estado = lector["ESTADO"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+            }
+            finally
+            {
+                // Se finaliza la conezion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+        }
+
+
+     
     }
 }

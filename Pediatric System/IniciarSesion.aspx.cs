@@ -17,15 +17,18 @@ namespace Pediatric_System
             Session["Cuenta"] = null;
         }
 
-        protected void ButtonLogin_Click(object sender, EventArgs e){
+        protected void ButtonLogin_Click(object sender, EventArgs e)
+        {
             try
             {
                 BLCuenta miBLCuenta = new BLCuenta();
                 miBLCuenta.correo = txtCorreo.Text;
                 miBLCuenta.contrasena = txtContra.Text;
                 miBLCuenta.buscar();
+
                 //metodo de verificacion, si es positivo entra y cambia vista, si es negativo borra campos y muestra label 
-                if (miBLCuenta.estado == "Activo"){
+                if (miBLCuenta.estado == "Habilitada")
+                {
                     Session["Cuenta"] = miBLCuenta.correo;
                     Session["Rol"] = miBLCuenta.tipo;
                     switch (miBLCuenta.tipo)
@@ -43,13 +46,14 @@ namespace Pediatric_System
                             Response.Redirect("Dashboard.aspx");
                             break;
                     }
-                } else {                
+                }
+                else {
                     txtContra.Text = "";
                     txtCorreo.Text = "";
                     mensajeConfirmacion.Text = "<div class=\"alert alert-danger alert-dismissible fade show\" " +
-         "role=\"alert\"> <strong></strong>" + "Contraseña o correo incorrecto" + "<button" +
-    " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-    " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+                           "role=\"alert\"> <strong></strong>" + "Contraseña o correo incorrecto" + "<button" +
+                           " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                           " <span aria-hidden=\"true\">&times;</span> </button> </div>";
                     mensajeConfirmacion.Visible = true;
                 }
             }
@@ -58,7 +62,7 @@ namespace Pediatric_System
                 txtContra.Text = "";
                 txtCorreo.Text = "";
                 throw;
-            }   
+            }
         }
 
 
