@@ -1877,6 +1877,7 @@
     <Content Include="fonts\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="JS\jquery\jquery.min.map" />
     <Content Include="JS\jquery\jquery.slim.min.map" />
+    <Content Include="Archivos\Direcciones.json" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
     <None Include="Web.Debug.config">

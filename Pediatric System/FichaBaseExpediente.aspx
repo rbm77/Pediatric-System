@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="CSS/expediente.css" />
     <script type="text/javascript" src="JS/expediente.js"></script>
 
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -30,7 +31,7 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input"></label>
+                                <label class="nombre-input" id="nnn"></label>
                             </div>
 
 
@@ -162,6 +163,7 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
                                                 <select class="browser-default custom-select">
+
                                                     <option value="" disabled selected>Provincia</option>
                                                 </select>
                                             </div>
