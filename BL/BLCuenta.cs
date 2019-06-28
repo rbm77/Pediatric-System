@@ -16,7 +16,7 @@ namespace BL
         public string contrasena;
         public string tipo;
         public string estado;
-
+        public List<BL_Manejador_Cuentas> listaPacientes = new List<BL_Manejador_Cuentas>();
         TOCuenta miTOCuenta = new TOCuenta();
         DAOCuenta miDAOCuenta = new DAOCuenta();
 
@@ -102,6 +102,18 @@ namespace BL
         {
             miTOCuenta.correo = this.correo;
             miDAOCuenta.editarEstado(miTOCuenta, accion);
+        }
+
+        public List<BL_Manejador_Cuentas> buscarListaCuentas()
+        {
+            List<TOCuenta> listaTransferencia = miDAOCuenta.buscarListaPacientes();
+            foreach (var personal in listaTransferencia)
+            {
+                BL_Manejador_Cuentas miPaciente = new BL_Manejador_Cuentas();
+                miPaciente.correo = personal.correo;
+                listaPacientes.Add(miPaciente);
+            }
+            return listaPacientes;
         }
 
     }

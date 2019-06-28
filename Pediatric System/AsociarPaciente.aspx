@@ -1,100 +1,99 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="AsociarPaciente.aspx.cs" Inherits="Pediatric_System.AsociarPaciente" %>
 
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link rel="stylesheet" href="CSS/agenda.css" />
+    <link rel="stylesheet" href="CSS/expediente.css" />
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=gridCuentas]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "numbers"
+            });
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
 
-    <div class="container-fluid col-10 col-auto">
-        <div class="page-header">
-            <h3 class="text-info">Vincular Pacientes</h3>
+    <div class="container-fluid col-11 col-auto">
+        <br>
+        <div class="page-header margen-general-2-top">
+            <h2 class="text-info">Vincular Pacientes</h2>
         </div>
+
+        <hr class="linea-divisoria-titulo" />
     </div>
-
-    <hr style="color: #0056b2;" />
-
-    <form runat="server">
-
-        <div class="container-fluid col-11 col-auto table-responsive">
-
-            <br />
-
+    <div class="container-fluid col-11 col-auto table-responsive">
+        <form id="form1" runat="server">
             <div class="card">
-                <label class="card-header" style="font-size: 20px; font-weight: bold; color: dimgray">Cuentas Asociadas</label>
+                <div>
+                </div>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Pacientes</h5>
 
                 <div class="card-body">
-
-
-                    <table class="table table-hover" id="dataTable">
-                        <thead>
-                            <tr class="bg-light">
-                                <th scope="col" style="width: 90%; font-size: 16px; font-weight: bold; color: dimgray">Correo Electrónico</th>
-                                <th scope="col" style="width: 10%"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>richardbomo26@gmail.com</td>
-                                <td>
-                                    <input type="radio" class="form-check-input" name="optradio">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>fabian.jimenez@ucrso.info</td>
-                                <td>
-                                    <input type="radio" class="form-check-input" name="optradio">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
+                    <div>
+                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
+                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnSelectedIndexChanged="gridCuentas_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="Correo" HeaderText="Correo" />
+                                <asp:TemplateField HeaderText="Asociar" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+                                        <asp:Button ID="btnAsociar" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
+                                            Text="Asociar Expediente(s)" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
-            </div>
-            <br />
 
+                <asp:HiddenField ID="campoEscondido" runat="server" />
+
+                <asp:ModalPopupExtender ID="modalExpedientes" runat="server"
+                    PopupControlID="panelContenido" TargetControlID="campoEscondido"
+                    CancelControlID="CerrarModal" BackgroundCssClass="modalBackground">
+                </asp:ModalPopupExtender>
+
+                <asp:Panel ID="panelContenido" runat="server" CssClass="modal-content container-fluid col-9 col-auto
+                                  modal-dialog-scrollable">
+                    <div class="modal-header">
+                        <h5 class="modal-title" runat="server" id="exampleModalLabel">Expedientes</h5>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModal">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+
+                    <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
+
+                    <div class="modal-body">
             <div class="card">
-                <label class="card-header" style="font-size: 20px; font-weight: bold; color: dimgray">Expedientes</label>
+                <div>
+                </div>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
                 <div class="card-body">
-
-
-                    <table class="table table-hover" id="dataTable1">
-                        <thead>
-                            <tr class="bg-light">
-                                <th scope="col" style="width: 45%; font-size: 16px; font-weight: bold; color: dimgray">Nombre Completo</th>
-                                <th scope="col" style="width: 45%; font-size: 16px; font-weight: bold; color: dimgray">Cédula</th>
-                                <th scope="col" style="width: 20%"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Richard Bolaños Moya</td>
-                                <td>2-0785-0434</td>
-                                <td>
-                                    <input type="checkbox" class="form-check-input" id="check3" name="option1" value="something">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fabian Jimenez Morales</td>
-                                <td>2-0264-0478</td>
-                                <td>
-                                    <input type="checkbox" class="form-check-input" id="check4" name="option1" value="something">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <div>
+                        <asp:GridView ID="gridExpedientes" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
+                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnSelectedIndexChanged="gridCuentas_SelectedIndexChanged">
+                            <Columns>
+                                <asp:BoundField DataField="Cedula_Expediente" HeaderText="Cedula" />
+                                <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
+                                    <ItemTemplate>
+<%--                                        <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
+                                            Text="Editar / Mirar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />--%>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
             </div>
-
-            <br />
-
-            <div class="form-row" style="text-align: right; display: block; padding-right: 0px;" runat="server">
-                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
-
-                <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" />
+                    </div>
+                </asp:Panel>
             </div>
-
-        </div>
-
-
-    </form>
+        </form>
+    </div>
 </asp:Content>

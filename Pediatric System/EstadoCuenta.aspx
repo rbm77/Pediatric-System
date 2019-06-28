@@ -20,7 +20,7 @@
     <div class="container-fluid col-11 col-auto">
         <br>
         <div class="page-header margen-general-2-top">
-            <h2 class="text-info">Administraion Cuentas</h2>
+            <h2 class="text-info">Administración Cuentas</h2>
         </div>
 
         <hr class="linea-divisoria-titulo" />

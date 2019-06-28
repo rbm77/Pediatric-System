@@ -11,6 +11,7 @@ namespace DAO
 {
     public class DAOCuenta
     {
+        List<TOCuenta> lista = new List<TOCuenta>();
         //Se establece la propiedad de conexion con la base de datos
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
@@ -440,6 +441,77 @@ namespace DAO
                     conexion.Close();
                 }
             }
+        }
+
+
+
+        public List<TOCuenta> buscarListaPacientes()
+        {
+
+            // Se abre la conexión
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Buscar Lista");
+            //string confirmacion = "La cita se ingresó exitosamente en el sistema";
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT * FROM CUENTA WHERE TIPO = 'Paciente'", conexion);
+
+                comando.Transaction = transaccion;
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+
+                using (SqlDataReader reader = comando.ExecuteReader())
+                {
+                    // Añade una cuenta a la lista por cada una de las encontrada en la base de datos
+                    while (reader != null && reader.Read())
+                    {
+                        TOCuenta miTOCuenta = new TOCuenta();
+                        miTOCuenta.correo = reader["CORREO"].ToString();
+                        lista.Add(miTOCuenta);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    //confirmacion = "Ocurrió un error y no se pudo ingresar el personal";
+                }
+            }
+
+            finally
+            {
+                // Finaliza la conexion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return lista;
         }
 
     }
