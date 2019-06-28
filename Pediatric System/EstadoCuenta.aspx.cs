@@ -11,6 +11,7 @@ namespace Pediatric_System
 {
     public partial class EstadoCuenta : System.Web.UI.Page
     {
+        protected global::System.Web.UI.WebControls.Button btnPrueba;
         public List<BL_ManejadorPersonal> listaPersonal = new List<BL_ManejadorPersonal>();
         BLPersonal miBLPersonal = new BLPersonal();
         BLCuenta miBLCuenta = new BLCuenta();
@@ -30,51 +31,59 @@ namespace Pediatric_System
 
         }
 
-        protected void btnEditarCuenta_Click(object sender, EventArgs e)
+
+        protected void grdAccidentMaster_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            BLAdministrativo miBLAdministrativo = new BLAdministrativo();
-            Button btn = (Button)sender;
-            String correo = btn.ToolTip;           
-            miBLCuenta.correo = correo;
-            miBLCuenta.buscarCuentaPorCorreo();
-            String rol =miBLCuenta.tipo;
-
-            switch (rol)
+     
+            if (e.CommandName == "enviarCorreo")
             {
-                case "Medico":
-                    txtCodigo.Visible = true;
-                    lblCodigo.Visible = true;
-                    BLMedico miBLMedico = new BLMedico();
-                    miBLMedico.correo = correo;
-                    miBLMedico.buscarMedico();
-                    txtRol.Text = rol;
-                    txtNombre.Text = miBLMedico.nombre;
-                    txtApellido.Text = miBLMedico.apellido;
-                    txtCedula.Text = miBLMedico.cedula.ToString();
-                    txtTelefono.Text = miBLMedico.telefono.ToString();
-                    txtCodigo.Text = miBLMedico.codigo;            
-                    txtCorreo.Text = miBLMedico.correo;
-                    txtCodigo.Enabled = false;
-                    txtCorreo.Enabled = false;
-                    txtRol.Enabled = false;
-                    modalEdicion.Show();
-                    break;
+                String correo = Convert.ToString(e.CommandArgument);
 
-               default:
-                    txtCodigo.Visible = false;
-                    lblCodigo.Visible = false;
-                    miBLAdministrativo.correo = correo;
-                    miBLAdministrativo.buscarAdministrativo();         
-                    txtNombre.Text = miBLAdministrativo.nombre;
-                    txtApellido.Text = miBLAdministrativo.apellido;
-                    txtCedula.Text = miBLAdministrativo.cedula.ToString();
-                    txtTelefono.Text = miBLAdministrativo.telefono.ToString();
-                    txtRol.Text = rol;
-                    txtCorreo.Text = miBLAdministrativo.correo;
-                    txtCorreo.Enabled = false;
-                    txtRol.Enabled = false;
-                    modalEdicion.Show();
-                    break;
+                BLAdministrativo miBLAdministrativo = new BLAdministrativo();           
+                miBLCuenta.correo = correo;
+                miBLCuenta.buscarCuentaPorCorreo();
+                String rol = miBLCuenta.tipo;
+
+                switch (rol)
+                {
+                    case "Medico":
+                        txtCodigo.Visible = true;
+                        lblCodigo.Visible = true;
+                        BLMedico miBLMedico = new BLMedico();
+                        miBLMedico.correo = correo;
+                        miBLMedico.buscarMedico();
+                        txtRol.Text = rol;
+                        txtNombre.Text = miBLMedico.nombre;
+                        txtApellido.Text = miBLMedico.apellido;
+                        txtCedula.Text = miBLMedico.cedula.ToString();
+                        txtTelefono.Text = miBLMedico.telefono.ToString();
+                        txtCodigo.Text = miBLMedico.codigo;
+                        txtCorreo.Text = miBLMedico.correo;
+                        txtCodigo.Enabled = false;
+                        txtCorreo.Enabled = false;
+                        txtRol.Enabled = false;
+                        modalEdicion.Show();
+                        break;
+
+                    default:
+                        txtCodigo.Visible = false;
+                        lblCodigo.Visible = false;
+                        miBLAdministrativo.correo = correo;
+                        miBLAdministrativo.buscarAdministrativo();
+                        txtNombre.Text = miBLAdministrativo.nombre;
+                        txtApellido.Text = miBLAdministrativo.apellido;
+                        txtCedula.Text = miBLAdministrativo.cedula.ToString();
+                        txtTelefono.Text = miBLAdministrativo.telefono.ToString();
+                        txtRol.Text = rol;
+                        txtCorreo.Text = miBLAdministrativo.correo;
+                        txtCorreo.Enabled = false;
+                        txtRol.Enabled = false;
+                        modalEdicion.Show();
+                        break;
+                }
+            } else
+            {
+                ModalPopupEstado.Show();
             }
         }
 
