@@ -50,11 +50,11 @@
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                                 <asp:BoundField DataField="Correo" HeaderText="Correo" />
-                                <asp:BoundField DataField="Cedula" HeaderText="Cédula" Visible="false" />
+                                <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                 <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                                     <ItemTemplate>
                                         <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
-                                            Text="Editar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />
+                                            Text="Editar / Mirar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />
 
                                         <asp:Button ID="btnEstado" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
                                             Text="Estado" CommandName="CambiarEstado" CommandArgument='<%# Eval("Correo") %>' />
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                        <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar"></asp:Button>
+                        <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar" OnClick="btnEditarSeleccion_Click"></asp:Button>
                     </div>
 
 
@@ -179,8 +179,9 @@
 
                 <div class="modal-body">
                     <asp:Label ID="lblEstado" runat="server" Text="La cuenta se encuentra"></asp:Label>
+                     <asp:Label ID="lblCuenta" runat="server" Text="" Visible ="false"></asp:Label>
                     <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                        <asp:Button ID="btnCambiarEstado" runat="server" Text="EDITAR" CssClass="btn btn-guardar"></asp:Button>
+                        <asp:Button ID="btnCambiarEstado" runat="server" Text="EDITAR" CssClass="btn btn-guardar" OnClick="btnCambiarEstado_Click"></asp:Button>
                     </div>
                 </div>
             </asp:Panel>

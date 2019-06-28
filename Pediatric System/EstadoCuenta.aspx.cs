@@ -18,7 +18,7 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {
+            {           
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
@@ -34,11 +34,10 @@ namespace Pediatric_System
 
         protected void grdAccidentMaster_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-     
+            String correo = Convert.ToString(e.CommandArgument);
+            lblCuenta.Text = correo;
             if (e.CommandName == "enviarCorreo")
-            {
-                String correo = Convert.ToString(e.CommandArgument);
-
+            {              
                 BLAdministrativo miBLAdministrativo = new BLAdministrativo();           
                 miBLCuenta.correo = correo;
                 miBLCuenta.buscarCuentaPorCorreo();
@@ -83,6 +82,16 @@ namespace Pediatric_System
                 }
             } else
             {
+                miBLCuenta.correo = correo;
+                miBLCuenta.buscarCuentaPorCorreo();
+                lblEstado.Text = "La cuenta de " + lblCuenta.Text + " se encuentra:  " + miBLCuenta.estado;
+                if(miBLCuenta.estado == "Habilitada")
+                {
+                    btnCambiarEstado.Text = "DESHABILITAR";
+                } else
+                {
+                    btnCambiarEstado.Text = "HABILITAR";
+                }
                 ModalPopupEstado.Show();
             }
         }
@@ -130,11 +139,8 @@ namespace Pediatric_System
                     miBLAdministrativo.editarAdministrativo();
                     break;
             }
-            mensajeConfirmacion.Text = "<div class=\"alert alert-success alert-dismissible fade show\" " +
-          "role=\"alert\"> <strong></strong>" + "Cuenta Editada Correctamente" + "<button" +
-          " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-          " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion.Visible = true;
+
+            mensajeAviso("success", "Cuenta Editada Correctamente");
             listaPersonal = miBLPersonal.buscarListaPersonal();
             gridCuentas.DataSource = listaPersonal;
             gridCuentas.DataBind();
@@ -159,6 +165,37 @@ namespace Pediatric_System
         {
 
         }
+
+        protected void btnCambiarEstado_Click(object sender, EventArgs e)
+        {
+            if(btnCambiarEstado.Text == "HABILITAR")
+            {
+                miBLCuenta.correo = lblCuenta.Text;
+                miBLCuenta.editarEstado("HABILITAR");
+                mensajeAviso("success", "La cuenta de " + lblCuenta.Text + " ha sido habilitada correctamente");
+            } else
+            {
+                miBLCuenta.correo = lblCuenta.Text;
+                miBLCuenta.editarEstado("DESHABILITAR");
+                mensajeAviso("success", "La cuenta de " + lblCuenta.Text + " ha sido deshabilitada correctamente");
+            }
+        }
+
+        public void mensajeAviso(String color, String texto)
+        {
+          //Colores:  primary = Azul
+          //          secondary = Gris
+          //          success = Verde
+          //          danger = Rojo
+          //          warning = Amarillo
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + color + " alert-dismissible fade show\" " +
+           "role=\"alert\"> <strong></strong>" + texto + "<button" +
+         " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+         " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+        }
+
+
 
     }
 }

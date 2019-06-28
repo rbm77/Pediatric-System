@@ -98,6 +98,12 @@ namespace BL
             miDAOCuenta.editarContrasena(miTOCuenta);
         }
 
+        public void editarEstado(String accion)
+        {
+            miTOCuenta.correo = this.correo;
+            miDAOCuenta.editarEstado(miTOCuenta, accion);
+        }
+
     }
 
 

@@ -374,7 +374,73 @@ namespace DAO
             }
         }
 
+        /// <summary>
+        /// Edita la contraseña de una cuenta segun la nueva contraseña ingresada
+        /// </summary>
+        /// <param name="miTOCuenta">Recibe un objeto con los atributos de la cuenta que se desea modificar</param>
+        public void editarEstado(TOCuenta miTOCuenta, String Accion)
+        {
+            // Se abre la conexión
 
-     
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Editar estado");
+
+            try
+            {
+                SqlCommand comando;
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                if (Accion == "Habilitar") {
+                comando = new SqlCommand("UPDATE CUENTA SET ESTADO = 'Habilitada' WHERE CORREO = @cor;", conexion);
+                } else
+                {
+                comando = new SqlCommand("UPDATE CUENTA SET ESTADO = 'Deshabilitada' WHERE CORREO = @cor;", conexion);
+                }
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@cor", miTOCuenta.correo);
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                }
+            }
+            finally
+            {
+                //Se finaliza la conezion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+        }
+
     }
 }

@@ -202,6 +202,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Label lblEstado;
         
         /// <summary>
+        /// lblCuenta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCuenta;
+        
+        /// <summary>
         /// btnCambiarEstado control.
         /// </summary>
         /// <remarks>
