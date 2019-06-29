@@ -27,35 +27,41 @@ namespace Pediatric_System
                 miBLCuenta.buscar();
 
                 //metodo de verificacion, si es positivo entra y cambia vista, si es negativo borra campos y muestra label 
-                if (miBLCuenta.estado == "Habilitada")
+
+                switch (miBLCuenta.estado)
                 {
-                    Session["Cuenta"] = miBLCuenta.correo;
-                    Session["Rol"] = miBLCuenta.tipo;
-                    switch (miBLCuenta.tipo)
-                    {
-                        case "Medico":
-                            Response.Redirect("Dashboard.aspx");
-                            break;
-                        case "Administrador":
-                            Response.Redirect("InicioAdministrador.aspx");
-                            break;
-                        case "Paciente":
-                            Response.Redirect("InicioUsuarioExterno.aspx");
-                            break;
-                        case "Asistente":
-                            Response.Redirect("Dashboard.aspx");
-                            break;
-                    }
+                    case "Habilitada":
+                        Session["Cuenta"] = miBLCuenta.correo;
+                        Session["Rol"] = miBLCuenta.tipo;
+                        switch (miBLCuenta.tipo)
+                        {
+                            case "Medico":
+                                Response.Redirect("Dashboard.aspx");
+                                break;
+                            case "Administrador":
+                                Response.Redirect("InicioAdministrador.aspx");
+                                break;
+                            case "Paciente":
+                                Response.Redirect("InicioUsuarioExterno.aspx");
+                                break;
+                            case "Asistente":
+                                Response.Redirect("Dashboard.aspx");
+                                break;
+                        }
+                        break;
+
+                    case "Deshabilitada":
+                        txtContra.Text = "";
+                        txtCorreo.Text = "";
+                        mensajeAviso("danger", "La cuenta que desea ingresar se encuentra deshabilitada");
+                        break;
+                    default:
+                        txtContra.Text = "";
+                        txtCorreo.Text = "";
+                        mensajeAviso("danger", "Correo o Contraseña Incorrectos");
+                        break;
                 }
-                else {
-                    txtContra.Text = "";
-                    txtCorreo.Text = "";
-                    mensajeConfirmacion.Text = "<div class=\"alert alert-danger alert-dismissible fade show\" " +
-                           "role=\"alert\"> <strong></strong>" + "Contraseña o correo incorrecto" + "<button" +
-                           " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                           " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-                    mensajeConfirmacion.Visible = true;
-                }
+
             }
             catch (Exception)
             {
@@ -66,22 +72,12 @@ namespace Pediatric_System
         }
 
 
-        private void MostrarMensaje(string confirmacion)
+        public void mensajeAviso(String color, String texto)
         {
-            string colorMensaje = "success";
-            if (confirmacion.Contains("error"))
-            {
-                colorMensaje = "danger";
-            }
-            if (confirmacion.Contains(""))
-            {
-                colorMensaje = "danger";
-            }
-
-            mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
-                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
-                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + color + " alert-dismissible fade show\" " +
+      "role=\"alert\"> <strong></strong>" + texto + "<button" +
+     " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+       " <span aria-hidden=\"true\">&times;</span> </button> </div>";
             mensajeConfirmacion.Visible = true;
         }
 

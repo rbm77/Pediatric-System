@@ -11,13 +11,14 @@ namespace Pediatric_System
 {
     public partial class EstadoCuenta : System.Web.UI.Page
     {
+        protected global::System.Web.UI.WebControls.Button btnPrueba;
         public List<BL_ManejadorPersonal> listaPersonal = new List<BL_ManejadorPersonal>();
         BLPersonal miBLPersonal = new BLPersonal();
         BLCuenta miBLCuenta = new BLCuenta();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {
+            {           
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
@@ -30,51 +31,68 @@ namespace Pediatric_System
 
         }
 
-        protected void btnEditarCuenta_Click(object sender, EventArgs e)
+
+        protected void grdAccidentMaster_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            BLAdministrativo miBLAdministrativo = new BLAdministrativo();
-            Button btn = (Button)sender;
-            String correo = btn.ToolTip;           
-            miBLCuenta.correo = correo;
-            miBLCuenta.buscarCuentaPorCorreo();
-            String rol =miBLCuenta.tipo;
+            String correo = Convert.ToString(e.CommandArgument);
+            lblCuenta.Text = correo;
+            if (e.CommandName == "enviarCorreo")
+            {              
+                BLAdministrativo miBLAdministrativo = new BLAdministrativo();           
+                miBLCuenta.correo = correo;
+                miBLCuenta.buscarCuentaPorCorreo();
+                String rol = miBLCuenta.tipo;
 
-            switch (rol)
+                switch (rol)
+                {
+                    case "Medico":
+                        txtCodigo.Visible = true;
+                        lblCodigo.Visible = true;
+                        BLMedico miBLMedico = new BLMedico();
+                        miBLMedico.correo = correo;
+                        miBLMedico.buscarMedico();
+                        txtRol.Text = rol;
+                        txtNombre.Text = miBLMedico.nombre;
+                        txtApellido.Text = miBLMedico.apellido;
+                        txtCedula.Text = miBLMedico.cedula.ToString();
+                        txtTelefono.Text = miBLMedico.telefono.ToString();
+                        txtCodigo.Text = miBLMedico.codigo;
+                        txtCorreo.Text = miBLMedico.correo;
+                        txtCodigo.Enabled = false;
+                        txtCorreo.Enabled = false;
+                        txtRol.Enabled = false;
+                        modalEdicion.Show();
+                        break;
+
+                    default:
+                        txtCodigo.Visible = false;
+                        lblCodigo.Visible = false;
+                        miBLAdministrativo.correo = correo;
+                        miBLAdministrativo.buscarAdministrativo();
+                        txtNombre.Text = miBLAdministrativo.nombre;
+                        txtApellido.Text = miBLAdministrativo.apellido;
+                        txtCedula.Text = miBLAdministrativo.cedula.ToString();
+                        txtTelefono.Text = miBLAdministrativo.telefono.ToString();
+                        txtRol.Text = rol;
+                        txtCorreo.Text = miBLAdministrativo.correo;
+                        txtCorreo.Enabled = false;
+                        txtRol.Enabled = false;
+                        modalEdicion.Show();
+                        break;
+                }
+            } else
             {
-                case "Medico":
-                    txtCodigo.Visible = true;
-                    lblCodigo.Visible = true;
-                    BLMedico miBLMedico = new BLMedico();
-                    miBLMedico.correo = correo;
-                    miBLMedico.buscarMedico();
-                    txtRol.Text = rol;
-                    txtNombre.Text = miBLMedico.nombre;
-                    txtApellido.Text = miBLMedico.apellido;
-                    txtCedula.Text = miBLMedico.cedula.ToString();
-                    txtTelefono.Text = miBLMedico.telefono.ToString();
-                    txtCodigo.Text = miBLMedico.codigo;            
-                    txtCorreo.Text = miBLMedico.correo;
-                    txtCodigo.Enabled = false;
-                    txtCorreo.Enabled = false;
-                    txtRol.Enabled = false;
-                    modalEdicion.Show();
-                    break;
-
-               default:
-                    txtCodigo.Visible = false;
-                    lblCodigo.Visible = false;
-                    miBLAdministrativo.correo = correo;
-                    miBLAdministrativo.buscarAdministrativo();         
-                    txtNombre.Text = miBLAdministrativo.nombre;
-                    txtApellido.Text = miBLAdministrativo.apellido;
-                    txtCedula.Text = miBLAdministrativo.cedula.ToString();
-                    txtTelefono.Text = miBLAdministrativo.telefono.ToString();
-                    txtRol.Text = rol;
-                    txtCorreo.Text = miBLAdministrativo.correo;
-                    txtCorreo.Enabled = false;
-                    txtRol.Enabled = false;
-                    modalEdicion.Show();
-                    break;
+                miBLCuenta.correo = correo;
+                miBLCuenta.buscarCuentaPorCorreo();
+                lblEstado.Text = "La cuenta de " + lblCuenta.Text + " se encuentra:  " + miBLCuenta.estado;
+                if(miBLCuenta.estado == "Habilitada")
+                {
+                    btnCambiarEstado.Text = "DESHABILITAR";
+                } else
+                {
+                    btnCambiarEstado.Text = "HABILITAR";
+                }
+                ModalPopupEstado.Show();
             }
         }
 
@@ -121,11 +139,8 @@ namespace Pediatric_System
                     miBLAdministrativo.editarAdministrativo();
                     break;
             }
-            mensajeConfirmacion.Text = "<div class=\"alert alert-success alert-dismissible fade show\" " +
-          "role=\"alert\"> <strong></strong>" + "Cuenta Editada Correctamente" + "<button" +
-          " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-          " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion.Visible = true;
+
+            mensajeAviso("success", "Cuenta Editada Correctamente");
             listaPersonal = miBLPersonal.buscarListaPersonal();
             gridCuentas.DataSource = listaPersonal;
             gridCuentas.DataBind();
@@ -150,6 +165,37 @@ namespace Pediatric_System
         {
 
         }
+
+        protected void btnCambiarEstado_Click(object sender, EventArgs e)
+        {
+            if(btnCambiarEstado.Text == "HABILITAR")
+            {
+                miBLCuenta.correo = lblCuenta.Text;
+                miBLCuenta.editarEstado("HABILITAR");
+                mensajeAviso("success", "La cuenta de " + lblCuenta.Text + " ha sido habilitada correctamente");
+            } else
+            {
+                miBLCuenta.correo = lblCuenta.Text;
+                miBLCuenta.editarEstado("DESHABILITAR");
+                mensajeAviso("success", "La cuenta de " + lblCuenta.Text + " ha sido deshabilitada correctamente");
+            }
+        }
+
+        public void mensajeAviso(String color, String texto)
+        {
+          //Colores:  primary = Azul
+          //          secondary = Gris
+          //          success = Verde
+          //          danger = Rojo
+          //          warning = Amarillo
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + color + " alert-dismissible fade show\" " +
+           "role=\"alert\"> <strong></strong>" + texto + "<button" +
+         " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+         " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+        }
+
+
 
     }
 }

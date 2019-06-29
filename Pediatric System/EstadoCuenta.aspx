@@ -20,7 +20,7 @@
     <div class="container-fluid col-11 col-auto">
         <br>
         <div class="page-header margen-general-2-top">
-            <h2 class="text-info">Administraion Cuentas</h2>
+            <h2 class="text-info">Administración Cuentas</h2>
         </div>
 
         <hr class="linea-divisoria-titulo" />
@@ -28,7 +28,6 @@
 
     <div class="container-fluid col-11 col-auto table-responsive">
         <form id="form1" runat="server">
-
                <ul class="nav nav-tabs">
                     <li class="nav-item">
                         <a class="nav-link active nombre-input" id="info-personal-paciente-tab" " href="EstadoCuenta.aspx" role="tab" aria-controls="info-personal-paciente" aria-selected="true">Lista Cuentas</a>
@@ -42,10 +41,10 @@
             <div class="card">
                 <div>
                 </div>
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>   Lista de Cuentas de Personal</h5>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
                 <div class="card-body">
                     <div>
-                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover"
+                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
                             Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnSelectedIndexChanged="gridCuentas_SelectedIndexChanged">
                             <Columns>
                                 <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
@@ -54,8 +53,11 @@
                                 <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                 <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
                                     <ItemTemplate>
-                                        <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static" Text="Ver/Editar" ToolTip='<% #GetLabelText(Eval("Correo")) %>' OnClick="btnEditarCuenta_Click" />
-                                        <asp:Button ID="btnEstado" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static" Text="Estado" />
+                                        <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
+                                            Text="Editar / Mirar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />
+
+                                        <asp:Button ID="btnEstado" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
+                                            Text="Estado" CommandName="CambiarEstado" CommandArgument='<%# Eval("Correo") %>' />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
@@ -64,9 +66,9 @@
                 </div>
             </div>
 
-               <br />
-                    <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
-                    <br />
+            <br />
+            <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
+            <br />
 
             <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
 
@@ -148,10 +150,6 @@
 
                             </div>
                         </div>
-
-
-                        <!-- ----------------------------------------------------------- !-->
-
                     </div>
                     <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
                         <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar" OnClick="btnEditarSeleccion_Click"></asp:Button>
@@ -161,16 +159,46 @@
                 </div>
             </asp:Panel>
 
+            <!----=============== Modal para Estado======================!-->
 
+            <asp:ModalPopupExtender ID="ModalPopupEstado" runat="server"
+                PopupControlID="panelEstado" TargetControlID="campoEscondido"
+                CancelControlID="CerrarModalEstado" BackgroundCssClass="modalBackground">
+            </asp:ModalPopupExtender>
+
+            <asp:Panel ID="panelEstado" runat="server" CssClass="modal-content container-fluid col-6 col-auto
+                                  modal-dialog-scrollable">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" runat="server" id="H1">Estado</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModalEstado">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                </div>
+
+                <div class="modal-body">
+                    <asp:Label ID="lblEstado" runat="server" Text="La cuenta se encuentra"></asp:Label>
+                     <asp:Label ID="lblCuenta" runat="server" Text="" Visible ="false"></asp:Label>
+                    <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
+                        <asp:Button ID="btnCambiarEstado" runat="server" Text="EDITAR" CssClass="btn btn-guardar" OnClick="btnCambiarEstado_Click"></asp:Button>
+                    </div>
+                </div>
+            </asp:Panel>
         </form>
 
     </div>
     <br />
 
-<script type="text/javascript">
-    function mostrarAlert() {
-        alert("I am an alert box!");
-    }
-</script>
+    <script type="text/javascript">
+        function mostrarAlert(Hola) {
+            alert("I am an alert box!" + Hola);
+        }
+
+
+        function CargarDatosPersona(Hola) {
+            alert("I am an alert box!" + Hola);
+        }
+    </script>
 
 </asp:Content>
