@@ -6,9 +6,14 @@
     <script type="text/javascript" src="JS/expediente.js"></script>
 
 
+    <script>
+
+        
+    </script>
+
 </asp:Content>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="lee-json();">
 
     <div class="container-fluid col-11 col-auto">
 
@@ -162,7 +167,7 @@
                                     <div class="form-row card-body padding-general-top">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select">
+                                                <select class="browser-default custom-select listaProvincias" id="provinciasJ">
 
                                                     <option value="" disabled selected>Provincia</option>
                                                 </select>
@@ -171,7 +176,7 @@
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select">
+                                                <select class="browser-default custom-select listaCantones" id="cantonesJ">
                                                     <option value="" disabled selected>Cantón</option>
                                                 </select>
                                             </div>
@@ -179,7 +184,7 @@
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select">
+                                                <select class="browser-default custom-select listaDistritos" id="distritosJ">
                                                     <option value="" disabled selected>Distrito</option>
                                                 </select>
                                             </div>

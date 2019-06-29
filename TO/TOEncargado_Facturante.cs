@@ -6,22 +6,23 @@ using System.Threading.Tasks;
 
 namespace TO
 {
-    class TOEncargado_Facturante
+    public class TOEncargado_Facturante
     {
         public string Nombre { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
-        public decimal Cedula { get; set; }
+        public string Cedula { get; set; }
         public decimal Telefono { get; set; }
         public string CorreoElectronico { get; set; }
-        public string Parentezco { get; set; }
+        public string Parentesco { get; set; }
+        public string Direccion { get; set; }
 
         public TOEncargado_Facturante()
         {
 
         }
 
-        public TOEncargado_Facturante(string nombre, string primerApellido, string segundoApellido, decimal cedula, decimal telefono, string correo, string parentezco)
+        public TOEncargado_Facturante(string nombre, string primerApellido, string segundoApellido, string cedula, decimal telefono, string correo, string parentesco, string direccion)
         {
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
@@ -29,10 +30,11 @@ namespace TO
             this.Cedula = cedula;
             this.Telefono = telefono;
             this.CorreoElectronico = correo;
-            this.Parentezco = parentezco;
+            this.Parentesco = parentesco;
+            this.Direccion = direccion;
         }
 
-        public TOEncargado_Facturante(string nombre, string primerApellido, string segundoApellido, decimal cedula, decimal telefono, string correo)
+        public TOEncargado_Facturante(string nombre, string primerApellido, string segundoApellido, string cedula, decimal telefono, string correo, string direccion)
         {
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
@@ -40,6 +42,7 @@ namespace TO
             this.Cedula = cedula;
             this.Telefono = telefono;
             this.CorreoElectronico = correo;
+            this.Direccion = direccion;
         }
     }
 }
