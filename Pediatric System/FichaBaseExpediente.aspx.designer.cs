@@ -49,76 +49,58 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button nuevaConsulta;
         
         /// <summary>
-        /// nombre control.
+        /// nombrePaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox nombre;
+        protected global::System.Web.UI.WebControls.TextBox nombrePaciente;
         
         /// <summary>
-        /// primerApellido control.
+        /// primerApellidoPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox primerApellido;
+        protected global::System.Web.UI.WebControls.TextBox primerApellidoPaciente;
         
         /// <summary>
-        /// segundoApellido control.
+        /// segundoApellidoPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox segundoApellido;
+        protected global::System.Web.UI.WebControls.TextBox segundoApellidoPaciente;
         
         /// <summary>
-        /// cedula control.
+        /// cedulaPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cedula;
+        protected global::System.Web.UI.WebControls.TextBox cedulaPaciente;
         
         /// <summary>
-        /// validacionFormatoCedulaPaciente control.
+        /// fechaNacimientoPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator validacionFormatoCedulaPaciente;
+        protected global::System.Web.UI.WebControls.TextBox fechaNacimientoPaciente;
         
         /// <summary>
-        /// validacionVacioCedulaPaciente control.
+        /// sexoPaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator validacionVacioCedulaPaciente;
-        
-        /// <summary>
-        /// fechaNacimiento control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox fechaNacimiento;
-        
-        /// <summary>
-        /// sexo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList sexo;
+        protected global::System.Web.UI.WebControls.DropDownList sexoPaciente;
         
         /// <summary>
         /// fotoPaciente control.
@@ -130,13 +112,211 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.FileUpload fotoPaciente;
         
         /// <summary>
-        /// VincExpediente control.
+        /// VincExpedientePaciente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox VincExpediente;
+        protected global::System.Web.UI.WebControls.TextBox VincExpedientePaciente;
+        
+        /// <summary>
+        /// nombreEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nombreEncargado;
+        
+        /// <summary>
+        /// primerApellidoEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox primerApellidoEncargado;
+        
+        /// <summary>
+        /// segundoApellidoEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox segundoApellidoEncargado;
+        
+        /// <summary>
+        /// cedulaEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox cedulaEncargado;
+        
+        /// <summary>
+        /// telefonoEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox telefonoEncargado;
+        
+        /// <summary>
+        /// correoEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox correoEncargado;
+        
+        /// <summary>
+        /// parentezcoEncargado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox parentezcoEncargado;
+        
+        /// <summary>
+        /// nombreFacturante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox nombreFacturante;
+        
+        /// <summary>
+        /// primerApellidoFacturante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox primerApellidoFacturante;
+        
+        /// <summary>
+        /// segundoApellidoFacturante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox segundoApellidoFacturante;
+        
+        /// <summary>
+        /// cedulaFacturante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox cedulaFacturante;
+        
+        /// <summary>
+        /// telefonoFacturante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox telefonoFacturante;
+        
+        /// <summary>
+        /// correoFacturante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox correoFacturante;
+        
+        /// <summary>
+        /// tallaNacer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tallaNacer;
+        
+        /// <summary>
+        /// pesoNacer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox pesoNacer;
+        
+        /// <summary>
+        /// edadGestacional control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox edadGestacional;
+        
+        /// <summary>
+        /// opcion_pequeno control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton opcion_pequeno;
+        
+        /// <summary>
+        /// opcion_adecuado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton opcion_adecuado;
+        
+        /// <summary>
+        /// opcion_grande control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton opcion_grande;
+        
+        /// <summary>
+        /// apgar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox apgar;
+        
+        /// <summary>
+        /// perimetroCefalico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox perimetroCefalico;
+        
+        /// <summary>
+        /// complicacionPerinatal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea complicacionPerinatal;
         
         /// <summary>
         /// regresar control.

@@ -16,11 +16,20 @@ namespace BL
         /// </summary>
         /// <param name="expedienteBL"></param>
         /// <returns>Mensaje de confirmacion indicando si se realizo la transaccion</returns>
-        public string crearExpediente(BLExpediente expedienteBL)
+        public string crearExpediente(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLDireccion direccionEncargadoBL, BLDireccion direccionFacturanteBL, BLEncargado_Facturante encargadoBL, BLEncargado_Facturante facturanteBL, BLHistoriaClinica historiaClinicaBL)
         {
-            TOExpediente nuevoExpediente = new TOExpediente(expedienteBL.Nombre, expedienteBL.PrimerApellido, expedienteBL.SegundoApellido, expedienteBL.Cedula, expedienteBL.FechaNacimiento, expedienteBL.Sexo, expedienteBL.Foto, expedienteBL.ExpedienteAntiguo, expedienteBL.Direccion);
+            TOExpediente expedienteTO = new TOExpediente();
+            TODireccion direccionPacienteTO = new TODireccion();
+            TODireccion direccionEncargadoTO = new TODireccion();
+            TODireccion direccionFacturanteTO = new TODireccion();
+            TOEncargado_Facturante encargadoTO = new TOEncargado_Facturante ();
+            TOEncargado_Facturante facturanteTO = new TOEncargado_Facturante();
+            TOHistoriaClinica historiaClinicaTO = new TOHistoriaClinica();
+
+            convertirExpedienteCompleto_BL_TO(expedienteBL, direccionPacienteBL, encargadoBL, direccionEncargadoBL, facturanteBL, direccionFacturanteBL, historiaClinicaBL, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
+
             DAOExpediente dao = new DAOExpediente();
-            string confirmacion = dao.CrearExpediente(nuevoExpediente);
+            string confirmacion = dao.CrearExpediente(expedienteTO, direccionPacienteTO, direccionEncargadoTO, direccionFacturanteTO, encargadoTO, facturanteTO, historiaClinicaTO);
             return confirmacion;
 
         }
@@ -68,12 +77,14 @@ namespace BL
             TODireccion direccionFacturanteTO = new TODireccion();
             TOHistoriaClinica historiaClinicaTO = new TOHistoriaClinica();
 
+            convertirExpedienteCompleto_TO_BL(expedienteBL, direccionPacienteBL, encargadoBL, direccionEncargadoBL, facturanteBL, direccionFacturanteBL, historiaClinicaBL, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
+
             string confirmacion = daoExpediente.CargarExpediente(cedulaExpediente ,expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
 
             return confirmacion;
         }
 
-        private void convertirExpedienteCompleto(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL,
+        private void convertirExpedienteCompleto_TO_BL(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL,
             TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado, TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
         {
             //Objeto Expediente
@@ -120,9 +131,114 @@ namespace BL
             direccionFacturanteBL.Codigo = direccionFacturante.Codigo;
             direccionFacturanteBL.Provincia = direccionFacturante.Provincia;
             direccionFacturanteBL.Canton = direccionFacturante.Distrito;
-            direccionFacturanteBL.Distrito = direccionFacturanteBL.Distrito;
-            
+            direccionFacturanteBL.Distrito = direccionFacturante.Distrito;
+            direccionFacturanteBL.Barrio = direccionFacturante.Barrio;
+
             //Objeto Historia Clinica 
+            historiaClinicaBL.Cedula = historiaClinica.Cedula;
+            historiaClinicaBL.AP_Talla = historiaClinica.AP_Talla;
+            historiaClinicaBL.AP_Peso = historiaClinica.AP_Peso;
+            historiaClinicaBL.AP_PerimetroCefalico = historiaClinica.AP_PerimetroCefalico;
+            historiaClinicaBL.AP_CalificacionUniversal = historiaClinica.AP_CalificacionUniversal;
+            historiaClinicaBL.AP_APGAR = historiaClinica.AP_APGAR;
+            historiaClinicaBL.AP_EdadGestacional = historiaClinica.AP_EdadGestacional;
+            historiaClinicaBL.AP_OtrasComplicaciones = historiaClinica.AP_OtrasComplicaciones;
+            historiaClinicaBL.AP_OtrasComplicacionesDescripcion = historiaClinica.AP_OtrasComplicacionesDescripcion;
+            historiaClinicaBL.HF_Asma = historiaClinica.HF_Asma;
+            historiaClinicaBL.HF_Diabetes = historiaClinica.HF_Diabetes;
+            historiaClinicaBL.HF_Hipertension = historiaClinica.HF_Hipertension;
+            historiaClinicaBL.HF_Cardivasculares = historiaClinica.HF_Cardivasculares;
+            historiaClinicaBL.HF_Displidemia = historiaClinica.HF_Displidemia;
+            historiaClinicaBL.HF_Epilepsia = historiaClinica.HF_Epilepsia;
+            historiaClinicaBL.HF_Otros = historiaClinica.HF_Otros;
+            historiaClinicaBL.HF_DescripcionOtros = historiaClinica.HF_DescripcionOtros;
+            historiaClinicaBL.APAT_Estado = historiaClinica.APAT_Estado;
+            historiaClinicaBL.APAT_Descripcion = historiaClinica.APAT_Descripcion;
+            historiaClinicaBL.AT_Estado = historiaClinica.AT_Estado;
+            historiaClinicaBL.AT_Descripcion = historiaClinica.AT_Descripcion;
+            historiaClinicaBL.AQ_Estado = historiaClinica.AQ_Estado;
+            historiaClinicaBL.AQ_Descripcion = historiaClinica.AQ_Descripcion;
+            historiaClinicaBL.Alergias = historiaClinica.Alergias;
+            historiaClinicaBL.AlegergiasDescripcion = historiaClinica.AlegergiasDescripcion;
+
+        }
+
+        private void convertirExpedienteCompleto_BL_TO(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL,
+            TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado, TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
+        {
+            //Objeto Expediente
+            expediente.Cedula = expedienteBL.Cedula;
+            expediente.Nombre = expedienteBL.Nombre;
+            expediente.PrimerApellido = expedienteBL.PrimerApellido;
+            expediente.SegundoApellido = expedienteBL.SegundoApellido;
+            expediente.FechaNacimiento = expedienteBL.FechaNacimiento;
+            expediente.Sexo = expedienteBL.Sexo;
+            expediente.Foto = expedienteBL.Foto;
+            expediente.ExpedienteAntiguo = expedienteBL.ExpedienteAntiguo;
+
+            //Objeto Direccion Paciente
+            direccionPaciente.Codigo = direccionPacienteBL.Codigo;
+            direccionPaciente.Provincia = direccionPacienteBL.Provincia;
+            direccionPaciente.Canton = direccionFacturanteBL.Canton;
+            direccionPaciente.Distrito = direccionPacienteBL.Distrito;
+
+            //Objeto Encargado 
+            encargado.Cedula = encargadoBL.Cedula;
+            encargado.Nombre = encargadoBL.Nombre;
+            encargado.PrimerApellido = encargadoBL.PrimerApellido;
+            encargado.SegundoApellido = encargadoBL.SegundoApellido;
+            encargado.Parentesco = encargadoBL.Parentesco;
+            encargado.CorreoElectronico = encargadoBL.CorreoElectronico;
+            encargado.Telefono = encargadoBL.Telefono;
+
+            //Objeto Direccion Encargado
+            direccionEncargado.Codigo = direccionEncargadoBL.Codigo;
+            direccionEncargado.Provincia = direccionEncargadoBL.Provincia;
+            direccionEncargado.Canton = direccionEncargadoBL.Canton;
+            direccionEncargado.Distrito = direccionEncargadoBL.Distrito;
+            direccionEncargado.Barrio = direccionEncargadoBL.Barrio;
+
+            //Objeto Facturante 
+            facturante.Cedula = facturanteBL.Cedula;
+            facturante.Nombre = facturanteBL.Nombre;
+            facturante.PrimerApellido = facturanteBL.PrimerApellido;
+            facturante.SegundoApellido = facturanteBL.SegundoApellido;
+            facturante.CorreoElectronico = facturanteBL.CorreoElectronico;
+            facturante.Telefono = facturanteBL.Telefono;
+
+            //Objeto Direccion Facturante 
+            direccionFacturante.Codigo = direccionFacturanteBL.Codigo;
+            direccionFacturante.Provincia = direccionFacturanteBL.Provincia;
+            direccionFacturante.Canton = direccionFacturanteBL.Distrito;
+            direccionFacturante.Distrito = direccionFacturanteBL.Distrito;
+            direccionFacturante.Barrio = direccionFacturanteBL.Barrio;
+
+            //Objeto Historia Clinica 
+            historiaClinica.Cedula = historiaClinicaBL.Cedula;
+            historiaClinica.AP_Talla = historiaClinicaBL.AP_Talla;
+            historiaClinica.AP_Peso = historiaClinicaBL.AP_Peso;
+            historiaClinica.AP_PerimetroCefalico = historiaClinicaBL.AP_PerimetroCefalico;
+            historiaClinica.AP_CalificacionUniversal = historiaClinicaBL.AP_CalificacionUniversal;
+            historiaClinica.AP_APGAR = historiaClinicaBL.AP_APGAR;
+            historiaClinica.AP_EdadGestacional = historiaClinicaBL.AP_EdadGestacional;
+            historiaClinica.AP_OtrasComplicaciones = historiaClinicaBL.AP_OtrasComplicaciones;
+            historiaClinica.AP_OtrasComplicacionesDescripcion = historiaClinicaBL.AP_OtrasComplicacionesDescripcion;
+            historiaClinica.HF_Asma = historiaClinicaBL.HF_Asma;
+            historiaClinica.HF_Diabetes = historiaClinicaBL.HF_Diabetes;
+            historiaClinica.HF_Hipertension = historiaClinicaBL.HF_Hipertension;
+            historiaClinica.HF_Cardivasculares = historiaClinicaBL.HF_Cardivasculares;
+            historiaClinica.HF_Displidemia = historiaClinicaBL.HF_Displidemia;
+            historiaClinica.HF_Epilepsia = historiaClinicaBL.HF_Epilepsia;
+            historiaClinica.HF_Otros = historiaClinicaBL.HF_Otros;
+            historiaClinica.HF_DescripcionOtros = historiaClinicaBL.HF_DescripcionOtros;
+            historiaClinica.APAT_Estado = historiaClinicaBL.APAT_Estado;
+            historiaClinica.APAT_Descripcion = historiaClinicaBL.APAT_Descripcion;
+            historiaClinica.AT_Estado = historiaClinicaBL.AT_Estado;
+            historiaClinica.AT_Descripcion = historiaClinicaBL.AT_Descripcion;
+            historiaClinica.AQ_Estado = historiaClinicaBL.AQ_Estado;
+            historiaClinica.AQ_Descripcion = historiaClinicaBL.AQ_Descripcion;
+            historiaClinica.Alergias = historiaClinicaBL.Alergias;
+            historiaClinica.AlegergiasDescripcion = historiaClinicaBL.AlegergiasDescripcion;
 
         }
     }

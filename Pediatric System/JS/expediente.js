@@ -1,11 +1,11 @@
 ﻿
 $(document).ready(function () {
-    var direccionesH;
+    var direccionesEX;
 
     $.getJSON("Archivos/Direcciones.json", function (datos) {
-        direccionesH = datos.DIRECCIONES;
+        direccionesEX = datos.DIRECCIONES;
 
-        var provincias = direccionesH.map(function (provincia) {
+        var provincias = direccionesEX.map(function (provincia) {
             return provincia.NOMBRE_PROVINCIA;
         });
 
@@ -15,22 +15,22 @@ $(document).ready(function () {
         })
 
         $.each(unique, function (key, value) {
-            $("#provinciasJ").append('<option value="' + value + '">' + value + '</option>');
+            $("#provinciasEX").append('<option value="' + value + '">' + value + '</option>');
         });
     });
 
-    $(".listaProvincias").on("change", function () {
-        if (document.getElementById("cantonesJ").options.length > 0) {
-            document.getElementById("cantonesJ").options.length = 0;
+    $(".listaProvinciasEX").on("change", function () {
+        if (document.getElementById("cantonesEX").options.length > 0) {
+            document.getElementById("cantonesEX").options.length = 0;
         }
 
-        var provinciaSeleccionada = $("#provinciasJ").val();
+        var provinciaSeleccionada = $("#provinciasEX").val();
 
-        var direccionesHPro= direccionesH.filter(function (provinc) {
+        var direccionesEXPro= direccionesEX.filter(function (provinc) {
             return provinc.NOMBRE_PROVINCIA == provinciaSeleccionada;
         });
 
-        var cantones = direccionesHPro.map(function (canton) {
+        var cantones = direccionesEXPro.map(function (canton) {
             return canton.NOMBRE_CANTON;
         });
 
@@ -40,22 +40,22 @@ $(document).ready(function () {
         })
 
         $.each(unique, function (key, value) {
-            $("#cantonesJ").append('<option value="' + value + '">' + value + '</option>');
+            $("#cantonesEX").append('<option value="' + value + '">' + value + '</option>');
         });      
     });
 
-    $(".listaCantones").on("change", function () {
-        if (document.getElementById("distritosJ").options.length > 0) {
-            document.getElementById("distritosJ").options.length = 0;
+    $(".listaCantonesEX").on("change", function () {
+        if (document.getElementById("distritosEX").options.length > 0) {
+            document.getElementById("distritosEX").options.length = 0;
         }
 
-        var cantonSeleccionado = $("#cantonesJ").val();
+        var cantonSeleccionado = $("#cantonesEX").val();
 
-        var direccionesHCan = direccionesH.filter(function (cant) {
+        var direccionesEXCan = direccionesEX.filter(function (cant) {
             return cant.NOMBRE_CANTON == cantonSeleccionado;
         });
 
-        var distritos = direccionesHCan.map(function (distrito) {
+        var distritos = direccionesEXCan.map(function (distrito) {
             return distrito.NOMBRE_DISTRITO;
         });
 
@@ -65,9 +65,203 @@ $(document).ready(function () {
         })
 
         $.each(unique, function (key, value) {
-            $("#distritosJ").append('<option value="' + value + '">' + value + '</option>');
+            $("#distritosEX").append('<option value="' + value + '">' + value + '</option>');
         });
     });
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var direccionesEN;
+
+    $.getJSON("Archivos/Direcciones.json", function (datos) {
+        direccionesEN = datos.DIRECCIONES;
+
+        var provincias = direccionesEN.map(function (provincia) {
+            return provincia.NOMBRE_PROVINCIA;
+        });
+
+        var sorted = provincias.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#provinciasEN").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaProvinciasEN").on("change", function () {
+        if (document.getElementById("cantonesEN").options.length > 0) {
+            document.getElementById("cantonesEN").options.length = 0;
+        }
+
+        var provinciaSeleccionada = $("#provinciasEN").val();
+
+        var direccionesENPro = direccionesEN.filter(function (provinc) {
+            return provinc.NOMBRE_PROVINCIA == provinciaSeleccionada;
+        });
+
+        var cantones = direccionesENPro.map(function (canton) {
+            return canton.NOMBRE_CANTON;
+        });
+
+        var sorted = cantones.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#cantonesEN").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaCantonesEN").on("change", function () {
+        if (document.getElementById("distritosEN").options.length > 0) {
+            document.getElementById("distritosEN").options.length = 0;
+        }
+
+        var cantonSeleccionado = $("#cantonesEN").val();
+                
+        var direccionesENCan = direccionesEN.filter(function (cant) {
+            return cant.NOMBRE_CANTON == cantonSeleccionado;
+        });
+
+        var distritos = direccionesENCan.map(function (distrito) {
+            return distrito.NOMBRE_DISTRITO;
+        });
+
+        var sorted = distritos.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#distritosEN").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaDistritosEN").on("change", function () {
+        if (document.getElementById("barriosEN").options.length > 0) {
+            document.getElementById("barriosEN").options.length = 0;
+        }
+
+        var distritoSeleccionado = $("#distritosEN").val();
+
+        var direccionesENBarr = direccionesEN.filter(function (cant) {
+            return cant.NOMBRE_DISTRITO == distritoSeleccionado;
+        });
+
+        var barrios = direccionesENBarr.map(function (barrio) {
+            return barrio.NOMBRE_BARRIO;
+        });
+
+        var sorted = barrios.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#barriosEN").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    var direccionesFA;
+
+    $.getJSON("Archivos/Direcciones.json", function (datos) {
+        direccionesFA = datos.DIRECCIONES;
+
+        var provincias = direccionesFA.map(function (provincia) {
+            return provincia.NOMBRE_PROVINCIA;
+        });
+
+        var sorted = provincias.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#provinciasFA").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaProvinciasFA").on("change", function () {
+        if (document.getElementById("cantonesFA").options.length > 0) {
+            document.getElementById("cantonesFA").options.length = 0;
+        }
+
+        var provinciaSeleccionada = $("#provinciasFA").val();
+
+        var direccionesFAPro = direccionesFA.filter(function (provinc) {
+            return provinc.NOMBRE_PROVINCIA == provinciaSeleccionada;
+        });
+
+        var cantones = direccionesFAPro.map(function (canton) {
+            return canton.NOMBRE_CANTON;
+        });
+
+        var sorted = cantones.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#cantonesFA").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaCantonesFA").on("change", function () {
+        if (document.getElementById("distritosFA").options.length > 0) {
+            document.getElementById("distritosFA").options.length = 0;
+        }
+
+        var cantonSeleccionado = $("#cantonesFA").val();
+
+        var direccionesFACan = direccionesFA.filter(function (cant) {
+            return cant.NOMBRE_CANTON == cantonSeleccionado;
+        });
+
+        var distritos = direccionesFACan.map(function (distrito) {
+            return distrito.NOMBRE_DISTRITO;
+        });
+
+        var sorted = distritos.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#distritosFA").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaDistritosFA").on("change", function () {
+        if (document.getElementById("barriosFA").options.length > 0) {
+            document.getElementById("barriosFA").options.length = 0;
+        }
+
+        var distritoSeleccionado = $("#distritosFA").val();
+
+        var direccionesFABarr = direccionesFA.filter(function (cant) {
+            return cant.NOMBRE_DISTRITO == distritoSeleccionado;
+        });
+
+        var barrios = direccionesFABarr.map(function (barrio) {
+            return barrio.NOMBRE_BARRIO;
+        });
+
+        var sorted = barrios.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#barriosFA").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+
 
     
 
