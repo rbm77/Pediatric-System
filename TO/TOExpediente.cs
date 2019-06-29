@@ -16,13 +16,14 @@ namespace TO
         public string Sexo { get; set; }
         public byte[] Foto { get; set; }
         public string ExpedienteAntiguo { get; set; }
+        public string Direccion { get; set; }
 
         public TOExpediente()
         {
 
         }
 
-        public TOExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente)
+        public TOExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
         {
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
@@ -32,6 +33,7 @@ namespace TO
             this.Sexo = sexo;
             this.Foto = foto;
             this.ExpedienteAntiguo = expediente;
+            this.Direccion = direccion;
         }
     }
 }

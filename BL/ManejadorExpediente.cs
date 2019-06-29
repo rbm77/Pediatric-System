@@ -14,18 +14,11 @@ namespace BL
         /// <summary>
         /// Envia los datos a la capa de DAO para realizar la inserccion en la tabla Expediente de la BD
         /// </summary>
-        /// <param name="nombre"></param>
-        /// <param name="primerApellido"></param>
-        /// <param name="segundoApellido"></param>
-        /// <param name="cedula"></param>
-        /// <param name="fechaNacimiento"></param>
-        /// <param name="sexo"></param>
-        /// <param name="foto"></param>
-        /// <param name="expedienteAnti"></param>
+        /// <param name="expedienteBL"></param>
         /// <returns>Mensaje de confirmacion indicando si se realizo la transaccion</returns>
-        public string crearExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expedienteAnti)
+        public string crearExpediente(BLExpediente expedienteBL)
         {
-            TOExpediente nuevoExpediente = new TOExpediente(nombre, primerApellido, segundoApellido, cedula, fechaNacimiento, sexo, foto, expedienteAnti);
+            TOExpediente nuevoExpediente = new TOExpediente(expedienteBL.Nombre, expedienteBL.PrimerApellido, expedienteBL.SegundoApellido, expedienteBL.Cedula, expedienteBL.FechaNacimiento, expedienteBL.Sexo, expedienteBL.Foto, expedienteBL.ExpedienteAntiguo, expedienteBL.Direccion);
             DAOExpediente dao = new DAOExpediente();
             string confirmacion = dao.CrearExpediente(nuevoExpediente);
             return confirmacion;
@@ -59,8 +52,78 @@ namespace BL
         /// <returns>El objeto de tipo BLExpediente convertido</returns>
         private BLExpediente convertirExpedientes(TOExpediente toExpediente)
         {
-            BLExpediente blExpediente = new BLExpediente(toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo);
+            BLExpediente blExpediente = new BLExpediente(toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo, toExpediente.Direccion);
             return blExpediente;
+        }
+
+        public string mostrarExpediente(string cedulaExpediente, BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL)
+        {
+            DAOExpediente daoExpediente = new DAOExpediente();
+
+            TOExpediente expedienteTO = new TOExpediente();
+            TODireccion direccionPacienteTO = new TODireccion();
+            TOEncargado_Facturante encargadoTO = new TOEncargado_Facturante();
+            TODireccion direccionEncargadoTO = new TODireccion();
+            TOEncargado_Facturante facturanteTO = new TOEncargado_Facturante();
+            TODireccion direccionFacturanteTO = new TODireccion();
+            TOHistoriaClinica historiaClinicaTO = new TOHistoriaClinica();
+
+            string confirmacion = daoExpediente.CargarExpediente(cedulaExpediente ,expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
+
+            return confirmacion;
+        }
+
+        private void convertirExpedienteCompleto(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL,
+            TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado, TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
+        {
+            //Objeto Expediente
+            expedienteBL.Cedula = expediente.Cedula;
+            expedienteBL.Nombre = expediente.Nombre;
+            expedienteBL.PrimerApellido = expediente.PrimerApellido;
+            expedienteBL.SegundoApellido = expediente.SegundoApellido;
+            expedienteBL.FechaNacimiento = expediente.FechaNacimiento;
+            expedienteBL.Sexo = expediente.Sexo;
+            expedienteBL.Foto = expediente.Foto;
+            expedienteBL.ExpedienteAntiguo = expediente.ExpedienteAntiguo;
+
+            //Objeto Direccion Paciente
+            direccionPacienteBL.Codigo = direccionPaciente.Codigo;
+            direccionPacienteBL.Provincia = direccionPaciente.Provincia;
+            direccionPacienteBL.Canton = direccionFacturante.Canton;
+            direccionPacienteBL.Distrito = direccionPaciente.Distrito;
+
+            //Objeto Encargado 
+            encargadoBL.Cedula = encargado.Cedula;
+            encargadoBL.Nombre = encargado.Nombre;
+            encargadoBL.PrimerApellido = encargado.PrimerApellido;
+            encargadoBL.SegundoApellido = encargado.SegundoApellido;
+            encargadoBL.Parentesco = encargado.Parentesco;
+            encargadoBL.CorreoElectronico = encargado.CorreoElectronico;
+            encargadoBL.Telefono = encargado.Telefono;
+
+            //Objeto Direccion Encargado
+            direccionEncargadoBL.Codigo = direccionEncargado.Codigo;
+            direccionEncargadoBL.Provincia = direccionEncargado.Provincia;
+            direccionEncargadoBL.Canton = direccionEncargado.Canton;
+            direccionEncargadoBL.Distrito = direccionEncargado.Distrito;
+            direccionEncargadoBL.Barrio = direccionEncargado.Barrio;
+
+            //Objeto Facturante 
+            facturanteBL.Cedula = facturante.Cedula;
+            facturanteBL.Nombre = facturante.Nombre;
+            facturanteBL.PrimerApellido = facturante.PrimerApellido;
+            facturanteBL.SegundoApellido = facturante.SegundoApellido;
+            facturanteBL.CorreoElectronico = facturante.CorreoElectronico;
+            facturanteBL.Telefono = facturante.Telefono;
+
+            //Objeto Direccion Facturante 
+            direccionFacturanteBL.Codigo = direccionFacturante.Codigo;
+            direccionFacturanteBL.Provincia = direccionFacturante.Provincia;
+            direccionFacturanteBL.Canton = direccionFacturante.Distrito;
+            direccionFacturanteBL.Distrito = direccionFacturanteBL.Distrito;
+            
+            //Objeto Historia Clinica 
+
         }
     }
 }

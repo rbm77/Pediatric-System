@@ -1,5 +1,75 @@
 ﻿
 $(document).ready(function () {
+    var direccionesH;
+
+    $.getJSON("Archivos/Direcciones.json", function (datos) {
+        direccionesH = datos.DIRECCIONES;
+
+        var provincias = direccionesH.map(function (provincia) {
+            return provincia.NOMBRE_PROVINCIA;
+        });
+
+        var sorted = provincias.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#provinciasJ").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    $(".listaProvincias").on("change", function () {
+        if (document.getElementById("cantonesJ").options.length > 0) {
+            document.getElementById("cantonesJ").options.length = 0;
+        }
+
+        var provinciaSeleccionada = $("#provinciasJ").val();
+
+        var direccionesHPro= direccionesH.filter(function (provinc) {
+            return provinc.NOMBRE_PROVINCIA == provinciaSeleccionada;
+        });
+
+        var cantones = direccionesHPro.map(function (canton) {
+            return canton.NOMBRE_CANTON;
+        });
+
+        var sorted = cantones.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#cantonesJ").append('<option value="' + value + '">' + value + '</option>');
+        });      
+    });
+
+    $(".listaCantones").on("change", function () {
+        if (document.getElementById("distritosJ").options.length > 0) {
+            document.getElementById("distritosJ").options.length = 0;
+        }
+
+        var cantonSeleccionado = $("#cantonesJ").val();
+
+        var direccionesHCan = direccionesH.filter(function (cant) {
+            return cant.NOMBRE_CANTON == cantonSeleccionado;
+        });
+
+        var distritos = direccionesHCan.map(function (distrito) {
+            return distrito.NOMBRE_DISTRITO;
+        });
+
+        var sorted = distritos.sort();
+        var unique = sorted.filter(function (value, index) {
+            return value !== sorted[index + 1];
+        })
+
+        $.each(unique, function (key, value) {
+            $("#distritosJ").append('<option value="' + value + '">' + value + '</option>');
+        });
+    });
+
+    
 
     //$('.complicacionPerinatal').hide();
     //$('textarea[name="descripcionPatologicos"]').attr('disabled', true);
