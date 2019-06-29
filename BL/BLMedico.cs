@@ -17,6 +17,17 @@ namespace BL
         public int cedula;
         public int telefono;
 
+        public BLMedico()
+        {
+
+        }
+        public BLMedico(string codigo, string nombre, string apellido)
+        {
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.apellido = apellido;
+        }
+
         TOMedico miTOMedico = new TOMedico();
         DAOMedico miDAOMedico = new DAOMedico();
 
@@ -60,6 +71,29 @@ namespace BL
             miTOMedico.cedula = this.cedula;
             miTOMedico.telefono = this.telefono;
             miDAOMedico.editarMedico(miTOMedico);
+        }
+
+        /// <summary>
+        /// Carga la lista de medicos disponibles para atender consultas
+        /// </summary>
+        /// <param name="blLista"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string CargarMedicos(List<BLMedico> blLista)
+        {
+            string confirmacion = "error";
+
+            DAOMedico dao = new DAOMedico();
+            List<TOMedico> toLista = new List<TOMedico>();
+            confirmacion = dao.CargarMedicos(toLista);
+
+
+            // Conversion y carga de listas
+
+            foreach (TOMedico med in toLista)
+            {
+                blLista.Add(new BLMedico(med.codigo, med.nombre, med.apellido));
+            }
+            return confirmacion;
         }
     }
 }

@@ -19,6 +19,13 @@ namespace TO
         {
         }
 
+        public TOMedico(string codigo, string nombre, string apellido)
+        {
+            this.codigo = codigo;
+            this.nombre = nombre;
+            this.apellido = apellido;
+        }
+
         public TOMedico(string codigo, string correo, string nombre, string apellido, int cedula, int telefono)
         {
             this.codigo = codigo;

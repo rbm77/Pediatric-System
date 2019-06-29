@@ -227,5 +227,105 @@ namespace DAO
             }
 
         }
+
+        /// <summary>
+        /// Carga la lista de medicos disponibles para atender consultas
+        /// </summary>
+        /// <param name="toLista"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string CargarMedicos(List<TOMedico> toLista)
+        {
+            string confirmacion = "La lista de médicos se cargó exitosamente";
+
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la lista de médicos";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar la lista de médicos";
+                return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar la lista de médicos");
+
+
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT CODIGO_MEDICO, NOMBRE, APELLIDO FROM MEDICO;", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se ejecuta el comando 
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de citas
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        TOMedico medico = new TOMedico(lector["CODIGO_MEDICO"].ToString(), lector["NOMBRE"].ToString(),
+                            lector["APELLIDO"].ToString());
+
+                        toLista.Add(medico);
+
+                    }
+                }
+
+                lector.Close();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la lista de médicos";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
+
     }
 }

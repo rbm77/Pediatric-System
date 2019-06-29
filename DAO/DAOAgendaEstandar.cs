@@ -18,7 +18,7 @@ namespace DAO
         /// </summary>
         /// <param name="agenda">Agenda</param>
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
-        public string ActualizarAgenda(List<TOAgendaEstandar> agenda, string codigo)
+        public string ActualizarAgenda(List<TOAgendaEstandar> agenda, string codigo, string duracion)
         {
             string confirmacion = "La agenda se actualizó exitosamente";
 
@@ -115,6 +115,22 @@ namespace DAO
                 }
 
                 lector.Close();
+
+                if(duracion != null)
+                {
+                    if (!duracion.Equals(""))
+                    {
+                        comando.CommandText = "UPDATE MEDICO SET DURACION_CITA = @duracion WHERE CODIGO_MEDICO = @codigo;";
+
+                        comando.Parameters.Clear();
+
+                        comando.Parameters.AddWithValue("@codigo", codigoMedico);
+
+                        comando.Parameters.AddWithValue("@duracion", duracion);
+
+                        comando.ExecuteNonQuery();
+                    }
+                }
 
 
                 // Se realiza un commit de la transacción
@@ -339,6 +355,114 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Obtiene la duracion de la cita del medico
+        /// </summary>
+        /// <param name="codigoMedico"></param>
+        /// <param name="duracion"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
+        public string ObtenerDuracionCita(string codigoMedico)
+        {
+            string confirmacion = "La agenda se cargó exitosamente";
+
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar duracion de la cita");
+
+
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT DURACION_CITA FROM MEDICO WHERE CODIGO_MEDICO = @codigo;", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@codigo", codigoMedico);
+
+                // Se ejecuta el comando 
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en el objeto TOAgendaEstandar
+
+                string duracion = "";
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        duracion = lector["DURACION_CITA"].ToString();
+                    }
+                }
+
+                lector.Close();
+
+                if(duracion != null)
+                {
+                    if (!duracion.Equals(""))
+                    {
+                        confirmacion = duracion;
+                    }
+                }
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
 
     }
 }
