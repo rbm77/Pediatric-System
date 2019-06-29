@@ -11,6 +11,7 @@ namespace BL
         public string correo { set; get; }
         public string nombre { set; get; }
         public string apellido { set; get; }
+        public string estado { set; get; }
         public int cedula { set; get; }
         public int telefono { set; get; }
     }

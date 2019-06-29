@@ -44,6 +44,7 @@
                 <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
                 <div class="card-body">
                     <div>
+                        <div class="table-responsive">
                         <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
                             Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnSelectedIndexChanged="gridCuentas_SelectedIndexChanged">
                             <Columns>
@@ -51,17 +52,27 @@
                                 <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
                                 <asp:BoundField DataField="Correo" HeaderText="Correo" />
                                 <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
-                                <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
+                                <asp:BoundField DataField="Estado" HeaderText="Estado" Visible ="false" />
+
+                                <asp:TemplateField HeaderText="Accion" ItemStyle-HorizontalAlign="Center">
                                     <ItemTemplate>
                                         <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
-                                            Text="Editar / Mirar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />
+                                             CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>'/>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
-                                        <asp:Button ID="btnEstado" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
-                                            Text="Estado" CommandName="CambiarEstado" CommandArgument='<%# Eval("Correo") %>' />
+                                <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center">
+                                     <ItemTemplate>                                                                       
+                                               <asp:CheckBox ID="CheckBox" runat="server" AutoPostBack="true" OnCheckedChanged="btnSwitch_Click" 
+                                                value='<%# Eval("Correo") %>' 
+                                                Checked= '<%# (bool)(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>'  
+                                                ClientIDMode="Static" ToolTip='<%# Eval("Correo") %>'
+                                                   />
                                     </ItemTemplate>
                                 </asp:TemplateField>
                             </Columns>
                         </asp:GridView>
+                             </div>
                     </div>
                 </div>
             </div>
@@ -190,15 +201,12 @@
     </div>
     <br />
 
-    <script type="text/javascript">
-        function mostrarAlert(Hola) {
-            alert("I am an alert box!" + Hola);
-        }
 
+        <script type="text/javascript">
 
-        function CargarDatosPersona(Hola) {
-            alert("I am an alert box!" + Hola);
-        }
+            function alerta(Mensake){
+                alert("Esto me llego" + Mensake)
+            }
     </script>
 
 </asp:Content>

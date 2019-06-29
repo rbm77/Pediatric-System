@@ -18,8 +18,14 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {           
+            {
                 listaPersonal = miBLPersonal.buscarListaPersonal();
+                foreach (BL_ManejadorPersonal elemento in listaPersonal)
+                {
+                    miBLCuenta.correo = elemento.correo;
+                    miBLCuenta.buscarCuentaPorCorreo();
+                    elemento.estado = miBLCuenta.estado;
+                }
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
             }
@@ -37,8 +43,8 @@ namespace Pediatric_System
             String correo = Convert.ToString(e.CommandArgument);
             lblCuenta.Text = correo;
             if (e.CommandName == "enviarCorreo")
-            {              
-                BLAdministrativo miBLAdministrativo = new BLAdministrativo();           
+            {
+                BLAdministrativo miBLAdministrativo = new BLAdministrativo();
                 miBLCuenta.correo = correo;
                 miBLCuenta.buscarCuentaPorCorreo();
                 String rol = miBLCuenta.tipo;
@@ -85,7 +91,7 @@ namespace Pediatric_System
                 miBLCuenta.correo = correo;
                 miBLCuenta.buscarCuentaPorCorreo();
                 lblEstado.Text = "La cuenta de " + lblCuenta.Text + " se encuentra:  " + miBLCuenta.estado;
-                if(miBLCuenta.estado == "Habilitada")
+                if (miBLCuenta.estado == "Habilitada")
                 {
                     btnCambiarEstado.Text = "DESHABILITAR";
                 } else
@@ -164,6 +170,23 @@ namespace Pediatric_System
         protected void Tipo_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+
+        protected void btnSwitch_Click(object sender, EventArgs e)
+        {
+            CheckBox box = (CheckBox)sender;
+            String correo = box.ToolTip;
+            miBLCuenta.correo = correo;
+            if (!box.Checked)
+            {             
+                miBLCuenta.editarEstado("DESHABILITAR");
+                mensajeAviso("success", "La cuenta de " + correo + " ha sido deshabilitada correctamente");
+            } else
+            {
+                miBLCuenta.editarEstado("HABILITAR");
+                mensajeAviso("success", "La cuenta de " + correo + " ha sido habilitada correctamente");
+            }
         }
 
         protected void btnCambiarEstado_Click(object sender, EventArgs e)

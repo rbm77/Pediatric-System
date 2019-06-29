@@ -397,7 +397,7 @@ namespace DAO
                 SqlCommand comando;
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
-                if (Accion == "Habilitar") {
+                if (Accion == "HABILITAR") {
                 comando = new SqlCommand("UPDATE CUENTA SET ESTADO = 'Habilitada' WHERE CORREO = @cor;", conexion);
                 } else
                 {
