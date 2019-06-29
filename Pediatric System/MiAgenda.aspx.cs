@@ -28,6 +28,21 @@ namespace Pediatric_System
         /// <param name="e"></param>
         protected void Actualizar_Click(object sender, EventArgs e)
         {
+            // Primero se valida si todo esta correcto
+
+            string validado = ValidarEntradas();
+
+            if (!(validado.Contains("Bien")))
+            {
+                mensajeConfirmacion.Text = "<div class=\"alert alert-" + "danger" + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + validado + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+                mensajeConfirmacion.Visible = true;
+                UpdatePanel1.Update();
+            }
+            else
+            {
 
             // Obtener datos de entrada
 
@@ -71,7 +86,7 @@ namespace Pediatric_System
             MostrarAgenda(agenda, codigoMedico, false);
 
             ScriptManager.RegisterStartupScript(this, GetType(), "Limpiar campos de texto", "limpiar();", true);
-
+            }
         }
 
         /// <summary>
@@ -84,8 +99,17 @@ namespace Pediatric_System
         {
 
             ManejadorAgenda manejador = new ManejadorAgenda();
-
-            string confirmacion = manejador.ActualizarAgenda(agenda, codigo);
+            string duracionCita = "";
+            try
+            {
+                duracionCita = duracion.Value.Trim();
+            }
+            catch (Exception)
+            {
+                duracionCita = "";
+            }
+            
+            string confirmacion = manejador.ActualizarAgenda(agenda, codigo, duracionCita);
 
             string colorMensaje = "success";
 
@@ -110,8 +134,8 @@ namespace Pediatric_System
                     vistaAgenda.DataBind();
                     vistaAgenda.HeaderRow.TableSection = TableRowSection.TableHeader;
                     Limpiar();
-                    UpdatePanel2.Update();
-                    UpdatePanel1.Update();
+                    //UpdatePanel2.Update();
+                    
 
                     if (primeraVez)
                     {
@@ -121,6 +145,7 @@ namespace Pediatric_System
                 }
 
             }
+            UpdatePanel1.Update();
 
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
                 "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
@@ -199,6 +224,135 @@ namespace Pediatric_System
         protected void Regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Dashboard.aspx");
+        }
+
+        /// <summary>
+        /// Valida las entradas de la interfaz gráfica
+        /// </summary>
+        private string ValidarEntradas()
+        {
+            bool diaMarcado = false;
+
+            if (lunes.Checked)
+            {
+                diaMarcado = true;
+            }
+            if (martes.Checked)
+            {
+                diaMarcado = true;
+            }
+            if (miercoles.Checked)
+            {
+                diaMarcado = true;
+            }
+            if (jueves.Checked)
+            {
+                diaMarcado = true;
+            }
+            if (viernes.Checked)
+            {
+                diaMarcado = true;
+            }
+            if (sabado.Checked)
+            {
+                diaMarcado = true;
+            }
+            if (domingo.Checked)
+            {
+                diaMarcado = true;
+            }
+
+            // Si selecciono un dia, entonces se procede a validar horas
+
+            bool formatoHoraCorrecto = true;
+            string confirmacion = "Bien";
+            DateTime horaInicio = DateTime.Now;
+            DateTime horaFin = DateTime.Now;
+
+            if (diaMarcado)
+            {
+                try
+                {
+                    horaInicio = DateTime.Parse(clockpicker.Value);
+                    horaFin = DateTime.Parse(clockpicker2.Value);
+                }
+                catch (Exception)
+                {
+                    formatoHoraCorrecto = false;
+                }
+
+                if(formatoHoraCorrecto)
+                {
+                    if (horaFin < horaInicio)
+                    {
+                        confirmacion = "La hora de inicio debe comenzar antes que la hora de fin";
+                    }
+                    else
+                    {
+                        bool vacio = false;
+                        if (duracion == null)
+                        {
+                            vacio = true;
+                        }
+                        else
+                        {
+                            if (duracion.Value == "")
+                            {
+                                vacio = true;
+                            }
+                        }
+
+                        if (!vacio)
+                        {
+                            double minutos = horaFin.Subtract(horaInicio).TotalMinutes;
+                            if (minutos < (int.Parse(duracion.Value)))
+                            {
+                                confirmacion = "La duración de la cita no se ajusta al intervalo de horas laborales";
+                            }
+                        }
+                        else
+                        {
+                            ManejadorAgenda manejador = new ManejadorAgenda();
+                            string obtenida = manejador.ObtenerDuracionCita("777");
+
+                            if (obtenida.Contains("error"))
+                            {
+                                confirmacion = "Ocurrió un error al intentar obtener la duración de las citas";
+                            }
+                            else
+                            {
+                                int min = 0;
+                                bool existeDuracion = true;
+                                try
+                                {
+                                    min = int.Parse(obtenida);
+                                }
+                                catch (Exception)
+                                {
+                                    existeDuracion = false;
+                                }
+
+                                if (!existeDuracion)
+                                {
+                                    confirmacion = "Se requiere establecer el tiempo de duración para las citas";
+                                }
+
+                            }
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    confirmacion = "El formato de hora no es correcto";
+                }
+
+            }
+            else
+            {
+                confirmacion = "Al menos un día debe ser seleccionado";
+            }
+            return confirmacion;
         }
     }
 }
