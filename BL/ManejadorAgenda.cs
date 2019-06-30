@@ -100,5 +100,21 @@ namespace BL
             return confirmacion;
         }
 
+        public string CargaHorasDisponibilidad(List<BLAgendaEstandar> diasLaborales, string codigoMedico)
+        {
+            string confirmacion = "error";
+            DAOAgendaEstandar dao = new DAOAgendaEstandar();
+            List<TOAgendaEstandar> toLista = new List<TOAgendaEstandar>();
+            confirmacion = dao.CargaHorasDisponibilidad(toLista, codigoMedico);
+
+            foreach (TOAgendaEstandar dia in toLista)
+            {
+                diasLaborales.Add(new BLAgendaEstandar(dia.CodigoMedico, dia.Dia, dia.HoraInicio, dia.HoraFin));
+            }
+
+            return confirmacion;
+
+        }
+
     }
 }
