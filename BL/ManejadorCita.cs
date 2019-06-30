@@ -76,5 +76,18 @@ namespace BL
             return confirmacion;
         }
 
+        public string CargarHorasCita(List<BLCita> blLista, string codigoMedico, string fecha)
+        {
+            string confirmacion = "error";
+            DAOCita dao = new DAOCita();
+            List<TOCita> toLista = new List<TOCita>();
+            confirmacion = dao.CargarHorasCita(toLista, codigoMedico, fecha);
+
+            foreach (TOCita t in toLista)
+            {
+                blLista.Add(new BLCita(t.Hora));
+            }
+            return confirmacion;
+        }
     }
 }

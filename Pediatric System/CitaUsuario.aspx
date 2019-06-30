@@ -22,76 +22,79 @@
 
             <br />
 
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-            <div class="card">
-                <label class="nombre-input card-header" style="padding-left: 40px">Formulario de datos</label>
+            <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
 
-                <div class="form-row card-body padding-general-top">
+                    <div class="card">
+                        <label class="nombre-input card-header" style="padding-left: 40px">Formulario de datos</label>
 
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-row card-body padding-general-top">
 
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Nombre Completo</label>
-                            <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Nombre Completo</label>
+                                    <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Edad</label>
+                                    <asp:TextBox runat="server" ID="edad" CssClass="form-control"></asp:TextBox>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Correo (Encargado)</label>
+                                    <asp:TextBox runat="server" ID="correo" CssClass="form-control"></asp:TextBox>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Teléfono (Encargado)</label>
+                                    <asp:TextBox runat="server" ID="telefono" CssClass="form-control"></asp:TextBox>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Médico</label>
+                                    <asp:DropDownList ID="medico" CssClass="browser-default custom-select" runat="server" OnSelectedIndexChanged="medico_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Fecha</label>
+                                    <asp:DropDownList ID="fecha" CssClass="browser-default custom-select" runat="server" OnSelectedIndexChanged="fecha_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
+                                </div>
+                            </div>
+
+                            <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                                <div class="padding-general-label">
+                                    <label class="nombre-input">Hora</label>
+                                    <asp:DropDownList ID="hora" CssClass="browser-default custom-select" runat="server"></asp:DropDownList>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
-
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Edad</label>
-                            <asp:TextBox runat="server" ID="edad" CssClass="form-control"></asp:TextBox>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Correo (Encargado)</label>
-                            <asp:TextBox runat="server" ID="correo" CssClass="form-control"></asp:TextBox>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Teléfono (Encargado)</label>
-                            <asp:TextBox runat="server" ID="telefono" CssClass="form-control"></asp:TextBox>
-                        </div>
-
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Médico</label>
-                            <asp:DropDownList ID="medico" CssClass="browser-default custom-select" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Fecha</label>
-                            <asp:DropDownList ID="fecha" CssClass="browser-default custom-select" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-
-                    <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                        <div class="padding-general-label">
-                            <label class="nombre-input">Hora</label>
-                            <asp:DropDownList ID="hora" CssClass="browser-default custom-select" runat="server"></asp:DropDownList>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+                </ContentTemplate>
+            </asp:UpdatePanel>
 
             <br />
-
-
-
 
             <div class="form-row alinearBtnGuardarExp">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">

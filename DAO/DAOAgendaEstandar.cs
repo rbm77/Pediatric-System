@@ -464,5 +464,104 @@ namespace DAO
             return confirmacion;
         }
 
+
+        /// <summary>
+        /// Obtiene los dias laborales del medico y su respectivo horario
+        /// </summary>
+        /// <param name="diaSeleccionado">Dia seleccionado</param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string CargaHorasDisponibilidad(List<TOAgendaEstandar> diasLaborales, string codigoMedico)
+        {
+            string confirmacion = "La agenda se cargó exitosamente";
+
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
+
+
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT DIA, HORA_INICIO, HORA_FIN FROM DISPONIBILIDAD_MEDICO WHERE CODIGO_MEDICO = @codigo", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@codigo", codigoMedico);
+
+                // Se ejecuta el comando 
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en el objeto TOAgendaEstandar
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        diasLaborales.Add(new TOAgendaEstandar(codigoMedico, lector["DIA"].ToString(), lector["HORA_INICIO"].ToString(), lector["HORA_FIN"].ToString()));
+                    }
+                }
+
+                lector.Close();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la agenda";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
     }
 }
