@@ -19,6 +19,7 @@ namespace Pediatric_System
         {
             if (!Page.IsPostBack)
             {
+              
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 foreach (BL_ManejadorPersonal elemento in listaPersonal)
                 {
@@ -32,23 +33,21 @@ namespace Pediatric_System
 
         }
 
-        protected void gridCuentas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         protected void grdAccidentMaster_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            String correo = Convert.ToString(e.CommandArgument);
-            lblCuenta.Text = correo;
+            
             if (e.CommandName == "enviarCorreo")
             {
+                int indice = Convert.ToInt32(e.CommandArgument);
+                GridViewRow filaSeleccionada = gridCuentas.Rows[indice];
+                TableCell estado = filaSeleccionada.Cells[2];
+                string correo = estado.Text;
+
                 BLAdministrativo miBLAdministrativo = new BLAdministrativo();
                 miBLCuenta.correo = correo;
                 miBLCuenta.buscarCuentaPorCorreo();
                 String rol = miBLCuenta.tipo;
-
                 switch (rol)
                 {
                     case "Medico":
@@ -86,20 +85,7 @@ namespace Pediatric_System
                         modalEdicion.Show();
                         break;
                 }
-            } else
-            {
-                miBLCuenta.correo = correo;
-                miBLCuenta.buscarCuentaPorCorreo();
-                lblEstado.Text = "La cuenta de " + lblCuenta.Text + " se encuentra:  " + miBLCuenta.estado;
-                if (miBLCuenta.estado == "Habilitada")
-                {
-                    btnCambiarEstado.Text = "DESHABILITAR";
-                } else
-                {
-                    btnCambiarEstado.Text = "HABILITAR";
-                }
-                ModalPopupEstado.Show();
-            }
+            } 
         }
 
 
@@ -162,16 +148,6 @@ namespace Pediatric_System
             return text;
         }
 
-        protected void mostratPersonal(String id)
-        {
-
-        }
-
-        protected void Tipo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
 
         protected void btnSwitch_Click(object sender, EventArgs e)
         {
@@ -189,20 +165,14 @@ namespace Pediatric_System
             }
         }
 
-        protected void btnCambiarEstado_Click(object sender, EventArgs e)
+
+
+        protected static void cambiarEstado(object sender, EventArgs e)
         {
-            if(btnCambiarEstado.Text == "HABILITAR")
-            {
-                miBLCuenta.correo = lblCuenta.Text;
-                miBLCuenta.editarEstado("HABILITAR");
-                mensajeAviso("success", "La cuenta de " + lblCuenta.Text + " ha sido habilitada correctamente");
-            } else
-            {
-                miBLCuenta.correo = lblCuenta.Text;
-                miBLCuenta.editarEstado("DESHABILITAR");
-                mensajeAviso("success", "La cuenta de " + lblCuenta.Text + " ha sido deshabilitada correctamente");
-            }
+            String nombre = "Hola";
+
         }
+
 
         public void mensajeAviso(String color, String texto)
         {
