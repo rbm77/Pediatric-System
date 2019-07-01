@@ -20,12 +20,12 @@ namespace BL
         /// </summary>
         /// <param name="agenda">Agenda</param>
         /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
-        public string ActualizarAgenda(List<BLAgendaEstandar> agenda, string codigo)
+        public string ActualizarAgenda(List<BLAgendaEstandar> agenda, string codigo, string duracion)
         {
             string confirmacion = "error";
             DAOAgendaEstandar dao = new DAOAgendaEstandar();
             List<TOAgendaEstandar> toAgenda = Convertir(agenda);
-            confirmacion = dao.ActualizarAgenda(toAgenda, codigo);
+            confirmacion = dao.ActualizarAgenda(toAgenda, codigo, duracion);
 
             // Se limpia y carga la lista de agenda con la nueva actualizacion
 
@@ -84,6 +84,36 @@ namespace BL
             DAOAgendaEstandar dao = new DAOAgendaEstandar();
             confirmacion = dao.EliminarHorario(codigoMedico, dia);
             return confirmacion;
+        }
+
+        /// <summary>
+        /// Obtiene la duracion de la cita del medico
+        /// </summary>
+        /// <param name="codigoMedico"></param>
+        /// <param name="duracion"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
+        public string ObtenerDuracionCita(string codigoMedico)
+        {
+            string confirmacion = "error";
+            DAOAgendaEstandar dao = new DAOAgendaEstandar();
+            confirmacion = dao.ObtenerDuracionCita(codigoMedico);
+            return confirmacion;
+        }
+
+        public string CargaHorasDisponibilidad(List<BLAgendaEstandar> diasLaborales, string codigoMedico)
+        {
+            string confirmacion = "error";
+            DAOAgendaEstandar dao = new DAOAgendaEstandar();
+            List<TOAgendaEstandar> toLista = new List<TOAgendaEstandar>();
+            confirmacion = dao.CargaHorasDisponibilidad(toLista, codigoMedico);
+
+            foreach (TOAgendaEstandar dia in toLista)
+            {
+                diasLaborales.Add(new BLAgendaEstandar(dia.CodigoMedico, dia.Dia, dia.HoraInicio, dia.HoraFin));
+            }
+
+            return confirmacion;
+
         }
 
     }

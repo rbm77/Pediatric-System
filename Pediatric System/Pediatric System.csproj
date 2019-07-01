@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AsociarPaciente.aspx" />
+    <Content Include="CitaUsuario.aspx" />
     <Content Include="CrearReportes.aspx" />
     <Content Include="CSS\agenda.css" />
     <Content Include="CSS\consulta.css" />
@@ -1695,6 +1696,13 @@
     <Compile Include="AsociarPaciente.aspx.cs">
       <DependentUpon>AsociarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CitaUsuario.aspx.cs">
+      <DependentUpon>CitaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CitaUsuario.aspx.designer.cs">
+      <DependentUpon>CitaUsuario.aspx</DependentUpon>
     </Compile>
     <Compile Include="CrearReportes.aspx.cs">
       <DependentUpon>CrearReportes.aspx</DependentUpon>

@@ -8,8 +8,8 @@
 
     <script>
 
-        
-    </script>
+
+</script>
 
 </asp:Content>
 
@@ -110,44 +110,42 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nombre</label>
-                                        <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="nombrePaciente" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Primer Apellido</label>
-                                        <asp:TextBox runat="server" ID="primerApellido" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="primerApellidoPaciente" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Segundo Apellido</label>
-                                        <asp:TextBox runat="server" ID="segundoApellido" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="segundoApellidoPaciente" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Cédula</label>
-                                        <asp:TextBox runat="server" ID="cedula" CssClass="form-control" placeholder="102340567" MaxLength="9"></asp:TextBox>
-                                        <asp:RegularExpressionValidator ID="validacionFormatoCedulaPaciente" CssClass="containerValidacion" runat="server" ErrorMessage="Solo números" ControlToValidate="cedula" ValidationGroup="validarExpediente" ValidationExpression="^\d+" ForeColor="Red"></asp:RegularExpressionValidator>
-                                        <asp:RequiredFieldValidator ID="validacionVacioCedulaPaciente" CssClass="containerValidacion" runat="server" ErrorMessage="Este campo no puede quedar vacio" ControlToValidate="cedula" ForeColor="Red" ValidationGroup="validarExpediente"></asp:RequiredFieldValidator>
+                                        <asp:TextBox runat="server" ID="cedulaPaciente" CssClass="form-control" placeholder="102340567" MaxLength="9"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Fecha de Nacimiento</label>
-                                        <asp:TextBox runat="server" ID="fechaNacimiento" CssClass="form-control datepicker" placeholder="31/12/2019"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="fechaNacimientoPaciente" CssClass="form-control datepicker" placeholder="31/12/2019"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Sexo</label>
-                                        <asp:DropDownList ID="sexo" runat="server" CssClass="custom-select">
+                                        <asp:DropDownList ID="sexoPaciente" runat="server" CssClass="custom-select">
                                             <asp:ListItem Value="femenino"> Femenino </asp:ListItem>
                                             <asp:ListItem Value="masculino"> Masculino </asp:ListItem>
                                             <asp:ListItem Selected="True" Value="otro"> Otro </asp:ListItem>
@@ -165,7 +163,13 @@
                                     <div class="form-row card-body padding-general-top">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select listaProvincias" id="provinciasJ">
+
+                                                <%--<asp:DropDownList ID="provinciasJ" runat="server" CssClass="custom-select browser-default listaProvincias" placeHolder="provincia">
+                                                    
+                                                    
+                                                </asp:DropDownList>--%>
+
+                                                <select class="browser-default custom-select listaProvinciasEX" id="provinciasEX">
 
                                                     <option value="" disabled selected>Provincia</option>
                                                 </select>
@@ -174,7 +178,7 @@
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select listaCantones" id="cantonesJ">
+                                                <select class="browser-default custom-select listaCantonesEX" id="cantonesEX">
                                                     <option value="" disabled selected>Cantón</option>
                                                 </select>
                                             </div>
@@ -182,7 +186,7 @@
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select listaDistritos" id="distritosJ">
+                                                <select class="browser-default custom-select listaDistritosEX" id="distritosEX">
                                                     <option value="" disabled selected>Distrito</option>
                                                 </select>
                                             </div>
@@ -214,7 +218,7 @@
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Vincular expediente</label>
-                                                    <asp:TextBox runat="server" ID="VincExpediente" CssClass="form-control" placeholder="URL del expdiente antiguo"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="VincExpedientePaciente" CssClass="form-control" placeholder="URL del expdiente antiguo"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
@@ -239,49 +243,49 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nombre</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="nombreEncargado" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Primer Apellido</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="primerApellidoEncargado" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Segundo Apellido</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="segundoApellidoEncargado" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Cédula</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="cedulaEncargado" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Teléfono</label>
-                                        <input type="text" class="form-control" placeholder="12345678">
+                                        <asp:TextBox runat="server" ID="telefonoEncargado" CssClass="form-control" placeholder="8123654"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Correo Electrónico</label>
-                                        <input type="text" class="form-control" placeholder="ejm@gmail.com">
+                                        <asp:TextBox runat="server" ID="correoEncargado" CssClass="form-control" placeholder="ejm@gmail.com"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Parentezco</label>
-                                        <input type="text" class="form-control" placeholder="Padre, Madre, Encargado(a)...">
+                                        <asp:TextBox runat="server" ID="parentezcoEncargado" CssClass="form-control" placeholder="Padre, Madre, Encargado(a)..."></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -297,7 +301,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaProvinciasEN" id="provinciasEN">
                                                         <option value="" disabled selected>Provincia</option>
                                                     </select>
                                                 </div>
@@ -305,7 +309,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaCantonesEN" id="cantonesEN">
                                                         <option value="" disabled selected>Cantón</option>
                                                     </select>
                                                 </div>
@@ -313,7 +317,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaDistritosEN" id="distritosEN">
                                                         <option value="" disabled selected>Distrito</option>
                                                     </select>
                                                 </div>
@@ -321,7 +325,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaBarriosEN" id="barriosEN">
                                                         <option value="" disabled selected>Barrio</option>
                                                     </select>
                                                 </div>
@@ -347,42 +351,42 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nombre</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="nombreFacturante" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Primer Apelido</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="primerApellidoFacturante" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Segundo Apelido</label>
-                                        <input type="text" class="form-control">
+                                        <asp:TextBox runat="server" ID="segundoApellidoFacturante" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Cédula</label>
-                                        <input type="text" class="form-control" placeholder="1-0234-0456">
+                                        <asp:TextBox runat="server" ID="cedulaFacturante" CssClass="form-control" placeholder="1-0234-0456"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Teléfono</label>
-                                        <input type="text" class="form-control" placeholder="12345678">
+                                        <asp:TextBox runat="server" ID="telefonoFacturante" CssClass="form-control" placeholder="12345678"></asp:TextBox>
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Correo Electrónico</label>
-                                        <input type="text" class="form-control" placeholder="ejm@gmail.com">
+                                        <asp:TextBox runat="server" ID="correoFacturante" CssClass="form-control" placeholder="ejm@gmail.com"></asp:TextBox>
                                     </div>
                                 </div>
                             </div>
@@ -398,7 +402,7 @@
                                         <div class="form-row">
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaProvinciasFA" id="provinciasFA">
                                                         <option value="" disabled selected>Provincia</option>
                                                     </select>
                                                 </div>
@@ -406,7 +410,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaCantonesFA" id="cantonesFA">
                                                         <option value="" disabled selected>Cantón</option>
                                                     </select>
                                                 </div>
@@ -414,7 +418,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaDistritosFA" id="distritosFA">
                                                         <option value="" disabled selected>Distrito</option>
                                                     </select>
                                                 </div>
@@ -422,7 +426,7 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select">
+                                                    <select class="browser-default custom-select listaBarriosFA" id="barriosFA">
                                                         <option value="" disabled selected>Barrio</option>
                                                     </select>
                                                 </div>
@@ -454,21 +458,21 @@
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Talla al nacer</label>
-                                                    <input type="text" class="form-control">
+                                                    <asp:TextBox runat="server" ID="tallaNacer" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Peso al nacer</label>
-                                                    <input type="text" class="form-control">
+                                                    <asp:TextBox runat="server" ID="pesoNacer" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Edad gestacional</label>
-                                                    <input type="text" class="form-control">
+                                                    <asp:TextBox runat="server" ID="edadGestacional" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
@@ -486,8 +490,9 @@
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
-                                                                <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-pequeño" value="pequeño">
-                                                                <label class="form-check-label nombre-input" for="opciones-tamaño">Pequeño</label>
+                                                                <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-pequeño" value="pequeño">--%>
+                                                                <asp:RadioButton CssClass="form-check-input" ID="opcion_pequeno" GroupName="opciones_tamano" runat="server" />
+                                                                <label class="form-check-label nombre-input">Pequeño</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -495,7 +500,8 @@
                                                     <div class="form-check form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
-                                                                <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-adecuado" value="adecuado" checked>
+                                                               <asp:RadioButton CssClass="form-check-input" ID="opcion_adecuado" GroupName="opciones_tamano" runat="server" />
+                                                                <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-adecuado" value="adecuado" checked>--%>
                                                                 <label class="form-check-label nombre-input" for="opciones-tamaño">Adecuado</label>
                                                             </div>
                                                         </div>
@@ -504,7 +510,8 @@
                                                     <div class="form-check form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
-                                                                <input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-grande" value="grande">
+                                                                <asp:RadioButton CssClass="form-check-input" ID="opcion_grande" GroupName="opciones_tamano" runat="server" />
+                                                                <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-grande" value="grande">--%>
                                                                 <label class="form-check-label nombre-input" for="opciones-tamaño">Grande</label>
                                                             </div>
                                                         </div>
@@ -515,21 +522,21 @@
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Calificación APGAR</label>
-                                                    <input type="text" class="form-control">
+                                                   <asp:TextBox runat="server" ID="apgar" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Perímetro cefálico al nacer</label>
-                                                    <input type="text" class="form-control">
+                                                    <<asp:TextBox runat="server" ID="perimetroCefalico" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Otras Complicaciones</label>
-                                                    <select class="estadoPerinatal browser-default custom-select">
+                                                    <select runat="server" class="estadoPerinatal browser-default custom-select">
                                                         <option value="ausentes" selected>Ausentes</option>
                                                         <option value="presentes">Presentes</option>
                                                     </select>
@@ -540,7 +547,7 @@
                                                 <div class="padding-general-label">
                                                     <div class="complicacionPerinatal">
                                                         <label class="nombre-input">Complicaciones</label>
-                                                        <textarea id="complicacionPerinatal" class="form-control"></textarea>
+                                                        <textarea runat="server" id="complicacionPerinatal" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
