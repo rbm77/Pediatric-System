@@ -58,6 +58,7 @@
     <Compile Include="TOHistoriaClinica.cs" />
     <Compile Include="TOMedico.cs" />
     <Compile Include="TOPersonal.cs" />
+    <Compile Include="TOVacuna.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
