@@ -89,6 +89,7 @@
     <Content Include="CSS\sb-admin.css" />
     <Content Include="CSS\sb-admin.min.css" />
     <Content Include="CSS\style.css" />
+    <Content Include="CuentaPaciente.aspx" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="EditarContrasena.aspx" />
@@ -1713,6 +1714,13 @@
     </Compile>
     <Compile Include="AsociarPaciente.aspx.designer.cs">
       <DependentUpon>AsociarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.designer.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="CuentaPersonal.aspx.cs">
       <DependentUpon>CuentaPersonal.aspx</DependentUpon>

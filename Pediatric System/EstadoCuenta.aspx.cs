@@ -150,7 +150,7 @@ namespace Pediatric_System
 
 
         protected void btnSwitch_Click(object sender, EventArgs e)
-        {
+        {           
             CheckBox box = (CheckBox)sender;
             String correo = box.ToolTip;
             miBLCuenta.correo = correo;

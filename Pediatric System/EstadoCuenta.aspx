@@ -59,7 +59,7 @@
                     <div>
                         <div class="table-responsive">
                             <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
-                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
+                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" >
                                 <Columns>
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
@@ -67,7 +67,7 @@
                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" Visible="false" />
                                     <asp:ButtonField HeaderText="Acción" CommandName="enviarCorreo"
-                                     ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="33.3%"/>                           
+                                     ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="33.3%" />                           
                                     
                                     <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center">                                                                                                                   
                                       <ItemTemplate>
