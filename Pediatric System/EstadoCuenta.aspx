@@ -71,7 +71,7 @@
                                     
                                     <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center">                                                                                                                   
                                       <ItemTemplate>
-                                            <asp:CheckBox AutoPostBack="true" ID ="chk" runat="server" OnChanged="validation()"                                               
+                                            <asp:CheckBox AutoPostBack="true" ID ="chk" runat="server" OnCheckedChanged="btnSwitch_Click"                                               
                                                 Checked='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>'
                                                 ClientIDMode="Static" ToolTip='<%# Eval("Correo") %>'  />                                     
                                                <asp:Button  ID="btnAplicar" runat="server" ClientIDMode="Static"

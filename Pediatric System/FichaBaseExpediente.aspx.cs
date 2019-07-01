@@ -43,21 +43,21 @@ namespace Pediatric_System
             // Enviar datos para guardar en BD
             ManejadorExpediente manejador = new ManejadorExpediente();
 
-            string confirmacion = manejador.crearExpediente(expediente);
+        //    string confirmacion = manejador.crearExpediente(expediente);
 
 
-            string colorMensaje = "success";
+            //string colorMensaje = "success";
 
-            if (confirmacion.Contains("error"))
-            {
-                colorMensaje = "danger";
-            }
+            //if (confirmacion.Contains("error"))
+            //{
+            //    colorMensaje = "danger";
+            //}
 
-            mensajeConfirmacion1.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
-                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
-                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion1.Visible = true;            
+            //mensajeConfirmacion1.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+            //    "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+            //    " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+            //    " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            //mensajeConfirmacion1.Visible = true;            
         }
 
         private void infoTab_1(BLExpediente expediente, BLDireccion direccionExp)
