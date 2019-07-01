@@ -48,6 +48,7 @@
     <Compile Include="DAOExpediente.cs" />
     <Compile Include="DAOMedico.cs" />
     <Compile Include="DAOPersonal.cs" />
+    <Compile Include="DAOVacuna.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
