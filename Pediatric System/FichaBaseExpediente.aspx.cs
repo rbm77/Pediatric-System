@@ -43,7 +43,7 @@ namespace Pediatric_System
             // Enviar datos para guardar en BD
             ManejadorExpediente manejador = new ManejadorExpediente();
 
-            string confirmacion = manejador.crearExpediente(expediente);
+            string confirmacion = "manejador.crearExpediente(expediente)";
 
 
             string colorMensaje = "success";

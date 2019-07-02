@@ -3,7 +3,7 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <link rel="stylesheet" href="CSS/agenda.css" />
+    <link rel="stylesheet" href="CSS/agenda.css" />
     <link rel="stylesheet" href="CSS/expediente.css" />
     <script type="text/javascript">
         $(function () {
@@ -15,85 +15,132 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <br />
 
     <div class="container-fluid col-11 col-auto">
         <br>
         <div class="page-header margen-general-2-top">
-            <h2 class="text-info">Vincular Pacientes</h2>
+            <h2 class="text-info">Cuentas Pacientes</h2>
         </div>
 
         <hr class="linea-divisoria-titulo" />
     </div>
     <div class="container-fluid col-11 col-auto table-responsive">
+
+        <div>
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active nombre-input" id="asociar-pacientes-tab" data-toggle="tab" href="#asociar-pacientes" role="tab" aria-controls="asociar-pacientes" aria-selected="true">Asociar Expedientes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nombre-input" id="cuenta-paciente-tab" data-toggle="tab" href="#cuenta-paciente" role="tab" aria-controls="cuenta-paciente" aria-selected="false">Cuenta Paciente</a>
+                </li>
+            </ul>
+        </div>
+
+
         <form id="form1" runat="server">
-            <div class="card">
-                <div>
-                </div>
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Pacientes</h5>
 
-                <div class="card-body">
-                    <div>
-                        <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
-                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnSelectedIndexChanged="gridCuentas_SelectedIndexChanged">
-                            <Columns>
-                                <asp:BoundField DataField="Correo" HeaderText="Correo" />
-                                <asp:TemplateField HeaderText="Asociar" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">
-                                    <ItemTemplate>
-                                        <asp:Button ID="btnAsociar" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
-                                            Text="Asociar Expediente(s)" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+            <div class="tab-content" id="myTabContent">
+                <%--________________Asociar Expediente_______________--%>
+                <%--________________Asociar Expediente_______________--%>
+
+                <div class="tab-pane fade show active margen-general-1-bottom" id="asociar-pacientes" role="tabpanel" aria-labelledby="asociar-pacientes-tab">
+                    <div class="card">
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Pacientes</h5>
+                        <div class="card-body">
+                            <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdCuentas"
+                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
+                                <Columns>
+                                    <asp:BoundField DataField="Correo" HeaderText="Correo" />
+                                    <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpediente" Text="Asociar Expediente(s)"
+                                        ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
+                                </Columns>
+                            </asp:GridView>
+
+                        </div>
                     </div>
-                </div>
+                    <br>
+                    <div class="form-row" style="text-align: right; display: block">
+                        <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
+                            <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Button1" CausesValidation="False" UseSubmitBehavior="false" OnClick="Regresar_Click" />
+                        </div>
+                    </div>
+                    <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
-                <asp:HiddenField ID="campoEscondido" runat="server" />
 
-                <asp:ModalPopupExtender ID="modalExpedientes" runat="server"
-                    PopupControlID="panelContenido" TargetControlID="campoEscondido"
-                    CancelControlID="CerrarModal" BackgroundCssClass="modalBackground">
-                </asp:ModalPopupExtender>
 
-                <asp:Panel ID="panelContenido" runat="server" CssClass="modal-content container-fluid col-9 col-auto
+                    <asp:HiddenField ID="campoEscondido" runat="server" />
+
+                    <asp:ModalPopupExtender ID="modalExpedientes" runat="server"
+                        PopupControlID="panelContenido" TargetControlID="campoEscondido"
+                        CancelControlID="CerrarModal" BackgroundCssClass="modalBackground">
+                    </asp:ModalPopupExtender>
+
+                    <asp:Panel ID="panelContenido" runat="server" CssClass="modal-content container-fluid col-9 col-auto
                                   modal-dialog-scrollable">
-                    <div class="modal-header">
-                        <h5 class="modal-title" runat="server" id="exampleModalLabel">Expedientes</h5>
+                        <div class="modal-header">
+                            <h5 class="modal-title" runat="server" id="exampleModalLabel">Expedientes</h5>
 
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModal">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModal">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
 
-                    </div>
-
-                    <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
-
-                    <div class="modal-body">
-            <div class="card">
-                <div>
-                </div>
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
-                <div class="card-body">
-                    <div>
-                        <asp:GridView ID="gridExpedientes" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
-                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnSelectedIndexChanged="gridCuentas_SelectedIndexChanged">
-                            <Columns>
-                                <asp:BoundField DataField="Cedula_Expediente" HeaderText="Cedula" />
-                                <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
-                                    <ItemTemplate>
-<%--                                        <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
+                        </div>
+                        <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
+                        <div class="modal-body">
+                            <div class="card">
+                                <div>
+                                </div>
+                                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
+                                <div class="card-body">
+                                    <div>
+                                        <asp:GridView ID="gridExpedientes" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdExpedientes"
+                                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
+                                            <Columns>
+                                                <asp:BoundField DataField="Cedula_Expediente" HeaderText="Cedula" />
+                                                <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
+                                                    <ItemTemplate>
+                                                        <%--                                        <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
                                             Text="Editar / Mirar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />--%>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-                            </Columns>
-                        </asp:GridView>
+                                                    </ItemTemplate>
+                                                </asp:TemplateField>
+                                            </Columns>
+                                        </asp:GridView>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </asp:Panel>
+                </div>
+                <%--________________Crear Cuenta de paciente_______________--%>
+                <%--________________Crear Cuenta de paciente_______________--%>
+
+                <div class="tab-pane fade show margen-general-1-bottom" id="cuenta-paciente" role="tabpanel" aria-labelledby="cuenta-paciente-tab">
+                    <div class="col-12 border rounded margen-general-0-top" >
+                        <br>
+                        <div class="margen-general-1-top padding-general-inicio-bottom" style="width: 50%; margin: 0 auto;">
+                            <div class="form-row">
+                                <div class="form-group col-lg-8 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label" >
+                                        <label class="nombre-label">Correo</label>
+                                        <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control" required="required" TextMode="Email"></asp:TextBox>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-row alinearBtnGuardarExp">
+                        <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
+                            <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="Button2" OnClick="Regresar_Click" CausesValidation="False" UseSubmitBehavior="false" />
+                            <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" OnClick="btnGuardar_Click" />
+                        </div>
                     </div>
                 </div>
             </div>
-                    </div>
-                </asp:Panel>
-            </div>
+
         </form>
     </div>
+
+
 </asp:Content>

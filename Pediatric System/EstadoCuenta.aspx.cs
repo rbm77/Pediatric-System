@@ -18,8 +18,7 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {
-              
+            {             
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 foreach (BL_ManejadorPersonal elemento in listaPersonal)
                 {
