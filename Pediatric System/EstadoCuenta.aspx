@@ -58,8 +58,9 @@
                 <div class="card-body">
                     <div>
                         <div class="table-responsive">
+
                             <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
-                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" >
+                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnRowDataBound="vistaCuentas_RowDataBound">
                                 <Columns>
                                     <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
                                     <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
@@ -67,15 +68,24 @@
                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" Visible="false" />
                                     <asp:ButtonField HeaderText="Acción" CommandName="enviarCorreo"
-                                     ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="33.3%" />                           
-                                    
-                                    <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center">                                                                                                                   
+                                     ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" />                                                             
+
+                                    <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">                                                                                                                   
                                       <ItemTemplate>
-                                            <asp:CheckBox AutoPostBack="true" ID ="chk" runat="server" OnCheckedChanged="btnSwitch_Click"                                               
+
+<%--                                          <asp:Label ID="Label1" runat="server" Text="Habilitada => " Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static"></asp:Label>
+                                          <asp:Label ID="Label2" runat="server" Text="Deshabilitada =>" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>' ClientIDMode="Static"></asp:Label>--%>
+                                          <asp:Button ID="Button1" runat="server" Text="Deshabilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false  %>'  Enabled ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-deshabilitar "/>
+                                          <asp:Button ID="btnHabilitar" runat="server" ToolTip='<%# Eval("Correo") %>' CommandName="habilitarCuenta" Text="Habilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-blancoDer fas fa-edit"/>
+                                          <asp:Button ID="Button3" runat="server"  ToolTip='<%# Eval("Correo") %>' CommandName="deshabilitarCuenta" Text="Deshabilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-blancoIzq fas fa-edit"/>
+                                           <asp:Button ID="Button2"  runat="server" Text="Habilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' Enabled ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>'  ClientIDMode="Static" ControlStyle-CssClass="btn btn-habilitar fas fa-edit"/>
+                                       
+                                          <%--  <asp:Button ID="btnDeshabilitar" runat="server" Text="Deshabilitar" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-deshabilitar fas fa-edit"/>--%>
+<%--                                            <asp:CheckBox AutoPostBack="true" ID ="chk" runat="server" OnCheckedChanged="btnSwitch_Click"                                               
                                                 Checked='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>'
                                                 ClientIDMode="Static" ToolTip='<%# Eval("Correo") %>'  />                                     
                                                <asp:Button  ID="btnAplicar" runat="server" ClientIDMode="Static"
-                                                Text="Guardar"/>                                                                      
+                                                Text="Guardar"/>   --%>                                                                   
                                             </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -197,7 +207,7 @@
             uncheckedLabel: 'Des'
         });
 
-        $('input[value=True]').attr('checked', true);
+        $('input[value=Habilitar]').attr('Text', "Que onda");
 
 
     </script>
