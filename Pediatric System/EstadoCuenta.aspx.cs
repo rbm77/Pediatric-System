@@ -18,8 +18,7 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {
-              
+            {             
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 foreach (BL_ManejadorPersonal elemento in listaPersonal)
                 {
@@ -36,57 +35,100 @@ namespace Pediatric_System
 
         protected void grdAccidentMaster_OnRowCommand(object sender, GridViewCommandEventArgs e)
         {
-            
-            if (e.CommandName == "enviarCorreo")
+
+           
+            switch (e.CommandName)
             {
-                int indice = Convert.ToInt32(e.CommandArgument);
-                GridViewRow filaSeleccionada = gridCuentas.Rows[indice];
-                TableCell estado = filaSeleccionada.Cells[2];
-                string correo = estado.Text;
+                case "enviarCorreo":
+                    int indice = Convert.ToInt32(e.CommandArgument);
+                    GridViewRow filaSeleccionada = gridCuentas.Rows[indice];
+                    TableCell estado = filaSeleccionada.Cells[2];
+                    string correo = estado.Text;
+                    BLAdministrativo miBLAdministrativo = new BLAdministrativo();
+                    miBLCuenta.correo = correo;
+                    miBLCuenta.buscarCuentaPorCorreo();
+                    String rol = miBLCuenta.tipo;
+                    switch (rol)
+                    {
+                        case "Medico":
+                            txtCodigo.Visible = true;
+                            lblCodigo.Visible = true;
+                            BLMedico miBLMedico = new BLMedico();
+                            miBLMedico.correo = correo;
+                            miBLMedico.buscarMedico();
+                            txtRol.Text = rol;
+                            txtNombre.Text = miBLMedico.nombre;
+                            txtApellido.Text = miBLMedico.apellido;
+                            txtCedula.Text = miBLMedico.cedula.ToString();
+                            txtTelefono.Text = miBLMedico.telefono.ToString();
+                            txtCodigo.Text = miBLMedico.codigo;
+                            txtCorreo.Text = miBLMedico.correo;
+                            txtCodigo.Enabled = false;
+                            txtCorreo.Enabled = false;
+                            txtRol.Enabled = false;
+                            modalEdicion.Show();
+                            break;
 
-                BLAdministrativo miBLAdministrativo = new BLAdministrativo();
-                miBLCuenta.correo = correo;
-                miBLCuenta.buscarCuentaPorCorreo();
-                String rol = miBLCuenta.tipo;
-                switch (rol)
-                {
-                    case "Medico":
-                        txtCodigo.Visible = true;
-                        lblCodigo.Visible = true;
-                        BLMedico miBLMedico = new BLMedico();
-                        miBLMedico.correo = correo;
-                        miBLMedico.buscarMedico();
-                        txtRol.Text = rol;
-                        txtNombre.Text = miBLMedico.nombre;
-                        txtApellido.Text = miBLMedico.apellido;
-                        txtCedula.Text = miBLMedico.cedula.ToString();
-                        txtTelefono.Text = miBLMedico.telefono.ToString();
-                        txtCodigo.Text = miBLMedico.codigo;
-                        txtCorreo.Text = miBLMedico.correo;
-                        txtCodigo.Enabled = false;
-                        txtCorreo.Enabled = false;
-                        txtRol.Enabled = false;
-                        modalEdicion.Show();
-                        break;
+                        default:
+                            txtCodigo.Visible = false;
+                            lblCodigo.Visible = false;
+                            miBLAdministrativo.correo = correo;
+                            miBLAdministrativo.buscarAdministrativo();
+                            txtNombre.Text = miBLAdministrativo.nombre;
+                            txtApellido.Text = miBLAdministrativo.apellido;
+                            txtCedula.Text = miBLAdministrativo.cedula.ToString();
+                            txtTelefono.Text = miBLAdministrativo.telefono.ToString();
+                            txtRol.Text = rol;
+                            txtCorreo.Text = miBLAdministrativo.correo;
+                            txtCorreo.Enabled = false;
+                            txtRol.Enabled = false;
+                            modalEdicion.Show();
+                            break;
+                    }
+                    break;
 
-                    default:
-                        txtCodigo.Visible = false;
-                        lblCodigo.Visible = false;
-                        miBLAdministrativo.correo = correo;
-                        miBLAdministrativo.buscarAdministrativo();
-                        txtNombre.Text = miBLAdministrativo.nombre;
-                        txtApellido.Text = miBLAdministrativo.apellido;
-                        txtCedula.Text = miBLAdministrativo.cedula.ToString();
-                        txtTelefono.Text = miBLAdministrativo.telefono.ToString();
-                        txtRol.Text = rol;
-                        txtCorreo.Text = miBLAdministrativo.correo;
-                        txtCorreo.Enabled = false;
-                        txtRol.Enabled = false;
-                        modalEdicion.Show();
-                        break;
-                }
-            } 
+                case "habilitarCuenta":
+                    Button btn = e.CommandSource as Button;
+                    string correo1 = btn.ToolTip;
+                    miBLCuenta.correo = correo1;
+                    miBLCuenta.editarEstado("HABILITAR");
+                    listaPersonal = miBLPersonal.buscarListaPersonal();
+                    foreach (BL_ManejadorPersonal elemento in listaPersonal)
+                    {
+                        miBLCuenta.correo = elemento.correo;
+                        miBLCuenta.buscarCuentaPorCorreo();
+                        elemento.estado = miBLCuenta.estado;
+                    }
+                    gridCuentas.DataSource = listaPersonal;
+                    gridCuentas.DataBind();
+                    mensajeAviso("success", "La cuenta de " + correo1 + " ha sido habilitada correctamente");
+                    break;
+                case "deshabilitarCuenta":
+                    Button btn2 = e.CommandSource as Button;
+                    string correo2 = btn2.ToolTip;
+                    miBLCuenta.correo = correo2;
+                    miBLCuenta.editarEstado("DESHABILITAR");
+                    listaPersonal = miBLPersonal.buscarListaPersonal();
+                    foreach (BL_ManejadorPersonal elemento in listaPersonal)
+                    {
+                        miBLCuenta.correo = elemento.correo;
+                        miBLCuenta.buscarCuentaPorCorreo();
+                        elemento.estado = miBLCuenta.estado;
+                    }
+                    gridCuentas.DataSource = listaPersonal;
+                    gridCuentas.DataBind();
+                    mensajeAviso("success", "La cuenta de " + correo2 + " ha sido deshabilitada correctamente");
+                    break;
+            }
         }
+
+        protected void vistaCuentas_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+                e.Row.Cells[5].HorizontalAlign = HorizontalAlign.Center;
+        }
+
+
 
 
         protected void btnEditarSeleccion_Click(object sender, EventArgs e)
@@ -132,10 +174,17 @@ namespace Pediatric_System
                     break;
             }
 
-            mensajeAviso("success", "Cuenta Editada Correctamente");
+
             listaPersonal = miBLPersonal.buscarListaPersonal();
+            foreach (BL_ManejadorPersonal elemento in listaPersonal)
+            {
+                miBLCuenta.correo = elemento.correo;
+                miBLCuenta.buscarCuentaPorCorreo();
+                elemento.estado = miBLCuenta.estado;
+            }
             gridCuentas.DataSource = listaPersonal;
             gridCuentas.DataBind();
+            mensajeAviso("success", "Cuenta Editada Correctamente");
         }
 
 

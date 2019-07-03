@@ -24,9 +24,9 @@ namespace Pediatric_System
 
 
 
-        protected void grdAccidentMaster_OnRowCommand(object sender, GridViewCommandEventArgs e)
+        protected void grdCuentas(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "enviarCorreo")
+            if (e.CommandName == "AsociarExpediente")
             {
                 ManejadorExpediente manejador = new ManejadorExpediente();
                 List<BLExpediente> expedientes = new List<BLExpediente>();
@@ -37,12 +37,34 @@ namespace Pediatric_System
             }
         }
 
-        protected void gridCuentas_SelectedIndexChanged(object sender, EventArgs e)
+
+        protected void grdExpedientes(object sender, GridViewCommandEventArgs e)
         {
 
         }
 
-        protected void regresar_Click(object sender, EventArgs e)
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
+            string correo = txtCorreo.Text;
+            string contrasena = "123";
+            string tipo = "Paciente";
+
+            BLCuenta miBLCuenta = new BLCuenta();
+            miBLCuenta.correo = correo;
+            miBLCuenta.contrasena = contrasena;
+            miBLCuenta.tipo = tipo;
+            miBLCuenta.insertarCuenta();
+
+            mensajeConfirmacion.Text = "<div class=\"alert alert-success alert-dismissible fade show\" " +
+            "role=\"alert\"> <strong></strong>" + "Cuenta Creada Correctamente" + "<button" +
+            " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+            " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+
+            txtCorreo.Text = "";
+        }
+
+        protected void Regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Dashboard.aspx");
         }
