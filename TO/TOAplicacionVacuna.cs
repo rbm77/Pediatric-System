@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL
+namespace TO
 {
-    public class BLAplicacionVacuna
+    public class TOAplicacionVacuna
     {
         public string IDExpediete { get; set; }
         public string NombreVacuna { get; set; }
@@ -17,12 +17,12 @@ namespace BL
         public bool Refuerzo2 { get; set; }
         public bool Refuerzo3 { get; set; }
 
-        public BLAplicacionVacuna()
+        public TOAplicacionVacuna()
         {
 
         }
 
-        public BLAplicacionVacuna(string idExpediente, string nombreVacuna, bool aplicacion1, bool aplicacion2, bool aplicacion3,
+        public TOAplicacionVacuna(string idExpediente, string nombreVacuna, bool aplicacion1, bool aplicacion2, bool aplicacion3,
             bool refuerzo1, bool refuerzo2, bool refuerzo3)
         {
             this.IDExpediete = idExpediente;

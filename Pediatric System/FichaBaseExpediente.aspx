@@ -441,6 +441,53 @@
 
                 <!-- ----------------------------------------------------------- !-->
 
+                <!-- Datos para el esquema de vacunacion !-->
+
+                <div class="tab-pane fade show active margen-general-1-bottom" id="vacunas" role="tabpanel" aria-labelledby="info-personal-paciente-tab">
+
+                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
+
+                        <div class="form-row margen-general-2-top general-card padding-general-bottom">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="card">
+                                    <label class="nombre-input card-header" style="padding-left: 40px">Vacunas Pendientes</label>
+
+                                    <div class="form-row card-body padding-general-top">
+
+                                        <div class="table-responsive">
+                                            <asp:GridView ID="esquemaVacunacion" runat="server" CssClass="table"
+                                                Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                                                HeaderStyle-ForeColor="DimGray" GridLines="None">
+
+                                                <Columns>
+                                                    <asp:BoundField HeaderText="Nombre" DataField="NombreVacuna" ControlStyle-Width="25%" />
+                                                    <asp:BoundField HeaderText="Edad de aplicación" DataField="EdadAplicacion" ControlStyle-Width="25%" />
+                                                    <asp:CheckBoxField HeaderText="Aplicada" ControlStyle-Width="25%" />
+                                                </Columns>
+                                            </asp:GridView>
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <!-- ----------------------------------------------------------- !-->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ----------------------------------------------------------- !-->
+
                 <!-- Datos para Historia Clinica Pediatrica !-->
 
                 <div class="tab-pane fade margen-general-1-bottom" id="historia-clinica" role="tabpanel" aria-labelledby="historia-clinica-tab">
@@ -500,7 +547,7 @@
                                                     <div class="form-check form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
-                                                               <asp:RadioButton CssClass="form-check-input" ID="opcion_adecuado" GroupName="opciones_tamano" runat="server" />
+                                                                <asp:RadioButton CssClass="form-check-input" ID="opcion_adecuado" GroupName="opciones_tamano" runat="server" />
                                                                 <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-adecuado" value="adecuado" checked>--%>
                                                                 <label class="form-check-label nombre-input" for="opciones-tamaño">Adecuado</label>
                                                             </div>
@@ -522,7 +569,7 @@
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Calificación APGAR</label>
-                                                   <asp:TextBox runat="server" ID="apgar" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="apgar" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
