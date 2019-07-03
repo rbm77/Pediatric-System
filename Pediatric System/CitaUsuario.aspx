@@ -35,8 +35,8 @@
                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
 
                                 <div class="padding-general-label">
-                                    <label class="nombre-input">Nombre Completo</label>
-                                    <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
+                                    <label class="nombre-input">Paciente</label>
+                                    <asp:DropDownList ID="nombrePaciente" CssClass="browser-default custom-select" runat="server" AutoPostBack="True"></asp:DropDownList>
                                 </div>
 
                             </div>

@@ -12,6 +12,7 @@ namespace Pediatric_System
 {
     public partial class FichaBaseExpediente : System.Web.UI.Page
     {
+        private static List<Pendiente> listaPendientes = new List<Pendiente>();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
@@ -43,7 +44,9 @@ namespace Pediatric_System
             // Enviar datos para guardar en BD
             ManejadorExpediente manejador = new ManejadorExpediente();
 
-            string confirmacion = "manejador.crearExpediente(expediente)";
+
+            //string confirmacion = manejador.crearExpediente(expediente);
+            string confirmacion = "";
 
 
             string colorMensaje = "success";
@@ -143,6 +146,125 @@ namespace Pediatric_System
             
         }
 
+
+        /// <summary>
+        /// Carga el esquema de vacunacion y las aplicaciones de cada una de ellas
+        /// </summary>
+        private void CargarEsquemaVacunacion()
+        {
+            listaPendientes.Clear();
+
+            ManejadorVacunas manejadorVacunas = new ManejadorVacunas();
+            ManejadorEdad manejadorEdad = new ManejadorEdad();
+            
+            int edadMeses = manejadorEdad.ExtraerMeses(DateTime.Parse("")) ;
+
+            List<BLVacuna> vacunas = new List<BLVacuna>();
+            List<BLAplicacionVacuna> aplicaciones = new List<BLAplicacionVacuna>();
+            string idExpediente = "";
+
+            string confimacion = manejadorVacunas.CargarVacunas(vacunas);
+
+            if (!confimacion.Contains("error"))
+            {
+                confimacion = manejadorVacunas.CargarAplicaciones(aplicaciones, idExpediente);
+
+                if (!confimacion.Contains("error"))
+                {
+                    int mesesAplicacion = 0;
+
+                    foreach (BLVacuna vacuna in vacunas)
+                    {
+                        
+                        foreach (BLAplicacionVacuna aplicacion in aplicaciones)
+                        {
+                            if (vacuna.NombreVacuna.Equals(aplicacion.NombreVacuna))
+                            {
+                                mesesAplicacion = int.Parse(vacuna.Aplicacion1);
+
+                                if (mesesAplicacion <= edadMeses)
+                                {
+                                    if (!aplicacion.Aplicacion1)
+                                    {
+                                        listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        private class Pendiente
+        {
+            public string NombreVacuna { get; set; }
+            public int CantidadMeses { get; set; }
+            public string EdadAplicacion { get; set; }
+
+            public Pendiente()
+            {
+
+            }
+            public Pendiente(string nombreVacuna, int cantidadMeses)
+            {
+                this.NombreVacuna = nombreVacuna;
+                this.CantidadMeses = cantidadMeses;
+                this.EdadAplicacion = Formato(cantidadMeses);
+            }
+
+            /// <summary>
+            /// Convierte el formato a la edad de aplicacion 
+            /// </summary>
+            /// <param name="cantidadMeses"></param>
+            /// <returns>Retorna el formato correcto para mostrar</returns>
+            private string Formato(int cantidadMeses)
+            {
+                int annos = 0;
+
+                if (cantidadMeses >= 12)
+                {
+                    annos = cantidadMeses / 12;
+
+                    int sobranteMeses = cantidadMeses - (annos * 12);
+
+                    if (sobranteMeses == 0)
+                    {
+                        if (annos == 1)
+                        {
+                            return annos + "año";
+                        }
+                        return annos + " años";
+                    }
+
+                    if (annos == 1 && sobranteMeses == 1)
+                    {
+                        return annos + " año y " + sobranteMeses + " mes";
+                    }
+                    if (annos == 1 && sobranteMeses > 1)
+                    {
+                        return annos + " año y " + sobranteMeses + " meses";
+                    }
+                    if (annos > 1 && sobranteMeses == 1)
+                    {
+                        return annos + " años y " + sobranteMeses + " mes";
+                    }
+                    return annos + " años y " + sobranteMeses + " meses";
+                }
+                else
+                {
+                    if (cantidadMeses == 1)
+                    {
+                        return cantidadMeses + " mes";
+                    }
+
+                    return cantidadMeses + " meses";
+                }
+            }
+        }
+
+        
 
         private byte[] guardarImag()
         {

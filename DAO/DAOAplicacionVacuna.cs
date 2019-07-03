@@ -9,7 +9,7 @@ using TO;
 
 namespace DAO
 {
-    public class DAOVacuna
+    public class DAOAplicacionVacuna
     {
         //Se establece la propiedad de conexion con la base de datos
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
@@ -21,7 +21,7 @@ namespace DAO
         /// <param name="aplicaciones"></param>
         /// <param name="idExpediente"></param>
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
-        public string CargarVacunas(List<TOVacuna> vacunas)
+        public string CargarAplicaciones(List<TOAplicacionVacuna> aplicaciones, string idExpediente)
         {
             string confirmacion = "El esquema de vacunación se cargó exitosamente";
 
@@ -59,10 +59,13 @@ namespace DAO
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
-                SqlCommand comando = new SqlCommand("SELECT * FROM VACUNA;", conexion);
+                SqlCommand comando = new SqlCommand("SELECT * FROM APLICACION_VACUNA WHERE ID_EXPEDIENTE = @idExpediente", conexion);
 
 
                 comando.Transaction = transaccion;
+
+                comando.Parameters.AddWithValue("@idExpediente", idExpediente);
+
 
                 // Se ejecuta el comando 
 
@@ -74,12 +77,12 @@ namespace DAO
                 {
                     while (lector.Read())
                     {
-                        TOVacuna vacuna = new TOVacuna(lector["NOMBRE_VACUNA"].ToString(), lector["APLICACION1"].ToString(),
-                            lector["APLICACION2"].ToString(), lector["APLICACION3"].ToString(),
-                            lector["REFUERZO1"].ToString(), lector["REFUERZO2"].ToString(),
-                            lector["REFUERZO3"].ToString());
+                        TOAplicacionVacuna aplicacion = new TOAplicacionVacuna(lector["ID_EXPEDIENTE"].ToString(), lector["NOMBRE_VACUNA"].ToString(), Convertir(lector["APLICACION1"].ToString()),
+                            Convertir(lector["APLICACION2"].ToString()), Convertir(lector["APLICACION3"].ToString()),
+                            Convertir(lector["REFUERZO1"].ToString()), Convertir(lector["REFUERZO2"].ToString()),
+                            Convertir(lector["REFUERZO3"].ToString()));
 
-                        vacunas.Add(vacuna);
+                        aplicaciones.Add(aplicacion);
 
                     }
                 }
@@ -116,16 +119,17 @@ namespace DAO
             return confirmacion;
         }
 
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antisarampionosa, rubéola y paperas (SRP)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antituberculosa (BCG)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'CALOSTRO (primera vacuna)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Haemophilus influenzae. Tipo B.(HIB)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Hepatitis B.(VHB)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Toxoide diftérico, pertusis acelular (DTaP)',0,0,0,0,0,0);
-        //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Varicela',0,0,0,0,0,0);
-
+        private bool Convertir(string binario)
+        {
+            if (int.Parse(binario) == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
 
     }
 }
