@@ -61,11 +61,11 @@ namespace BL
         /// <returns>El objeto de tipo BLExpediente convertido</returns>
         private BLExpediente convertirExpedientes(TOExpediente toExpediente)
         {
-            BLExpediente blExpediente = new BLExpediente(toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo, toExpediente.Direccion);
+            BLExpediente blExpediente = new BLExpediente(toExpediente.Codigo, toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo, toExpediente.Direccion);
             return blExpediente;
         }
 
-        public string mostrarExpediente(string cedulaExpediente, BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL)
+        public string mostrarExpediente(string codigoExpediente, BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL)
         {
             DAOExpediente daoExpediente = new DAOExpediente();
 
@@ -79,7 +79,7 @@ namespace BL
 
             convertirExpedienteCompleto_TO_BL(expedienteBL, direccionPacienteBL, encargadoBL, direccionEncargadoBL, facturanteBL, direccionFacturanteBL, historiaClinicaBL, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
 
-            string confirmacion = daoExpediente.CargarExpediente(cedulaExpediente ,expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
+            string confirmacion = daoExpediente.CargarExpediente(codigoExpediente, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
 
             return confirmacion;
         }
@@ -135,7 +135,7 @@ namespace BL
             direccionFacturanteBL.Barrio = direccionFacturante.Barrio;
 
             //Objeto Historia Clinica 
-            historiaClinicaBL.Cedula = historiaClinica.Cedula;
+            historiaClinicaBL.Codigo = historiaClinica.Codigo;
             historiaClinicaBL.AP_Talla = historiaClinica.AP_Talla;
             historiaClinicaBL.AP_Peso = historiaClinica.AP_Peso;
             historiaClinicaBL.AP_PerimetroCefalico = historiaClinica.AP_PerimetroCefalico;
@@ -167,6 +167,7 @@ namespace BL
             TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado, TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
         {
             //Objeto Expediente
+            expediente.Codigo = expedienteBL.Codigo;
             expediente.Cedula = expedienteBL.Cedula;
             expediente.Nombre = expedienteBL.Nombre;
             expediente.PrimerApellido = expedienteBL.PrimerApellido;
@@ -214,7 +215,7 @@ namespace BL
             direccionFacturante.Barrio = direccionFacturanteBL.Barrio;
 
             //Objeto Historia Clinica 
-            historiaClinica.Cedula = historiaClinicaBL.Cedula;
+            historiaClinica.Codigo = historiaClinicaBL.Codigo;
             historiaClinica.AP_Talla = historiaClinicaBL.AP_Talla;
             historiaClinica.AP_Peso = historiaClinicaBL.AP_Peso;
             historiaClinica.AP_PerimetroCefalico = historiaClinicaBL.AP_PerimetroCefalico;

@@ -15,7 +15,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="lee-json();">
 
-    <div class="container-fluid col-11 col-auto">
+      <div class="container-fluid col-11 col-auto">
 
         <div class="page-header margen-general-2-top">
             <h2 class="text-info">Expediente</h2>
@@ -130,8 +130,14 @@
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Cédula</label>
-                                        <asp:TextBox runat="server" ID="cedulaPaciente" CssClass="form-control" placeholder="102340567" MaxLength="9"></asp:TextBox>
+                                        <div class="form-row">
+                                            <label class="nombre-input">Cédula</label>
+                                            <asp:TextBox runat="server" ID="cedulaPaciente" CssClass="form-control" placeholder="102340567" MaxLength="9"></asp:TextBox>
+                                        </div>
+                                        <div class="form-row" style="padding-left: 20px;">
+                                            <input runat="server" class="form-check-input" type="checkbox" value="noCedula" id="pacienteNoCedula">
+                                            <label class="form-check-label nombre-input" for="noCedulaCheck">No posee cedula</label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -169,7 +175,7 @@
                                                     
                                                 </asp:DropDownList>--%>
 
-                                                <select class="browser-default custom-select listaProvinciasEX" id="provinciasEX">
+                                                <select runat="server" class="browser-default custom-select listaProvinciasEX" id="provinciasEX">
 
                                                     <option value="" disabled selected>Provincia</option>
                                                 </select>
@@ -479,7 +485,7 @@
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Calificación universal</label>
-                                                    <select class="clasificacionUniversalOpciones browser-default custom-select margen-general-1-bottom">
+                                                    <select runat="server" id="clasificacionUniversal" class="clasificacionUniversalOpciones browser-default custom-select margen-general-1-bottom">
                                                         <option value="termino" selected>Recién nacido de término</option>
                                                         <option value="pretermino">Recién nacido de pretérmino</option>
                                                         <option value="postermino">Recién nacido de postérmino</option>
@@ -529,14 +535,14 @@
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Perímetro cefálico al nacer</label>
-                                                    <<asp:TextBox runat="server" ID="perimetroCefalico" CssClass="form-control"></asp:TextBox>
+                                                    <asp:TextBox runat="server" ID="perimetroCefalico" CssClass="form-control"></asp:TextBox>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Otras Complicaciones</label>
-                                                    <select runat="server" class="estadoPerinatal browser-default custom-select">
+                                                    <select id="otrasComplicacionesAP" runat="server" class="estadoPerinatal browser-default custom-select">
                                                         <option value="ausentes" selected>Ausentes</option>
                                                         <option value="presentes">Presentes</option>
                                                     </select>
@@ -567,53 +573,53 @@
                                         <div class="form-row padding-general-checkB">
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group ">
-                                                    <input class="form-check-input" type="checkbox" value="asma" id="asmaCheck">
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="asma" id="asmaCheck">
                                                     <label class="form-check-label nombre-input" for="asmaCheck">Asma</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group">
-                                                    <input class="form-check-input" type="checkbox" value="diabetes" id="diabetesCheck">
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="diabetes" id="diabetesCheck">
                                                     <label class="form-check-label nombre-input" for="diabetesCheck">Diabetes</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group">
-                                                    <input class="form-check-input" type="checkbox" value="hipertension" id="hipertencionCheck">
-                                                    <label class="form-check-label nombre-input" for="hipertencionCheck">Hipertensión Arterial</label>
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="hipertension" id="hipertensionCheck">
+                                                    <label class="form-check-label nombre-input" for="hipertensionCheck">Hipertensión Arterial</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group">
-                                                    <input class="form-check-input" type="checkbox" value="cardiovascular" id="cardiovascularCheck">
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="cardiovascular" id="cardiovascularCheck">
                                                     <label class="form-check-label nombre-input" for="cardiovascularCheck">Enfermedades Cardiovasculares</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group ">
-                                                    <input class="form-check-input" type="checkbox" value="displidemia" id="displidemiaCheck">
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="displidemia" id="displidemiaCheck">
                                                     <label class="form-check-label nombre-input" for="displidemiaCheck">Displidemia</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group">
-                                                    <input class="form-check-input" type="checkbox" value="epilepsia" id="epilepsiaCheck">
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="epilepsia" id="epilepsiaCheck">
                                                     <label class="form-check-label nombre-input" for="epilepsiaCheck">Epilepsia</label>
                                                 </div>
                                             </div>
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group ">
-                                                    <input class="form-check-input" type="checkbox" value="otros" id="otrosCheck">
+                                                    <input runat="server" class="form-check-input" type="checkbox" value="otros" id="otrosCheck">
                                                     <label class="form-check-label nombre-input" for="otrosCheck">Otros</label>
                                                     <div class="descripcionOtros">
                                                         <label class="nombre-input">Descripción</label>
-                                                        <textarea id="descripcionOtros" class="form-control"></textarea>
+                                                        <textarea runat="server" id="descripcionOtrosHF" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -631,13 +637,13 @@
                                         <label class="card-header nombre-input">Antecedentes Patológicos</label>
                                         <div class="card-body padding-general-top padding-general-bottom">
                                             <div class="padding-general-label">
-                                                <select class="antecedentePatologico browser-default custom-select">
+                                                <select id="apatEstado" runat="server" class="antecedentePatologico browser-default custom-select">
                                                     <option value="ausentesPat" selected>Ausentes</option>
                                                     <option value="presentesPat">Presentes</option>
                                                 </select>
                                                 <div class="descripcionPatologicos margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea id="descripcionPatologicos" class="form-control"></textarea>
+                                                    <textarea runat="server" id="descripcionPatologicos" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -651,13 +657,13 @@
                                         <label class="card-header nombre-input">Antecedentes Quirúrgicos</label>
                                         <div class="card-body padding-general-top padding-general-bottom">
                                             <div class="padding-general-label">
-                                                <select class="antecedenteQuirurgico browser-default custom-select">
+                                                <select id="aqEstado" runat="server" class="antecedenteQuirurgico browser-default custom-select">
                                                     <option value="ausentesQui" selected>Ausentes</option>
                                                     <option value="presentesQui">Presentes</option>
                                                 </select>
                                                 <div class="descripcionQuirurgico margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea id="descripcionQuirurgico" class="form-control"></textarea>
+                                                    <textarea runat="server" id="descripcionQuirurgico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -673,13 +679,13 @@
                                         <label class="card-header nombre-input">Antecedentes Traumáticos</label>
                                         <div class="card-body padding-general-top padding-general-bottom">
                                             <div class="padding-general-label">
-                                                <select class="antecedenteTraumatico browser-default custom-select">
+                                                <select id="atEstado" runat="server" class="antecedenteTraumatico browser-default custom-select">
                                                     <option value="ausentesTrau" selected>Ausentes</option>
                                                     <option value="presentesTrau">Presentes</option>
                                                 </select>
                                                 <div class="descripcionTraumatico margen-general-2-top">
                                                     <label class="nombre-input">Descripcion</label>
-                                                    <textarea id="descripcionTraumatico" class="form-control"></textarea>
+                                                    <textarea runat="server" id="descripcionTraumatico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -693,13 +699,13 @@
                                         <label class="card-header nombre-input">Alergias</label>
                                         <div class="card-body padding-general-top padding-general-bottom">
                                             <div class="padding-general-label">
-                                                <select class="alergiasExpediente browser-default custom-select">
+                                                <select id="alergiasEstado" runat="server" class="alergiasExpediente browser-default custom-select">
                                                     <option value="ausentesAlergia" selected>Ausentes</option>
                                                     <option value="presentesAlergia">Presentes</option>
                                                 </select>
                                                 <div class="descripcionAlergia form-row" style="margin-top: 15px;">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea id="descripcionAlergia" class="form-control"></textarea>
+                                                    <textarea runat="server" id="descripcionAlergia" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -707,7 +713,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
 
@@ -715,7 +720,7 @@
 
                 <!-- Datos para el esquema de vacunacion !-->
 
-                <div class="tab-pane fade show active margen-general-1-bottom" id="vacunas" role="tabpanel" aria-labelledby="vacunas-tab">
+                <div class="tab-pane fade margen-general-1-bottom" id="vacunas" role="tabpanel" aria-labelledby="vacunas-tab">
 
                     <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
 

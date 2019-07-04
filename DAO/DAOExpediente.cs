@@ -121,14 +121,15 @@ namespace DAO
                 // --------------------------- Insertar en la tabla Expediente ---------------------------  //
 
                 // Crear nuevo comando con la sencuencia SQL y el objeto de conexion
-                SqlCommand comandoExp = new SqlCommand("INSERT INTO EXPEDIENTE (CEDULA_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, SEXO, FECHA_NACIMIENTO, FOTO, EXPEDIENTE_ANTIGUO)" +
-                    "VALUES (@cedPa, @codDir, @nomPa, @priApPa, @segApPa, @sexoPa, @naciPa, @fotoPa, @expAntPa);", conexion);
+                SqlCommand comandoExp = new SqlCommand("INSERT INTO EXPEDIENTE (CODIGO_EXPEDIENTE, CODIGO_DIRECCION, CEDULA, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, SEXO, FECHA_NACIMIENTO, FOTO, EXPEDIENTE_ANTIGUO)" +
+                    "VALUES (@codPa, @codDir, @ced, @nomPa, @priApPa, @segApPa, @sexoPa, @naciPa, @fotoPa, @expAntPa);", conexion);
 
                 comandoExp.Transaction = transaccion;
                 // Asignar un valor a los parametros del comando a ejecutar
 
-                comandoExp.Parameters.AddWithValue("@cedPa", nuevoExpediente.Cedula);
+                comandoExp.Parameters.AddWithValue("@codPa", nuevoExpediente.Codigo);
                 comandoExp.Parameters.AddWithValue("@codDir", nuevoExpediente.Direccion);
+                comandoExp.Parameters.AddWithValue("@ced", nuevoExpediente.Cedula);
                 comandoExp.Parameters.AddWithValue("@nomPa", nuevoExpediente.Nombre);
                 comandoExp.Parameters.AddWithValue("@priApPa", nuevoExpediente.PrimerApellido);
                 comandoExp.Parameters.AddWithValue("@segApPa", nuevoExpediente.SegundoApellido);
@@ -141,13 +142,13 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Encargado ---------------------------  //
 
-                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CEDULA_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTEZCO)" +
-                    "VALUES (@cedEncar, @cedExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
+                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTEZCO)" +
+                    "VALUES (@cedEncar, @codExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
 
                 comandoEncar.Transaction = transaccion;
 
                 comandoEncar.Parameters.AddWithValue("@cedEncar", encargado.Cedula);
-                comandoEncar.Parameters.AddWithValue("@cedExpe", nuevoExpediente.Cedula);
+                comandoEncar.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
                 comandoEncar.Parameters.AddWithValue("@codDir", encargado.Direccion);
                 comandoEncar.Parameters.AddWithValue("@nom", encargado.Nombre);
                 comandoEncar.Parameters.AddWithValue("@priApe", encargado.PrimerApellido);
@@ -160,13 +161,13 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Facturante ---------------------------  //
 
-                SqlCommand comandoFactu = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CEDULA_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
-                    "VALUES (@cedFactu, @cedExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo);", conexion);
+                SqlCommand comandoFactu = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
+                    "VALUES (@cedFactu, @codExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo);", conexion);
 
                 comandoFactu.Transaction = transaccion;
 
                 comandoFactu.Parameters.AddWithValue("@cedFactu", facturante.Cedula);
-                comandoFactu.Parameters.AddWithValue("@cedExpe", facturante.Cedula);
+                comandoFactu.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
                 comandoFactu.Parameters.AddWithValue("@codDir", facturante.Direccion);
                 comandoFactu.Parameters.AddWithValue("@nom", facturante.Nombre);
                 comandoFactu.Parameters.AddWithValue("@priApe", facturante.PrimerApellido);
@@ -178,12 +179,12 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Antecedentes Perinatales ---------------------------  //
 
-                SqlCommand comandoAntPeri = new SqlCommand("INSERT INTO ANTECEDENTES_PERINATALES (CEDULA_EXPEDIENTE, TALLA_NACIMIENTO, PESO_NACIMIENTO, PERIMETRO_CEFALICO_NACIMIENTO, APGAR, EDAD_GESTACIONAL, CLASI_UNI_RN, OTROS_ESTADO, OTROS_DESCRIPCION)" +
-                    "VALUES (@cedAP, @tallaAP, @pesoAP, @periAP, @apgarAP, @edadGesAP, @clasiAP, @otroEstadoAP, @otroDescAP);", conexion);
+                SqlCommand comandoAntPeri = new SqlCommand("INSERT INTO ANTECEDENTES_PERINATALES (CODIGO_EXPEDIENTE, TALLA_NACIMIENTO, PESO_NACIMIENTO, PERIMETRO_CEFALICO_NACIMIENTO, APGAR, EDAD_GESTACIONAL, CLASI_UNI_RN, OTROS_ESTADO, OTROS_DESCRIPCION)" +
+                    "VALUES (@codExpe, @tallaAP, @pesoAP, @periAP, @apgarAP, @edadGesAP, @clasiAP, @otroEstadoAP, @otroDescAP);", conexion);
 
                 comandoAntPeri.Transaction = transaccion;
 
-                comandoAntPeri.Parameters.AddWithValue("@cedAP", nuevaHistoriaClinica1.Cedula);
+                comandoAntPeri.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
                 comandoAntPeri.Parameters.AddWithValue("@tallaAP", nuevaHistoriaClinica1.AP_Talla);
                 comandoAntPeri.Parameters.AddWithValue("@pesoAP", nuevaHistoriaClinica1.AP_Peso);
                 comandoAntPeri.Parameters.AddWithValue("@periAP", nuevaHistoriaClinica1.AP_PerimetroCefalico);
@@ -197,13 +198,13 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Antecedentes ---------------------------  //
 
-                SqlCommand comandoAntec = new SqlCommand("INSERT INTO ANTECEDENTES (CEDULA_EXPEDIENTE, APAT_PRESENTE, APAT_DESCRIPCION, AQUIR_PRESENTE, AQUIR_DESCRIPCION, ATRAU_PRESENTE, ATRAU_DESCRIPCION, AHF_ASMA, AHF_DIABETES, AHF_HIPERTENSION " +
+                SqlCommand comandoAntec = new SqlCommand("INSERT INTO ANTECEDENTES (CODIGO_EXPEDIENTE, APAT_PRESENTE, APAT_DESCRIPCION, AQUIR_PRESENTE, AQUIR_DESCRIPCION, ATRAU_PRESENTE, ATRAU_DESCRIPCION, AHF_ASMA, AHF_DIABETES, AHF_HIPERTENSION " +
                     "AHF_DISPLIDEMIA, AHF_CARDIOVASCULAR, AHF_EPILEPSIA, AHF_OTROS, AHF_OTROS_DESCRIPCION, ALERGIAS_PRESENTE, ALERGIAS_DESCRIPCION)" +
-                    "VALUES (@cedANT, @apatPre, @apatDes, @aquirPre, @aquirDes, @atrauPre, @atrauDes, @ahfAsma, @ahfDiab, @ahfHiper, @ahfDispl, @ahfCardi, @ahfEpilep, @ahfOtros, @ahfOtrosDesc, @alergiasPreANT, alergiasDescAnt);", conexion);
+                    "VALUES (@codExpe, @apatPre, @apatDes, @aquirPre, @aquirDes, @atrauPre, @atrauDes, @ahfAsma, @ahfDiab, @ahfHiper, @ahfDispl, @ahfCardi, @ahfEpilep, @ahfOtros, @ahfOtrosDesc, @alergiasPreANT, alergiasDescAnt);", conexion);
 
                 comandoAntec.Transaction = transaccion;
 
-                comandoAntec.Parameters.AddWithValue("@cedANT", nuevaHistoriaClinica1.Cedula);
+                comandoAntec.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
                 comandoAntec.Parameters.AddWithValue("@apatPre", nuevaHistoriaClinica1.APAT_Estado);
                 comandoAntec.Parameters.AddWithValue("@apatDes", nuevaHistoriaClinica1.APAT_Descripcion);
                 comandoAntec.Parameters.AddWithValue("@aquirPre", nuevaHistoriaClinica1.AQ_Estado);
@@ -222,6 +223,22 @@ namespace DAO
                 comandoAntec.Parameters.AddWithValue("@alergiasDescAnt", nuevaHistoriaClinica1.AlegergiasDescripcion);
 
                 comandoAntec.ExecuteNonQuery();
+
+                // --------------------------- Insertar en la tabla Aplicacion Vacuna ---------------------------  // 
+
+                SqlCommand comandoAntineumococcia = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);");
+                comandoAntineumococcia.Transaction = transaccion;
+                comandoAntineumococcia.Parameters.AddWithValue("@ID", nuevoExpediente.Cedula);
+
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antisarampionosa, rubéola y paperas (SRP)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antituberculosa (BCG)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'CALOSTRO (primera vacuna)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Haemophilus influenzae. Tipo B.(HIB)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Hepatitis B.(VHB)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Toxoide diftérico, pertusis acelular (DTaP)',0,0,0,0,0,0);
+                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Varicela',0,0,0,0,0,0);
 
                 // Realizar commit de la transaccion 
 
@@ -299,7 +316,7 @@ namespace DAO
                 {
                     while (lector.Read())
                     {
-                        TOExpediente expediente = new TOExpediente(lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA_EXPEDIENTE"].ToString(),
+                        TOExpediente expediente = new TOExpediente(lector["CODIGO_EXPEDIENTE"].ToString(), lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
                             DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString());
                         toListaExpediente.Add(expediente);
                     }
@@ -345,7 +362,7 @@ namespace DAO
         /// <param name="direccionFacturante"></param>
         /// <param name="historiaClinica"></param>
         /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
-        public string CargarExpediente(string cedulaBuscar, TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado,  TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
+        public string CargarExpediente(string codigoBuscar, TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado,  TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
         {
             string confirmacion = "El expediente se cargó correctamente";
 
@@ -380,11 +397,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Expediente ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoExp = new SqlCommand("SELECT * FROM EXPEDIENTE WHERE CEDULA_EXPEDIENTE = @ced", conexion);
+                SqlCommand comandoExp = new SqlCommand("SELECT * FROM EXPEDIENTE WHERE CODIGO_EXPEDIENTE = @cod", conexion);
                 comandoExp.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoExp.Parameters.AddWithValue("@ced", cedulaBuscar);
+                comandoExp.Parameters.AddWithValue("@cod", codigoBuscar);
 
                 // Ejecutar el comando
 
@@ -396,6 +413,7 @@ namespace DAO
                 {
                     while (lectorExp.Read())
                     {
+                        expediente.Codigo = lectorExp["CODIGO_EXPEDIENTE"].ToString();
                         expediente.Cedula = lectorExp["CEDULA_EXPEDIENTE"].ToString();
                         expediente.Nombre = lectorExp["NOMBRE"].ToString();
                         expediente.PrimerApellido = lectorExp["PRIMER_APELLIDO"].ToString();
@@ -443,11 +461,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Encargado ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoEncar = new SqlCommand("SELECT * FROM ENCARGADO WHERE CEDULA_EXPEDIENTE = @ced", conexion);
+                SqlCommand comandoEncar = new SqlCommand("SELECT * FROM ENCARGADO WHERE CODIGO_EXPEDIENTE = @cod", conexion);
                 comandoEncar.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoEncar.Parameters.AddWithValue("@ced", cedulaBuscar);
+                comandoEncar.Parameters.AddWithValue("@cod", codigoBuscar);
 
                 // Ejecutar el comando
 
@@ -505,11 +523,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Facturante ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoFactu = new SqlCommand("SELECT * FROM FACTURANTE WHERE CEDULA_EXPEDIENTE = @ced", conexion);
+                SqlCommand comandoFactu = new SqlCommand("SELECT * FROM FACTURANTE WHERE CODIGO_EXPEDIENTE = @cod", conexion);
                 comandoFactu.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoFactu.Parameters.AddWithValue("@ced", cedulaBuscar);
+                comandoFactu.Parameters.AddWithValue("@cod", codigoBuscar);
 
                 // Ejecutar el comando
 
@@ -566,11 +584,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Antecedentes ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoAntece = new SqlCommand("SELECT * FROM ANTECEDENTES WHERE CEDULA_EXPEDIENTE = @ced", conexion);
+                SqlCommand comandoAntece = new SqlCommand("SELECT * FROM ANTECEDENTES WHERE CODIGO_EXPEDIENTE = @cod", conexion);
                 comandoAntece.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoAntece.Parameters.AddWithValue("@ced", cedulaBuscar);
+                comandoAntece.Parameters.AddWithValue("@cod", codigoBuscar);
 
                 // Ejecutar el comando
 
@@ -582,7 +600,7 @@ namespace DAO
                 {
                     while (lectorAntece.Read())
                     {
-                        historiaClinica.Cedula = lectorAntece["CEDULA_EXPEDIENTE"].ToString();
+                        historiaClinica.Codigo = lectorAntece["CODIGO_EXPEDIENTE"].ToString();
                         historiaClinica.APAT_Estado = (Boolean)lectorAntece["APAT_PRESENTE"];
                         historiaClinica.APAT_Descripcion = lectorAntece["APAT_DESCRIPCION"].ToString();
                         historiaClinica.AQ_Estado = (Boolean)lectorAntece["AQUIR_PRESENTE"];
@@ -607,11 +625,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Antecedentes PERINATALES---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoAntecePeri = new SqlCommand("SELECT * FROM ANTECEDENTES_PERINATALES WHERE CEDULA_EXPEDIENTE = @ced", conexion);
+                SqlCommand comandoAntecePeri = new SqlCommand("SELECT * FROM ANTECEDENTES_PERINATALES WHERE CODIGO_EXPEDIENTE = @cod", conexion);
                 comandoAntecePeri.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoAntecePeri.Parameters.AddWithValue("@ced", cedulaBuscar);
+                comandoAntecePeri.Parameters.AddWithValue("@cod", codigoBuscar);
 
                 // Ejecutar el comando
 

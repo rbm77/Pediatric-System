@@ -8,7 +8,7 @@ namespace TO
 {
     public class TOHistoriaClinica
     {
-        public string Cedula { get; set; }
+        public string Codigo { get; set; }
         public decimal AP_Talla { get; set; }
         public decimal AP_Peso { get; set; }
         public decimal AP_PerimetroCefalico { get; set; }
@@ -39,9 +39,9 @@ namespace TO
 
         }
 
-        public TOHistoriaClinica(string ced, decimal apTalla, decimal apPeso, decimal apPerimetro, string apCalificacionU, decimal apAPGAR, decimal apEdad, Boolean apOtrasCom, string apDescripcionOtras)
+        public TOHistoriaClinica(string cod, decimal apTalla, decimal apPeso, decimal apPerimetro, string apCalificacionU, decimal apAPGAR, decimal apEdad, Boolean apOtrasCom, string apDescripcionOtras)
         {
-            this.Cedula = ced;
+            this.Codigo = cod;
             this.AP_Talla = apTalla;
             this.AP_Peso = apPeso;
             this.AP_PerimetroCefalico = apPerimetro;
@@ -52,10 +52,10 @@ namespace TO
             this.AP_OtrasComplicacionesDescripcion = apDescripcionOtras;
         }
 
-        public TOHistoriaClinica(string ced, Boolean hfAsma, Boolean hfDiabetes, Boolean hfHipertension, Boolean hfCardiovas, Boolean hfDisplidemia, Boolean hfEpilepsia, Boolean hfOtros, string hfDescripcionOtros, Boolean apatEstado, string apatDescripcion,
+        public TOHistoriaClinica(string cod, Boolean hfAsma, Boolean hfDiabetes, Boolean hfHipertension, Boolean hfCardiovas, Boolean hfDisplidemia, Boolean hfEpilepsia, Boolean hfOtros, string hfDescripcionOtros, Boolean apatEstado, string apatDescripcion,
             Boolean atEstado, string atDescripcion, Boolean aqEstado, string aqDescripcion, Boolean alergias, string descripcionAlergias)
         {
-            this.Cedula = ced;
+            this.Codigo = cod;
             this.HF_Asma = hfAsma;
             this.HF_Diabetes = hfDiabetes;
             this.HF_Hipertension = hfHipertension;

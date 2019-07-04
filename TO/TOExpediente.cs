@@ -8,6 +8,7 @@ namespace TO
 {
     public class TOExpediente
     {
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
@@ -23,8 +24,9 @@ namespace TO
 
         }
 
-        public TOExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
+        public TOExpediente(string cod, string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
         {
+            this.Codigo = cod;
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
             this.SegundoApellido = segundoApellido;
