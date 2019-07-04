@@ -441,53 +441,6 @@
 
                 <!-- ----------------------------------------------------------- !-->
 
-                <!-- Datos para el esquema de vacunacion !-->
-
-                <div class="tab-pane fade show active margen-general-1-bottom" id="vacunas" role="tabpanel" aria-labelledby="info-personal-paciente-tab">
-
-                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
-
-                        <div class="form-row margen-general-2-top general-card padding-general-bottom">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-
-                                <div class="card">
-                                    <label class="nombre-input card-header" style="padding-left: 40px">Vacunas Pendientes</label>
-
-                                    <div class="form-row card-body padding-general-top">
-
-                                        <div class="table-responsive">
-                                            <asp:GridView ID="esquemaVacunacion" runat="server" CssClass="table"
-                                                Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                                HeaderStyle-ForeColor="DimGray" GridLines="None">
-
-                                                <Columns>
-                                                    <asp:BoundField HeaderText="Nombre" DataField="NombreVacuna" ControlStyle-Width="25%" />
-                                                    <asp:BoundField HeaderText="Edad de aplicación" DataField="EdadAplicacion" ControlStyle-Width="25%" />
-                                                    <asp:CheckBoxField HeaderText="Aplicada" ControlStyle-Width="25%" />
-                                                </Columns>
-                                            </asp:GridView>
-
-
-                                        </div>
-
-
-
-
-
-                                    </div>
-                                </div>
-
-
-                                <!-- ----------------------------------------------------------- !-->
-
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ----------------------------------------------------------- !-->
-
                 <!-- Datos para Historia Clinica Pediatrica !-->
 
                 <div class="tab-pane fade margen-general-1-bottom" id="historia-clinica" role="tabpanel" aria-labelledby="historia-clinica-tab">
@@ -757,6 +710,55 @@
 
                     </div>
                 </div>
+
+                <!-- ----------------------------------------------------------- !-->
+
+                <!-- Datos para el esquema de vacunacion !-->
+
+                <div class="tab-pane fade show active margen-general-1-bottom" id="vacunas" role="tabpanel" aria-labelledby="vacunas-tab">
+
+                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
+
+                        <div class="form-row margen-general-2-top general-card padding-general-bottom">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                <div class="card">
+                                    <label class="nombre-input card-header" style="padding-left: 40px">Vacunas Pendientes</label>
+
+                                    <div class="form-row card-body padding-general-top">
+
+                                        <div class="table-responsive">
+                                            <asp:GridView ID="esquemaVacunacion" runat="server" CssClass="table"
+                                                Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                                                HeaderStyle-ForeColor="DimGray" GridLines="None">
+
+                                                <Columns>
+                                                    <asp:BoundField HeaderText="Nombre" DataField="NombreVacuna" ControlStyle-Width="25%" />
+                                                    <asp:BoundField HeaderText="Edad de aplicación" DataField="EdadAplicacion" ControlStyle-Width="25%" />
+                                                    <asp:CheckBoxField HeaderText="Aplicada" ControlStyle-Width="25%" />
+                                                </Columns>
+                                            </asp:GridView>
+
+
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ----------------------------------------------------------- !-->
                 <!-- Fin del fromulario para expediente !-->
 
             </div>
