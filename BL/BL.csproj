@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLAplicacionVacuna.cs" />
     <Compile Include="BLAdministrativo.cs" />
     <Compile Include="BLAgendaEstandar.cs" />
     <Compile Include="BLCita.cs" />
@@ -52,11 +53,14 @@
     <Compile Include="BLHistoriaClinica.cs" />
     <Compile Include="BLMedico.cs" />
     <Compile Include="BLPersonal.cs" />
+    <Compile Include="BLVacuna.cs" />
     <Compile Include="BL_ManejadorPersonal.cs" />
     <Compile Include="BL_Manejador_Cuentas.cs" />
     <Compile Include="ManejadorAgenda.cs" />
     <Compile Include="ManejadorCita.cs" />
+    <Compile Include="ManejadorEdad.cs" />
     <Compile Include="ManejadorExpediente.cs" />
+    <Compile Include="ManejadorVacunas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>

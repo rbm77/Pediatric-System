@@ -60,14 +60,7 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Rol</label>
-
-
-                                     <%--   <select  class="seleccionarRol browser-default custom-select" name="SeleccionarRol">
-                                                    <option value="Medico" >Médico</option>
-                                                    <option value="Asistente">Asistente</option>
-                                                   <option value="Administrador" selected>Administrador</option>
-                                                </select>--%>
-                                     
+                                  
                                         <asp:DropDownList ID="Rol" runat="server" AutoPostBack="true" CssClass="custom-select" OnSelectedIndexChanged="Rol_SelectedIndexChanged">
                                             <asp:ListItem Value="Administrador"> Administrador </asp:ListItem>
                                             <asp:ListItem Value="Asistente"> Asistente </asp:ListItem>
@@ -121,17 +114,6 @@
             locale: 'es-es',
             format: 'dd/mm/yyyy'
         });
-
-        //$(".seleccionarRol").on("change", function () {
-        //    if (this.value == "Medico") {
-        //        document.getElementById('txtCodigo').innerHTML = "enabled"
-        //        //document.getElementById('txtCodigo').disabled = true;
-        //    } else {
-        //        document.getElementById('txtCodigo').innerHTML = "disabled"
-        //        // document.getElementById("txtCodigo").disabled = true;
-        //    }
-        //});
-
 
     </script>
 

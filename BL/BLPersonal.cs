@@ -59,6 +59,7 @@ namespace BL
                 miPersonal.apellido = personal.apellido;
                 miPersonal.cedula = personal.cedula;
                 miPersonal.telefono = personal.telefono;
+                miPersonal.estado = personal.estado;
                 listaPersonal.Add(miPersonal);
             }
             return listaPersonal;

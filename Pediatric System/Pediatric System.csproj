@@ -88,6 +88,8 @@
     <Content Include="CSS\listaExpedientes.css" />
     <Content Include="CSS\sb-admin.css" />
     <Content Include="CSS\sb-admin.min.css" />
+    <Content Include="CSS\style.css" />
+    <Content Include="CuentaPaciente.aspx" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="EditarContrasena.aspx" />
@@ -1663,6 +1665,8 @@
     <Content Include="JS\datatables\dataTables.bootstrap4.min.js" />
     <Content Include="JS\datatables\jquery.dataTables.js" />
     <Content Include="JS\datatables\jquery.dataTables.min.js" />
+    <Content Include="JS\jquery\highlight.pack.js" />
+    <Content Include="JS\jquery\iphone-style-checkboxes.js" />
     <Content Include="JS\sb-admin.min.js" />
     <Content Include="ListaExpedientes.aspx" />
     <Content Include="InicioUsuarioExterno.aspx" />
@@ -1710,6 +1714,13 @@
     </Compile>
     <Compile Include="AsociarPaciente.aspx.designer.cs">
       <DependentUpon>AsociarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.designer.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="CuentaPersonal.aspx.cs">
       <DependentUpon>CuentaPersonal.aspx</DependentUpon>
@@ -1902,6 +1913,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\ios-style-checkboxes\" />
+    <Folder Include="images\iphone-style-checkboxes\" />
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>

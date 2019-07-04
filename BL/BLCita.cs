@@ -20,6 +20,11 @@ namespace BL
         {
 
         }
+
+        public BLCita(string hora)
+        {
+            this.Hora = hora;
+        }
         public BLCita(string codigoMedico, string nombre, string edad, string correo, int telefono, string fecha, string hora)
         {
             this.CodigoMedico = codigoMedico;

@@ -71,6 +71,68 @@
     text-align: right;
     color: #004085;
 }
+
+.btn-deshabilitar {
+    border-color:black;
+    color: white;
+    background-color: firebrick;
+    width: 118px;
+    margin-bottom: 0px;
+    border-radius: 0.5em 0 0 0.5em;
+}
+
+.btn-deshabilitar:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color:white;
+}
+
+
+.btn-habilitar {
+    border-color:black;
+    color: white;
+    background-color: forestgreen;
+    width: 118px;
+    margin-bottom: 0px;
+    border-radius: 0 0.5em 0.5em 0;
+    margin-left: -6px;
+}
+
+.btn-habilitar:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color:white;
+}
+
+
+
+.btn-blancoIzq {
+    border-color:black;
+    color: black;
+    background-color: white;
+    width: 118px;
+    margin-bottom: 0px;
+    margin-left: -5px;
+    border-radius: 0.5em 0 0 0.5em;
+}
+.btn-blancoIzq:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color:black;
+}
+
+.btn-blancoDer {
+    border-color:black;
+    color: black;
+    background-color: white;
+    width: 118px;
+    margin-bottom: 0px;
+    margin-left: -5px;
+    border-radius: 0 0.5em 0.5em 0;
+}
+.btn-blancoDer:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    color:black;
+}
+
+
 .btn-neutro {
     color: #FFFFFF;
     background-color: #1ca5ac;
