@@ -20,12 +20,6 @@ namespace Pediatric_System
             if (!Page.IsPostBack)
             {             
                 listaPersonal = miBLPersonal.buscarListaPersonal();
-                foreach (BL_ManejadorPersonal elemento in listaPersonal)
-                {
-                    miBLCuenta.correo = elemento.correo;
-                    miBLCuenta.buscarCuentaPorCorreo();
-                    elemento.estado = miBLCuenta.estado;
-                }
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
             }
@@ -93,12 +87,6 @@ namespace Pediatric_System
                     miBLCuenta.correo = correo1;
                     miBLCuenta.editarEstado("HABILITAR");
                     listaPersonal = miBLPersonal.buscarListaPersonal();
-                    foreach (BL_ManejadorPersonal elemento in listaPersonal)
-                    {
-                        miBLCuenta.correo = elemento.correo;
-                        miBLCuenta.buscarCuentaPorCorreo();
-                        elemento.estado = miBLCuenta.estado;
-                    }
                     gridCuentas.DataSource = listaPersonal;
                     gridCuentas.DataBind();
                     mensajeAviso("success", "La cuenta de " + correo1 + " ha sido habilitada correctamente");
@@ -109,12 +97,6 @@ namespace Pediatric_System
                     miBLCuenta.correo = correo2;
                     miBLCuenta.editarEstado("DESHABILITAR");
                     listaPersonal = miBLPersonal.buscarListaPersonal();
-                    foreach (BL_ManejadorPersonal elemento in listaPersonal)
-                    {
-                        miBLCuenta.correo = elemento.correo;
-                        miBLCuenta.buscarCuentaPorCorreo();
-                        elemento.estado = miBLCuenta.estado;
-                    }
                     gridCuentas.DataSource = listaPersonal;
                     gridCuentas.DataBind();
                     mensajeAviso("success", "La cuenta de " + correo2 + " ha sido deshabilitada correctamente");
@@ -176,12 +158,6 @@ namespace Pediatric_System
 
 
             listaPersonal = miBLPersonal.buscarListaPersonal();
-            foreach (BL_ManejadorPersonal elemento in listaPersonal)
-            {
-                miBLCuenta.correo = elemento.correo;
-                miBLCuenta.buscarCuentaPorCorreo();
-                elemento.estado = miBLCuenta.estado;
-            }
             gridCuentas.DataSource = listaPersonal;
             gridCuentas.DataBind();
             mensajeAviso("success", "Cuenta Editada Correctamente");
