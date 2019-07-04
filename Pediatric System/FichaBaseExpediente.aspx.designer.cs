@@ -85,6 +85,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox cedulaPaciente;
         
         /// <summary>
+        /// pacienteNoCedula control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox pacienteNoCedula;
+        
+        /// <summary>
         /// fechaNacimientoPaciente control.
         /// </summary>
         /// <remarks>
@@ -101,6 +110,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList sexoPaciente;
+        
+        /// <summary>
+        /// provinciasEX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect provinciasEX;
         
         /// <summary>
         /// fotoPaciente control.
@@ -265,6 +283,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox edadGestacional;
         
         /// <summary>
+        /// clasificacionUniversal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect clasificacionUniversal;
+        
+        /// <summary>
         /// opcion_pequeno control.
         /// </summary>
         /// <remarks>
@@ -310,6 +337,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox perimetroCefalico;
         
         /// <summary>
+        /// otrasComplicacionesAP control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect otrasComplicacionesAP;
+        
+        /// <summary>
         /// complicacionPerinatal control.
         /// </summary>
         /// <remarks>
@@ -317,6 +353,150 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea complicacionPerinatal;
+        
+        /// <summary>
+        /// asmaCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox asmaCheck;
+        
+        /// <summary>
+        /// diabetesCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox diabetesCheck;
+        
+        /// <summary>
+        /// hipertensionCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox hipertensionCheck;
+        
+        /// <summary>
+        /// cardiovascularCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox cardiovascularCheck;
+        
+        /// <summary>
+        /// displidemiaCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox displidemiaCheck;
+        
+        /// <summary>
+        /// epilepsiaCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox epilepsiaCheck;
+        
+        /// <summary>
+        /// otrosCheck control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputCheckBox otrosCheck;
+        
+        /// <summary>
+        /// descripcionOtrosHF control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcionOtrosHF;
+        
+        /// <summary>
+        /// apatEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect apatEstado;
+        
+        /// <summary>
+        /// descripcionPatologicos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcionPatologicos;
+        
+        /// <summary>
+        /// aqEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect aqEstado;
+        
+        /// <summary>
+        /// descripcionQuirurgico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcionQuirurgico;
+        
+        /// <summary>
+        /// atEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect atEstado;
+        
+        /// <summary>
+        /// descripcionTraumatico control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcionTraumatico;
+        
+        /// <summary>
+        /// alergiasEstado control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect alergiasEstado;
+        
+        /// <summary>
+        /// descripcionAlergia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcionAlergia;
         
         /// <summary>
         /// esquemaVacunacion control.

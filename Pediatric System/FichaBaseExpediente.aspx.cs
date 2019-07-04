@@ -41,13 +41,16 @@ namespace Pediatric_System
             BLDireccion direccionFactu = new BLDireccion();
             BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
 
+            infoTab_1(expediente, direccionExp);
+            infoTab_2(encargado, direccionEncar);
+            infoTab_3(facturante, direccionFactu);
+            infoTab_4(historiaClinica);
+
             // Enviar datos para guardar en BD
             ManejadorExpediente manejador = new ManejadorExpediente();
+            //string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
 
-
-            //string confirmacion = manejador.crearExpediente(expediente);
             string confirmacion = "";
-
 
             string colorMensaje = "success";
 
@@ -78,6 +81,16 @@ namespace Pediatric_System
             direccionExp.Distrito = distrito;
 
             // Recuperar campos de texto para objeto Expediente
+
+            if (pacienteNoCedula.Checked)
+            {
+                expediente.Codigo = crearCodigoExpe();
+            }
+            else
+            {
+                expediente.Codigo = cedulaPaciente.Text.Trim();
+            }
+
             expediente.Nombre = nombrePaciente.Text.Trim();
             expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
             expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim();
@@ -89,6 +102,13 @@ namespace Pediatric_System
             expediente.Direccion = codigo;
 
             //byte[] fotoTxt = guardarImag();
+        }
+
+        private string crearCodigoExpe ()
+        {
+            string codEx = "RN-";
+            codEx += cedulaEncargado.Text.Trim();
+            return codEx;
         }
 
         private void infoTab_2 (BLEncargado_Facturante encargado, BLDireccion direccionEncar)
@@ -143,7 +163,99 @@ namespace Pediatric_System
 
         private void infoTab_4 (BLHistoriaClinica historiaClinica)
         {
-            
+
+            historiaClinica.AP_Talla = decimal.Parse(tallaNacer.Text);
+            historiaClinica.AP_Peso = decimal.Parse(pesoNacer.Text); ;
+            historiaClinica.AP_PerimetroCefalico = decimal.Parse(perimetroCefalico.Text); ;
+            string calificacion = clasificacionUniversal.Value;
+            if (opcion_pequeno.Checked)
+            {
+                calificacion += "pequeño";
+            }
+
+            if (opcion_grande.Checked)
+            {
+                calificacion += "grande";
+            }
+
+            if (opcion_adecuado.Checked)
+            {
+                calificacion += "adecuado";
+            }
+
+            historiaClinica.AP_CalificacionUniversal = calificacion;
+            historiaClinica.AP_APGAR = decimal.Parse(apgar.Text);
+            historiaClinica.AP_EdadGestacional = decimal.Parse(edadGestacional.Text);
+
+            if(otrasComplicacionesAP.Value == "ausentes")
+            {
+                historiaClinica.AP_OtrasComplicaciones = false;
+                historiaClinica.AP_OtrasComplicacionesDescripcion = null;
+            }
+            else
+            {
+                historiaClinica.AP_OtrasComplicaciones = true;
+                historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
+            }
+
+          
+            if (asmaCheck.Checked)
+            {
+                historiaClinica.HF_Asma = true;
+            }
+
+            if (diabetesCheck.Checked)
+            {
+                historiaClinica.HF_Diabetes = true;
+            }
+
+            if (hipertensionCheck.Checked)
+            {
+                historiaClinica.HF_Hipertension = true;
+            }
+
+            if (cardiovascularCheck.Checked)
+            {
+                historiaClinica.HF_Cardivasculares = true;
+            }
+
+            if (displidemiaCheck.Checked)
+            {
+                historiaClinica.HF_Displidemia = true;
+            }
+
+            if (epilepsiaCheck.Checked)
+            {
+                historiaClinica.HF_Epilepsia = true;
+            }
+
+            if (otrosCheck.Checked)
+            {
+                historiaClinica.HF_Otros = true;
+                historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
+            }
+
+            if (apatEstado.Value == "presentesPat")
+            {
+                historiaClinica.APAT_Estado = true;
+                historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
+            }
+
+            if (atEstado.Value == "presentesTrau") {
+                historiaClinica.AT_Estado = true;
+                historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
+            }
+
+            if (aqEstado.Value == "presentesQui") {
+                historiaClinica.AQ_Estado = true;
+                historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
+            }
+
+            if (alergiasEstado.Value == "presentesAlergia")
+            {
+                historiaClinica.Alergias = true;
+                historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
+            } 
         }
 
 

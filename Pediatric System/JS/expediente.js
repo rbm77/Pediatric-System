@@ -323,7 +323,7 @@ $(document).ready(function () {
 
     $("#otrosCheck").on("change", function () {
         if ($('#otrosCheck').prop('checked')) {
-            document.getElementById('descripcionOtros').disabled = false;
+            document.getElementById('descripcionOtros ').disabled = false;
         } else {
             document.getElementById('descripcionOtros').disabled = true;
         }
