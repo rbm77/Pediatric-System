@@ -11,15 +11,15 @@ namespace DAO
 {
     public class DAOExpediente
     {
-        
+
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
         public string CrearExpediente(TOExpediente nuevoExpediente, TODireccion nuevaDireccionPaciente, TODireccion nuevaDireccionEncargado, TODireccion nuevaDireccionFactura, TOEncargado_Facturante encargado, TOEncargado_Facturante facturante, TOHistoriaClinica nuevaHistoriaClinica1)
         {
             string confirmacion = "El expediente se ingresó correctamente en el sistema";
 
-         //Abrir la conexion
-        if (conexion != null)
+            //Abrir la conexion
+            if (conexion != null)
             {
                 try
                 {
@@ -54,7 +54,7 @@ namespace DAO
 
                 object resulVerificarDirPaciente = cmdVerificarDirPaci.ExecuteScalar();
 
-                if(resulVerificarDirPaciente == null)
+                if (resulVerificarDirPaciente == null)
                 {
                     SqlCommand cmdInsertarDirPaciente = new SqlCommand("INSERT INTO DIRECCION (CODIGO_DIRECCION, NOMBRE_PROVINCIA, NOMBRE_CANTON, NOMBRE_DISTRITO)" +
                         "VALUES (@cod, @nomPro, @nomCan, @nomDis);", conexion);
@@ -358,7 +358,7 @@ namespace DAO
                     while (lector.Read())
                     {
                         TOExpediente expediente = new TOExpediente(lector["CODIGO_EXPEDIENTE"].ToString(), lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
-                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString());
+                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString(), lector["CORREO"].ToString());
                         toListaExpediente.Add(expediente);
                     }
                 }
@@ -391,6 +391,146 @@ namespace DAO
             return confirmacion;
         }
 
+
+        public string asociarCorreo(String correoCuenta, String cedulaExpediente)
+        {
+            // Se abre la conexión
+
+            if (conexion.State != ConnectionState.Open)
+            {
+                conexion.Open();
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Asociar Correo a Expediente");
+            string confirmacion = "Correcto";
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("UPDATE EXPEDIENTE SET CORREO = @cor Where Cedula = @ced;", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@cor", correoCuenta);
+                comando.Parameters.AddWithValue("@ced", cedulaExpediente);
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Error";
+                }
+            }
+            finally
+            {
+                // Se finaliza la conexion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
+
+
+        public string CargarListaExpedientesSinCorreo(List<TOExpediente> toListaExpediente)
+        {
+            string confirmacion = "Correcto";
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Error";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Error";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar Expedientes");
+
+            try
+            {
+                SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE where Correo is Null", conexion);
+
+                comando.Transaction = transaccion;
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        TOExpediente expediente = new TOExpediente(lector["CODIGO_EXPEDIENTE"].ToString(), lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
+                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString(), lector["CORREO"].ToString());
+                        toListaExpediente.Add(expediente);
+                    }
+                }
+
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Error";
+                }
+            }
+
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
+
         /// <summary>
         /// Obtiene la informacion de las tablas EXPEDIENTE, ENCARGADO, FACTURANTE, DIRECCION, ANTECEDENTES Y ANTECEDENTES PERINATALES que se encuentran en la BD y se asignan a los respectivos objetos que se reciben por parametro
         /// </summary>
@@ -403,7 +543,7 @@ namespace DAO
         /// <param name="direccionFacturante"></param>
         /// <param name="historiaClinica"></param>
         /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
-        public string CargarExpediente(string codigoBuscar, TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado,  TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
+        public string CargarExpediente(string codigoBuscar, TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado, TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
         {
             string confirmacion = "El expediente se cargó correctamente";
 
@@ -412,7 +552,7 @@ namespace DAO
             {
                 try
                 {
-                    if(conexion.State != ConnectionState.Open)
+                    if (conexion.State != ConnectionState.Open)
                     {
                         conexion.Open();
                     }
@@ -420,7 +560,7 @@ namespace DAO
                 catch (Exception)
                 {
                     confirmacion = "Ocurrió un error y se pudo cargar el expediente";
-                    return confirmacion;    
+                    return confirmacion;
                 }
             }
             else
@@ -428,7 +568,7 @@ namespace DAO
                 confirmacion = "Ocurrió un error y se pudo cargar el expediente";
                 return confirmacion;
             }
-                        
+
             //Se inicia una nueva transaccion  
             SqlTransaction transaccion = conexion.BeginTransaction("Mostrar expediente completo");
 
@@ -718,7 +858,7 @@ namespace DAO
             }
             finally
             {
-                if(conexion.State != ConnectionState.Closed)
+                if (conexion.State != ConnectionState.Closed)
                 {
                     conexion.Close();
                 }

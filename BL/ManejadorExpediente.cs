@@ -54,6 +54,24 @@ namespace BL
             return confirmacion;
         }
 
+        public string cargarListaExpedientes(List<BLExpediente> blExpedientes, Boolean value)
+        {
+            List<TOExpediente> toExpedientes = new List<TOExpediente>();
+            DAOExpediente daoExpedientes = new DAOExpediente();
+
+            string confirmacion = daoExpedientes.CargarListaExpedientesSinCorreo(toExpedientes);
+
+            foreach (TOExpediente toExpediente in toExpedientes)
+            {
+                blExpedientes.Add(convertirExpedientes(toExpediente));
+            }
+
+            return confirmacion;
+        }
+
+
+
+
         /// <summary>
         /// Realiza la conversion de objetos Expediente del tipo TOExpediente a BLExpediente
         /// </summary>
@@ -245,6 +263,14 @@ namespace BL
             historiaClinica.Alergias = historiaClinicaBL.Alergias;
             historiaClinica.AlegergiasDescripcion = historiaClinicaBL.AlegergiasDescripcion;
 
+        }
+
+
+        public string asociarCuenta(String correoCuenta, String cedulaExpediente)
+        {
+            DAOExpediente daoExpediente = new DAOExpediente();
+            String mensaje = daoExpediente.asociarCorreo(correoCuenta, cedulaExpediente);
+            return mensaje;
         }
     }
 }

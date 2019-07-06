@@ -18,6 +18,7 @@ namespace BL
         public byte[] Foto { get; set; }
         public string ExpedienteAntiguo { get; set; }
         public string Direccion { get; set; }
+        public string Correo { get; set; }
 
         public BLExpediente()
         {

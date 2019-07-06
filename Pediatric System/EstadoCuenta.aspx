@@ -62,8 +62,11 @@
                             <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
                                 Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnRowDataBound="vistaCuentas_RowDataBound">
                                 <Columns>
-                                    <asp:BoundField DataField="Nombre" HeaderText="Nombre" />
-                                    <asp:BoundField DataField="Apellido" HeaderText="Apellido" />
+                                       <asp:TemplateField HeaderText="Nombre Completo">
+                                      <ItemTemplate>
+                                      <%# Eval("Nombre") + " " + Eval("Apellido")%>
+                                       </ItemTemplate>
+                                        </asp:TemplateField>
                                     <asp:BoundField DataField="Correo" HeaderText="Correo" />
                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" Visible="false" />

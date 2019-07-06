@@ -11,6 +11,7 @@ namespace Pediatric_System
     public partial class AsociarPaciente : System.Web.UI.Page
     {
         public List<BL_Manejador_Cuentas> listaPersonal = new List<BL_Manejador_Cuentas>();
+
         BLCuenta miBLCuenta = new BLCuenta();
     
         protected void Page_Load(object sender, EventArgs e)
@@ -25,13 +26,19 @@ namespace Pediatric_System
 
 
 
-        protected void grdCuentas(object sender, GridViewCommandEventArgs e)
+        protected void gridCuentas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "AsociarExpediente")
             {
+                int indice = Convert.ToInt32(e.CommandArgument);
+                GridViewRow filaSeleccionada = gridCuentas.Rows[indice];
+                TableCell estado = filaSeleccionada.Cells[0];
+                string correo = estado.Text;
+                lblCorreo.Text = correo;
+
                 ManejadorExpediente manejador = new ManejadorExpediente();
                 List<BLExpediente> expedientes = new List<BLExpediente>();
-                manejador.cargarListaExpedientes(expedientes);
+                manejador.cargarListaExpedientes(expedientes, true);
                 gridExpedientes.DataSource = expedientes;
                 gridExpedientes.DataBind();
                 modalExpedientes.Show();
@@ -64,6 +71,28 @@ namespace Pediatric_System
             } else
             {
                 mensajeAviso("danger", "La cuenta no se pudo crear debido a que el correo ingresado ya esta en uso");
+            }
+        }
+
+
+        protected void gridExpedientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "AsociarExpedienteEspecifico")
+            {
+                int indice = Convert.ToInt32(e.CommandArgument);
+                GridViewRow filaSeleccionada = gridExpedientes.Rows[indice];
+                TableCell cedula = filaSeleccionada.Cells[1];
+                string cedulaSel = cedula.Text;
+
+                ManejadorExpediente manejador = new ManejadorExpediente();
+                String mensaje = manejador.asociarCuenta(lblCorreo.Text, cedulaSel);
+                if (mensaje == "Correcto")
+                {
+                    mensajeAviso("success", "Cuenta Asociada correctamente");
+                } else
+                {
+                    mensajeAviso("danger", "Ha ocurrido un error al asociar la Cuenta");
+                }
             }
         }
 

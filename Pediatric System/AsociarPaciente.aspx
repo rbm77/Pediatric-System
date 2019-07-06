@@ -12,7 +12,22 @@
                 "sPaginationType": "numbers"
             });
         });
+
+
     </script>
+
+ <%--   Con esto de jode peor--%>
+<%--    <script type="text/javascript">
+        $(function () {
+            $('[id*=gridExpediente]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "numbers"
+            });
+        });
+    </script>--%>
+
+
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -27,7 +42,7 @@
     <div class="container-fluid col-11 col-auto table-responsive">
 
         <div>
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active nombre-input" id="asociar-pacientes-tab" data-toggle="tab" href="#asociar-pacientes" role="tab" aria-controls="asociar-pacientes" aria-selected="true">Asociar Expedientes</a>
                 </li>
@@ -36,7 +51,7 @@
                 </li>
             </ul>
         </div>
-
+        <asp:Label ID="lblCorreo" runat="server" Text="Label" Visible ="false"></asp:Label>
 
         <form id="form1" runat="server">
 
@@ -48,7 +63,7 @@
                     <div class="card">
                         <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Pacientes</h5>
                         <div class="card-body">
-                            <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdCuentas"
+                            <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="gridCuentas_RowCommand"
                                 Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
                                 <Columns>
                                     <asp:BoundField DataField="Correo" HeaderText="Correo" />
@@ -69,9 +84,6 @@
                         </div>
                     </div>
 
-                    
-
-
 
                     <asp:HiddenField ID="campoEscondido" runat="server" />
 
@@ -91,28 +103,31 @@
 
                         </div>
                         <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
+
                         <div class="modal-body">
-                            <div class="card">
-                                <div>
-                                </div>
-                                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
-                                <div class="card-body">
-                                    <div>
-                                        <asp:GridView ID="gridExpedientes" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdExpedientes"
-                                            Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
-                                            <Columns>
-                                                <asp:BoundField DataField="Cedula_Expediente" HeaderText="Cedula" />
-                                                <asp:TemplateField HeaderText="Acciones" ItemStyle-HorizontalAlign="Center">
-                                                    <ItemTemplate>
-                                                        <%--                                        <asp:Button ID="btnEditarCuenta" ControlStyle-CssClass="btn btn-neutro fas fa-edit" ControlStyle-Width="33.3%" runat="server" ClientIDMode="Static"
-                                            Text="Editar / Mirar" CommandName="enviarCorreo" CommandArgument='<%# Eval("Correo") %>' />--%>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                            </Columns>
-                                        </asp:GridView>
+
+                             <div class="table-responsive">
+                                <div class="card">
+                                    <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
+                                    <div class="card-body">
+                                            <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
+                                                AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%"
+                                                OnRowCommand="gridExpedientes_RowCommand">
+
+                                                <Columns>
+                                                    <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
+                                                    <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
+                                                    <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
+                                                  <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpedienteEspecifico" Text="Asociar"
+                                                ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
+                                                </Columns>
+                                            </asp:GridView>
+                                        <br />
                                     </div>
                                 </div>
-                            </div>
+                             </div>
+                    
                         </div>
                     </asp:Panel>
                 </div>
@@ -120,12 +135,12 @@
                 <%--________________Crear Cuenta de paciente_______________--%>
 
                 <div class="tab-pane fade show margen-general-1-bottom" id="cuenta-paciente" role="tabpanel" aria-labelledby="cuenta-paciente-tab">
-                    <div class="col-12 border rounded margen-general-0-top" >
+                    <div class="col-12 border rounded margen-general-0-top">
                         <br>
                         <div class="margen-general-1-top padding-general-inicio-bottom" style="width: 50%; margin: 0 auto;">
                             <div class="form-row">
                                 <div class="form-group col-lg-8 col-md-6 col-sm-6 col-xs-12">
-                                    <div class="padding-general-label" >
+                                    <div class="padding-general-label">
                                         <label class="nombre-label">Correo</label>
                                         <asp:TextBox runat="server" ID="txtCorreo" CssClass="form-control" required="required" TextMode="Email"></asp:TextBox>
                                     </div>
