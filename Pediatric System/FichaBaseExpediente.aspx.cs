@@ -16,11 +16,6 @@ namespace Pediatric_System
         private static List<BLVacuna> vacunas = new List<BLVacuna>();
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            //proEX.Value = "Puntarenas";
-            //canEX.Value = "OSA";
-            //disEX.Value = "PALMAR";
-
             //proEN.Value = "Puntarenas";
             //canEN.Value = "OSA";
             //disEN.Value = "PALMAR";
