@@ -15,6 +15,11 @@ namespace Pediatric_System
         private static List<Pendiente> listaPendientes = new List<Pendiente>();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            //proEX.Value = "Puntarenas";
+            //canEX.Value = "OSA";
+            //disEX.Value = "PALMAR";
+
             //proEN.Value = "Puntarenas";
             //canEN.Value = "OSA";
             //disEN.Value = "PALMAR";
