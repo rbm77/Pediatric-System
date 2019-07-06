@@ -12,6 +12,7 @@ namespace Pediatric_System
     {
         public List<BL_Manejador_Cuentas> listaPersonal = new List<BL_Manejador_Cuentas>();
         BLCuenta miBLCuenta = new BLCuenta();
+    
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -48,21 +49,40 @@ namespace Pediatric_System
             string correo = txtCorreo.Text;
             string contrasena = "123";
             string tipo = "Paciente";
-
             BLCuenta miBLCuenta = new BLCuenta();
             miBLCuenta.correo = correo;
             miBLCuenta.contrasena = contrasena;
             miBLCuenta.tipo = tipo;
-            miBLCuenta.insertarCuenta();
-
-            mensajeConfirmacion.Text = "<div class=\"alert alert-success alert-dismissible fade show\" " +
-            "role=\"alert\"> <strong></strong>" + "Cuenta Creada Correctamente" + "<button" +
-            " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-            " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion.Visible = true;
-
-            txtCorreo.Text = "";
+            String mensaje = miBLCuenta.insertarCuenta();
+           if (mensaje == "Correcto")
+            {
+                mensajeAviso("success", "La cuenta se creo correctamente");
+                listaPersonal = miBLCuenta.buscarListaCuentas();
+                gridCuentas.DataSource = listaPersonal;
+                gridCuentas.DataBind();
+                BLEnviarCorreo miEnviar = new BLEnviarCorreo("correo", "Creación de cuenta", "Se ha creado una cuenta asociada a este correo que le permite utilizar el sistema de la Clinica Pediatrica Divino Niño");
+            } else
+            {
+                mensajeAviso("danger", "La cuenta no se pudo crear debido a que el correo ingresado ya esta en uso");
+            }
         }
+
+
+
+        public void mensajeAviso(String color, String texto)
+        {
+            //Colores:  primary = Azul
+            //          secondary = Gris
+            //          success = Verde
+            //          danger = Rojo
+            //          warning = Amarillo
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + color + " alert-dismissible fade show\" " +
+           "role=\"alert\"> <strong></strong>" + texto + "<button" +
+         " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+         " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
+        }
+
 
         protected void Regresar_Click(object sender, EventArgs e)
         {

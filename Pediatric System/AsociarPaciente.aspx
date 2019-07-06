@@ -60,12 +60,16 @@
                         </div>
                     </div>
                     <br>
+
+                    <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
+
                     <div class="form-row" style="text-align: right; display: block">
                         <div class="form-group col-lg-3 col-md-3 col-sm-6 col-xs-6" style="display: inline-block">
                             <asp:Button type="button" runat="server" class="btn btn-regresar" Text="REGRESAR" ID="Button1" CausesValidation="False" UseSubmitBehavior="false" OnClick="Regresar_Click" />
                         </div>
                     </div>
-                    <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
+
+                    
 
 
 

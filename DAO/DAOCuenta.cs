@@ -178,7 +178,7 @@ namespace DAO
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nueva cuenta");
-            string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+            string confirmacion = "Correcto";
 
             try
             {
@@ -217,7 +217,7 @@ namespace DAO
                 }
                 finally
                 {
-                    confirmacion = "Ocurrió un error y no se pudo ingresar la cuenta";
+                    confirmacion = "Error";
                 }
             }
             finally
