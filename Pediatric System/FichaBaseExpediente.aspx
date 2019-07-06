@@ -20,8 +20,6 @@
 
         <hr class="linea-divisoria-titulo" />
 
-        <form runat="server" method="post">
-
         <asp:Literal ID="mensajeConfirmacion1" runat="server"></asp:Literal>
 
         <form runat="server">
