@@ -15,12 +15,27 @@ namespace Pediatric_System
         private static List<Pendiente> listaPendientes = new List<Pendiente>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
-            //{
-            //    verConsultas.Visible = false;
-            //    nuevaConsulta.Visible = false;
-            //    informacionPaciente.Visible = false;
-            //}
+
+            //proEX.Value = "Puntarenas";
+            //canEX.Value = "OSA";
+            //disEX.Value = "PALMAR";
+
+            //proEN.Value = "Puntarenas";
+            //canEN.Value = "OSA";
+            //disEN.Value = "PALMAR";
+            //barEN.Value = "Alemania";
+
+            //proFA.Value = "Puntarenas";
+            //canFA.Value = "OSA";
+            //disFA.Value = "PALMAR";
+            //barFA.Value = "Alemania";
+
+            if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
+            {
+                verConsultas.Visible = false;
+                nuevaConsulta.Visible = false;
+                informacionPaciente.Visible = false;
+            }
 
             if ((string)Session["pagina"] == "dashboard")
             {
@@ -28,8 +43,211 @@ namespace Pediatric_System
                 nuevaConsulta.Visible = false;
                 informacionPaciente.Visible = false;
             }
+
+            if((string)Session["pagina"] == "listaExpedientes-seleccionado")
+            {
+                string codigoExp = (string)Session["expedienteSeleccionado"];
+                mostrarExpediente(codigoExp);
+            }
         }
         
+        private void mostrarExpediente(string codigo)
+        {
+            BLExpediente expediente = new BLExpediente();
+            BLDireccion expDireccion = new BLDireccion();
+            BLEncargado_Facturante encargado = new BLEncargado_Facturante();
+            BLDireccion encDireccion = new BLDireccion();
+            BLEncargado_Facturante facturante = new BLEncargado_Facturante();
+            BLDireccion facDireccion = new BLDireccion();
+            BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
+
+            ManejadorExpediente manejador = new ManejadorExpediente();
+            manejador.mostrarExpediente(codigo, expediente, expDireccion, encargado, encDireccion, facturante, facDireccion, historiaClinica);
+
+            asignarTab_1(expediente, expDireccion);
+            asignarTab_2(encargado, encDireccion);
+            asignarTab_3(facturante, facDireccion);
+            asignarTab_4(historiaClinica);
+        }
+
+        private void asignarTab_1(BLExpediente exp, BLDireccion dir)
+        {
+
+            if (exp.Codigo == exp.Cedula)
+            {
+                cedulaPaciente.Text = exp.Cedula;
+                cedGeneral.InnerText = " " + exp.Cedula;  
+            }
+            else
+            {
+                cedGeneral.InnerText = "No tiene aún";
+                cedulaPaciente.Text = "";
+                pacienteNoCedula.Checked = true;
+            }    
+
+            paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
+            TimeSpan dt = DateTime.Now - exp.FechaNacimiento;
+            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(exp.Foto);
+            imgPreview.ImageUrl = imagenDataURL64;
+
+            nombrePaciente.Text = exp.Nombre;
+            primerApellidoPaciente.Text = exp.PrimerApellido;
+            segundoApellidoPaciente.Text = exp.SegundoApellido;
+            fechaNacimientoPaciente.Text = exp.FechaNacimiento.ToShortDateString();
+            sexoPaciente.SelectedValue = exp.Sexo;
+
+            proEX.Value = dir.Provincia;
+            canEX.Value = dir.Canton;
+            disEX.Value = dir.Distrito;
+
+            VincExpedientePaciente.Text = exp.ExpedienteAntiguo;
+        }
+
+        private void asignarTab_2 (BLEncargado_Facturante encar, BLDireccion dir)
+        {
+            nombreEncargado.Text = encar.Nombre;
+            primerApellidoEncargado.Text = encar.PrimerApellido;
+            segundoApellidoEncargado.Text = encar.SegundoApellido;
+            cedulaEncargado.Text = encar.Cedula;
+            telefonoEncargado.Text = Convert.ToString(encar.Telefono);
+            correoEncargado.Text = encar.CorreoElectronico;
+            parentezcoEncargado.Text = encar.Parentesco;
+
+            proEN.Value = dir.Provincia;
+            canEN.Value = dir.Canton;
+            disEN.Value = dir.Distrito;
+            barEN.Value = dir.Barrio;
+        }
+
+        private void asignarTab_3(BLEncargado_Facturante fac, BLDireccion dir)
+        {
+            nombreFacturante.Text = fac.Nombre;
+            primerApellidoFacturante.Text = fac.PrimerApellido;
+            segundoApellidoFacturante.Text = fac.SegundoApellido;
+            cedulaFacturante.Text = fac.Cedula;
+            telefonoFacturante.Text = Convert.ToString(fac.Telefono);
+            correoFacturante.Text = fac.CorreoElectronico;
+
+            proFA.Value = dir.Provincia;
+            canFA.Value = dir.Canton;
+            disFA.Value = dir.Distrito;
+            barFA.Value = dir.Barrio;
+        }
+
+        private void asignarTab_4(BLHistoriaClinica his)
+        {
+            tallaNacer.Text = Convert.ToString(his.AP_Talla);
+            pesoNacer.Text = Convert.ToString(his.AP_Peso);
+            edadGestacional.Text = Convert.ToString(his.AP_EdadGestacional);
+            apgar.Text = Convert.ToString(his.AP_APGAR);
+            perimetroCefalico.Text = Convert.ToString(his.AP_PerimetroCefalico);
+
+            string cali = his.AP_CalificacionUniversal;
+            string[] caliDiv = cali.Split();
+            clasificacionUniversal.Value = caliDiv[0].ToString().Trim();
+            if (caliDiv[1] == "pequeño")
+            {
+                opcion_pequeno.Checked = true;
+            }
+
+            if (caliDiv[1] == "grande")
+            {
+                opcion_grande.Checked = true;
+            }
+
+            if (caliDiv[1] == "adecuado")
+            {
+                opcion_adecuado.Checked = true;
+            }
+
+            if(his.AP_OtrasComplicaciones == true)
+            {
+                otrasComplicacionesAP.Value = "presentes";
+                complicacionPerinatal.Value = his.AP_OtrasComplicacionesDescripcion;
+            }
+
+            if (his.HF_Asma == true)
+            {
+                asmaCheck.Checked = true;
+            }
+
+            if(his.HF_Diabetes == true)
+            {
+                diabetesCheck.Checked = true;
+            }
+
+            if(his.HF_Hipertension == true)
+            {
+                hipertensionCheck.Checked = true;
+            }
+
+            if (his.HF_Cardivasculares == true)
+            {
+                cardiovascularCheck.Checked = true;
+            }
+
+            if (his.HF_Displidemia == true)
+            {
+                displidemiaCheck.Checked = true;
+            }
+
+            if (his.HF_Epilepsia == true)
+            {
+                epilepsiaCheck.Checked = true;
+            }
+
+            if (his.HF_Otros == true)
+            {
+                otrosCheck.Checked = true;
+                descripcionOtrosHF.Value = his.HF_DescripcionOtros;
+            }
+            else
+            {
+                descripcionOtrosHF.Value = "";
+            }
+
+            if (his.APAT_Estado == true)
+            {
+                apatEstado.Value = "presentesPat";
+                descripcionPatologicos.Value = his.APAT_Descripcion;
+            }
+            else
+            {
+                descripcionPatologicos.Value = "";
+            }
+
+            if(his.AQ_Estado == true)
+            {
+                aqEstado.Value = "presentesQui";
+                descripcionQuirurgico.Value = his.AQ_Descripcion;
+            }
+            else
+            {
+                descripcionQuirurgico.Value = "";
+            }
+
+            if (his.AT_Estado == true)
+            {
+                atEstado.Value = "presentesTrau";
+                descripcionTraumatico.Value = his.AT_Descripcion;
+            }
+            else
+            {
+                descripcionQuirurgico.Value = "";
+            }
+
+            if (his.Alergias == true)
+            {
+                alergiasEstado.Value = "presentesAlergia";
+                descripcionAlergia.Value = his.AlegergiasDescripcion;
+            }
+            else
+            {
+                descripcionAlergia.Value = "";
+            }
+        }
+
         protected void guardarExpediente_Click(object sender, EventArgs e)
         {
 
@@ -48,9 +266,7 @@ namespace Pediatric_System
 
             // Enviar datos para guardar en BD
             ManejadorExpediente manejador = new ManejadorExpediente();
-            //string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
-
-            string confirmacion = "";
+            string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
 
             string colorMensaje = "success";
 
@@ -64,17 +280,20 @@ namespace Pediatric_System
                 " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
                 " <span aria-hidden=\"true\">&times;</span> </button> </div>";
             mensajeConfirmacion1.Visible = true;
+
+            Response.Redirect("ListaExpedientes.aspx");
         }
 
         private void infoTab_1(BLExpediente expediente, BLDireccion direccionExp)
         {
 
             // Recuperar campos de texto para objeto Direccion (Expediente) 
-            string provincia = Request.Form["listaProvinciasEX"];
-            string canton = Request.Form["listaCantonEX"];
-            string distrito = Request.Form["listaDistritoEX"];
-            string codigo = codigoDireccion(provincia, canton, distrito, "");
 
+            string provincia = proEX.Value;
+            string canton = canEX.Value;
+            string distrito = disEX.Value;
+            string codigo = codigoDireccion(provincia, canton, distrito, "");
+            
             direccionExp.Codigo = codigo;
             direccionExp.Provincia = provincia;
             direccionExp.Canton = canton;
@@ -95,7 +314,8 @@ namespace Pediatric_System
             expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
             expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim();
             expediente.Cedula = cedulaPaciente.Text.Trim();
-            expediente.FechaNacimiento = DateTime.ParseExact(fechaNacimientoPaciente.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
+            expediente.FechaNacimiento = Convert.ToDateTime(fechaNacimientoPaciente.Text);
+                //DateTime.ParseExact(fechaNacimientoPaciente., "dd/MM/yyyy", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
             expediente.Sexo = sexoPaciente.Text.Trim();
             expediente.Foto = guardarImag();
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
@@ -114,16 +334,17 @@ namespace Pediatric_System
         private void infoTab_2 (BLEncargado_Facturante encargado, BLDireccion direccionEncar)
         {
             // Recuperar campos de texto para objeto Direccion(Encargado)
-            string provincia = Request.Form["listaProvinciasEN"];
-            string canton = Request.Form["listaCantonEN"];
-            string distrito = Request.Form["listaDistritoEN"];
-            string barrio = Request.Form["listaDistritoEN"];
+            string provincia = proEN.Value;
+            string canton = canEN.Value;
+            string distrito = disEN.Value;
+            string barrio = barEN.Value;
             string codigo = codigoDireccion(provincia, canton, distrito, barrio);
 
             direccionEncar.Codigo = codigo;
             direccionEncar.Provincia = provincia;
             direccionEncar.Canton = canton;
             direccionEncar.Distrito = distrito;
+            direccionEncar.Barrio = barrio;
 
             // Recuperar campos de texto para el objeto Encargado
             encargado.Nombre = nombreEncargado.Text.Trim();
@@ -139,16 +360,17 @@ namespace Pediatric_System
         private void infoTab_3(BLEncargado_Facturante facturante, BLDireccion direccionFactu)
         {
             // Recuperar campos de texto para objeto Direccion(Encargado)
-            string provincia = Request.Form["listaProvinciasFA"];
-            string canton = Request.Form["listaCantonFA"];
-            string distrito = Request.Form["listaDistritoFA"];
-            string barrio = Request.Form["listaDistritoFA"];
+            string provincia = proFA.Value;
+            string canton = canFA.Value;
+            string distrito = disFA.Value;
+            string barrio = barFA.Value;
             string codigo = codigoDireccion(provincia, canton, distrito, barrio);
 
             direccionFactu.Codigo = codigo;
             direccionFactu.Provincia = provincia;
             direccionFactu.Canton = canton;
             direccionFactu.Distrito = distrito;
+            direccionFactu.Barrio = barrio;
 
             // Recuperar campos de texto para el objeto Encargado
             facturante.Nombre = nombreFacturante.Text.Trim();
@@ -163,11 +385,11 @@ namespace Pediatric_System
 
         private void infoTab_4 (BLHistoriaClinica historiaClinica)
         {
-
-            historiaClinica.AP_Talla = decimal.Parse(tallaNacer.Text);
-            historiaClinica.AP_Peso = decimal.Parse(pesoNacer.Text); ;
-            historiaClinica.AP_PerimetroCefalico = decimal.Parse(perimetroCefalico.Text); ;
+            historiaClinica.AP_Talla = float.Parse(tallaNacer.Text);
+            historiaClinica.AP_Peso = float.Parse(pesoNacer.Text); ;
+            historiaClinica.AP_PerimetroCefalico = float.Parse(perimetroCefalico.Text); ;
             string calificacion = clasificacionUniversal.Value;
+            calificacion += " ";
             if (opcion_pequeno.Checked)
             {
                 calificacion += "pequeño";
@@ -190,7 +412,7 @@ namespace Pediatric_System
             if(otrasComplicacionesAP.Value == "ausentes")
             {
                 historiaClinica.AP_OtrasComplicaciones = false;
-                historiaClinica.AP_OtrasComplicacionesDescripcion = null;
+                historiaClinica.AP_OtrasComplicacionesDescripcion = "";
             }
             else
             {
@@ -229,28 +451,33 @@ namespace Pediatric_System
                 historiaClinica.HF_Epilepsia = true;
             }
 
+            historiaClinica.HF_DescripcionOtros = "";
             if (otrosCheck.Checked)
             {
                 historiaClinica.HF_Otros = true;
                 historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
             }
 
+            historiaClinica.APAT_Descripcion = "";
             if (apatEstado.Value == "presentesPat")
             {
                 historiaClinica.APAT_Estado = true;
                 historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
             }
 
+            historiaClinica.AT_Descripcion = "";
             if (atEstado.Value == "presentesTrau") {
                 historiaClinica.AT_Estado = true;
                 historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
             }
 
+            historiaClinica.AQ_Descripcion = "";
             if (aqEstado.Value == "presentesQui") {
                 historiaClinica.AQ_Estado = true;
                 historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
             }
 
+            historiaClinica.AlegergiasDescripcion = "";
             if (alergiasEstado.Value == "presentesAlergia")
             {
                 historiaClinica.Alergias = true;

@@ -10,7 +10,7 @@ namespace Pediatric_System
 {
     public partial class InicioPrincipal : System.Web.UI.Page
     {
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             
@@ -37,6 +37,20 @@ namespace Pediatric_System
         protected void regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("Dashboard.aspx");
+        }
+
+        protected void gridExpedientes_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if(e.CommandName == "seleccionar")
+            {
+                int indice = Convert.ToInt32(e.CommandArgument);
+                GridViewRow filaSeleccionada = gridExpedientes.Rows[indice];
+                TableCell cedula = filaSeleccionada.Cells[1];
+                Session["expedienteSeleccionado"] = cedula.Text;
+                Session["pagina"] = "listaExpedientes-seleccionado";
+                Response.Redirect("FichaBaseExpediente.aspx");
+
+            }
         }
     }
 }

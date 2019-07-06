@@ -11,6 +11,7 @@ namespace DAO
 {
     public class DAOExpediente
     {
+        
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
         public string CrearExpediente(TOExpediente nuevoExpediente, TODireccion nuevaDireccionPaciente, TODireccion nuevaDireccionEncargado, TODireccion nuevaDireccionFactura, TOEncargado_Facturante encargado, TOEncargado_Facturante facturante, TOHistoriaClinica nuevaHistoriaClinica1)
@@ -65,7 +66,7 @@ namespace DAO
                     cmdInsertarDirPaciente.Parameters.AddWithValue("@nomCan", nuevaDireccionPaciente.Canton);
                     cmdInsertarDirPaciente.Parameters.AddWithValue("@nomDis", nuevaDireccionPaciente.Distrito);
 
-                    cmdInsertarDirPaciente.ExecuteNonQuery();
+                    cmdInsertarDirPaciente.ExecuteScalar();
                 }
 
                 // --------------------------- Insertar en la tabla Direccion (Encargado)---------------------------  //
@@ -142,7 +143,7 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Encargado ---------------------------  //
 
-                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTEZCO)" +
+                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
                     "VALUES (@cedEncar, @codExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
 
                 comandoEncar.Transaction = transaccion;
@@ -198,9 +199,8 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Antecedentes ---------------------------  //
 
-                SqlCommand comandoAntec = new SqlCommand("INSERT INTO ANTECEDENTES (CODIGO_EXPEDIENTE, APAT_PRESENTE, APAT_DESCRIPCION, AQUIR_PRESENTE, AQUIR_DESCRIPCION, ATRAU_PRESENTE, ATRAU_DESCRIPCION, AHF_ASMA, AHF_DIABETES, AHF_HIPERTENSION " +
-                    "AHF_DISPLIDEMIA, AHF_CARDIOVASCULAR, AHF_EPILEPSIA, AHF_OTROS, AHF_OTROS_DESCRIPCION, ALERGIAS_PRESENTE, ALERGIAS_DESCRIPCION)" +
-                    "VALUES (@codExpe, @apatPre, @apatDes, @aquirPre, @aquirDes, @atrauPre, @atrauDes, @ahfAsma, @ahfDiab, @ahfHiper, @ahfDispl, @ahfCardi, @ahfEpilep, @ahfOtros, @ahfOtrosDesc, @alergiasPreANT, alergiasDescAnt);", conexion);
+                SqlCommand comandoAntec = new SqlCommand("INSERT INTO ANTECEDENTES (CODIGO_EXPEDIENTE, APAT_PRESENTE, APAT_DESCRIPCION, AQUIR_PRESENTE, AQUIR_DESCRIPCION, ATRAU_PRESENTE, ATRAU_DESCRIPCION, AHF_ASMA, AHF_DIABETES, AHF_HIPERTENSION, AHF_DISPLIDEMIA, AHF_CARDIOVASCULAR, AHF_EPILEPSIA, AHF_OTROS, AHF_OTROS_DESCRIPCION, ALERGIAS_PRESENTE, ALERGIAS_DESCRIPCION)" +
+                    "VALUES (@codExpe, @apatPre, @apatDes, @aquirPre, @aquirDes, @atrauPre, @atrauDes, @ahfAsma, @ahfDiab, @ahfHiper, @ahfDispl, @ahfCardi, @ahfEpilep, @ahfOtros, @ahfOtrosDesc, @alergiasPreANT, @alergiasDescAnt);", conexion);
 
                 comandoAntec.Transaction = transaccion;
 
@@ -226,9 +226,50 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Aplicacion Vacuna ---------------------------  // 
 
-                SqlCommand comandoAntineumococcia = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);");
+                SqlCommand comandoAntineumococcia = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);", conexion);
                 comandoAntineumococcia.Transaction = transaccion;
-                comandoAntineumococcia.Parameters.AddWithValue("@ID", nuevoExpediente.Cedula);
+                comandoAntineumococcia.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoAntineumococcia.ExecuteNonQuery();
+
+                SqlCommand comandoAntipolio = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);", conexion);
+                comandoAntipolio.Transaction = transaccion;
+                comandoAntipolio.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoAntipolio.ExecuteNonQuery();
+
+                SqlCommand comandoAntisarampion = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antisarampionosa, rubéola y paperas (SRP)',0,0,0,0,0,0);", conexion);
+                comandoAntisarampion.Transaction = transaccion;
+                comandoAntisarampion.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoAntisarampion.ExecuteNonQuery();
+
+                SqlCommand comandoAntituberculosa = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antituberculosa (BCG)',0,0,0,0,0,0);", conexion);
+                comandoAntituberculosa.Transaction = transaccion;
+                comandoAntituberculosa.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoAntituberculosa.ExecuteNonQuery();
+
+                SqlCommand comandoCalostro = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'CALOSTRO (primera vacuna)',0,0,0,0,0,0);", conexion);
+                comandoCalostro.Transaction = transaccion;
+                comandoCalostro.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoCalostro.ExecuteNonQuery();
+
+                SqlCommand comandoInfluenza = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Haemophilus influenzae. Tipo B.(HIB)',0,0,0,0,0,0);", conexion);
+                comandoInfluenza.Transaction = transaccion;
+                comandoInfluenza.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoInfluenza.ExecuteNonQuery();
+
+                SqlCommand comandoHepatitis = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Hepatitis B.(VHB)',0,0,0,0,0,0);", conexion);
+                comandoHepatitis.Transaction = transaccion;
+                comandoHepatitis.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoHepatitis.ExecuteNonQuery();
+
+                SqlCommand comandoToxoide = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Toxoide diftérico, pertusis acelular (DTaP)',0,0,0,0,0,0);", conexion);
+                comandoToxoide.Transaction = transaccion;
+                comandoToxoide.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoToxoide.ExecuteNonQuery();
+
+                SqlCommand comandoVaricela = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Varicela',0,0,0,0,0,0);", conexion);
+                comandoVaricela.Transaction = transaccion;
+                comandoVaricela.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
+                comandoVaricela.ExecuteNonQuery();
 
                 //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);
                 //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);
@@ -414,7 +455,7 @@ namespace DAO
                     while (lectorExp.Read())
                     {
                         expediente.Codigo = lectorExp["CODIGO_EXPEDIENTE"].ToString();
-                        expediente.Cedula = lectorExp["CEDULA_EXPEDIENTE"].ToString();
+                        expediente.Cedula = lectorExp["CEDULA"].ToString();
                         expediente.Nombre = lectorExp["NOMBRE"].ToString();
                         expediente.PrimerApellido = lectorExp["PRIMER_APELLIDO"].ToString();
                         expediente.SegundoApellido = lectorExp["SEGUNDO_APELLIDO"].ToString();
@@ -572,11 +613,11 @@ namespace DAO
                 {
                     while (lectorDirFactu.Read())
                     {
-                        direccionEncargado.Codigo = lectorDirFactu["CODIGO_DIRECCION"].ToString();
-                        direccionEncargado.Provincia = lectorDirFactu["NOMBRE_PROVINCIA"].ToString();
-                        direccionEncargado.Canton = lectorDirFactu["NOMBRE_CANTON"].ToString();
-                        direccionEncargado.Distrito = lectorDirFactu["NOMBRE_DISTRITO"].ToString();
-                        direccionEncargado.Barrio = lectorDirFactu["NOMBRE_BARRIO"].ToString();
+                        direccionFacturante.Codigo = lectorDirFactu["CODIGO_DIRECCION"].ToString();
+                        direccionFacturante.Provincia = lectorDirFactu["NOMBRE_PROVINCIA"].ToString();
+                        direccionFacturante.Canton = lectorDirFactu["NOMBRE_CANTON"].ToString();
+                        direccionFacturante.Distrito = lectorDirFactu["NOMBRE_DISTRITO"].ToString();
+                        direccionFacturante.Barrio = lectorDirFactu["NOMBRE_BARRIO"].ToString();
                     }
                 }
                 lectorDirFactu.Close();
@@ -605,7 +646,7 @@ namespace DAO
                         historiaClinica.APAT_Descripcion = lectorAntece["APAT_DESCRIPCION"].ToString();
                         historiaClinica.AQ_Estado = (Boolean)lectorAntece["AQUIR_PRESENTE"];
                         historiaClinica.AQ_Descripcion = lectorAntece["AQUIR_DESCRIPCION"].ToString();
-                        historiaClinica.AT_Estado = (Boolean)lectorAntece["ATRAU_ESTADO"];
+                        historiaClinica.AT_Estado = (Boolean)lectorAntece["ATRAU_PRESENTE"];
                         historiaClinica.AT_Descripcion = lectorAntece["ATRAU_DESCRIPCION"].ToString();
                         historiaClinica.HF_Asma = (Boolean)lectorAntece["AHF_ASMA"];
                         historiaClinica.HF_Diabetes = (Boolean)lectorAntece["AHF_DIABETES"];
@@ -641,9 +682,9 @@ namespace DAO
                 {
                     while (lectorAntecePeri.Read())
                     {
-                        historiaClinica.AP_Talla = (Decimal)lectorAntecePeri["TALLA_NACIMIENTO"];
-                        historiaClinica.AP_Peso = (Decimal)lectorAntecePeri["PESO_NACIMIENTO"];
-                        historiaClinica.AP_PerimetroCefalico = (Decimal)lectorAntecePeri["PERIMETRO_CEFALICO"];
+                        historiaClinica.AP_Talla = float.Parse(lectorAntecePeri["TALLA_NACIMIENTO"].ToString());
+                        historiaClinica.AP_Peso = float.Parse(lectorAntecePeri["PESO_NACIMIENTO"].ToString());
+                        historiaClinica.AP_PerimetroCefalico = float.Parse(lectorAntecePeri["PERIMETRO_CEFALICO_NACIMIENTO"].ToString());
                         historiaClinica.AP_APGAR = (Decimal)lectorAntecePeri["APGAR"];
                         historiaClinica.AP_EdadGestacional = (Decimal)lectorAntecePeri["EDAD_GESTACIONAL"];
                         historiaClinica.AP_CalificacionUniversal = lectorAntecePeri["CLASI_UNI_RN"].ToString();

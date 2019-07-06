@@ -9,9 +9,9 @@ namespace BL
     public class BLHistoriaClinica
     {
         public string Codigo { get; set; }
-        public decimal AP_Talla { get; set; }
-        public decimal AP_Peso { get; set; }
-        public decimal AP_PerimetroCefalico { get; set; }
+        public float AP_Talla { get; set; }
+        public float AP_Peso { get; set; }
+        public float AP_PerimetroCefalico { get; set; }
         public string AP_CalificacionUniversal { get; set; }
         public decimal AP_APGAR { get; set; }
         public decimal AP_EdadGestacional { get; set; }
@@ -39,7 +39,7 @@ namespace BL
 
         }
 
-        public BLHistoriaClinica(string cod, decimal apTalla, decimal apPeso, decimal apPerimetro, string apCalificacionU, decimal apAPGAR, decimal apEdad, Boolean apOtrasCom, string apDescripcionOtras)
+        public BLHistoriaClinica(string cod, float apTalla, float apPeso, float apPerimetro, string apCalificacionU, decimal apAPGAR, decimal apEdad, Boolean apOtrasCom, string apDescripcionOtras)
         {
             this.Codigo = cod;
             this.AP_Talla = apTalla;

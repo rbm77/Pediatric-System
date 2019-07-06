@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="FichaBaseExpediente.aspx.cs" Inherits="Pediatric_System.FichaBaseExpediente" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="FichaBaseExpediente.aspx.cs" Inherits="Pediatric_System.FichaBaseExpediente" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
@@ -6,16 +6,13 @@
     <script type="text/javascript" src="JS/expediente.js"></script>
 
 
-    <script>
 
-
-</script>
 
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server" onload="lee-json();">
 
-      <div class="container-fluid col-11 col-auto">
+    <div class="container-fluid col-11 col-auto">
 
         <div class="page-header margen-general-2-top">
             <h2 class="text-info">Expediente</h2>
@@ -23,9 +20,9 @@
 
         <hr class="linea-divisoria-titulo" />
 
-        <form runat="server">
+        <form runat="server" method="post">
             <div class="margen-general-2-top" runat="server" id="informacionPaciente">
-                <div class="col-12">
+                <div class="col-12 btnRow">
                     <div class="form-row">
                         <div class="form-group col-lg-3 col-md-6 col-sm-12 col-xs-12">
                             <div class="alinearFoto">
@@ -36,18 +33,18 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input" id="nnn"></label>
+                                <label runat="server" class="nombre-input" id="paciGeneral"></label>
                             </div>
 
 
                             <div class="form-row padding-info-exp">
                                 <label class="info-paciente">Cédula: </label>
-                                <label class="nombre-input"></label>
+                                <label runat="server" class="nombre-input" id="cedGeneral"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
                                 <label class="info-paciente">Edad: </label>
-                                <label class="nombre-input"></label>
+                                <label runat="server" class="nombre-input" id="edaGeneral"></label>
                             </div>
                         </div>
 
@@ -169,32 +166,34 @@
                                     <div class="form-row card-body padding-general-top">
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
+                                                <asp:DropDownList ClientIDMode="Static" ID="provinciasEX" runat="server" CssClass="browser-default custom-select listaProvinciasEX"></asp:DropDownList>
+                                                <input clientidmode="Static" runat="server" type="hidden" id="proEX" />
 
-                                                <%--<asp:DropDownList ID="provinciasJ" runat="server" CssClass="custom-select browser-default listaProvincias" placeHolder="provincia">
-                                                    
-                                                    
-                                                </asp:DropDownList>--%>
-
-                                                <select runat="server" class="browser-default custom-select listaProvinciasEX" id="provinciasEX">
-
+                                                <%--<select ClientIDMode="Static" runat="server" class="browser-default custom-select listaProvinciasEX" id="provinciasEX">
                                                     <option value="" disabled selected>Provincia</option>
-                                                </select>
+                                                </select>--%>
                                             </div>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select listaCantonesEX" id="cantonesEX">
+                                                <asp:DropDownList ClientIDMode="Static" ID="cantonesEX" runat="server" CssClass="browser-default custom-select listaCantonesEX"></asp:DropDownList>
+                                                <input clientidmode="Static" runat="server" type="hidden" id="canEX" />
+
+                                                <%-- <select ClientIDMode="Static" runat="server" class="browser-default custom-select listaCantonesEX" id="cantonesEX">
                                                     <option value="" disabled selected>Cantón</option>
-                                                </select>
+                                                </select>--%>
                                             </div>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                             <div class="padding-general-label">
-                                                <select class="browser-default custom-select listaDistritosEX" id="distritosEX">
+                                                <asp:DropDownList ClientIDMode="Static" ID="distritosEX" runat="server" CssClass="browser-default custom-select listaDistritosEX"></asp:DropDownList>
+                                                <input clientidmode="Static" runat="server" type="hidden" id="disEX" />
+
+                                                <%--<select ClientIDMode="Static" runat="server" class="browser-default custom-select listaDistritosEX" id="distritosEX">
                                                     <option value="" disabled selected>Distrito</option>
-                                                </select>
+                                                </select>--%>
                                             </div>
                                         </div>
                                     </div>
@@ -307,33 +306,45 @@
                                         <div class="form-row">
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaProvinciasEN" id="provinciasEN">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="provinciasEN" runat="server" CssClass="browser-default custom-select listaProvinciasEN"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="proEN" />
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaProvinciasEN" id="provinciasEN">
                                                         <option value="" disabled selected>Provincia</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaCantonesEN" id="cantonesEN">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="cantonesEN" runat="server" CssClass="browser-default custom-select listaCantonesEN"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="canEN" />
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaCantonesEN" id="cantonesEN">
                                                         <option value="" disabled selected>Cantón</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaDistritosEN" id="distritosEN">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="distritosEN" runat="server" CssClass="browser-default custom-select listaDistritosEN"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="disEN" />
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaDistritosEN" id="distritosEN">
                                                         <option value="" disabled selected>Distrito</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaBarriosEN" id="barriosEN">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="barriosEN" runat="server" CssClass="browser-default custom-select listaBarriosEN"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="barEN" />
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaBarriosEN" id="barriosEN">
                                                         <option value="" disabled selected>Barrio</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -408,33 +419,45 @@
                                         <div class="form-row">
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaProvinciasFA" id="provinciasFA">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="provinciasFA" runat="server" CssClass="browser-default custom-select listaProvinciasFA"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="proFA" />
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaProvinciasFA" id="provinciasFA">
                                                         <option value="" disabled selected>Provincia</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaCantonesFA" id="cantonesFA">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="cantonesFA" runat="server" CssClass="browser-default custom-select listaCantonesFA"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="canFA" />
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaCantonesFA" id="cantonesFA">
                                                         <option value="" disabled selected>Cantón</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaDistritosFA" id="distritosFA">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="distritosFA" runat="server" CssClass="browser-default custom-select listaDistritosFA"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="disFA" />
+
+                                                    <%-- <select clientidmode="Static" runat="server" class="browser-default custom-select listaDistritosFA" id="distritosFA">
                                                         <option value="" disabled selected>Distrito</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <select class="browser-default custom-select listaBarriosFA" id="barriosFA">
+                                                    <asp:DropDownList ClientIDMode="Static" ID="barriosFA" runat="server" CssClass="browser-default custom-select listaBarriosFA" ></asp:DropDownList>
+                                                <input ClientIDMode="Static"  runat="server" type="hidden" id="barFA"/>
+
+                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaBarriosFA" id="barriosFA">
                                                         <option value="" disabled selected>Barrio</option>
-                                                    </select>
+                                                    </select>--%>
                                                 </div>
                                             </div>
                                         </div>

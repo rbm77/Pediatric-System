@@ -85,7 +85,7 @@
 }
 
 .alinearBtnConsulta {
-    text-align: center;
+    text-align: right;
     display: block
 }
 
@@ -106,4 +106,8 @@
 .alinearFoto {
     text-align: center;
     display: block
+}
+
+.btnRow {
+    padding-right: 0px;
 }

@@ -77,9 +77,9 @@ namespace BL
             TODireccion direccionFacturanteTO = new TODireccion();
             TOHistoriaClinica historiaClinicaTO = new TOHistoriaClinica();
 
-            convertirExpedienteCompleto_TO_BL(expedienteBL, direccionPacienteBL, encargadoBL, direccionEncargadoBL, facturanteBL, direccionFacturanteBL, historiaClinicaBL, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
-
             string confirmacion = daoExpediente.CargarExpediente(codigoExpediente, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
+
+            convertirExpedienteCompleto_TO_BL(expedienteBL, direccionPacienteBL, encargadoBL, direccionEncargadoBL, facturanteBL, direccionFacturanteBL, historiaClinicaBL, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
 
             return confirmacion;
         }
@@ -96,11 +96,12 @@ namespace BL
             expedienteBL.Sexo = expediente.Sexo;
             expedienteBL.Foto = expediente.Foto;
             expedienteBL.ExpedienteAntiguo = expediente.ExpedienteAntiguo;
+            expedienteBL.Codigo = expediente.Codigo;
 
             //Objeto Direccion Paciente
             direccionPacienteBL.Codigo = direccionPaciente.Codigo;
             direccionPacienteBL.Provincia = direccionPaciente.Provincia;
-            direccionPacienteBL.Canton = direccionFacturante.Canton;
+            direccionPacienteBL.Canton = direccionPaciente.Canton;
             direccionPacienteBL.Distrito = direccionPaciente.Distrito;
 
             //Objeto Encargado 
@@ -130,7 +131,7 @@ namespace BL
             //Objeto Direccion Facturante 
             direccionFacturanteBL.Codigo = direccionFacturante.Codigo;
             direccionFacturanteBL.Provincia = direccionFacturante.Provincia;
-            direccionFacturanteBL.Canton = direccionFacturante.Distrito;
+            direccionFacturanteBL.Canton = direccionFacturante.Canton;
             direccionFacturanteBL.Distrito = direccionFacturante.Distrito;
             direccionFacturanteBL.Barrio = direccionFacturante.Barrio;
 
@@ -176,6 +177,7 @@ namespace BL
             expediente.Sexo = expedienteBL.Sexo;
             expediente.Foto = expedienteBL.Foto;
             expediente.ExpedienteAntiguo = expedienteBL.ExpedienteAntiguo;
+            expediente.Direccion = expedienteBL.Direccion;
 
             //Objeto Direccion Paciente
             direccionPaciente.Codigo = direccionPacienteBL.Codigo;
@@ -191,6 +193,7 @@ namespace BL
             encargado.Parentesco = encargadoBL.Parentesco;
             encargado.CorreoElectronico = encargadoBL.CorreoElectronico;
             encargado.Telefono = encargadoBL.Telefono;
+            encargado.Direccion = encargadoBL.Direccion;
 
             //Objeto Direccion Encargado
             direccionEncargado.Codigo = direccionEncargadoBL.Codigo;
@@ -206,6 +209,7 @@ namespace BL
             facturante.SegundoApellido = facturanteBL.SegundoApellido;
             facturante.CorreoElectronico = facturanteBL.CorreoElectronico;
             facturante.Telefono = facturanteBL.Telefono;
+            facturante.Direccion = facturanteBL.Direccion;
 
             //Objeto Direccion Facturante 
             direccionFacturante.Codigo = direccionFacturanteBL.Codigo;
