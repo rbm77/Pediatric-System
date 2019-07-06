@@ -80,66 +80,66 @@ namespace Pediatric_System
         private void asignarTab_1(BLExpediente exp, BLDireccion dir)
         {
 
-            //if (exp.Codigo == exp.Cedula)
-            //{
-            //    cedulaPaciente.Text = exp.Cedula;
-            //    cedGeneral.InnerText = " " + exp.Cedula;
-            //}
-            //else
-            //{
-            //    cedGeneral.InnerText = "No tiene aún";
-            //    cedulaPaciente.Text = "";
-            //    pacienteNoCedula.Checked = true;
-            //}
+            if (exp.Codigo == exp.Cedula)
+            {
+                cedulaPaciente.Text = exp.Cedula;
+                cedGeneral.InnerText = " " + exp.Cedula;
+            }
+            else
+            {
+                cedGeneral.InnerText = "No tiene aún";
+                cedulaPaciente.Text = "";
+                pacienteNoCedula.Checked = true;
+            }
 
-            //paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
-            //TimeSpan dt = DateTime.Now - exp.FechaNacimiento;
-            //edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
-            //string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(exp.Foto);
-            //imgPreview.ImageUrl = imagenDataURL64;
+            paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
+            TimeSpan dt = DateTime.Now - exp.FechaNacimiento;
+            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(exp.Foto);
+            imgPreview.ImageUrl = imagenDataURL64;
 
-            //nombrePaciente.Text = exp.Nombre;
-            //primerApellidoPaciente.Text = exp.PrimerApellido;
-            //segundoApellidoPaciente.Text = exp.SegundoApellido;
-            //fechaNacimientoPaciente.Text = exp.FechaNacimiento.ToShortDateString();
-            //sexoPaciente.SelectedValue = exp.Sexo;
+            nombrePaciente.Text = exp.Nombre;
+            primerApellidoPaciente.Text = exp.PrimerApellido;
+            segundoApellidoPaciente.Text = exp.SegundoApellido;
+            fechaNacimientoPaciente.Text = exp.FechaNacimiento.ToShortDateString();
+            sexoPaciente.SelectedValue = exp.Sexo;
 
-            //proEX.Value = dir.Provincia;
-            //canEX.Value = dir.Canton;
-            //disEX.Value = dir.Distrito;
+            proEX.Value = dir.Provincia;
+            canEX.Value = dir.Canton;
+            disEX.Value = dir.Distrito;
 
-            //VincExpedientePaciente.Text = exp.ExpedienteAntiguo;
+            VincExpedientePaciente.Text = exp.ExpedienteAntiguo;
         }
 
         private void asignarTab_2(BLEncargado_Facturante encar, BLDireccion dir)
         {
-            //nombreEncargado.Text = encar.Nombre;
-            //primerApellidoEncargado.Text = encar.PrimerApellido;
-            //segundoApellidoEncargado.Text = encar.SegundoApellido;
-            //cedulaEncargado.Text = encar.Cedula;
-            //telefonoEncargado.Text = Convert.ToString(encar.Telefono);
-            //correoEncargado.Text = encar.CorreoElectronico;
-            //parentezcoEncargado.Text = encar.Parentesco;
+            nombreEncargado.Text = encar.Nombre;
+            primerApellidoEncargado.Text = encar.PrimerApellido;
+            segundoApellidoEncargado.Text = encar.SegundoApellido;
+            cedulaEncargado.Text = encar.Cedula;
+            telefonoEncargado.Text = Convert.ToString(encar.Telefono);
+            correoEncargado.Text = encar.CorreoElectronico;
+            parentezcoEncargado.Text = encar.Parentesco;
 
-            //proEN.Value = dir.Provincia;
-            //canEN.Value = dir.Canton;
-            //disEN.Value = dir.Distrito;
-            //barEN.Value = dir.Barrio;
+            proEN.Value = dir.Provincia;
+            canEN.Value = dir.Canton;
+            disEN.Value = dir.Distrito;
+            barEN.Value = dir.Barrio;
         }
 
         private void asignarTab_3(BLEncargado_Facturante fac, BLDireccion dir)
         {
-            //nombreFacturante.Text = fac.Nombre;
-            //primerApellidoFacturante.Text = fac.PrimerApellido;
-            //segundoApellidoFacturante.Text = fac.SegundoApellido;
-            //cedulaFacturante.Text = fac.Cedula;
-            //telefonoFacturante.Text = Convert.ToString(fac.Telefono);
-            //correoFacturante.Text = fac.CorreoElectronico;
+            nombreFacturante.Text = fac.Nombre;
+            primerApellidoFacturante.Text = fac.PrimerApellido;
+            segundoApellidoFacturante.Text = fac.SegundoApellido;
+            cedulaFacturante.Text = fac.Cedula;
+            telefonoFacturante.Text = Convert.ToString(fac.Telefono);
+            correoFacturante.Text = fac.CorreoElectronico;
 
-            //proFA.Value = dir.Provincia;
-            //canFA.Value = dir.Canton;
-            //disFA.Value = dir.Distrito;
-            //barFA.Value = dir.Barrio;
+            proFA.Value = dir.Provincia;
+            canFA.Value = dir.Canton;
+            disFA.Value = dir.Distrito;
+            barFA.Value = dir.Barrio;
         }
 
         private void asignarTab_4(BLHistoriaClinica his)
@@ -273,14 +273,10 @@ namespace Pediatric_System
             ManejadorExpediente manejador = new ManejadorExpediente();
             string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
 
-            //infoTab_1(expediente, direccionExp);
-            //infoTab_2(encargado, direccionEncar);
-            //infoTab_3(facturante, direccionFactu);
-            //infoTab_4(historiaClinica);
-
-            //// Enviar datos para guardar en BD
-            //ManejadorExpediente manejador = new ManejadorExpediente();
-            ////string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
+            infoTab_1(expediente, direccionExp);
+            infoTab_2(encargado, direccionEncar);
+            infoTab_3(facturante, direccionFactu);
+            infoTab_4(historiaClinica);
 
 
             MostrarMensaje(confirmacion);
@@ -306,27 +302,16 @@ namespace Pediatric_System
             direccionExp.Canton = canton;
             direccionExp.Distrito = distrito;
 
-            //// Recuperar campos de texto para objeto Direccion (Expediente) 
-            //string provincia = Request.Form["listaProvinciasEX"];
-            //string canton = Request.Form["listaCantonEX"];
-            //string distrito = Request.Form["listaDistritoEX"];
-            //string codigo = codigoDireccion(provincia, canton, distrito, "");
-
-            //direccionExp.Codigo = codigo;
-            //direccionExp.Provincia = provincia;
-            //direccionExp.Canton = canton;
-            //direccionExp.Distrito = distrito;
-
             //// Recuperar campos de texto para objeto Expediente
 
-            //if (pacienteNoCedula.Checked)
-            //{
-            //    expediente.Codigo = crearCodigoExpe();
-            //}
-            //else
-            //{
-            //    expediente.Codigo = cedulaPaciente.Text.Trim();
-            //}
+            if (pacienteNoCedula.Checked)
+            {
+                expediente.Codigo = crearCodigoExpe();
+            }
+            else
+            {
+                expediente.Codigo = cedulaPaciente.Text.Trim();
+            }
 
             expediente.Nombre = nombrePaciente.Text.Trim();
             expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
@@ -338,17 +323,6 @@ namespace Pediatric_System
             expediente.Foto = guardarImag();
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
             expediente.Direccion = codigo;
-            //expediente.Nombre = nombrePaciente.Text.Trim();
-            //expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
-            //expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim();
-            //expediente.Cedula = cedulaPaciente.Text.Trim();
-            //expediente.FechaNacimiento = DateTime.ParseExact(fechaNacimientoPaciente.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
-            //expediente.Sexo = sexoPaciente.Text.Trim();
-            //expediente.Foto = guardarImag();
-            //expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
-            //expediente.Direccion = codigo;
-
-            //byte[] fotoTxt = guardarImag();
         }
 
         private string crearCodigoExpe ()
@@ -422,33 +396,22 @@ namespace Pediatric_System
                 calificacion += "pequeño";
             }
 
+            if (opcion_grande.Checked)
+            {
+                calificacion += "grande";
+            }
 
-            //historiaClinica.AP_Talla = decimal.Parse(tallaNacer.Text);
-            //historiaClinica.AP_Peso = decimal.Parse(pesoNacer.Text); ;
-            //historiaClinica.AP_PerimetroCefalico = decimal.Parse(perimetroCefalico.Text); ;
-            //string calificacion = clasificacionUniversal.Value;
-            //if (opcion_pequeno.Checked)
-            //{
-            //    calificacion += "pequeño";
-            //}
+            if (opcion_adecuado.Checked)
+            {
+                calificacion += "adecuado";
+            }
 
-
-            //if (opcion_grande.Checked)
-            //{
-            //    calificacion += "grande";
-            //}
-
-            //if (opcion_adecuado.Checked)
-            //{
-            //    calificacion += "adecuado";
-            //}
-
-            //historiaClinica.AP_CalificacionUniversal = calificacion;
-            //historiaClinica.AP_APGAR = decimal.Parse(apgar.Text);
-            //historiaClinica.AP_EdadGestacional = decimal.Parse(edadGestacional.Text);
+            historiaClinica.AP_CalificacionUniversal = calificacion;
+            historiaClinica.AP_APGAR = decimal.Parse(apgar.Text);
+            historiaClinica.AP_EdadGestacional = decimal.Parse(edadGestacional.Text);
 
 
-            if(otrasComplicacionesAP.Value == "ausentes")
+            if (otrasComplicacionesAP.Value == "ausentes")
             {
                 historiaClinica.AP_OtrasComplicaciones = false;
                 historiaClinica.AP_OtrasComplicacionesDescripcion = "";
@@ -458,47 +421,47 @@ namespace Pediatric_System
                 historiaClinica.AP_OtrasComplicaciones = true;
                 historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
             }
-            //if(otrasComplicacionesAP.Value == "ausentes")
-            //{
-            //    historiaClinica.AP_OtrasComplicaciones = false;
-            //    historiaClinica.AP_OtrasComplicacionesDescripcion = null;
-            //}
-            //else
-            //{
-            //    historiaClinica.AP_OtrasComplicaciones = true;
-            //    historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
-            //}
+            if (otrasComplicacionesAP.Value == "ausentes")
+            {
+                historiaClinica.AP_OtrasComplicaciones = false;
+                historiaClinica.AP_OtrasComplicacionesDescripcion = null;
+            }
+            else
+            {
+                historiaClinica.AP_OtrasComplicaciones = true;
+                historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
+            }
 
-          
-            //if (asmaCheck.Checked)
-            //{
-            //    historiaClinica.HF_Asma = true;
-            //}
 
-            //if (diabetesCheck.Checked)
-            //{
-            //    historiaClinica.HF_Diabetes = true;
-            //}
+            if (asmaCheck.Checked)
+            {
+                historiaClinica.HF_Asma = true;
+            }
 
-            //if (hipertensionCheck.Checked)
-            //{
-            //    historiaClinica.HF_Hipertension = true;
-            //}
+            if (diabetesCheck.Checked)
+            {
+                historiaClinica.HF_Diabetes = true;
+            }
 
-            //if (cardiovascularCheck.Checked)
-            //{
-            //    historiaClinica.HF_Cardivasculares = true;
-            //}
+            if (hipertensionCheck.Checked)
+            {
+                historiaClinica.HF_Hipertension = true;
+            }
 
-            //if (displidemiaCheck.Checked)
-            //{
-            //    historiaClinica.HF_Displidemia = true;
-            //}
+            if (cardiovascularCheck.Checked)
+            {
+                historiaClinica.HF_Cardivasculares = true;
+            }
 
-            //if (epilepsiaCheck.Checked)
-            //{
-            //    historiaClinica.HF_Epilepsia = true;
-            //}
+            if (displidemiaCheck.Checked)
+            {
+                historiaClinica.HF_Displidemia = true;
+            }
+
+            if (epilepsiaCheck.Checked)
+            {
+                historiaClinica.HF_Epilepsia = true;
+            }
 
 
             historiaClinica.HF_DescripcionOtros = "";
@@ -532,35 +495,37 @@ namespace Pediatric_System
             {
                 historiaClinica.Alergias = true;
                 historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
-            } 
+            }
 
-            //if (otrosCheck.Checked)
-            //{
-            //    historiaClinica.HF_Otros = true;
-            //    historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
-            //}
+            if (otrosCheck.Checked)
+            {
+                historiaClinica.HF_Otros = true;
+                historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
+            }
 
-            //if (apatEstado.Value == "presentesPat")
-            //{
-            //    historiaClinica.APAT_Estado = true;
-            //    historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
-            //}
+            if (apatEstado.Value == "presentesPat")
+            {
+                historiaClinica.APAT_Estado = true;
+                historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
+            }
 
-            //if (atEstado.Value == "presentesTrau") {
-            //    historiaClinica.AT_Estado = true;
-            //    historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
-            //}
+            if (atEstado.Value == "presentesTrau")
+            {
+                historiaClinica.AT_Estado = true;
+                historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
+            }
 
-            //if (aqEstado.Value == "presentesQui") {
-            //    historiaClinica.AQ_Estado = true;
-            //    historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
-            //}
+            if (aqEstado.Value == "presentesQui")
+            {
+                historiaClinica.AQ_Estado = true;
+                historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
+            }
 
-            //if (alergiasEstado.Value == "presentesAlergia")
-            //{
-            //    historiaClinica.Alergias = true;
-            //    historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
-            //} 
+            if (alergiasEstado.Value == "presentesAlergia")
+            {
+                historiaClinica.Alergias = true;
+                historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
+            }
 
         }
 
