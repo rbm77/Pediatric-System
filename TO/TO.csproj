@@ -51,7 +51,6 @@
     </Compile>
     <Compile Include="TOAdministrivo.cs" />
     <Compile Include="TOAgendaEstandar.cs" />
-    <Compile Include="TOAplicada.cs" />
     <Compile Include="TOCita.cs" />
     <Compile Include="TOCuenta.cs" />
     <Compile Include="TODireccion.cs" />

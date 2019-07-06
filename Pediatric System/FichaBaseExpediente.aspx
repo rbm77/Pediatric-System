@@ -21,11 +21,6 @@
         <hr class="linea-divisoria-titulo" />
 
         <form runat="server" method="post">
-
-        <asp:Literal ID="mensajeConfirmacion1" runat="server"></asp:Literal>
-
-        <form runat="server">
-
             <div class="margen-general-2-top" runat="server" id="informacionPaciente">
                 <div class="col-12 btnRow">
                     <div class="form-row">
@@ -756,31 +751,36 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                                 <div class="card">
-                                    <label class="nombre-input card-header" style="padding-left: 40px">Lista de Pendientes</label>
+                                    <label class="nombre-input card-header" style="padding-left: 40px">Vacunas Pendientes</label>
 
-                                    <div class="card-body">
+                                    <div class="form-row card-body padding-general-top">
 
                                         <div class="table-responsive">
                                             <asp:GridView ID="esquemaVacunacion" runat="server" CssClass="table"
-                                                AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Style="text-align: center" >
+                                                Style="text-align: center" AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                                                HeaderStyle-ForeColor="DimGray" GridLines="None">
 
                                                 <Columns>
-                                                    <asp:TemplateField HeaderText="Aplicada">
-                                                        <ItemTemplate>
-                                                            <asp:CheckBox ID="aplicado" runat="server" />
-                                                        </ItemTemplate>
-                                                    </asp:TemplateField>
-                                                    <asp:BoundField HeaderText="Vacuna" DataField="NombreVacuna" />
-                                                    <asp:BoundField HeaderText="Edad de aplicación" DataField="EdadAplicacion" />
-
+                                                    <asp:BoundField HeaderText="Nombre" DataField="NombreVacuna" ControlStyle-Width="25%" />
+                                                    <asp:BoundField HeaderText="Edad de aplicación" DataField="EdadAplicacion" ControlStyle-Width="25%" />
+                                                    <asp:CheckBoxField HeaderText="Aplicada" ControlStyle-Width="25%" />
                                                 </Columns>
-
                                             </asp:GridView>
+
+
                                         </div>
+
+
+
+
 
                                     </div>
                                 </div>
+
+
+
+
+
                             </div>
                         </div>
                     </div>
@@ -799,7 +799,7 @@
                 </div>
             </div>
 
-            
+            <asp:Literal ID="mensajeConfirmacion1" runat="server"></asp:Literal>
 
         </form>
 

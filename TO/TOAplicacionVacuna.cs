@@ -22,25 +22,17 @@ namespace TO
 
         }
 
-
-        public TOAplicacionVacuna(string idExpediente, string nombreVacuna, string aplicacion1, string aplicacion2, string aplicacion3,
-            string refuerzo1, string refuerzo2, string refuerzo3)
+        public TOAplicacionVacuna(string idExpediente, string nombreVacuna, bool aplicacion1, bool aplicacion2, bool aplicacion3,
+            bool refuerzo1, bool refuerzo2, bool refuerzo3)
         {
             this.IDExpediete = idExpediente;
             this.NombreVacuna = nombreVacuna;
-            this.Aplicacion1 = Convertir(aplicacion1);
-            this.Aplicacion2 = Convertir(aplicacion2);
-            this.Aplicacion3 = Convertir(aplicacion3);
-            this.Refuerzo1 = Convertir(refuerzo1);
-            this.Refuerzo2 = Convertir(refuerzo2);
-            this.Refuerzo3 = Convertir(refuerzo3);
-
+            this.Aplicacion1 = aplicacion1;
+            this.Aplicacion2 = aplicacion2;
+            this.Aplicacion3 = aplicacion3;
+            this.Refuerzo1 = refuerzo1;
+            this.Refuerzo2 = refuerzo2;
+            this.Refuerzo3 = refuerzo3;
         }
-
-        private bool Convertir(string binario)
-        {
-            return bool.Parse(binario);
-        }
-
     }
 }

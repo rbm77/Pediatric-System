@@ -44,7 +44,6 @@
     <Compile Include="BLAplicacionVacuna.cs" />
     <Compile Include="BLAdministrativo.cs" />
     <Compile Include="BLAgendaEstandar.cs" />
-    <Compile Include="BLAplicada.cs" />
     <Compile Include="BLCita.cs" />
     <Compile Include="BLCuenta.cs" />
     <Compile Include="BLDireccion.cs" />
