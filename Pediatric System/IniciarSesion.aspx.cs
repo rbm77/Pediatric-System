@@ -36,6 +36,13 @@ namespace Pediatric_System
                         switch (miBLCuenta.tipo)
                         {
                             case "Medico":
+
+                                string cor = Session["Cuenta"].ToString();
+                                BLMedico miBLMedico = new BLMedico();
+                                miBLMedico.correo = cor;
+                                miBLMedico.buscarMedico();
+                                Session["codigoMedico"] = miBLMedico.codigo;
+
                                 Response.Redirect("Dashboard.aspx");
                                 break;
                             case "Administrador":

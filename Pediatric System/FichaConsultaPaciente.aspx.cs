@@ -115,21 +115,21 @@ namespace Pediatric_System
             p7.Add(chunk7);
 
 
-            string nombrePaciente = "Richard Bolaños Moya";
+            string nombrePaciente = Session["nombrePaciente"].ToString();
 
             Chunk chunk8 = new Chunk("\nNombre completo: " + nombrePaciente + "\n");
             Paragraph p8 = new Paragraph();
             p8.Alignment = Element.ALIGN_JUSTIFIED;
             p8.Add(chunk8);
 
-            string edadPaciente = "20 años";
+            string edadPaciente = Session["edadPaciente"].ToString();
 
             Chunk chunk9 = new Chunk("Edad: " + edadPaciente + "\n");
             Paragraph p9 = new Paragraph();
             p9.Alignment = Element.ALIGN_JUSTIFIED;
             p9.Add(chunk9);
 
-            string direccionPaciente = "Calle Angostura, Buenos Aires, Palmares, Alajuela";
+            string direccionPaciente = Session["direccionPaciente"].ToString();
 
             Chunk chunk10 = new Chunk("Dirección: " + direccionPaciente + "\n\n");
             Paragraph p10 = new Paragraph();
@@ -142,21 +142,21 @@ namespace Pediatric_System
             p11.Add(chunk11);
 
 
-            string nombreEncargado = "Ricardo Bolaños Corrales";
+            string nombreEncargado = Session["nombreEncargado"].ToString();
 
             Chunk chunk12 = new Chunk("\nNombre completo: " + nombreEncargado + "\n");
             Paragraph p12 = new Paragraph();
             p12.Alignment = Element.ALIGN_JUSTIFIED;
             p12.Add(chunk12);
 
-            string telefonoEncargado = "88169461";
+            string telefonoEncargado = Session["telefonoEncargado"].ToString();
 
             Chunk chunk13 = new Chunk("Teléfono: " + telefonoEncargado + "\n");
             Paragraph p13 = new Paragraph();
             p13.Alignment = Element.ALIGN_JUSTIFIED;
             p13.Add(chunk13);
 
-            string direccionEncargado = "Calle Angostura, Buenos Aires, Palmares, Alajuela";
+            string direccionEncargado = Session["direccionEncargado"].ToString();
 
             Chunk chunk14 = new Chunk("Dirección: " + direccionEncargado + "\n\n");
             Paragraph p14 = new Paragraph();
