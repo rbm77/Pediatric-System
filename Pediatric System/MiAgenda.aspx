@@ -90,7 +90,7 @@
                                 <label class="form-check-label" for="viernes">Viernes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input sab" type="checkbox" id="sabado" value="Sabado" runat="server" name="diaSemana">
+                                <input class="form-check-input sab" type="checkbox" id="sabado" value="Sábado" runat="server" name="diaSemana">
                                 <label class="form-check-label" for="sabado">Sábado</label>
                             </div>
                             <div class="form-check form-check-inline">
