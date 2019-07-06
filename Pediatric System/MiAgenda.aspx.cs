@@ -17,7 +17,8 @@ namespace Pediatric_System
         {
             if (!IsPostBack)
             {
-                MostrarAgenda(new List<BLAgendaEstandar>(), "777", true);
+                string codigoMedico = Session["codigoMedico"].ToString();
+                MostrarAgenda(new List<BLAgendaEstandar>(), codigoMedico, true);
             }
         }
 
@@ -44,14 +45,14 @@ namespace Pediatric_System
             else
             {
 
-            // Obtener datos de entrada
+                // Obtener datos de entrada
 
-            string codigoMedico = "777";
+                string codigoMedico = Session["codigoMedico"].ToString();
 
-            string inicio = clockpicker.Value.Trim();
-            string fin = clockpicker2.Value.Trim();
+                string inicio = clockpicker.Value.Trim();
+                string fin = clockpicker2.Value.Trim();
 
-            List<BLAgendaEstandar> agenda = new List<BLAgendaEstandar>();
+                List<BLAgendaEstandar> agenda = new List<BLAgendaEstandar>();
 
             if (lunes.Checked)
             {
@@ -182,7 +183,7 @@ namespace Pediatric_System
 
             if (e.CommandName == "Eliminar")
             {
-                string codigoMedico = "777";
+                string codigoMedico = Session["codigoMedico"].ToString();
                 ManejadorAgenda manejador = new ManejadorAgenda();
                 int indice = Convert.ToInt32(e.CommandArgument);
 
@@ -311,7 +312,8 @@ namespace Pediatric_System
                         else
                         {
                             ManejadorAgenda manejador = new ManejadorAgenda();
-                            string obtenida = manejador.ObtenerDuracionCita("777");
+                            string codigoMedico = Session["codigoMedico"].ToString();
+                            string obtenida = manejador.ObtenerDuracionCita(codigoMedico);
 
                             if (obtenida.Contains("error"))
                             {

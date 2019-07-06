@@ -49,11 +49,10 @@ namespace Pediatric_System
             {
                 string codigoExp = (string)Session["expedienteSeleccionado"];
                 mostrarExpediente(codigoExp);
-            }
-
-            if (!IsPostBack)
-            {
-                MostrarEsquemaVacunacion();
+                if (!IsPostBack)
+                {
+                    MostrarEsquemaVacunacion(codigoExp);
+                }
             }
 
         }
@@ -70,6 +69,22 @@ namespace Pediatric_System
 
             ManejadorExpediente manejador = new ManejadorExpediente();
             manejador.mostrarExpediente(codigo, expediente, expDireccion, encargado, encDireccion, facturante, facDireccion, historiaClinica);
+
+            // Aqui recupero los datos que se van a mostrar en el pdf de la referencia medica
+
+            ManejadorEdad manejadorEdad = new ManejadorEdad();
+
+            Session["nombrePaciente"] = expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
+            Session["edadPaciente"] = manejadorEdad.ExtraerEdad(expediente.FechaNacimiento);
+            Session["direccionPaciente"] = expDireccion.Barrio + ", " + expDireccion.Distrito + ", " 
+                + expDireccion.Canton + ", " + expDireccion.Provincia;
+            Session["nombreEncargado"] = encargado.Nombre + " " + encargado.PrimerApellido + " " + encargado.SegundoApellido;
+            Session["telefonoEncargado"] = encargado.Telefono;
+            Session["direccionEncargado"] = encDireccion.Barrio + ", " + encDireccion.Distrito + ", "
+                + encDireccion.Canton + ", " + encDireccion.Provincia;
+
+
+            /////////////////////////////////////////////////////////////////////////////////
 
             asignarTab_1(expediente, expDireccion);
             asignarTab_2(encargado, encDireccion);
@@ -259,7 +274,7 @@ namespace Pediatric_System
 
         protected void guardarExpediente_Click(object sender, EventArgs e)
         {
-            ActualizarEsquemaVacunacion();
+            //ActualizarEsquemaVacunacion();
 
             BLExpediente expediente = new BLExpediente();
             BLDireccion direccionExp = new BLDireccion();
@@ -533,7 +548,7 @@ namespace Pediatric_System
         /// <summary>
         /// Carga el esquema de vacunacion y las aplicaciones de cada una de ellas
         /// </summary>
-        private void CargarEsquemaVacunacion()
+        private void CargarEsquemaVacunacion(string idExpediente)
         {
             listaPendientes.Clear();
             vacunas.Clear();
@@ -545,7 +560,7 @@ namespace Pediatric_System
 
             
             List<BLAplicacionVacuna> aplicaciones = new List<BLAplicacionVacuna>();
-            string idExpediente = "777";
+            
 
             string confimacion = manejadorVacunas.CargarVacunas(vacunas);
 
@@ -798,9 +813,9 @@ namespace Pediatric_System
         }
 
 
-        private void MostrarEsquemaVacunacion()
+        private void MostrarEsquemaVacunacion(string idExpediente)
         {
-            CargarEsquemaVacunacion();
+            CargarEsquemaVacunacion(idExpediente);
 
             esquemaVacunacion.DataSource = listaPendientes;
             esquemaVacunacion.DataBind();

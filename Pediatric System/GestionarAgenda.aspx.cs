@@ -16,6 +16,7 @@ namespace Pediatric_System
 
         private static DateTime diaSeleccionado = DateTime.Now;
         private static List<BLCita> listaCitas = new List<BLCita>();
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,7 +43,7 @@ namespace Pediatric_System
         {
             diaSeleccionado = fecha;
 
-            string codigoMedico = "777";
+            string codigoMedico = Session["codigoMedico"].ToString();
 
             listaCitas.Clear();
 
@@ -111,8 +112,7 @@ namespace Pediatric_System
 
                         }
 
-
-                        string segundaConfirmacion = manejadorAgenda.ObtenerDuracionCita("777");
+                        string segundaConfirmacion = manejadorAgenda.ObtenerDuracionCita(codigoMedico);
 
                         bool duracionCapturada = true;
 
@@ -366,7 +366,9 @@ namespace Pediatric_System
 
             ManejadorCita manejador = new ManejadorCita();
 
-            string confirmacion = manejador.CrearCita("777", nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaT);
+            string codigoMedico = Session["codigoMedico"].ToString();
+
+            string confirmacion = manejador.CrearCita(codigoMedico, nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaT);
 
             LimpiarCampos();
 
@@ -530,7 +532,10 @@ namespace Pediatric_System
 
             ManejadorCita manejador = new ManejadorCita();
 
-            string confirmacion = manejador.CancelarCita("777", fechaTxt, horaT);
+            string codigoMedico = Session["codigoMedico"].ToString();
+
+
+            string confirmacion = manejador.CancelarCita(codigoMedico, fechaTxt, horaT);
 
             LimpiarCampos();
 
