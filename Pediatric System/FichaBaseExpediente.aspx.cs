@@ -40,13 +40,19 @@ namespace Pediatric_System
                 informacionPaciente.Visible = false;
             }
 
-            if((string)Session["pagina"] == "listaExpedientes-seleccionado")
+            if ((string)Session["pagina"] == "listaExpedientes-seleccionado")
             {
                 string codigoExp = (string)Session["expedienteSeleccionado"];
                 mostrarExpediente(codigoExp);
             }
+
+            if (!IsPostBack)
+            {
+                MostrarEsquemaVacunacion();
+            }
+
         }
-        
+
         private void mostrarExpediente(string codigo)
         {
             BLExpediente expediente = new BLExpediente();
@@ -69,66 +75,66 @@ namespace Pediatric_System
         private void asignarTab_1(BLExpediente exp, BLDireccion dir)
         {
 
-            if (exp.Codigo == exp.Cedula)
-            {
-                cedulaPaciente.Text = exp.Cedula;
-                cedGeneral.InnerText = " " + exp.Cedula;  
-            }
-            else
-            {
-                cedGeneral.InnerText = "No tiene aún";
-                cedulaPaciente.Text = "";
-                pacienteNoCedula.Checked = true;
-            }    
+            //if (exp.Codigo == exp.Cedula)
+            //{
+            //    cedulaPaciente.Text = exp.Cedula;
+            //    cedGeneral.InnerText = " " + exp.Cedula;
+            //}
+            //else
+            //{
+            //    cedGeneral.InnerText = "No tiene aún";
+            //    cedulaPaciente.Text = "";
+            //    pacienteNoCedula.Checked = true;
+            //}
 
-            paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
-            TimeSpan dt = DateTime.Now - exp.FechaNacimiento;
-            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
-            string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(exp.Foto);
-            imgPreview.ImageUrl = imagenDataURL64;
+            //paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
+            //TimeSpan dt = DateTime.Now - exp.FechaNacimiento;
+            //edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            //string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(exp.Foto);
+            //imgPreview.ImageUrl = imagenDataURL64;
 
-            nombrePaciente.Text = exp.Nombre;
-            primerApellidoPaciente.Text = exp.PrimerApellido;
-            segundoApellidoPaciente.Text = exp.SegundoApellido;
-            fechaNacimientoPaciente.Text = exp.FechaNacimiento.ToShortDateString();
-            sexoPaciente.SelectedValue = exp.Sexo;
+            //nombrePaciente.Text = exp.Nombre;
+            //primerApellidoPaciente.Text = exp.PrimerApellido;
+            //segundoApellidoPaciente.Text = exp.SegundoApellido;
+            //fechaNacimientoPaciente.Text = exp.FechaNacimiento.ToShortDateString();
+            //sexoPaciente.SelectedValue = exp.Sexo;
 
-            proEX.Value = dir.Provincia;
-            canEX.Value = dir.Canton;
-            disEX.Value = dir.Distrito;
+            //proEX.Value = dir.Provincia;
+            //canEX.Value = dir.Canton;
+            //disEX.Value = dir.Distrito;
 
-            VincExpedientePaciente.Text = exp.ExpedienteAntiguo;
+            //VincExpedientePaciente.Text = exp.ExpedienteAntiguo;
         }
 
-        private void asignarTab_2 (BLEncargado_Facturante encar, BLDireccion dir)
+        private void asignarTab_2(BLEncargado_Facturante encar, BLDireccion dir)
         {
-            nombreEncargado.Text = encar.Nombre;
-            primerApellidoEncargado.Text = encar.PrimerApellido;
-            segundoApellidoEncargado.Text = encar.SegundoApellido;
-            cedulaEncargado.Text = encar.Cedula;
-            telefonoEncargado.Text = Convert.ToString(encar.Telefono);
-            correoEncargado.Text = encar.CorreoElectronico;
-            parentezcoEncargado.Text = encar.Parentesco;
+            //nombreEncargado.Text = encar.Nombre;
+            //primerApellidoEncargado.Text = encar.PrimerApellido;
+            //segundoApellidoEncargado.Text = encar.SegundoApellido;
+            //cedulaEncargado.Text = encar.Cedula;
+            //telefonoEncargado.Text = Convert.ToString(encar.Telefono);
+            //correoEncargado.Text = encar.CorreoElectronico;
+            //parentezcoEncargado.Text = encar.Parentesco;
 
-            proEN.Value = dir.Provincia;
-            canEN.Value = dir.Canton;
-            disEN.Value = dir.Distrito;
-            barEN.Value = dir.Barrio;
+            //proEN.Value = dir.Provincia;
+            //canEN.Value = dir.Canton;
+            //disEN.Value = dir.Distrito;
+            //barEN.Value = dir.Barrio;
         }
 
         private void asignarTab_3(BLEncargado_Facturante fac, BLDireccion dir)
         {
-            nombreFacturante.Text = fac.Nombre;
-            primerApellidoFacturante.Text = fac.PrimerApellido;
-            segundoApellidoFacturante.Text = fac.SegundoApellido;
-            cedulaFacturante.Text = fac.Cedula;
-            telefonoFacturante.Text = Convert.ToString(fac.Telefono);
-            correoFacturante.Text = fac.CorreoElectronico;
+            //nombreFacturante.Text = fac.Nombre;
+            //primerApellidoFacturante.Text = fac.PrimerApellido;
+            //segundoApellidoFacturante.Text = fac.SegundoApellido;
+            //cedulaFacturante.Text = fac.Cedula;
+            //telefonoFacturante.Text = Convert.ToString(fac.Telefono);
+            //correoFacturante.Text = fac.CorreoElectronico;
 
-            proFA.Value = dir.Provincia;
-            canFA.Value = dir.Canton;
-            disFA.Value = dir.Distrito;
-            barFA.Value = dir.Barrio;
+            //proFA.Value = dir.Provincia;
+            //canFA.Value = dir.Canton;
+            //disFA.Value = dir.Distrito;
+            //barFA.Value = dir.Barrio;
         }
 
         private void asignarTab_4(BLHistoriaClinica his)
@@ -157,7 +163,7 @@ namespace Pediatric_System
                 opcion_adecuado.Checked = true;
             }
 
-            if(his.AP_OtrasComplicaciones == true)
+            if (his.AP_OtrasComplicaciones == true)
             {
                 otrasComplicacionesAP.Value = "presentes";
                 complicacionPerinatal.Value = his.AP_OtrasComplicacionesDescripcion;
@@ -168,12 +174,12 @@ namespace Pediatric_System
                 asmaCheck.Checked = true;
             }
 
-            if(his.HF_Diabetes == true)
+            if (his.HF_Diabetes == true)
             {
                 diabetesCheck.Checked = true;
             }
 
-            if(his.HF_Hipertension == true)
+            if (his.HF_Hipertension == true)
             {
                 hipertensionCheck.Checked = true;
             }
@@ -213,7 +219,7 @@ namespace Pediatric_System
                 descripcionPatologicos.Value = "";
             }
 
-            if(his.AQ_Estado == true)
+            if (his.AQ_Estado == true)
             {
                 aqEstado.Value = "presentesQui";
                 descripcionQuirurgico.Value = his.AQ_Descripcion;
@@ -243,23 +249,20 @@ namespace Pediatric_System
                 descripcionAlergia.Value = "";
             }
         }
-            if (!IsPostBack)
-            {
-                MostrarEsquemaVacunacion();
-            }
-        }
+
+   
 
         protected void guardarExpediente_Click(object sender, EventArgs e)
         {
             ActualizarEsquemaVacunacion();
 
-            //BLExpediente expediente = new BLExpediente();
-            //BLDireccion direccionExp = new BLDireccion();
-            //BLEncargado_Facturante encargado = new BLEncargado_Facturante();
-            //BLDireccion direccionEncar = new BLDireccion();
-            //BLEncargado_Facturante facturante = new BLEncargado_Facturante();
-            //BLDireccion direccionFactu = new BLDireccion();
-            //BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
+            BLExpediente expediente = new BLExpediente();
+            BLDireccion direccionExp = new BLDireccion();
+            BLEncargado_Facturante encargado = new BLEncargado_Facturante();
+            BLDireccion direccionEncar = new BLDireccion();
+            BLEncargado_Facturante facturante = new BLEncargado_Facturante();
+            BLDireccion direccionFactu = new BLDireccion();
+            BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
 
             // Enviar datos para guardar en BD
             ManejadorExpediente manejador = new ManejadorExpediente();
@@ -274,21 +277,11 @@ namespace Pediatric_System
             //ManejadorExpediente manejador = new ManejadorExpediente();
             ////string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
 
-            //string confirmacion = "";
 
-            if (confirmacion.Contains("error"))
-            {
-                colorMensaje = "danger";
-            }
-
-            mensajeConfirmacion1.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
-                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
-                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion1.Visible = true;
+            MostrarMensaje(confirmacion);
 
             Response.Redirect("ListaExpedientes.aspx");
-            //MostrarMensaje(confirmacion);
+           
 
         }
 
