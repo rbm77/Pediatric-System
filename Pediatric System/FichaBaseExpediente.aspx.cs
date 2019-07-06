@@ -13,6 +13,7 @@ namespace Pediatric_System
     public partial class FichaBaseExpediente : System.Web.UI.Page
     {
         private static List<Pendiente> listaPendientes = new List<Pendiente>();
+        private static List<BLVacuna> vacunas = new List<BLVacuna>();
         protected void Page_Load(object sender, EventArgs e)
         {
             //if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
@@ -28,78 +29,73 @@ namespace Pediatric_System
                 nuevaConsulta.Visible = false;
                 informacionPaciente.Visible = false;
             }
+
+            if (!IsPostBack)
+            {
+                MostrarEsquemaVacunacion();
+            }
         }
-        
+
         protected void guardarExpediente_Click(object sender, EventArgs e)
         {
+            ActualizarEsquemaVacunacion();
 
-            BLExpediente expediente = new BLExpediente();
-            BLDireccion direccionExp = new BLDireccion();
-            BLEncargado_Facturante encargado = new BLEncargado_Facturante();
-            BLDireccion direccionEncar = new BLDireccion();
-            BLEncargado_Facturante facturante = new BLEncargado_Facturante();
-            BLDireccion direccionFactu = new BLDireccion();
-            BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
+            //BLExpediente expediente = new BLExpediente();
+            //BLDireccion direccionExp = new BLDireccion();
+            //BLEncargado_Facturante encargado = new BLEncargado_Facturante();
+            //BLDireccion direccionEncar = new BLDireccion();
+            //BLEncargado_Facturante facturante = new BLEncargado_Facturante();
+            //BLDireccion direccionFactu = new BLDireccion();
+            //BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
 
-            infoTab_1(expediente, direccionExp);
-            infoTab_2(encargado, direccionEncar);
-            infoTab_3(facturante, direccionFactu);
-            infoTab_4(historiaClinica);
+            //infoTab_1(expediente, direccionExp);
+            //infoTab_2(encargado, direccionEncar);
+            //infoTab_3(facturante, direccionFactu);
+            //infoTab_4(historiaClinica);
 
-            // Enviar datos para guardar en BD
-            ManejadorExpediente manejador = new ManejadorExpediente();
-            //string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
+            //// Enviar datos para guardar en BD
+            //ManejadorExpediente manejador = new ManejadorExpediente();
+            ////string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
 
-            string confirmacion = "";
+            //string confirmacion = "";
 
-            string colorMensaje = "success";
-
-            if (confirmacion.Contains("error"))
-            {
-                colorMensaje = "danger";
-            }
-
-            mensajeConfirmacion1.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
-                "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
-                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-            mensajeConfirmacion1.Visible = true;
+            //MostrarMensaje(confirmacion);
         }
 
         private void infoTab_1(BLExpediente expediente, BLDireccion direccionExp)
         {
 
-            // Recuperar campos de texto para objeto Direccion (Expediente) 
-            string provincia = Request.Form["listaProvinciasEX"];
-            string canton = Request.Form["listaCantonEX"];
-            string distrito = Request.Form["listaDistritoEX"];
-            string codigo = codigoDireccion(provincia, canton, distrito, "");
+            //// Recuperar campos de texto para objeto Direccion (Expediente) 
+            //string provincia = Request.Form["listaProvinciasEX"];
+            //string canton = Request.Form["listaCantonEX"];
+            //string distrito = Request.Form["listaDistritoEX"];
+            //string codigo = codigoDireccion(provincia, canton, distrito, "");
 
-            direccionExp.Codigo = codigo;
-            direccionExp.Provincia = provincia;
-            direccionExp.Canton = canton;
-            direccionExp.Distrito = distrito;
+            //direccionExp.Codigo = codigo;
+            //direccionExp.Provincia = provincia;
+            //direccionExp.Canton = canton;
+            //direccionExp.Distrito = distrito;
 
-            // Recuperar campos de texto para objeto Expediente
+            //// Recuperar campos de texto para objeto Expediente
 
-            if (pacienteNoCedula.Checked)
-            {
-                expediente.Codigo = crearCodigoExpe();
-            }
-            else
-            {
-                expediente.Codigo = cedulaPaciente.Text.Trim();
-            }
+            //if (pacienteNoCedula.Checked)
+            //{
+            //    expediente.Codigo = crearCodigoExpe();
+            //}
+            //else
+            //{
+            //    expediente.Codigo = cedulaPaciente.Text.Trim();
+            //}
 
-            expediente.Nombre = nombrePaciente.Text.Trim();
-            expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
-            expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim();
-            expediente.Cedula = cedulaPaciente.Text.Trim();
-            expediente.FechaNacimiento = DateTime.ParseExact(fechaNacimientoPaciente.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
-            expediente.Sexo = sexoPaciente.Text.Trim();
-            expediente.Foto = guardarImag();
-            expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
-            expediente.Direccion = codigo;
+            //expediente.Nombre = nombrePaciente.Text.Trim();
+            //expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
+            //expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim();
+            //expediente.Cedula = cedulaPaciente.Text.Trim();
+            //expediente.FechaNacimiento = DateTime.ParseExact(fechaNacimientoPaciente.Text, "dd/MM/yyyy", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
+            //expediente.Sexo = sexoPaciente.Text.Trim();
+            //expediente.Foto = guardarImag();
+            //expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
+            //expediente.Direccion = codigo;
 
             //byte[] fotoTxt = guardarImag();
         }
@@ -164,98 +160,98 @@ namespace Pediatric_System
         private void infoTab_4 (BLHistoriaClinica historiaClinica)
         {
 
-            historiaClinica.AP_Talla = decimal.Parse(tallaNacer.Text);
-            historiaClinica.AP_Peso = decimal.Parse(pesoNacer.Text); ;
-            historiaClinica.AP_PerimetroCefalico = decimal.Parse(perimetroCefalico.Text); ;
-            string calificacion = clasificacionUniversal.Value;
-            if (opcion_pequeno.Checked)
-            {
-                calificacion += "pequeño";
-            }
+            //historiaClinica.AP_Talla = decimal.Parse(tallaNacer.Text);
+            //historiaClinica.AP_Peso = decimal.Parse(pesoNacer.Text); ;
+            //historiaClinica.AP_PerimetroCefalico = decimal.Parse(perimetroCefalico.Text); ;
+            //string calificacion = clasificacionUniversal.Value;
+            //if (opcion_pequeno.Checked)
+            //{
+            //    calificacion += "pequeño";
+            //}
 
-            if (opcion_grande.Checked)
-            {
-                calificacion += "grande";
-            }
+            //if (opcion_grande.Checked)
+            //{
+            //    calificacion += "grande";
+            //}
 
-            if (opcion_adecuado.Checked)
-            {
-                calificacion += "adecuado";
-            }
+            //if (opcion_adecuado.Checked)
+            //{
+            //    calificacion += "adecuado";
+            //}
 
-            historiaClinica.AP_CalificacionUniversal = calificacion;
-            historiaClinica.AP_APGAR = decimal.Parse(apgar.Text);
-            historiaClinica.AP_EdadGestacional = decimal.Parse(edadGestacional.Text);
+            //historiaClinica.AP_CalificacionUniversal = calificacion;
+            //historiaClinica.AP_APGAR = decimal.Parse(apgar.Text);
+            //historiaClinica.AP_EdadGestacional = decimal.Parse(edadGestacional.Text);
 
-            if(otrasComplicacionesAP.Value == "ausentes")
-            {
-                historiaClinica.AP_OtrasComplicaciones = false;
-                historiaClinica.AP_OtrasComplicacionesDescripcion = null;
-            }
-            else
-            {
-                historiaClinica.AP_OtrasComplicaciones = true;
-                historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
-            }
+            //if(otrasComplicacionesAP.Value == "ausentes")
+            //{
+            //    historiaClinica.AP_OtrasComplicaciones = false;
+            //    historiaClinica.AP_OtrasComplicacionesDescripcion = null;
+            //}
+            //else
+            //{
+            //    historiaClinica.AP_OtrasComplicaciones = true;
+            //    historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
+            //}
 
           
-            if (asmaCheck.Checked)
-            {
-                historiaClinica.HF_Asma = true;
-            }
+            //if (asmaCheck.Checked)
+            //{
+            //    historiaClinica.HF_Asma = true;
+            //}
 
-            if (diabetesCheck.Checked)
-            {
-                historiaClinica.HF_Diabetes = true;
-            }
+            //if (diabetesCheck.Checked)
+            //{
+            //    historiaClinica.HF_Diabetes = true;
+            //}
 
-            if (hipertensionCheck.Checked)
-            {
-                historiaClinica.HF_Hipertension = true;
-            }
+            //if (hipertensionCheck.Checked)
+            //{
+            //    historiaClinica.HF_Hipertension = true;
+            //}
 
-            if (cardiovascularCheck.Checked)
-            {
-                historiaClinica.HF_Cardivasculares = true;
-            }
+            //if (cardiovascularCheck.Checked)
+            //{
+            //    historiaClinica.HF_Cardivasculares = true;
+            //}
 
-            if (displidemiaCheck.Checked)
-            {
-                historiaClinica.HF_Displidemia = true;
-            }
+            //if (displidemiaCheck.Checked)
+            //{
+            //    historiaClinica.HF_Displidemia = true;
+            //}
 
-            if (epilepsiaCheck.Checked)
-            {
-                historiaClinica.HF_Epilepsia = true;
-            }
+            //if (epilepsiaCheck.Checked)
+            //{
+            //    historiaClinica.HF_Epilepsia = true;
+            //}
 
-            if (otrosCheck.Checked)
-            {
-                historiaClinica.HF_Otros = true;
-                historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
-            }
+            //if (otrosCheck.Checked)
+            //{
+            //    historiaClinica.HF_Otros = true;
+            //    historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
+            //}
 
-            if (apatEstado.Value == "presentesPat")
-            {
-                historiaClinica.APAT_Estado = true;
-                historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
-            }
+            //if (apatEstado.Value == "presentesPat")
+            //{
+            //    historiaClinica.APAT_Estado = true;
+            //    historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
+            //}
 
-            if (atEstado.Value == "presentesTrau") {
-                historiaClinica.AT_Estado = true;
-                historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
-            }
+            //if (atEstado.Value == "presentesTrau") {
+            //    historiaClinica.AT_Estado = true;
+            //    historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
+            //}
 
-            if (aqEstado.Value == "presentesQui") {
-                historiaClinica.AQ_Estado = true;
-                historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
-            }
+            //if (aqEstado.Value == "presentesQui") {
+            //    historiaClinica.AQ_Estado = true;
+            //    historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
+            //}
 
-            if (alergiasEstado.Value == "presentesAlergia")
-            {
-                historiaClinica.Alergias = true;
-                historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
-            } 
+            //if (alergiasEstado.Value == "presentesAlergia")
+            //{
+            //    historiaClinica.Alergias = true;
+            //    historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
+            //} 
         }
 
 
@@ -265,15 +261,16 @@ namespace Pediatric_System
         private void CargarEsquemaVacunacion()
         {
             listaPendientes.Clear();
+            vacunas.Clear();
 
             ManejadorVacunas manejadorVacunas = new ManejadorVacunas();
             ManejadorEdad manejadorEdad = new ManejadorEdad();
             
-            int edadMeses = manejadorEdad.ExtraerMeses(DateTime.Parse("")) ;
+            int edadMeses = manejadorEdad.ExtraerMeses(DateTime.Parse("05/1/2019"));
 
-            List<BLVacuna> vacunas = new List<BLVacuna>();
+            
             List<BLAplicacionVacuna> aplicaciones = new List<BLAplicacionVacuna>();
-            string idExpediente = "";
+            string idExpediente = "777";
 
             string confimacion = manejadorVacunas.CargarVacunas(vacunas);
 
@@ -292,13 +289,91 @@ namespace Pediatric_System
                         {
                             if (vacuna.NombreVacuna.Equals(aplicacion.NombreVacuna))
                             {
-                                mesesAplicacion = int.Parse(vacuna.Aplicacion1);
-
-                                if (mesesAplicacion <= edadMeses)
+                                if (!vacuna.Aplicacion1.Equals(""))
                                 {
-                                    if (!aplicacion.Aplicacion1)
+                                    mesesAplicacion = int.Parse(vacuna.Aplicacion1);
+
+                                    if (mesesAplicacion <= edadMeses)
                                     {
-                                        listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        if (!aplicacion.Aplicacion1)
+                                        {
+                                            listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        }
+                                    }
+
+                                }
+
+                                //////////////////////////////
+                                
+                                if (!vacuna.Aplicacion2.Equals(""))
+                                {
+
+                                    mesesAplicacion = int.Parse(vacuna.Aplicacion2);
+
+                                    if (mesesAplicacion <= edadMeses)
+                                    {
+                                        if (!aplicacion.Aplicacion2)
+                                        {
+                                            listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        }
+                                    }
+                                }
+                                //////////////////////////////
+
+                                if (!vacuna.Aplicacion3.Equals(""))
+                                {
+
+                                    mesesAplicacion = int.Parse(vacuna.Aplicacion3);
+
+                                    if (mesesAplicacion <= edadMeses)
+                                    {
+                                        if (!aplicacion.Aplicacion3)
+                                        {
+                                            listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        }
+                                    }
+                                }
+                                //////////////////////////////
+
+                                if (!vacuna.Refuerzo1.Equals(""))
+                                {
+
+                                    mesesAplicacion = int.Parse(vacuna.Refuerzo1);
+
+                                    if (mesesAplicacion <= edadMeses)
+                                    {
+                                        if (!aplicacion.Refuerzo1)
+                                        {
+                                            listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        }
+                                    }
+                                }
+                                //////////////////////////////
+
+                                if (!vacuna.Refuerzo2.Equals(""))
+                                {
+                                    mesesAplicacion = int.Parse(vacuna.Refuerzo2);
+
+                                    if (mesesAplicacion <= edadMeses)
+                                    {
+                                        if (!aplicacion.Refuerzo2)
+                                        {
+                                            listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        }
+                                    }
+                                }
+                                //////////////////////////////
+
+                                if (!vacuna.Refuerzo3.Equals(""))
+                                {
+                                    mesesAplicacion = int.Parse(vacuna.Refuerzo3);
+
+                                    if (mesesAplicacion <= edadMeses)
+                                    {
+                                        if (!aplicacion.Refuerzo3)
+                                        {
+                                            listaPendientes.Add(new Pendiente(aplicacion.NombreVacuna, mesesAplicacion));
+                                        }
                                     }
                                 }
                                 break;
@@ -306,7 +381,155 @@ namespace Pediatric_System
                         }
                     }
                 }
+                else
+                {
+                    MostrarMensaje(confimacion);
+                }
             }
+            else
+            {
+                MostrarMensaje(confimacion);
+            }
+        }
+
+        private void ActualizarEsquemaVacunacion()
+        {
+            CheckBox temp;
+            List<BLAplicada> vacunasAplicadas = new List<BLAplicada>();
+            string idExpediente = "777";
+
+
+            foreach (GridViewRow fila in esquemaVacunacion.Rows)
+            {
+                temp = (CheckBox) fila.Cells[0].FindControl("aplicado");
+
+                if (temp.Checked)
+                {
+                    vacunasAplicadas.Add(AplicarVacuna(FormatoTildes(fila.Cells[1].Text), FormatoTildes(fila.Cells[2].Text), idExpediente));
+                }
+            }
+
+            // ACTUALIZO LA BASE DE DATOS
+
+        }
+
+        private string FormatoTildes(string tildar)
+        {
+            tildar = tildar.Replace("&#243;", "ó").Replace("&#233;", "é").Replace("&#225;", "á").Replace("&#237;", "í").Replace("&#250;", "ú");
+            return tildar;
+        }
+
+        private BLAplicada AplicarVacuna(string nombreVacuna, string edadAplicacion, string idExpediente)
+        {
+            BLAplicada aplicada = new BLAplicada();
+
+            for (int i = 0; i < listaPendientes.Count; i++)
+            {
+                Pendiente pen = listaPendientes[i];
+                if ((pen.EdadAplicacion.Equals(edadAplicacion)) && (pen.NombreVacuna.Equals(nombreVacuna)))
+                {
+                    aplicada.IDExpediente = idExpediente;
+                    aplicada.NombreVacuna = pen.NombreVacuna;
+
+                    foreach (BLVacuna vacuna in vacunas)
+                    {
+                        if (vacuna.NombreVacuna.Equals(aplicada.NombreVacuna))
+                        {
+
+
+                            if (!vacuna.Aplicacion1.Equals(""))
+                            {
+                                if (vacuna.Aplicacion1.Equals(pen.CantidadMeses + ""))
+                                {
+                                    aplicada.Aplicacion = "APLICACION1";
+                                    break;
+                                }
+
+                            }
+
+                            //////////////////////////////
+
+                            if (!vacuna.Aplicacion2.Equals(""))
+                            {
+                                if (vacuna.Aplicacion2.Equals(pen.CantidadMeses + ""))
+                                {
+                                    aplicada.Aplicacion = "APLICACION2";
+                                    break;
+                                }
+                            }
+                            //////////////////////////////
+
+                            if (!vacuna.Aplicacion3.Equals(""))
+                            {
+                                if (vacuna.Aplicacion3.Equals(pen.CantidadMeses + ""))
+                                {
+                                    aplicada.Aplicacion = "APLICACION3";
+                                    break;
+                                }
+                            }
+                            //////////////////////////////
+
+                            if (!vacuna.Refuerzo1.Equals(""))
+                            {
+                                if (vacuna.Refuerzo1.Equals(pen.CantidadMeses + ""))
+                                {
+                                    aplicada.Aplicacion = "REFUERZO1";
+                                    break;
+                                }
+                            }
+                            //////////////////////////////
+
+                            if (!vacuna.Refuerzo2.Equals(""))
+                            {
+                                if (vacuna.Refuerzo2.Equals(pen.CantidadMeses + ""))
+                                {
+                                    aplicada.Aplicacion = "REFUERZO2";
+                                    break;
+                                }
+                            }
+                            //////////////////////////////
+
+                            if (!vacuna.Refuerzo3.Equals(""))
+                            {
+                                if (vacuna.Refuerzo3.Equals(pen.CantidadMeses + ""))
+                                {
+                                    aplicada.Aplicacion = "REFUERZO3";
+                                    break;
+                                }
+                            }
+                            break;
+                        }
+                    }
+                    listaPendientes.RemoveAt(i);
+                    break;
+                }
+            }
+            return aplicada;
+        }
+
+        private void MostrarMensaje(string confirmacion)
+        {
+            string colorMensaje = "success";
+
+            if (confirmacion.Contains("error"))
+            {
+                colorMensaje = "danger";
+            }
+            mensajeConfirmacion1.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
+            "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
+            " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+            " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion1.Visible = true;
+        }
+
+
+        private void MostrarEsquemaVacunacion()
+        {
+            CargarEsquemaVacunacion();
+
+            esquemaVacunacion.DataSource = listaPendientes;
+            esquemaVacunacion.DataBind();
+
         }
 
         private class Pendiente

@@ -184,14 +184,12 @@ namespace Pediatric_System
             {
                 string codigoMedico = "777";
                 ManejadorAgenda manejador = new ManejadorAgenda();
-
                 int indice = Convert.ToInt32(e.CommandArgument);
 
                 GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
                 TableCell nombreDia = filaSeleccionada.Cells[0];
-                string dia = nombreDia.Text.Replace("&#233;", "é");
+                string dia = nombreDia.Text.Replace("&#233;", "é").Replace("&#225;", "á").Replace("&#237;", "í").Replace("&#250;", "ú");
 
-                
                 string confirmacion = manejador.EliminarHorario(codigoMedico, dia);
                 string colorMensaje = "";
 

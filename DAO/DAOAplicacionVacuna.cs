@@ -50,7 +50,7 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar esquema de vacunación");
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar aplicaciones de vacuna");
 
 
 
@@ -71,16 +71,20 @@ namespace DAO
 
                 SqlDataReader lector = comando.ExecuteReader();
 
+
+
                 // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de vacunas
 
                 if (lector.HasRows)
                 {
+
                     while (lector.Read())
                     {
-                        TOAplicacionVacuna aplicacion = new TOAplicacionVacuna(lector["ID_EXPEDIENTE"].ToString(), lector["NOMBRE_VACUNA"].ToString(), Convertir(lector["APLICACION1"].ToString()),
-                            Convertir(lector["APLICACION2"].ToString()), Convertir(lector["APLICACION3"].ToString()),
-                            Convertir(lector["REFUERZO1"].ToString()), Convertir(lector["REFUERZO2"].ToString()),
-                            Convertir(lector["REFUERZO3"].ToString()));
+                        TOAplicacionVacuna aplicacion = new TOAplicacionVacuna(lector["ID_EXPEDIENTE"].ToString(), lector["NOMBRE_VACUNA"].ToString(), lector["APLICACION1"].ToString(),
+                            lector["APLICACION2"].ToString(), lector["APLICACION3"].ToString(),
+                            lector["REFUERZO1"].ToString(), lector["REFUERZO2"].ToString(),
+                            lector["REFUERZO3"].ToString());
+
 
                         aplicaciones.Add(aplicacion);
 
@@ -119,17 +123,7 @@ namespace DAO
             return confirmacion;
         }
 
-        private bool Convertir(string binario)
-        {
-            if (int.Parse(binario) == 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
-        }
+
 
     }
 }
