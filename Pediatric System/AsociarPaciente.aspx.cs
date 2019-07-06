@@ -60,7 +60,7 @@ namespace Pediatric_System
                 listaPersonal = miBLCuenta.buscarListaCuentas();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
-                BLEnviarCorreo miEnviar = new BLEnviarCorreo("correo", "Creación de cuenta", "Se ha creado una cuenta asociada a este correo que le permite utilizar el sistema de la Clinica Pediatrica Divino Niño");
+                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Creación de cuenta", "Se ha creado una cuenta asociada a este correo que le permite utilizar el sistema de la Clinica Pediatrica Divino Niño");
             } else
             {
                 mensajeAviso("danger", "La cuenta no se pudo crear debido a que el correo ingresado ya esta en uso");
