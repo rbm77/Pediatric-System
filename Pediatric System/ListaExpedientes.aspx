@@ -40,14 +40,17 @@
 
                                 <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
                                     AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                    HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%">
+                                    HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%" 
+                                    OnRowCommand="gridExpedientes_RowCommand">
+                                    
 
                                     <Columns>
                                         <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
                                         <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
                                         <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
-                                        <asp:ButtonField HeaderText="Acción" CommandName="Eliminar"
+                                        <asp:ButtonField HeaderText="Acción" CommandName="seleccionar"
                                             ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
+                                        <asp:BoundField Visible="false" HeaderText="Codigo" DataField="Codigo" ></asp:BoundField>
                                     </Columns>
                                 </asp:GridView>
 

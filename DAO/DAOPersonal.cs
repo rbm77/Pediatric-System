@@ -182,7 +182,7 @@ namespace DAO
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
-                SqlCommand comando = new SqlCommand("SELECT * FROM PERSONAL", conexion);
+                SqlCommand comando = new SqlCommand("select PERSONAL.CUE_CORREO, PERSONAL.NOMBRE, PERSONAL.APELLIDO, PERSONAL.CEDULA, PERSONAL.TELEFONO, CUENTA.ESTADO from personal join CUENTA on Personal.CUE_CORREO=CUENTA.CORREO;", conexion);
 
                 comando.Transaction = transaccion;
                 // Se ejecuta el comando y se realiza un commit de la transacción
@@ -203,7 +203,7 @@ namespace DAO
                         miTOPersonal.apellido = reader["APELLIDO"].ToString();
                         miTOPersonal.cedula = Int32.Parse(reader["CEDULA"].ToString());
                         miTOPersonal.telefono = Int32.Parse(reader["TELEFONO"].ToString());
-
+                        miTOPersonal.estado = reader["ESTADO"].ToString();
                         lista.Add(miTOPersonal);
                     }
                 }

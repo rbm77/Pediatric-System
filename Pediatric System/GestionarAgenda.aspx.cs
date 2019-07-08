@@ -16,6 +16,7 @@ namespace Pediatric_System
 
         private static DateTime diaSeleccionado = DateTime.Now;
         private static List<BLCita> listaCitas = new List<BLCita>();
+        
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -42,7 +43,7 @@ namespace Pediatric_System
         {
             diaSeleccionado = fecha;
 
-            string codigoMedico = "777";
+            string codigoMedico = Session["codigoMedico"].ToString();
 
             listaCitas.Clear();
 
@@ -51,6 +52,7 @@ namespace Pediatric_System
             ManejadorCita manejadorCita = new ManejadorCita();
 
             string confirmacion = manejadorCita.CargarCitas(listaCitas, codigoMedico, fechaSeleccionada);
+
 
 
             // Si no hubo problema al cargar las citas se procede a cargar la disponibilidad
@@ -77,6 +79,8 @@ namespace Pediatric_System
 
                 confirmacion = manejadorAgenda.CargarDisponibilidad(blDia);
 
+
+
                 if (!confirmacion.Contains("error"))
                 {
 
@@ -94,7 +98,41 @@ namespace Pediatric_System
                     }
                     else
                     {
+                        // Si no hay disponibilidad pero si hay citas pedientes
 
+                        if ((listaCitas.Count > 0) && (blDia.HoraInicio == null))
+                        {
+
+                            confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " tiene citas pendientes";
+
+                            foreach (BLCita cita in listaCitas)
+                            {
+                                agenda.Add(new ListaItem(cita.Hora, "Ocupado"));
+                            }
+
+                        }
+
+                        string segundaConfirmacion = manejadorAgenda.ObtenerDuracionCita(codigoMedico);
+
+                        bool duracionCapturada = true;
+
+                        int duracionCita = 0;
+
+                        try
+                        {
+                            duracionCita = int.Parse(segundaConfirmacion);
+                        }
+                        catch (Exception)
+                        {
+                            duracionCapturada = false;
+                        }
+
+                        if ((!segundaConfirmacion.Contains("error")) && (duracionCapturada))
+                        {
+
+                       
+
+                        //////////////////////////////////////////////////
 
                         DateTime horaInicio = DateTime.Now;
                         DateTime horaFin = DateTime.Now;
@@ -111,7 +149,6 @@ namespace Pediatric_System
                         string estado = "";
 
 
-
                         // Si la lista de citas esta vacia pero hay disponibilidad
 
                         if ((listaCitas.Count == 0) && (blDia.HoraInicio != null))
@@ -125,7 +162,7 @@ namespace Pediatric_System
                             {
                                 t = ConvertirFormato(temporal);
 
-                                temporal = temporal.AddMinutes(30);
+                                temporal = temporal.AddMinutes(duracionCita);
 
                                 agenda.Add(new ListaItem(t, "Disponible"));
                             }
@@ -133,19 +170,6 @@ namespace Pediatric_System
 
                         }
 
-                        // Si no hay disponibilidad pero si hay citas pedientes
-
-                        if ((listaCitas.Count > 0) && (blDia.HoraInicio == null))
-                        {
-
-                            confirmacion = "El día " + nombreDia + " " + numeroDia + " de " + nombreMes + " tiene citas pendientes";
-
-                            foreach (BLCita cita in listaCitas)
-                            {
-                                agenda.Add(new ListaItem(cita.Hora, "Ocupado"));
-                            }
-
-                        }
 
                         // Si hay disponibilidad y citas
 
@@ -161,7 +185,7 @@ namespace Pediatric_System
                             {
                                 t = ConvertirFormato(temporal);
 
-                                temporal = temporal.AddMinutes(30);
+                                temporal = temporal.AddMinutes(duracionCita);
 
                                 agenda.Add(new ListaItem(t, "Disponible"));
                             }
@@ -197,6 +221,13 @@ namespace Pediatric_System
 
                             agenda.Sort((x, y) => string.Compare(x.Hora, y.Hora));
                         }
+
+                        }
+                        else
+                        {
+                            confirmacion = "Ocurrió un error al cargar la duración de las citas o esta no se ha establecido";
+                        }
+                        /////////////////////////////////////////////
 
                     }
 
@@ -335,7 +366,9 @@ namespace Pediatric_System
 
             ManejadorCita manejador = new ManejadorCita();
 
-            string confirmacion = manejador.CrearCita("777", nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaT);
+            string codigoMedico = Session["codigoMedico"].ToString();
+
+            string confirmacion = manejador.CrearCita(codigoMedico, nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaT);
 
             LimpiarCampos();
 
@@ -499,7 +532,10 @@ namespace Pediatric_System
 
             ManejadorCita manejador = new ManejadorCita();
 
-            string confirmacion = manejador.CancelarCita("777", fechaTxt, horaT);
+            string codigoMedico = Session["codigoMedico"].ToString();
+
+
+            string confirmacion = manejador.CancelarCita(codigoMedico, fechaTxt, horaT);
 
             LimpiarCampos();
 

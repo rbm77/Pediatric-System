@@ -14,6 +14,8 @@ namespace TO
         public int cedula { get; set; }
         public int telefono { get; set; }
 
+        public string estado { get; set; }
+
         public List<TOPersonal> toLista { get; set; }
 
         public TOPersonal()

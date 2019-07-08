@@ -20,6 +20,11 @@ namespace TO
         {
 
         }
+
+        public TOCita(string hora)
+        {
+            this.Hora = hora;
+        }
         public TOCita(string codigoMedico, string nombre, string edad, string correo, int telefono, string fecha, string hora)
         {
             this.CodigoMedico = codigoMedico;

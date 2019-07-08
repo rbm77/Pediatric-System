@@ -50,6 +50,9 @@
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="itextsharp">
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -75,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AsociarPaciente.aspx" />
+    <Content Include="CitaUsuario.aspx" />
     <Content Include="CrearReportes.aspx" />
     <Content Include="CSS\agenda.css" />
     <Content Include="CSS\consulta.css" />
@@ -87,6 +91,8 @@
     <Content Include="CSS\listaExpedientes.css" />
     <Content Include="CSS\sb-admin.css" />
     <Content Include="CSS\sb-admin.min.css" />
+    <Content Include="CSS\style.css" />
+    <Content Include="CuentaPaciente.aspx" />
     <Content Include="CuentaPersonal.aspx" />
     <Content Include="Dashboard.aspx" />
     <Content Include="EditarContrasena.aspx" />
@@ -1662,6 +1668,8 @@
     <Content Include="JS\datatables\dataTables.bootstrap4.min.js" />
     <Content Include="JS\datatables\jquery.dataTables.js" />
     <Content Include="JS\datatables\jquery.dataTables.min.js" />
+    <Content Include="JS\jquery\highlight.pack.js" />
+    <Content Include="JS\jquery\iphone-style-checkboxes.js" />
     <Content Include="JS\sb-admin.min.js" />
     <Content Include="ListaExpedientes.aspx" />
     <Content Include="InicioUsuarioExterno.aspx" />
@@ -1693,6 +1701,13 @@
       <DependentUpon>AsociarPaciente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="CitaUsuario.aspx.cs">
+      <DependentUpon>CitaUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CitaUsuario.aspx.designer.cs">
+      <DependentUpon>CitaUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CrearReportes.aspx.cs">
       <DependentUpon>CrearReportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1702,6 +1717,13 @@
     </Compile>
     <Compile Include="AsociarPaciente.aspx.designer.cs">
       <DependentUpon>AsociarPaciente.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CuentaPaciente.aspx.designer.cs">
+      <DependentUpon>CuentaPaciente.aspx</DependentUpon>
     </Compile>
     <Compile Include="CuentaPersonal.aspx.cs">
       <DependentUpon>CuentaPersonal.aspx</DependentUpon>
@@ -1894,9 +1916,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="bin\" />
+    <Folder Include="images\ios-style-checkboxes\" />
+    <Folder Include="images\iphone-style-checkboxes\" />
+    <Folder Include="referencia\" />
     <Folder Include="Reportes\" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <PropertyGroup>

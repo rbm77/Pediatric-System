@@ -52,7 +52,7 @@
                                 <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
                                     <%--<asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="EXPEDIENTE" ID="Button1" />--%>
 
-                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="FINALIZAR CONSULTA" ID="finalizarConsulta" OnClick="finalizarConsulta_Click" />
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro btnsExpFin" Text="FINALIZAR CONSULTA" ID="finalizarConsulta" OnClick="finalizarConsulta_Click" />
                                 </div>
                             </div>
                         </div>
@@ -263,7 +263,7 @@
                                     <label class="card-header nombre-input">Padecimiento Actual</label>
                                     <div class="card-body padding-general-top padding-general-bottom">
                                         <div class="padding-general-label">
-                                            <textarea class="form-control"></textarea>
+                                            <textarea class="form-control" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -334,57 +334,47 @@
                             <div class="form-row">
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Peso-Edad en Niñas/Niños de 0 a 5 años</label>
+                                        <label class="nombre-input">Peso/Edad de 0 a 5 años</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Talla-Edad en Niñas/Niños de 0 a 5 años</label>
+                                        <label class="nombre-input">Talla/Edad de 0 a 5 años</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Perímetro Cefálico en Niñas/Niños de 0 a 3 años </label>
+                                        <label class="nombre-input">P. Cefálico/Edad de 0 a 3 años </label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Peso para Talla Niñas/Niños de 0 a 5 años</label>
+                                        <label class="nombre-input">Peso/Talla de 0 a 5 años</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">IMC en Niñas/Niños de 5 a 19 años</label>
+                                        <label class="nombre-input">IMC/Edad de 5 a 19 años</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-input">Talla-Edad en niños/niñas de 5 a 19 años</label>
+                                        <label class="nombre-input">Talla/Edad de 5 a 19 años</label>
                                         <input type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
 
-                        </div>
-
-                        <div class="padding-general-inicio-bottom">
-                            <div class="form-group col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div>
-                                    <div class="form-group" runat="server">
-                                        <asp:Button type="button" runat="server" class="btn btn-neutro form-control btnVerGenerarDiagnostico" Text="GENERAR DIAGNOSTICO" ID="verConsultas" />
-                                    </div>
-                                </div>
-                            </div>
                         </div>
 
                         <%--<div class="form-row padding-general-inicio-bottom padding-general-label">
@@ -570,8 +560,8 @@
                                                 </div>
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
-                                                    <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                                                        <button type="submit" class="btn btn-info form-control">ENVIAR</button>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <button type="submit" class="btn btn-info form-control">REPORTAR</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -587,7 +577,7 @@
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                                 <div class="padding-card padding-general-bottom">
                                     <div class="card">
-                                        <label class="card-header nombre-input">Referencia Medica</label>
+                                        <label class="card-header nombre-input">Referencia Médica</label>
                                         <div class="card-body padding-general-top">
                                             <div class="form-row">
                                                 <div class="form-check">
@@ -604,8 +594,8 @@
                                                 <div class="form-row margen-general-2-top">
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
-                                                            <label class="nombre-input">Especialidad a que se refiere</label>
-                                                            <input type="text" class="form-control">
+                                                            <label class="nombre-input">Especialidad</label>
+                                                            <asp:TextBox ID="especialidad" CssClass="form-control" runat="server"></asp:TextBox>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -614,14 +604,16 @@
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
                                                             <label class="nombre-input">Motivo de la referencia</label>
-                                                            <input type="text" class="form-control">
+
+                                                            <textarea id="motivo" rows="2" runat="server" class="form-control"></textarea>
+
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
-                                                    <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                                                        <button type="submit" class="btn btn-info form-control">GENERAR</button>
+                                                    <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                        <asp:Button type="submit" CssClass="btn btn-neutro" runat="server" id="btnGenerarReferencia" OnClick="btnGenerarReferencia_Click" Text="GENERAR" />
                                                     </div>
                                                 </div>
                                             </div>

@@ -8,6 +8,7 @@ namespace BL
 {
     public class BLExpediente
     {
+        public string Codigo { get; set; }
         public string Nombre { get; set; }
         public string PrimerApellido { get; set; }
         public string SegundoApellido { get; set; }
@@ -17,14 +18,16 @@ namespace BL
         public byte[] Foto { get; set; }
         public string ExpedienteAntiguo { get; set; }
         public string Direccion { get; set; }
+        public string Correo { get; set; }
 
         public BLExpediente()
         {
 
         }
 
-        public BLExpediente(string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
+        public BLExpediente(string cod, string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
         {
+            this.Codigo = cod;
             this.Nombre = nombre;
             this.PrimerApellido = primerApellido;
             this.SegundoApellido = segundoApellido;
