@@ -226,47 +226,47 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Aplicacion Vacuna ---------------------------  // 
 
-                SqlCommand comandoAntineumococcia = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoAntineumococcia = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Antineumocóccica',0,0,0,0,0,0);", conexion);
                 comandoAntineumococcia.Transaction = transaccion;
                 comandoAntineumococcia.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoAntineumococcia.ExecuteNonQuery();
 
-                SqlCommand comandoAntipolio = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoAntipolio = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);", conexion);
                 comandoAntipolio.Transaction = transaccion;
                 comandoAntipolio.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoAntipolio.ExecuteNonQuery();
 
-                SqlCommand comandoAntisarampion = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antisarampionosa, rubéola y paperas (SRP)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoAntisarampion = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Antisarampionosa, rubéola y paperas (SRP)',0,0,0,0,0,0);", conexion);
                 comandoAntisarampion.Transaction = transaccion;
                 comandoAntisarampion.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoAntisarampion.ExecuteNonQuery();
 
-                SqlCommand comandoAntituberculosa = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antituberculosa (BCG)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoAntituberculosa = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Antituberculosa (BCG)',0,0,0,0,0,0);", conexion);
                 comandoAntituberculosa.Transaction = transaccion;
                 comandoAntituberculosa.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoAntituberculosa.ExecuteNonQuery();
 
-                SqlCommand comandoCalostro = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'CALOSTRO (primera vacuna)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoCalostro = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'CALOSTRO (primera vacuna)',0,0,0,0,0,0);", conexion);
                 comandoCalostro.Transaction = transaccion;
                 comandoCalostro.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoCalostro.ExecuteNonQuery();
 
-                SqlCommand comandoInfluenza = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Haemophilus influenzae. Tipo B.(HIB)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoInfluenza = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Haemophilus influenzae. Tipo B.(HIB)',0,0,0,0,0,0);", conexion);
                 comandoInfluenza.Transaction = transaccion;
                 comandoInfluenza.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoInfluenza.ExecuteNonQuery();
 
-                SqlCommand comandoHepatitis = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Hepatitis B.(VHB)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoHepatitis = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Hepatitis B.(VHB)',0,0,0,0,0,0);", conexion);
                 comandoHepatitis.Transaction = transaccion;
                 comandoHepatitis.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoHepatitis.ExecuteNonQuery();
 
-                SqlCommand comandoToxoide = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Toxoide diftérico, pertusis acelular (DTaP)',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoToxoide = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Toxoide diftérico, pertusis acelular (DTaP)',0,0,0,0,0,0);", conexion);
                 comandoToxoide.Transaction = transaccion;
                 comandoToxoide.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoToxoide.ExecuteNonQuery();
 
-                SqlCommand comandoVaricela = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Varicela',0,0,0,0,0,0);", conexion);
+                SqlCommand comandoVaricela = new SqlCommand("INSERT INTO APLICACION_VACUNA VALUES(@ID, 'Varicela',0,0,0,0,0,0);", conexion);
                 comandoVaricela.Transaction = transaccion;
                 comandoVaricela.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoVaricela.ExecuteNonQuery();

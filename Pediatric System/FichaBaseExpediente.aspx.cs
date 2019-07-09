@@ -284,15 +284,14 @@ namespace Pediatric_System
             BLDireccion direccionFactu = new BLDireccion();
             BLHistoriaClinica historiaClinica = new BLHistoriaClinica();
 
-            // Enviar datos para guardar en BD
-            ManejadorExpediente manejador = new ManejadorExpediente();
-            string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
-
             infoTab_1(expediente, direccionExp);
             infoTab_2(encargado, direccionEncar);
             infoTab_3(facturante, direccionFactu);
             infoTab_4(historiaClinica);
 
+            // Enviar datos para guardar en BD
+            ManejadorExpediente manejador = new ManejadorExpediente();
+            string confirmacion = manejador.crearExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
 
             MostrarMensaje(confirmacion);
 
@@ -436,16 +435,6 @@ namespace Pediatric_System
                 historiaClinica.AP_OtrasComplicaciones = true;
                 historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
             }
-            if (otrasComplicacionesAP.Value == "ausentes")
-            {
-                historiaClinica.AP_OtrasComplicaciones = false;
-                historiaClinica.AP_OtrasComplicacionesDescripcion = null;
-            }
-            else
-            {
-                historiaClinica.AP_OtrasComplicaciones = true;
-                historiaClinica.AP_OtrasComplicacionesDescripcion = complicacionPerinatal.Value.Trim();
-            }
 
 
             if (asmaCheck.Checked)
@@ -506,36 +495,6 @@ namespace Pediatric_System
             }
 
             historiaClinica.AlegergiasDescripcion = "";
-            if (alergiasEstado.Value == "presentesAlergia")
-            {
-                historiaClinica.Alergias = true;
-                historiaClinica.AlegergiasDescripcion = descripcionAlergia.Value.Trim();
-            }
-
-            if (otrosCheck.Checked)
-            {
-                historiaClinica.HF_Otros = true;
-                historiaClinica.HF_DescripcionOtros = descripcionOtrosHF.Value.Trim();
-            }
-
-            if (apatEstado.Value == "presentesPat")
-            {
-                historiaClinica.APAT_Estado = true;
-                historiaClinica.APAT_Descripcion = descripcionPatologicos.Value.Trim();
-            }
-
-            if (atEstado.Value == "presentesTrau")
-            {
-                historiaClinica.AT_Estado = true;
-                historiaClinica.AT_Descripcion = descripcionTraumatico.Value.Trim();
-            }
-
-            if (aqEstado.Value == "presentesQui")
-            {
-                historiaClinica.AQ_Estado = true;
-                historiaClinica.AQ_Descripcion = descripcionQuirurgico.Value.Trim();
-            }
-
             if (alergiasEstado.Value == "presentesAlergia")
             {
                 historiaClinica.Alergias = true;

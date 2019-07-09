@@ -205,6 +205,14 @@
                             </div>
                         </div>
 
+                        <%--<script type="application/javascript">
+                            $('#fotoPaciente').on("change", function (event) {
+                                var fileName = $(this).val();
+                                //replace the "Choose a file" label
+                                console.log("sdfsdf");
+                                $('.custom-file-label').html("DSFSF");
+                            });
+                        </script>--%>
 
                         <div class="form-row general-card padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -217,8 +225,8 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Foto del Paciente</label>
                                                     <div class="custom-file">
-                                                        <asp:FileUpload ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
-                                                        <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar"></label>
+                                                        <asp:FileUpload ClientIDMode="Static" ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
+                                                        <label  class="custom-file-label" for="fotoPaciente" data-browse="Buscar"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -226,6 +234,7 @@
                                             <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Vincular expediente</label>
+                                                    <asp:FileUpload ID="FileUpload1" runat="server" />
                                                     <asp:TextBox runat="server" ID="VincExpedientePaciente" CssClass="form-control" placeholder="URL del expdiente antiguo"></asp:TextBox>
                                                 </div>
                                             </div>
@@ -455,8 +464,8 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <asp:DropDownList ClientIDMode="Static" ID="barriosFA" runat="server" CssClass="browser-default custom-select listaBarriosFA" ></asp:DropDownList>
-                                                <input ClientIDMode="Static"  runat="server" type="hidden" id="barFA"/>
+                                                    <asp:DropDownList ClientIDMode="Static" ID="barriosFA" runat="server" CssClass="browser-default custom-select listaBarriosFA"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="barFA" />
 
                                                     <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaBarriosFA" id="barriosFA">
                                                         <option value="" disabled selected>Barrio</option>
@@ -761,7 +770,7 @@
                                         <div class="table-responsive">
                                             <asp:GridView ID="esquemaVacunacion" runat="server" CssClass="table"
                                                 AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Style="text-align: center" >
+                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Style="text-align: center">
 
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Aplicada">
@@ -797,7 +806,7 @@
                 </div>
             </div>
 
-            
+
 
         </form>
 
