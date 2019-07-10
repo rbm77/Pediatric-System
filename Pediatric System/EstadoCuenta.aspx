@@ -54,7 +54,7 @@
             <div class="card">
                 <div>
                 </div>
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Personal</h5>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Cuentas de Personal</h5>
                 <div class="card-body">
                     <div>
                         <div class="table-responsive">

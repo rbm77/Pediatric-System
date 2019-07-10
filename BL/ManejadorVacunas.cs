@@ -64,5 +64,23 @@ namespace BL
             return confirmacion;
         }
 
+        /// <summary>
+        /// Actualiza el esquema de vacunacion de un paciente
+        /// </summary>
+        /// <param name="blAplicadas"></param>
+        /// <returns>Retorna un mensaje de confirmacion de la transaccion</returns>
+        public string ActualizarEsquemaVacunacion(List<BLAplicada> blAplicadas)
+        {
+            string confirmacion = "error";
+            List<TOAplicada> toAplicadas = new List<TOAplicada>();
+            foreach (BLAplicada ap in blAplicadas)
+            {
+                toAplicadas.Add(new TOAplicada(ap.IDExpediente, ap.NombreVacuna, ap.Aplicacion));
+            }
+            DAOAplicacionVacuna dao = new DAOAplicacionVacuna();
+            confirmacion = dao.ActualizarEsquemaVacunacion(toAplicadas);
+            return confirmacion;
+        }
+
     }
 }
