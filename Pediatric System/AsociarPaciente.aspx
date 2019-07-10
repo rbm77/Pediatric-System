@@ -13,7 +13,6 @@
             });
         });
 
-
     </script>
 
  <%--   Con esto de jode peor--%>
@@ -61,7 +60,7 @@
 
                 <div class="tab-pane fade show active margen-general-1-bottom" id="asociar-pacientes" role="tabpanel" aria-labelledby="asociar-pacientes-tab">
                     <div class="card">
-                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Cuentas de Pacientes</h5>
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Cuentas de Usuario Externo</h5>
                         <div class="card-body">
                             <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="gridCuentas_RowCommand"
                                 Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
@@ -108,7 +107,7 @@
 
                              <div class="table-responsive">
                                 <div class="card">
-                                    <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>Lista de Expedientes</h5>
+                                    <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes</h5>
                                     <div class="card-body">
                                             <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
                                                 AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
