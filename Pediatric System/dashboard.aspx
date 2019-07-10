@@ -12,6 +12,11 @@
         </div>
     </div>
     <hr style="color: #0056b2;" />
+
+    <%if (Session["Rol"].ToString() == "Medico")
+        {
+          %>  
+        
     <!-- Icon Cards-->
     <div class="row clearfix">
         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 ">
@@ -120,4 +125,5 @@
             </div>
         </div>
     </div>
+      <%  } %>
 </asp:Content>

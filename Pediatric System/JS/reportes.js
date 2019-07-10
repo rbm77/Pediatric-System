@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
 
-
+    
 
     $('.visualizacionTitulo').hide();
     $('.visualizacion-medicina-mixta').hide();
@@ -32,6 +32,8 @@
             $('.visualizacion-medicina-mixta').hide();
         }
     });
+
+    
 
     $('.datepicker').datepicker({
         uiLibrary: 'bootstrap4',
