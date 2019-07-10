@@ -11,7 +11,7 @@
     <div class="container-fluid col-11 col-auto">
 
         <div class="page-header margen-general-2-top">
-            <h2 class="text-info">Nueva Cita</h2>
+            <h3 class="text-info">Nueva Cita</h3>
         </div>
 
         <hr class="linea-divisoria-titulo" />

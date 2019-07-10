@@ -17,11 +17,9 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <br />
-
     <div class="container-fluid col-11 col-auto">
         <div class="page-header margen-general-2-top">
-            <h2 class="text-info">Expedientes</h2>
+            <h3 class="text-info">Expedientes</h3>
         </div>
 
         <hr class="linea-divisoria-titulo" />
@@ -34,7 +32,7 @@
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
                 <div class="table-responsive">
                     <div class="card">
-                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-table"></i>  Lista de Expedientes</h5>
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes</h5>
                         <div class="card-body">
                             <div>
 

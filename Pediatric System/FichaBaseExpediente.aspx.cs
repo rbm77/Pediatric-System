@@ -70,12 +70,14 @@ namespace Pediatric_System
             ManejadorExpediente manejador = new ManejadorExpediente();
             manejador.mostrarExpediente(codigo, expediente, expDireccion, encargado, encDireccion, facturante, facDireccion, historiaClinica);
 
-            // Aqui recupero los datos que se van a mostrar en el pdf de la referencia medica
+            // Aqui recupero los datos que se van a mostrar en el pdf de la referencia medica y el esquema de vacunacion
 
             ManejadorEdad manejadorEdad = new ManejadorEdad();
 
             Session["nombrePaciente"] = expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
             Session["edadPaciente"] = manejadorEdad.ExtraerEdad(expediente.FechaNacimiento);
+            Session["fechaNacimento"] = expediente.FechaNacimiento;
+
             Session["direccionPaciente"] = expDireccion.Barrio + ", " + expDireccion.Distrito + ", " 
                 + expDireccion.Canton + ", " + expDireccion.Provincia;
             Session["nombreEncargado"] = encargado.Nombre + " " + encargado.PrimerApellido + " " + encargado.SegundoApellido;
@@ -274,7 +276,7 @@ namespace Pediatric_System
 
         protected void guardarExpediente_Click(object sender, EventArgs e)
         {
-            //ActualizarEsquemaVacunacion();
+            
 
             BLExpediente expediente = new BLExpediente();
             BLDireccion direccionExp = new BLDireccion();
@@ -515,7 +517,7 @@ namespace Pediatric_System
             ManejadorVacunas manejadorVacunas = new ManejadorVacunas();
             ManejadorEdad manejadorEdad = new ManejadorEdad();
             
-            int edadMeses = manejadorEdad.ExtraerMeses(DateTime.Parse("05/1/2019"));
+            int edadMeses = manejadorEdad.ExtraerMeses((DateTime) Session["fechaNacimento"]);
 
             
             List<BLAplicacionVacuna> aplicaciones = new List<BLAplicacionVacuna>();
@@ -641,11 +643,14 @@ namespace Pediatric_System
             }
         }
 
+        /// <summary>
+        /// Se actualiza el esquema de vacunacion
+        /// </summary>
         private void ActualizarEsquemaVacunacion()
         {
             CheckBox temp;
             List<BLAplicada> vacunasAplicadas = new List<BLAplicada>();
-            string idExpediente = "777";
+            string idExpediente = (string) Session["expedienteSeleccionado"];
 
 
             foreach (GridViewRow fila in esquemaVacunacion.Rows)
@@ -660,8 +665,18 @@ namespace Pediatric_System
 
             // ACTUALIZO LA BASE DE DATOS
 
+            ManejadorVacunas manejador = new ManejadorVacunas();
+
+            string confirmacion = manejador.ActualizarEsquemaVacunacion(vacunasAplicadas);
+
+            MostrarMensaje(confirmacion);
         }
 
+        /// <summary>
+        /// Se obtiene el formato correcto de tildes
+        /// </summary>
+        /// <param name="tildar"></param>
+        /// <returns></returns>
         private string FormatoTildes(string tildar)
         {
             tildar = tildar.Replace("&#243;", "ó").Replace("&#233;", "é").Replace("&#225;", "á").Replace("&#237;", "í").Replace("&#250;", "ú");

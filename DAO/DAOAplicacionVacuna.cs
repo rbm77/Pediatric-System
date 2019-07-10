@@ -123,7 +123,97 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Actualiza el esquema de vacunacion
+        /// </summary>
+        /// <param name="toAplicadas"></param>
+        /// <returns></returns>
+        public string ActualizarEsquemaVacunacion(List<TOAplicada> toAplicadas)
+        {
+            string confirmacion = "El esquema de vacunación se actualizó exitosamente";
 
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar el esquema de vacunación";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar el esquema de vacunación";
+                return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar esquema de vacunación");
+
+
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("UPDATE APLICACION_VACUNA SET @nombreAplicacion = '1' WHERE ID_EXPEDIENTE = @idExpediente AND NOMBRE_VACUNA = @nombreVacuna", conexion);
+
+
+                comando.Transaction = transaccion;
+
+
+                foreach (TOAplicada aplicada in toAplicadas)
+                {
+                    comando.Parameters.AddWithValue("@idExpediente", aplicada.IDExpediente);
+                    comando.Parameters.AddWithValue("@nombreVacuna", aplicada.NombreVacuna);
+                    comando.Parameters.AddWithValue("@nombreAplicacion", aplicada.Aplicacion);
+
+                    // Se ejecuta el comando 
+
+                    comando.ExecuteNonQuery();
+
+                    comando.Parameters.Clear();
+                }
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar el esquema de vacunación";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
 
     }
 }
