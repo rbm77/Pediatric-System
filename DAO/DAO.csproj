@@ -45,6 +45,7 @@
     <Compile Include="DAOAgendaEstandar.cs" />
     <Compile Include="DAOAplicacionVacuna.cs" />
     <Compile Include="DAOCita.cs" />
+    <Compile Include="DAOConsulta.cs" />
     <Compile Include="DAOCuenta.cs" />
     <Compile Include="DAOExpediente.cs" />
     <Compile Include="DAOMedico.cs" />

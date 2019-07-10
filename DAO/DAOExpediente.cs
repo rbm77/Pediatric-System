@@ -313,6 +313,212 @@ namespace DAO
             return confirmacion;
         }
 
+        public string ActualizarExpediente(TOExpediente nuevoExpediente, TODireccion nuevaDireccionPaciente, TODireccion nuevaDireccionEncargado, TODireccion nuevaDireccionFactura, TOEncargado_Facturante encargado, TOEncargado_Facturante facturante, TOHistoriaClinica nuevaHistoriaClinica1)
+        {
+            string confirmacion = "El expediente se actualizó correctamente en el sistema";
+
+            //Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar el expediente en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar el expediente en el sistema";
+                return confirmacion;
+            }
+
+            // Iniciar nueva transaccion 
+            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar expediente");
+
+            try
+            {
+                // --------------------------- Actualizar(insertar) en la tabla Direccion (Paciente) ---------------------------  //
+
+                //Crear un nuevo comando para verificar si la direccion ya fue ingresada 
+                SqlCommand cmdVerificarDirPaci = new SqlCommand("SELECT CODIGO_DIRECCION FROM DIRECCION WHERE CODIGO_DIRECCION = @cod;", conexion);
+                cmdVerificarDirPaci.Transaction = transaccion;
+                cmdVerificarDirPaci.Parameters.AddWithValue("@cod", nuevaDireccionPaciente.Codigo);
+
+                object resulVerificarDirPaciente = cmdVerificarDirPaci.ExecuteScalar();
+
+                if (resulVerificarDirPaciente == null)
+                {
+                    SqlCommand cmdInsertarDirPaciente = new SqlCommand("INSERT INTO DIRECCION (CODIGO_DIRECCION, NOMBRE_PROVINCIA, NOMBRE_CANTON, NOMBRE_DISTRITO)" +
+                        "VALUES (@cod, @nomPro, @nomCan, @nomDis);", conexion);
+
+                    cmdInsertarDirPaciente.Transaction = transaccion;
+
+                    cmdInsertarDirPaciente.Parameters.AddWithValue("@cod", nuevaDireccionPaciente.Codigo);
+                    cmdInsertarDirPaciente.Parameters.AddWithValue("@nomPro", nuevaDireccionPaciente.Provincia);
+                    cmdInsertarDirPaciente.Parameters.AddWithValue("@nomCan", nuevaDireccionPaciente.Canton);
+                    cmdInsertarDirPaciente.Parameters.AddWithValue("@nomDis", nuevaDireccionPaciente.Distrito);
+
+                    cmdInsertarDirPaciente.ExecuteScalar();
+                }
+
+                // --------------------------- Actualizar (insertar) en la tabla Direccion (Encargado)---------------------------  //
+
+                //Crear un nuevo comando para verificar si la direccion ya fue ingresada 
+                SqlCommand cmdVerificarDirEncargado = new SqlCommand("SELECT CODIGO_DIRECCION FROM DIRECCION WHERE CODIGO_DIRECCION = @cod;", conexion);
+                cmdVerificarDirEncargado.Transaction = transaccion;
+                cmdVerificarDirEncargado.Parameters.AddWithValue("@cod", nuevaDireccionEncargado.Codigo);
+
+                object resulVerificarDirEncargado = cmdVerificarDirEncargado.ExecuteScalar();
+
+                if (resulVerificarDirEncargado == null)
+                {
+                    SqlCommand cmdInsertarDirEncargado = new SqlCommand("INSERT INTO DIRECCION (CODIGO_DIRECCION, NOMBRE_PROVINCIA, NOMBRE_CANTON, NOMBRE_DISTRITO, NOMBRE_BARRIO)" +
+                        "VALUES (@cod, @nomPro, @nomCan, @nomDis, @nomBarr);", conexion);
+
+                    cmdInsertarDirEncargado.Transaction = transaccion;
+
+                    cmdInsertarDirEncargado.Parameters.AddWithValue("@cod", nuevaDireccionEncargado.Codigo);
+                    cmdInsertarDirEncargado.Parameters.AddWithValue("@nomPro", nuevaDireccionEncargado.Provincia);
+                    cmdInsertarDirEncargado.Parameters.AddWithValue("@nomCan", nuevaDireccionEncargado.Canton);
+                    cmdInsertarDirEncargado.Parameters.AddWithValue("@nomDis", nuevaDireccionEncargado.Distrito);
+                    cmdInsertarDirEncargado.Parameters.AddWithValue("@nomBarr", nuevaDireccionEncargado.Barrio);
+
+                    cmdInsertarDirEncargado.ExecuteNonQuery();
+                }
+
+                // --------------------------- Actualizar (insertar) en la tabla Direccion (Facturante) ---------------------------  //
+
+                //Crear un nuevo comando para verificar si la direccion ya fue ingresada 
+                SqlCommand cmdVerificarDirFactura = new SqlCommand("SELECT CODIGO_DIRECCION FROM DIRECCION WHERE CODIGO_DIRECCION = @cod;", conexion);
+                cmdVerificarDirFactura.Transaction = transaccion;
+                cmdVerificarDirFactura.Parameters.AddWithValue("@cod", nuevaDireccionFactura.Codigo);
+
+                object resulVerificarDirFactura = cmdVerificarDirFactura.ExecuteScalar();
+
+                if (resulVerificarDirFactura == null)
+                {
+                    SqlCommand cmdInsertarDirFactura = new SqlCommand("INSERT INTO DIRECCION (CODIGO_DIRECCION, NOMBRE_PROVINCIA, NOMBRE_CANTON, NOMBRE_DISTRITO, NOMBRE_BARRIO)" +
+                        "VALUES (@cod, @nomPro, @nomCan, @nomDis, @nomBarr);", conexion);
+
+                    cmdInsertarDirFactura.Transaction = transaccion;
+
+                    cmdInsertarDirFactura.Parameters.AddWithValue("@cod", nuevaDireccionFactura.Codigo);
+                    cmdInsertarDirFactura.Parameters.AddWithValue("@nomPro", nuevaDireccionFactura.Provincia);
+                    cmdInsertarDirFactura.Parameters.AddWithValue("@nomCan", nuevaDireccionFactura.Canton);
+                    cmdInsertarDirFactura.Parameters.AddWithValue("@nomDis", nuevaDireccionFactura.Distrito);
+                    cmdInsertarDirFactura.Parameters.AddWithValue("@nomBarr", nuevaDireccionFactura.Barrio);
+
+                    cmdInsertarDirFactura.ExecuteNonQuery();
+                }
+
+                // --------------------------- Actualizar en la tabla Expediente ---------------------------  //
+
+                // Crear nuevo comando con la sencuencia SQL y el objeto de conexion
+                SqlCommand comandoExp = new SqlCommand("UPDATE EXPEDIENTE SET CEDULA = @ced, CODIGO_DIRECCION = @codDir, FOTO = @foto, EXPEDIENTE_ANTIGUO = @expAnti WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (NOMBRE = @nom);", conexion);
+               
+
+                comandoExp.Transaction = transaccion;
+                // Asignar un valor a los parametros del comando a ejecutar
+
+                comandoExp.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
+                comandoExp.Parameters.AddWithValue("@nom", nuevoExpediente.Nombre);
+                comandoExp.Parameters.AddWithValue("@codDir", nuevoExpediente.Direccion);
+                comandoExp.Parameters.AddWithValue("@ced", nuevoExpediente.Cedula);
+                comandoExp.Parameters.AddWithValue("@foto", nuevoExpediente.Foto);
+                comandoExp.Parameters.AddWithValue("@expAnti", nuevoExpediente.ExpedienteAntiguo);
+
+                comandoExp.ExecuteNonQuery();
+
+                // --------------------------- Actualizar en la tabla Encargado ---------------------------  //
+
+                SqlCommand comandoEncar = new SqlCommand("UPDATE ENCARGADO SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_ENCARGADO = @cedEncar;", conexion);
+
+                comandoEncar.Transaction = transaccion;
+
+                comandoEncar.Parameters.AddWithValue("@cedEncar", encargado.Cedula);
+                comandoEncar.Parameters.AddWithValue("@codDir", encargado.Direccion);
+                comandoEncar.Parameters.AddWithValue("@tel", encargado.Telefono);
+                comandoEncar.Parameters.AddWithValue("@correo", encargado.CorreoElectronico);
+
+                comandoEncar.ExecuteNonQuery();
+
+                // --------------------------- Actualizar en la tabla Facturante ---------------------------  //
+
+                SqlCommand comandoFactu = new SqlCommand("UPDATE FACTURANTE SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_FACTURANTE = @cedFactu;", conexion);
+
+                comandoFactu.Transaction = transaccion;
+
+                comandoFactu.Parameters.AddWithValue("@cedFactu", facturante.Cedula);
+                comandoFactu.Parameters.AddWithValue("@codDir", facturante.Direccion);
+                comandoFactu.Parameters.AddWithValue("@tel", facturante.Telefono);
+                comandoFactu.Parameters.AddWithValue("@correo", facturante.CorreoElectronico);
+
+                comandoFactu.ExecuteNonQuery();
+
+
+                // --------------------------- Actualizar en la tabla Antecedentes ---------------------------  //
+
+                SqlCommand comandoAntec = new SqlCommand("UPDATE ANTECEDENTES SET APAT_PRESENTE = @apatPre, APAT_DESCRIPCION = @apatDes, AQUIR_PRESENTE = @aquirPre, AQUIR_DESCRIPCION = @aquirDes, ATRAU_PRESENTE = @atrauPre, ATRAU_DESCRIPCION = @atrauDes, AHF_ASMA = @ahfAsma, AHF_DIABETES = @ahfDiab, AHF_HIPERTENSION = @ahfHiper, AHF_DISPLIDEMIA = @ahfDispl, AHF_CARDIOVASCULAR = @ahfCardi, AHF_EPILEPSIA = @ahfEpilep, AHF_OTROS = @ahfOtros, AHF_OTROS_DESCRIPCION = @ahfOtrosDesc, ALERGIAS_PRESENTE = @alergiasPreANT, ALERGIAS_DESCRIPCION = @alergiasDescAnt WHERE CODIGO_EXPEDIENTE = @codExpe;", conexion);
+
+                comandoAntec.Transaction = transaccion;
+
+                comandoAntec.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
+                comandoAntec.Parameters.AddWithValue("@apatPre", nuevaHistoriaClinica1.APAT_Estado);
+                comandoAntec.Parameters.AddWithValue("@apatDes", nuevaHistoriaClinica1.APAT_Descripcion);
+                comandoAntec.Parameters.AddWithValue("@aquirPre", nuevaHistoriaClinica1.AQ_Estado);
+                comandoAntec.Parameters.AddWithValue("@aquirDes", nuevaHistoriaClinica1.AQ_Descripcion);
+                comandoAntec.Parameters.AddWithValue("@atrauPre", nuevaHistoriaClinica1.AT_Estado);
+                comandoAntec.Parameters.AddWithValue("@atrauDes", nuevaHistoriaClinica1.AT_Descripcion);
+                comandoAntec.Parameters.AddWithValue("@ahfAsma", nuevaHistoriaClinica1.HF_Asma);
+                comandoAntec.Parameters.AddWithValue("@ahfDiab", nuevaHistoriaClinica1.HF_Diabetes);
+                comandoAntec.Parameters.AddWithValue("@ahfHiper", nuevaHistoriaClinica1.HF_Hipertension);
+                comandoAntec.Parameters.AddWithValue("@ahfDispl", nuevaHistoriaClinica1.HF_Displidemia);
+                comandoAntec.Parameters.AddWithValue("@ahfCardi", nuevaHistoriaClinica1.HF_Cardivasculares);
+                comandoAntec.Parameters.AddWithValue("@ahfEpilep", nuevaHistoriaClinica1.HF_Epilepsia);
+                comandoAntec.Parameters.AddWithValue("@ahfOtros", nuevaHistoriaClinica1.HF_Otros);
+                comandoAntec.Parameters.AddWithValue("@ahfOtrosDesc", nuevaHistoriaClinica1.HF_DescripcionOtros);
+                comandoAntec.Parameters.AddWithValue("@alergiasPreANT", nuevaHistoriaClinica1.Alergias);
+                comandoAntec.Parameters.AddWithValue("@alergiasDescAnt", nuevaHistoriaClinica1.AlegergiasDescripcion);
+
+                comandoAntec.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    // Realizar rollback a la transaccion
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo ingresar el expediente en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+
         /// <summary>
         /// Obtiene la lista de los registros que estan en la tabla Expediente 
         /// </summary>

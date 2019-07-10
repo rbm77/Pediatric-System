@@ -46,10 +46,12 @@
     <Compile Include="BLAgendaEstandar.cs" />
     <Compile Include="BLAplicada.cs" />
     <Compile Include="BLCita.cs" />
+    <Compile Include="BLConsulta.cs" />
     <Compile Include="BLCuenta.cs" />
     <Compile Include="BLDireccion.cs" />
     <Compile Include="BLEncargado_Facturante.cs" />
     <Compile Include="BLEnviarCorreo.cs" />
+    <Compile Include="BLExamenFisico.cs" />
     <Compile Include="BLExpediente.cs" />
     <Compile Include="BLHistoriaClinica.cs" />
     <Compile Include="BLMedico.cs" />
