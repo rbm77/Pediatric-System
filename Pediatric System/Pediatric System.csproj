@@ -1925,6 +1925,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="FotosExpediente\" />
     <Folder Include="images\ios-style-checkboxes\" />
     <Folder Include="images\iphone-style-checkboxes\" />
     <Folder Include="referencia\" />

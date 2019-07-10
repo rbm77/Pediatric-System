@@ -53,9 +53,11 @@
     <Compile Include="TOAgendaEstandar.cs" />
     <Compile Include="TOAplicada.cs" />
     <Compile Include="TOCita.cs" />
+    <Compile Include="TOConsulta.cs" />
     <Compile Include="TOCuenta.cs" />
     <Compile Include="TODireccion.cs" />
     <Compile Include="TOEncargado_Facturante.cs" />
+    <Compile Include="TOExamenFisico.cs" />
     <Compile Include="TOExpediente.cs" />
     <Compile Include="TOHistoriaClinica.cs" />
     <Compile Include="TOMedico.cs" />

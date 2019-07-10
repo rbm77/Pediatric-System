@@ -546,12 +546,19 @@ $(document).ready(function () {
     document.getElementById("descripcionPatologicos").disabled = "true";
     document.getElementById("descripcionQuirurgico").disabled = "true";
     document.getElementById("descripcionTraumatico").disabled = "true";
-    document.getElementById("descripcionOtros").disabled = "false";
+    document.getElementById("descripcionOtrosHF").disabled = "true";
     document.getElementById("descripcionAlergia").disabled = "true";
   //  document.getElementById("txtCodigo").disabled = "true";
   //  document.getElementById("descripcionVacuna").disabled = "true";
     //$('.descripcionVacuna').hide();  
 
+    $("#pacienteNoCedula").on("change", function () {
+        if ($("#pacienteNoCedula").prop('checked')) {
+            document.getElementById('cedulaPaciente').disabled = true;
+        } else {
+            document.getElementById('cedulaPaciente').disabled = false;
+        }
+    })
 
     $(".estadoPerinatal").on("change", function () {
         if (this.value == "ausentes") {
@@ -598,9 +605,9 @@ $(document).ready(function () {
 
     $("#otrosCheck").on("change", function () {
         if ($('#otrosCheck').prop('checked')) {
-            document.getElementById('descripcionOtros ').disabled = false;
+            document.getElementById('descripcionOtrosHF').disabled = true;
         } else {
-            document.getElementById('descripcionOtros').disabled = true;
+            document.getElementById('descripcionOtrosHF').disabled = false;
         }
     });
 

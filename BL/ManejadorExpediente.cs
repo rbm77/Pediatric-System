@@ -34,6 +34,24 @@ namespace BL
 
         }
 
+        public string actualizarExpediente(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLDireccion direccionEncargadoBL, BLDireccion direccionFacturanteBL, BLEncargado_Facturante encargadoBL, BLEncargado_Facturante facturanteBL, BLHistoriaClinica historiaClinicaBL)
+        {
+            TOExpediente expedienteTO = new TOExpediente();
+            TODireccion direccionPacienteTO = new TODireccion();
+            TODireccion direccionEncargadoTO = new TODireccion();
+            TODireccion direccionFacturanteTO = new TODireccion();
+            TOEncargado_Facturante encargadoTO = new TOEncargado_Facturante();
+            TOEncargado_Facturante facturanteTO = new TOEncargado_Facturante();
+            TOHistoriaClinica historiaClinicaTO = new TOHistoriaClinica();
+
+            convertirExpedienteCompleto_BL_TO(expedienteBL, direccionPacienteBL, encargadoBL, direccionEncargadoBL, facturanteBL, direccionFacturanteBL, historiaClinicaBL, expedienteTO, direccionPacienteTO, encargadoTO, direccionEncargadoTO, facturanteTO, direccionFacturanteTO, historiaClinicaTO);
+
+            DAOExpediente dao = new DAOExpediente();
+            string confirmacion = dao.ActualizarExpediente(expedienteTO, direccionPacienteTO, direccionEncargadoTO, direccionFacturanteTO, encargadoTO, facturanteTO, historiaClinicaTO);
+            return confirmacion;
+
+        }
+
         /// <summary>
         /// Obtiene una lista de objetos Expediente que son enviados desde la capa DAO 
         /// </summary>
