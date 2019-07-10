@@ -3,71 +3,55 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
     <br />
 
-    <div class="container-fluid col-10 col-auto">
-        <div class="page-header">
-            <h3 class="text-info">Inicio</h3>
+    <div class="container-fluid col-11 col-auto">
+        <div class="page-header margen-general-2-top">
+            <h3 class="text-info">Pediatric System</h3>
         </div>
-    </div>
 
-    <hr style="color: #0056b2;" />
+        <hr class="linea-divisoria-titulo" />
+        <!-- Icon Cards-->
+        <div class="row clearfix">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                        <div class="row clearfix">
 
-    <form>
-        <br />
 
-        <div class="container-fluid col-10 col-auto table-responsive">
+                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 mb-3">
+                                <div class="card text-white o-hidden h-100">
+                                    <a class="card-body card-dash" href="ListaExpedientes.aspx">
+                                        <i style="color: #1d5e93" class="far fa-id-card fa-4x"></i>
+                                    </a>
+                                    <a class="card-footer text-white clearfix small z-1" href="ListaExpedientes.aspx">
+                                        <span class="float-left">Expedientes</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
 
-            <div class="card">
-                <h5 class="card-header text-center" style="color: dimgray;">Expedientes Vinculados</h5>
-                <div class="card-body">
-
-                    <table class="table table-hover">
-                        <thead>
-                            <tr class="bg-light">
-                                <th scope="col" style="width: 45%; color: dimgray;">Nombre Completo</th>
-                                <th scope="col" style="width: 45%; color: dimgray;">Cédula</th>
-                                <th scope="col" style="width: 20%"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Richard Bolaños Moya</td>
-                                <td>2-0785-0434</td>
-                                <td>
-                                    <input type="radio" class="form-check-input" id="check3" name="option1" value="something">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Fabian Jimenez Morales</td>
-                                <td>2-0264-0478</td>
-                                <td>
-                                    <input type="radio" class="form-check-input" id="check4" name="option1" value="something">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <hr style="color: #0056b2;" />
-                    <br />
-
-                    <div class="form-row">
-                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
-
-                            <button type="submit" class="btn btn-outline-primary form-control">AGENDAR CITA</button>
-
-                        </div>
-                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
-
-                            <button type="submit" class="btn btn-outline-primary form-control">VER EXPEDIENTE</button>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mb-3">
+                                <div class="card text-white o-hidden h-100">
+                                    <a class="card-body card-dash" href="ListaExpedientes.aspx">
+                                        <i style="color: #1d5e93" class="far fa-calendar-check fa-4x"></i>
+                                    </a>
+                                    <a class="card-footer text-white clearfix small z-1" href="ListaCitas.aspx">
+                                        <span class="float-left">Citas</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
                 </div>
             </div>
-
-            <br />
         </div>
-
-    </form>
+    </div>
 </asp:Content>

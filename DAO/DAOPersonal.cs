@@ -23,11 +23,26 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                //    confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+               //     return confirmacion;
+                }
             }
-
+            else
+            {
+             //   confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+             //   return confirmacion;
+            }
             // Se inicia una nueva transacción
 
             SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
@@ -95,9 +110,25 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción
@@ -167,9 +198,25 @@ namespace DAO
         {
 
             // Se abre la conexión
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción

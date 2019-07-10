@@ -8,11 +8,11 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <br />
     <div class="container-fluid col-11 col-auto">
 
         <div class="page-header">
-            <h2 class="text-info">Consultas</h2>
+            <h3 class="text-info">Consultas</h3>
         </div>
 
         <hr class="linea-divisoria-titulo" />
@@ -62,7 +62,7 @@
                     <div class="table-responsive">
 
                         <div class="card">
-                            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-clipboard"></i>  Lista de Consultas</h5>
+                            <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Consultas</h5>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table table-hover" id="dataTable">

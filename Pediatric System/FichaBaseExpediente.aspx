@@ -132,10 +132,10 @@
                                     <div class="padding-general-label">
                                         <div class="form-row">
                                             <label class="nombre-input">Cédula</label>
-                                            <asp:TextBox runat="server" ID="cedulaPaciente" CssClass="form-control" placeholder="102340567" MaxLength="9"></asp:TextBox>
+                                            <asp:TextBox clientidmode="Static" runat="server" ID="cedulaPaciente" CssClass="form-control" placeholder="102340567" MaxLength="9"></asp:TextBox>
                                         </div>
                                         <div class="form-row" style="padding-left: 20px;">
-                                            <input runat="server" class="form-check-input" type="checkbox" value="noCedula" id="pacienteNoCedula">
+                                            <input clientidmode="Static" runat="server" class="form-check-input" type="checkbox" value="noCedula" id="pacienteNoCedula">
                                             <label class="form-check-label nombre-input" for="noCedulaCheck">No posee cedula</label>
                                         </div>
                                     </div>
@@ -205,6 +205,14 @@
                             </div>
                         </div>
 
+                        <%--<script type="application/javascript">
+                            $('#fotoPaciente').on("change", function (event) {
+                                var fileName = $(this).val();
+                                //replace the "Choose a file" label
+                                console.log("sdfsdf");
+                                $('.custom-file-label').html("DSFSF");
+                            });
+                        </script>--%>
 
                         <div class="form-row general-card padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -217,8 +225,8 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Foto del Paciente</label>
                                                     <div class="custom-file">
-                                                        <asp:FileUpload ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
-                                                        <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar"></label>
+                                                        <asp:FileUpload ClientIDMode="Static" ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
+                                                        <label class="custom-file-label" for="fotoPaciente" data-browse="Buscar"></label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -455,8 +463,8 @@
 
                                             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="padding-general-label">
-                                                    <asp:DropDownList ClientIDMode="Static" ID="barriosFA" runat="server" CssClass="browser-default custom-select listaBarriosFA" ></asp:DropDownList>
-                                                <input ClientIDMode="Static"  runat="server" type="hidden" id="barFA"/>
+                                                    <asp:DropDownList ClientIDMode="Static" ID="barriosFA" runat="server" CssClass="browser-default custom-select listaBarriosFA"></asp:DropDownList>
+                                                    <input clientidmode="Static" runat="server" type="hidden" id="barFA" />
 
                                                     <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaBarriosFA" id="barriosFA">
                                                         <option value="" disabled selected>Barrio</option>
@@ -532,7 +540,7 @@
                                                     <div class="form-check form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
-                                                                <asp:RadioButton CssClass="form-check-input" ID="opcion_adecuado" GroupName="opciones_tamano" runat="server" />
+                                                                <asp:RadioButton CssClass="form-check-input" ID="opcion_adecuado" GroupName="opciones_tamano" Checked="true" runat="server" />
                                                                 <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-adecuado" value="adecuado" checked>--%>
                                                                 <label class="form-check-label nombre-input" for="opciones-tamaño">Adecuado</label>
                                                             </div>
@@ -579,7 +587,7 @@
                                                 <div class="padding-general-label">
                                                     <div class="complicacionPerinatal">
                                                         <label class="nombre-input">Complicaciones</label>
-                                                        <textarea runat="server" id="complicacionPerinatal" class="form-control"></textarea>
+                                                        <textarea clientidmode="Static" runat="server" id="complicacionPerinatal" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -641,11 +649,16 @@
 
                                             <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
                                                 <div class="form-group ">
-                                                    <input runat="server" class="form-check-input" type="checkbox" value="otros" id="otrosCheck">
+                                                    <input clientidmode="Static" runat="server" class="form-check-input" type="checkbox" value="otros" id="otrosCheck">
                                                     <label class="form-check-label nombre-input" for="otrosCheck">Otros</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-check col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                                <div class="form-group ">
                                                     <div class="descripcionOtros">
                                                         <label class="nombre-input">Descripción</label>
-                                                        <textarea runat="server" id="descripcionOtrosHF" class="form-control"></textarea>
+                                                        <textarea clientidmode="Static" runat="server" id="descripcionOtrosHF" class="form-control"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -669,7 +682,7 @@
                                                 </select>
                                                 <div class="descripcionPatologicos margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea runat="server" id="descripcionPatologicos" class="form-control"></textarea>
+                                                    <textarea clientidmode="Static" runat="server" id="descripcionPatologicos" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -689,7 +702,7 @@
                                                 </select>
                                                 <div class="descripcionQuirurgico margen-general-2-top">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea runat="server" id="descripcionQuirurgico" class="form-control"></textarea>
+                                                    <textarea clientidmode="Static" runat="server" id="descripcionQuirurgico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -711,7 +724,7 @@
                                                 </select>
                                                 <div class="descripcionTraumatico margen-general-2-top">
                                                     <label class="nombre-input">Descripcion</label>
-                                                    <textarea runat="server" id="descripcionTraumatico" class="form-control"></textarea>
+                                                    <textarea clientidmode="Static" runat="server" id="descripcionTraumatico" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -731,7 +744,7 @@
                                                 </select>
                                                 <div class="descripcionAlergia form-row" style="margin-top: 15px;">
                                                     <label class="nombre-input">Descripción</label>
-                                                    <textarea runat="server" id="descripcionAlergia" class="form-control"></textarea>
+                                                    <textarea clientidmode="Static" runat="server" id="descripcionAlergia" class="form-control"></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -761,7 +774,7 @@
                                         <div class="table-responsive">
                                             <asp:GridView ID="esquemaVacunacion" runat="server" CssClass="table"
                                                 AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Style="text-align: center" >
+                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Style="text-align: center">
 
                                                 <Columns>
                                                     <asp:TemplateField HeaderText="Aplicada">
@@ -797,7 +810,7 @@
                 </div>
             </div>
 
-            
+
 
         </form>
 

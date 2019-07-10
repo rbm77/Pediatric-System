@@ -10,25 +10,34 @@
 namespace Pediatric_System {
     
     
-    public partial class InicioPrincipal {
+    public partial class ListaCitas {
         
         /// <summary>
-        /// Control gridExpedientes.
+        /// Control mensajeConfirmacion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridExpedientes;
+        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
         
         /// <summary>
-        /// Control nuevoExpediente.
+        /// Control gridCitas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nuevoExpediente;
+        protected global::System.Web.UI.WebControls.GridView gridCitas;
+        
+        /// <summary>
+        /// Control nuevaCita.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button nuevaCita;
         
         /// <summary>
         /// Control regresar.

@@ -9,6 +9,7 @@ namespace TO
     public class TOCita
     {
         public string CodigoMedico { get; set; }
+        public string NombreMedico { get; set; }
         public string Nombre { get; set; }
         public string Edad { get; set; }
         public string Correo { get; set; }
@@ -19,6 +20,14 @@ namespace TO
         public TOCita()
         {
 
+        }
+
+        public TOCita(string nombreMedico, string nombrePaciente, string fecha, string hora)
+        {
+            this.NombreMedico = nombreMedico;
+            this.Nombre = nombrePaciente;
+            this.Fecha = fecha;
+            this.Hora = hora;
         }
 
         public TOCita(string hora)
