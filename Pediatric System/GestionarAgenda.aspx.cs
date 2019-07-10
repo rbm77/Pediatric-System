@@ -500,13 +500,18 @@ namespace Pediatric_System
 
             int hora = int.Parse(lista[0]);
 
-            if(hora >= 12)
+            if(hora > 12)
             {
                 return (hora-12) + ":" +  lista[1] + " PM";
             }
             else
             {
-                if(hora == 0)
+
+                if (hora == 12)
+                {
+                    return "12" + ":" + lista[1] + " PM";
+                }
+                if (hora == 0)
                 {
                     return "12" + ":" + lista[1] + " AM";
                 }

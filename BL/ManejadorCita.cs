@@ -76,6 +76,13 @@ namespace BL
             return confirmacion;
         }
 
+        /// <summary>
+        /// Carga el horario de las citas
+        /// </summary>
+        /// <param name="blLista"></param>
+        /// <param name="codigoMedico"></param>
+        /// <param name="fecha"></param>
+        /// <returns>Retorna un mensaje de confirmacion de la transaccion</returns>
         public string CargarHorasCita(List<BLCita> blLista, string codigoMedico, string fecha)
         {
             string confirmacion = "error";
@@ -89,5 +96,29 @@ namespace BL
             }
             return confirmacion;
         }
+
+        /// <summary>
+        /// Carga las citas pendientes que se mostraran al usuario
+        /// </summary>
+        /// <param name="listaNombres"></param>
+        /// <param name="listaCitas"></param>
+        /// <param name="cuenta"></param>
+        /// <returns>Retorna un mensaje de confirmacion de la transaccion</returns>
+        public string CargarCitasUsuario(List<BLCita> listaCitas, string cuenta)
+        {
+            string confirmacion = "error";
+
+            List<TOCita> toCitas = new List<TOCita>();
+            DAOCita dao = new DAOCita();
+            confirmacion = dao.CargarCitasUsuario(toCitas, cuenta);
+
+            foreach (TOCita cit in toCitas)
+            {
+                listaCitas.Add(new BLCita(cit.NombreMedico, cit.Nombre, cit.Fecha, cit.Hora));
+            }
+
+            return confirmacion;
+        }
+
     }
 }
