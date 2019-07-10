@@ -39,7 +39,7 @@
                                     <a class="card-body card-dash" href="ListaExpedientes.aspx">
                                         <i style="color: #1d5e93" class="far fa-calendar-check fa-4x"></i>
                                     </a>
-                                    <a class="card-footer text-white clearfix small z-1" href="ListaExpedientes.aspx">
+                                    <a class="card-footer text-white clearfix small z-1" href="ListaCitas.aspx">
                                         <span class="float-left">Citas</span>
                                         <span class="float-right">
                                             <i class="fas fa-angle-right"></i>

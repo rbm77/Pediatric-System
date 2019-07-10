@@ -13,6 +13,15 @@ namespace Pediatric_System {
     public partial class ListaCitas {
         
         /// <summary>
+        /// Control mensajeConfirmacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
+        
+        /// <summary>
         /// Control gridCitas.
         /// </summary>
         /// <remarks>
