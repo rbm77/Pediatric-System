@@ -189,7 +189,7 @@ namespace Pediatric_System
 
                 GridViewRow filaSeleccionada = vistaAgenda.Rows[indice];
                 TableCell nombreDia = filaSeleccionada.Cells[0];
-                string dia = nombreDia.Text.Replace("&#233;", "é").Replace("&#225;", "á").Replace("&#237;", "í").Replace("&#250;", "ú");
+                string dia = nombreDia.Text.Replace("&#233;", "é").Replace("&#225;", "á").Replace("&#237;", "í").Replace("&#250;", "ú").Replace("&#241;", "ñ");
 
                 string confirmacion = manejador.EliminarHorario(codigoMedico, dia);
                 string colorMensaje = "";

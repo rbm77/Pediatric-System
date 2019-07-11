@@ -32,19 +32,18 @@
             <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
 
-
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
 
                 <div class="card">
 
-                    <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>Lista de Citas Pendientes</h5>
+                    <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Citas Pendientes</h5>
 
                     <div class="card-body">
                         <div class="table-responsive" style="padding-left: 0px; padding-right: 0px">
 
                             <asp:GridView ID="gridCitas" runat="server" CssClass="table" Style="text-align: center"
                                 AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%">
+                                HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%" OnRowCommand="gridCitas_RowCommand">
 
 
                                 <Columns>
@@ -65,7 +64,7 @@
 
                         <div class="alinearBtnNuevo">
                             <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12 ubicacionBtnNuevo">
-                                <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevoExpediente" Text="NUEVA CITA" ID="nuevaCita" />
+                                <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevoExpediente" Text="NUEVA CITA" ID="nuevaCita" OnClick="nuevaCita_Click" />
                             </div>
                         </div>
                     </div>
@@ -77,10 +76,9 @@
 
             <div class="form-row alinearBtnRegresar">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
                 </div>
             </div>
-
         </form>
 
 

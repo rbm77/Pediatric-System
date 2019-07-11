@@ -13,15 +13,6 @@ namespace Pediatric_System {
     public partial class CitaUsuario {
         
         /// <summary>
-        /// Control mensajeConfirmacion.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
-        
-        /// <summary>
         /// Control ScriptManager1.
         /// </summary>
         /// <remarks>
@@ -38,6 +29,24 @@ namespace Pediatric_System {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// Control mensajeConfirmacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
+        
+        /// <summary>
+        /// Control UpdateProgress3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdateProgress UpdateProgress3;
         
         /// <summary>
         /// Control nombrePaciente.
@@ -119,14 +128,5 @@ namespace Pediatric_System {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button agendarCita;
-        
-        /// <summary>
-        /// Control mensajeConfirmacion1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion1;
     }
 }

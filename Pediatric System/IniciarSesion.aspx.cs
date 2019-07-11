@@ -41,6 +41,8 @@ namespace Pediatric_System
                                 miBLMedico.correo = cor;
                                 miBLMedico.buscarMedico();
                                 Session["codigoMedico"] = miBLMedico.codigo;
+                                Session["nombreMedico"] = miBLMedico.nombre + " " + miBLMedico.apellido;
+                                
 
                                 Response.Redirect("Dashboard.aspx");
                                 break;
@@ -73,7 +75,7 @@ namespace Pediatric_System
             {
                 txtContra.Text = "";
                 txtCorreo.Text = "";
-                throw;
+               // throw;
             }
         }
 

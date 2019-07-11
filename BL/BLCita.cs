@@ -24,8 +24,9 @@ namespace BL
 
         }
 
-        public BLCita(string nombreMedico, string nombrePaciente, string fecha, string hora)
+        public BLCita(string codigoMedico, string nombreMedico, string nombrePaciente, string fecha, string hora)
         {
+            this.CodigoMedico = codigoMedico;
             this.NombreMedico = nombreMedico;
             this.Nombre = nombrePaciente;
             this.Fecha = fecha;
