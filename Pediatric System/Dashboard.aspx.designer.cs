@@ -11,5 +11,32 @@ namespace Pediatric_System {
     
     
     public partial class dashboard {
+        
+        /// <summary>
+        /// lblCantidadExpedientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCantidadExpedientes;
+        
+        /// <summary>
+        /// lblCantidadConsultaActiva control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCantidadConsultaActiva;
+        
+        /// <summary>
+        /// lblCantidadCitasPendientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblCantidadCitasPendientes;
     }
 }

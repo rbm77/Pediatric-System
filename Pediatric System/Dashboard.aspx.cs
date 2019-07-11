@@ -19,8 +19,15 @@ namespace Pediatric_System
 
         public void conteos()
         {
-            ManejadorExpediente me = new ManejadorExpediente();
-            Session["countExpe"] = me.contarExpediente();
+            BLDatos_Dashboard misDatos = new BLDatos_Dashboard();
+
+            if (Session["codigoMedico"] != null)
+            {
+                misDatos.buscarDatosDashBoard(Session["codigoMedico"].ToString());
+                lblCantidadExpedientes.Attributes.Add("data-to", misDatos.cantidadExpedientes);
+                lblCantidadCitasPendientes.Attributes.Add("data-to", misDatos.cantidadCitasPendientes);
+                lblCantidadConsultaActiva.Attributes.Add("data-to", misDatos.cantidadConsultasActivas);
+            }
 
         }
        
