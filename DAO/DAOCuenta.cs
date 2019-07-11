@@ -19,12 +19,29 @@ namespace DAO
         /// Busca que el correo y la contraseña de una cuenta coincida
         /// </summary>
         /// <param name="myTOCuenta">Se recibe un objeto que contiene los datos a buscar</param>
-        public void buscarCuentaConContraseña(TOCuenta myTOCuenta)
+        public String buscarCuentaConContraseña(TOCuenta myTOCuenta)
         {
+            string confirmacion = "La cuenta se encontro correctamente";
             // Se abre la conexión
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrio un error y no se encontro la cuenta";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrio un error y no se encontro la cuenta";
+                return confirmacion;
             }
             SqlTransaction transaccion = conexion.BeginTransaction("Buscar Cuenta con Contraseña");
             try
@@ -60,6 +77,10 @@ namespace DAO
                 {
 
                 }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo encontrar la cuenta";
+                }
             }
             finally
             {
@@ -69,6 +90,7 @@ namespace DAO
                     conexion.Close();
                 }
             }
+            return confirmacion;
         }
 
         /// <summary>
@@ -77,22 +99,81 @@ namespace DAO
         /// <param name="myTOCuenta">Recibe un objeto con los atributos de la cuenta que se desea modificar</param>
         public void recuperarContraseña(TOCuenta myTOCuenta)
         {
-            //Comando de actualizacion
-            string sql = "update CUENTA set CONTRASENA = @Contraseña where CORREO = @Correo";
-            SqlCommand command = new SqlCommand(sql, conexion);
 
-            // Asignar un valor a los parametros del comando a ejecutar
-            command.Parameters.AddWithValue("@Correo", myTOCuenta.correo);
-            command.Parameters.AddWithValue("@Contraseña", myTOCuenta.contrasena);
+            // Se abre la conexión
 
-            // Se abre la conexion
-            conexion.Open();
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
+            }
 
-            // Se ejecuta el comando
-            command.ExecuteNonQuery();
+            // Se inicia una nueva transacción
 
-            //Se cierra la conexion
-            conexion.Close();
+            SqlTransaction transaccion = conexion.BeginTransaction("Editar contraseña");
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+
+                SqlCommand comando = new SqlCommand("update CUENTA set CONTRASENA = @Contraseña where CORREO = @Correo", conexion);
+
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+                comando.Parameters.AddWithValue("@Correo", myTOCuenta.correo);
+                comando.Parameters.AddWithValue("@Contraseña", myTOCuenta.contrasena);
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                comando.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                }
+            }
+            finally
+            {
+                //Se finaliza la conezion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
         }
 
 
@@ -104,9 +185,25 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción
@@ -170,9 +267,25 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción
@@ -240,9 +353,25 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción
@@ -316,9 +445,25 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción
@@ -383,9 +528,25 @@ namespace DAO
         {
             // Se abre la conexión
 
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción
@@ -449,9 +610,25 @@ namespace DAO
         {
 
             // Se abre la conexión
-            if (conexion.State != ConnectionState.Open)
+            if (conexion != null)
             {
-                conexion.Open();
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
             }
 
             // Se inicia una nueva transacción

@@ -264,12 +264,10 @@ namespace Pediatric_System
         {
             string colorMensaje = "success";
 
-            if (confirmacion.Contains("error"))
+            if (confirmacion.Contains("error") || confirmacion.Contains("Debe"))
             {
                 colorMensaje = "danger";
             }
-
-
 
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
                 "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
@@ -352,15 +350,25 @@ namespace Pediatric_System
         /// <param name="e"></param>
         protected void btnCrear_Click(object sender, EventArgs e)
         {
-
+            if (ValidarDatos())
+            {
             // Recuperación de los campos de texto
 
             string nombreTxt = nombre.Text.Trim();
             string edadTxt = edad.Text.Trim();
-            string correoTxt = correo.Text.Trim();
-            int telefonoTxt = int.Parse(telefono.Text.Trim());
+            string correoTxt = correo.Value.Trim();
+            string telefonoTxt = telefono.Value.Trim();
             string fechaTxt = fecha.Text.Trim();
             string horaT = horaTxt.Text.Trim();
+
+                int numTel = 0;
+
+                if (!telefonoTxt.Equals(""))
+                {
+                    numTel = int.Parse(telefonoTxt);
+                }
+
+
 
             // Enviar datos para guardar en la base de datos
 
@@ -368,12 +376,29 @@ namespace Pediatric_System
 
             string codigoMedico = Session["codigoMedico"].ToString();
 
-            string confirmacion = manejador.CrearCita(codigoMedico, nombreTxt, edadTxt, correoTxt, telefonoTxt, fechaTxt, horaT);
+            string confirmacion = manejador.CrearCita(codigoMedico, nombreTxt, edadTxt, correoTxt, numTel, fechaTxt, horaT);
+
+                if (!confirmacion.Contains("error"))
+                {
+                    if (!correoTxt.Equals(""))
+                    {
+                        BLEnviarCorreo correo = new BLEnviarCorreo(correoTxt, "Cita Médica", 
+                            "Estimado usuario:\n\n" +
+                            "La Clínica Pediátrica Divino Niño le informa que se ha programado una " +
+                            "cita de atención médica. Los detalles de la misma se describen a continuación:\n" +
+                            "Paciente: " + nombreTxt + "\n" + 
+                            "Médico: " + Session["nombreMedico"].ToString() + "\n" +
+                            "Fecha: " + (DateTime.Parse(fechaTxt)).ToLongDateString() + "\n" +
+                            "Hora: " + horaT);
+                    }
+                    
+                }
+
 
             LimpiarCampos();
 
             MostrarAgenda(diaSeleccionado, confirmacion);
-
+        }
         }
 
         /// <summary>
@@ -383,15 +408,15 @@ namespace Pediatric_System
         {
             nombre.Text = "";
             edad.Text = "";
-            correo.Text = "";
-            telefono.Text = "";
+            correo.Value = "";
+            telefono.Value = "";
             fecha.Text = "";
             horaTxt.Text = "";
 
             nombre.Enabled = true;
             edad.Enabled = true;
-            correo.Enabled = true;
-            telefono.Enabled = true;
+            correo.Disabled = false;
+            telefono.Disabled = false;
 
         }
 
@@ -431,8 +456,8 @@ namespace Pediatric_System
                     {
                         nombre.Text = cita.Nombre;
                         edad.Text = cita.Edad;
-                        correo.Text = cita.Correo;
-                        telefono.Text = cita.Telefono + "";
+                        correo.Value = cita.Correo;
+                        telefono.Value = cita.Telefono + "";
                     } else
                     {
                         MostrarMensaje("Ocurrió un error y no se pudo cargar los datos de la cita");
@@ -440,8 +465,8 @@ namespace Pediatric_System
 
                     nombre.Enabled = false;
                     edad.Enabled = false;
-                    correo.Enabled = false;
-                    telefono.Enabled = false;
+                    correo.Disabled = true;
+                    telefono.Disabled = true;
                 }
                 else
                 {
@@ -500,13 +525,18 @@ namespace Pediatric_System
 
             int hora = int.Parse(lista[0]);
 
-            if(hora >= 12)
+            if(hora > 12)
             {
                 return (hora-12) + ":" +  lista[1] + " PM";
             }
             else
             {
-                if(hora == 0)
+
+                if (hora == 12)
+                {
+                    return "12" + ":" + lista[1] + " PM";
+                }
+                if (hora == 0)
                 {
                     return "12" + ":" + lista[1] + " AM";
                 }
@@ -523,12 +553,10 @@ namespace Pediatric_System
         /// <param name="e"></param>
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
-            // Recuperación de los campos de texto
-
+            string nombreTxt = nombre.Text.Trim();
+            string correoTxt = correo.Value.Trim();
             string fechaTxt = fecha.Text.Trim();
             string horaT = horaTxt.Text.Trim();
-
-            // Enviar datos para guardar en la base de datos
 
             ManejadorCita manejador = new ManejadorCita();
 
@@ -537,9 +565,69 @@ namespace Pediatric_System
 
             string confirmacion = manejador.CancelarCita(codigoMedico, fechaTxt, horaT);
 
+
+            if (!confirmacion.Contains("error"))
+            {
+                if (!correoTxt.Equals(""))
+                {
+                    BLEnviarCorreo correo = new BLEnviarCorreo(correoTxt, "Cancelación de cita",
+                        "Estimado usuario:\n\n" +
+                        "La Clínica Pediátrica Divino Niño le informa que se ha cancelado la " +
+                        "cita de atención médica con la siguiente descripción:\n" +
+                        "Paciente: " + nombreTxt + "\n" +
+                        "Médico: " + Session["nombreMedico"].ToString() + "\n" +
+                        "Fecha: " + (DateTime.Parse(fechaTxt)).ToLongDateString() + "\n" +
+                        "Hora: " + horaT);
+                }
+
+            }
+
+
             LimpiarCampos();
 
             MostrarAgenda(diaSeleccionado, confirmacion);
+        }
+
+        /// <summary>
+        /// Valida los datos de entrada para crear una nueva cita
+        /// </summary>
+        private bool ValidarDatos()
+        {
+            string nom = nombre.Text.Trim();
+            string eda = edad.Text.Trim();
+            string cor = correo.Value.Trim();
+            string tel = telefono.Value.Trim();
+
+            string mensaje = "";
+
+            if (nom.Equals("") || eda.Equals(""))
+            {
+                mensaje = "Debe completar los campos requeridos";
+            }
+            if (cor.Equals("") && tel.Equals(""))
+            {
+                mensaje = "Debe registrar al menos un medio de contacto";
+            }
+
+            if (!tel.Equals(""))
+            {
+                try
+                {
+                    int temp = int.Parse(tel);
+                }
+                catch (Exception)
+                {
+                    mensaje = "Debe ingresar el formato correcto";
+                }
+            }
+
+            MostrarMensaje(mensaje);
+
+            if (!mensaje.Equals(""))
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

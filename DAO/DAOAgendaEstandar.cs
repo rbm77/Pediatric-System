@@ -55,7 +55,10 @@ namespace DAO
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
-                string sentencia = "UPDATE DISPONIBILIDAD_MEDICO SET HORA_INICIO = @inicio, HORA_FIN = @fin WHERE CODIGO_MEDICO = @codigo AND DIA = @dia IF @@ROWCOUNT = 0 INSERT INTO DISPONIBILIDAD_MEDICO(CODIGO_MEDICO, DIA, HORA_INICIO, HORA_FIN) VALUES(@codigo, @dia, @inicio, @fin);";
+                string sentencia = "UPDATE DISPONIBILIDAD_MEDICO SET HORA_INICIO = @inicio, HORA_FIN = @fin" +
+                    " WHERE CODIGO_MEDICO = @codigo AND DIA = @dia" +
+                    " IF @@ROWCOUNT = 0 INSERT INTO DISPONIBILIDAD_MEDICO(CODIGO_MEDICO, DIA, HORA_INICIO, HORA_FIN)" +
+                    " VALUES(@codigo, @dia, @inicio, @fin);";
 
                 string codigoMedico = codigo;
                 string dia = "";

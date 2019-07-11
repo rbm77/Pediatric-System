@@ -27,7 +27,7 @@
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
                      <span style="margin: auto">
                          <asp:Image ID="Image1" runat="server" ImageUrl="images/Logo_letras_azules.png"
-                             runat="server" Width="275px" AlternateText="Imagen no disponible" ImageAlign="TextTop" Height="125px" />
+                              Width="275px" AlternateText="Imagen no disponible" ImageAlign="TextTop" Height="125px" />
                      </span>
                     <br />
                     <br />

@@ -94,6 +94,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
         
         /// <summary>
+        /// regresar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button regresar;
+        
+        /// <summary>
         /// btnEditar control.
         /// </summary>
         /// <remarks>
