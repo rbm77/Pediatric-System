@@ -310,13 +310,13 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton opcion_vida;
         
         /// <summary>
-        /// opcion_año control.
+        /// opcion_anno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton opcion_año;
+        protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton opcion_anno;
         
         /// <summary>
         /// subsecuente control.
@@ -353,6 +353,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputRadioButton otro_centro;
+        
+        /// <summary>
+        /// btnReportarMM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnReportarMM;
         
         /// <summary>
         /// referencia_consulta_privada control.

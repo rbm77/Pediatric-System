@@ -98,6 +98,51 @@ namespace Pediatric_System
 
         }
 
+        protected void btnReportarMM_Click(object sender, EventArgs e)
+        {
+            BLConsulta consulta = new BLConsulta();
+            consulta = (BLConsulta)Session["consulta"];
+
+            consulta.MedicinaMixta = true;
+
+            if(subsecuente.Checked == true)
+            {
+                consulta.Frecuencia = "subsecuen";
+            }
+            else
+            {
+                string frecu = "primera" + " ";
+
+                if(opcion_vida.Checked == true)
+                {
+                    frecu += "vida";
+                }
+                else
+                {
+                    frecu += "anno";
+                }
+                consulta.Frecuencia = frecu;
+            }
+
+            if(especialista.Checked == true)
+            {
+                consulta.ReferidoA = "refe_especialista";
+            }
+
+            if (hospitalizacion.Checked == true)
+            {
+                consulta.ReferidoA = "refe_hospitalizacion";
+            }
+
+            if (otro_centro.Checked == true)
+            {
+                consulta.ReferidoA = "refe_otro_centro";
+            }
+
+            ManejadorConsulta manejador = new ManejadorConsulta();
+            manejador.actualizarReporteMedicinaMixta(consulta);
+        }
+
         private void cargarConsulta()
         {
             BLExamenFisico examenFisico = new BLExamenFisico();
@@ -116,6 +161,62 @@ namespace Pediatric_System
             impresionPac.Value = consultaEnviada.ImpresionDiagnostica;
             planPac.Value = consultaEnviada.Plan;
             padecimientoPac.Value = consultaEnviada.PadecimientoActual;
+
+            
+            if (consultaEnviada.MedicinaMixta == true)
+            {
+                reporte_medicina_mixta.Checked = true;
+                reporte_medicina_mixta.Disabled = true;
+                btnReportarMM.Visible = false;
+
+                string frecuen = consultaEnviada.Frecuencia;
+
+                if(frecuen == "subsecuen")
+                {
+                    subsecuente.Checked = true;
+                }
+                else
+                {
+                    primera_vez.Checked = true;
+
+                    string[] frecuDiv = frecuen.Split();
+                    string tiposPri = frecuDiv[1];
+                    if (tiposPri == "vida")
+                    {
+                        opcion_vida.Checked = true;
+                    }
+                    else
+                    {
+                        opcion_anno.Checked = true;
+                    }
+                }
+
+                string tiposReferi = consultaEnviada.ReferidoA;
+                if(tiposReferi == "refe_especialista")
+                {
+                    especialista.Checked = true;
+                }
+
+                if (tiposReferi == "refe_hospitalizacion")
+                {
+                    hospitalizacion.Checked = true;
+                }
+
+                if (tiposReferi == "refe_otro_centro")
+                {
+                    otro_centro.Checked = true;
+                }
+
+                if(consultaEnviada.ReferenciaMedica == true)
+                {
+                    referencia_consulta_privada.Checked = true;
+                    referencia_consulta_privada.Disabled = true;
+
+                    especialidad.Text = consultaEnviada.Especialidad;
+                    motivo.Value = consultaEnviada.MotivoReferecnia;
+                }
+            }
+
 
             //Datos del objeto Examen Fisico
             tallaPac.Value = Convert.ToString(examenFisico.Talla);
@@ -194,6 +295,19 @@ namespace Pediatric_System
         protected void btnGenerarReferencia_Click(object sender, EventArgs e)
         {
 
+            //Actualizar consulta con los datos de la referencia 
+            BLConsulta consulta = new BLConsulta();
+            consulta = (BLConsulta)Session["consulta"];
+
+            consulta.ReferenciaMedica = true;
+            consulta.Especialidad = especialidad.Text.Trim();
+            consulta.MotivoReferecnia = motivo.Value.Trim();
+
+            ManejadorConsulta manejador = new ManejadorConsulta();
+            manejador.actualizarReferenciaMedica(consulta);
+
+
+            ///////////////////////////////////////////////////////////////////////////
 
             StringWriter sw = new StringWriter();
             string html = sw.ToString();
@@ -576,6 +690,6 @@ namespace Pediatric_System
 
         }
 
-
+        
     }
 }

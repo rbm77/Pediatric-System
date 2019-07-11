@@ -49,6 +49,7 @@ namespace Pediatric_System
 
         protected void regresar_Click(object sender, EventArgs e)
         {
+            Session["pagina"] = "regresar-listaconsultas";
             Response.Redirect("FichaBaseExpediente.aspx");
         }
 
