@@ -283,6 +283,11 @@ namespace BL
 
         }
 
+        public int contarExpediente()
+        {
+            DAOExpediente daoExpediente = new DAOExpediente();
+            return daoExpediente.contarExpedientes();
+        }
 
         public string asociarCuenta(String correoCuenta, String cedulaExpediente)
         {

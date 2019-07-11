@@ -1663,6 +1663,7 @@
     <Content Include="images\logo_letras_blancas_pediatric_System.jpeg" />
     <Content Include="images\report.jpeg" />
     <Content Include="IniciarSesion.aspx" />
+    <Content Include="JS\countereffect.js" />
     <Content Include="JS\datatables\dataTables.bootstrap4.css" />
     <Content Include="JS\datatables\dataTables.bootstrap4.js" />
     <Content Include="JS\datatables\dataTables.bootstrap4.min.css" />

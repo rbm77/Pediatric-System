@@ -1072,6 +1072,85 @@ namespace DAO
             return confirmacion;
         }
 
+        public int contarExpedientes()
+        {
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    return -1;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+               return -1;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Conteo Expedientes");
+            // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+
+            try
+            {
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("Select COUNT(codigo_expediente) from EXPEDIENTE", conexion);
+
+                
+
+                comando.Transaction = transaccion;
+
+                // Se asigna un valor a los parámetros del comando a ejecutar
+
+
+
+                // Se ejecuta el comando y se realiza un commit de la transacción
+
+                
+                int conteo = (int) comando.ExecuteScalar();
+
+                return conteo;
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+
+                }
+                catch (Exception)
+                {
+                }
+            }
+            finally
+            {
+                // Se finaliza la conexion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return -1;
+
+        }
+
     }
 }
 
