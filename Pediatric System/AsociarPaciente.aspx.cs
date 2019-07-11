@@ -37,14 +37,16 @@ namespace Pediatric_System
                 TableCell estado = filaSeleccionada.Cells[0];
                 string correo = estado.Text;
                 lblCorreo.Text = correo;
-
-                ManejadorExpediente manejador = new ManejadorExpediente();
-                List<BLExpediente> expedientes = new List<BLExpediente>();
-                manejador.cargarListaExpedientes(expedientes, true);
-                gridExpedientes.DataSource = expedientes;
-                gridExpedientes.DataBind();
-                modalExpedientes.Show();
-            }
+                Session["CuentaParaAsociar"] = correo;
+                Response.Redirect("SelecionExpedientes.aspx");
+        
+        //ManejadorExpediente manejador = new ManejadorExpediente();
+        //List<BLExpediente> expedientes = new List<BLExpediente>();
+        //manejador.cargarListaExpedientes(expedientes, true);
+        //gridExpedientes.DataSource = expedientes;
+        //gridExpedientes.DataBind();
+        //modalExpedientes.Show();
+    }
         }
 
 
@@ -77,26 +79,6 @@ namespace Pediatric_System
         }
 
 
-        protected void gridExpedientes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "AsociarExpedienteEspecifico")
-            {
-                int indice = Convert.ToInt32(e.CommandArgument);
-                GridViewRow filaSeleccionada = gridExpedientes.Rows[indice];
-                TableCell cedula = filaSeleccionada.Cells[1];
-                string cedulaSel = cedula.Text;
-
-                ManejadorExpediente manejador = new ManejadorExpediente();
-                String mensaje = manejador.asociarCuenta(lblCorreo.Text, cedulaSel);
-                if (mensaje == "Correcto")
-                {
-                    mensajeAviso("success", "Cuenta Asociada correctamente");
-                } else
-                {
-                    mensajeAviso("danger", "Ha ocurrido un error al asociar la Cuenta");
-                }
-            }
-        }
 
 
 
