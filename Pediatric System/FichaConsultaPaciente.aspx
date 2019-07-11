@@ -33,25 +33,23 @@
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input"></label>
+                                <label id="paciGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
                                 <label class="info-paciente">Cédula: </label>
-                                <label class="nombre-input"></label>
+                                <label id="cedGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
                                 <label class="info-paciente">Edad: </label>
-                                <label class="nombre-input"></label>
+                                <label id="edaGeneral" runat="server" class="nombre-input"></label>
                             </div>
                         </div>
 
                         <div class="form-group col-lg-3 col-md-10 col-sm-12 col-xs-12">
                             <div class="alinearBtnExpFin">
                                 <div class="form-group ubicacionBtn" runat="server" id="form_actualizar">
-                                    <%--<asp:Button type="button" runat="server" class="btn btn-neutro  btnsExpFin" Text="EXPEDIENTE" ID="Button1" />--%>
-
                                     <asp:Button type="button" runat="server" class="btn btn-neutro btnsExpFin" Text="FINALIZAR CONSULTA" ID="finalizarConsulta" OnClick="finalizarConsulta_Click" />
                                 </div>
                             </div>
@@ -63,7 +61,7 @@
             <!-- Inicio del titulo de los Tabs !-->
 
             <div>
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-top:10px">
                     <li class="nav-item">
                         <a class="nav-link active nombre-input" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Físico</a>
                     </li>
@@ -72,13 +70,9 @@
                         <a class="nav-link nombre-input" id="segunda-parte-tab" data-toggle="tab" href="#ef-segunda-parte" role="tab" aria-controls="ef-segunda-parte" aria-selected="false">II Parte Examen Físico</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link nombre-input" id="examen-laboratorio-tab" data-toggle="tab" href="#examen-laboratorio" role="tab" aria-controls="examen-laboratorio" aria-selected="false">Examen de Laboratorio</a>
-                    </li>
-
-                    <li class="nav-item">
+                    <%--<li class="nav-item">
                         <a class="nav-link nombre-input" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnóstico Nutricional</a>
-                    </li>
+                    </li>--%>
 
                     <li class="nav-item">
                         <a class="nav-link nombre-input" id="analisis-tab" data-toggle="tab" href="#consulta-analisis" role="tab" aria-controls="consulta-analisis" aria-selected="false">Análisis</a>
@@ -111,42 +105,42 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Talla</label>
-                                        <input type="text" class="form-control">
+                                        <input runat="server" id="tallaPac" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Peso</label>
-                                        <input type="text" class="form-control">
+                                        <input runat="server" id="pesoPac" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Perímetro Cefálico</label>
-                                        <input type="text" class="form-control">
+                                        <input runat="server" id="perimetroPac" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Temperatura</label>
-                                        <input type="text" class="form-control">
+                                        <input runat="server" id="temperaturaPac" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">SO2</label>
-                                        <input type="text" class="form-control">
+                                        <input runat="server" id="so2Pac" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">IMC</label>
-                                        <input type="text" class="form-control">
+                                        <input runat="server" id="imcPac" type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -167,91 +161,91 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Estado de alerta</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="alertaPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Estado de hidratación</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="hidratacionPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Ruidos cardíacos</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="ruidosPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Campos pulmunares</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="camposPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Abdomen</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="abdomenPpac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Faringe</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="faringePac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Neurodesarrollo</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="neuroPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nariz</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="narizPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Oídos</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="oidosPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">SNC</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="sncPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Sistema Osteomuscular</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="osteomuscPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Piel</label>
-                                        <input type="text" class="form-control" value="Normal">
+                                        <input runat="server" id="pielPac" type="text" class="form-control" value="Normal">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Otros hallazgos</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea runat="server" id="otrosPac" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -263,7 +257,7 @@
                                     <label class="card-header nombre-input">Padecimiento Actual</label>
                                     <div class="card-body padding-general-top padding-general-bottom">
                                         <div class="padding-general-label">
-                                            <textarea class="form-control" rows="3"></textarea>
+                                            <textarea runat="server" id="padecimientoPac" class="form-control" rows="3"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -273,59 +267,7 @@
                 </div>
                 <!-- --------------------------------------------------------------------- !-->
 
-                <!-- Inicio agregar examen de laboratorio !-->
-
-                <div class="tab-pane fade margen-general-1-bottom" id="examen-laboratorio" role="tabpanel" aria-labelledby="examen-laboratorio-tab">
-
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard">
-                        <div class="card">
-                            <label class="card-header nombre-input">Adjuntar Exámenes de Laboratorio</label>
-
-                            <div class="card-body">
-                                <div id="examenPrincipal">
-                                    <div class="form-row border rounded campoGeneralExamen">
-                                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                            <div class="padding-general-label">
-                                                <label class="nombre-input">Imagen del Examen</label>
-                                                <div class="custom-file">
-                                                    <asp:FileUpload ID="fotoPaciente" runat="server" CssClass="custom-file-input form-control" />
-                                                    <label class="custom-file-label" for="inputGroupFile01" data-browse="Buscar"></label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
-                                            <div class="padding-general-label">
-                                                <label class="nombre-input">Descripción</label>
-                                                <input class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
-                                            <div class="alinearBtnImagen">
-                                                <div class="form-group ubicacionBtn">
-                                                    <label class="nombre-input"></label>
-                                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnVerExamen" Text="VER EXAMEN" ID="verExamen" />
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="alinearBtnNuevoExamen">
-                                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnNuevoExamen" runat="server">
-                                        <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="ADJUNTAR OTRO EXAMEN" ID="nuevoExamen" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- -------------------------------------------------------------------- !-->
-
-                <!-- Inicio del Diagnostico Nutricional !-->
+                <%--<!-- Inicio del Diagnostico Nutricional !-->
 
                 <div class="tab-pane fade margen-general-1-bottom" id="diagnostico-nutricional" role="tabpanel" aria-labelledby="diagnostico-nutricional-tab">
                     <div class="col-12 border rounded">
@@ -377,15 +319,15 @@
 
                         </div>
 
-                        <%--<div class="form-row padding-general-inicio-bottom padding-general-label">
+                        <div class="form-row padding-general-inicio-bottom padding-general-label">
                             <div class="btnGenerarDiagnostico form-group col-lg-3 col-md-6 col-sm-6 col-xs-6">
                                 <button type="submit" class="btn btn-info form-control">Generar Diagnostico</button>
                             </div>
-                        </div>--%>
+                        </div>
                     </div>
                 </div>
 
-                <!-- --------------------------------------------------------------------- !-->
+                <!-- --------------------------------------------------------------------- !-->--%>
 
                 <!-- Inicio del Analisis !-->
 
@@ -397,7 +339,7 @@
 
                             <div class="card-body">
                                 <div class="padding-general-label padding-general-inicio-bottom padding-general-inicio-top">
-                                    <textarea class="form-control" rows="4"></textarea>
+                                    <textarea runat="server" id="analisisPac" class="form-control" rows="4"></textarea>
                                 </div>
 
                             </div>
@@ -418,24 +360,13 @@
 
                             <div class="card-body">
                                 <div class="padding-general-label padding-general-inicio-bottom padding-general-inicio-top">
-                                    <textarea class="form-control" rows="4"></textarea>
+                                    <textarea runat="server" id="impresionPac" class="form-control" rows="4"></textarea>
                                 </div>
 
                             </div>
                         </div>
 
                     </div>
-
-                    <%--<div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
-                        <div class="form-row margen-general-2-top padding-general-bottom">
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="padding-general-label">
-                                    <label class="nombre-input">Comentario</label>
-                                    <textarea class="form-control" rows="4"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>--%>
                 </div>
 
                 <!-- --------------------------------------------------------------------- !-->
@@ -448,11 +379,13 @@
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="padding-general-label">
                                     <label class="nombre-input">Plan</label>
-                                    <textarea class="form-control" rows="4"></textarea>
+                                    <textarea runat="server" id="planPac" class="form-control" rows="4"></textarea>
                                 </div>
                             </div>
                         </div>
 
+
+                        <!-- Inicio de reportar paciente a medicina mixta !-->
 
                         <div class="form-row">
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -464,15 +397,13 @@
                                                 <div class="form-check">
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
-                                                            <input class="form-check-input" type="checkbox" id="reporte-medicina-mixta" value="medicna-mixta">
-                                                            <label class="form-check-label nombre-input" for="reporte-medicina-mixta">Reportar paciente a medicina mixta</label>
+                                                            <input runat="server" ClientIDMode="Static" class="form-check-input" type="checkbox" id="reporte_medicina_mixta" value="medicna-mixta">
+                                                            <label class="form-check-label nombre-input" for="reporte_medicina_mixta">Reportar paciente a medicina mixta</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <!-- Inicio de reportar paciente a medicina mixta !-->
-
+                                                                                        
                                             <div class="datosReporteMedicinaMixta">
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 margen-1-radioB">
@@ -485,8 +416,8 @@
                                                 <div class="form-row padding-general-label">
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <input class="form-check-input" type="radio" name="frecuencia-medicina-mixta" id="primera-vez" value="primera">
-                                                            <label class="form-check-label nombre-input" for="frecuencia-medicina-mixta">Primera vez</label>
+                                                            <input runat="server" class="form-check-input" type="radio" name="frecuencia_medicina-_mixta" id="primera_vez" value="primera">
+                                                            <label class="form-check-label nombre-input" for="frecuencia_medicina_mixta">Primera vez</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -494,18 +425,18 @@
                                                 <!-- Tipos de primera vez !-->
 
                                                 <div class="opciones-primera-vez padding-general-label">
-                                                    <div class="form-row">
+                                                    <div class="form-row" style="padding-left: 10px">
                                                         <div class="form-check form-check-inline">
                                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <input class="form-check-input" type="radio" name="opciones-primera-vez" id="opcion-vida" value="vida">
-                                                                <label class="form-check-label nombre-input" for="opciones-primera-vez">Vida</label>
+                                                                <input runat="server" class="form-check-input" type="radio" name="opciones_primera_vez" id="opcion_vida" value="vida">
+                                                                <label class="form-check-label nombre-input" for="opciones_primera_vez">Vida</label>
                                                             </div>
                                                         </div>
 
                                                         <div class="form-check form-check-inline">
                                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <input class="form-check-input" type="radio" name="opciones-primera-vez" id="opcion-año" value="año">
-                                                                <label class="form-check-label nombre-input" for="opciones-primera-vez">Año</label>
+                                                                <input runat="server" class="form-check-input" type="radio" name="opciones_primera_vez" id="opcion_año" value="año">
+                                                                <label class="form-check-label nombre-input" for="opciones_primera_vez">Año</label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -516,8 +447,8 @@
                                                 <div class="form-row padding-general-label">
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <input class="form-check-input" type="radio" name="frecuencia-medicina-mixta" id="subsecuente" value="subsecuen">
-                                                            <label class="form-check-label nombre-input" for="frecuencia-medicina-mixta">Subsecuente</label>
+                                                            <input runat="server" class="form-check-input" type="radio" name="frecuencia_medicina_mixta" id="subsecuente" value="subsecuen">
+                                                            <label class="form-check-label nombre-input" for="frecuencia_medicina_mixta">Subsecuente</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -535,8 +466,8 @@
                                                 <div class="form-row padding-general-label">
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="especialista" value="refe-especialista">
-                                                            <label class="form-check-label nombre-input" for="referido-a-medicina-mixta">Especialista</label>
+                                                            <input runat="server" class="form-check-input" type="radio" name="referido_medicina_mixta" id="especialista" value="refe_especialista">
+                                                            <label class="form-check-label nombre-input" for="referido_medicina_mixta">Especialista</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -544,8 +475,8 @@
                                                 <div class="form-row padding-general-label">
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="hospitalizacion" value="refe-hospitalizacion">
-                                                            <label class="form-check-label nombre-input" for="referido-a-medicina-mixta">Hospitalización</label>
+                                                            <input runat="server" class="form-check-input" type="radio" name="referido_medicina_mixta" id="hospitalizacion" value="refe_hospitalizacion">
+                                                            <label class="form-check-label nombre-input" for="referido_medicina_mixta">Hospitalización</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -553,15 +484,15 @@
                                                 <div class="form-row padding-general-label">
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                            <input class="form-check-input" type="radio" name="referido-a-medicina-mixta" id="otro-centro" value="refe-otro-centro">
-                                                            <label class="form-check-label nombre-input" for="referido-a-medicina-mixta">Otro centro</label>
+                                                            <input runat="server" class="form-check-input" type="radio" name="referido_medicina_mixta" id="otro_centro" value="refe_otro_centro">
+                                                            <label class="form-check-label nombre-input" for="referido_medicina_mixta">Otro centro</label>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <button type="submit" class="btn btn-info form-control">REPORTAR</button>
+                                                        <button runat="server" type="submit" class="btn btn-info form-control">REPORTAR</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -583,8 +514,8 @@
                                                 <div class="form-check">
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
-                                                            <input class="form-check-input" type="checkbox" id="referencia-consulta-privada" value="referencia-privada">
-                                                            <label class="form-check-label nombre-input" for="referencia-consulta-privada">Generar referencia médica externa de consulta privada</label>
+                                                            <input runat="server" ClientIDMode="Static" class="form-check-input" type="checkbox" id="referencia_consulta_privada" value="referencia_privada">
+                                                            <label class="form-check-label nombre-input" for="referencia_consulta_privada">Generar referencia médica externa de consulta privada</label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -604,7 +535,6 @@
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
                                                             <label class="nombre-input">Motivo de la referencia</label>
-
                                                             <textarea id="motivo" rows="2" runat="server" class="form-control"></textarea>
 
                                                         </div>
@@ -633,7 +563,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
                     <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
 
-                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarConsulta" ValidationGroup="validarConsulta" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarConsulta" ValidationGroup="validarConsulta" OnClick="guardarConsulta_Click" />
                 </div>
             </div>
         </form>

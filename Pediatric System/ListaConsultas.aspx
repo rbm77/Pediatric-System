@@ -5,6 +5,15 @@
     <script type="text/javascript" src="JS/listaConsultas.js"></script>
     <link href="CSS/listaConsultas.css" rel="stylesheet" />
 
+    <script type="text/javascript">
+        $(function () {
+            $('[id*=gridConsultas]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+                "responsive": true,
+                "sPaginationType": "numbers"
+            });
+        });
+    </script>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -14,8 +23,6 @@
         <div class="page-header">
             <h3 class="text-info">Consultas</h3>
         </div>
-
-        <hr class="linea-divisoria-titulo" />
 
         <!-- ---------------------------------------------------- !-->
 
@@ -34,29 +41,74 @@
                         <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
                                 <label class="info-paciente">Paciente: </label>
-                                <label class="nombre-input"></label>
-                                <br />
+                                <label runat="server" id="paciGeneral" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <br />
                                 <label class="info-paciente">Cédula: </label>
-                                <label class="nombre-input"></label>
+                                <label id="cedGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <br />
                                 <label class="info-paciente">Edad: </label>
-                                <label class="nombre-input"></label>
+                                <label id="edaGeneral" runat="server" class="nombre-input"></label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+             <%-------------------------------------------------------------------------------------------%>
+
+            <div class="col-12 margen-general-1-bottom paddingSidesCard" style="padding-top:10px">
+                <div class="table-responsive">
+                    <div class="card">
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Consultas</h5>
+                        <div class="card-body"> 
+                            <div>
+
+                                <asp:GridView ID="gridConsultas" runat="server" CssClass="table" Style="text-align: center"
+                                    AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
+                                    HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%" 
+                                    OnRowCommand="gridConsultas_RowCommand">
+                                   
+                                    
+
+                                    <Columns>
+                                        <asp:BoundField HeaderText="Fecha" DataField="Fecha_Hora" />
+                                        <asp:BoundField HeaderText="Doctor" DataField="CodigoMedico" />
+                                        <asp:BoundField HeaderText="Estado" DataField="Estado" />
+                                        <asp:ButtonField HeaderText="Acción" CommandName="seleccionar"
+                                            ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
+                                    </Columns>
+                                </asp:GridView>
+
+                            </div>
+
+                            <br />
 
 
-            <div class="col-12 margen-general-1-bottom paddingSidesCard">
+                            <div class="alinearBtnNuevo">
+                                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12 ubicacionBtnNuevo">
+                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevoExpediente" Text="NUEVA CONSULTA" ID="nuevaConsulta" OnClick="nuevoConsulta_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row alinearBtnRegresar">
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
+                </div>
+            </div>
+
+            <%-------------------------------------------------------------------------------------------%>
+
+
+
+            <%--<div class="col-12 margen-general-1-bottom paddingSidesCard">
                 <div>
 
                     <div class="table-responsive">
@@ -111,7 +163,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
                     <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
                 </div>
-            </div>
+            </div>--%>
 
         </form>
     </div>

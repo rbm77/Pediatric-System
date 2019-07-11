@@ -24,9 +24,6 @@
 
         <hr class="linea-divisoria-titulo" />
 
-
-
-
         <form runat="server">
 
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
