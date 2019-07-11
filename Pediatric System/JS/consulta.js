@@ -7,7 +7,11 @@ $(document).ready(function () {
 
     $(".datosReporteMedicinaMixta").find("*").prop('disabled', true); 
     $(".datosReferenciaPrivada").find("*").prop('disabled', true); 
-    
+
+    if ($('#reporte_medicina_mixta').prop('checked')) {
+        $("#btnGenerarReferencia").prop('disabled', false);
+    }
+
     $("#reporte_medicina_mixta").on("change", function () {
         if ($('#reporte_medicina_mixta').prop('checked')) {
             $(".datosReporteMedicinaMixta").find("*").prop('disabled', false); 
