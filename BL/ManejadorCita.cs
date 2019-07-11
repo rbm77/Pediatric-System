@@ -114,7 +114,31 @@ namespace BL
 
             foreach (TOCita cit in toCitas)
             {
-                listaCitas.Add(new BLCita(cit.NombreMedico, cit.Nombre, cit.Fecha, cit.Hora));
+                listaCitas.Add(new BLCita(cit.CodigoMedico, cit.NombreMedico, cit.Nombre, cit.Fecha, cit.Hora));
+            }
+
+            return confirmacion;
+        }
+
+        /// <summary>
+        /// Carga la lista de pacientes que pertenecen a una misma cuenta
+        /// </summary>
+        /// <param name="listaPacientes"></param>
+        /// <param name="cuenta"></param>
+        /// <returns>Retorna un mensaje de confirmacion</returns>
+        public string CargarPacientes(List<BLPacienteCita> listaPacientes, string cuenta)
+        {
+            string confirmacion = "error";
+
+            DAOCita dao = new DAOCita();
+
+            List<TOPacienteCita> toPacientes = new List<TOPacienteCita>();
+
+            confirmacion = dao.CargarPacientes(toPacientes, cuenta);
+
+            foreach (TOPacienteCita p in toPacientes)
+            {
+                listaPacientes.Add(new BLPacienteCita(p.NombrePaciente, p.EdadPaciente, p.CorreoEncargado, p.TelefonoEncargado));
             }
 
             return confirmacion;

@@ -24,7 +24,7 @@ namespace BL
             SmtpClient protocolo = new SmtpClient();
             correo.To.Add(destinatario);
             ///Se asigna el remitente del correo
-            correo.From = new MailAddress("pediatricsystem.adm@gmail.com", "Clinica Pediatrica Divino Niño", System.Text.Encoding.UTF8);
+            correo.From = new MailAddress("pediatricsystem.adm@gmail.com", "Clínica Pediátrica Divino Niño", System.Text.Encoding.UTF8);
 
             ///Se asigna el receptor del correo
             correo.Subject = asunto;

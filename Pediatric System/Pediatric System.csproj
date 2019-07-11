@@ -1658,9 +1658,7 @@
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\foto_perfil_icono.jpg" />
     <Content Include="images\icons\favicon.ico" />
-    <Content Include="images\Loading_2.gif" />
     <Content Include="images\Logo_letras_azules.png" />
-    <Content Include="images\logo_letras_blancas_pediatric_System.jpeg" />
     <Content Include="images\report.jpeg" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="InicioAdministrador.aspx" />
@@ -1938,6 +1936,11 @@
     <Content Include="Archivos\Direcciones.json" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
