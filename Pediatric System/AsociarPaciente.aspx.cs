@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
+using System.Text;
 
 namespace Pediatric_System
 {
@@ -16,6 +17,7 @@ namespace Pediatric_System
     
         protected void Page_Load(object sender, EventArgs e)
         {
+            mensajeConfirmacion.Visible = false;
             if (!Page.IsPostBack)
             {
                 listaPersonal = miBLCuenta.buscarListaCuentas();
@@ -54,7 +56,7 @@ namespace Pediatric_System
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string correo = txtCorreo.Text;
-            string contrasena = "123";
+            string contrasena = CrearPassword(7);
             string tipo = "Paciente";
             BLCuenta miBLCuenta = new BLCuenta();
             miBLCuenta.correo = correo;
@@ -67,7 +69,7 @@ namespace Pediatric_System
                 listaPersonal = miBLCuenta.buscarListaCuentas();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
-                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Creación de cuenta", "Se ha creado una cuenta asociada a este correo que le permite utilizar el sistema de la Clinica Pediatrica Divino Niño");
+                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicacion para utilizar el sistema de la Clinica Pediatrica Divino Niño, su cuenta posee el rol de Paciente y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
             } else
             {
                 mensajeAviso("danger", "La cuenta no se pudo crear debido a que el correo ingresado ya esta en uso");
@@ -112,6 +114,18 @@ namespace Pediatric_System
             mensajeConfirmacion.Visible = true;
         }
 
+
+        public string CrearPassword(int longitud)
+        {
+            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < longitud--)
+            {
+                res.Append(caracteres[rnd.Next(caracteres.Length)]);
+            }
+            return res.ToString();
+        }
 
         protected void Regresar_Click(object sender, EventArgs e)
         {

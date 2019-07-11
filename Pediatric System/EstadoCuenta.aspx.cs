@@ -17,6 +17,7 @@ namespace Pediatric_System
         BLCuenta miBLCuenta = new BLCuenta();
         protected void Page_Load(object sender, EventArgs e)
         {
+            mensajeConfirmacion.Visible = false;
             if (!Page.IsPostBack)
             {             
                 listaPersonal = miBLPersonal.buscarListaPersonal();

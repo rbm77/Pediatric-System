@@ -118,14 +118,14 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-input">Nombre</label>
-                                                <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control"  required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-input">Apellido</label>
-                                                <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -133,7 +133,7 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-input">Cédula</label>
-                                                <asp:TextBox runat="server" ID="txtCedula" CssClass="form-control" placeholder="102340567"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtCedula" CssClass="form-control" placeholder="102340567" TextMode="Number" required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -154,7 +154,7 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-label">Teléfono</label>
-                                                <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
                                             </div>
                                         </div>
 

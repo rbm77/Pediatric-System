@@ -132,6 +132,7 @@ namespace DAO
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
+
                 SqlCommand comando = new SqlCommand("update CUENTA set CONTRASENA = @Contraseña where CORREO = @Correo", conexion);
 
 
