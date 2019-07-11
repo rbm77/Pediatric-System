@@ -61,6 +61,7 @@
     <Compile Include="BL_Manejador_Cuentas.cs" />
     <Compile Include="ManejadorAgenda.cs" />
     <Compile Include="ManejadorCita.cs" />
+    <Compile Include="ManejadorConsulta.cs" />
     <Compile Include="ManejadorEdad.cs" />
     <Compile Include="ManejadorExpediente.cs" />
     <Compile Include="ManejadorVacunas.cs" />

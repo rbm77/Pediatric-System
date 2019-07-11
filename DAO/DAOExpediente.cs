@@ -66,7 +66,7 @@ namespace DAO
                     cmdInsertarDirPaciente.Parameters.AddWithValue("@nomCan", nuevaDireccionPaciente.Canton);
                     cmdInsertarDirPaciente.Parameters.AddWithValue("@nomDis", nuevaDireccionPaciente.Distrito);
 
-                    cmdInsertarDirPaciente.ExecuteScalar();
+                    cmdInsertarDirPaciente.ExecuteNonQuery();
                 }
 
                 // --------------------------- Insertar en la tabla Direccion (Encargado)---------------------------  //
@@ -270,16 +270,6 @@ namespace DAO
                 comandoVaricela.Transaction = transaccion;
                 comandoVaricela.Parameters.AddWithValue("@ID", nuevoExpediente.Codigo);
                 comandoVaricela.ExecuteNonQuery();
-
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antineumocóccica',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antipolio, inactivada, vía intramuscular (IPV)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antisarampionosa, rubéola y paperas (SRP)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Antituberculosa (BCG)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'CALOSTRO (primera vacuna)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Haemophilus influenzae. Tipo B.(HIB)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Hepatitis B.(VHB)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Toxoide diftérico, pertusis acelular (DTaP)',0,0,0,0,0,0);
-                //INSERT INTO APLICACION_VACUNA VALUES('@ID', 'Varicela',0,0,0,0,0,0);
 
                 // Realizar commit de la transaccion 
 

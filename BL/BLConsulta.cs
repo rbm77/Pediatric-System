@@ -17,13 +17,14 @@ namespace BL
         public Boolean MedicinaMixta { get; set; }
         public string Frecuencia { get; set; }
         public string ReferidoA { get; set; }
-
+        public Boolean Estado { get; set; }
+        public string PadecimientoActual { get; set; }
         public BLConsulta()
         {
 
         }
 
-        public BLConsulta(string codMedico, string codExpediente, DateTime fecha, string analisis, string impresion, string plan, Boolean medicinaMix, string frecuencia, string refererido)
+        public BLConsulta(string codMedico, string codExpediente, DateTime fecha, string analisis, string impresion, string plan, Boolean medicinaMix, string frecuencia, string refererido, Boolean estado, string padecimiento)
         {
             this.CodigoMedico = codMedico;
             this.CodigoExpediente = CodigoExpediente;
@@ -34,6 +35,8 @@ namespace BL
             this.MedicinaMixta = medicinaMix;
             this.Frecuencia = frecuencia;
             this.ReferidoA = refererido;
+            this.Estado = estado;
+            this.PadecimientoActual = padecimiento;
         }
     }
 }

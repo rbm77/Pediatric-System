@@ -118,6 +118,7 @@ namespace Pediatric_System
             ManejadorExpediente manejador = new ManejadorExpediente();
             manejador.mostrarExpediente(codigo, expediente, expDireccion, encargado, encDireccion, facturante, facDireccion, historiaClinica);
 
+            Session["expediente"] = expediente;
             // Aqui recupero los datos que se van a mostrar en el pdf de la referencia medica y el esquema de vacunacion
 
             ManejadorEdad manejadorEdad = new ManejadorEdad();
@@ -1096,6 +1097,8 @@ namespace Pediatric_System
 
         protected void nuevaConsulta_Click(object sender, EventArgs e)
         {
+
+
             Session["pagina"] = "expediente-nuevaConsulta";
             Response.Redirect("FichaConsultaPaciente.aspx");
         }

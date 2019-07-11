@@ -15,6 +15,8 @@ namespace BL
         public float Peso { get; set; }
         public float PerimetroCefalico { get; set; }
         public float SO2 { get; set; }
+        public float IMC { get; set; }
+        public float Temperatura { get; set; }
         public string EstadoAlerta { get; set; }
         public string EstadoHidratacion { get; set; }
         public string RuidosCardiacos { get; set; }
@@ -34,7 +36,7 @@ namespace BL
 
         }
 
-        public BLExamenFisico(string codMed, string codExp, DateTime fecha, float talla, float peso, float perimetro, float so2, string alerta, string hidratacion, string ruidos, string campos, string abdomen, string faringe, 
+        public BLExamenFisico(string codMed, string codExp, DateTime fecha, float talla, float peso, float perimetro, float so2, float imc, float temperatura, string alerta, string hidratacion, string ruidos, string campos, string abdomen, string faringe, 
             string nariz, string oidos, string snc, string oseteo, string piel, string neurode, string otros)
         {
             this.CodigoMedico = codMed;
@@ -44,6 +46,8 @@ namespace BL
             this.Peso = peso;
             this.PerimetroCefalico = perimetro;
             this.SO2 = so2;
+            this.IMC = imc;
+            this.Temperatura = temperatura;
             this.EstadoAlerta = alerta;
             this.EstadoHidratacion = hidratacion;
             this.RuidosCardiacos = ruidos;

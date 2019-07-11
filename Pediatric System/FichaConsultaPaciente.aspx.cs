@@ -11,24 +11,178 @@ using iTextSharp.text;
 using iTextSharp.text.html;
 using iTextSharp.text.html.simpleparser;
 using iTextSharp.text.pdf;
+using BL;
+using System.Globalization;
 
 namespace Pediatric_System
 {
     public partial class FichaConsultaPaciente : System.Web.UI.Page
     {
+        BLExpediente expediente = new BLExpediente();
         protected void Page_Load(object sender, EventArgs e)
         {
+            imcPac.Disabled = true;
 
+            expediente = (BLExpediente)Session["Expediente"];
+
+            //Mostrar los datos generales 
+            if (expediente.Codigo == expediente.Cedula)
+            {
+                cedGeneral.InnerText = " " + expediente.Cedula;
+            }
+            else
+            {
+                cedGeneral.InnerText = "No tiene aún";
+            }
+            paciGeneral.InnerText = " " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
+            TimeSpan dt = DateTime.Now - expediente.FechaNacimiento;
+            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(expediente.Foto);
+            imgPreview.ImageUrl = imagenDataURL64;
+
+            if (!Page.IsPostBack)
+            {
+                if ((string)Session["pagina"] != "consultas_guardada")
+                {
+
+                    string fechaA = Convert.ToString(DateTime.Now);
+
+
+                    const string FMT = "o";
+                    DateTime fff = Convert.ToDateTime(fechaA);
+                    string news = fff.ToString(FMT);
+                    DateTime ggg = DateTime.ParseExact(news, FMT, CultureInfo.InvariantCulture);
+
+
+                    BLConsulta consulta = new BLConsulta();
+                    consulta.CodigoExpediente = expediente.Codigo;
+                    consulta.Fecha_Hora = ggg;
+                    consulta.Estado = true;
+                    BLExamenFisico examenFisico = new BLExamenFisico();
+                    examenFisico.CodigoExpediente = expediente.Codigo;
+                    examenFisico.Fecha_Hora = ggg;
+
+                    ManejadorConsulta manejador = new ManejadorConsulta();
+                    manejador.crearConsulta(consulta, examenFisico);
+
+                    Session["consulta"] = consulta;
+                }
+                else
+                {
+                    cargarConsulta();
+                }
+            }
         }
 
         protected void finalizarConsulta_Click(object sender, EventArgs e)
         {
+            BLConsulta consulta = new BLConsulta();
+            consulta = (BLConsulta)Session["consulta"];
+            consulta.Estado = false;
+
+            ManejadorConsulta manejador = new ManejadorConsulta();
+            manejador.cambiarEstadoConsulta(consulta);
+
             Response.Redirect("ListaConsultas.aspx");
         }
 
         protected void regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("ListaConsultas.aspx");
+        }
+
+        protected void guardarConsulta_Click(object sender, EventArgs e)
+        {
+            actualizarConsulta();
+            Response.Redirect("ListaConsultas.aspx");
+
+        }
+
+        private void cargarConsulta()
+        {
+            BLExamenFisico examenFisico = new BLExamenFisico();
+            BLConsulta consultaEnviada = new BLConsulta();
+            consultaEnviada = (BLConsulta)Session["consulta"];
+            if(consultaEnviada.Estado == false)
+            {
+                finalizarConsulta.Visible = false;
+            }
+
+            ManejadorConsulta manejador = new ManejadorConsulta();
+            manejador.mostrarConsulta(consultaEnviada.CodigoExpediente, consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico);
+
+            //Datos del objeto Consulta 
+            analisisPac.Value = consultaEnviada.Analisis;
+            impresionPac.Value = consultaEnviada.ImpresionDiagnostica;
+            planPac.Value = consultaEnviada.Plan;
+            padecimientoPac.Value = consultaEnviada.PadecimientoActual;
+
+            //Datos del objeto Examen Fisico
+            tallaPac.Value = Convert.ToString(examenFisico.Talla);
+            pesoPac.Value = Convert.ToString(examenFisico.Peso);
+            perimetroPac.Value = Convert.ToString(examenFisico.PerimetroCefalico);
+            so2Pac.Value = Convert.ToString(examenFisico.SO2);
+            imcPac.Value = Convert.ToString(examenFisico.IMC);
+            temperaturaPac.Value = Convert.ToString(examenFisico.Temperatura);
+            alertaPac.Value = examenFisico.EstadoAlerta;
+            hidratacionPac.Value = examenFisico.EstadoHidratacion;
+            ruidosPac.Value = examenFisico.RuidosCardiacos;
+            camposPac.Value = examenFisico.CamposPulmonares;
+            abdomenPpac.Value = examenFisico.Abdomen;
+            faringePac.Value = examenFisico.Faringe;
+            neuroPac.Value = examenFisico.Neurodesarrollo;
+            narizPac.Value = examenFisico.Nariz;
+            oidosPac.Value = examenFisico.Oidos;
+            sncPac.Value = examenFisico.SNC;
+            osteomuscPac.Value = examenFisico.Osteomuscular;
+            pielPac.Value = examenFisico.Piel;
+            otrosPac.Value = examenFisico.Otros;
+        }
+
+        private void actualizarConsulta()
+        {
+            BLConsulta consultaActu = new BLConsulta();
+            BLExamenFisico examenFisicoActu = new BLExamenFisico();
+
+            //Datos del objeto Consulta 
+            consultaActu.Analisis = analisisPac.Value.Trim();
+            consultaActu.ImpresionDiagnostica = impresionPac.Value.Trim();
+            consultaActu.Plan = planPac.Value.Trim();
+            consultaActu.PadecimientoActual = padecimientoPac.Value.Trim();
+            
+            //Datos del objeto Examen Fisico
+            examenFisicoActu.Talla = float.Parse(tallaPac.Value);
+            examenFisicoActu.Peso = float.Parse(pesoPac.Value);
+            examenFisicoActu.PerimetroCefalico = float.Parse(perimetroPac.Value);
+            examenFisicoActu.SO2 = float.Parse(so2Pac.Value);
+            examenFisicoActu.IMC = float.Parse(tallaPac.Value) * float.Parse(pesoPac.Value);
+            examenFisicoActu.Temperatura = float.Parse(temperaturaPac.Value);
+            examenFisicoActu.EstadoAlerta = alertaPac.Value.Trim();
+            examenFisicoActu.EstadoHidratacion = hidratacionPac.Value.Trim();
+            examenFisicoActu.RuidosCardiacos = ruidosPac.Value.Trim();
+            examenFisicoActu.CamposPulmonares = camposPac.Value.Trim();
+            examenFisicoActu.Abdomen = abdomenPpac.Value.Trim();
+            examenFisicoActu.Faringe = faringePac.Value.Trim();
+            examenFisicoActu.Neurodesarrollo = neuroPac.Value.Trim();
+            examenFisicoActu.Nariz = narizPac.Value.Trim();
+            examenFisicoActu.Oidos = oidosPac.Value.Trim();
+            examenFisicoActu.SNC = sncPac.Value.Trim();
+            examenFisicoActu.Osteomuscular = osteomuscPac.Value.Trim();
+            examenFisicoActu.Piel = pielPac.Value.Trim();
+            examenFisicoActu.Otros = otrosPac.Value.Trim();
+
+            BLConsulta consultaGuardada = new BLConsulta();
+            consultaGuardada = (BLConsulta)Session["consulta"];
+            consultaActu.Fecha_Hora = consultaGuardada.Fecha_Hora;
+            consultaActu.CodigoExpediente = consultaGuardada.CodigoExpediente;
+            consultaActu.Estado = consultaGuardada.Estado;
+
+            examenFisicoActu.Fecha_Hora = consultaGuardada.Fecha_Hora;
+            examenFisicoActu.CodigoExpediente = consultaGuardada.CodigoExpediente;
+
+            ManejadorConsulta manejador = new ManejadorConsulta();
+            manejador.actualizarConsulta(consultaActu, examenFisicoActu);
+
         }
 
 
@@ -421,6 +575,7 @@ namespace Pediatric_System
             Response.Clear();
 
         }
+
 
     }
 }
