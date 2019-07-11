@@ -7,14 +7,6 @@
      <script src="JS/jquery/jquery.min.js"></script>
     <script src="JS/jquery/iphone-style-checkboxes.js"></script>
     <link href="CSS/style.css" rel="stylesheet" />
-    
-<%--  <script type="text/javascript">
-        $(document).ready(function () {
-            $(':checkbox').iphoneStyle();
-        });
-    </script>----%>
-    
-    
     <link rel="stylesheet" href="CSS/agenda.css" />
     <link rel="stylesheet" href="CSS/expediente.css" />
     <script type="text/javascript">

@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Pediatric System</title>
-    <%if ( Session["Cuenta"] == null)
+    <%if (Session["Cuenta"] == null)
         {
             Response.Redirect("IniciarSesion.aspx");
         } %>
@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/css/gijgo.min.css" />
     <script src="JS/Calendario.js"></script>
     <script src="JS/Idioma.js"></script>
-    
+
     <!-- Fuentes-->
     <link href="fonts/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
 
@@ -38,42 +38,123 @@
     </asp:ContentPlaceHolder>
 </head>
 <body id="page-top">
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="Dashboard.aspx">
-        <img class="img-logo" src="images/Logo_letras_azules.png" /></a>
+        <!-- Header-->
+        <%if (Session["Rol"].ToString().Equals("Medico") || Session["Rol"].ToString().Equals("Asistente"))
+            {%>
+        <a class="navbar-brand mr-1" href="Dashboard.aspx">
+
+            <%   }
+                else if (Session["Rol"].ToString() == "Paciente")
+                {%>
+            <a class="navbar-brand mr-1" href="InicioUsuarioExterno.aspx">
+
+                <%   }
+                    else if (Session["Rol"].ToString() == "Administrador")
+                    {%>
+                <a class="navbar-brand mr-1" href="EstadoCuenta.aspx">
+
+                    <%
+                        }
+                        else
+                        {
+                            Session.Abandon();
+                            Response.Redirect("IniciarSesion.aspx");
+                        }%>
 
 
-    <!-- Navbar Search -->
-    <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-      <div class="input-group">
+                    <img class="img-logo" src="images/Logo_letras_azules.png" /></a>
+                <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+                    <div class="input-group">
+                    </div>
+                </form>
 
-      </div>
-    </form>
+                <!-- Navbar Header Right -->
+                <ul class="navbar-nav ml-auto ml-md-0">
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-bell fa-fw fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown no-arrow">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-circle fa-fw fa-lg"></i>
 
-    <!-- Navbar -->
-    <ul class="navbar-nav ml-auto ml-md-0">
-      <li class="nav-item dropdown no-arrow mx-1">
-        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-fw fa-lg"></i>
-        </a>
-      </li>
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user-circle fa-fw fa-lg"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item" href="EditarCuentaPersonal.aspx">Mi Cuenta</a>
-          <a class="dropdown-item" href="EditarContrasena.aspx">Cambiar Contraseña</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="IniciarSesion.aspx" data-toggle="modal" data-target="#logoutModal">Cerrar Sesión</a>
-        </div>
-      </li>
-    </ul>
+                            <% if (Session["Rol"].ToString() != "Paciente")
+                                {
+                                    Label1.Text = Session["nombre"].ToString();%>
+                            <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                            <%} %>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                            <a class="dropdown-item" href="EditarCuentaPersonal.aspx">Mi Cuenta</a>
+                            <a class="dropdown-item" href="EditarContrasena.aspx">Cambiar Contraseña</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="IniciarSesion.aspx" data-toggle="modal" data-target="#logoutModal">Cerrar Sesión</a>
+                        </div>
+                    </li>
 
-  </nav>
-     <div id="wrapper">
+                </ul>
+    </nav>
+    <!--Fin Header-->
+    
+    <div id="wrapper">
         <!-- Sidebar -->
+        <% //Menu lateral segun el rol.
+            var tipo = Session["Rol"].ToString();
+            switch (tipo)
+            {
+                case "Administrador":%>
+        <!--ADMINISTRADOR-->
+        <ul class="sidebar navbar-nav">
+            <li class="nav-item active">
+                <a class="nav-link" href="EstadoCuenta.aspx">
+                    <i class="fas fa-home"></i>
+                    <span>Administración</span>
+                </a>
+            </li>
+            <li class="divider"></li>
+             <li class="nav-item">
+                <a class="nav-link" href="ListaExpedientes.aspx">
+                    <i class="far fa-address-card"></i>
+                    <span>Expedientes</span></a>
+            </li>
+             <li class="nav-item">
+                <a class="nav-link" href="CrearReportes.aspx">
+                    <i class="fas fa-chart-pie"></i>
+                    <span>Reportes</span></a>
+            </li>
+
+
+
+
+              <li class="nav-item">
+                <a class="nav-link" id="sidebarToggle" href="#">
+                    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" href="#">
+                        </i><i class="toleft-sidebar fas fa-angle-double-left"></i>
+                    </button>
+                </a>
+            </li>
+            
+
+        </ul>
+
+
+
+
+
+
+                   <% break;
+
+                case "Paciente":%>
+        <!--PACIENTE-->
+
+                  <%  break;
+
+                default:%>
+        <!--TIPO MEDICO O ASISTENTE-->
+
         <ul class="sidebar navbar-nav">
             <li class="nav-item active">
                 <a class="nav-link" href="Dashboard.aspx">
@@ -91,10 +172,12 @@
                     <h6 class="dropdown-header" style="color: #cccccc;">Sub Menu:</h6>
                     <a class="dropdown-item" style="color: white;" href="ListaExpedientes.aspx">Expedientes</a>
                     <a class="dropdown-item" style="color: white;" href="#">Consulta Activa</a>
-                    <a class="dropdown-item" style="color: white;"href="AsociarPaciente.aspx">Asociar paciente</a>
+                    <a class="dropdown-item" style="color: white;" href="AsociarPaciente.aspx">Asociar paciente</a>
 
                 </div>
             </li>
+             <%if (tipo != "Asistente")
+                        {%>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="far fa-calendar-check"></i>
@@ -104,13 +187,18 @@
                     <h6 class="dropdown-header" style="color: #cccccc;">Sub Menu:</h6>
                     <a class="dropdown-item" style="color: white;" href="GestionarAgenda.aspx">Citas</a>
                     <a class="dropdown-item" style="color: white;" href="MiAgenda.aspx">Administrar Agenda</a>
-                    
-            
-
                 </div>
+                 <% } else {%>
+
+                 <li class="nav-item">
+                <a class="nav-link" href="GestionarAgenda.aspx">
+                    <i class="far fa-calendar-check"></i>
+                    <span>Citas</span></a>
+            </li>
+                <% }%>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="CrearReportes.aspx">
                     <i class="fas fa-chart-pie"></i>
                     <span>Reportes</span></a>
             </li>
@@ -125,6 +213,12 @@
 
         </ul>
 
+
+                  <%  break;
+            }
+            %>
+        
+
         <div id="content-wrapper">
             <div>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -134,90 +228,80 @@
             <!-- Sticky Footer -->
             <footer class="sticky-footer">
                 <div class="container my-auto">
-                    <div class="copyright text-left my-auto">
+                    <div class="copyright  my-auto">
                         <span>Elaborado por estudiantes de Informática Empresarial - Universidad de Costa Rica 2019</span>
                     </div>
                 </div>
             </footer>
-
-        <!-- Sticky Footer -->
-      <footer class="sticky-footer">
-        <div class="container my-auto">
-          <div class="copyright my-auto">
-            <span>Elaborado por estudiantes de Informática Empresarial - Universidad de Costa Rica 2019</span>
-          </div>
         </div>
-        <!-- /.content-wrapper -->
+        <!-- /#wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesion</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Selecciona Salir para finalizar su sesion actual</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="IniciarSesion.aspx">Salir</a>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesion</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Selecciona Salir para finalizar su sesion actual</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="IniciarSesion.aspx">Salir</a>
+                    </div>
                 </div>
             </div>
+            <!-- /.content-wrapper -->
+</div>
         </div>
-    <!-- /.content-wrapper -->
+        <!-- /#wrapper -->
 
-  </div>
-  <!-- /#wrapper -->
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
 
-     <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesion</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Selecciona "Salir" para finalizar su sesión actual.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="IniciarSesion.aspx">Salir</a>
-        </div>
-      </div>
-    </div>
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesion</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Selecciona "Salir" para finalizar su sesión actual.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                        <a class="btn btn-primary" href="IniciarSesion.aspx">Salir</a>
+                    </div>
+                </div>
+            </div>
 
 
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="JS/jquery/jquery.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="JS/jquery/jquery.min.js"></script>
 
 
-    <!-- Core plugin JavaScript-->
-    <script src="JS/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="JS/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Page level plugin JavaScript-->
-    <script src="JS/datatables/jquery.dataTables.js"></script>
-    <script src="JS/datatables/dataTables.bootstrap4.js"></script>
+            <!-- Page level plugin JavaScript-->
+            <script src="JS/datatables/jquery.dataTables.js"></script>
+            <script src="JS/datatables/dataTables.bootstrap4.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="JS/sb-admin.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="JS/sb-admin.js"></script>
 
-    <script src="JS/demo/datatables-demo.js"></script>
+            <script src="JS/demo/datatables-demo.js"></script>
 </body>
 </html>

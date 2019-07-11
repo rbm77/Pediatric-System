@@ -15,7 +15,7 @@ namespace Pediatric_System
         {
             
 
-            //if (Session["Cuenta"] == null) { Response.Redirect("IniciarSesion.aspx"); }
+            if (Session["Cuenta"] == null) { Response.Redirect("IniciarSesion.aspx"); }
 
             ManejadorExpediente manejador = new ManejadorExpediente();
             List<BLExpediente> expedientes = new List<BLExpediente>();
@@ -26,6 +26,7 @@ namespace Pediatric_System
                 gridExpedientes.DataSource = expedientes;
                 gridExpedientes.DataBind();
             }
+            regresar.Attributes.Add("onclick", "history.back(); return false;");
         }
 
         protected void nuevoExpediente_Click(object sender, EventArgs e)
@@ -34,10 +35,7 @@ namespace Pediatric_System
             Response.Redirect("FichaBaseExpediente.aspx");
         }
 
-        protected void regresar_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("Dashboard.aspx");
-        }
+       
 
         protected void gridExpedientes_RowCommand(object sender, GridViewCommandEventArgs e)
         {

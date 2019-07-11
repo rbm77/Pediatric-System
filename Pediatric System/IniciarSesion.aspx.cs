@@ -33,24 +33,31 @@ namespace Pediatric_System
                     case "Habilitada":
                         Session["Cuenta"] = miBLCuenta.correo;
                         Session["Rol"] = miBLCuenta.tipo;
+                        string cor;
                         switch (miBLCuenta.tipo)
                         {
                             case "Medico":
-                                string cor = Session["Cuenta"].ToString();
+                                 cor = Session["Cuenta"].ToString();
                                 BLMedico miBLMedico = new BLMedico();
                                 miBLMedico.correo = cor;
                                 miBLMedico.buscarMedico();
                                 Session["codigoMedico"] = miBLMedico.codigo;
-
-                                Response.Redirect("Dashboard.aspx");
+                                Session["nombre"] = miBLMedico.nombre + " " + miBLMedico.apellido;
+                                Response.Redirect("Dashboard.aspx", false);
                                 break;
                             case "Administrador":
-                                Response.Redirect("InicioAdministrador.aspx");
+                                Session["nombre"] = "Administrador";
+                                Response.Redirect("EstadoCuenta.aspx");
                                 break;
                             case "Paciente":
                                 Response.Redirect("InicioUsuarioExterno.aspx");
                                 break;
                             case "Asistente":
+                                 cor = Session["Cuenta"].ToString();
+                                BLAdministrativo miBLAsist = new BLAdministrativo();
+                                miBLAsist.correo = cor;
+                                miBLAsist.buscarAdministrativo();
+                                Session["nombre"] = miBLAsist.nombre + " " + miBLAsist.apellido;
                                 Response.Redirect("Dashboard.aspx");
                                 break;
                         }
@@ -69,10 +76,11 @@ namespace Pediatric_System
                 }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 txtContra.Text = "";
                 txtCorreo.Text = "";
+                Elog.save(this, ex);
                 throw;
             }
         }

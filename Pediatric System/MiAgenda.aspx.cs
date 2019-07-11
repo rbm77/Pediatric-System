@@ -17,6 +17,13 @@ namespace Pediatric_System
         {
             if (!IsPostBack)
             {
+            
+
+                //Si es administrador no pueden verla.
+                if (!Session["Rol"].ToString().Equals("Medico"))
+                {
+                    Session.Clear();
+                }
                 string codigoMedico = Session["codigoMedico"].ToString();
                 MostrarAgenda(new List<BLAgendaEstandar>(), codigoMedico, true);
             }

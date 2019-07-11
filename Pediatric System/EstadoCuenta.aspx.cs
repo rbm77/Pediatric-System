@@ -18,7 +18,11 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-            {             
+            {
+                if (!Session["Rol"].ToString().Equals("Administrador"))
+                {
+                    Session.Clear();
+                }
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();

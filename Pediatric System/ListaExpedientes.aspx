@@ -55,13 +55,18 @@
                             
 
                             <br />
-
-
+                            
+                            <%//Paciente ni administrador pueden crear un nuevo expediente
+                                if (Session["Rol"].ToString() != ("Administrador") && Session["Rol"].ToString() != ("Paciente"))
+                                {%>
+		 
+	
                             <div class="alinearBtnNuevo">
                                 <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12 ubicacionBtnNuevo">
                                     <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevoExpediente" Text="NUEVO EXPEDIENTE" ID="nuevoExpediente" OnClick="nuevoExpediente_Click" />
                                 </div>
                             </div>
+                            <%}  %>
                         </div>
                     </div>
                 </div>
@@ -103,7 +108,7 @@
 
             <div class="form-row alinearBtnRegresar">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
                 </div>
             </div>
 
