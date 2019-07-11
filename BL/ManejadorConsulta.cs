@@ -75,9 +75,38 @@ namespace BL
             return confirmacion;
         }
 
+        public string actualizarReporteMedicinaMixta (BLConsulta consulta)
+        {
+            TOConsulta consultaTO = new TOConsulta();
+            consultaTO.CodigoExpediente = consulta.CodigoExpediente;
+            consultaTO.Fecha_Hora = consulta.Fecha_Hora;
+            consultaTO.MedicinaMixta = consulta.MedicinaMixta;
+            consultaTO.Frecuencia = consulta.Frecuencia;
+            consultaTO.ReferidoA = consulta.ReferidoA;
+
+            DAOConsulta dao = new DAOConsulta();
+            string confirmacion = dao.actualizarReporteMedicinaMixta(consultaTO);
+            return confirmacion;
+
+        }
+
+        public string actualizarReferenciaMedica(BLConsulta consulta)
+        {
+            TOConsulta consultaTO = new TOConsulta();
+            consultaTO.CodigoExpediente = consulta.CodigoExpediente;
+            consultaTO.Fecha_Hora = consulta.Fecha_Hora;
+            consultaTO.ReferenciaMedica = consulta.ReferenciaMedica;
+            consultaTO.Especialidad = consulta.Especialidad;
+            consultaTO.MotivoReferecnia = consulta.MotivoReferecnia;
+
+            DAOConsulta dao = new DAOConsulta();
+            string confirmacion = dao.actualizarReferenciaMedica(consultaTO);
+            return confirmacion;
+        }
+
         private BLConsulta convertirConsulta(TOConsulta consultaTO)
         {
-            BLConsulta consultaBl = new BLConsulta(consultaTO.CodigoMedico, consultaTO.CodigoExpediente, consultaTO.Fecha_Hora, consultaTO.Analisis, consultaTO.ImpresionDiagnostica, consultaTO.Plan, consultaTO.MedicinaMixta, consultaTO.Frecuencia, consultaTO.ReferidoA, consultaTO.Estado, consultaTO.PadecimientoActual);
+            BLConsulta consultaBl = new BLConsulta(consultaTO.CodigoMedico, consultaTO.CodigoExpediente, consultaTO.Fecha_Hora, consultaTO.Analisis, consultaTO.ImpresionDiagnostica, consultaTO.Plan, consultaTO.MedicinaMixta, consultaTO.Frecuencia, consultaTO.ReferidoA, consultaTO.Estado, consultaTO.PadecimientoActual, consultaTO.ReferenciaMedica, consultaTO.Especialidad, consultaTO.MotivoReferecnia);
             return consultaBl;
         }
         
@@ -95,6 +124,9 @@ namespace BL
             consultaTO.ReferidoA = consultaBL.ReferidoA;
             consultaTO.Estado = consultaBL.Estado;
             consultaTO.PadecimientoActual = consultaBL.PadecimientoActual;
+            consultaTO.ReferenciaMedica = consultaBL.ReferenciaMedica;
+            consultaTO.Especialidad = consultaBL.Especialidad;
+            consultaTO.MotivoReferecnia = consultaBL.MotivoReferecnia;
 
             //Objeto ExamenFisico
             examenFisicoTO.CodigoMedico = examenFisicoBL.CodigoMedico;
@@ -135,6 +167,9 @@ namespace BL
             consultaBL.ReferidoA = consultaTO.ReferidoA;
             consultaBL.Estado = consultaTO.Estado;
             consultaBL.PadecimientoActual = consultaTO.PadecimientoActual;
+            consultaBL.ReferenciaMedica = consultaTO.ReferenciaMedica;
+            consultaBL.Especialidad = consultaTO.Especialidad;
+            consultaBL.MotivoReferecnia = consultaTO.MotivoReferecnia;
 
             //Objeto ExamenFisico
             examenFisicoBL.CodigoMedico = examenFisicoTO.CodigoMedico;
@@ -161,5 +196,6 @@ namespace BL
             examenFisicoBL.Otros = examenFisicoTO.Otros;
         }
 
+        
     }
 }

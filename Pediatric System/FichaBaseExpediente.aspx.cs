@@ -50,7 +50,7 @@ namespace Pediatric_System
 
             if (!IsPostBack)
             {
-                if ((string)Session["pagina"] == "listaExpedientes-seleccionado")
+                if (((string)Session["pagina"] == "listaExpedientes-seleccionado") || ((string)Session["pagina"] == "regresar-listaconsultas"))
 
                 {
                     string codigoExp = (string)Session["expedienteSeleccionado"];

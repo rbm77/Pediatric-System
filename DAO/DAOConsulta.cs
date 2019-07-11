@@ -161,6 +161,158 @@ namespace DAO
             return confirmacion;
         }
 
+        public string actualizarReferenciaMedica(TOConsulta consultaTO)
+        {
+            string confirmacion = "La consulta se actualizó correctamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar referencia medica");
+
+
+            try
+            {
+                // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
+
+                SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET REFERENCIA_MEDICA = @refMed, ESPECIALIDAD_REFERENCIA = @espRef, MOTIVO_REFERENCIA = @motRef WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdActuExpediente.Transaction = transaccion;
+
+                //cmdActuExpediente.Parameters.AddWithValue("@codMed", consultaTO.CodigoMedico);
+
+                const string FMT = "o";
+                string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
+                cmdActuExpediente.Parameters.AddWithValue("@refMed", consultaTO.ReferenciaMedica);
+                cmdActuExpediente.Parameters.AddWithValue("@espRef", consultaTO.Especialidad);
+                cmdActuExpediente.Parameters.AddWithValue("@motRef", consultaTO.MotivoReferecnia);
+                cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
+
+                cmdActuExpediente.ExecuteNonQuery();
+
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+
+        public string actualizarReporteMedicinaMixta(TOConsulta consultaTO)
+        {
+            string confirmacion = "La consulta se actualizó correctamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar medicina mixta");
+
+
+            try
+            {
+                // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
+
+                SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET MEDICINA_MIXTA = @medMix, FRECUENCIA = @frecu, REFERIDO_A = @refe WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdActuExpediente.Transaction = transaccion;
+
+                //cmdActuExpediente.Parameters.AddWithValue("@codMed", consultaTO.CodigoMedico);
+
+                const string FMT = "o";
+                string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
+                cmdActuExpediente.Parameters.AddWithValue("@medMix", consultaTO.MedicinaMixta);
+                cmdActuExpediente.Parameters.AddWithValue("@frecu", consultaTO.Frecuencia);
+                cmdActuExpediente.Parameters.AddWithValue("@refe", consultaTO.ReferidoA);
+                cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
+
+                cmdActuExpediente.ExecuteNonQuery();
+
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+
         public string ActualizarConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
         {
             string confirmacion = "La consulta se actualizó correctamente";
@@ -422,6 +574,16 @@ namespace DAO
                         consultaTO.ReferidoA = lectorExp["REFERIDO_A"].ToString();
                         consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
                         consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
+                        if (lectorExp["REFERENCIA_MEDICA"].ToString() == "")
+                        {
+                            consultaTO.ReferenciaMedica = false;
+                        }
+                        else
+                        {
+                            consultaTO.ReferenciaMedica = (Boolean)lectorExp["REFERENCIA_MEDICA"];
+                        }
+                        consultaTO.Especialidad = lectorExp["ESPECIALIDAD_REFERENCIA"].ToString();
+                        consultaTO.MotivoReferecnia = lectorExp["MOTIVO_REFERENCIA"].ToString();
                     }
                 }
                 lectorExp.Close();
