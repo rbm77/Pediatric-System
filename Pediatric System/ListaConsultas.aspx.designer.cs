@@ -32,6 +32,7 @@ namespace Pediatric_System {
         
         /// <summary>
         /// paciGeneral control.
+        /// nuevoConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -41,6 +42,7 @@ namespace Pediatric_System {
         
         /// <summary>
         /// cedGeneral control.
+        /// regresar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

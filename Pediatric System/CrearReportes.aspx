@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="CrearReportes.aspx.cs" Inherits="Pediatric_System.CrearReportes" %>
 
+<%@ Register Assembly="CrystalDecisions.Web, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" Namespace="CrystalDecisions.Web" TagPrefix="CR" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
 
@@ -19,18 +21,25 @@
         <hr style="color: #0056b2;" />
 
         <!-- ---------------------------------------------------- !-->
-
-        <form>
+       
+        <form runat="server">
             <div class="col-12 bg-light border border-info rounded table-responsive">
                 <div class="form-row" style="margin-top: 15px;">
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Inicio</label>
-                        <input class="datepicker" placeholder="31/12/2018" />
+                        <input id="dateIni" class="datepickerIni" value="09/07/2019" />
                     </div>
 
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Fin</label>
-                        <input class="datepicker" placeholder="31/12/2018" />
+                        <input id="dateFin" class="datepickerFin" value="09/07/2019" />
+                    </div>
+                    
+                    <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                       <div class="padding-general-label">
+                        <label class="nombre-input">Médico</label>
+                        <asp:DropDownList ID="ddCodigoMedico" CssClass="browser-default custom-select" runat="server" ></asp:DropDownList>
+                    </div>
                     </div>
 
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -42,6 +51,7 @@
                         </select>
                     </div>
                 </div>
+                 <asp:Literal ID="mensajeConfirmacion" runat="server"></asp:Literal>
             </div>
 
             <div class="visualizacionTitulo" style="margin-top: 25px;">
@@ -100,18 +110,26 @@
 
             <div class="form-row">
                 <div class="btnGenerarReporte form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
-                    <button type="submit" class="btn btn-outline-primary form-control">GENERAR PDF</button>
+                    <button type="submit" class="btn btn-outline-primary form-control">GENERAR</button>
                 </div>
                 <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
                     <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
                 </div>
             </div>
         </form>
+
+
     </div>
 
 
     <script>
-        $('.datepicker').datepicker({
+
+        $('.datepickerIni').datepicker({
+            uiLibrary: 'bootstrap4',
+            locale: 'es-es',
+            format: 'dd/mm/yyyy'
+        });
+        $('.datepickerFin').datepicker({
             uiLibrary: 'bootstrap4',
             locale: 'es-es',
             format: 'dd/mm/yyyy'

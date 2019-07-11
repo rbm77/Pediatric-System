@@ -13,19 +13,27 @@ namespace Pediatric_System
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            mensajeConfirmacion.Visible = false;
         }
 
         protected void BotonEnviar_Click(object sender, EventArgs e)
         {
-            String nuevaContrasena = CrearPassword(8);
-            String mensaje = "Su nueva contraseña es : " + nuevaContrasena;     
-            BLEnviarCorreo miCorreo = new BLEnviarCorreo(txtCorreo.Text, "Recuperacion de Contraseña", mensaje);
-
+            String nuevaContrasena = CrearPassword(8);  
             BLCuenta miBLCuenta = new BLCuenta();
             miBLCuenta.correo = txtCorreo.Text;
-            miBLCuenta.contrasena = nuevaContrasena;
-            miBLCuenta.actualizarContraseña();
+
+            miBLCuenta.buscarCuentaPorCorreo();
+            if (miBLCuenta.estado == "Habilitada")
+            {
+                miBLCuenta.contrasena = nuevaContrasena;
+                miBLCuenta.actualizarContraseña();
+                BLEnviarCorreo miCorreo = new BLEnviarCorreo(txtCorreo.Text, "Recuperacion de Contraseña", "Peditric System\nSe ha realizado la recuperación de su contraseña\nSu nueva contraseña es: " + nuevaContrasena + "\nLe recomendamos cambiar la contraseña al iniciar sesión");
+                mensajeAviso("success", "Correo de recuperación enviado");
+                txtCorreo.Text = "";
+            } else
+            {
+                mensajeAviso("danger", "El correo ingresado no se encuentra registrado");
+            }
 
         }
 
@@ -41,9 +49,23 @@ namespace Pediatric_System
             return res.ToString();
         }
 
-        protected void BotonRegresar_Click(object sender, EventArgs e)
+        protected void Regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("IniciarSesion.aspx");
+        }
+
+        public void mensajeAviso(String color, String texto)
+        {
+            //Colores:  primary = Azul
+            //          secondary = Gris
+            //          success = Verde
+            //          danger = Rojo
+            //          warning = Amarillo
+            mensajeConfirmacion.Text = "<div class=\"alert alert-" + color + " alert-dismissible fade show\" " +
+           "role=\"alert\"> <strong></strong>" + texto + "<button" +
+         " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+         " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+            mensajeConfirmacion.Visible = true;
         }
     }
 }

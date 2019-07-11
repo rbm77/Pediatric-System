@@ -66,7 +66,7 @@
                             </ProgressTemplate>
                         </asp:UpdateProgress>
 
-                       
+
 
                         <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
@@ -78,8 +78,8 @@
                                 <div class="table-responsive" style="text-align: center">
 
                                     <asp:Calendar ID="calendario" runat="server" BackColor="White" BorderColor="white" BorderWidth="1px" Font-Names="Verdana" Font-Size="11pt" ForeColor="#1e5f93" Height="200px" NextPrevFormat="ShortMonth" Width="350px" OnSelectionChanged="ActualizarAgenda" OnDayRender="calendario_DayRender">
-                                        <DayHeaderStyle Font-Bold="false"/>
-                                        <NextPrevStyle Font-Bold="false"/>
+                                        <DayHeaderStyle Font-Bold="false" />
+                                        <NextPrevStyle Font-Bold="false" />
                                         <OtherMonthDayStyle ForeColor="#999999" />
                                         <SelectedDayStyle BackColor="#16ACB8" ForeColor="White" />
                                         <TitleStyle BackColor="White" Font-Bold="false" Font-Size="12pt" ForeColor="#1ca5ac" />
@@ -137,8 +137,33 @@
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModal">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-
                         </div>
+                        <asp:UpdateProgress ID="UpdateProgress3" runat="server" AssociatedUpdatePanelID="UpdatePanel1">
+                            <ProgressTemplate>
+                                <br />
+                                <div class="form-row" style="text-align: center; display: block">
+                                    <div class="form-group" style="display: inline-block">
+
+                                        <div class="lds-spinner align-content-center" style="display: inline-block">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </ProgressTemplate>
+                        </asp:UpdateProgress>
+
                         <div class="modal-body">
                             <div class="form-row margen-general-1-top">
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
@@ -158,26 +183,26 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label for="nombre" class="nombre-label">Nombre Completo</label>
-                                        <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="nombre" CssClass="form-control"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Campo requerido" ControlToValidate="nombre" Font-Size="Small" ForeColor="Red" ValidationGroup="datosEntrada"></asp:RequiredFieldValidator><asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="Ingresar letras únicamente" ControlToValidate="nombre" ValidationExpression="^[a-z A-Zñáéíóú]*$" ValidationGroup="datosEntrada" Font-Size="Small" ForeColor="Red"></asp:RegularExpressionValidator>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label for="edad" class="nombre-label">Edad</label>
-                                        <asp:TextBox runat="server" ID="edad" CssClass="form-control"></asp:TextBox>
+                                        <asp:TextBox runat="server" ID="edad" CssClass="form-control"></asp:TextBox><asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ErrorMessage="Campo requerido" ControlToValidate="edad" Font-Size="Small" ForeColor="Red" ValidationGroup="datosEntrada"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label for="correo" class="nombre-label">Correo Electrónico</label>
-                                        <asp:TextBox runat="server" ID="correo" CssClass="form-control"></asp:TextBox>
+                                        <input type="email" runat="server" ID="correo" class="form-control" />
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label for="telefono" class="nombre-label">Número Telefónico</label>
-                                        <asp:TextBox runat="server" ID="telefono" CssClass="form-control"></asp:TextBox>
+                                        <input type="number" runat="server" ID="telefono" class="form-control" />
                                     </div>
                                 </div>
 
@@ -188,48 +213,16 @@
 
                             <div class="form-group" style="text-align: center; display: inline-block">
 
-                                <asp:Button type="button" runat="server" class="btn btn-guardar" Text="CREAR CITA" ID="btnCrear" OnClick="btnCrear_Click" />
+                                <asp:Button type="button" runat="server" class="btn btn-guardar" Text="CREAR CITA" ID="btnCrear" OnClick="btnCrear_Click" ValidationGroup="datosEntrada"/>
 
-                                <br />
-                                <br />
 
-                                <div class="lds-spinner">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
                             </div>
 
                             <div class="form-group" style="text-align: center; display: inline-block">
 
                                 <asp:Button type="button" runat="server" class="btn btn-eliminar" Text="CANCELAR CITA" ID="btnCancelar" OnClick="btnCancelar_Click" />
 
-                                <br />
-                                <br />
 
-                                <div class="lds-spinner">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
                             </div>
                         </div>
                     </asp:Panel>

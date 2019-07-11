@@ -61,6 +61,7 @@
     <Compile Include="TOExpediente.cs" />
     <Compile Include="TOHistoriaClinica.cs" />
     <Compile Include="TOMedico.cs" />
+    <Compile Include="TOPacienteCita.cs" />
     <Compile Include="TOPersonal.cs" />
     <Compile Include="TOVacuna.cs" />
   </ItemGroup>

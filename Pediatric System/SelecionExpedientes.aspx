@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="ListaExpedientes.aspx.cs" Inherits="Pediatric_System.InicioPrincipal" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="SelecionExpedientes.aspx.cs" Inherits="Pediatric_System.SelecionExpedientes" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <script type="text/javascript">
         $(function () {
-            $('[id*=gridExpediente]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            $('[id*=gridConExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
                 "responsive": true,
                 "sPaginationType": "numbers"
             });
@@ -24,46 +24,37 @@
 
         <hr class="linea-divisoria-titulo" />
 
+
         <form runat="server">
 
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
-                <div class="table-responsive">
+                <div style="text-align: center;" >
+                 <asp:Label ID="lblCuentaSel" runat="server" Text="" CssClass="text-info" Font-Size="20px"></asp:Label>
+               </div>
+               
+                 <div class="table-responsive">
+                        <br />
                     <div class="card">
-                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes</h5>
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes Sin Cuenta Asociada</h5>
                         <div class="card-body">
-                           
+                            <div>
 
-                                <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
+                                <asp:GridView ID="gridConExpedientes" runat="server" CssClass="table" Style="text-align: center"
                                     AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                    HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%" 
+                                    HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%"
                                     OnRowCommand="gridExpedientes_RowCommand">
-                                    
-
                                     <Columns>
                                         <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
                                         <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
                                         <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
-                                        <asp:ButtonField HeaderText="Acción" CommandName="seleccionar"
-                                            ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
-                                        <asp:BoundField Visible="false" HeaderText="Codigo" DataField="Codigo" ></asp:BoundField>
+                                        <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpedienteEspecifico" Text="Asociar"
+                                            ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
                                     </Columns>
                                 </asp:GridView>
 
-                            
+                            </div>
 
                             <br />
-                            
-                            <%//Paciente ni administrador pueden crear un nuevo expediente
-                                if (Session["Rol"].ToString() != ("Administrador") && Session["Rol"].ToString() != ("Paciente"))
-                                {%>
-		 
-	
-                            <div class="alinearBtnNuevo">
-                                <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12 ubicacionBtnNuevo">
-                                    <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevoExpediente" Text="NUEVO EXPEDIENTE" ID="nuevoExpediente" OnClick="nuevoExpediente_Click" />
-                                </div>
-                            </div>
-                            <%}  %>
                         </div>
                     </div>
                 </div>
@@ -102,14 +93,13 @@
                     </div>
                 </div>
             </div-->
-
+            <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
             <div class="form-row alinearBtnRegresar">
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnRegresar" runat="server">
-                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
                 </div>
             </div>
 
         </form>
     </div>
-
 </asp:Content>

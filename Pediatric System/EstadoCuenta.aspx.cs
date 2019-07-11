@@ -17,8 +17,13 @@ namespace Pediatric_System
         BLCuenta miBLCuenta = new BLCuenta();
         protected void Page_Load(object sender, EventArgs e)
         {
+            mensajeConfirmacion.Visible = false;
             if (!Page.IsPostBack)
-            {             
+            {
+                if (!Session["Rol"].ToString().Equals("Administrador"))
+                {
+                    Session.Clear();
+                }
                 listaPersonal = miBLPersonal.buscarListaPersonal();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
@@ -36,7 +41,7 @@ namespace Pediatric_System
                 case "enviarCorreo":
                     int indice = Convert.ToInt32(e.CommandArgument);
                     GridViewRow filaSeleccionada = gridCuentas.Rows[indice];
-                    TableCell estado = filaSeleccionada.Cells[2];
+                    TableCell estado = filaSeleccionada.Cells[1];
                     string correo = estado.Text;
                     BLAdministrativo miBLAdministrativo = new BLAdministrativo();
                     miBLCuenta.correo = correo;

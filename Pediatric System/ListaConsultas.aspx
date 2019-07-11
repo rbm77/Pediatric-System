@@ -144,14 +144,16 @@
                                 </div>
                                 <br />
                             </div>
-
+                             <%//Paciente ni administrador pueden crear una nueva consulta
+                                 if (Session["Rol"].ToString() != ("Administrador") && Session["Rol"].ToString() != ("Paciente"))
+                                {%>
                             <div class="alinearBtnNuevo">
                                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtnNuevo" runat="server">
 
                                     <asp:Button type="button" runat="server" CssClass="btn btn-neutro btnNuevaConsulta" Text="NUEVA CONSULTA" ID="nuevoConsulta" OnClick="nuevoConsulta_Click" />
                                 </div>
                             </div>
-
+                             <%}  %>
                         </div>
                     </div>
                 </div>

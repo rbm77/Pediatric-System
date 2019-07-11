@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Principal.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Pediatric_System.dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript" src="JS/countereffect.js"></script>
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -9,7 +10,11 @@
         <div class="page-header margen-general-2-top">
             <h3 class="text-info">Pediatric System</h3>
         </div>
+        <% if (Session["Rol"].ToString() == ("Administrador") || Session["Rol"].ToString() == ("Paciente"))
+            {
+                Session.Clear();
 
+            } %>
         <hr class="linea-divisoria-titulo" />
         <!-- Icon Cards-->
         <div class="row clearfix">
@@ -21,9 +26,19 @@
 
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-20">
                                 <div class="card text-white o-hidden h-100">
+                                     <div class="row">
                                     <a class="card-body card-dash" href="ListaExpedientes.aspx">
                                         <i style="color: #1d5e93" class="far fa-id-card fa-4x"></i>
                                     </a>
+                                          <a class="card-body card-dash col-4" href="#" style="font-size: 20px; font-weight: 500;
+    padding: 20px 39px 0px 0px;">
+                                        <div class="" style="border-radius: 50%;width: 50px;height: 50px;padding: 8px;background: #fff;border: 2px solid #1d5e93;color: #1d5e93;text-align: center;font: 26px Arial, sans-serif;">
+                                        
+                                            <span id="countExpe" class="timer count-title count-number" data-to="1" data-speed="1500"></span>
+                                           
+                                            </div>
+                                    </a>
+                                        </div>
                                     <a class="card-footer text-white clearfix small z-1" href="ListaExpedientes.aspx">
                                         <span class="float-left">Expedientes</span>
                                         <span class="float-right">
@@ -34,9 +49,17 @@
                             </div>
                             <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                                 <div class="card text-white o-hidden h-100">
-                                    <a class="card-body card-dash" href="#">
+                                    <div class="row">
+                                    <a class="card-body card-dash col-8" href="#">
                                         <i style="color: #1d5e93" class="fas fa-user-check fa-4x"></i>
                                     </a>
+                                    <a class="card-body card-dash col-4" href="#" style="font-size: 20px; font-weight: 500;
+    padding: 20px 39px 0px 0px;">
+                                        <div class="" style="border-radius: 50%;width: 50px;height: 50px;padding: 8px;background: #fff;border: 2px solid #1d5e93;color: #1d5e93;text-align: center;font: 26px Arial, sans-serif;">
+                                       <span class="timer count-title count-number" data-to="15" data-speed="1500"></span>
+                                            </div>
+                                    </a>
+                                        </div>
                                     <a class="card-footer text-white clearfix small z-1" href="#">
                                         <span class="float-left">Consultas Activas</span>
                                         <span class="float-right">
@@ -120,4 +143,6 @@
             </div>
         </div>
     </div>
+
+    
 </asp:Content>

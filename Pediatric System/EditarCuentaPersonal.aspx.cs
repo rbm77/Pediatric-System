@@ -13,57 +13,69 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
 
-                if (!Page.IsPostBack) {
-            if (Session["Cuenta"] == null) {
-            
-             Response.Redirect("IniciarSesion.aspx");
-            } else {
-            BLAdministrativo miBLAdministrativo = new BLAdministrativo();
-            string correo = Session["Cuenta"].ToString();
-            txtCorreo.Enabled = false;
-            txtCorreo.Text = correo;
-            Tipo.Text = Session["Rol"].ToString();
-            Tipo.Enabled = false;
-            switch (Session["Rol"].ToString())
+            if (!Page.IsPostBack)
             {
-                case "Medico":                    
-                        txtCodigo.Visible = true;
-                        lblCodigo.Visible = true;
-                        BLMedico miBLMedico = new BLMedico();
-                        miBLMedico.correo = correo;
-                        miBLMedico.buscarMedico();
-                        txtNombre.Text = miBLMedico.nombre;
-                        txtApellido.Text = miBLMedico.apellido;
-                        txtCedula.Text = miBLMedico.cedula.ToString();
-                        txtTelefono.Text = miBLMedico.telefono.ToString();
-                        txtCodigo.Text = miBLMedico.codigo;
-                        break;
-                    case "Asistente":
+                if (Session["Cuenta"] == null)
+                {
 
-                        miBLAdministrativo.correo = correo;
-                        miBLAdministrativo.buscarAdministrativo();
-                        txtNombre.Text = miBLAdministrativo.nombre;
-                        txtApellido.Text = miBLAdministrativo.apellido;
-                        txtCedula.Text = miBLAdministrativo.cedula.ToString();
-                        txtTelefono.Text = miBLAdministrativo.telefono.ToString();
-                        break;
-                    case "Administrador":
-                        
-                        miBLAdministrativo.correo = Session["Cuenta"].ToString();
-                        miBLAdministrativo.buscarAdministrativo();
-                        txtNombre.Text = miBLAdministrativo.nombre;
-                        txtApellido.Text = miBLAdministrativo.apellido;
-                        txtCedula.Text = miBLAdministrativo.cedula.ToString();
-                        txtTelefono.Text = miBLAdministrativo.telefono.ToString();
-                        break;
+                    Response.Redirect("IniciarSesion.aspx");
                 }
+                else
+                {
+                    BLAdministrativo miBLAdministrativo = new BLAdministrativo();
+                    string correo = Session["Cuenta"].ToString();
+                    txtCorreo.Enabled = false;
+                    txtCorreo.Text = correo;
+                    Tipo.Text = Session["Rol"].ToString();
+
+                    //Tilda la palabra medico en el view
+                    if (Tipo.Text == "Medico")
+                    {
+                        Tipo.Text = "Médico";
+                    }
+
+                    Tipo.Enabled = false;
+                    switch (Session["Rol"].ToString())
+                    {
+                        case "Medico":
+                            txtCodigo.Visible = true;
+                            lblCodigo.Visible = true;
+                            BLMedico miBLMedico = new BLMedico();
+                            miBLMedico.correo = correo;
+                            miBLMedico.buscarMedico();
+                            txtNombre.Text = miBLMedico.nombre;
+                            txtApellido.Text = miBLMedico.apellido;
+                            txtCedula.Text = miBLMedico.cedula.ToString();
+                            txtTelefono.Text = miBLMedico.telefono.ToString();
+                            txtCodigo.Text = miBLMedico.codigo;
+                            break;
+                        case "Asistente":
+
+                            miBLAdministrativo.correo = correo;
+                            miBLAdministrativo.buscarAdministrativo();
+                            txtNombre.Text = miBLAdministrativo.nombre;
+                            txtApellido.Text = miBLAdministrativo.apellido;
+                            txtCedula.Text = miBLAdministrativo.cedula.ToString();
+                            txtTelefono.Text = miBLAdministrativo.telefono.ToString();
+                            break;
+                        case "Administrador":
+
+                            miBLAdministrativo.correo = Session["Cuenta"].ToString();
+                            miBLAdministrativo.buscarAdministrativo();
+                            txtNombre.Text = miBLAdministrativo.nombre;
+                            txtApellido.Text = miBLAdministrativo.apellido;
+                            txtCedula.Text = miBLAdministrativo.cedula.ToString();
+                            txtTelefono.Text = miBLAdministrativo.telefono.ToString();
+                            break;
                     }
                 }
+            }
+            regresar.Attributes.Add("onclick", "history.back(); return false;");
         }
         protected void btnEditar_Click(object sender, EventArgs e)
         {
             string correo = txtCorreo.Text;
-            string tipo = Tipo.Text ;
+            string tipo = Tipo.Text;
             string nombre = txtNombre.Text;
             string apellido = txtApellido.Text;
             int cedula = Int32.Parse(txtCedula.Text);
@@ -121,5 +133,7 @@ namespace Pediatric_System
           " <span aria-hidden=\"true\">&times;</span> </button> </div>";
             mensajeConfirmacion.Visible = true;
         }
+
+       
     }
 }

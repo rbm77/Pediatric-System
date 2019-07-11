@@ -55,8 +55,11 @@
                             <div class="alinearBtnConsulta">
                                 <div class="form-group ubicacionBtn" runat="server">
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="CONSULTAS" ID="verConsultas" OnClick="verConsultas_Click" />
-
+                                       <%//Paciente ni administrador pueden crear un nuevo expediente
+                                if (Session["Rol"].ToString() != ("Administrador") && Session["Rol"].ToString() != ("Paciente"))
+                                {%>
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="NUEVA CONSULTA" ID="nuevaConsulta" OnClick="nuevaConsulta_Click" />
+                                        <%}  %>
                                 </div>
                             </div>
                         </div>

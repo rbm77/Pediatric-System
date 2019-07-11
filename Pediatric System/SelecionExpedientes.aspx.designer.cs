@@ -10,16 +10,25 @@
 namespace Pediatric_System {
     
     
-    public partial class CrearReportes {
+    public partial class SelecionExpedientes {
         
         /// <summary>
-        /// ddCodigoMedico control.
+        /// lblCuentaSel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddCodigoMedico;
+        protected global::System.Web.UI.WebControls.Label lblCuentaSel;
+        
+        /// <summary>
+        /// gridConExpedientes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridConExpedientes;
         
         /// <summary>
         /// mensajeConfirmacion control.
@@ -29,5 +38,14 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal mensajeConfirmacion;
+        
+        /// <summary>
+        /// regresar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button regresar;
     }
 }
