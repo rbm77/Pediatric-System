@@ -14,6 +14,7 @@ namespace Pediatric_System
         private Button miBoton = new Button();
         protected void Page_Load(object sender, EventArgs e)
         {
+            mensajeConfirmacion.Visible = false;
             Session["Cuenta"] = null;
         }
 

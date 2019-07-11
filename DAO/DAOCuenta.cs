@@ -19,8 +19,9 @@ namespace DAO
         /// Busca que el correo y la contraseña de una cuenta coincida
         /// </summary>
         /// <param name="myTOCuenta">Se recibe un objeto que contiene los datos a buscar</param>
-        public void buscarCuentaConContraseña(TOCuenta myTOCuenta)
+        public String buscarCuentaConContraseña(TOCuenta myTOCuenta)
         {
+            string confirmacion = "La cuenta se encontro correctamente";
             // Se abre la conexión
             if (conexion != null)
             {
@@ -33,14 +34,14 @@ namespace DAO
                 }
                 catch (Exception)
                 {
-                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
-                    //return confirmacion;
+                    confirmacion = "Ocurrio un error y no se encontro la cuenta";
+                    return confirmacion;
                 }
             }
             else
             {
-                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
-                //return confirmacion;
+                confirmacion = "Ocurrio un error y no se encontro la cuenta";
+                return confirmacion;
             }
             SqlTransaction transaccion = conexion.BeginTransaction("Buscar Cuenta con Contraseña");
             try
@@ -76,6 +77,10 @@ namespace DAO
                 {
 
                 }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo encontrar la cuenta";
+                }
             }
             finally
             {
@@ -85,6 +90,7 @@ namespace DAO
                     conexion.Close();
                 }
             }
+            return confirmacion;
         }
 
         /// <summary>
@@ -125,6 +131,7 @@ namespace DAO
             {
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
 
                 SqlCommand comando = new SqlCommand("update CUENTA set CONTRASENA = @Contraseña where CORREO = @Correo", conexion);
 

@@ -14,19 +14,6 @@
         });
 
     </script>
-
-<%-- <%--   Con esto de jode peor--%>
-<%--    <script type="text/javascript">
-        $(function () {
-            $('[id*=gridExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
-                "responsive": true,
-                "sPaginationType": "numbers"
-            });
-        });
-    </script>--%>
-
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
@@ -41,7 +28,7 @@
     <div class="container-fluid col-11 col-auto table-responsive">
 
         <div>
-              <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active nombre-input" id="asociar-pacientes-tab" data-toggle="tab" href="#asociar-pacientes" role="tab" aria-controls="asociar-pacientes" aria-selected="true">Asociar Expedientes</a>
                 </li>
@@ -50,17 +37,17 @@
                 </li>
             </ul>
         </div>
-        <asp:Label ID="lblCorreo" runat="server" Text="Label" Visible ="false"></asp:Label>
+        <asp:Label ID="lblCorreo" runat="server" Text="Label" Visible="false"></asp:Label>
 
         <form id="form1" runat="server">
 
             <div class="tab-content" id="myTabContent">
-                <%--________________Asociar Expediente_______________
+                <%--________________Asociar Expediente_______________--%>
                 <%--________________Asociar Expediente_______________--%>
 
                 <div class="tab-pane fade show active margen-general-1-bottom" id="asociar-pacientes" role="tabpanel" aria-labelledby="asociar-pacientes-tab">
                     <div class="card">
-                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Cuentas de Usuario Externo</h5>
+                        <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>Cuentas de Usuario Externo</h5>
                         <div class="card-body">
                             <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="gridCuentas_RowCommand"
                                 Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
@@ -83,51 +70,6 @@
                         </div>
                     </div>
 
-
-                    <asp:HiddenField ID="campoEscondido" runat="server" />
-
-                    <asp:ModalPopupExtender ID="modalExpedientes" runat="server"
-                        PopupControlID="panelContenido" TargetControlID="campoEscondido"
-                        CancelControlID="CerrarModal" BackgroundCssClass="modalBackground">
-                    </asp:ModalPopupExtender>
-
-                    <asp:Panel ID="panelContenido" runat="server" CssClass="modal-content container-fluid col-9 col-auto
-                                  modal-dialog-scrollable">
-                        <div class="modal-header">
-                            <h5 class="modal-title" runat="server" id="exampleModalLabel">Expedientes</h5>
-
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="CerrarModal">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-
-                        </div>
-                        <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
-
-                        <div class="modal-body">
-                             <div class="table-responsive">
-                                <div class="card">
-                                    <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes</h5>
-                                    <div class="card-body">
-                                            <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
-                                                AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
-                                                HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%"
-                                                OnRowCommand="gridExpedientes_RowCommand">
-
-                                                <Columns>
-                                                    <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
-                                                    <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
-                                                    <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
-                                                  <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpedienteEspecifico" Text="Asociar"
-                                                ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
-                                                </Columns>
-                                            </asp:GridView>
-                                        <br />
-                                    </div>
-                                </div>
-                             </div>
-                    
-                        </div>
-                    </asp:Panel>
                 </div>
                 <%--________________Crear Cuenta de paciente_______________--%>
                 <%--________________Crear Cuenta de paciente_______________--%>

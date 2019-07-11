@@ -58,60 +58,6 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button Button1;
         
         /// <summary>
-        /// campoEscondido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField campoEscondido;
-        
-        /// <summary>
-        /// modalExpedientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender modalExpedientes;
-        
-        /// <summary>
-        /// panelContenido control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelContenido;
-        
-        /// <summary>
-        /// exampleModalLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl exampleModalLabel;
-        
-        /// <summary>
-        /// scriptmng control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.ScriptManager scriptmng;
-        
-        /// <summary>
-        /// gridExpedientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridExpedientes;
-        
-        /// <summary>
         /// txtCorreo control.
         /// </summary>
         /// <remarks>

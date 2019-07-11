@@ -43,9 +43,6 @@
                         <a class="nav-link nombre-input" id="info-personal-encargado-tab"  href="CuentaPersonal.aspx" role="tab" aria-controls="info-personal-encargado" aria-selected="false">Crear Cuentas</a>
                     </li>
                </ul>
-            <div class="card">
-                <div>
-                </div>
                 <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Cuentas de Personal</h5>
                 <div class="card-body">
                     <div>
@@ -63,29 +60,19 @@
                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" Visible="false" />
                                     <asp:ButtonField HeaderText="Acción" CommandName="enviarCorreo"
-                                     ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" />                                                             
+                                     ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="40px" ControlStyle-Height="40px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"/>                                                             
 
-                                    <asp:TemplateField HeaderText="Estado" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center">                                                                                                                   
+                                    <asp:TemplateField HeaderText="Estado" ItemStyle-Wrap="true">                                                                                                                   
                                       <ItemTemplate>
-
-<%--                                          <asp:Label ID="Label1" runat="server" Text="Habilitada => " Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static"></asp:Label>
-                                          <asp:Label ID="Label2" runat="server" Text="Deshabilitada =>" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>' ClientIDMode="Static"></asp:Label>--%>
                                           <asp:Button ID="Button1" runat="server" Text="Deshabilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false  %>'  Enabled ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-deshabilitar "/>
                                           <asp:Button ID="btnHabilitar" runat="server" ToolTip='<%# Eval("Correo") %>' CommandName="habilitarCuenta" Text="Habilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-blancoDer fas fa-edit"/>
                                           <asp:Button ID="Button3" runat="server"  ToolTip='<%# Eval("Correo") %>' CommandName="deshabilitarCuenta" Text="Deshabilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-blancoIzq fas fa-edit"/>
-                                           <asp:Button ID="Button2"  runat="server" Text="Habilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' Enabled ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>'  ClientIDMode="Static" ControlStyle-CssClass="btn btn-habilitar fas fa-edit"/>
-                                       
-                                          <%--  <asp:Button ID="btnDeshabilitar" runat="server" Text="Deshabilitar" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' ClientIDMode="Static" ControlStyle-CssClass="btn btn-deshabilitar fas fa-edit"/>--%>
-<%--                                            <asp:CheckBox AutoPostBack="true" ID ="chk" runat="server" OnCheckedChanged="btnSwitch_Click"                                               
-                                                Checked='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>'
-                                                ClientIDMode="Static" ToolTip='<%# Eval("Correo") %>'  />                                     
-                                               <asp:Button  ID="btnAplicar" runat="server" ClientIDMode="Static"
-                                                Text="Guardar"/>   --%>                                                                   
-                                            </ItemTemplate>
+                                          <asp:Button ID="Button2"  runat="server" Text="Habilitada" Visible ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Habilitada") ? true : false %>' Enabled ='<%#(DataBinder.Eval(Container.DataItem, "Estado").ToString() == "Deshabilitada") ? true : false %>'  ClientIDMode="Static" ControlStyle-CssClass="btn btn-habilitar fas fa-edit"/>                                                                                                     
+                                          </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
                             </asp:GridView>
-                        </div>
+       
                     </div>
                 </div>
             </div>
@@ -123,14 +110,14 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-input">Nombre</label>
-                                                <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtNombre" CssClass="form-control"  required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-input">Apellido</label>
-                                                <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtApellido" CssClass="form-control" required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -138,7 +125,7 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-input">Cédula</label>
-                                                <asp:TextBox runat="server" ID="txtCedula" CssClass="form-control" placeholder="102340567"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtCedula" CssClass="form-control" placeholder="102340567" TextMode="Number" required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -159,7 +146,7 @@
                                         <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                             <div class="padding-general-label">
                                                 <label class="nombre-label">Teléfono</label>
-                                                <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control"></asp:TextBox>
+                                                <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -176,7 +163,7 @@
                         </div>
                     </div>
                     <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                        <asp:Button ID="btnEditar" runat="server" Text="EDITAR" CssClass="btn btn-guardar" OnClick="btnEditarSeleccion_Click"></asp:Button>
+                        <asp:Button ID="btnEditar" runat="server" Text="GUARDAR CAMBIOS" CssClass="btn btn-guardar" OnClick="btnEditarSeleccion_Click" style="height: 45px;width: 170px;"></asp:Button>
                     </div>
 
 

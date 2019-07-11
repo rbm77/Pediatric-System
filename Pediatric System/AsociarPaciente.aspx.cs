@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using BL;
+using System.Text;
 
 namespace Pediatric_System
 {
@@ -16,6 +17,7 @@ namespace Pediatric_System
     
         protected void Page_Load(object sender, EventArgs e)
         {
+            mensajeConfirmacion.Visible = false;
             if (!Page.IsPostBack)
             {
                 listaPersonal = miBLCuenta.buscarListaCuentas();
@@ -35,14 +37,16 @@ namespace Pediatric_System
                 TableCell estado = filaSeleccionada.Cells[0];
                 string correo = estado.Text;
                 lblCorreo.Text = correo;
-
-                ManejadorExpediente manejador = new ManejadorExpediente();
-                List<BLExpediente> expedientes = new List<BLExpediente>();
-                manejador.cargarListaExpedientes(expedientes, true);
-                gridExpedientes.DataSource = expedientes;
-                gridExpedientes.DataBind();
-                modalExpedientes.Show();
-            }
+                Session["CuentaParaAsociar"] = correo;
+                Response.Redirect("SelecionExpedientes.aspx");
+        
+        //ManejadorExpediente manejador = new ManejadorExpediente();
+        //List<BLExpediente> expedientes = new List<BLExpediente>();
+        //manejador.cargarListaExpedientes(expedientes, true);
+        //gridExpedientes.DataSource = expedientes;
+        //gridExpedientes.DataBind();
+        //modalExpedientes.Show();
+    }
         }
 
 
@@ -54,7 +58,7 @@ namespace Pediatric_System
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
             string correo = txtCorreo.Text;
-            string contrasena = "123";
+            string contrasena = CrearPassword(7);
             string tipo = "Paciente";
             BLCuenta miBLCuenta = new BLCuenta();
             miBLCuenta.correo = correo;
@@ -67,7 +71,7 @@ namespace Pediatric_System
                 listaPersonal = miBLCuenta.buscarListaCuentas();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
-                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Creación de cuenta", "Se ha creado una cuenta asociada a este correo que le permite utilizar el sistema de la Clinica Pediatrica Divino Niño");
+                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicacion para utilizar el sistema de la Clinica Pediatrica Divino Niño, su cuenta posee el rol de Paciente y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
             } else
             {
                 mensajeAviso("danger", "La cuenta no se pudo crear debido a que el correo ingresado ya esta en uso");
@@ -75,26 +79,6 @@ namespace Pediatric_System
         }
 
 
-        protected void gridExpedientes_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            if (e.CommandName == "AsociarExpedienteEspecifico")
-            {
-                int indice = Convert.ToInt32(e.CommandArgument);
-                GridViewRow filaSeleccionada = gridExpedientes.Rows[indice];
-                TableCell cedula = filaSeleccionada.Cells[1];
-                string cedulaSel = cedula.Text;
-
-                ManejadorExpediente manejador = new ManejadorExpediente();
-                String mensaje = manejador.asociarCuenta(lblCorreo.Text, cedulaSel);
-                if (mensaje == "Correcto")
-                {
-                    mensajeAviso("success", "Cuenta Asociada correctamente");
-                } else
-                {
-                    mensajeAviso("danger", "Ha ocurrido un error al asociar la Cuenta");
-                }
-            }
-        }
 
 
 
@@ -112,6 +96,18 @@ namespace Pediatric_System
             mensajeConfirmacion.Visible = true;
         }
 
+
+        public string CrearPassword(int longitud)
+        {
+            string caracteres = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+            StringBuilder res = new StringBuilder();
+            Random rnd = new Random();
+            while (0 < longitud--)
+            {
+                res.Append(caracteres[rnd.Next(caracteres.Length)]);
+            }
+            return res.ToString();
+        }
 
         protected void Regresar_Click(object sender, EventArgs e)
         {

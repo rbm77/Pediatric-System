@@ -11,55 +11,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link href="CSS/sb-admin.css" rel="stylesheet" />
+    <link href="CSS/general.css" rel="stylesheet" />
 </head>
 <body>
 
     <br />
-
-    <div class="container-fluid col-10 col-auto">
-        <div class="page-header">
-            <h3 class="text-info">Recuperar contraseña</h3>
-        </div>
-    </div>
-
-
     <form runat="server">
-
+        <asp:Panel ID="Panel2" runat="server" HorizontalAlign="Center">
+            <asp:Image ID="Image1" runat="server" ImageUrl="images/Logo_letras_azules.png"
+                Width="233px" AlternateText="Imagen no disponible" Height="97px" />
+        </asp:Panel>
         <br />
 
-        <div class="container-fluid col-10 col-auto bg-light border border-info">
+        <div class="container-fluid col-4 col-auto bg-light border border-info" style="margin-bottom:80px">
 
-            <br />
+
             <div class="form-row">
                 <div class="alert col-lg-12 col-md-12 col-sm-12 col-xs-12" role="alert">
-                    <p style="color: dimgray">Si desea acceder nuevamente al sistema, por favor ingrese la dirección de correo electrónico asociada a su cuenta de usuario. Posteriormente se le enviará un correo con una nueva contraseña.</p>
+                    <h3 class="text-info" style="text-align: center">Recuperar contraseña</h3>
+                    <br />
+                    <p style="color: dimgray; text-align: center; margin-bottom: 0px">Escribe la dirección de correo electrónico asociado a tu cuenta de</p>
+                    <p style="color: dimgray; text-align: center">Peditric System</p>
                     <hr />
-                    <p style="color: dimgray" class="mb-0">Una vez que tenga acceso al sistema le recomendamos cambiar su contraseña en las opciones de configuración de la cuenta.</p>
+                    <p style="color: dimgray; text-align: center" class="mb-0">Una vez que tenga acceso al sistema le recomendamos cambiar su contraseña en las opciones de configuración de la cuenta.</p>
+                    <br />
+                    <br />
+                    <p style="color: dimgray; text-align: center; font-weight: bold">Correo Electronico</p>
+                     <asp:TextBox ID="txtCorreo" class="form-control" type="email" name="email" runat="server" required="required"></asp:TextBox>
                 </div>
-                <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                    <label style="color: dimgray" for="correo">Correo Electrónico</label>
 
-                    <asp:TextBox ID="txtCorreo" class="form-control" type="email" name="email" runat="server"></asp:TextBox>
-                    <%--<input type="email" class="form-control" id="txtCorreo" />--%>
-                </div>
+                <%--<input type="email" class="form-control" id="txtCorreo" />--%>
             </div>
 
-            <div class="form-row">
-
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-
-                    <%--<button type="submit" class="btn btn-outline-primary form-control">ENVIAR</button>--%>
-                    <asp:Button ID="BotonEnviar" class="btn btn-outline-primary form-control" runat="server" Text="ENVIAR" OnClick="BotonEnviar_Click" />
-
-                </div>
-
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6">
-                    <asp:Button ID="BotonRegresar" class="btn btn-outline-danger form-control" runat="server" Text="Regresar" OnClick="BotonRegresar_Click" />
-                    <%--<button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>--%>
-                </div>
-
+            <div style="text-align: center;" >
+                <asp:Button ID="Button3" runat="server" Text="ENVIAR"  CssClass="btn btn-guardar" OnClick="BotonEnviar_Click" />
+                 <br />
+                <br />
+                 <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="Button2" OnClick="Regresar_Click" CausesValidation="False" UseSubmitBehavior="false" />
             </div>
+                <br />
+             <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
         </div>
+
+           
+
     </form>
 </body>
+      <footer class="sticky-footer" style="width:100%">
+        <div class="container my-auto">
+          <div class="copyright my-auto" style="text-align: center;">
+            <span style="color:#004085; text-align:center">Elaborado por estudiantes de Informática Empresarial - Universidad de Costa Rica 2019</span>
+          </div>
+        </div>
 </html>

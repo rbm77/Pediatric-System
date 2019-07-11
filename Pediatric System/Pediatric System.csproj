@@ -1658,9 +1658,7 @@
     <Content Include="images\bg-01.jpg" />
     <Content Include="images\foto_perfil_icono.jpg" />
     <Content Include="images\icons\favicon.ico" />
-    <Content Include="images\Loading_2.gif" />
     <Content Include="images\Logo_letras_azules.png" />
-    <Content Include="images\logo_letras_blancas_pediatric_System.jpeg" />
     <Content Include="images\report.jpeg" />
     <Content Include="IniciarSesion.aspx" />
     <Content Include="JS\countereffect.js" />
@@ -1697,6 +1695,7 @@
     <Content Include="ListaConsultas.aspx" />
     <Content Include="MiAgenda.aspx" />
     <Content Include="RecuperarContrasenna.aspx" />
+    <Content Include="SelecionExpedientes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -1860,6 +1859,13 @@
       <DependentUpon>Expedientes.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="SelecionExpedientes.aspx.cs">
+      <DependentUpon>SelecionExpedientes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SelecionExpedientes.aspx.designer.cs">
+      <DependentUpon>SelecionExpedientes.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
@@ -1924,6 +1930,11 @@
     <Content Include="Archivos\Direcciones.json" />
     <None Include="packages.config" />
     <Content Include="Principal.Master" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile1.pubxml" />
+    <None Include="Properties\PublishProfiles\CustomProfile2.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="Properties\PublishProfiles\FolderProfile1.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
