@@ -9,7 +9,9 @@
         <div class="page-header margen-general-2-top">
             <h3 class="text-info">Pediatric System</h3>
         </div>
-
+         <%if (Session["Rol"].ToString() == "Medico")
+        {
+          %>  
         <hr class="linea-divisoria-titulo" />
         <!-- Icon Cards-->
         <div class="row clearfix">
@@ -120,4 +122,5 @@
             </div>
         </div>
     </div>
+         <%  } %>
 </asp:Content>

@@ -15,10 +15,10 @@
 
     </script>
 
- <%--   Con esto de jode peor--%>
+<%-- <%--   Con esto de jode peor--%>
 <%--    <script type="text/javascript">
         $(function () {
-            $('[id*=gridExpediente]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            $('[id*=gridExpedientes]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
                 "responsive": true,
                 "sPaginationType": "numbers"
             });
@@ -55,7 +55,7 @@
         <form id="form1" runat="server">
 
             <div class="tab-content" id="myTabContent">
-                <%--________________Asociar Expediente_______________--%>
+                <%--________________Asociar Expediente_______________
                 <%--________________Asociar Expediente_______________--%>
 
                 <div class="tab-pane fade show active margen-general-1-bottom" id="asociar-pacientes" role="tabpanel" aria-labelledby="asociar-pacientes-tab">
@@ -104,7 +104,6 @@
                         <asp:ScriptManager ID="scriptmng" runat="server"></asp:ScriptManager>
 
                         <div class="modal-body">
-
                              <div class="table-responsive">
                                 <div class="card">
                                     <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes</h5>

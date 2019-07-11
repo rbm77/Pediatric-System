@@ -34,7 +34,7 @@
                     <div class="card">
                         <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes</h5>
                         <div class="card-body">
-                            <div>
+                           
 
                                 <asp:GridView ID="gridExpedientes" runat="server" CssClass="table" Style="text-align: center"
                                     AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
@@ -52,7 +52,7 @@
                                     </Columns>
                                 </asp:GridView>
 
-                            </div>
+                            
 
                             <br />
 
