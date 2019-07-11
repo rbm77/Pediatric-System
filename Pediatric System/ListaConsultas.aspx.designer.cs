@@ -31,13 +31,51 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Image imgPreview;
         
         /// <summary>
+        /// paciGeneral control.
         /// nuevoConsulta control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nuevoConsulta;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl paciGeneral;
+        
+        /// <summary>
+        /// cedGeneral control.
+        /// regresar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cedGeneral;
+        
+        /// <summary>
+        /// edaGeneral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl edaGeneral;
+        
+        /// <summary>
+        /// gridConsultas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridConsultas;
+        
+        /// <summary>
+        /// nuevaConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button nuevaConsulta;
         
         /// <summary>
         /// regresar control.

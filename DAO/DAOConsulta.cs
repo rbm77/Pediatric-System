@@ -1,12 +1,494 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TO;
 
 namespace DAO
 {
     public class DAOConsulta
     {
+        SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
+
+        public string CrearConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        {
+            string confirmacion = "La consulta se ingresó correctamente";
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo ingresar la consulta en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo ingresar el expediente en el sistema";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nueva consulta");
+
+            try
+            {
+                const string FMT = "o";
+                string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
+                
+                SqlCommand cmdInsertarConsulta = new SqlCommand("INSERT INTO CONSULTA (CODIGO_EXPEDIENTE, FECHA_HORA, ESTADO) VALUES (@codExp, @fecha, @estado);", conexion);
+                cmdInsertarConsulta.Transaction = transaccion;
+                cmdInsertarConsulta.Parameters.AddWithValue("@codExp", consultaTO.CodigoExpediente);
+                cmdInsertarConsulta.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdInsertarConsulta.Parameters.AddWithValue("@estado", consultaTO.Estado);
+                cmdInsertarConsulta.ExecuteNonQuery();
+
+                SqlCommand cmdInsertarExamenFisico = new SqlCommand("INSERT INTO EXAMEN_FISICO (CODIGO_EXPEDIENTE, FECHA_HORA) VALUES (@codExp, @fecha);", conexion);
+                cmdInsertarExamenFisico.Transaction = transaccion;
+                cmdInsertarExamenFisico.Parameters.AddWithValue("@codExp", examenFisicoTO.CodigoExpediente);
+                cmdInsertarExamenFisico.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdInsertarExamenFisico.ExecuteNonQuery();
+
+                transaccion.Commit();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo ingresar la consulta en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
+        public string cambiarEstadoConsulta(TOConsulta consultaTO)
+        {
+            string confirmacion = "La consulta se actualizó correctamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar estado de consulta");
+
+
+            try
+            {
+                // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
+
+                SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET ESTADO = @estado WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdActuExpediente.Transaction = transaccion;
+
+                //cmdActuExpediente.Parameters.AddWithValue("@codMed", consultaTO.CodigoMedico);
+
+                const string FMT = "o";
+                string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
+                cmdActuExpediente.Parameters.AddWithValue("@estado", consultaTO.Estado);
+                cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
+
+                cmdActuExpediente.ExecuteNonQuery();
+
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+
+        public string ActualizarConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        {
+            string confirmacion = "La consulta se actualizó correctamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar consulta");
+                      
+
+            try
+            {
+                // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
+
+                SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET ANALISIS = @analisis, IMPRESION_DIAGNOSTICA = @impresion, PLAN_D = @plan, PADECIMIENTO_ACTUAL =@padece WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdActuExpediente.Transaction = transaccion;
+
+                //cmdActuExpediente.Parameters.AddWithValue("@codMed", consultaTO.CodigoMedico);
+
+                const string FMT = "o";
+                string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
+
+                cmdActuExpediente.Parameters.AddWithValue("@analisis", consultaTO.Analisis);
+                cmdActuExpediente.Parameters.AddWithValue("@impresion", consultaTO.ImpresionDiagnostica);
+                cmdActuExpediente.Parameters.AddWithValue("@plan",consultaTO.Plan);
+                cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
+                cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdActuExpediente.Parameters.AddWithValue("@padece", consultaTO.PadecimientoActual);
+
+                cmdActuExpediente.ExecuteNonQuery();
+
+                // --------------------------- Actualizar en la tabla Examen Fisico ---------------------------  //
+
+                SqlCommand cmdActuExamenFisico = new SqlCommand("UPDATE EXAMEN_FISICO SET TALLA = @talla, PESO = @peso, PERIMETRO_CEFALICO = @perimetro, SO2 = @so2, IMC = @imc, TEMPERATURA = @temp, ESTADO_ALERTA = @alerta, ESTADO_HIDRATACION = @hidratacion, RUIDOS_CARDIACOS = @ruidos, CAMPOS_PULMONARES = @campos, ABDOMEN = @abdomen, FARINGE = @faringe, NARIZ = @nariz, OIDOS = @oidos, SNC = @snc, SISTEMA_OSTEOMUSCULAR = @osteomuscular, PIEL = @piel, NEURODESARROLLO = @neurod, OTROS = @otros WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdActuExamenFisico.Transaction = transaccion;
+                cmdActuExamenFisico.Parameters.AddWithValue("@talla", examenFisicoTO.Talla);
+                cmdActuExamenFisico.Parameters.AddWithValue("@peso", examenFisicoTO.Peso);
+                cmdActuExamenFisico.Parameters.AddWithValue("@perimetro", examenFisicoTO.PerimetroCefalico);
+                cmdActuExamenFisico.Parameters.AddWithValue("@so2", examenFisicoTO.SO2);
+                cmdActuExamenFisico.Parameters.AddWithValue("@imc", examenFisicoTO.IMC);
+                cmdActuExamenFisico.Parameters.AddWithValue("@temp", examenFisicoTO.Temperatura);
+                cmdActuExamenFisico.Parameters.AddWithValue("@alerta", examenFisicoTO.EstadoAlerta);
+                cmdActuExamenFisico.Parameters.AddWithValue("@hidratacion", examenFisicoTO.EstadoHidratacion);
+                cmdActuExamenFisico.Parameters.AddWithValue("@ruidos", examenFisicoTO.RuidosCardiacos);
+                cmdActuExamenFisico.Parameters.AddWithValue("@campos", examenFisicoTO.CamposPulmonares);
+                cmdActuExamenFisico.Parameters.AddWithValue("@abdomen", examenFisicoTO.Abdomen);
+                cmdActuExamenFisico.Parameters.AddWithValue("@faringe", examenFisicoTO.Faringe);
+                cmdActuExamenFisico.Parameters.AddWithValue("@nariz", examenFisicoTO.Nariz);
+                cmdActuExamenFisico.Parameters.AddWithValue("@oidos", examenFisicoTO.Oidos);
+                cmdActuExamenFisico.Parameters.AddWithValue("@snc", examenFisicoTO.SNC);
+                cmdActuExamenFisico.Parameters.AddWithValue("@osteomuscular", examenFisicoTO.Osteomuscular);
+                cmdActuExamenFisico.Parameters.AddWithValue("@piel", examenFisicoTO.Piel);
+                cmdActuExamenFisico.Parameters.AddWithValue("@neurod", examenFisicoTO.Neurodesarrollo);
+                cmdActuExamenFisico.Parameters.AddWithValue("@otros", examenFisicoTO.Otros);
+                cmdActuExamenFisico.Parameters.AddWithValue("@codExpe", examenFisicoTO.CodigoExpediente);
+                cmdActuExamenFisico.Parameters.AddWithValue("@fecha", fechaConv);
+
+                cmdActuExamenFisico.ExecuteNonQuery();
+
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+
+        public string CargarListaConsultas(List<TOConsulta> toConsultas, string codExpediente)
+        {
+            string confirmacion = "Las consultas se cargaron exitosamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar las consultas";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar las consultas";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar consultas");
+
+            try
+            {
+                SqlCommand cmdConsultas = new SqlCommand("SELECT * FROM CONSULTA WHERE CODIGO_EXPEDIENTE = @cod", conexion);
+                cmdConsultas.Parameters.AddWithValue("@cod", codExpediente);
+                cmdConsultas.Transaction = transaccion;
+
+                SqlDataReader lector = cmdConsultas.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+
+                        //const string FMT = "o";
+                        //DateTime now1 = DateTime.Now;
+                        //string strDate = now1.ToString(FMT);
+                        //DateTime now2 = DateTime.ParseExact(strDate, FMT, CultureInfo.InvariantCulture);
+                        const string FMT = "o";
+                        DateTime fechaConv = DateTime.ParseExact(lector["FECHA_HORA"].ToString(), FMT, CultureInfo.InvariantCulture);
+
+                        TOConsulta consulta = new TOConsulta();
+                        consulta.CodigoMedico = lector["CODIGO_MEDICO"].ToString();
+                        consulta.CodigoExpediente = lector["CODIGO_EXPEDIENTE"].ToString();
+                        consulta.Fecha_Hora = fechaConv;
+                        consulta.Analisis = lector["ANALISIS"].ToString();
+                        consulta.ImpresionDiagnostica = lector["IMPRESION_DIAGNOSTICA"].ToString();
+                        consulta.Estado = (Boolean)lector["ESTADO"];
+
+                        toConsultas.Add(consulta);
+                    }
+                }
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch(Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar las consultas";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+
+        public string CargarConsulta(string codExpediente, DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        {
+            string confirmacion = "La consulta se cargó correctamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la consulta en el sistema";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar la consulta en el sistema";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar consulta");
+
+            try
+            {
+                // --------------------------- Buscar en la tabla Consulta ---------------------------  //
+
+                const string FMT = "o";
+                string fechaConv = fecha.ToString(FMT);
+
+                SqlCommand cmdCargarConsul = new SqlCommand("SELECT * FROM CONSULTA WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdCargarConsul.Transaction = transaccion;
+                cmdCargarConsul.Parameters.AddWithValue("@codExpe", codExpediente);
+                cmdCargarConsul.Parameters.AddWithValue("@fecha", fechaConv);
+
+                SqlDataReader lectorExp = cmdCargarConsul.ExecuteReader();
+
+                if (lectorExp.HasRows)
+                {
+                    while (lectorExp.Read())
+                    {
+                        DateTime fechaConver = DateTime.ParseExact(lectorExp["FECHA_HORA"].ToString(), FMT, CultureInfo.InvariantCulture);
+
+                        consultaTO.CodigoMedico = lectorExp["CODIGO_MEDICO"].ToString();
+                        consultaTO.CodigoExpediente = lectorExp["CODIGO_EXPEDIENTE"].ToString();
+                        consultaTO.Fecha_Hora = fechaConver;
+                        consultaTO.Analisis = lectorExp["ANALISIS"].ToString();
+                        consultaTO.ImpresionDiagnostica = lectorExp["IMPRESION_DIAGNOSTICA"].ToString();
+                        consultaTO.Plan = lectorExp["PLAN_D"].ToString();
+                        if (lectorExp["MEDICINA_MIXTA"].ToString() == "")
+                        {
+                            consultaTO.MedicinaMixta = false;
+                        }
+                        else
+                        {
+                            consultaTO.MedicinaMixta = (Boolean)lectorExp["MEDICINA_MIXTA"];
+                        }
+                       
+                        consultaTO.Frecuencia = lectorExp["FRECUENCIA"].ToString(); ;
+                        consultaTO.ReferidoA = lectorExp["REFERIDO_A"].ToString();
+                        consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
+                        consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
+                    }
+                }
+                lectorExp.Close();
+
+                // --------------------------- Buscar en la tabla Examen Fisico ---------------------------  //
+
+                SqlCommand cmdCargarExamenF = new SqlCommand("SELECT * FROM EXAMEN_FISICO WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdCargarExamenF.Transaction = transaccion;
+                cmdCargarExamenF.Parameters.AddWithValue("@codExpe", codExpediente);
+                cmdCargarExamenF.Parameters.AddWithValue("@fecha", fechaConv);
+
+                SqlDataReader lectorExa = cmdCargarExamenF.ExecuteReader();
+
+                if (lectorExa.HasRows)
+                {
+                    while (lectorExa.Read())
+                    {
+                        examenFisicoTO.CodigoMedico = lectorExa["CODIGO_MEDICO"].ToString();
+                        examenFisicoTO.CodigoExpediente = lectorExa["CODIGO_EXPEDIENTE"].ToString();
+                        examenFisicoTO.Fecha_Hora = DateTime.Parse(lectorExa["FECHA_HORA"].ToString());
+                        examenFisicoTO.Talla = float.Parse(lectorExa["TALLA"].ToString());
+                        examenFisicoTO.Peso = float.Parse(lectorExa["PESO"].ToString());
+                        examenFisicoTO.PerimetroCefalico = float.Parse(lectorExa["PERIMETRO_CEFALICO"].ToString());
+                        examenFisicoTO.SO2 = float.Parse(lectorExa["SO2"].ToString());
+                        examenFisicoTO.IMC = float.Parse(lectorExa["IMC"].ToString());
+                        examenFisicoTO.Temperatura = float.Parse(lectorExa["TEMPERATURA"].ToString());
+                        examenFisicoTO.EstadoAlerta = lectorExa["ESTADO_ALERTA"].ToString();
+                        examenFisicoTO.EstadoHidratacion = lectorExa["ESTADO_HIDRATACION"].ToString();
+                        examenFisicoTO.RuidosCardiacos = lectorExa["RUIDOS_CARDIACOS"].ToString();
+                        examenFisicoTO.CamposPulmonares = lectorExa["CAMPOS_PULMONARES"].ToString();
+                        examenFisicoTO.Abdomen = lectorExa["ABDOMEN"].ToString();
+                        examenFisicoTO.Faringe = lectorExa["FARINGE"].ToString();
+                        examenFisicoTO.Nariz = lectorExa["NARIZ"].ToString();
+                        examenFisicoTO.Oidos = lectorExa["OIDOS"].ToString();
+                        examenFisicoTO.SNC = lectorExa["SNC"].ToString();
+                        examenFisicoTO.Osteomuscular = lectorExa["SISTEMA_OSTEOMUSCULAR"].ToString();
+                        examenFisicoTO.Piel = lectorExa["PIEL"].ToString();
+                        examenFisicoTO.Neurodesarrollo = lectorExa["NEURODESARROLLO"].ToString();
+                        examenFisicoTO.Otros = lectorExa["OTROS"].ToString();
+                    }
+                }
+                lectorExa.Close();
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar la consulta";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
     }
 }
