@@ -67,7 +67,10 @@ namespace Pediatric_System
             foreach(BLConsulta cons in consultas)
             {
                 DateTime fecha = cons.Fecha_Hora;
-                string doctor = cons.CodigoMedico;
+                string doctor = "";
+                BLMedico manejadorMed = new BLMedico();
+                manejadorMed.buscarNombreMedico(cons.CodigoMedico, doctor);
+                
                 string estado;
                 if (cons.Estado == false)
                 {

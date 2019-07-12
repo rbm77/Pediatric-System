@@ -303,6 +303,84 @@ namespace DAO
             return confirmacion;
         }
 
+        public string obtnerNombrePaciente(string codExpediente, string nombreCompleto)
+        {
+            string confirmacion = "El nombre del paciente no fue encontrado";
+
+            //Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                return confirmacion;
+            }
+
+            // Iniciar nueva transaccion 
+            SqlTransaction transaccion = null;
+
+            try
+            {
+                transaccion = conexion.BeginTransaction("Buscar nombre paciente");
+
+                SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE WHERE CODIGO_EXPEDIENTE = @codExp", conexion);
+
+                comando.Transaction = transaccion;
+                comando.Parameters.AddWithValue("@codExp", codExpediente);
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        nombreCompleto = lector["NOMBRE"].ToString() + " ";
+                        nombreCompleto += lector["PRIMER_APELLIDO"].ToString() + " ";
+                        nombreCompleto += lector["SEGUNDO_APELLIDO"].ToString();
+                    }
+                }
+
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                }
+            }
+
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
         public string ActualizarExpediente(TOExpediente nuevoExpediente, TODireccion nuevaDireccionPaciente, TODireccion nuevaDireccionEncargado, TODireccion nuevaDireccionFactura, TOEncargado_Facturante encargado, TOEncargado_Facturante facturante, TOHistoriaClinica nuevaHistoriaClinica1)
         {
             string confirmacion = "El expediente se actualizó correctamente en el sistema";
