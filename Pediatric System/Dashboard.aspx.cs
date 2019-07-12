@@ -13,15 +13,26 @@ namespace Pediatric_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["pagina"] = "dashboard";
-            if(Session["codigoMedico"] == null)
+
+            if (Session["Cuenta"] == null)
             {
-                mensajeAviso("warning", "Debe tener un medico asociado a su cuenta para acceder a la sección de Citas");
+                Response.Redirect("IniciarSesion.aspx");
             }
-
-            conteos();
+            else {
+                BLAdministrativo miBLAdministrativo = new BLAdministrativo();
+                miBLAdministrativo.correo = Session["Cuenta"].ToString();
+                miBLAdministrativo.buscarAdministrativo();
+                Session["pagina"] = "dashboard";
+                if (miBLAdministrativo.cod_Asist == "")
+                {
+                    mensajeAviso("warning", "Debe tener un medico asociado a su cuenta para acceder a la sección de Citas");
+                } else
+                {
+                    Session["codigoMedico"] = miBLAdministrativo.cod_Asist;
+                }
+                conteos();
+            }
         }
-
         public void conteos()
         {
             BLDatos_Dashboard misDatos = new BLDatos_Dashboard();
@@ -43,7 +54,8 @@ namespace Pediatric_System
                     lblCantidadExpedientes.Attributes.Add("data-to", misDatos.cantidadExpedientes);
                     lblCantidadCitasPendientes.Attributes.Add("data-to", misDatos.cantidadCitasPendientes);
                     lblCantidadConsultaActiva.Attributes.Add("data-to", misDatos.cantidadConsultasActivas);
-                } else {
+                }
+                else {
                     Session["codigoMedico"] = miBLAdministrativo.cod_Asist;
                     misDatos.buscarDatosDashBoard(miBLAdministrativo.cod_Asist);
                     lblCantidadExpedientes.Attributes.Add("data-to", misDatos.cantidadExpedientes);

@@ -1098,10 +1098,18 @@ namespace Pediatric_System
         protected void nuevaConsulta_Click(object sender, EventArgs e)
         {
 
-
+           if (Session["codigoMedico"] == null)
+            {
+                mensajeConfirmacion1.Text = "<div class=\"alert alert-" + "warning" + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + "Debe Asociar su Cuenta a un Medico para Crear Consultas" + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+                mensajeConfirmacion1.Visible = true;
+            } else { 
             Session["pagina"] = "expediente-nuevaConsulta";
             Response.Redirect("FichaConsultaPaciente.aspx");
         }
+    }
 
         protected void regresar_Click(object sender, EventArgs e)
         {
