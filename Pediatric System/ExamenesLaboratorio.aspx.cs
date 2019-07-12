@@ -15,12 +15,24 @@ namespace Pediatric_System
         private static List<BLExamenLaboratorio> listaExamenes = new List<BLExamenLaboratorio>();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack){
-                CargarPacientes();
-            }
-            if (nombrePaciente.Items.Count > 0)
+            if (Session["Rol"].ToString().Equals("Paciente"))
             {
-                nombrePaciente.Items[0].Attributes.Add("disabled", "disabled");
+                if (!IsPostBack)
+                {
+                    CargarPacientes();
+                }
+                if (nombrePaciente.Items.Count > 0)
+                {
+                    nombrePaciente.Items[0].Attributes.Add("disabled", "disabled");
+                }
+                
+            }
+            else
+            {
+                if (!IsPostBack)
+                {
+                    Session["pacienteSeleccionado"] = ((BLExpediente)Session["expediente"]).Codigo;
+                }
             }
             mensajeConfirmacion.Visible = false;
 
@@ -56,6 +68,7 @@ namespace Pediatric_System
         {
             listaPacientes.Clear();
             nombrePaciente.Items.Clear();
+            Session["pacienteSeleccionado"] = null;
 
             ManejadorExpediente manejador = new ManejadorExpediente();
 
@@ -135,6 +148,7 @@ namespace Pediatric_System
 
         protected void nombrePaciente_SelectedIndexChanged(object sender, EventArgs e)
         {
+            Session["pacienteSeleccionado"] = nombrePaciente.SelectedValue;
             CargarExamenes();
         }
 
@@ -148,7 +162,17 @@ namespace Pediatric_System
 
             string confirmacion = "";
 
-            string paciente = nombrePaciente.SelectedValue;
+            string paciente = "";
+
+            if (Session["pacienteSeleccionado"] == null)
+            {
+                MostrarMensaje("Error. Debe seleccionar un paciente");
+            }
+            else
+            {
+
+
+            paciente = Session["pacienteSeleccionado"].ToString();
 
             if ((descripcion.Value.Equals("")) || (paciente.Equals("Seleccionar")) || (nombrePaciente.Items.Count == 0))
             {
@@ -216,7 +240,7 @@ namespace Pediatric_System
 
                     ManejadorExamenesLaboratorio manejador = new ManejadorExamenesLaboratorio();
 
-                    confirmacion = manejador.IngresarExamenLaboratorio(nombrePaciente.SelectedValue, DateTime.Now.ToString(),
+                    confirmacion = manejador.IngresarExamenLaboratorio(Session["pacienteSeleccionado"].ToString(), DateTime.Now.ToString(),
                         archivoSeleccionado.PostedFile.FileName, descripcion.Value);
 
                     if (confirmacion.Contains("error"))
@@ -231,7 +255,8 @@ namespace Pediatric_System
                 }
 
             }
-            descripcion.Value = "";
+                descripcion.Value = "";
+            }
         }
 
         private string GuardarArchivo(HttpPostedFile file)
@@ -288,6 +313,11 @@ namespace Pediatric_System
                 modalEdicion.Show();
 
             }
+        }
+
+        protected void regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("InicioUsuarioExterno.aspx");
         }
     }
 }

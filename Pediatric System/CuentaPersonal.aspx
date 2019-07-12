@@ -17,11 +17,11 @@
         <form runat="server">
                         <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link nombre-input" id="info-personal-paciente-tab" " href="EstadoCuenta.aspx" role="tab" aria-controls="info-personal-paciente" aria-selected="false">Lista Cuentas</a>
+                        <a class="nav-link nombre-input" id="info-personal-paciente-tab" " href="EstadoCuenta.aspx" role="tab" aria-controls="info-personal-paciente" aria-selected="false">Cuentas</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link active nombre-input" id="info-personal-encargado-tab"  href="CuentaPersonal.aspx" role="tab" aria-controls="info-personal-encargado" aria-selected="true">Crear Cuentas</a>
+                        <a class="nav-link active nombre-input" id="info-personal-encargado-tab"  href="CuentaPersonal.aspx" role="tab" aria-controls="info-personal-encargado" aria-selected="true">Nueva Cuenta</a>
                     </li>
 </ul>
             <div class="tab-content" id="myTabContent">
