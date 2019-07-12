@@ -36,20 +36,20 @@
         <form id="form1" runat="server">
                <ul class="nav nav-tabs">
                     <li class="nav-item">
-                        <a class="nav-link active nombre-input" id="info-personal-paciente-tab" " href="EstadoCuenta.aspx" role="tab" aria-controls="info-personal-paciente" aria-selected="true">Lista Cuentas</a>
+                        <a class="nav-link active nombre-input" id="info-personal-paciente-tab" " href="EstadoCuenta.aspx" role="tab" aria-controls="info-personal-paciente" aria-selected="true">Cuentas</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link nombre-input" id="info-personal-encargado-tab"  href="CuentaPersonal.aspx" role="tab" aria-controls="info-personal-encargado" aria-selected="false">Crear Cuentas</a>
+                        <a class="nav-link nombre-input" id="info-personal-encargado-tab"  href="CuentaPersonal.aspx" role="tab" aria-controls="info-personal-encargado" aria-selected="false">Nueva Cuenta</a>
                     </li>
                </ul>
-                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Cuentas de Personal</h5>
+                <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Cuenta de Personal</h5>
                 <div class="card-body">
                     <div>
                         <div class="table-responsive">
 
                             <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="grdAccidentMaster_OnRowCommand"
-                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnRowDataBound="vistaCuentas_RowDataBound">
+                                Style="text-align: center" Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" OnRowDataBound="vistaCuentas_RowDataBound">
                                 <Columns>
                                        <asp:TemplateField HeaderText="Nombre Completo">
                                       <ItemTemplate>
@@ -59,7 +59,7 @@
                                     <asp:BoundField DataField="Correo" HeaderText="Correo" />
                                     <asp:BoundField DataField="Cedula" HeaderText="Cédula" />
                                     <asp:BoundField DataField="Estado" HeaderText="Estado" Visible="false" />
-                                    <asp:ButtonField HeaderText="Acción" CommandName="enviarCorreo"
+                                    <asp:ButtonField HeaderText="Editar" CommandName="enviarCorreo"
                                      ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="40px" ControlStyle-Height="40px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center"/>                                                             
 
                                     <asp:TemplateField HeaderText="Estado" ItemStyle-Wrap="true">                                                                                                                   
@@ -163,7 +163,7 @@
                         </div>
                     </div>
                     <div class="btnGuardarExpediente form-group col-lg-12 col-md-6 col-sm-6 col-xs-6" style="text-align: right;">
-                        <asp:Button ID="btnEditar" runat="server" Text="GUARDAR CAMBIOS" CssClass="btn btn-guardar" OnClick="btnEditarSeleccion_Click" style="height: 45px;width: 170px;"></asp:Button>
+                        <asp:Button ID="btnEditar" runat="server" Text="GUARDAR" CssClass="btn btn-guardar" OnClick="btnEditarSeleccion_Click" style="height: 45px;width: 170px;"></asp:Button>
                     </div>
 
 

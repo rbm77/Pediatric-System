@@ -99,6 +99,7 @@
     <Content Include="EditarContrasena.aspx" />
     <Content Include="EditarCuentaPersonal.aspx" />
     <Content Include="EstadoCuenta.aspx" />
+    <Content Include="ExamenesLaboratorio.aspx" />
     <Content Include="FichaBaseExpediente.aspx" />
     <Content Include="FichaConsultaPaciente.aspx" />
     <Content Include="fonts\font-awesome-4.7.0\css\font-awesome.min.css" />
@@ -1695,6 +1696,7 @@
     <Content Include="ListaConsultas.aspx" />
     <Content Include="MiAgenda.aspx" />
     <Content Include="RecuperarContrasenna.aspx" />
+    <Content Include="RecuperarImagen.aspx" />
     <Content Include="SelecionExpedientes.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -1762,6 +1764,13 @@
     </Compile>
     <Compile Include="EstadoCuenta.aspx.designer.cs">
       <DependentUpon>EstadoCuenta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExamenesLaboratorio.aspx.cs">
+      <DependentUpon>ExamenesLaboratorio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExamenesLaboratorio.aspx.designer.cs">
+      <DependentUpon>ExamenesLaboratorio.aspx</DependentUpon>
     </Compile>
     <Compile Include="FichaBaseExpediente.aspx.cs">
       <DependentUpon>FichaBaseExpediente.aspx</DependentUpon>
@@ -1840,6 +1849,13 @@
     </Compile>
     <Compile Include="RecuperarContrasenna.aspx.designer.cs">
       <DependentUpon>RecuperarContrasenna.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RecuperarImagen.aspx.cs">
+      <DependentUpon>RecuperarImagen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RecuperarImagen.aspx.designer.cs">
+      <DependentUpon>RecuperarImagen.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reportes\Consultas.cs">
       <AutoGen>True</AutoGen>
@@ -1950,7 +1966,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
-    <Folder Include="FotosExpediente\" />
+    <Folder Include="examenes\" />
     <Folder Include="images\ios-style-checkboxes\" />
     <Folder Include="images\iphone-style-checkboxes\" />
     <Folder Include="log\" />
