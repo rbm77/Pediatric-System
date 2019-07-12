@@ -3,7 +3,7 @@
 
     <script type="text/javascript">
         $(function () {
-            $('[id*=gridCitas]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            $('[id*=gridConsultasActivas]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
                 "responsive": true,
                 "sPaginationType": "numbers"
             });
@@ -44,9 +44,9 @@
 
 
                                 <Columns>
-                                    <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
+                                    <asp:BoundField HeaderText="Paciente" DataField="Paciente" />
                                     <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
-                                    <asp:ButtonField HeaderText="Cancelar Cita" CommandName="seleccionar"
+                                    <asp:ButtonField HeaderText="Ver Consulta" CommandName="seleccionar"
                                         ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
                                 </Columns>
                             </asp:GridView>
