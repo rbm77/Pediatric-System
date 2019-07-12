@@ -456,7 +456,7 @@ namespace DAO
                 string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
                 cmdActuExpediente.Parameters.AddWithValue("@medMix", consultaTO.MedicinaMixta);
                 cmdActuExpediente.Parameters.AddWithValue("@frecu", consultaTO.Frecuencia);
-                cmdActuExpediente.Parameters.AddWithValue("@refe", consultaTO.ReferidoA);
+                cmdActuExpediente.Parameters.AddWithValue("@refe", consultaTO.Referido_A);
                 cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
                 cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
 
@@ -754,7 +754,7 @@ namespace DAO
                         }
 
                         consultaTO.Frecuencia = lectorExp["FRECUENCIA"].ToString(); ;
-                        consultaTO.ReferidoA = lectorExp["REFERIDO_A"].ToString();
+                        consultaTO.Referido_A = lectorExp["REFERIDO_A"].ToString();
                         consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
                         consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
                         if (lectorExp["REFERENCIA_MEDICA"].ToString() == "")
@@ -901,7 +901,7 @@ namespace DAO
                         }
 
                         consultaTO.Frecuencia = lectorExp["FRECUENCIA"].ToString(); ;
-                        consultaTO.ReferidoA = lectorExp["REFERIDO_A"].ToString();
+                        consultaTO.Referido_A = lectorExp["REFERIDO_A"].ToString();
                         consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
                         consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
                         if (lectorExp["REFERENCIA_MEDICA"].ToString() == "")
@@ -1066,19 +1066,19 @@ namespace DAO
                         //Referido A
                         if (lector["REFERIDO_A"].ToString() == "refe_especialista")
                         {
-                            consulta.ReferidoA = "Especialista";
+                            consulta.Referido_A = "Especialista";
                         }
                         else if (lector["REFERIDO_A"].ToString() == "refe_hospitalizacion")
                         {
-                            consulta.ReferidoA = "Hospitalización";
+                            consulta.Referido_A = "Hospitalización";
                         }
                         else if (lector["REFERIDO_A"].ToString() == "refe_otro_centro")
                         {
-                            consulta.ReferidoA = "Otro Centro";
+                            consulta.Referido_A = "Otro Centro";
                         }
                         else
                         {
-                            consulta.ReferidoA = lector["FRECUENCIA"].ToString();
+                            consulta.Referido_A = lector["FRECUENCIA"].ToString();
                         }
 
 

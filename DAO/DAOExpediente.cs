@@ -147,8 +147,11 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Encargado ---------------------------  //
 
-                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
-                    "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
+                string sentenciaEnca = "UPDATE ENCARGADO SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo, PARENTESCO = @paren WHERE CEDULA_ENCARGADO = @cedEncar" +
+                    " IF @@ROWCOUNT = 0 INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
+                    "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);";
+
+                SqlCommand comandoEncar = new SqlCommand(sentenciaEnca, conexion);
 
                 comandoEncar.Transaction = transaccion;
 
@@ -165,8 +168,11 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Facturante ---------------------------  //
 
-                SqlCommand comandoFactu = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
-                    "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);", conexion);
+                string sentenciaFACTU = "UPDATE FACTURANTE SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_FACTURANTE = @cedFactu" +
+                   " IF @@ROWCOUNT = 0 INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
+                   "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);";
+
+                SqlCommand comandoFactu = new SqlCommand(sentenciaFACTU, conexion);
 
                 comandoFactu.Transaction = transaccion;
 
@@ -1140,7 +1146,7 @@ namespace DAO
                 comandoDirFactu.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoDirFactu.Parameters.AddWithValue("@cod", expDir);
+                comandoDirFactu.Parameters.AddWithValue("@cod", factuDir);
 
                 // Ejecutar el comando
 

@@ -119,7 +119,7 @@ namespace Pediatric_System
 
             if(subsecuente.Checked == true)
             {
-                consulta.Frecuencia = "Subsecuente";
+                consulta.Frecuencia = "subsecuen";
             }
             else
             {
@@ -138,17 +138,17 @@ namespace Pediatric_System
 
             if(especialista.Checked == true)
             {
-                consulta.ReferidoA = "refe_especialista";
+                consulta.Referido_A = "refe_especialista";
             }
 
             if (hospitalizacion.Checked == true)
             {
-                consulta.ReferidoA = "refe_hospitalizacion";
+                consulta.Referido_A = "refe_hospitalizacion";
             }
 
             if (otro_centro.Checked == true)
             {
-                consulta.ReferidoA = "refe_otro_centro";
+                consulta.Referido_A = "refe_otro_centro";
             }
 
             ManejadorConsulta manejador = new ManejadorConsulta();
@@ -216,7 +216,7 @@ namespace Pediatric_System
                     }
                 }
 
-                string tiposReferi = consultaEnviada.ReferidoA;
+                string tiposReferi = consultaEnviada.Referido_A;
                 if(tiposReferi == "refe_especialista")
                 {
                     especialista.Checked = true;

@@ -60,7 +60,7 @@ namespace Pediatric_System
                 }
             }
 
-            if ((string)Session["pagina"] == "listaExpedientes-seleccionado")
+            if ((Session["pagina"].ToString() == "listaExpedientes-seleccionado") || Session["pagina"].ToString() == "regresar-listaconsultas")
 
             {
                 deshabilitarCampos();
@@ -101,7 +101,7 @@ namespace Pediatric_System
             opcion_pequeno.Enabled = false;
             apgar.Enabled = false;
             perimetroCefalico.Enabled = false;
-            otrasComplicacionesAP.Disabled = true;
+            complicacionPerinatal.Disabled = true;
             complicacionPerinatal.Disabled = true;
         }
 
@@ -514,22 +514,24 @@ namespace Pediatric_System
             if (pacienteNoCedula.Checked)
             {
                 expediente.Codigo = crearCodigoExpe();
+                expediente.Cedula = "";
             }
             else
             {
                 expediente.Codigo = cedulaPaciente.Text.Trim();
+                expediente.Cedula = cedulaPaciente.Text.Trim();
             }
 
             expediente.Nombre = nombrePaciente.Text.Trim();
             expediente.PrimerApellido = primerApellidoPaciente.Text.Trim();
-            expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim();
-            expediente.Cedula = cedulaPaciente.Text.Trim();
+            expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim(); 
             expediente.FechaNacimiento = Convert.ToDateTime(fechaNacimientoPaciente.Text);
-                //DateTime.ParseExact(fechaNacimientoPaciente., "dd/MM/yyyy", System.Globalization.CultureInfo.CurrentUICulture.DateTimeFormat);
             expediente.Sexo = sexoPaciente.Text.Trim();
             expediente.Foto = guardarImag();
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
             expediente.Direccion = codigo;
+            expediente.Encargado = cedulaFacturante.Text.Trim();
+            expediente.Facturante = cedulaFacturante.Text.Trim();
         }
 
         private string crearCodigoExpe ()
