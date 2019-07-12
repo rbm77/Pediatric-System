@@ -42,16 +42,18 @@ namespace Pediatric_System
                 consulta.Estado = true;
                 consulta.Fecha_Hora = Convert.ToDateTime(fecha.Text);
 
-                
+                BLExpediente expediente = new BLExpediente();
+                expediente.Codigo = obtenerCodigo(Convert.ToDateTime(fecha.Text));
                 Session["pagina"] = "consultas_activas_seleccionada";
                 Session["consulta"] = consulta;
+                Session["Expediente"] = expediente;
                 Response.Redirect("FichaConsultaPaciente.aspx");
             }
         }
 
         protected void regresar_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Dashboard.aspx");
         }
 
         private void obtenerConsultas()
@@ -61,20 +63,28 @@ namespace Pediatric_System
             ManejadorConsulta manejador = new ManejadorConsulta();
             manejador.obtnerConsultasActivas(codigoMedico, consultas);
 
-            ManejadorExpediente manejadorExpediente = new ManejadorExpediente();
-
             foreach (BLConsulta cons in consultas)
             {
                 DateTime fecha = cons.Fecha_Hora;
-                string doctor = cons.CodigoMedico;
-                string paciente = "";
-
-                manejadorExpediente.obtenerNombrePaciente(cons.CodigoMedico, paciente);
+                string paciente = cons.Paciente;
 
                 lista.Add(new ListaItem(fecha, paciente));
             }
+        }
 
+        private string obtenerCodigo(DateTime fecha)
+        {
+            string cod = "";
 
+            foreach(BLConsulta consulta in consultas)
+            {
+                if(consulta.Fecha_Hora == fecha)
+                {
+                    return consulta.CodigoExpediente;
+                }
+            }
+
+            return cod;
         }
 
         private class ListaItem

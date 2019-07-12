@@ -97,7 +97,7 @@ namespace BL
         /// <returns>El objeto de tipo BLExpediente convertido</returns>
         private BLExpediente convertirExpedientes(TOExpediente toExpediente)
         {
-            BLExpediente blExpediente = new BLExpediente(toExpediente.Codigo, toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo, toExpediente.Direccion);
+            BLExpediente blExpediente = new BLExpediente(toExpediente.Codigo, toExpediente.Nombre, toExpediente.PrimerApellido, toExpediente.SegundoApellido, toExpediente.Cedula, toExpediente.FechaNacimiento, toExpediente.Sexo, toExpediente.Foto, toExpediente.ExpedienteAntiguo, toExpediente.Direccion, toExpediente.Encargado, toExpediente.Facturante);
             return blExpediente;
         }
 
@@ -119,12 +119,32 @@ namespace BL
 
             return confirmacion;
         }
-
-        public string obtenerNombrePaciente(string codExpediente, string nombreCompleto)
+        public string cargarExpediente(string codigoExpediente, BLExpediente expedienteBL)
         {
-            DAOExpediente dao = new DAOExpediente();
-            string confirmacion = dao.obtnerNombrePaciente(codExpediente, nombreCompleto);
+            DAOExpediente daoExpediente = new DAOExpediente();
+
+            TOExpediente expedienteTO = new TOExpediente();
+       
+            string confirmacion = daoExpediente.CargarExpediente(codigoExpediente, expedienteTO);
+
+            converExpediente(expedienteBL, expedienteTO);
+
             return confirmacion;
+        }
+
+        private void converExpediente(BLExpediente expedienteBL, TOExpediente expedienteTO)
+        {
+            expedienteBL.Cedula = expedienteTO.Cedula;
+            expedienteBL.Nombre = expedienteTO.Nombre;
+            expedienteBL.PrimerApellido = expedienteTO.PrimerApellido;
+            expedienteBL.SegundoApellido = expedienteTO.SegundoApellido;
+            expedienteBL.FechaNacimiento = expedienteTO.FechaNacimiento;
+            expedienteBL.Sexo = expedienteTO.Sexo;
+            expedienteBL.Foto = expedienteTO.Foto;
+            expedienteBL.ExpedienteAntiguo = expedienteTO.ExpedienteAntiguo;
+            expedienteBL.Codigo = expedienteTO.Codigo;
+            expedienteBL.Encargado = expedienteTO.Encargado;
+            expedienteBL.Facturante = expedienteTO.Facturante;
         }
 
         private void convertirExpedienteCompleto_TO_BL(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL,
@@ -140,6 +160,8 @@ namespace BL
             expedienteBL.Foto = expediente.Foto;
             expedienteBL.ExpedienteAntiguo = expediente.ExpedienteAntiguo;
             expedienteBL.Codigo = expediente.Codigo;
+            expedienteBL.Encargado = expediente.Encargado;
+            expedienteBL.Facturante = expediente.Facturante;
 
             //Objeto Direccion Paciente
             direccionPacienteBL.Codigo = direccionPaciente.Codigo;
@@ -221,6 +243,8 @@ namespace BL
             expediente.Foto = expedienteBL.Foto;
             expediente.ExpedienteAntiguo = expedienteBL.ExpedienteAntiguo;
             expediente.Direccion = expedienteBL.Direccion;
+            expediente.Encargado = expedienteBL.Encargado;
+            expediente.Facturante = expedienteBL.Facturante;
 
             //Objeto Direccion Paciente
             direccionPaciente.Codigo = direccionPacienteBL.Codigo;

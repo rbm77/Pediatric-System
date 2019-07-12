@@ -122,8 +122,8 @@ namespace DAO
                 // --------------------------- Insertar en la tabla Expediente ---------------------------  //
 
                 // Crear nuevo comando con la sencuencia SQL y el objeto de conexion
-                SqlCommand comandoExp = new SqlCommand("INSERT INTO EXPEDIENTE (CODIGO_EXPEDIENTE, CODIGO_DIRECCION, CEDULA, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, SEXO, FECHA_NACIMIENTO, FOTO, EXPEDIENTE_ANTIGUO)" +
-                    "VALUES (@codPa, @codDir, @ced, @nomPa, @priApPa, @segApPa, @sexoPa, @naciPa, @fotoPa, @expAntPa);", conexion);
+                SqlCommand comandoExp = new SqlCommand("INSERT INTO EXPEDIENTE (CODIGO_EXPEDIENTE, CODIGO_DIRECCION, CEDULA, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, SEXO, FECHA_NACIMIENTO, FOTO, EXPEDIENTE_ANTIGUO, ENCARGADO, FACTURANTE)" +
+                    "VALUES (@codPa, @codDir, @ced, @nomPa, @priApPa, @segApPa, @sexoPa, @naciPa, @fotoPa, @expAntPa, @encar, @factu);", conexion);
 
                 comandoExp.Transaction = transaccion;
                 // Asignar un valor a los parametros del comando a ejecutar
@@ -138,18 +138,19 @@ namespace DAO
                 comandoExp.Parameters.AddWithValue("@naciPa", nuevoExpediente.FechaNacimiento);
                 comandoExp.Parameters.AddWithValue("@fotoPa", nuevoExpediente.Foto);
                 comandoExp.Parameters.AddWithValue("@expAntPa", nuevoExpediente.ExpedienteAntiguo);
+                comandoExp.Parameters.AddWithValue("@encar", nuevoExpediente.Encargado);
+                comandoExp.Parameters.AddWithValue("@factu", nuevoExpediente.Facturante);
 
                 comandoExp.ExecuteNonQuery();
 
                 // --------------------------- Insertar en la tabla Encargado ---------------------------  //
 
-                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
-                    "VALUES (@cedEncar, @codExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
+                SqlCommand comandoEncar = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
+                    "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
 
                 comandoEncar.Transaction = transaccion;
 
                 comandoEncar.Parameters.AddWithValue("@cedEncar", encargado.Cedula);
-                comandoEncar.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
                 comandoEncar.Parameters.AddWithValue("@codDir", encargado.Direccion);
                 comandoEncar.Parameters.AddWithValue("@nom", encargado.Nombre);
                 comandoEncar.Parameters.AddWithValue("@priApe", encargado.PrimerApellido);
@@ -162,13 +163,12 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Facturante ---------------------------  //
 
-                SqlCommand comandoFactu = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_EXPEDIENTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
-                    "VALUES (@cedFactu, @codExpe, @codDir, @nom, @priApe, @segApe, @tel, @correo);", conexion);
+                SqlCommand comandoFactu = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
+                    "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);", conexion);
 
                 comandoFactu.Transaction = transaccion;
 
                 comandoFactu.Parameters.AddWithValue("@cedFactu", facturante.Cedula);
-                comandoFactu.Parameters.AddWithValue("@codExpe", nuevoExpediente.Codigo);
                 comandoFactu.Parameters.AddWithValue("@codDir", facturante.Direccion);
                 comandoFactu.Parameters.AddWithValue("@nom", facturante.Nombre);
                 comandoFactu.Parameters.AddWithValue("@priApe", facturante.PrimerApellido);
@@ -303,11 +303,11 @@ namespace DAO
             return confirmacion;
         }
 
-        public string obtnerNombrePaciente(string codExpediente, string nombreCompleto)
+        public string CargarExpediente(string codigoExpediente, TOExpediente expediente)
         {
-            string confirmacion = "El nombre del paciente no fue encontrado";
+            string confirmacion = "El expediente se cargó correctamente";
 
-            //Abrir la conexion
+            //Abrir la conexion 
             if (conexion != null)
             {
                 try
@@ -319,58 +319,77 @@ namespace DAO
                 }
                 catch (Exception)
                 {
-                    confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                    confirmacion = "Ocurrió un error y se pudo cargar el expediente";
                     return confirmacion;
                 }
             }
             else
             {
-                confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                confirmacion = "Ocurrió un error y se pudo cargar el expediente";
                 return confirmacion;
             }
 
-            // Iniciar nueva transaccion 
+            //Se inicia una nueva transaccion  
             SqlTransaction transaccion = null;
 
             try
             {
-                transaccion = conexion.BeginTransaction("Buscar nombre paciente");
+                transaccion = conexion.BeginTransaction("Cargar expediente");
 
-                SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE WHERE CODIGO_EXPEDIENTE = @codExp", conexion);
+                // --------------------------- Buscar en la tabla Expediente ---------------------------  //
 
-                comando.Transaction = transaccion;
-                comando.Parameters.AddWithValue("@codExp", codExpediente);
+                //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
+                SqlCommand comandoExp = new SqlCommand("SELECT * FROM EXPEDIENTE WHERE CODIGO_EXPEDIENTE = @cod", conexion);
+                comandoExp.Transaction = transaccion;
 
-                SqlDataReader lector = comando.ExecuteReader();
+                //Asignar un valor a los parametros del comando a ejecutar 
+                comandoExp.Parameters.AddWithValue("@cod", codigoExpediente);
 
-                if (lector.HasRows)
+                // Ejecutar el comando
+
+                SqlDataReader lectorExp = comandoExp.ExecuteReader();
+
+                //Leer el dataReader con los registros obtenidos y se cargan los datos en objeto TOExpediente
+
+                if (lectorExp.HasRows)
                 {
-                    while (lector.Read())
+                    while (lectorExp.Read())
                     {
-                        nombreCompleto = lector["NOMBRE"].ToString() + " ";
-                        nombreCompleto += lector["PRIMER_APELLIDO"].ToString() + " ";
-                        nombreCompleto += lector["SEGUNDO_APELLIDO"].ToString();
+                        expediente.Codigo = lectorExp["CODIGO_EXPEDIENTE"].ToString();
+                        expediente.Cedula = lectorExp["CEDULA"].ToString();
+                        expediente.Nombre = lectorExp["NOMBRE"].ToString();
+                        expediente.PrimerApellido = lectorExp["PRIMER_APELLIDO"].ToString();
+                        expediente.SegundoApellido = lectorExp["SEGUNDO_APELLIDO"].ToString();
+                        expediente.FechaNacimiento = DateTime.Parse(lectorExp["FECHA_NACIMIENTO"].ToString());
+                        expediente.Sexo = lectorExp["SEXO"].ToString();
+                        expediente.Foto = (byte[])lectorExp["FOTO"];
+                        expediente.ExpedienteAntiguo = lectorExp["EXPEDIENTE_ANTIGUO"].ToString();
+                        expediente.Direccion = lectorExp["CODIGO_DIRECCION"].ToString();
+                        expediente.Encargado = lectorExp["ENCARGADO"].ToString();
+                        expediente.Facturante = lectorExp["FACTURANTE"].ToString();
                     }
                 }
-
-                lector.Close();
+                lectorExp.Close();
+                //Realizar el commit de la transaccion
                 transaccion.Commit();
+
             }
             catch (Exception)
             {
                 try
                 {
+                    //En caso de error se realiza un rollback a la transaccion
                     transaccion.Rollback();
                 }
                 catch (Exception)
                 {
+
                 }
                 finally
                 {
-                    confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                    confirmacion = "Ocurrió un error y no se pudo cargar el expdiente";
                 }
             }
-
             finally
             {
                 if (conexion.State != ConnectionState.Closed)
@@ -489,8 +508,8 @@ namespace DAO
                 // --------------------------- Actualizar en la tabla Expediente ---------------------------  //
 
                 // Crear nuevo comando con la sencuencia SQL y el objeto de conexion
-                SqlCommand comandoExp = new SqlCommand("UPDATE EXPEDIENTE SET CEDULA = @ced, CODIGO_DIRECCION = @codDir, FOTO = @foto, EXPEDIENTE_ANTIGUO = @expAnti WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (NOMBRE = @nom);", conexion);
-               
+                SqlCommand comandoExp = new SqlCommand("UPDATE EXPEDIENTE SET CEDULA = @ced, CODIGO_DIRECCION = @codDir, FOTO = @foto, EXPEDIENTE_ANTIGUO = @expAnti, ENCARGADO = @encar, FACTURANTE = @factu WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (NOMBRE = @nom);", conexion);
+
 
                 comandoExp.Transaction = transaccion;
                 // Asignar un valor a los parametros del comando a ejecutar
@@ -501,30 +520,48 @@ namespace DAO
                 comandoExp.Parameters.AddWithValue("@ced", nuevoExpediente.Cedula);
                 comandoExp.Parameters.AddWithValue("@foto", nuevoExpediente.Foto);
                 comandoExp.Parameters.AddWithValue("@expAnti", nuevoExpediente.ExpedienteAntiguo);
+                comandoExp.Parameters.AddWithValue("@encar", nuevoExpediente.Encargado);
+                comandoExp.Parameters.AddWithValue("@factu", nuevoExpediente.Facturante);
+
 
                 comandoExp.ExecuteNonQuery();
 
                 // --------------------------- Actualizar en la tabla Encargado ---------------------------  //
 
-                SqlCommand comandoEncar = new SqlCommand("UPDATE ENCARGADO SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_ENCARGADO = @cedEncar;", conexion);
+                string sentenciaEnca = "UPDATE ENCARGADO SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo, PARENTESCO = @paren WHERE CEDULA_ENCARGADO = @cedEncar" +
+                    " IF @@ROWCOUNT = 0 INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
+                    "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);";
+
+                SqlCommand comandoEncar = new SqlCommand(sentenciaEnca, conexion);
 
                 comandoEncar.Transaction = transaccion;
 
                 comandoEncar.Parameters.AddWithValue("@cedEncar", encargado.Cedula);
                 comandoEncar.Parameters.AddWithValue("@codDir", encargado.Direccion);
+                comandoEncar.Parameters.AddWithValue("@nom", encargado.Nombre);
+                comandoEncar.Parameters.AddWithValue("@priApe", encargado.PrimerApellido);
+                comandoEncar.Parameters.AddWithValue("@segApe", encargado.SegundoApellido);
                 comandoEncar.Parameters.AddWithValue("@tel", encargado.Telefono);
                 comandoEncar.Parameters.AddWithValue("@correo", encargado.CorreoElectronico);
+                comandoEncar.Parameters.AddWithValue("@paren", encargado.Parentesco);
 
                 comandoEncar.ExecuteNonQuery();
 
                 // --------------------------- Actualizar en la tabla Facturante ---------------------------  //
 
-                SqlCommand comandoFactu = new SqlCommand("UPDATE FACTURANTE SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_FACTURANTE = @cedFactu;", conexion);
+                string sentenciaFACTU = "UPDATE FACTURANTE SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_FACTURANTE = @cedFactu" +
+                    " IF @@ROWCOUNT = 0 INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
+                    "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);";
+
+                SqlCommand comandoFactu = new SqlCommand(sentenciaFACTU, conexion);
 
                 comandoFactu.Transaction = transaccion;
 
                 comandoFactu.Parameters.AddWithValue("@cedFactu", facturante.Cedula);
                 comandoFactu.Parameters.AddWithValue("@codDir", facturante.Direccion);
+                comandoFactu.Parameters.AddWithValue("@nom", facturante.Nombre);
+                comandoFactu.Parameters.AddWithValue("@priApe", facturante.PrimerApellido);
+                comandoFactu.Parameters.AddWithValue("@segApe", facturante.SegundoApellido);
                 comandoFactu.Parameters.AddWithValue("@tel", facturante.Telefono);
                 comandoFactu.Parameters.AddWithValue("@correo", facturante.CorreoElectronico);
 
@@ -632,7 +669,7 @@ namespace DAO
                     while (lector.Read())
                     {
                         TOExpediente expediente = new TOExpediente(lector["CODIGO_EXPEDIENTE"].ToString(), lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
-                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString(), lector["CORREO"].ToString());
+                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString(), lector["CORREO"].ToString(), lector["ENCARGADO"].ToString(), lector["FACTURANTE"].ToString());
                         toListaExpediente.Add(expediente);
                     }
                 }
@@ -771,7 +808,7 @@ namespace DAO
                     while (lector.Read())
                     {
                         TOExpediente expediente = new TOExpediente(lector["CODIGO_EXPEDIENTE"].ToString(), lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString(), lector["CEDULA"].ToString(),
-                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString(), lector["CORREO"].ToString());
+                            DateTime.Parse(lector["FECHA_NACIMIENTO"].ToString()), lector["SEXO"].ToString(), (byte[])lector["FOTO"], lector["EXPEDIENTE_ANTIGUO"].ToString(), lector["CODIGO_DIRECCION"].ToString(), lector["CORREO"].ToString(), lector["ENCARGADO"].ToString(), lector["FACTURANTE"].ToString());
                         toListaExpediente.Add(expediente);
                     }
                 }
@@ -878,6 +915,8 @@ namespace DAO
                         expediente.Foto = (byte[])lectorExp["FOTO"];
                         expediente.ExpedienteAntiguo = lectorExp["EXPEDIENTE_ANTIGUO"].ToString();
                         expediente.Direccion = lectorExp["CODIGO_DIRECCION"].ToString();
+                        expediente.Encargado = lectorExp["ENCARGADO"].ToString();
+                        expediente.Facturante = lectorExp["FACTURANTE"].ToString();
                     }
                 }
                 lectorExp.Close();
@@ -916,11 +955,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Encargado ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoEncar = new SqlCommand("SELECT * FROM ENCARGADO WHERE CODIGO_EXPEDIENTE = @cod", conexion);
+                SqlCommand comandoEncar = new SqlCommand("SELECT * FROM ENCARGADO WHERE CEDULA_ENCARGADO = @cod", conexion);
                 comandoEncar.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoEncar.Parameters.AddWithValue("@cod", codigoBuscar);
+                comandoEncar.Parameters.AddWithValue("@cod", expediente.Encargado);
 
                 // Ejecutar el comando
 
@@ -978,11 +1017,11 @@ namespace DAO
                 // --------------------------- Buscar en la tabla Facturante ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
-                SqlCommand comandoFactu = new SqlCommand("SELECT * FROM FACTURANTE WHERE CODIGO_EXPEDIENTE = @cod", conexion);
+                SqlCommand comandoFactu = new SqlCommand("SELECT * FROM FACTURANTE WHERE CEDULA_FACTURANTE = @cod", conexion);
                 comandoFactu.Transaction = transaccion;
 
                 //Asignar un valor a los parametros del comando a ejecutar 
-                comandoFactu.Parameters.AddWithValue("@cod", codigoBuscar);
+                comandoFactu.Parameters.AddWithValue("@cod", expediente.Facturante);
 
                 // Ejecutar el comando
 
@@ -1162,7 +1201,7 @@ namespace DAO
             else
             {
                 //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
-               return -1;
+                return -1;
             }
 
             // Se inicia una nueva transacción
@@ -1177,7 +1216,7 @@ namespace DAO
 
                 SqlCommand comando = new SqlCommand("Select COUNT(codigo_expediente) from EXPEDIENTE", conexion);
 
-                
+
 
                 comando.Transaction = transaccion;
 
@@ -1187,8 +1226,8 @@ namespace DAO
 
                 // Se ejecuta el comando y se realiza un commit de la transacción
 
-                
-                int conteo = (int) comando.ExecuteScalar();
+
+                int conteo = (int)comando.ExecuteScalar();
 
                 return conteo;
 
@@ -1221,94 +1260,5 @@ namespace DAO
 
     }
 }
-
-/// <summary>
-/// Insertar un objeto expediente en la BD
-/// </summary>
-/// <param name="nuevoExpediente"></param>
-/// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
-//public string CrearExpediente(TOExpediente nuevoExpediente)
-//{
-//    string confirmacion = "El expediente se ingresó correctamente en el sistema";
-
-//    // Abrir la conexion
-//    if (conexion != null)
-//    {
-//        try
-//        {
-//            if (conexion.State != ConnectionState.Open)
-//            {
-//                conexion.Open();
-//            }
-//        }
-//        catch (Exception)
-//        {
-//            confirmacion = "Ocurrió un error y no se pudo ingresar el expediente en el sistema";
-//            return confirmacion;
-//        }
-//    }
-//    else
-//    {
-//        confirmacion = "Ocurrió un error y no se pudo ingresar el expediente en el sistema";
-//        return confirmacion;
-//    }
-
-//    // Iniciar nueva transaccion 
-//    SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo expediente");
-
-//    try
-//    {
-
-//        // --------------------------- Insertar en la tabla Expediente ---------------------------  //
-
-//        // Crear nuevo comando con la sencuencia SQL y el objeto de conexion
-//        SqlCommand comandoExp = new SqlCommand("INSERT INTO EXPEDIENTE (CEDULA_EXPEDIENTE, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, SEXO, FECHA_NACIMIENTO, FOTO, EXPEDIENTE_ANTIGUO)" +
-//            "VALUES (@cedPa, @nomPa, @priApPa, @segApPa, @sexoPa, @naciPa, @fotoPa, @expAntPa);", conexion);
-
-//        comandoExp.Transaction = transaccion;
-//        // Asignar un valor a los parametros del comando a ejecutar
-
-//        comandoExp.Parameters.AddWithValue("@cedPa", nuevoExpediente.Cedula);
-//        comandoExp.Parameters.AddWithValue("@nomPa", nuevoExpediente.Nombre);
-//        comandoExp.Parameters.AddWithValue("@priApPa", nuevoExpediente.PrimerApellido);
-//        comandoExp.Parameters.AddWithValue("@segApPa", nuevoExpediente.SegundoApellido);
-//        comandoExp.Parameters.AddWithValue("@sexoPa", nuevoExpediente.Sexo);
-//        comandoExp.Parameters.AddWithValue("@naciPa", nuevoExpediente.FechaNacimiento);
-//        comandoExp.Parameters.AddWithValue("@fotoPa", nuevoExpediente.Foto);
-//        comandoExp.Parameters.AddWithValue("@expAntPa", nuevoExpediente.ExpedienteAntiguo);
-
-//        // Ejecutar comando y realizar commit de la transaccion 
-//        comandoExp.ExecuteNonQuery();
-//        transaccion.Commit();
-
-
-//    }
-//    catch (Exception)
-//    {
-//        try
-//        {
-//            // Realizar rollback a la transaccion
-//            transaccion.Rollback();
-//        }
-//        catch (Exception)
-//        {
-
-//        }
-//        finally
-//        {
-//            confirmacion = "Ocurrió un error y no se pudo ingresar la cita en el sistema";
-//        }
-//    }
-//    finally
-//    {
-//        if (conexion.State != ConnectionState.Closed)
-//        {
-//            conexion.Close();
-//        }
-//    }
-
-//    return confirmacion;
-//}
-//}
 
 

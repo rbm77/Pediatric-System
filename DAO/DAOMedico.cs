@@ -95,7 +95,7 @@ namespace DAO
 
         }
 
-        public string buscarNombreMedico(string codigoMedico, string nombreCompleto)
+        public string buscarNombreMedico(string codigoMedico, TOMedico medico)
         {
             string confirmacion = "El nombre del doctor no fue encontrado";
 
@@ -139,8 +139,8 @@ namespace DAO
                 {
                     while (lector.Read())
                     {
-                        nombreCompleto = lector["NOMBRE"].ToString() + " ";
-                        nombreCompleto += lector["APELLIDO"].ToString();
+                        medico.nombre = lector["NOMBRE"].ToString();
+                        medico.apellido = lector["APELLIDO"].ToString();
                     }
                 }
 

@@ -539,6 +539,9 @@ $(document).ready(function () {
 
 
     
+    if ($("#pacienteNoCedula").prop('checked')) {
+        document.getElementById('cedulaPaciente').disabled = true;
+    }
 
     //$('.complicacionPerinatal').hide();
     //$('textarea[name="descripcionPatologicos"]').attr('disabled', true);
