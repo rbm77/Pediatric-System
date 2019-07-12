@@ -16,7 +16,7 @@ namespace BL
         public string Plan { get; set; }
         public Boolean MedicinaMixta { get; set; }
         public string Frecuencia { get; set; }
-        public string ReferidoA { get; set; }
+        public string Referido_A { get; set; }
         public Boolean Estado { get; set; }
         public string PadecimientoActual { get; set; }
         public Boolean ReferenciaMedica { get; set; }
@@ -39,7 +39,7 @@ namespace BL
             this.Plan = plan;
             this.MedicinaMixta = medicinaMix;
             this.Frecuencia = frecuencia;
-            this.ReferidoA = refererido;
+            this.Referido_A = refererido;
             this.Estado = estado;
             this.PadecimientoActual = padecimiento;
             this.ReferenciaMedica = referencia;
@@ -57,7 +57,7 @@ namespace BL
             this.Plan = plan;
             this.MedicinaMixta = medicinaMix;
             this.Frecuencia = frecuencia;
-            this.ReferidoA = refererido;
+            this.Referido_A = refererido;
             this.Estado = estado;
             this.PadecimientoActual = padecimiento;
             this.ReferenciaMedica = referencia;
