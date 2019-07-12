@@ -168,21 +168,23 @@ namespace DAO
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
-                SqlCommand comando = new SqlCommand("UPDATE APLICACION_VACUNA SET @nombreAplicacion = '1' WHERE ID_EXPEDIENTE = @idExpediente AND NOMBRE_VACUNA = @nombreVacuna", conexion);
+                SqlCommand comando = new SqlCommand();
 
+                comando.Connection = conexion;
 
                 comando.Transaction = transaccion;
 
-
                 foreach (TOAplicada aplicada in toAplicadas)
                 {
+
+                    comando.CommandText = "UPDATE APLICACION_VACUNA SET " + aplicada.Aplicacion + " = 'true' WHERE ID_EXPEDIENTE = @idExpediente AND NOMBRE_VACUNA = @nombreVacuna;";
+
                     comando.Parameters.AddWithValue("@idExpediente", aplicada.IDExpediente);
                     comando.Parameters.AddWithValue("@nombreVacuna", aplicada.NombreVacuna);
-                    comando.Parameters.AddWithValue("@nombreAplicacion", aplicada.Aplicacion);
 
                     // Se ejecuta el comando 
 
-                    comando.ExecuteNonQuery();
+                    int filas = comando.ExecuteNonQuery();
 
                     comando.Parameters.Clear();
                 }

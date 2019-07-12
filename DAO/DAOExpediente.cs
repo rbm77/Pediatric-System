@@ -41,10 +41,12 @@ namespace DAO
             }
 
             // Iniciar nueva transaccion 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo expediente");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Insertar nuevo expediente");
+
                 // --------------------------- Insertar en la tabla Direccion (Paciente) ---------------------------  //
 
                 //Crear un nuevo comando para verificar si la direccion ya fue ingresada 
@@ -303,6 +305,84 @@ namespace DAO
             return confirmacion;
         }
 
+        public string obtnerNombrePaciente(string codExpediente, string nombreCompleto)
+        {
+            string confirmacion = "El nombre del paciente no fue encontrado";
+
+            //Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                return confirmacion;
+            }
+
+            // Iniciar nueva transaccion 
+            SqlTransaction transaccion = null;
+
+            try
+            {
+                transaccion = conexion.BeginTransaction("Buscar nombre paciente");
+
+                SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE WHERE CODIGO_EXPEDIENTE = @codExp", conexion);
+
+                comando.Transaction = transaccion;
+                comando.Parameters.AddWithValue("@codExp", codExpediente);
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        nombreCompleto = lector["NOMBRE"].ToString() + " ";
+                        nombreCompleto += lector["PRIMER_APELLIDO"].ToString() + " ";
+                        nombreCompleto += lector["SEGUNDO_APELLIDO"].ToString();
+                    }
+                }
+
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo obtener el nombre del paciente";
+                }
+            }
+
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
         public string ActualizarExpediente(TOExpediente nuevoExpediente, TODireccion nuevaDireccionPaciente, TODireccion nuevaDireccionEncargado, TODireccion nuevaDireccionFactura, TOEncargado_Facturante encargado, TOEncargado_Facturante facturante, TOHistoriaClinica nuevaHistoriaClinica1)
         {
             string confirmacion = "El expediente se actualizó correctamente en el sistema";
@@ -330,10 +410,12 @@ namespace DAO
             }
 
             // Iniciar nueva transaccion 
-            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar expediente");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Actualizar expediente");
+
                 // --------------------------- Actualizar(insertar) en la tabla Direccion (Paciente) ---------------------------  //
 
                 //Crear un nuevo comando para verificar si la direccion ya fue ingresada 
@@ -539,10 +621,11 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar Expedientes");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar Expedientes");
                 SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE", conexion);
 
                 comando.Transaction = transaccion;
@@ -587,6 +670,86 @@ namespace DAO
             return confirmacion;
         }
 
+        /// <summary>
+        /// Obtiene la lista de los registros que estan en la tabla Expediente 
+        /// </summary>
+        /// <param name="toListaExpediente"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si la transaccion se realizo</returns>
+        public string CargarExpedientes(List<TOExpediente> toListaExpediente, string cuenta)
+        {
+            string confirmacion = "Los expedientes se cargaron exitosamente";
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = null;
+
+            try
+            {
+                transaccion = conexion.BeginTransaction("Cargar Expedientes con cuenta");
+                SqlCommand comando = new SqlCommand("SELECT CODIGO_EXPEDIENTE, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO FROM EXPEDIENTE WHERE CORREO = @cuenta", conexion);
+
+                comando.Transaction = transaccion;
+
+                comando.Parameters.AddWithValue("@cuenta", cuenta);
+
+                SqlDataReader lector = comando.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+                        TOExpediente expediente = new TOExpediente(lector["CODIGO_EXPEDIENTE"].ToString(), lector["NOMBRE"].ToString(), lector["PRIMER_APELLIDO"].ToString(), lector["SEGUNDO_APELLIDO"].ToString());
+                        toListaExpediente.Add(expediente);
+                    }
+                }
+
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch (Exception)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar los expedientes";
+                }
+            }
+
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+        }
+
 
         public string asociarCorreo(String correoCuenta, String cedulaExpediente)
         {
@@ -599,12 +762,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Asociar Correo a Expediente");
+            SqlTransaction transaccion = null;
             string confirmacion = "Correcto";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Asociar Correo a Expediente");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("UPDATE EXPEDIENTE SET CORREO = @cor Where Cedula = @ced;", conexion);
@@ -678,10 +841,11 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar Expedientes");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar Expedientes");
                 SqlCommand comando = new SqlCommand("SELECT * FROM EXPEDIENTE where Correo is Null", conexion);
 
                 comando.Transaction = transaccion;
@@ -766,11 +930,11 @@ namespace DAO
             }
 
             //Se inicia una nueva transaccion  
-            SqlTransaction transaccion = conexion.BeginTransaction("Mostrar expediente completo");
+            SqlTransaction transaccion = null;
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Mostrar expediente completo");
                 // --------------------------- Buscar en la tabla Expediente ---------------------------  //
 
                 //Se crea un nuveo comando con la secuencia SQL y el objeto conexion
@@ -1089,12 +1253,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Conteo Expedientes");
+            SqlTransaction transaccion = null;
             // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Conteo Expedientes");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("Select COUNT(codigo_expediente) from EXPEDIENTE", conexion);

@@ -45,12 +45,12 @@ namespace DAO
             }
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
+            SqlTransaction transaccion = null;
             //string confirmacion = "La cita se ingresó exitosamente en el sistema";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("INSERT INTO PERSONAL (CUE_Correo, Nombre, Apellido, Cedula,Telefono) VALUES (@cor, @nom, @ape, @ced, @tel);", conexion);
@@ -133,12 +133,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
+            SqlTransaction transaccion = null;
             //string confirmacion = "La cita se ingresó exitosamente en el sistema";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("UPDATE PERSONAL SET NOMBRE = @nom, APELLIDO = @ape, Cedula = @ced, Telefono = @tel WHERE CUE_CORREO = @cor;", conexion);
@@ -221,12 +221,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
+            SqlTransaction transaccion = null;
             //string confirmacion = "La cita se ingresó exitosamente en el sistema";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Insertar nuevo Personal");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("select PERSONAL.CUE_CORREO, PERSONAL.NOMBRE, PERSONAL.APELLIDO, PERSONAL.CEDULA, PERSONAL.TELEFONO, CUENTA.ESTADO from personal join CUENTA on Personal.CUE_CORREO=CUENTA.CORREO;", conexion);

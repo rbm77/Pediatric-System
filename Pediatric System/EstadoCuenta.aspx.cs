@@ -151,8 +151,8 @@ namespace Pediatric_System
                     miBLMedico.editarMedico();
                     break;
                 default:
-
                     miBLAdministrativo.correo = correo;
+                    miBLAdministrativo.buscarAdministrativo();                
                     miBLAdministrativo.nombre = nombre;
                     miBLAdministrativo.apellido = apellido;
                     miBLAdministrativo.cedula = cedula;

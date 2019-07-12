@@ -95,5 +95,18 @@ namespace BL
             }
             return confirmacion;
         }
+
+        /// <summary>
+        /// Obtiene el nombre de un medico de acuerdo a su codigo
+        /// </summary>
+        /// <param name="codigoMedico"></param>
+        /// <param name="nombreCompleto"></param>
+        /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string buscarNombreMedico(string codigoMedico, string nombreCompleto)
+        {
+            DAOMedico dao = new DAOMedico();
+            string confirmacion = dao.buscarNombreMedico(codigoMedico, nombreCompleto);
+            return confirmacion;
+        }
     }
 }

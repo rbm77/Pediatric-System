@@ -41,7 +41,7 @@
                     <div class="card-body">
                         <div class="table-responsive" style="padding-left: 0px; padding-right: 0px">
 
-                            <asp:GridView ID="gridCitas" runat="server" CssClass="table" Style="text-align: center"
+                            <asp:GridView ID="gridCitas" runat="server" CssClass="table table-bordered table-hover" Style="text-align: center"
                                 AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
                                 HeaderStyle-ForeColor="DimGray" GridLines="None" Width="100%" OnRowCommand="gridCitas_RowCommand">
 
@@ -52,7 +52,7 @@
                                     <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
                                     <asp:BoundField HeaderText="Hora" DataField="Hora" />
                                     <asp:ButtonField HeaderText="Cancelar Cita" CommandName="cancelar"
-                                        ControlStyle-CssClass="btn btn-eliminar fas fa-calendar-times fa-2x" runat="server" ControlStyle-Width="25%" />
+                                        ControlStyle-CssClass="btn btn-eliminar fas fa-calendar-times" runat="server" ControlStyle-Width="25%" />
                                 </Columns>
                             </asp:GridView>
 

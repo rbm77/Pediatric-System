@@ -76,6 +76,20 @@ namespace BL
             return confirmacion;
         }
 
+        public string mostrarConsultaFecha(DateTime fecha, BLConsulta consultaBL, BLExamenFisico examenFisicoBL)
+        {
+            TOConsulta consultaTO = new TOConsulta();
+            TOExamenFisico examenFisicoTO = new TOExamenFisico();
+
+            DAOConsulta dao = new DAOConsulta();
+
+            string confirmacion = dao.CargarConsultaFecha(fecha, consultaTO, examenFisicoTO);
+
+            convertirConsultaCompleta_TO_BL(consultaBL, examenFisicoBL, consultaTO, examenFisicoTO);
+
+            return confirmacion;
+        }
+
         public string cambiarEstadoConsulta(BLConsulta consulta)
         {
             TOConsulta consultaTO = new TOConsulta();
@@ -121,6 +135,19 @@ namespace BL
         {
             DAOConsulta dap = new DAOConsulta();
            return  dap.generarMedMixta(f1, ff2, code);
+        }
+
+        public string obtnerConsultasActivas(string codDoctor, List<BLConsulta> consultas)
+        {
+            List<TOConsulta> toConsultas = new List<TOConsulta>();
+            DAOConsulta daoConsulta = new DAOConsulta();
+            string confirmacion = daoConsulta.obtenerConsultasActivas(toConsultas, codDoctor);
+
+            foreach (TOConsulta toConsulta in toConsultas)
+            {
+                consultas.Add(convertirConsulta(toConsulta));
+            }
+            return confirmacion;
         }
 
         private BLConsulta convertirConsulta(TOConsulta consultaTO)

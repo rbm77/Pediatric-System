@@ -50,13 +50,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar esquema de vacunación");
-
+            SqlTransaction transaccion = null;
 
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Cargar esquema de vacunación");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT * FROM VACUNA;", conexion);
