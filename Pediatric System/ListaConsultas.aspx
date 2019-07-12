@@ -75,9 +75,9 @@
                                     
 
                                     <Columns>
-                                        <asp:BoundField HeaderText="Fecha" DataField="Fecha_Hora" />
-                                        <asp:BoundField HeaderText="Doctor" DataField="CodigoMedico" />
-                                        <asp:BoundField HeaderText="Estado" DataField="Estado" />
+                                        <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
+                                        <asp:BoundField HeaderText="Doctor" DataField="Doctor" />
+                                        <asp:BoundField HeaderText="Estado" DataField="Estado" />                   
                                         <asp:ButtonField HeaderText="Acción" CommandName="seleccionar"
                                             ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
                                     </Columns>

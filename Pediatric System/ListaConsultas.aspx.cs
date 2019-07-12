@@ -11,12 +11,16 @@ namespace Pediatric_System
 {
     public partial class ListaConsultas : System.Web.UI.Page
     {
+        List<BLConsulta> consultas = new List<BLConsulta>();
+        List<ListaItem> lista = new List<ListaItem>();
         BLExpediente expediente = new BLExpediente();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             expediente = (BLExpediente)Session["expediente"];
-            ManejadorConsulta manejador = new ManejadorConsulta();
-            List<BLConsulta> consultas = new List<BLConsulta>();
+            
+            
 
             //Mostrar los datos generales 
             if (expediente.Codigo == expediente.Cedula)
@@ -27,6 +31,7 @@ namespace Pediatric_System
             {
                 cedGeneral.InnerText = "No tiene aún";
             }
+            cargarListaGrid();
 
             paciGeneral.InnerText = " " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
             TimeSpan dt = DateTime.Now - expediente.FechaNacimiento;
@@ -36,15 +41,9 @@ namespace Pediatric_System
 
             if (!Page.IsPostBack)
             {
-                manejador.cargarListaConsultas(consultas, expediente.Codigo);
-                gridConsultas.DataSource = consultas;
+                gridConsultas.DataSource = lista;
                 gridConsultas.DataBind();
             }
-        }
-
-        private void crear_guardarConsulta()
-        {
-
         }
 
         protected void regresar_Click(object sender, EventArgs e)
@@ -58,7 +57,29 @@ namespace Pediatric_System
 
             Session["pagina"] = "consultas-nueva";
             Response.Redirect("FichaConsultaPaciente.aspx");
+        }
 
+        private void cargarListaGrid()
+        {
+            ManejadorConsulta manejador = new ManejadorConsulta();
+            manejador.cargarListaConsultas(consultas, expediente.Codigo); 
+
+            foreach(BLConsulta cons in consultas)
+            {
+                DateTime fecha = cons.Fecha_Hora;
+                string doctor = cons.CodigoMedico;
+                string estado;
+                if (cons.Estado == false)
+                {
+                    estado = "Finalizada";
+                }
+                else
+                {
+                    estado = "Activa";
+                }
+
+                lista.Add(new ListaItem(fecha, doctor, estado));
+            }
         }
 
         protected void gridConsultas_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -78,7 +99,6 @@ namespace Pediatric_System
                 //string strDate = now1.ToString(FMT);
                 //DateTime now2 = DateTime.ParseExact(strDate, FMT, CultureInfo.InvariantCulture);
 
-                //string valorFecha = fecha.Text;
                 const string FMT = "o";
                 DateTime fff = Convert.ToDateTime(fecha.Text);
                 string news = fff.ToString(FMT);
@@ -87,11 +107,42 @@ namespace Pediatric_System
                 BLConsulta consulta = new BLConsulta();
                 consulta.CodigoExpediente = expediente.Codigo;
                 consulta.Fecha_Hora = Convert.ToDateTime(fecha.Text);
-                consulta.Estado = Boolean.Parse(estado.Text);
+
+                Boolean est;
+
+                if (estado.Text == "Activa")
+                {
+                    est = true;
+                }
+                else
+                {
+                    est = false;
+                }
+
+                consulta.Estado = est;
                 Session["pagina"] = "consultas_guardada";
                 Session["consulta"] = consulta;
                 Response.Redirect("FichaConsultaPaciente.aspx");
             }
+        }
+
+        private class ListaItem
+        {
+            public DateTime Fecha { get; set; }
+            public string Doctor { get; set; }
+            public string Estado { get; set; }
+
+            public ListaItem()
+            {
+
+            }
+            public ListaItem(DateTime fecha, string Doctor, string estado)
+            {
+                this.Fecha = fecha;
+                this.Doctor = Doctor;
+                this.Estado = estado;
+            }
+
         }
     }
 }

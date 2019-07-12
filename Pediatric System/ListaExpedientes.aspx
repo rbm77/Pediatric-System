@@ -43,6 +43,7 @@
                                         <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
                                         <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
                                         <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
+                                        <asp:BoundField HeaderText="Codigo" DataField="Codigo" Visible="false" />
                                         <asp:ButtonField HeaderText="Acción" CommandName="seleccionar"
                                             ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />
                                         <asp:BoundField Visible="false" HeaderText="Codigo" DataField="Codigo" ></asp:BoundField>

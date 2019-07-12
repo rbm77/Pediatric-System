@@ -437,133 +437,133 @@ namespace Pediatric_System
             p15.Alignment = Element.ALIGN_JUSTIFIED;
             p15.Add(chunk15);
 
-            string talla = "1.64 m";
+            string talla = tallaPac.Value.Trim();
 
             Chunk chunk16 = new Chunk("\nTalla: " + talla + "\n");
             Paragraph p16 = new Paragraph();
             p16.Alignment = Element.ALIGN_JUSTIFIED;
             p16.Add(chunk16);
 
-            string peso = "60 kilos";
+            string peso = pesoPac.Value.Trim();
 
             Chunk chunk17 = new Chunk("Peso: " + peso + "\n");
             Paragraph p17 = new Paragraph();
             p17.Alignment = Element.ALIGN_JUSTIFIED;
             p17.Add(chunk17);
 
-            string perimetroCefalico = "13 cm";
+            string perimetroCefalico = perimetroPac.Value.Trim();
 
             Chunk chunk18 = new Chunk("Perímetro Cefálico: " + perimetroCefalico + "\n");
             Paragraph p18 = new Paragraph();
             p18.Alignment = Element.ALIGN_JUSTIFIED;
             p18.Add(chunk18);
 
-            string temperatuta = "37 grados";
+            string temperatuta = temperaturaPac.Value.Trim();
 
             Chunk chunk19 = new Chunk("Temperatura: " + temperatuta + "\n");
             Paragraph p19 = new Paragraph();
             p19.Alignment = Element.ALIGN_JUSTIFIED;
             p19.Add(chunk19);
 
-            string so2 = "cualquier so2";
+            string so2 = so2Pac.Value.Trim();
 
             Chunk chunk20 = new Chunk("SO2: " + so2 + "\n");
             Paragraph p20 = new Paragraph();
             p20.Alignment = Element.ALIGN_JUSTIFIED;
             p20.Add(chunk20);
 
-            string imc = "cualquier imc";
+            string imc = imcPac.Value.Trim();
 
             Chunk chunk21 = new Chunk("IMC: " + imc + "\n");
             Paragraph p21 = new Paragraph();
             p21.Alignment = Element.ALIGN_JUSTIFIED;
             p21.Add(chunk21);
 
-            string estadoAlerta = "cualquier estado alerta";
+            string estadoAlerta = alertaPac.Value.Trim();
 
             Chunk chunk22 = new Chunk("Estado de alerta: " + estadoAlerta + "\n");
             Paragraph p22 = new Paragraph();
             p22.Alignment = Element.ALIGN_JUSTIFIED;
             p22.Add(chunk22);
 
-            string estadoHidratacion = "cualquier estado hidratacion";
+            string estadoHidratacion = hidratacionPac.Value.Trim();
 
             Chunk chunk23 = new Chunk("Estado de hidratación: " + estadoHidratacion + "\n");
             Paragraph p23 = new Paragraph();
             p23.Alignment = Element.ALIGN_JUSTIFIED;
             p23.Add(chunk23);
 
-            string ruidosCardiacos = "cualquier ruido";
+            string ruidosCardiacos = ruidosPac.Value.Trim();
 
             Chunk chunk24 = new Chunk("Ruidos cardiácos: " + ruidosCardiacos + "\n");
             Paragraph p24 = new Paragraph();
             p24.Alignment = Element.ALIGN_JUSTIFIED;
             p24.Add(chunk24);
 
-            string camposPulmonares = "cualquier pulmon";
+            string camposPulmonares = camposPac.Value.Trim();
 
             Chunk chunk25 = new Chunk("Campos pulmonares: " + camposPulmonares + "\n");
             Paragraph p25 = new Paragraph();
             p25.Alignment = Element.ALIGN_JUSTIFIED;
             p25.Add(chunk25);
 
-            string abdomen = "marcado";
+            string abdomen = abdomenPpac.Value.Trim();
 
             Chunk chunk26 = new Chunk("Abdomen: " + abdomen + "\n");
             Paragraph p26 = new Paragraph();
             p26.Alignment = Element.ALIGN_JUSTIFIED;
             p26.Add(chunk26);
 
-            string faringe = "larga";
+            string faringe = faringePac.Value.Trim();
 
             Chunk chunk27 = new Chunk("Faringe: " + faringe + "\n");
             Paragraph p27 = new Paragraph();
             p27.Alignment = Element.ALIGN_JUSTIFIED;
             p27.Add(chunk27);
 
-            string neurodesarrollo = "bueno";
+            string neurodesarrollo = neuroPac.Value.Trim();
 
             Chunk chunk28 = new Chunk("Neurodesarrollo: " + neurodesarrollo + "\n");
             Paragraph p28 = new Paragraph();
             p28.Alignment = Element.ALIGN_JUSTIFIED;
             p28.Add(chunk28);
 
-            string nariz = "limpia";
+            string nariz = narizPac.Value.Trim();
 
             Chunk chunk29 = new Chunk("Nariz: " + nariz + "\n");
             Paragraph p29 = new Paragraph();
             p29.Alignment = Element.ALIGN_JUSTIFIED;
             p29.Add(chunk29);
 
-            string oidos = "escuchan";
+            string oidos = oidosPac.Value.Trim();
 
             Chunk chunk30 = new Chunk("Oídos: " + oidos + "\n");
             Paragraph p30 = new Paragraph();
             p30.Alignment = Element.ALIGN_JUSTIFIED;
             p30.Add(chunk30);
 
-            string snc = "cualquier snc";
+            string snc = sncPac.Value.Trim();
 
             Chunk chunk31 = new Chunk("SNC: " + snc + "\n");
             Paragraph p31 = new Paragraph();
             p31.Alignment = Element.ALIGN_JUSTIFIED;
             p31.Add(chunk31);
 
-            string sistemaOsteomuscular = "bonito";
+            string sistemaOsteomuscular = osteomuscPac.Value.Trim();
 
             Chunk chunk32 = new Chunk("Sistema Osteomuscular: " + sistemaOsteomuscular + "\n");
             Paragraph p32 = new Paragraph();
             p32.Alignment = Element.ALIGN_JUSTIFIED;
             p32.Add(chunk32);
 
-            string piel = "blanca";
+            string piel = pielPac.Value.Trim();
 
             Chunk chunk33 = new Chunk("Piel: " + piel + "\n");
             Paragraph p33 = new Paragraph();
             p33.Alignment = Element.ALIGN_JUSTIFIED;
             p33.Add(chunk33);
 
-            string hallazgos = "otros y otro mas";
+            string hallazgos = otrosPac.Value.Trim();
 
             Chunk chunk34 = new Chunk("Otros hallazgos: " + hallazgos + "\n\n");
             Paragraph p34 = new Paragraph();
@@ -575,7 +575,7 @@ namespace Pediatric_System
             p35.Alignment = Element.ALIGN_JUSTIFIED;
             p35.Add(chunk35);
 
-            string padecimiento = "Tiene un monton de cosas nadie sabe lo que le pasa";
+            string padecimiento = padecimientoPac.Value.Trim();
 
             Chunk chunk36 = new Chunk("\n" + padecimiento + "\n\n");
             Paragraph p36 = new Paragraph();
@@ -587,7 +587,7 @@ namespace Pediatric_System
             p37.Alignment = Element.ALIGN_JUSTIFIED;
             p37.Add(chunk37);
 
-            string analisis = "Analizo muchas cosas";
+            string analisis = analisisPac.Value.Trim();
 
             Chunk chunk38 = new Chunk("\n" + analisis + "\n\n");
             Paragraph p38 = new Paragraph();
@@ -599,7 +599,7 @@ namespace Pediatric_System
             p39.Alignment = Element.ALIGN_JUSTIFIED;
             p39.Add(chunk39);
 
-            string impresionDiagnostica = "Diagnostico final";
+            string impresionDiagnostica = impresionPac.Value.Trim();
 
             Chunk chunk40 = new Chunk("\n" + impresionDiagnostica + "\n\n\n\n");
             Paragraph p40 = new Paragraph();
