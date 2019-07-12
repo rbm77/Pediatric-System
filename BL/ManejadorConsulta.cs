@@ -109,7 +109,7 @@ namespace BL
             consultaTO.Fecha_Hora = consulta.Fecha_Hora;
             consultaTO.MedicinaMixta = consulta.MedicinaMixta;
             consultaTO.Frecuencia = consulta.Frecuencia;
-            consultaTO.ReferidoA = consulta.ReferidoA;
+            consultaTO.Referido_A = consulta.Referido_A;
 
             DAOConsulta dao = new DAOConsulta();
             string confirmacion = dao.actualizarReporteMedicinaMixta(consultaTO);
@@ -152,7 +152,7 @@ namespace BL
 
         private BLConsulta convertirConsulta(TOConsulta consultaTO)
         {
-            //consultaTO.CodigoMedico, consultaTO.CodigoExpediente, consultaTO.Fecha_Hora, consultaTO.Analisis, consultaTO.ImpresionDiagnostica, consultaTO.Plan, consultaTO.MedicinaMixta, consultaTO.Frecuencia, consultaTO.ReferidoA, consultaTO.Estado, consultaTO.PadecimientoActual, consultaTO.ReferenciaMedica, consultaTO.Especialidad, consultaTO.MotivoReferecnia);
+            //consultaTO.CodigoMedico, consultaTO.CodigoExpediente, consultaTO.Fecha_Hora, consultaTO.Analisis, consultaTO.ImpresionDiagnostica, consultaTO.Plan, consultaTO.MedicinaMixta, consultaTO.Frecuencia, consultaTO.Referido_A, consultaTO.Estado, consultaTO.PadecimientoActual, consultaTO.ReferenciaMedica, consultaTO.Especialidad, consultaTO.MotivoReferecnia);
 
             BLConsulta consultaBL = new BLConsulta();
             consultaBL.CodigoMedico = consultaTO.CodigoMedico;
@@ -163,7 +163,7 @@ namespace BL
             consultaBL.Plan = consultaTO.Plan;
             consultaBL.MedicinaMixta = consultaTO.MedicinaMixta;
             consultaBL.Frecuencia = consultaTO.Frecuencia;
-            consultaBL.ReferidoA = consultaTO.ReferidoA;
+            consultaBL.Referido_A = consultaTO.Referido_A;
             consultaBL.Estado = consultaTO.Estado;
             consultaBL.PadecimientoActual = consultaTO.PadecimientoActual;
             consultaBL.ReferenciaMedica = consultaTO.ReferenciaMedica;
@@ -185,7 +185,7 @@ namespace BL
             consultaTO.Plan = consultaBL.Plan;
             consultaTO.MedicinaMixta = consultaBL.MedicinaMixta;
             consultaTO.Frecuencia = consultaBL.Frecuencia;
-            consultaTO.ReferidoA = consultaBL.ReferidoA;
+            consultaTO.Referido_A = consultaBL.Referido_A;
             consultaTO.Estado = consultaBL.Estado;
             consultaTO.PadecimientoActual = consultaBL.PadecimientoActual;
             consultaTO.ReferenciaMedica = consultaBL.ReferenciaMedica;
@@ -229,7 +229,7 @@ namespace BL
             consultaBL.Plan = consultaTO.Plan;
             consultaBL.MedicinaMixta = consultaTO.MedicinaMixta;
             consultaBL.Frecuencia = consultaTO.Frecuencia;
-            consultaBL.ReferidoA = consultaTO.ReferidoA;
+            consultaBL.Referido_A = consultaTO.Referido_A;
             consultaBL.Estado = consultaTO.Estado;
             consultaBL.PadecimientoActual = consultaTO.PadecimientoActual;
             consultaBL.ReferenciaMedica = consultaTO.ReferenciaMedica;
