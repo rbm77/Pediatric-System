@@ -115,6 +115,7 @@ namespace Pediatric_System
                     miBLAdministrativo.cedula = cedula;
                     miBLAdministrativo.telefono = telefono;
                     miBLAdministrativo.cod_Asist = ddCodAsist.SelectedValue;
+                    Session["codigoMedico"] = miBLAdministrativo.cod_Asist;
                     miBLAdministrativo.editarAdministrativo();
                     break;
                 case "Administrador":
