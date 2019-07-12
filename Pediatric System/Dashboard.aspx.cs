@@ -13,22 +13,16 @@ namespace Pediatric_System
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            Session["pagina"] = "dashboard";
 
             if (Session["Cuenta"] == null)
             {
                 Response.Redirect("IniciarSesion.aspx");
             }
             else {
-                BLAdministrativo miBLAdministrativo = new BLAdministrativo();
-                miBLAdministrativo.correo = Session["Cuenta"].ToString();
-                miBLAdministrativo.buscarAdministrativo();
-                Session["pagina"] = "dashboard";
-                if (miBLAdministrativo.cod_Asist == "")
+                if ((String)Session["codigoMedico"] == "")
                 {
-                    mensajeAviso("warning", "Debe tener un medico asociado a su cuenta para acceder a la sección de Citas");
-                } else
-                {
-                    Session["codigoMedico"] = miBLAdministrativo.cod_Asist;
+                  mensajeAviso("warning", "Debe tener un medico asociado a su cuenta para acceder a la sección de Citas");
                 }
                 conteos();
             }
