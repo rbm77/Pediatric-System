@@ -31,7 +31,7 @@ namespace BL
         public BLConsulta(string codMedico, string codExpediente, DateTime fecha, string analisis, string impresion, string plan, Boolean medicinaMix, string frecuencia, string refererido, Boolean estado, string padecimiento, Boolean referencia, string especialidad, string motivo)
         {
             this.CodigoMedico = codMedico;
-            this.CodigoExpediente = CodigoExpediente;
+            this.CodigoExpediente = codExpediente;
             this.Fecha_Hora = fecha;
             this.Analisis = analisis;
             this.ImpresionDiagnostica = impresion;

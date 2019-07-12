@@ -48,6 +48,18 @@ namespace BL
             }
             return confirmacion;
         }
+        public string cargarListaConsultasFiltrada(List<BLConsulta> blConsultas, string codMedico, string tipoRep, string ini, string fin)
+        {
+            List<TOConsulta> toConsultas = new List<TOConsulta>();
+            DAOConsulta daoConsulta = new DAOConsulta();
+            string confirmacion = daoConsulta.CargarListaConsultasFiltrada(toConsultas, codMedico, tipoRep, ini, fin);
+
+            foreach (TOConsulta toConsulta in toConsultas)
+            {
+                blConsultas.Add(convertirConsulta(toConsulta));
+            }
+            return confirmacion;
+        }
 
         public  string mostrarConsulta(string codExpediente, DateTime fecha, BLConsulta consultaBL, BLExamenFisico examenFisicoBL)
         {

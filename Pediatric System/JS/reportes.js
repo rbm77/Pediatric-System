@@ -2,10 +2,10 @@
 
     
 
-    $('.visualizacionTitulo').hide();
-    $('.visualizacion-medicina-mixta').hide();
+    $('.visualizacionTitulo').show();
+    $('.visualizacion-medicina-mixta').show();
     $('.visualizacion-boleta-ve02').hide();
-    $('.btnGenerarReporte').hide();
+    $('.btnGenerarReporte').show();
     
 
     $(".seleccionReporte").on("change", function () {
@@ -24,7 +24,7 @@
     });
 
     $(".seleccionReporte").on("change", function () {
-        if (this.value == "medicinaMixta") {
+        if (this.value == "medicina_Mixta") {
             
             $('.visualizacion-medicina-mixta').show();
         } else {

@@ -107,11 +107,11 @@ namespace Pediatric_System
 
             if(subsecuente.Checked == true)
             {
-                consulta.Frecuencia = "subsecuen";
+                consulta.Frecuencia = "Subsecuente";
             }
             else
             {
-                string frecu = "primera" + " ";
+                string frecu = "primera ";
 
                 if(opcion_vida.Checked == true)
                 {
@@ -119,7 +119,7 @@ namespace Pediatric_System
                 }
                 else
                 {
-                    frecu += "anno";
+                    frecu += "año";
                 }
                 consulta.Frecuencia = frecu;
             }
