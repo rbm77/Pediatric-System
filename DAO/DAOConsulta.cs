@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TO;
 
+
 namespace DAO
 {
     public class DAOConsulta
@@ -163,6 +164,77 @@ namespace DAO
             }
 
             return confirmacion;
+        }
+
+        public DataTable generarMedMixta(string f1, string ff2, string code)
+        {
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    // confirmaciones
+                }
+            }
+            else
+            {
+               // confirmaciones
+            }
+
+            SqlTransaction transaccion = null;
+
+
+            try
+            {
+                transaccion = conexion.BeginTransaction("GenerarReporteMixta");
+                SqlCommand cmd = new SqlCommand();
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataTable datatable = new DataTable();
+
+                cmd = new SqlCommand("reporteMedMixta", conexion);
+                cmd.Parameters.Add(new SqlParameter("@fini", f1));
+                cmd.Parameters.Add(new SqlParameter("@ffin", ff2));
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                da.SelectCommand = cmd;
+                cmd.Transaction = transaccion;
+                da.Fill(datatable); // getting value 
+
+                return datatable;
+               
+
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+
+                }
+                finally
+                {
+                   // confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return null;
         }
 
         public string actualizarReferenciaMedica(TOConsulta consultaTO)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,6 +115,12 @@ namespace BL
             DAOConsulta dao = new DAOConsulta();
             string confirmacion = dao.actualizarReferenciaMedica(consultaTO);
             return confirmacion;
+        }
+
+        public DataTable generarMedMixta(string f1, string ff2, string code)
+        {
+            DAOConsulta dap = new DAOConsulta();
+           return  dap.generarMedMixta(f1, ff2, code);
         }
 
         private BLConsulta convertirConsulta(TOConsulta consultaTO)

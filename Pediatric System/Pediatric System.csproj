@@ -1855,10 +1855,10 @@
       <DependentUpon>Consultas.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reportes\CrystalReport1.cs">
+    <Compile Include="Reportes\MedMixta.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <DependentUpon>MedMixta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\Expedientes.cs">
@@ -1973,9 +1973,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Consultas.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\CrystalReport1.rpt">
+    <EmbeddedResource Include="Reportes\MedMixta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+      <LastGenOutput>MedMixta.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Expedientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

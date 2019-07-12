@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Globalization;
 using System.Linq;
 using System.Web;
@@ -53,7 +54,7 @@ namespace Pediatric_System
 
                 ddCodigoMedico.Items.Insert(0, new ListItem(disponible));
                 ddCodigoMedico.SelectedIndex = 0;
-         
+
             }
 
         }
@@ -92,7 +93,7 @@ namespace Pediatric_System
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
 
-          
+
             DateTime fini = DateTime.ParseExact(dateIni.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
             DateTime ffin = DateTime.ParseExact(dateFin.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
             string trep = tipoReporte.Value;
@@ -104,6 +105,30 @@ namespace Pediatric_System
             gridConsultas.DataBind();
 
 
+        }
+
+        protected void btnGenerar_Click(object sender, EventArgs e)
+        {
+            DateTime fini = DateTime.ParseExact(dateIni.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+            DateTime ffin = DateTime.ParseExact(dateFin.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+            string trep = tipoReporte.Value;
+            string codeMed = ddCodigoMedico.SelectedValue;
+
+
+            fini.ToString("yyyy-MM-dd"); // variable donde se  guarda el numero de factura
+            ffin.ToString("yyyy-MM-dd");
+
+            ManejadorConsulta cons = new ManejadorConsulta();
+
+            DataTable dat = cons.generarMedMixta(fini.ToString("yyyy-MM-dd"), ffin.ToString("yyyy-MM-dd"), codeMed);
+
+
+            ReportDocument crystalReport = new ReportDocument(); // creating object of crystal report
+
+            crystalReport.Load(Server.MapPath("~/Reportes/MedMixta.rpt")); // path of report 
+            crystalReport.SetDataSource(dat); // binding datatable
+            crystalReport.ExportToHttpResponse
+            (CrystalDecisions.Shared.ExportFormatType.PortableDocFormat, Response, true, "Medicina_mixta_" + DateTime.Today.ToString("dd-MM-yy"));
         }
     }
 }

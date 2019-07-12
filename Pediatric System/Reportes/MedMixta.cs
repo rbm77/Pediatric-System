@@ -16,14 +16,14 @@ namespace Pediatric_System.Reportes {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class CrystalReport1 : ReportClass {
+    public class MedMixta : ReportClass {
         
-        public CrystalReport1() {
+        public MedMixta() {
         }
         
         public override string ResourceName {
             get {
-                return "CrystalReport1.rpt";
+                return "MedMixta.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Pediatric_System.Reportes {
         
         public override string FullResourceName {
             get {
-                return "Pediatric_System.Reportes.CrystalReport1.rpt";
+                return "Pediatric_System.Reportes.MedMixta.rpt";
             }
             set {
                 // Do nothing
@@ -95,12 +95,28 @@ namespace Pediatric_System.Reportes {
                 return this.ReportDefinition.Sections[5];
             }
         }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_fini {
+            get {
+                return this.DataDefinition.ParameterFields[0];
+            }
+        }
+        
+        [Browsable(false)]
+        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
+        public CrystalDecisions.Shared.IParameterField Parameter_ffin {
+            get {
+                return this.DataDefinition.ParameterFields[1];
+            }
+        }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedCrystalReport1 : Component, ICachedReport {
+    public class CachedMedMixta : Component, ICachedReport {
         
-        public CachedCrystalReport1() {
+        public CachedMedMixta() {
         }
         
         [Browsable(false)]
@@ -137,7 +153,7 @@ namespace Pediatric_System.Reportes {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            CrystalReport1 rpt = new CrystalReport1();
+            MedMixta rpt = new MedMixta();
             rpt.Site = this.Site;
             return rpt;
         }

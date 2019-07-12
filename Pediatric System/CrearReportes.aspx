@@ -7,15 +7,13 @@
 
     <script type="text/javascript" src="JS/reportes.js"></script>
 
-    <script type="text/javascript">
 
-        
-    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <style>
         @media (min-width: 768px) {
             .btnFiltro {
+                width: 150px;
                 position: absolute;
                 bottom: 0;
             }
@@ -41,7 +39,7 @@
                 <div class="form-row" style="margin-top: 15px;">
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Inicio</label>
-                        <input runat="server" id="dateIni" class="datepickerIni"  />
+                        <input  runat="server" id="dateIni" class="datepickerIni"  />
                     </div>
 
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -128,14 +126,13 @@
                 </div>
             </div>
 
-            <div class="form-row">
-                <div class="btnGenerarReporte form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
-                    <button type="submit" class="btn btn-outline-primary form-control">GENERAR</button>
-                </div>
-                <div class="form-group col-lg-3 col-md-3 col-sm-3 col-xs-6" style="margin-top: 25px; margin-bottom: 25px">
-                    <button type="submit" class="btn btn-outline-danger form-control">REGRESAR</button>
-                </div>
+            <br />
+            <br />
+                <div class="btnGuardarExpediente form-group col-lg-12 col-md-12 col-sm-12 col-xs-6" style="text-align: right;">
+                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                <asp:Button ID="btnGenerar" runat="server" Text="GENERAR" CssClass="btn btn-guardar" OnClick="btnGenerar_Click"></asp:Button>
             </div>
+           
         </form>
 
 
@@ -148,8 +145,8 @@
             var mm = String(today.getMonth() + 1).padStart(2, '0');
             var yyyy = today.getFullYear();
             today = dd + '/' + mm + '/' + yyyy;
-            $('input[id=dateIni]').attr('value', today);
-        $('input[id=dateFin]').attr('value', today);
+            $('input[id=ContentPlaceHolder1_dateIni]').attr('value', today);
+        $('input[id=ContentPlaceHolder1_dateFin]').attr('value', today);
 
 
 
