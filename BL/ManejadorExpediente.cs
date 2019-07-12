@@ -72,6 +72,26 @@ namespace BL
             return confirmacion;
         }
 
+        /// <summary>
+        /// Obtiene una lista de objetos Expediente que son enviados desde la capa DAO 
+        /// </summary>
+        /// <param name="blExpedientes"></param>
+        /// <returns>Mensaje de confirmacion indicando si se realizo la transaccion</returns>
+        public string CargarExpedientes(List<BLExpediente> blExpedientes, string cuenta)
+        {
+            List<TOExpediente> toExpedientes = new List<TOExpediente>();
+            DAOExpediente daoExpedientes = new DAOExpediente();
+
+            string confirmacion = daoExpedientes.CargarExpedientes(toExpedientes, cuenta);
+
+            foreach (TOExpediente toExpediente in toExpedientes)
+            {
+                blExpedientes.Add(convertirExpedientes(toExpediente));
+            }
+
+            return confirmacion;
+        }
+
         public string cargarListaExpedientes(List<BLExpediente> blExpedientes, Boolean value)
         {
             List<TOExpediente> toExpedientes = new List<TOExpediente>();

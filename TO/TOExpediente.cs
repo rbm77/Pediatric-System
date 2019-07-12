@@ -21,6 +21,13 @@ namespace TO
 
         public string Correo { get; set; }
 
+        public TOExpediente(string cod, string nombre, string primerApellido, string segundoApellido)
+        {
+            this.Codigo = cod;
+            this.Nombre = nombre;
+            this.PrimerApellido = primerApellido;
+            this.SegundoApellido = segundoApellido;
+        }
         public TOExpediente()
         {
 

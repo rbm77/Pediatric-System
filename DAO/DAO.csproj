@@ -47,7 +47,10 @@
     <Compile Include="DAOCita.cs" />
     <Compile Include="DAOConsulta.cs" />
     <Compile Include="DAOCuenta.cs" />
+
+    <Compile Include="DAOExamenLaboratorio.cs" />
     <Compile Include="DAODatosDashboard.cs" />
+
     <Compile Include="DAOExpediente.cs" />
     <Compile Include="DAOMedico.cs" />
     <Compile Include="DAOPersonal.cs" />

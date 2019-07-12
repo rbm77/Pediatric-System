@@ -36,7 +36,21 @@
 
                             <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mb-3">
                                 <div class="card text-white o-hidden h-100">
-                                    <a class="card-body card-dash" href="ListaExpedientes.aspx">
+                                    <a class="card-body card-dash" href="ExamenesLaboratorio.aspx">
+                                        <i style="color: #1d5e93" class="fas fa-notes-medical fa-4x"></i>
+                                    </a>
+                                    <a class="card-footer text-white clearfix small z-1" href="ExamenesLaboratorio.aspx">
+                                        <span class="float-left">Exámenes de Laboratorio</span>
+                                        <span class="float-right">
+                                            <i class="fas fa-angle-right"></i>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 mb-3">
+                                <div class="card text-white o-hidden h-100">
+                                    <a class="card-body card-dash" href="ListaCitas.aspx">
                                         <i style="color: #1d5e93" class="far fa-calendar-check fa-4x"></i>
                                     </a>
                                     <a class="card-footer text-white clearfix small z-1" href="ListaCitas.aspx">
