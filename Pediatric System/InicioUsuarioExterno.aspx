@@ -29,7 +29,7 @@
                                         </a>
                                         <a class="card-body card-dash col-4" href="ListaExpedientes.aspx" style="font-size: 20px; font-weight: 500; padding: 20px 39px 0px 0px;">
                                             <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color: whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
-                                                <asp:Label ID="lblCantidadExpedientes" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Cantidad de Expedientes en el Sistema" />
+                                                <asp:Label ID="lblCantidadExpedientes" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Expedientes asociados a esta cuenta" />
                                             </div>
                                         </a>
                                     </div>
@@ -64,8 +64,7 @@
                                         </a>
                                         <a class="card-body card-dash col-4" href="GestionarAgenda.aspx" style="font-size: 20px; font-weight: 500; padding: 20px 39px 0px 0px;">
                                             <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color: whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
-                                                <asp:Label ID="lblCantidadCitasPendientes" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Citas Pendientes para Hoy" />
-
+                                                <asp:Label ID="lblCantidadCitasPendientes" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Citas Pendientes" />
                                             </div>
                                         </a>
 
