@@ -15,6 +15,77 @@ namespace DAO
 
 
 
+        public void buscarDatosPaciente(TODatosDashboard miTODatos, String correo)
+        {
+            // Se abre la conexión
+
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                    //return confirmacion;
+                }
+            }
+            else
+            {
+                //confirmacion = "Ocurrio un error y no se pudo cargar los expedientes";
+                //return confirmacion;
+            }
+
+            // Se inicia una nueva transacción
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Buscar Datos DashBoard");
+            // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
+
+            try
+            {
+                SqlCommand comando = new SqlCommand("Select COUNT(codigo_expediente) from EXPEDIENTE where correo = @cor", conexion);
+                comando.Parameters.AddWithValue("@cor", correo);
+                comando.Transaction = transaccion;
+                miTODatos.cantidadExpedientes = (int)comando.ExecuteScalar() + "";
+
+
+                SqlCommand comando2 = new SqlCommand("Select count('Codigo_medico') from cita where fecha = CAST(GETDATE() AS DATE) and CAST(Hora AS time) > DATEADD(HOUR, -6,cast(getutcdate() as time)) and correo = @cor;", conexion);
+                comando2.Parameters.AddWithValue("@cor", correo);
+                comando2.Transaction = transaccion;
+                miTODatos.cantidadCitasPendientes = (int)comando2.ExecuteScalar() + "";
+
+
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
+                }
+                catch (Exception)
+                {
+                }
+            }
+            finally
+            {
+                // Se finaliza la conexion
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+        }
+
+
+
 
 
         public void buscarDatos(TODatosDashboard miTODatos, String codigoMedico)

@@ -30,11 +30,9 @@
                                         <a class="card-body card-dash" href="ListaExpedientes.aspx">
                                             <i style="color: #1d5e93" class="far fa-id-card fa-4x"></i>
                                         </a>
-                                        <a class="card-body card-dash col-4" href="ListaExpedientes.aspx" style="  font-size: 20px; font-weight: 500; padding: 20px 39px 0px 0px;">
-                                            <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color:whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
-
+                                        <a class="card-body card-dash col-4" href="ListaExpedientes.aspx" style="font-size: 20px; font-weight: 500; padding: 20px 39px 0px 0px;">
+                                            <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color: whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
                                                 <asp:Label ID="lblCantidadExpedientes" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Cantidad de Expedientes en el Sistema" />
-                                                <%-- <span id="countExpe" class="timer count-title count-number" data-to="1" data-speed="1500"></span>--%>
                                             </div>
                                         </a>
                                     </div>
@@ -53,7 +51,7 @@
                                             <i style="color: #1d5e93" class="fas fa-user-check fa-4x"></i>
                                         </a>
                                         <a class="card-body card-dash col-4" href="ListaConsultasActivas.aspx" style="font-size: 20px; font-weight: 500; padding: 20px 39px 0px 0px;">
-                                            <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color:whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
+                                            <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color: whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
                                                 <asp:Label ID="lblCantidadConsultaActiva" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Cantidad de Consultas Activas" />
                                             </div>
                                         </a>
@@ -84,7 +82,7 @@
                     <div class="offset-xl-1 col-xl-5 offset-lg-1 col-lg-5 offset-md-1 col-md-5 offset-sm-1 col-sm-5">
                         <div class="row clearfix">
                             <%if (Session["Rol"].ToString() != "Asistente")
-                        {%>
+                                {%>
                             <div class=" col-sm-12 col-xl-6 col-lg-12 col-md-12 mb-20">
                                 <div class="card text-white o-hidden h-100">
                                     <a class="card-body card-dash" href="MiAgenda.aspx">
@@ -98,7 +96,7 @@
                                     </a>
                                 </div>
                             </div>
-                             <% } %>
+                            <% } %>
                             <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                                 <div class="card text-white o-hidden h-100">
                                     <a class="card-body card-dash" href="AsociarPaciente.aspx">
@@ -120,7 +118,7 @@
                                             <i style="color: #1d5e93" class="fas fa-calendar-check fa-4x"></i>
                                         </a>
                                         <a class="card-body card-dash col-4" href="GestionarAgenda.aspx" style="font-size: 20px; font-weight: 500; padding: 20px 39px 0px 0px;">
-                                            <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color:whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
+                                            <div class="" style="border-radius: 50%; width: 50px; height: 50px; padding: 8px; background: #fff; border: 2px solid #1d5e93; background-color: whitesmoke; color: #1d5e93; text-align: center; font: 26px Arial, sans-serif;">
                                                 <asp:Label ID="lblCantidadCitasPendientes" runat="server" class="timer count-title count-number" data-speed="1500" ToolTip="Citas Pendientes para Hoy" />
 
                                             </div>

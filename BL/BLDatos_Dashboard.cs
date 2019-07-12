@@ -41,5 +41,13 @@ namespace BL
             this.cantidadConsultasActivas = miTODatos.cantidadConsultasActivas;
             this.cantidadExpedientesSinCuenta = miTODatos.cantidadExpedientesSinCuenta;
         }
+
+
+        public void buscarDatosDashBoardPaciente(String Correo)
+        {
+            miDAODatos.buscarDatosPaciente(miTODatos, Correo);
+            this.cantidadExpedientes = miTODatos.cantidadExpedientes;
+            this.cantidadCitasPendientes = miTODatos.cantidadCitasPendientes;
+        }
     }
 }
