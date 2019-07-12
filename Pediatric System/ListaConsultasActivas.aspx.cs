@@ -69,7 +69,7 @@ namespace Pediatric_System
                 string doctor = cons.CodigoMedico;
                 string paciente = "";
 
-                manejadorExpediente.obtenerNombrePaciente(cons.CodigoMedico, paciente);
+                manejadorExpediente.obtenerNombrePaciente(cons.CodigoExpediente, paciente);
 
                 lista.Add(new ListaItem(fecha, paciente));
             }

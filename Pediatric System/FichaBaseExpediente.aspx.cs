@@ -335,7 +335,7 @@ namespace Pediatric_System
 
             ManejadorExpediente manejador = new ManejadorExpediente();
 
-            //ActualizarEsquemaVacunacion();
+            
 
 
             //Revisar si cuando se presiona el boton de guardar es para actualizar un expediente o ingresar un nuevo expediente 
@@ -343,6 +343,7 @@ namespace Pediatric_System
             {
                 actualizarExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
                 confirmacion = manejador.actualizarExpediente(expediente, direccionExp, direccionEncar, direccionFactu, encargado, facturante, historiaClinica);
+                ActualizarEsquemaVacunacion();
             }
             else
             {

@@ -94,7 +94,7 @@
             
        
             <div class="btnGuardarExpediente form-group col-lg-12 col-md-12 col-sm-12 col-xs-6" style="text-align: right;">
-                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
                 <asp:Button ID="btnEditar" runat="server" Text="GUARDAR" CssClass="btn btn-guardar" OnClick="btnEditar_Click"></asp:Button>
             </div>
         </form>
