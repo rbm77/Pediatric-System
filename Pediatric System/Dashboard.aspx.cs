@@ -22,7 +22,7 @@ namespace Pediatric_System
             else {
                 if ((String)Session["codigoMedico"] == "")
                 {
-                  mensajeAviso("warning", "Debe tener un medico asociado a su cuenta para acceder a la sección de Citas");
+                  mensajeAviso("warning", "Debe tener un médico asociado a su cuenta para acceder a la sección de Citas y Consultas Activas");
                 }
                 conteos();
             }
@@ -66,7 +66,7 @@ namespace Pediatric_System
             //          danger = Rojo
             //          warning = Amarillo
             mensajeConfirmacion.Text = "<div class=\"alert alert-" + color + " alert-dismissible fade show\" " +
-           "role=\"alert\"  style =\"margin-left:50%\"> <strong></strong>" + texto + "<button" +
+           "role=\"alert\"  style =\"margin-left:20%\"> <strong></strong>" + texto + "<button" +
          " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
          " <span aria-hidden=\"true\">&times;</span> </button> </div>";
             mensajeConfirmacion.Visible = true;
