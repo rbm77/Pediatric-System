@@ -54,7 +54,7 @@ namespace DAO
                 miTODatos.cantidadExpedientes = (int)comando.ExecuteScalar() + "";
 
 
-                SqlCommand comando2 = new SqlCommand("Select count('Codigo_medico') from cita where fecha = CAST(GETDATE() AS DATE) and Hora > FORMAT(DATEADD(HOUR, +1, GETDATE()),'h:mm tt') and Codigo_Medico = @cod;", conexion);
+                SqlCommand comando2 = new SqlCommand("Select count('Codigo_medico') from cita where fecha = CAST(GETDATE() AS DATE) and CAST(Hora AS time) > DATEADD(HOUR, -6,cast(getutcdate() as time)) and Codigo_Medico = @cod;", conexion);
                 comando2.Parameters.AddWithValue("@cod", codigoMedico);
                 comando2.Transaction = transaccion;
 
