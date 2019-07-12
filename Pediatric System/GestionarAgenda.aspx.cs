@@ -22,6 +22,11 @@ namespace Pediatric_System
         {
             // La primera vez que se carga la pagina se debe mostrar la agenda del dia actual
 
+            if((String)Session["codigoMedico"] == "")
+            {
+                Response.Redirect("dashboard.aspx");
+            }
+
             if (!IsPostBack)
             {
                 MostrarAgenda(DateTime.Now, "");

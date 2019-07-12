@@ -1673,6 +1673,7 @@
     <Content Include="JS\jquery\iphone-style-checkboxes.js" />
     <Content Include="JS\sb-admin.min.js" />
     <Content Include="ListaCitas.aspx" />
+    <Content Include="ListaConsultasActivas.aspx" />
     <Content Include="ListaExpedientes.aspx" />
     <Content Include="InicioUsuarioExterno.aspx" />
     <Content Include="JS\Calendario.js" />
@@ -1806,6 +1807,13 @@
     </Compile>
     <Compile Include="ListaCitas.aspx.designer.cs">
       <DependentUpon>ListaCitas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ListaConsultasActivas.aspx.cs">
+      <DependentUpon>ListaConsultasActivas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListaConsultasActivas.aspx.designer.cs">
+      <DependentUpon>ListaConsultasActivas.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListaExpedientes.aspx.cs">
       <DependentUpon>ListaExpedientes.aspx</DependentUpon>

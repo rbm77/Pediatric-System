@@ -82,7 +82,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link nombre-input" id="info-personal-facturante-tab" data-toggle="tab" href="#info-personal-facturante" role="tab" aria-controls="info-personal-facturante" aria-selected="false">Inf. del Facturante</a>
+                        <a class="nav-link nombre-input" id="info-personal-facturante-tab" data-toggle="tab" href="#info-personal-facturante" role="tab" aria-controls="info-personal-facturante" aria-selected="false">Inf. Destinatario Factura</a>
                     </li>
 
                     <li class="nav-item">

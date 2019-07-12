@@ -48,6 +48,7 @@
     <Compile Include="BLCita.cs" />
     <Compile Include="BLConsulta.cs" />
     <Compile Include="BLCuenta.cs" />
+    <Compile Include="BLDatos_Dashboard.cs" />
     <Compile Include="BLDireccion.cs" />
     <Compile Include="BLEncargado_Facturante.cs" />
     <Compile Include="BLEnviarCorreo.cs" />

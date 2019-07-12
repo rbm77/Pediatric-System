@@ -435,7 +435,7 @@
 
                                                         <div class="form-check form-check-inline">
                                                             <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                                                <input runat="server" class="form-check-input" type="radio" name="opciones_primera_vez" id="opcion_año" value="año">
+                                                                <input runat="server" class="form-check-input" type="radio" name="opciones_primera_vez" id="opcion_anno" value="anno">
                                                                 <label class="form-check-label nombre-input" for="opciones_primera_vez">Año</label>
                                                             </div>
                                                         </div>
@@ -492,7 +492,8 @@
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <button runat="server" type="submit" class="btn btn-info form-control">REPORTAR</button>
+                                                        <asp:Button type="submit" CssClass="btn btn-neutro" runat="server" id="btnReportarMM" OnClick="btnReportarMM_Click" Text="REPORTAR" />
+           
                                                     </div>
                                                 </div>
                                             </div>
@@ -543,7 +544,7 @@
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <asp:Button type="submit" CssClass="btn btn-neutro" runat="server" id="btnGenerarReferencia" OnClick="btnGenerarReferencia_Click" Text="GENERAR" />
+                                                        <asp:Button ClientIDMode="Static" type="submit" CssClass="btn btn-neutro" runat="server" id="btnGenerarReferencia" OnClick="btnGenerarReferencia_Click" Text="GENERAR" />
                                                     </div>
                                                 </div>
                                             </div>

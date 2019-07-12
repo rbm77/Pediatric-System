@@ -47,11 +47,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar la agenda");
+            SqlTransaction transaccion = null;
             
 
             try
             {
+                transaccion = conexion.BeginTransaction("Actualizar la agenda");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -88,8 +89,6 @@ namespace DAO
                     comando.Parameters.Clear();
 
                 }
-
-
 
                 // Una vez actualizada, se recupera la nueva agenda
 
@@ -202,12 +201,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -303,11 +303,11 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Eliminar horario");
-
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Eliminar horario");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -393,13 +393,14 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar duracion de la cita");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Cargar duracion de la cita");
+                
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT DURACION_CITA FROM MEDICO WHERE CODIGO_MEDICO = @codigo;", conexion);
@@ -502,12 +503,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar disponibilidad del día");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
