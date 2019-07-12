@@ -88,7 +88,9 @@
                             <%} %>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+                              <% if (Session["Rol"].ToString() == "Medico" || Session["Rol"].ToString() == "Asistente"  )  {%>
                             <a class="dropdown-item" href="EditarCuentaPersonal.aspx">Mi Cuenta</a>
+                             <%} %>
                             <a class="dropdown-item" href="EditarContrasena.aspx">Cambiar Contraseña</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="IniciarSesion.aspx" data-toggle="modal" data-target="#logoutModal">Cerrar Sesión</a>
