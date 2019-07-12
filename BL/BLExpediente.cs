@@ -19,21 +19,15 @@ namespace BL
         public string ExpedienteAntiguo { get; set; }
         public string Direccion { get; set; }
         public string Correo { get; set; }
-
+        public string Encargado { get; set; }
+        public string Facturante { get; set; }
+        
         public BLExpediente()
         {
 
         }
 
-        public BLExpediente(string cod, string nombre, string primerApellido, string segundoApellido)
-        {
-            this.Codigo = cod;
-            this.Nombre = nombre;
-            this.PrimerApellido = primerApellido;
-            this.SegundoApellido = segundoApellido;
-        }
-
-        public BLExpediente(string cod, string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
+        public BLExpediente(string cod, string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion, string encar, string factu)
         {
             this.Codigo = cod;
             this.Nombre = nombre;
@@ -45,6 +39,8 @@ namespace BL
             this.Foto = foto;
             this.ExpedienteAntiguo = expediente;
             this.Direccion = direccion;
+            this.Encargado = encar;
+            this.Facturante = factu;
         }
     }
 }
