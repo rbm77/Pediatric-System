@@ -120,6 +120,13 @@ namespace BL
             return confirmacion;
         }
 
+        public string obtenerNombrePaciente(string codExpediente, string nombreCompleto)
+        {
+            DAOExpediente dao = new DAOExpediente();
+            string confirmacion = dao.obtnerNombrePaciente(codExpediente, nombreCompleto);
+            return confirmacion;
+        }
+
         private void convertirExpedienteCompleto_TO_BL(BLExpediente expedienteBL, BLDireccion direccionPacienteBL, BLEncargado_Facturante encargadoBL, BLDireccion direccionEncargadoBL, BLEncargado_Facturante facturanteBL, BLDireccion direccionFacturanteBL, BLHistoriaClinica historiaClinicaBL,
             TOExpediente expediente, TODireccion direccionPaciente, TOEncargado_Facturante encargado, TODireccion direccionEncargado, TOEncargado_Facturante facturante, TODireccion direccionFacturante, TOHistoriaClinica historiaClinica)
         {

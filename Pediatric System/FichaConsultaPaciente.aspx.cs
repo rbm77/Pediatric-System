@@ -42,7 +42,7 @@ namespace Pediatric_System
 
             if (!Page.IsPostBack)
             {
-                if ((string)Session["pagina"] != "consultas_guardada")
+                if (((string)Session["pagina"] != "consultas_guardada") || ((string)Session["pagina"] != "consultas_activas_seleccionada"))
                 {
 
                     string fechaA = Convert.ToString(DateTime.Now);
@@ -58,9 +58,11 @@ namespace Pediatric_System
                     consulta.CodigoExpediente = expediente.Codigo;
                     consulta.Fecha_Hora = ggg;
                     consulta.Estado = true;
+                    consulta.CodigoMedico = Session["codigoMedico"].ToString();
                     BLExamenFisico examenFisico = new BLExamenFisico();
                     examenFisico.CodigoExpediente = expediente.Codigo;
                     examenFisico.Fecha_Hora = ggg;
+                    examenFisico.CodigoMedico = Session["codigoMedico"].ToString();
 
                     ManejadorConsulta manejador = new ManejadorConsulta();
                     manejador.crearConsulta(consulta, examenFisico);
@@ -154,7 +156,14 @@ namespace Pediatric_System
             }
 
             ManejadorConsulta manejador = new ManejadorConsulta();
-            manejador.mostrarConsulta(consultaEnviada.CodigoExpediente, consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico);
+            if(Session["pagina"].ToString() == "consultas_guardada")
+            {
+                manejador.mostrarConsulta(consultaEnviada.CodigoExpediente, consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico);
+            }
+            else
+            {
+                manejador.mostrarConsultaFecha(consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico);
+            }
 
             //Datos del objeto Consulta 
             analisisPac.Value = consultaEnviada.Analisis;
