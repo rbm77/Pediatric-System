@@ -45,10 +45,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Administrativo");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Insertar nuevo Administrativo");
+
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
                 SqlCommand comando = new SqlCommand("INSERT INTO ADMINISTRATIVO (CUE_Correo, Nombre, Apellido, Cedula,Telefono) VALUES (@cor, @nom, @ape, @ced, @tel);", conexion);
 
@@ -118,10 +120,11 @@ namespace DAO
             }
 
             // Se inicia una nueva transacción
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Administrativo");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Insertar nuevo Administrativo");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
                 SqlCommand comando = new SqlCommand("UPDATE ADMINISTRATIVO SET NOMBRE = @nom, APELLIDO = @ape, Cedula = @ced, Telefono = @tel, Cod_Asist = @cod_asist WHERE CUE_CORREO = @cor;", conexion);
@@ -200,10 +203,11 @@ namespace DAO
             }
 
             // Se inicia una nueva transacción
-            SqlTransaction transaccion = conexion.BeginTransaction("Buscar Administrativo");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Buscar Administrativo");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
                 SqlCommand comando = new SqlCommand("SELECT * FROM ADMINISTRATIVO WHERE CUE_CORREO = @cor;", conexion);

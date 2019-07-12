@@ -149,6 +149,7 @@
                     </div>
                 </div>
             </div>
+            <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
         </div>
     </div>
 

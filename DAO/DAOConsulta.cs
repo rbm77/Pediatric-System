@@ -39,10 +39,12 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nueva consulta");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Insertar nueva consulta");
+
                 const string FMT = "o";
                 string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
                 
@@ -113,11 +115,13 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar estado de consulta");
+            SqlTransaction transaccion = null;
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Actualizar estado de consulta");
+
                 // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
 
                 SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET ESTADO = @estado WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
@@ -187,11 +191,13 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar referencia medica");
+            SqlTransaction transaccion = null;
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Actualizar referencia medica");
+
                 // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
 
                 SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET REFERENCIA_MEDICA = @refMed, ESPECIALIDAD_REFERENCIA = @espRef, MOTIVO_REFERENCIA = @motRef WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
@@ -263,11 +269,13 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar medicina mixta");
+            SqlTransaction transaccion = null;
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Actualizar medicina mixta");
+
                 // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
 
                 SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET MEDICINA_MIXTA = @medMix, FRECUENCIA = @frecu, REFERIDO_A = @refe WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
@@ -339,11 +347,13 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Actualizar consulta");
+            SqlTransaction transaccion = null;
                       
 
             try
             {
+                transaccion = conexion.BeginTransaction("Actualizar consulta");
+
                 // --------------------------- Actualizar en la tabla Consulta ---------------------------  //
 
                 SqlCommand cmdActuExpediente = new SqlCommand("UPDATE CONSULTA SET ANALISIS = @analisis, IMPRESION_DIAGNOSTICA = @impresion, PLAN_D = @plan, PADECIMIENTO_ACTUAL =@padece WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
@@ -445,10 +455,12 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar consultas");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar consultas");
+
                 SqlCommand cmdConsultas = new SqlCommand("SELECT * FROM CONSULTA WHERE CODIGO_EXPEDIENTE = @cod", conexion);
                 cmdConsultas.Parameters.AddWithValue("@cod", codExpediente);
                 cmdConsultas.Transaction = transaccion;
@@ -533,10 +545,12 @@ namespace DAO
                 return confirmacion;
             }
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar consulta");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar consulta");
+
                 // --------------------------- Buscar en la tabla Consulta ---------------------------  //
 
                 const string FMT = "o";

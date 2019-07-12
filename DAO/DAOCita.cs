@@ -49,12 +49,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Ingresar nueva cita");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Ingresar nueva cita");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -145,12 +146,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar horas de citas");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar horas de citas");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -251,11 +253,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cancelar cita");
+            SqlTransaction transaccion = null;
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cancelar cita");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -344,12 +347,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar cita");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar cita");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -451,12 +455,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar citas");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
+                transaccion = conexion.BeginTransaction("Cargar citas");
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -465,29 +470,29 @@ namespace DAO
 
                 comando.Transaction = transaccion;
 
-                    comando.Parameters.AddWithValue("@cuenta", cuenta);
+                comando.Parameters.AddWithValue("@cuenta", cuenta);
 
-                    // Se ejecuta el comando 
+                // Se ejecuta el comando 
 
-                    SqlDataReader lector = comando.ExecuteReader();
+                SqlDataReader lector = comando.ExecuteReader();
 
-                    // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de citas
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de citas
 
-                    if (lector.HasRows)
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
                     {
-                        while (lector.Read())
-                        {
-                            TOCita cita = new TOCita(lector["CODIGO_MEDICO"].ToString(), lector["NOMBRE_MEDICO"].ToString() + " " +
-                                lector["APELLIDO_MEDICO"].ToString(), lector["NOMBRE_PACIENTE"].ToString(),
-                                ((DateTime)lector["FECHA"]).ToShortDateString(),
-                                lector["HORA"].ToString());
+                        TOCita cita = new TOCita(lector["CODIGO_MEDICO"].ToString(), lector["NOMBRE_MEDICO"].ToString() + " " +
+                            lector["APELLIDO_MEDICO"].ToString(), lector["NOMBRE_PACIENTE"].ToString(),
+                            ((DateTime)lector["FECHA"]).ToShortDateString(),
+                            lector["HORA"].ToString());
 
-                                listaCitas.Add(cita);
-                                                     
-                        }
+                        listaCitas.Add(cita);
+
                     }
-                    lector.Close();
-                
+                }
+                lector.Close();
+
 
                 transaccion.Commit();
 
@@ -527,101 +532,102 @@ namespace DAO
         /// <returns>Retorna un mensaje de confirmacion</returns>
         public string CargarPacientes(List<TOPacienteCita> listaPacientes, string cuenta)
         {
-                string confirmacion = "La lista de pacientes se cargó exitosamente";
+            string confirmacion = "La lista de pacientes se cargó exitosamente";
 
-                // Se abre la conexión
+            // Se abre la conexión
 
-                if (conexion != null)
+            if (conexion != null)
+            {
+                try
                 {
-                    try
+                    if (conexion.State != ConnectionState.Open)
                     {
-                        if (conexion.State != ConnectionState.Open)
-                        {
-                            conexion.Open();
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        confirmacion = "Ocurrió un error y no se pudo cargar la lista de pacientes";
-                        return confirmacion;
+                        conexion.Open();
                     }
                 }
-                else
+                catch (Exception)
                 {
                     confirmacion = "Ocurrió un error y no se pudo cargar la lista de pacientes";
                     return confirmacion;
                 }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar la lista de pacientes";
+                return confirmacion;
+            }
 
-                // Se inicia una nueva transacción
+            // Se inicia una nueva transacción
 
-                SqlTransaction transaccion = conexion.BeginTransaction("Cargar la lista de pacientes");
-
-
-
-                try
-                {
-
-                    // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
-
-                    SqlCommand comando = new SqlCommand("SELECT T1.NOMBRE, T1.PRIMER_APELLIDO, T1.SEGUNDO_APELLIDO," +
-                        " T1.FECHA_NACIMIENTO, T2.CORREO, T2.TELEFONO FROM EXPEDIENTE T1, ENCARGADO T2 " +
-                        " WHERE T1.CORREO = @cuenta AND " +
-                        "T1.CODIGO_EXPEDIENTE = T2.CODIGO_EXPEDIENTE;", conexion);
+            SqlTransaction transaccion = null;
 
 
-                    comando.Transaction = transaccion;
+
+            try
+            {
+                transaccion = conexion.BeginTransaction("Cargar la lista de pacientes");
+
+                // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
+
+                SqlCommand comando = new SqlCommand("SELECT T1.NOMBRE, T1.PRIMER_APELLIDO, T1.SEGUNDO_APELLIDO," +
+                    " T1.FECHA_NACIMIENTO, T2.CORREO, T2.TELEFONO FROM EXPEDIENTE T1, ENCARGADO T2 " +
+                    " WHERE T1.CORREO = @cuenta AND " +
+                    "T1.CODIGO_EXPEDIENTE = T2.CODIGO_EXPEDIENTE;", conexion);
+
+
+                comando.Transaction = transaccion;
 
                 comando.Parameters.AddWithValue("@cuenta", cuenta);
 
-                    // Se ejecuta el comando 
+                // Se ejecuta el comando 
 
-                    SqlDataReader lector = comando.ExecuteReader();
+                SqlDataReader lector = comando.ExecuteReader();
 
-                    // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de pacientes
+                // Se lee el dataReader con los registros obtenidos y se cargan los datos en la lista de pacientes
 
-                    if (lector.HasRows)
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
                     {
-                        while (lector.Read())
-                        {
-                            TOPacienteCita paciente = new TOPacienteCita(lector["NOMBRE"].ToString() + " " + lector["PRIMER_APELLIDO"].ToString() + " " + 
-                                lector["SEGUNDO_APELLIDO"].ToString(), ((DateTime)lector["FECHA_NACIMIENTO"]).ToShortDateString(), lector["CORREO"].ToString(), lector["TELEFONO"].ToString());
+                        TOPacienteCita paciente = new TOPacienteCita(lector["NOMBRE"].ToString() + " " + lector["PRIMER_APELLIDO"].ToString() + " " +
+                            lector["SEGUNDO_APELLIDO"].ToString(), ((DateTime)lector["FECHA_NACIMIENTO"]).ToShortDateString(), lector["CORREO"].ToString(), lector["TELEFONO"].ToString());
 
-                            listaPacientes.Add(paciente);
+                        listaPacientes.Add(paciente);
 
-                        }
                     }
+                }
 
-                    lector.Close();
+                lector.Close();
 
-                    transaccion.Commit();
+                transaccion.Commit();
 
+            }
+            catch (Exception)
+            {
+                try
+                {
+
+                    // En caso de un error se realiza un rollback a la transacción
+
+                    transaccion.Rollback();
                 }
                 catch (Exception)
                 {
-                    try
-                    {
-
-                        // En caso de un error se realiza un rollback a la transacción
-
-                        transaccion.Rollback();
-                    }
-                    catch (Exception)
-                    {
-                    }
-                    finally
-                    {
-                        confirmacion = "Ocurrió un error y no se pudo cargar la lista de pacientes";
-                    }
                 }
                 finally
                 {
-                    if (conexion.State != ConnectionState.Closed)
-                    {
-                        conexion.Close();
-                    }
+                    confirmacion = "Ocurrió un error y no se pudo cargar la lista de pacientes";
                 }
-                return confirmacion;
-            
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+            return confirmacion;
+
 
         }
     }

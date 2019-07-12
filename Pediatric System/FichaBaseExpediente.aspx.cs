@@ -127,8 +127,7 @@ namespace Pediatric_System
             Session["edadPaciente"] = manejadorEdad.ExtraerEdad(expediente.FechaNacimiento);
             Session["fechaNacimento"] = expediente.FechaNacimiento;
 
-            Session["direccionPaciente"] = expDireccion.Barrio + ", " + expDireccion.Distrito + ", " 
-                + expDireccion.Canton + ", " + expDireccion.Provincia;
+            Session["direccionPaciente"] = expDireccion.Distrito + ", " + expDireccion.Canton + ", " + expDireccion.Provincia;
             Session["nombreEncargado"] = encargado.Nombre + " " + encargado.PrimerApellido + " " + encargado.SegundoApellido;
             Session["telefonoEncargado"] = encargado.Telefono;
             Session["direccionEncargado"] = encDireccion.Barrio + ", " + encDireccion.Distrito + ", "
@@ -1098,32 +1097,22 @@ namespace Pediatric_System
         protected void nuevaConsulta_Click(object sender, EventArgs e)
         {
 
-
+           if (Session["codigoMedico"] == null)
+            {
+                mensajeConfirmacion1.Text = "<div class=\"alert alert-" + "warning" + " alert-dismissible fade show\" " +
+                "role=\"alert\"> <strong></strong>" + "Debe Asociar su Cuenta a un Medico para Crear Consultas" + "<button" +
+                " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
+                " <span aria-hidden=\"true\">&times;</span> </button> </div>";
+                mensajeConfirmacion1.Visible = true;
+            } else { 
             Session["pagina"] = "expediente-nuevaConsulta";
             Response.Redirect("FichaConsultaPaciente.aspx");
         }
+    }
 
         protected void regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("ListaExpedientes.aspx");
         }
-
-
-        //private void MostrarMensaje(string confirmacion)
-        //{
-        //    string colorMensaje = "success";
-
-        //    if (confirmacion.Contains("error"))
-        //    {
-        //        colorMensaje = "danger";
-        //    }
-
-
-        //    mensajeConfirmacion.Text = "<div class=\"alert alert-" + colorMensaje + " alert-dismissible fade show\" " +
-        //        "role=\"alert\"> <strong></strong>" + confirmacion + "<button" +
-        //        " type = \"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">" +
-        //        " <span aria-hidden=\"true\">&times;</span> </button> </div>";
-        //    mensajeConfirmacion.Visible = true;
-        //}
     }
 }

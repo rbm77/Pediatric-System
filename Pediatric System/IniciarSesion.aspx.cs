@@ -16,6 +16,7 @@ namespace Pediatric_System
         {
             mensajeConfirmacion.Visible = false;
             Session["Cuenta"] = null;
+            Session["codigoMedico"] = null;
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
