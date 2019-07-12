@@ -25,6 +25,14 @@ namespace BL
 
         }
 
+        public BLExpediente(string cod, string nombre, string primerApellido, string segundoApellido)
+        {
+            this.Codigo = cod;
+            this.Nombre = nombre;
+            this.PrimerApellido = primerApellido;
+            this.SegundoApellido = segundoApellido;
+        }
+
         public BLExpediente(string cod, string nombre, string primerApellido, string segundoApellido, string cedula, DateTime fechaNacimiento, string sexo, byte[] foto, string expediente, string direccion)
         {
             this.Codigo = cod;

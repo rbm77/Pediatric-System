@@ -43,10 +43,10 @@ namespace DAO
                 confirmacion = "Ocurrio un error y no se encontro la cuenta";
                 return confirmacion;
             }
-            SqlTransaction transaccion = conexion.BeginTransaction("Buscar Cuenta con Contraseña");
+            SqlTransaction transaccion = null;
             try
             {
-
+                transaccion = conexion.BeginTransaction("Buscar Cuenta con Contraseña");
                 SqlCommand comando = new SqlCommand("select * from Cuenta where CORREO = @Correo and CONTRASENA = @Contraseña", conexion);
                 comando.Transaction = transaccion;
 
@@ -125,11 +125,11 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Editar contraseña");
+            SqlTransaction transaccion = null;
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Editar contraseña");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
 
@@ -208,11 +208,11 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Editar contraseña");
+            SqlTransaction transaccion = null;
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Editar contraseña");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("UPDATE CUENTA SET CONTRASENA = @con WHERE CORREO = @cor;", conexion);
@@ -290,12 +290,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nueva cuenta");
+            SqlTransaction transaccion = null;
             string confirmacion = "Correcto";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Insertar nueva cuenta");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("INSERT INTO CUENTA (Correo, Contrasena, Tipo, Estado) VALUES (@cor, @con, @tip, @est);", conexion);
@@ -376,11 +376,11 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Revisar Contraseña");
+            SqlTransaction transaccion = null;
             Boolean valor = false;
             try
             {
-
+                transaccion = conexion.BeginTransaction("Revisar Contraseña");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT CONTRASENA FROM CUENTA WHERE CORREO = @cor;", conexion);
@@ -468,11 +468,11 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Revisar Contraseña");
+            SqlTransaction transaccion = null;
             Boolean valor = false;
             try
             {
-
+                transaccion = conexion.BeginTransaction("Revisar Contraseña");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT * FROM CUENTA WHERE CORREO = @cor;", conexion);
@@ -551,10 +551,11 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Editar estado");
+            SqlTransaction transaccion = null;
 
             try
             {
+                transaccion = conexion.BeginTransaction("Editar estado");
                 SqlCommand comando;
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
@@ -633,12 +634,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Buscar Lista");
+            SqlTransaction transaccion = null;
             //string confirmacion = "La cita se ingresó exitosamente en el sistema";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Buscar Lista");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT * FROM CUENTA WHERE TIPO = 'Paciente'", conexion);

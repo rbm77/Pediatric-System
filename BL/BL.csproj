@@ -53,6 +53,7 @@
     <Compile Include="BLEncargado_Facturante.cs" />
     <Compile Include="BLEnviarCorreo.cs" />
     <Compile Include="BLExamenFisico.cs" />
+    <Compile Include="BLExamenLaboratorio.cs" />
     <Compile Include="BLExpediente.cs" />
     <Compile Include="BLHistoriaClinica.cs" />
     <Compile Include="BLMedico.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="ManejadorCita.cs" />
     <Compile Include="ManejadorConsulta.cs" />
     <Compile Include="ManejadorEdad.cs" />
+    <Compile Include="ManejadorExamenesLaboratorio.cs" />
     <Compile Include="ManejadorExpediente.cs" />
     <Compile Include="ManejadorVacunas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

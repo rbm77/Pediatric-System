@@ -40,10 +40,11 @@ namespace DAO
                 //return confirmacion;
             }
             // Se inicia una nueva transacción
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
+            SqlTransaction transaccion = null;
             //  string confirmacion = "El Medico se ingresó exitosamente en el sistema";
             try
             {
+                transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("INSERT INTO MEDICO (Codigo_Medico, CUE_Correo, Nombre, Apellido, Cedula,Telefono, Especialidad) VALUES (@cod, @cor, @nom, @ape, @ced, @tel, @esp);", conexion);
@@ -205,12 +206,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Buscar Medico");
+            SqlTransaction transaccion = null;
             // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Buscar Medico");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT * FROM MEDICO WHERE CUE_CORREO = @cor;", conexion);
@@ -295,12 +296,12 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Insertar nuevo Medico");
+            SqlTransaction transaccion = null;
             // string confirmacion = "El Medico se ingresó exitosamente en el sistema";
 
             try
             {
-
+                conexion.BeginTransaction("Insertar nuevo Medico");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("UPDATE MEDICO SET NOMBRE = @nom, APELLIDO = @ape, Cedula = @ced, Telefono = @tel WHERE CUE_CORREO = @cor;", conexion);
@@ -387,13 +388,13 @@ namespace DAO
 
             // Se inicia una nueva transacción
 
-            SqlTransaction transaccion = conexion.BeginTransaction("Cargar la lista de médicos");
+            SqlTransaction transaccion = null;
 
 
 
             try
             {
-
+                transaccion = conexion.BeginTransaction("Cargar la lista de médicos");
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
                 SqlCommand comando = new SqlCommand("SELECT CODIGO_MEDICO, NOMBRE, APELLIDO FROM MEDICO;", conexion);
