@@ -295,6 +295,7 @@ namespace DAO
                 cmd = new SqlCommand("reporteMedMixta", conexion);
                 cmd.Parameters.Add(new SqlParameter("@fini", f1));
                 cmd.Parameters.Add(new SqlParameter("@ffin", ff2));
+                cmd.Parameters.Add(new SqlParameter("@code", code));
 
                 cmd.CommandType = CommandType.StoredProcedure;
                 da.SelectCommand = cmd;
