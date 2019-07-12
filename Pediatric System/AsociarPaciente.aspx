@@ -54,7 +54,7 @@
                                 <Columns>
                                     <asp:BoundField DataField="Correo" HeaderText="Correo" />
                                     <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpediente" Text="Asociar Expediente(s)"
-                                        ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
+                                        ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="190px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
                                 </Columns>
                             </asp:GridView>
 
