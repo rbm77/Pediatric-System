@@ -27,12 +27,12 @@
                 <div class="form-row" style="margin-top: 15px;">
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Inicio</label>
-                        <input id="dateIni" class="datepickerIni" value="09/07/2019" />
+                        <input id="dateIni" class="datepickerIni"  />
                     </div>
 
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <label style="font-size: 16px; font-weight: bold; color: dimgray">Fecha de Fin</label>
-                        <input id="dateFin" class="datepickerFin" value="09/07/2019" />
+                        <input id="dateFin" class="datepickerFin" />
                     </div>
                     
                     <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
@@ -123,6 +123,13 @@
 
 
     <script>
+        var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0');
+            var yyyy = today.getFullYear();
+            today = dd + '/' + mm + '/' + yyyy;
+            $('input[id=dateIni]').attr('value', today);
+        $('input[id=dateFin]').attr('value', today);
 
         $('.datepickerIni').datepicker({
             uiLibrary: 'bootstrap4',

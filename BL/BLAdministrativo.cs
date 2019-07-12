@@ -15,6 +15,7 @@ namespace BL
         public string apellido;
         public int cedula;
         public int telefono;
+        public string cod_Asist;
 
         TOAdministrativo miTOAdministrativo = new TOAdministrativo();
         DAOAdministrativo miDAOAdministrativo = new DAOAdministrativo();
@@ -29,6 +30,7 @@ namespace BL
             miTOAdministrativo.apellido = this.apellido;
             miTOAdministrativo.cedula = this.cedula;
             miTOAdministrativo.telefono = this.telefono;
+            miTOAdministrativo.cod_Asist = this.cod_Asist;
             miDAOAdministrativo.insertarAdministrativo(miTOAdministrativo);
         }
 
@@ -43,6 +45,7 @@ namespace BL
             this.apellido = miTOAdministrativo.apellido;
             this.cedula = miTOAdministrativo.cedula;
             this.telefono = miTOAdministrativo.telefono;
+            this.cod_Asist = miTOAdministrativo.cod_Asist;
         }
 
         /// <summary>
@@ -55,6 +58,7 @@ namespace BL
             miTOAdministrativo.apellido = this.apellido;
             miTOAdministrativo.cedula = this.cedula;
             miTOAdministrativo.telefono = this.telefono;
+            miTOAdministrativo.cod_Asist = this.cod_Asist;
             miDAOAdministrativo.editarAdministrativo(miTOAdministrativo);
         }
     }

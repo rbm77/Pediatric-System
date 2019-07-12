@@ -124,7 +124,7 @@ namespace DAO
             {
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
-                SqlCommand comando = new SqlCommand("UPDATE ADMINISTRATIVO SET NOMBRE = @nom, APELLIDO = @ape, Cedula = @ced, Telefono = @tel WHERE CUE_CORREO = @cor;", conexion);
+                SqlCommand comando = new SqlCommand("UPDATE ADMINISTRATIVO SET NOMBRE = @nom, APELLIDO = @ape, Cedula = @ced, Telefono = @tel, Cod_Asist = @cod_asist WHERE CUE_CORREO = @cor;", conexion);
 
                 comando.Transaction = transaccion;
 
@@ -135,6 +135,8 @@ namespace DAO
                 comando.Parameters.AddWithValue("@ape", miAdministrativo.apellido);
                 comando.Parameters.AddWithValue("@ced", miAdministrativo.cedula);
                 comando.Parameters.AddWithValue("@tel", miAdministrativo.telefono);
+                comando.Parameters.AddWithValue("@cod_asist", miAdministrativo.cod_Asist);
+                
 
 
                 // Se ejecuta el comando y se realiza un commit de la transacción
@@ -222,6 +224,7 @@ namespace DAO
                         miTOAdministrativo.apellido = lector["APELLIDO"].ToString();
                         miTOAdministrativo.cedula = Int32.Parse(lector["CEDULA"].ToString());
                         miTOAdministrativo.telefono = Int32.Parse(lector["TELEFONO"].ToString());
+                        miTOAdministrativo.cod_Asist = lector["COD_ASIST"].ToString(); 
                     }
                 }
 

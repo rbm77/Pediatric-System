@@ -73,6 +73,12 @@
                                         <asp:TextBox  runat="server" ID="txtCodigo" Visible="false" Enabled="false" CssClass="form-control"></asp:TextBox>
                                     </div>
                                 </div>
+                                <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="padding-general-label">
+                                        <asp:Label class="nombre-label" ID="lblCodAsist" Visible="false" runat="server" Text="Asistente de:"></asp:Label>
+                                        <asp:DropDownList ID="ddCodAsist" CssClass="browser-default custom-select" Visible="false"  runat="server" ></asp:DropDownList>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
