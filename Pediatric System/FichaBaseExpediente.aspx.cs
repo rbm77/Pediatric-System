@@ -1097,7 +1097,7 @@ namespace Pediatric_System
         protected void nuevaConsulta_Click(object sender, EventArgs e)
         {
 
-           if (Session["codigoMedico"] == null)
+           if ((String)Session["codigoMedico"] == "")
             {
                 mensajeConfirmacion1.Text = "<div class=\"alert alert-" + "warning" + " alert-dismissible fade show\" " +
                 "role=\"alert\"> <strong></strong>" + "Debe Asociar su Cuenta a un Medico para Crear Consultas" + "<button" +

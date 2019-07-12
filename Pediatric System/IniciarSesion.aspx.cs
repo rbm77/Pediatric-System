@@ -16,6 +16,7 @@ namespace Pediatric_System
         {
             mensajeConfirmacion.Visible = false;
             Session["Cuenta"] = null;
+            Session.Clear();
             Session["codigoMedico"] = null;
         }
 
@@ -59,6 +60,7 @@ namespace Pediatric_System
                                 BLAdministrativo miBLAsist = new BLAdministrativo();
                                 miBLAsist.correo = cor;
                                 miBLAsist.buscarAdministrativo();
+                                Session["codigoMedico"] = miBLAsist.cod_Asist;
                                 Session["nombre"] = miBLAsist.nombre + " " + miBLAsist.apellido;
                                 Response.Redirect("Dashboard.aspx");
                                 break;

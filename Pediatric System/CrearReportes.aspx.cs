@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -43,7 +44,7 @@ namespace Pediatric_System
                 ddCodigoMedico.DataValueField = "CodigoMedico";
                 ddCodigoMedico.DataBind();
 
-                string disponible = "Seleccionar";
+                string disponible = "Todos";
 
                 if (fuente.Count == 0)
                 {
@@ -52,7 +53,7 @@ namespace Pediatric_System
 
                 ddCodigoMedico.Items.Insert(0, new ListItem(disponible));
                 ddCodigoMedico.SelectedIndex = 0;
-                ddCodigoMedico.Items[0].Attributes.Add("disabled", "disabled");
+         
             }
 
         }
@@ -88,6 +89,21 @@ namespace Pediatric_System
             }
         }
 
-    
+        protected void btnFiltrar_Click(object sender, EventArgs e)
+        {
+
+          
+            DateTime fini = DateTime.ParseExact(dateIni.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+            DateTime ffin = DateTime.ParseExact(dateFin.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+            string trep = tipoReporte.Value;
+            string codeMed = ddCodigoMedico.SelectedValue;
+            List<BLConsulta> consultas = new List<BLConsulta>();
+            ManejadorConsulta cons = new ManejadorConsulta();
+            cons.cargarListaConsultasFiltrada(consultas, codeMed, trep, fini.ToString("yyyy-MM-dd"), ffin.ToString("yyyy-MM-dd"));
+            gridConsultas.DataSource = consultas;
+            gridConsultas.DataBind();
+
+
+        }
     }
 }

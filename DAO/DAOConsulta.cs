@@ -760,8 +760,8 @@ namespace DAO
             }
             return confirmacion;
         }
-
-        public string CargarConsultaFecha(DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+      
+              public string CargarConsultaFecha(DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
         {
             string confirmacion = "La consulta se cargó correctamente";
 
@@ -906,5 +906,135 @@ namespace DAO
             }
             return confirmacion;
         }
+      
+      public string CargarListaConsultasFiltrada(List<TOConsulta> toConsultas, string codMedico, string tipoReporte, string ini, string fin)
+        {
+            string confirmacion = "Las consultas se cargaron exitosamente";
+
+            // Abrir la conexion
+            if (conexion != null)
+            {
+                try
+                {
+                    if (conexion.State != ConnectionState.Open)
+                    {
+                        conexion.Open();
+                    }
+                }
+                catch (Exception)
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar las consultas";
+                    return confirmacion;
+                }
+            }
+            else
+            {
+                confirmacion = "Ocurrió un error y no se pudo cargar las consultas";
+                return confirmacion;
+            }
+
+            SqlTransaction transaccion = conexion.BeginTransaction("Cargar consultas");
+
+            try
+            {
+                SqlCommand cmdConsultas;
+                if (codMedico == "Todos")
+                {
+                cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
+                } else { 
+
+                 cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE CODIGO_MEDICO = @cod and Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
+                    cmdConsultas.Parameters.AddWithValue("@cod", codMedico);
+                }
+                
+                cmdConsultas.Parameters.AddWithValue("@ini", ini);
+                cmdConsultas.Parameters.AddWithValue("@fin", fin);
+                cmdConsultas.Transaction = transaccion;
+
+                SqlDataReader lector = cmdConsultas.ExecuteReader();
+
+                if (lector.HasRows)
+                {
+                    while (lector.Read())
+                    {
+
+                        //const string FMT = "o";
+                        //DateTime now1 = DateTime.Now;
+                        //string strDate = now1.ToString(FMT);
+                        //DateTime now2 = DateTime.ParseExact(strDate, FMT, CultureInfo.InvariantCulture);
+                       
+
+                        TOConsulta consulta = new TOConsulta();
+                       
+                        consulta.CodigoExpediente = lector["CODIGO_EXPEDIENTE"].ToString();
+                        if (lector["CODIGO_EXPEDIENTE"].ToString().Contains("RN-"))
+                        {
+                            consulta.CodigoExpediente = "Recien Nacido";
+                        }
+
+
+                        //FRECUENCIA
+                        if (lector["FRECUENCIA"].ToString() == "primera vida")
+                        {
+                            consulta.Frecuencia = "Primera Vida";
+                        }
+                        else if (lector["FRECUENCIA"].ToString() == "primera año")
+                        {
+                            consulta.Frecuencia = "Primer año";
+                        }
+                        else
+                        {
+                            consulta.Frecuencia = lector["FRECUENCIA"].ToString();
+                        }
+                        //Referido A
+                        if (lector["REFERIDO_A"].ToString() == "refe_especialista")
+                        {
+                            consulta.ReferidoA = "Especialista";
+                        }
+                        else if (lector["REFERIDO_A"].ToString() == "refe_hospitalizacion")
+                        {
+                            consulta.ReferidoA = "Hospitalización";
+                        }
+                        else if (lector["REFERIDO_A"].ToString() == "refe_otro_centro")
+                        {
+                            consulta.ReferidoA = "Otro Centro";
+                        } else
+                        {
+                            consulta.ReferidoA = lector["FRECUENCIA"].ToString();
+                        }
+                        
+
+                        toConsultas.Add(consulta);
+                    }
+                }
+                lector.Close();
+                transaccion.Commit();
+            }
+            catch (Exception ex)
+            {
+                try
+                {
+                    transaccion.Rollback();
+                }
+                catch (Exception exe)
+                {
+
+                }
+                finally
+                {
+                    confirmacion = "Ocurrió un error y no se pudo cargar las consultas";
+                }
+            }
+            finally
+            {
+                if (conexion.State != ConnectionState.Closed)
+                {
+                    conexion.Close();
+                }
+            }
+
+            return confirmacion;
+        }
+        
     }
 }
