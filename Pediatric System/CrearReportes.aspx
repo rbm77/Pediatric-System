@@ -74,7 +74,7 @@
                     <label style="font-size: 20px; font-weight: bold; color: dimgray">Resultado</label>
                 </div>
             </div>
-
+            <asp:Literal ID="Literal1" runat="server" Visible="false"></asp:Literal>
             <div class="card visualizacion-medicina-mixta">
 
                <div class="col-12 margen-general-1-bottom paddingSidesCard" style="padding-top:10px">
@@ -130,7 +130,7 @@
             <br />
                 <div class="btnGuardarExpediente form-group col-lg-12 col-md-12 col-sm-12 col-xs-6" style="text-align: right;">
                 <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
-                <asp:Button ID="btnGenerar" runat="server" Text="GENERAR" CssClass="btn btn-guardar" OnClick="btnGenerar_Click"></asp:Button>
+                <asp:Button ID="btnGenerar" runat="server" Text="GENERAR" Enabled="false" CssClass="btn btn-guardar" OnClick="btnGenerar_Click"></asp:Button>
             </div>
            
         </form>
