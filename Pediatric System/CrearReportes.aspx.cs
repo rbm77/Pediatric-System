@@ -147,6 +147,8 @@ namespace Pediatric_System
             DataTable dat = ConvertToDataTable(das);
             ReportDocument crystalReport = new ReportDocument(); // creating object of crystal report
 
+            dat.Columns[1].ColumnName = "CODIGO_EXPEDIENTE";
+
             crystalReport.Load(Server.MapPath("~/Reportes/MedMixta.rpt")); // path of report 
             crystalReport.SetDataSource(dat); // binding datatable
             crystalReport.ExportToHttpResponse
