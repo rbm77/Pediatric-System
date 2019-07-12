@@ -97,9 +97,10 @@ namespace Pediatric_System
 
         protected void btnFiltrar_Click(object sender, EventArgs e)
         {
+            try
+            {
 
-
-            DateTime fini = DateTime.ParseExact(dateIni.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
+                DateTime fini = DateTime.ParseExact(dateIni.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
             DateTime ffin = DateTime.ParseExact(dateFin.Value, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None);
             string trep = tipoReporte.Value;
             string codeMed = ddCodigoMedico.SelectedValue;
@@ -113,6 +114,12 @@ namespace Pediatric_System
 
             btnGenerar.Enabled = true;
             mensajeConfirmacion.Visible = false;
+            }
+            catch (Exception ex)
+            {
+                Elog.save(this, ex);
+                MostrarMensaje("Ocurrió un error inesperado, si persiste comuniquese con el equipo de TI");
+            }
         }
 
         protected void btnGenerar_Click(object sender, EventArgs e)

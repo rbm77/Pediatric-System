@@ -89,7 +89,7 @@
                                     <Columns>
                                         <asp:BoundField HeaderText="Expediente" DataField="CodigoExpediente" />
                                         <asp:BoundField HeaderText="Frecuencia" DataField="FRECUENCIA" />
-                                        <asp:BoundField HeaderText="Referido" DataField="REFERIDOA" />
+                                        <asp:BoundField HeaderText="Referido" DataField="REFERIDO_A" />
                                     </Columns>
                                 </asp:GridView>
                             </div>

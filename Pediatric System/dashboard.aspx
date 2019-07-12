@@ -83,6 +83,8 @@
                     </div>
                     <div class="offset-xl-1 col-xl-5 offset-lg-1 col-lg-5 offset-md-1 col-md-5 offset-sm-1 col-sm-5">
                         <div class="row clearfix">
+                            <%if (Session["Rol"].ToString() != "Asistente")
+                        {%>
                             <div class=" col-sm-12 col-xl-6 col-lg-12 col-md-12 mb-20">
                                 <div class="card text-white o-hidden h-100">
                                     <a class="card-body card-dash" href="MiAgenda.aspx">
@@ -96,6 +98,7 @@
                                     </a>
                                 </div>
                             </div>
+                             <% } %>
                             <div class="col-sm-12 col-xl-6 col-lg-6 col-md-12 mb-20">
                                 <div class="card text-white o-hidden h-100">
                                     <a class="card-body card-dash" href="AsociarPaciente.aspx">

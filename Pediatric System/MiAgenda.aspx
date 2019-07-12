@@ -4,6 +4,11 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+     <% if (Session["Rol"].ToString() != ("Medico"))
+            {
+                Session.Clear();
+            }%>
+
     <link rel="stylesheet" href="CSS/hora1.css">
     <script src="JS/hora1.js"></script>
     <script src="JS/hora2.js"></script>
