@@ -47,6 +47,10 @@ namespace Pediatric_System
                 String mensaje = manejador.asociarCuenta(Session["CuentaParaAsociar"].ToString(), cedulaSel);
                 if (mensaje == "Correcto")
                 {
+                    List<BLExpediente> expedientes = new List<BLExpediente>();
+                    manejador.cargarListaExpedientes(expedientes, true);
+                    gridConExpedientes.DataSource = expedientes;
+                    gridConExpedientes.DataBind();
                     mensajeAviso("success", "Cuenta Asociada correctamente");
                 }
                 else

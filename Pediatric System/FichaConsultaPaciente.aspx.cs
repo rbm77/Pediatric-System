@@ -22,8 +22,13 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             imcPac.Disabled = true;
-
             expediente = (BLExpediente)Session["Expediente"];
+
+            if (Session["pagina"].ToString() == "consultas_activas_seleccionada")
+            {
+                cargarExpedienteGeneral();
+            }
+            
 
             //Mostrar los datos generales 
             if (expediente.Codigo == expediente.Cedula)
@@ -40,13 +45,18 @@ namespace Pediatric_System
             string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(expediente.Foto);
             imgPreview.ImageUrl = imagenDataURL64;
 
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
-                if (((string)Session["pagina"] != "consultas_guardada") || ((string)Session["pagina"] != "consultas_activas_seleccionada"))
+                string pag = Session["pagina"].ToString();
+
+                if ((pag == "consultas_guardada") || (pag == "consultas_activas_seleccionada"))
                 {
 
+                    cargarConsulta();
+                }
+                else
+                {
                     string fechaA = Convert.ToString(DateTime.Now);
-
 
                     const string FMT = "o";
                     DateTime fff = Convert.ToDateTime(fechaA);
@@ -59,6 +69,8 @@ namespace Pediatric_System
                     consulta.Fecha_Hora = ggg;
                     consulta.Estado = true;
                     consulta.CodigoMedico = Session["codigoMedico"].ToString();
+                    consulta.Paciente = expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
+
                     BLExamenFisico examenFisico = new BLExamenFisico();
                     examenFisico.CodigoExpediente = expediente.Codigo;
                     examenFisico.Fecha_Hora = ggg;
@@ -68,12 +80,10 @@ namespace Pediatric_System
                     manejador.crearConsulta(consulta, examenFisico);
 
                     Session["consulta"] = consulta;
-                }
-                else
-                {
-                    cargarConsulta();
+                   
                 }
             }
+            
         }
 
         protected void finalizarConsulta_Click(object sender, EventArgs e)
@@ -109,7 +119,7 @@ namespace Pediatric_System
 
             if(subsecuente.Checked == true)
             {
-                consulta.Frecuencia = "Subsecuente";
+                consulta.Frecuencia = "subsecuen";
             }
             else
             {
@@ -128,21 +138,27 @@ namespace Pediatric_System
 
             if(especialista.Checked == true)
             {
-                consulta.ReferidoA = "refe_especialista";
+                consulta.Referido_A = "refe_especialista";
             }
 
             if (hospitalizacion.Checked == true)
             {
-                consulta.ReferidoA = "refe_hospitalizacion";
+                consulta.Referido_A = "refe_hospitalizacion";
             }
 
             if (otro_centro.Checked == true)
             {
-                consulta.ReferidoA = "refe_otro_centro";
+                consulta.Referido_A = "refe_otro_centro";
             }
 
             ManejadorConsulta manejador = new ManejadorConsulta();
             manejador.actualizarReporteMedicinaMixta(consulta);
+        }
+
+        private void cargarExpedienteGeneral()
+        {
+            ManejadorExpediente manejador = new ManejadorExpediente();
+            manejador.cargarExpediente(expediente.Codigo, expediente);
         }
 
         private void cargarConsulta()
@@ -200,7 +216,7 @@ namespace Pediatric_System
                     }
                 }
 
-                string tiposReferi = consultaEnviada.ReferidoA;
+                string tiposReferi = consultaEnviada.Referido_A;
                 if(tiposReferi == "refe_especialista")
                 {
                     especialista.Checked = true;

@@ -48,13 +48,14 @@ namespace DAO
 
                 const string FMT = "o";
                 string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
-                
-                SqlCommand cmdInsertarConsulta = new SqlCommand("INSERT INTO CONSULTA (CODIGO_MEDICO, CODIGO_EXPEDIENTE, FECHA_HORA, ESTADO) VALUES (@codMed, @codExp, @fecha, @estado);", conexion);
+
+                SqlCommand cmdInsertarConsulta = new SqlCommand("INSERT INTO CONSULTA (CODIGO_MEDICO, CODIGO_EXPEDIENTE, FECHA_HORA, ESTADO, PACIENTE) VALUES (@codMed, @codExp, @fecha, @estado, @paci);", conexion);
                 cmdInsertarConsulta.Transaction = transaccion;
                 cmdInsertarConsulta.Parameters.AddWithValue("@codMed", consultaTO.CodigoMedico);
                 cmdInsertarConsulta.Parameters.AddWithValue("@codExp", consultaTO.CodigoExpediente);
                 cmdInsertarConsulta.Parameters.AddWithValue("@fecha", fechaConv);
                 cmdInsertarConsulta.Parameters.AddWithValue("@estado", consultaTO.Estado);
+                cmdInsertarConsulta.Parameters.AddWithValue("@paci", consultaTO.Paciente);
                 cmdInsertarConsulta.ExecuteNonQuery();
 
                 SqlCommand cmdInsertarExamenFisico = new SqlCommand("INSERT INTO EXAMEN_FISICO (CODIGO_MEDICO, CODIGO_EXPEDIENTE, FECHA_HORA) VALUES (@codMed, @codExp, @fecha);", conexion);
@@ -227,6 +228,7 @@ namespace DAO
                         consulta.Analisis = lector["ANALISIS"].ToString();
                         consulta.ImpresionDiagnostica = lector["IMPRESION_DIAGNOSTICA"].ToString();
                         consulta.Estado = (Boolean)lector["ESTADO"];
+                        consulta.Paciente = lector["PACIENTE"].ToString();
 
                         toConsultas.Add(consulta);
                     }
@@ -454,7 +456,7 @@ namespace DAO
                 string fechaConv = consultaTO.Fecha_Hora.ToString(FMT);
                 cmdActuExpediente.Parameters.AddWithValue("@medMix", consultaTO.MedicinaMixta);
                 cmdActuExpediente.Parameters.AddWithValue("@frecu", consultaTO.Frecuencia);
-                cmdActuExpediente.Parameters.AddWithValue("@refe", consultaTO.ReferidoA);
+                cmdActuExpediente.Parameters.AddWithValue("@refe", consultaTO.Referido_A);
                 cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
                 cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
 
@@ -515,7 +517,7 @@ namespace DAO
             }
 
             SqlTransaction transaccion = null;
-                      
+
 
             try
             {
@@ -533,7 +535,7 @@ namespace DAO
 
                 cmdActuExpediente.Parameters.AddWithValue("@analisis", consultaTO.Analisis);
                 cmdActuExpediente.Parameters.AddWithValue("@impresion", consultaTO.ImpresionDiagnostica);
-                cmdActuExpediente.Parameters.AddWithValue("@plan",consultaTO.Plan);
+                cmdActuExpediente.Parameters.AddWithValue("@plan", consultaTO.Plan);
                 cmdActuExpediente.Parameters.AddWithValue("@codExpe", consultaTO.CodigoExpediente);
                 cmdActuExpediente.Parameters.AddWithValue("@fecha", fechaConv);
                 cmdActuExpediente.Parameters.AddWithValue("@padece", consultaTO.PadecimientoActual);
@@ -660,7 +662,7 @@ namespace DAO
                 lector.Close();
                 transaccion.Commit();
             }
-            catch(Exception)
+            catch (Exception)
             {
                 try
                 {
@@ -750,9 +752,9 @@ namespace DAO
                         {
                             consultaTO.MedicinaMixta = (Boolean)lectorExp["MEDICINA_MIXTA"];
                         }
-                       
+
                         consultaTO.Frecuencia = lectorExp["FRECUENCIA"].ToString(); ;
-                        consultaTO.ReferidoA = lectorExp["REFERIDO_A"].ToString();
+                        consultaTO.Referido_A = lectorExp["REFERIDO_A"].ToString();
                         consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
                         consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
                         if (lectorExp["REFERENCIA_MEDICA"].ToString() == "")
@@ -833,8 +835,8 @@ namespace DAO
             }
             return confirmacion;
         }
-      
-              public string CargarConsultaFecha(DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+
+        public string CargarConsultaFecha(DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
         {
             string confirmacion = "La consulta se cargó correctamente";
 
@@ -868,93 +870,93 @@ namespace DAO
 
                 // --------------------------- Buscar en la tabla Consulta ---------------------------  //
 
-            const string FMT = "o";
-            string fechaConv = fecha.ToString(FMT);
+                const string FMT = "o";
+                string fechaConv = fecha.ToString(FMT);
 
-            SqlCommand cmdCargarConsul = new SqlCommand("SELECT * FROM CONSULTA WHERE FECHA_HORA = @fecha;", conexion);
-            cmdCargarConsul.Transaction = transaccion;
-            cmdCargarConsul.Parameters.AddWithValue("@fecha", fechaConv);
+                SqlCommand cmdCargarConsul = new SqlCommand("SELECT * FROM CONSULTA WHERE FECHA_HORA = @fecha;", conexion);
+                cmdCargarConsul.Transaction = transaccion;
+                cmdCargarConsul.Parameters.AddWithValue("@fecha", fechaConv);
 
-            SqlDataReader lectorExp = cmdCargarConsul.ExecuteReader();
+                SqlDataReader lectorExp = cmdCargarConsul.ExecuteReader();
 
-            if (lectorExp.HasRows)
-            {
-                while (lectorExp.Read())
+                if (lectorExp.HasRows)
                 {
-                    DateTime fechaConver = DateTime.ParseExact(lectorExp["FECHA_HORA"].ToString(), FMT, CultureInfo.InvariantCulture);
+                    while (lectorExp.Read())
+                    {
+                        DateTime fechaConver = DateTime.ParseExact(lectorExp["FECHA_HORA"].ToString(), FMT, CultureInfo.InvariantCulture);
 
-                    consultaTO.CodigoMedico = lectorExp["CODIGO_MEDICO"].ToString();
-                    consultaTO.CodigoExpediente = lectorExp["CODIGO_EXPEDIENTE"].ToString();
-                    consultaTO.Fecha_Hora = fechaConver;
-                    consultaTO.Analisis = lectorExp["ANALISIS"].ToString();
-                    consultaTO.ImpresionDiagnostica = lectorExp["IMPRESION_DIAGNOSTICA"].ToString();
-                    consultaTO.Plan = lectorExp["PLAN_D"].ToString();
-                    if (lectorExp["MEDICINA_MIXTA"].ToString() == "")
-                    {
-                        consultaTO.MedicinaMixta = false;
-                    }
-                    else
-                    {
-                        consultaTO.MedicinaMixta = (Boolean)lectorExp["MEDICINA_MIXTA"];
-                    }
+                        consultaTO.CodigoMedico = lectorExp["CODIGO_MEDICO"].ToString();
+                        consultaTO.CodigoExpediente = lectorExp["CODIGO_EXPEDIENTE"].ToString();
+                        consultaTO.Fecha_Hora = fechaConver;
+                        consultaTO.Analisis = lectorExp["ANALISIS"].ToString();
+                        consultaTO.ImpresionDiagnostica = lectorExp["IMPRESION_DIAGNOSTICA"].ToString();
+                        consultaTO.Plan = lectorExp["PLAN_D"].ToString();
+                        if (lectorExp["MEDICINA_MIXTA"].ToString() == "")
+                        {
+                            consultaTO.MedicinaMixta = false;
+                        }
+                        else
+                        {
+                            consultaTO.MedicinaMixta = (Boolean)lectorExp["MEDICINA_MIXTA"];
+                        }
 
-                    consultaTO.Frecuencia = lectorExp["FRECUENCIA"].ToString(); ;
-                    consultaTO.ReferidoA = lectorExp["REFERIDO_A"].ToString();
-                    consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
-                    consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
-                    if (lectorExp["REFERENCIA_MEDICA"].ToString() == "")
-                    {
-                        consultaTO.ReferenciaMedica = false;
+                        consultaTO.Frecuencia = lectorExp["FRECUENCIA"].ToString(); ;
+                        consultaTO.Referido_A = lectorExp["REFERIDO_A"].ToString();
+                        consultaTO.Estado = (Boolean)lectorExp["ESTADO"];
+                        consultaTO.PadecimientoActual = lectorExp["PADECIMIENTO_ACTUAL"].ToString();
+                        if (lectorExp["REFERENCIA_MEDICA"].ToString() == "")
+                        {
+                            consultaTO.ReferenciaMedica = false;
+                        }
+                        else
+                        {
+                            consultaTO.ReferenciaMedica = (Boolean)lectorExp["REFERENCIA_MEDICA"];
+                        }
+                        consultaTO.Especialidad = lectorExp["ESPECIALIDAD_REFERENCIA"].ToString();
+                        consultaTO.MotivoReferecnia = lectorExp["MOTIVO_REFERENCIA"].ToString();
                     }
-                    else
-                    {
-                        consultaTO.ReferenciaMedica = (Boolean)lectorExp["REFERENCIA_MEDICA"];
-                    }
-                    consultaTO.Especialidad = lectorExp["ESPECIALIDAD_REFERENCIA"].ToString();
-                    consultaTO.MotivoReferecnia = lectorExp["MOTIVO_REFERENCIA"].ToString();
                 }
-            }
-            lectorExp.Close();
+                lectorExp.Close();
 
-            // --------------------------- Buscar en la tabla Examen Fisico ---------------------------  //
+                // --------------------------- Buscar en la tabla Examen Fisico ---------------------------  //
 
-            SqlCommand cmdCargarExamenF = new SqlCommand("SELECT * FROM EXAMEN_FISICO WHERE FECHA_HORA = @fecha;", conexion);
-            cmdCargarExamenF.Transaction = transaccion;
-            cmdCargarExamenF.Parameters.AddWithValue("@fecha", fechaConv);
+                SqlCommand cmdCargarExamenF = new SqlCommand("SELECT * FROM EXAMEN_FISICO WHERE FECHA_HORA = @fecha;", conexion);
+                cmdCargarExamenF.Transaction = transaccion;
+                cmdCargarExamenF.Parameters.AddWithValue("@fecha", fechaConv);
 
-            SqlDataReader lectorExa = cmdCargarExamenF.ExecuteReader();
+                SqlDataReader lectorExa = cmdCargarExamenF.ExecuteReader();
 
-            if (lectorExa.HasRows)
-            {
-                while (lectorExa.Read())
+                if (lectorExa.HasRows)
                 {
-                    examenFisicoTO.CodigoMedico = lectorExa["CODIGO_MEDICO"].ToString();
-                    examenFisicoTO.CodigoExpediente = lectorExa["CODIGO_EXPEDIENTE"].ToString();
-                    examenFisicoTO.Fecha_Hora = DateTime.Parse(lectorExa["FECHA_HORA"].ToString());
-                    examenFisicoTO.Talla = float.Parse(lectorExa["TALLA"].ToString());
-                    examenFisicoTO.Peso = float.Parse(lectorExa["PESO"].ToString());
-                    examenFisicoTO.PerimetroCefalico = float.Parse(lectorExa["PERIMETRO_CEFALICO"].ToString());
-                    examenFisicoTO.SO2 = float.Parse(lectorExa["SO2"].ToString());
-                    examenFisicoTO.IMC = float.Parse(lectorExa["IMC"].ToString());
-                    examenFisicoTO.Temperatura = float.Parse(lectorExa["TEMPERATURA"].ToString());
-                    examenFisicoTO.EstadoAlerta = lectorExa["ESTADO_ALERTA"].ToString();
-                    examenFisicoTO.EstadoHidratacion = lectorExa["ESTADO_HIDRATACION"].ToString();
-                    examenFisicoTO.RuidosCardiacos = lectorExa["RUIDOS_CARDIACOS"].ToString();
-                    examenFisicoTO.CamposPulmonares = lectorExa["CAMPOS_PULMONARES"].ToString();
-                    examenFisicoTO.Abdomen = lectorExa["ABDOMEN"].ToString();
-                    examenFisicoTO.Faringe = lectorExa["FARINGE"].ToString();
-                    examenFisicoTO.Nariz = lectorExa["NARIZ"].ToString();
-                    examenFisicoTO.Oidos = lectorExa["OIDOS"].ToString();
-                    examenFisicoTO.SNC = lectorExa["SNC"].ToString();
-                    examenFisicoTO.Osteomuscular = lectorExa["SISTEMA_OSTEOMUSCULAR"].ToString();
-                    examenFisicoTO.Piel = lectorExa["PIEL"].ToString();
-                    examenFisicoTO.Neurodesarrollo = lectorExa["NEURODESARROLLO"].ToString();
-                    examenFisicoTO.Otros = lectorExa["OTROS"].ToString();
+                    while (lectorExa.Read())
+                    {
+                        examenFisicoTO.CodigoMedico = lectorExa["CODIGO_MEDICO"].ToString();
+                        examenFisicoTO.CodigoExpediente = lectorExa["CODIGO_EXPEDIENTE"].ToString();
+                        examenFisicoTO.Fecha_Hora = DateTime.Parse(lectorExa["FECHA_HORA"].ToString());
+                        examenFisicoTO.Talla = float.Parse(lectorExa["TALLA"].ToString());
+                        examenFisicoTO.Peso = float.Parse(lectorExa["PESO"].ToString());
+                        examenFisicoTO.PerimetroCefalico = float.Parse(lectorExa["PERIMETRO_CEFALICO"].ToString());
+                        examenFisicoTO.SO2 = float.Parse(lectorExa["SO2"].ToString());
+                        examenFisicoTO.IMC = float.Parse(lectorExa["IMC"].ToString());
+                        examenFisicoTO.Temperatura = float.Parse(lectorExa["TEMPERATURA"].ToString());
+                        examenFisicoTO.EstadoAlerta = lectorExa["ESTADO_ALERTA"].ToString();
+                        examenFisicoTO.EstadoHidratacion = lectorExa["ESTADO_HIDRATACION"].ToString();
+                        examenFisicoTO.RuidosCardiacos = lectorExa["RUIDOS_CARDIACOS"].ToString();
+                        examenFisicoTO.CamposPulmonares = lectorExa["CAMPOS_PULMONARES"].ToString();
+                        examenFisicoTO.Abdomen = lectorExa["ABDOMEN"].ToString();
+                        examenFisicoTO.Faringe = lectorExa["FARINGE"].ToString();
+                        examenFisicoTO.Nariz = lectorExa["NARIZ"].ToString();
+                        examenFisicoTO.Oidos = lectorExa["OIDOS"].ToString();
+                        examenFisicoTO.SNC = lectorExa["SNC"].ToString();
+                        examenFisicoTO.Osteomuscular = lectorExa["SISTEMA_OSTEOMUSCULAR"].ToString();
+                        examenFisicoTO.Piel = lectorExa["PIEL"].ToString();
+                        examenFisicoTO.Neurodesarrollo = lectorExa["NEURODESARROLLO"].ToString();
+                        examenFisicoTO.Otros = lectorExa["OTROS"].ToString();
+                    }
                 }
-            }
-            lectorExa.Close();
+                lectorExa.Close();
 
-        }
+            }
             catch (Exception)
             {
                 try
@@ -979,8 +981,8 @@ namespace DAO
             }
             return confirmacion;
         }
-      
-      public string CargarListaConsultasFiltrada(List<TOConsulta> toConsultas, string codMedico, string tipoReporte, string ini, string fin)
+
+        public string CargarListaConsultasFiltrada(List<TOConsulta> toConsultas, string codMedico, string tipoReporte, string ini, string fin)
         {
             string confirmacion = "Las consultas se cargaron exitosamente";
 
@@ -1013,13 +1015,15 @@ namespace DAO
                 SqlCommand cmdConsultas;
                 if (codMedico == "Todos")
                 {
-                cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
-                } else { 
+                    cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
+                }
+                else
+                {
 
-                 cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE CODIGO_MEDICO = @cod and Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
+                    cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE CODIGO_MEDICO = @cod and Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
                     cmdConsultas.Parameters.AddWithValue("@cod", codMedico);
                 }
-                
+
                 cmdConsultas.Parameters.AddWithValue("@ini", ini);
                 cmdConsultas.Parameters.AddWithValue("@fin", fin);
                 cmdConsultas.Transaction = transaccion;
@@ -1035,10 +1039,10 @@ namespace DAO
                         //DateTime now1 = DateTime.Now;
                         //string strDate = now1.ToString(FMT);
                         //DateTime now2 = DateTime.ParseExact(strDate, FMT, CultureInfo.InvariantCulture);
-                       
+
 
                         TOConsulta consulta = new TOConsulta();
-                       
+
                         consulta.CodigoExpediente = lector["CODIGO_EXPEDIENTE"].ToString();
                         if (lector["CODIGO_EXPEDIENTE"].ToString().Contains("RN-"))
                         {
@@ -1062,20 +1066,21 @@ namespace DAO
                         //Referido A
                         if (lector["REFERIDO_A"].ToString() == "refe_especialista")
                         {
-                            consulta.ReferidoA = "Especialista";
+                            consulta.Referido_A = "Especialista";
                         }
                         else if (lector["REFERIDO_A"].ToString() == "refe_hospitalizacion")
                         {
-                            consulta.ReferidoA = "Hospitalización";
+                            consulta.Referido_A = "Hospitalización";
                         }
                         else if (lector["REFERIDO_A"].ToString() == "refe_otro_centro")
                         {
-                            consulta.ReferidoA = "Otro Centro";
-                        } else
-                        {
-                            consulta.ReferidoA = lector["FRECUENCIA"].ToString();
+                            consulta.Referido_A = "Otro Centro";
                         }
-                        
+                        else
+                        {
+                            consulta.Referido_A = lector["FRECUENCIA"].ToString();
+                        }
+
 
                         toConsultas.Add(consulta);
                     }
@@ -1108,6 +1113,6 @@ namespace DAO
 
             return confirmacion;
         }
-        
+
     }
 }

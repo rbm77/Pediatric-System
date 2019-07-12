@@ -538,8 +538,6 @@ $(document).ready(function () {
     });
 
 
-    
-
     //$('.complicacionPerinatal').hide();
     //$('textarea[name="descripcionPatologicos"]').attr('disabled', true);
     document.getElementById("complicacionPerinatal").disabled = "true";
@@ -551,6 +549,45 @@ $(document).ready(function () {
   //  document.getElementById("txtCodigo").disabled = "true";
   //  document.getElementById("descripcionVacuna").disabled = "true";
     //$('.descripcionVacuna').hide();  
+
+    if ($("#pacienteNoCedula").prop('checked')) {
+        document.getElementById('cedulaPaciente').disabled = true;
+    }
+
+    if ($('#otrosCheck').prop('checked')) {
+        document.getElementById('descripcionOtrosHF').disabled = false;
+    }
+
+    if ($(".estadoPerinatal").value == "ausentes") {
+        document.getElementById("complicacionPerinatal").disabled = true;
+    } else {
+        document.getElementById("complicacionPerinatal").disabled = false;
+    }
+
+    if ($(".antecedentePatologico").value == "ausentesPat") {
+        document.getElementById("descripcionPatologicos").disabled = true;
+    } else {
+        document.getElementById("descripcionPatologicos").disabled = false;
+    }
+
+    if ($(".antecedenteQuirurgico").value == "ausentesQui") {
+        document.getElementById("descripcionQuirurgico").disabled = true;
+    } else {
+        document.getElementById("descripcionQuirurgico").disabled = false;
+    }
+
+    if ($(".antecedenteTraumatico").value == "ausentesTrau") {
+        document.getElementById("descripcionTraumatico").disabled = true;
+    } else {
+        document.getElementById("descripcionTraumatico").disabled = false;
+    }
+
+    if ($(".alergiasExpediente").value == "ausentesAlergia") {
+        document.getElementById("descripcionAlergia").disabled = true;
+    } else {
+        document.getElementById("descripcionAlergia").disabled = false;
+    }
+
 
     $("#pacienteNoCedula").on("change", function () {
         if ($("#pacienteNoCedula").prop('checked')) {

@@ -48,7 +48,7 @@
                                         <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
                                         <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
                                         <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpedienteEspecifico" Text="Asociar"
-                                            ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="38%" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
+                                            ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="150px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
                                     </Columns>
                                 </asp:GridView>
 

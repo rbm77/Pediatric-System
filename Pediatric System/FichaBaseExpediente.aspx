@@ -139,7 +139,8 @@
                                         </div>
                                         <div class="form-row" style="padding-left: 20px;">
                                             <input clientidmode="Static" runat="server" class="form-check-input" type="checkbox" value="noCedula" id="pacienteNoCedula">
-                                            <label class="form-check-label nombre-input" for="noCedulaCheck">No posee cedula</label>
+                                            
+                                            <asp:Label ID="lblNoCed" runat="server" class="form-check-label nombre-input" for="noCedulaCheck" Text="No posee cedula"></asp:Label>
                                         </div>
                                     </div>
                                 </div>

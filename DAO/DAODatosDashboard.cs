@@ -60,7 +60,8 @@ namespace DAO
 
                 miTODatos.cantidadCitasPendientes = (int)comando2.ExecuteScalar() + "";
 
-                SqlCommand comando3 = new SqlCommand("Select COUNT(CODIGO_EXPEDIENTE) from CONSULTA Where Estado = 1", conexion);
+                SqlCommand comando3 = new SqlCommand("Select COUNT(CODIGO_EXPEDIENTE) from CONSULTA Where Estado = 1 and Codigo_Medico = @cod;", conexion);
+                comando3.Parameters.AddWithValue("@cod", codigoMedico);
                 comando3.Transaction = transaccion;
                 miTODatos.cantidadConsultasActivas = (int)comando3.ExecuteScalar() + "";
 

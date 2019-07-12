@@ -62,15 +62,20 @@ namespace Pediatric_System
         private void cargarListaGrid()
         {
             ManejadorConsulta manejador = new ManejadorConsulta();
-            manejador.cargarListaConsultas(consultas, expediente.Codigo); 
+            manejador.cargarListaConsultas(consultas, expediente.Codigo);
+            BLMedico manejadorMed = new BLMedico();
 
-            foreach(BLConsulta cons in consultas)
+            String nombreCom = "";
+
+            foreach (BLConsulta cons in consultas)
             {
                 DateTime fecha = cons.Fecha_Hora;
-                string doctor = "";
-                BLMedico manejadorMed = new BLMedico();
-                manejadorMed.buscarNombreMedico(cons.CodigoMedico, doctor);
                 
+                BLMedico medico = new BLMedico();
+                manejadorMed.buscarNombreMedico(cons.CodigoMedico, medico);
+                nombreCom = medico.nombre + " ";
+                nombreCom += medico.apellido;
+
                 string estado;
                 if (cons.Estado == false)
                 {
@@ -81,7 +86,7 @@ namespace Pediatric_System
                     estado = "Activa";
                 }
 
-                lista.Add(new ListaItem(fecha, doctor, estado));
+                lista.Add(new ListaItem(fecha, nombreCom, estado));
             }
         }
 
