@@ -79,17 +79,17 @@ namespace Pediatric_System
             fechaNacimientoPaciente.Enabled = false;
 
             //Desactivar campos de tab2
-            nombreEncargado.Enabled = false;
-            primerApellidoEncargado.Enabled = false;
-            segundoApellidoEncargado.Enabled = false;
-            cedulaEncargado.Enabled = false;
-            parentezcoEncargado.Enabled = false;
+            //nombreEncargado.Enabled = false;
+            //primerApellidoEncargado.Enabled = false;
+            //segundoApellidoEncargado.Enabled = false;
+            //cedulaEncargado.Enabled = false;
+            //parentezcoEncargado.Enabled = false;
 
             //Desactivar campos de tab3
-            nombreFacturante.Enabled = false;
-            primerApellidoFacturante.Enabled = false;
-            segundoApellidoFacturante.Enabled = false;
-            cedulaFacturante.Enabled = false;
+            //nombreFacturante.Enabled = false;
+            //primerApellidoFacturante.Enabled = false;
+            //segundoApellidoFacturante.Enabled = false;
+            //cedulaFacturante.Enabled = false;
 
             //Desactivar campos de tab4
             tallaNacer.Enabled = false;
@@ -145,16 +145,20 @@ namespace Pediatric_System
         private void asignarTab_1(BLExpediente exp, BLDireccion dir)
         {
 
-            if (exp.Codigo == exp.Cedula)
+            if (exp.Cedula != "")
             {
                 cedulaPaciente.Text = exp.Cedula;
                 cedGeneral.InnerText = " " + exp.Cedula;
+                pacienteNoCedula.Visible = false;
+                lblNoCed.Visible = false;
+                cedulaPaciente.Enabled = false;
             }
             else
             {
                 cedGeneral.InnerText = "No tiene aún";
                 cedulaPaciente.Text = "";
                 pacienteNoCedula.Checked = true;
+                cedulaPaciente.Enabled = false;
             }
 
             paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
@@ -365,6 +369,8 @@ namespace Pediatric_System
         private void actualizarExpediente(BLExpediente expediente, BLDireccion direccionExpediente, BLDireccion direccionEncargado, BLDireccion direccionFacturante, BLEncargado_Facturante encargado, BLEncargado_Facturante facturante, BLHistoriaClinica historiaClinica)
         {
             //Obtener info actualizable del tab-1
+            expediente.Codigo = Session["expedienteSeleccionado"].ToString();
+
             direccionExpediente.Provincia = proEX.Value.Trim();
             direccionExpediente.Canton = canEX.Value.Trim();
             direccionExpediente.Distrito = disEX.Value.Trim();
@@ -373,17 +379,18 @@ namespace Pediatric_System
 
             if (pacienteNoCedula.Checked)
             {
-                expediente.Codigo = crearCodigoExpe();
+                expediente.Cedula = "";
             }
             else
             {
-                expediente.Codigo = cedulaPaciente.Text.Trim();
+                expediente.Cedula = cedulaPaciente.Text.Trim();
             }
             expediente.Nombre = nombrePaciente.Text.Trim();
-            expediente.Cedula = cedulaPaciente.Text.Trim();
             expediente.Foto = guardarImag();
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.ToString().Trim();
             expediente.Direccion = codigoDirExpediente;
+            expediente.Encargado = cedulaEncargado.Text.Trim();
+            expediente.Facturante = cedulaFacturante.Text.Trim();
 
             //Obtener info actualizable del tab-2
             direccionEncargado.Provincia = proEN.Value.Trim();
@@ -393,10 +400,14 @@ namespace Pediatric_System
             string codigoDirEncargado = codigoDireccion(proEN.Value.Trim(), canEN.Value.Trim(), disEN.Value.Trim(), barEN.Value.Trim());
             direccionEncargado.Codigo = codigoDirEncargado;
 
-            encargado.Telefono = decimal.Parse(telefonoEncargado.Text.Trim());
+            encargado.Nombre = nombreEncargado.Text.Trim();
+            encargado.PrimerApellido = primerApellidoEncargado.Text.Trim();
+            encargado.SegundoApellido = segundoApellidoEncargado.Text.Trim();
+            encargado.Cedula = cedulaEncargado.Text.Trim();
+            encargado.Telefono = decimal.Parse(telefonoEncargado.Text);
+            encargado.Parentesco = parentezcoEncargado.Text.Trim();
             encargado.CorreoElectronico = correoEncargado.Text.Trim();
             encargado.Direccion = codigoDirEncargado;
-            encargado.Cedula = cedulaEncargado.Text.Trim();
 
             //Obtener info actualizable del tab 3
             direccionFacturante.Provincia = proFA.Value.Trim();
@@ -406,10 +417,13 @@ namespace Pediatric_System
             string codigoDirFacturante = codigoDireccion(proFA.Value.Trim(), canFA.Value.Trim(), disFA.Value.Trim(), barFA.Value.Trim());
             direccionFacturante.Codigo = codigoDirFacturante;
 
-            facturante.Telefono = decimal.Parse(telefonoFacturante.Text.Trim());
+            facturante.Nombre = nombreFacturante.Text.Trim();
+            facturante.PrimerApellido = primerApellidoFacturante.Text.Trim();
+            facturante.SegundoApellido = segundoApellidoFacturante.Text.Trim();
+            facturante.Cedula = cedulaFacturante.Text.Trim();
+            facturante.Telefono = decimal.Parse(telefonoFacturante.Text);
             facturante.CorreoElectronico = correoFacturante.Text.Trim();
             facturante.Direccion = codigoDirFacturante;
-            facturante.Cedula = cedulaFacturante.Text.Trim();
 
             //Obtener info actualizable del tab 4
             if (asmaCheck.Checked)

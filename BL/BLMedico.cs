@@ -102,10 +102,15 @@ namespace BL
         /// <param name="codigoMedico"></param>
         /// <param name="nombreCompleto"></param>
         /// <returns>Retorna un mensaje de confirmacion indicando si se realizo la transaccion</returns>
-        public string buscarNombreMedico(string codigoMedico, string nombreCompleto)
+        public string buscarNombreMedico(string codigoMedico, BLMedico medicoBL)
         {
             DAOMedico dao = new DAOMedico();
-            string confirmacion = dao.buscarNombreMedico(codigoMedico, nombreCompleto);
+            TOMedico medico = new TOMedico();
+
+            string confirmacion = dao.buscarNombreMedico(codigoMedico, medico);
+
+            medicoBL.nombre = medico.nombre;
+            medicoBL.apellido = medico.apellido;
             return confirmacion;
         }
     }

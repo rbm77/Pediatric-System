@@ -152,8 +152,26 @@ namespace BL
 
         private BLConsulta convertirConsulta(TOConsulta consultaTO)
         {
-            BLConsulta consultaBl = new BLConsulta(consultaTO.CodigoMedico, consultaTO.CodigoExpediente, consultaTO.Fecha_Hora, consultaTO.Analisis, consultaTO.ImpresionDiagnostica, consultaTO.Plan, consultaTO.MedicinaMixta, consultaTO.Frecuencia, consultaTO.ReferidoA, consultaTO.Estado, consultaTO.PadecimientoActual, consultaTO.ReferenciaMedica, consultaTO.Especialidad, consultaTO.MotivoReferecnia);
-            return consultaBl;
+            //consultaTO.CodigoMedico, consultaTO.CodigoExpediente, consultaTO.Fecha_Hora, consultaTO.Analisis, consultaTO.ImpresionDiagnostica, consultaTO.Plan, consultaTO.MedicinaMixta, consultaTO.Frecuencia, consultaTO.ReferidoA, consultaTO.Estado, consultaTO.PadecimientoActual, consultaTO.ReferenciaMedica, consultaTO.Especialidad, consultaTO.MotivoReferecnia);
+
+            BLConsulta consultaBL = new BLConsulta();
+            consultaBL.CodigoMedico = consultaTO.CodigoMedico;
+            consultaBL.CodigoExpediente = consultaTO.CodigoExpediente;
+            consultaBL.Fecha_Hora = consultaTO.Fecha_Hora;
+            consultaBL.Analisis = consultaTO.Analisis;
+            consultaBL.ImpresionDiagnostica = consultaTO.ImpresionDiagnostica;
+            consultaBL.Plan = consultaTO.Plan;
+            consultaBL.MedicinaMixta = consultaTO.MedicinaMixta;
+            consultaBL.Frecuencia = consultaTO.Frecuencia;
+            consultaBL.ReferidoA = consultaTO.ReferidoA;
+            consultaBL.Estado = consultaTO.Estado;
+            consultaBL.PadecimientoActual = consultaTO.PadecimientoActual;
+            consultaBL.ReferenciaMedica = consultaTO.ReferenciaMedica;
+            consultaBL.Especialidad = consultaTO.Especialidad;
+            consultaBL.MotivoReferecnia = consultaTO.MotivoReferecnia;
+            consultaBL.Paciente = consultaTO.Paciente;
+
+            return consultaBL;
         }
         
         private void convertirConsultaCompleta_BL_TO (BLConsulta consultaBL, BLExamenFisico examenFisicoBL, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
@@ -173,6 +191,7 @@ namespace BL
             consultaTO.ReferenciaMedica = consultaBL.ReferenciaMedica;
             consultaTO.Especialidad = consultaBL.Especialidad;
             consultaTO.MotivoReferecnia = consultaBL.MotivoReferecnia;
+            consultaTO.Paciente = consultaBL.Paciente;
 
             //Objeto ExamenFisico
             examenFisicoTO.CodigoMedico = examenFisicoBL.CodigoMedico;
@@ -216,6 +235,7 @@ namespace BL
             consultaBL.ReferenciaMedica = consultaTO.ReferenciaMedica;
             consultaBL.Especialidad = consultaTO.Especialidad;
             consultaBL.MotivoReferecnia = consultaTO.MotivoReferecnia;
+            consultaBL.Paciente = consultaTO.Paciente;
 
             //Objeto ExamenFisico
             examenFisicoBL.CodigoMedico = examenFisicoTO.CodigoMedico;
