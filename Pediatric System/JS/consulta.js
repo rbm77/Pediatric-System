@@ -29,11 +29,11 @@ $(document).ready(function () {
     });
 
     $("#calcIM").on("click", function () {
-        console.log("saasas");
-        if ($("#tallaPac").val() == 0 || $("#pesoPac").val() == 0) {
-            $("#imcPac").val() = 0;
+        if (parseInt($("#tallaPac").val()) == 0 || parseInt($("#pesoPac").val()) == 0) {
+            $("#imcPac").val("0");
         } else {
-            $("#imcPac").val() = $("#tallaPac").val() * $("#pesoPac").val();
+            var temp = (parseInt($("#tallaPac").val()) * parseInt($("#pesoPac").val()));
+            $("#imcPac").val(temp);
         }
     });
 

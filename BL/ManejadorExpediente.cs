@@ -269,7 +269,7 @@ namespace BL
             //Objeto Direccion Paciente
             direccionPaciente.Codigo = direccionPacienteBL.Codigo;
             direccionPaciente.Provincia = direccionPacienteBL.Provincia;
-            direccionPaciente.Canton = direccionFacturanteBL.Canton;
+            direccionPaciente.Canton = direccionPacienteBL.Canton;
             direccionPaciente.Distrito = direccionPacienteBL.Distrito;
 
             //Objeto Encargado 
@@ -301,7 +301,7 @@ namespace BL
             //Objeto Direccion Facturante 
             direccionFacturante.Codigo = direccionFacturanteBL.Codigo;
             direccionFacturante.Provincia = direccionFacturanteBL.Provincia;
-            direccionFacturante.Canton = direccionFacturanteBL.Distrito;
+            direccionFacturante.Canton = direccionFacturanteBL.Canton;
             direccionFacturante.Distrito = direccionFacturanteBL.Distrito;
             direccionFacturante.Barrio = direccionFacturanteBL.Barrio;
 

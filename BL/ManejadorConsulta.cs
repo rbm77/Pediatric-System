@@ -11,29 +11,31 @@ namespace BL
 {
     public class ManejadorConsulta
     {
-        public string crearConsulta(BLConsulta consulta, BLExamenFisico examenFisico)
+        public string crearConsulta(BLConsulta consulta, BLExamenFisico examenFisico, BLDiagnosticoNutricional diagnostico)
         {
             TOConsulta consultaTO = new TOConsulta();
             TOExamenFisico examenFisicoTO = new TOExamenFisico();
+            TODiagnosticoNutricional diagnosticoTO = new TODiagnosticoNutricional();
 
 
-            convertirConsultaCompleta_BL_TO(consulta, examenFisico, consultaTO, examenFisicoTO);
+            convertirConsultaCompleta_BL_TO(consulta, examenFisico, diagnostico, consultaTO, examenFisicoTO, diagnosticoTO);
 
             DAOConsulta dao = new DAOConsulta();
-            string confirmacion = dao.CrearConsulta(consultaTO, examenFisicoTO);
+            string confirmacion = dao.CrearConsulta(consultaTO, examenFisicoTO, diagnosticoTO);
             return confirmacion;
 
         }
 
-        public string actualizarConsulta(BLConsulta consulta, BLExamenFisico examenFisico)
+        public string actualizarConsulta(BLConsulta consulta, BLExamenFisico examenFisico, BLDiagnosticoNutricional diagnostico)
         {
             TOConsulta consultaTO = new TOConsulta();
             TOExamenFisico examenFisicoTO = new TOExamenFisico();
+            TODiagnosticoNutricional diagnosticoTO = new TODiagnosticoNutricional();
 
-            convertirConsultaCompleta_BL_TO(consulta, examenFisico, consultaTO, examenFisicoTO);
+            convertirConsultaCompleta_BL_TO(consulta, examenFisico, diagnostico, consultaTO, examenFisicoTO, diagnosticoTO);
 
             DAOConsulta dao = new DAOConsulta();
-            string confirmacion = dao.ActualizarConsulta(consultaTO, examenFisicoTO);
+            string confirmacion = dao.ActualizarConsulta(consultaTO, examenFisicoTO, diagnosticoTO);
             return confirmacion;
         }
 
@@ -62,30 +64,32 @@ namespace BL
             return confirmacion;
         }
 
-        public  string mostrarConsulta(string codExpediente, DateTime fecha, BLConsulta consultaBL, BLExamenFisico examenFisicoBL)
+        public  string mostrarConsulta(string codExpediente, DateTime fecha, BLConsulta consultaBL, BLExamenFisico examenFisicoBL, BLDiagnosticoNutricional diagnosticoBL)
         {
             TOConsulta consultaTO = new TOConsulta();
             TOExamenFisico examenFisicoTO = new TOExamenFisico();
+            TODiagnosticoNutricional diagnosticoTO = new TODiagnosticoNutricional();
 
             DAOConsulta dao = new DAOConsulta();
 
-            string confirmacion = dao.CargarConsulta(codExpediente, fecha, consultaTO, examenFisicoTO);
+            string confirmacion = dao.CargarConsulta(codExpediente, fecha, consultaTO, examenFisicoTO, diagnosticoTO);
 
-            convertirConsultaCompleta_TO_BL(consultaBL, examenFisicoBL, consultaTO, examenFisicoTO);
+            convertirConsultaCompleta_TO_BL(consultaBL, examenFisicoBL, diagnosticoBL, consultaTO, examenFisicoTO, diagnosticoTO);
 
             return confirmacion;
         }
 
-        public string mostrarConsultaFecha(DateTime fecha, BLConsulta consultaBL, BLExamenFisico examenFisicoBL)
+        public string mostrarConsultaFecha(DateTime fecha, BLConsulta consultaBL, BLExamenFisico examenFisicoBL, BLDiagnosticoNutricional diagnostioBL)
         {
             TOConsulta consultaTO = new TOConsulta();
             TOExamenFisico examenFisicoTO = new TOExamenFisico();
+            TODiagnosticoNutricional diagnosticoTO = new TODiagnosticoNutricional();
 
             DAOConsulta dao = new DAOConsulta();
 
-            string confirmacion = dao.CargarConsultaFecha(fecha, consultaTO, examenFisicoTO);
+            string confirmacion = dao.CargarConsultaFecha(fecha, consultaTO, examenFisicoTO, diagnosticoTO);
 
-            convertirConsultaCompleta_TO_BL(consultaBL, examenFisicoBL, consultaTO, examenFisicoTO);
+            convertirConsultaCompleta_TO_BL(consultaBL, examenFisicoBL, diagnostioBL, consultaTO, examenFisicoTO, diagnosticoTO);
 
             return confirmacion;
         }
@@ -174,7 +178,7 @@ namespace BL
             return consultaBL;
         }
         
-        private void convertirConsultaCompleta_BL_TO (BLConsulta consultaBL, BLExamenFisico examenFisicoBL, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        private void convertirConsultaCompleta_BL_TO (BLConsulta consultaBL, BLExamenFisico examenFisicoBL, BLDiagnosticoNutricional diagnosticoBL, TOConsulta consultaTO, TOExamenFisico examenFisicoTO, TODiagnosticoNutricional diagnosticoTO)
         {
             //Objeto Consulta 
             consultaTO.CodigoMedico = consultaBL.CodigoMedico;
@@ -216,9 +220,21 @@ namespace BL
             examenFisicoTO.Piel = examenFisicoBL.Piel;
             examenFisicoTO.Neurodesarrollo = examenFisicoBL.Neurodesarrollo;
             examenFisicoTO.Otros = examenFisicoBL.Otros;
+
+            //Objeto DiagnosticoNutricional
+            diagnosticoTO.CodigoMedico = diagnosticoBL.CodigoMedico;
+            diagnosticoTO.CodigoExpediente = diagnosticoBL.CodigoExpediente;
+            diagnosticoTO.Fecha_Hora = diagnosticoBL.Fecha_Hora;
+            diagnosticoTO.Peso_Edad = diagnosticoBL.Peso_Edad;
+            diagnosticoTO.Talla_Edad_0 = diagnosticoBL.Talla_Edad_0;
+            diagnosticoTO.Cefalico_Edad = diagnosticoBL.Cefalico_Edad;
+            diagnosticoTO.Peso_Talla = diagnosticoBL.Peso_Talla;
+            diagnosticoTO.IMC_Edad = diagnosticoBL.IMC_Edad;
+            diagnosticoTO.Talla_Edad_5 = diagnosticoBL.Talla_Edad_5;
+
         }
 
-        private void convertirConsultaCompleta_TO_BL(BLConsulta consultaBL, BLExamenFisico examenFisicoBL, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        private void convertirConsultaCompleta_TO_BL(BLConsulta consultaBL, BLExamenFisico examenFisicoBL, BLDiagnosticoNutricional diagnosticoBL, TOConsulta consultaTO, TOExamenFisico examenFisicoTO, TODiagnosticoNutricional diagnosticoTO)
         {
             //Objeto Consulta 
             consultaBL.CodigoMedico = consultaTO.CodigoMedico;
@@ -260,6 +276,17 @@ namespace BL
             examenFisicoBL.Piel = examenFisicoTO.Piel;
             examenFisicoBL.Neurodesarrollo = examenFisicoTO.Neurodesarrollo;
             examenFisicoBL.Otros = examenFisicoTO.Otros;
+
+            //Objeto DiagnosticoNutricional
+            diagnosticoBL.CodigoMedico = diagnosticoTO.CodigoMedico;
+            diagnosticoBL.CodigoExpediente = diagnosticoTO.CodigoExpediente;
+            diagnosticoBL.Fecha_Hora = diagnosticoTO.Fecha_Hora;
+            diagnosticoBL.Peso_Edad = diagnosticoTO.Peso_Edad;
+            diagnosticoBL.Talla_Edad_0 = diagnosticoTO.Talla_Edad_0;
+            diagnosticoBL.Cefalico_Edad = diagnosticoTO.Cefalico_Edad;
+            diagnosticoBL.Peso_Talla = diagnosticoTO.Peso_Talla;
+            diagnosticoBL.IMC_Edad = diagnosticoTO.IMC_Edad;
+            diagnosticoBL.Talla_Edad_5 = diagnosticoTO.Talla_Edad_5;
         }
 
         

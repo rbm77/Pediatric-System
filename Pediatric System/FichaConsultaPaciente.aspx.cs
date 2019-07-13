@@ -28,10 +28,11 @@ namespace Pediatric_System
             {
                 cargarExpedienteGeneral();
             }
-            
+
+            ManejadorEdad mane = new ManejadorEdad();
 
             //Mostrar los datos generales 
-            if (expediente.Codigo == expediente.Cedula)
+            if (expediente.Codigo == expediente.Cedula || !expediente.Cedula.Equals(""))
             {
                 cedGeneral.InnerText = " " + expediente.Cedula;
             }
@@ -40,8 +41,8 @@ namespace Pediatric_System
                 cedGeneral.InnerText = "No tiene aún";
             }
             paciGeneral.InnerText = " " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
-            TimeSpan dt = DateTime.Now - expediente.FechaNacimiento;
-            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            
+            edaGeneral.InnerText = mane.ExtraerEdad(expediente.FechaNacimiento);
             string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(expediente.Foto);
             imgPreview.ImageUrl = imagenDataURL64;
 
@@ -76,8 +77,13 @@ namespace Pediatric_System
                     examenFisico.Fecha_Hora = ggg;
                     examenFisico.CodigoMedico = Session["codigoMedico"].ToString();
 
+                    BLDiagnosticoNutricional diagnostico = new BLDiagnosticoNutricional();
+                    diagnostico.CodigoExpediente = expediente.Codigo;
+                    diagnostico.Fecha_Hora = ggg;
+                    diagnostico.CodigoMedico = Session["codigoMedico"].ToString();
+
                     ManejadorConsulta manejador = new ManejadorConsulta();
-                    manejador.crearConsulta(consulta, examenFisico);
+                    manejador.crearConsulta(consulta, examenFisico, diagnostico);
 
                     Session["consulta"] = consulta;
                    
@@ -106,7 +112,6 @@ namespace Pediatric_System
         protected void guardarConsulta_Click(object sender, EventArgs e)
         {
             actualizarConsulta();
-            Response.Redirect("ListaConsultas.aspx");
 
         }
 
@@ -165,6 +170,8 @@ namespace Pediatric_System
         {
             BLExamenFisico examenFisico = new BLExamenFisico();
             BLConsulta consultaEnviada = new BLConsulta();
+            BLDiagnosticoNutricional diagnostico = new BLDiagnosticoNutricional();
+
             consultaEnviada = (BLConsulta)Session["consulta"];
             if(consultaEnviada.Estado == false)
             {
@@ -174,11 +181,11 @@ namespace Pediatric_System
             ManejadorConsulta manejador = new ManejadorConsulta();
             if(Session["pagina"].ToString() == "consultas_guardada")
             {
-                manejador.mostrarConsulta(consultaEnviada.CodigoExpediente, consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico);
+                manejador.mostrarConsulta(consultaEnviada.CodigoExpediente, consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico, diagnostico);
             }
             else
             {
-                manejador.mostrarConsultaFecha(consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico);
+                manejador.mostrarConsultaFecha(consultaEnviada.Fecha_Hora, consultaEnviada, examenFisico, diagnostico);
             }
 
             //Datos del objeto Consulta 
@@ -263,12 +270,22 @@ namespace Pediatric_System
             osteomuscPac.Value = examenFisico.Osteomuscular;
             pielPac.Value = examenFisico.Piel;
             otrosPac.Value = examenFisico.Otros;
+
+            //Datos de objeto DiagnosticoNutricional
+            pesoEdadPac.Value = diagnostico.Peso_Edad;
+            tallaEdad0Pac.Value = diagnostico.Talla_Edad_0;
+            cefaEdadPac.Value = diagnostico.Cefalico_Edad;
+            pesoTallaPac.Value = diagnostico.Peso_Talla;
+            imcEdadPac.Value = diagnostico.IMC_Edad;
+            tallEdad5Pac.Value = diagnostico.Talla_Edad_5;
+
         }
 
         private void actualizarConsulta()
         {
             BLConsulta consultaActu = new BLConsulta();
             BLExamenFisico examenFisicoActu = new BLExamenFisico();
+            BLDiagnosticoNutricional diagnostico = new BLDiagnosticoNutricional();
 
             //Datos del objeto Consulta 
             consultaActu.Analisis = analisisPac.Value.Trim();
@@ -297,8 +314,17 @@ namespace Pediatric_System
             examenFisicoActu.Piel = pielPac.Value.Trim();
             examenFisicoActu.Otros = otrosPac.Value.Trim();
 
+            //Datos del objeto Diagnostico Nutricional
+            diagnostico.Peso_Edad = pesoEdadPac.Value.Trim();
+            diagnostico.Talla_Edad_0 = tallaEdad0Pac.Value.Trim();
+            diagnostico.Cefalico_Edad = cefaEdadPac.Value.Trim();
+            diagnostico.Peso_Talla = pesoTallaPac.Value.Trim();
+            diagnostico.IMC_Edad = imcEdadPac.Value.Trim();
+            diagnostico.Talla_Edad_5 = tallEdad5Pac.Value.Trim();
+
             BLConsulta consultaGuardada = new BLConsulta();
             consultaGuardada = (BLConsulta)Session["consulta"];
+
             consultaActu.Fecha_Hora = consultaGuardada.Fecha_Hora;
             consultaActu.CodigoExpediente = consultaGuardada.CodigoExpediente;
             consultaActu.Estado = consultaGuardada.Estado;
@@ -306,8 +332,11 @@ namespace Pediatric_System
             examenFisicoActu.Fecha_Hora = consultaGuardada.Fecha_Hora;
             examenFisicoActu.CodigoExpediente = consultaGuardada.CodigoExpediente;
 
+            diagnostico.Fecha_Hora = consultaGuardada.Fecha_Hora;
+            diagnostico.CodigoExpediente = consultaGuardada.CodigoExpediente;
+
             ManejadorConsulta manejador = new ManejadorConsulta();
-            manejador.actualizarConsulta(consultaActu, examenFisicoActu);
+            manejador.actualizarConsulta(consultaActu, examenFisicoActu, diagnostico);
 
         }
 

@@ -18,34 +18,31 @@ namespace Pediatric_System
         private static List<Pendiente> listaPendientes = new List<Pendiente>();
         private static List<BLVacuna> vacunas = new List<BLVacuna>();
 
+        private static BLExpediente expAnti = new BLExpediente();
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            //proEX.Value = "Puntarenas";
-            //canEX.Value = "OSA";
-            //disEX.Value = "PALMAR";
 
-            //proEN.Value = "Puntarenas";
-            //canEN.Value = "OSA";
-            //disEN.Value = "PALMAR";
-            //barEN.Value = "Alemania";
-
-            //proFA.Value = "Puntarenas";
-            //canFA.Value = "OSA";
-            //disFA.Value = "PALMAR";
-            //barFA.Value = "Alemania";
+            
 
             if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
             {
                 verConsultas.Visible = false;
-                nuevaConsulta.Visible = false;
+                examenesLab.Visible = false;
                 informacionPaciente.Visible = false;
             }
 
             if ((string)Session["pagina"] == "dashboard")
             {
                 verConsultas.Visible = false;
-                nuevaConsulta.Visible = false;
+                examenesLab.Visible = false;
                 informacionPaciente.Visible = false;
+            }
+
+            if(Session["Rol"].ToString() == "Paciente")
+            {
+                verConsultas.Visible = false;
+                examenesLab.Visible = false;
             }
 
             if (!IsPostBack)
@@ -119,6 +116,8 @@ namespace Pediatric_System
             manejador.mostrarExpediente(codigo, expediente, expDireccion, encargado, encDireccion, facturante, facDireccion, historiaClinica);
 
             Session["expediente"] = expediente;
+
+            
             // Aqui recupero los datos que se van a mostrar en el pdf de la referencia medica y el esquema de vacunacion
 
             ManejadorEdad manejadorEdad = new ManejadorEdad();
@@ -160,12 +159,16 @@ namespace Pediatric_System
                 pacienteNoCedula.Checked = true;
                 cedulaPaciente.Enabled = false;
             }
+            ManejadorEdad mane = new ManejadorEdad();
 
             paciGeneral.InnerText = " " + exp.Nombre + " " + exp.PrimerApellido + " " + exp.SegundoApellido;
-            TimeSpan dt = DateTime.Now - exp.FechaNacimiento;
-            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            
+            edaGeneral.InnerText = mane.ExtraerEdad(exp.FechaNacimiento);
             string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(exp.Foto);
             imgPreview.ImageUrl = imagenDataURL64;
+
+            expAnti.Foto = exp.Foto;
+
 
             nombrePaciente.Text = exp.Nombre;
             primerApellidoPaciente.Text = exp.PrimerApellido;
@@ -386,7 +389,16 @@ namespace Pediatric_System
                 expediente.Cedula = cedulaPaciente.Text.Trim();
             }
             expediente.Nombre = nombrePaciente.Text.Trim();
-            expediente.Foto = guardarImag();
+
+            if (fotoPaciente.PostedFile.ContentLength > 0)
+            {
+                expediente.Foto = guardarImag();
+            }
+            else
+            {
+                expediente.Foto = expAnti.Foto;
+            }
+
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.ToString().Trim();
             expediente.Direccion = codigoDirExpediente;
             expediente.Encargado = cedulaEncargado.Text.Trim();
@@ -527,9 +539,10 @@ namespace Pediatric_System
             expediente.SegundoApellido = segundoApellidoPaciente.Text.Trim(); 
             expediente.FechaNacimiento = Convert.ToDateTime(fechaNacimientoPaciente.Text);
             expediente.Sexo = sexoPaciente.Text.Trim();
-            expediente.Foto = guardarImag();
+
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
             expediente.Direccion = codigo;
+            expediente.Foto = guardarImag();
             expediente.Encargado = cedulaEncargado.Text.Trim();
             expediente.Facturante = cedulaFacturante.Text.Trim();
         }
@@ -1130,6 +1143,12 @@ namespace Pediatric_System
         protected void regresar_Click(object sender, EventArgs e)
         {
             Response.Redirect("ListaExpedientes.aspx");
+        }
+
+
+        protected void examenesLab_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ExamenesLaboratorio.aspx");
         }
     }
 }

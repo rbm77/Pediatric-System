@@ -12,6 +12,7 @@ $(document).ready(function () {
     proEXselec = $("#proEX").val();
     canEXselec = $("#canEX").val();
     disEXselec = $("#disEX").val();
+    console.log(proEXselec + canEXselec + disEXselec);
     
     //Funcion para asignarle el valor a la variable proEXselected al input oculto donde se va a guardar la opcion de provincia seleccionada y asigna
     //function pasarVal() {
@@ -60,6 +61,7 @@ $(document).ready(function () {
                 return value !== sorted[index + 1];
             })
 
+            console.log(sorted);
             $.each(unique, function (key, value) {
                 $("#cantonesEX").append(new Option(value, value));
             });
@@ -68,6 +70,8 @@ $(document).ready(function () {
             //Cargar el DropDownList de distritos con la lista de distritos del canton guardado 
             var cantonSeleccionado = canEXselec;
 
+            console.log(cantonSeleccionado);
+            console.log(canEXselec);
             var direccionesEXCan = direccionesEX.filter(function (cant) {
                 return cant.NOMBRE_CANTON == cantonSeleccionado;
             });
@@ -81,6 +85,7 @@ $(document).ready(function () {
                 return value !== sorted[index + 1];
             })
 
+            console.log(sorted);
             $.each(unique, function (key, value) {
                 $("#distritosEX").append(new Option(value, value));
             });

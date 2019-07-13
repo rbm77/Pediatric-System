@@ -23,6 +23,9 @@
         <asp:Literal ID="mensajeConfirmacion1" runat="server"></asp:Literal>
 
         <form runat="server">
+            
+            
+
 
             <div class="margen-general-2-top" runat="server" id="informacionPaciente">
                 <div class="col-12 btnRow">
@@ -33,33 +36,36 @@
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                             <div class="form-row">
-                                <label class="info-paciente">Paciente: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Paciente:   </pre></label>
                                 <label runat="server" class="nombre-input" id="paciGeneral"></label>
                             </div>
 
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Cédula: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Cédula:  </pre></label>
                                 <label runat="server" class="nombre-input" id="cedGeneral"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Edad: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Edad:   </pre></label>
                                 <label runat="server" class="nombre-input" id="edaGeneral"></label>
                             </div>
                         </div>
 
-                        <div class="form-group col-lg-3 col-md-10 col-sm-12 col-xs-12">
+                        <div class="form-group col-lg-5 col-md-10 col-sm-12 col-xs-12">
                             <div class="alinearBtnConsulta">
                                 <div class="form-group ubicacionBtn" runat="server">
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="CONSULTAS" ID="verConsultas" OnClick="verConsultas_Click" />
-                                       <%//Paciente ni administrador pueden crear un nuevo expediente
+                                    <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="EXáMENES DE LABORATORIO" ID="examenesLab" OnClick="examenesLab_Click" />
+                                      <%-- <%//Paciente ni administrador pueden crear un nuevo expediente
                                 if (Session["Rol"].ToString() != ("Administrador") && Session["Rol"].ToString() != ("Paciente"))
                                 {%>
                                     <asp:Button type="button" runat="server" class="btn btn-neutro  btnsConsulta" Text="NUEVA CONSULTA" ID="nuevaConsulta" OnClick="nuevaConsulta_Click" />
-                                        <%}  %>
+                                        <%}  %>--%>
+
+                                    
                                 </div>
                             </div>
                         </div>
