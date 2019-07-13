@@ -107,5 +107,10 @@ namespace Pediatric_System
             }
 
         }
+
+        protected void regresarMed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
     }
 }

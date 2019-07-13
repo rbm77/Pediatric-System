@@ -114,6 +114,8 @@ namespace Pediatric_System
 
             btnGenerar.Enabled = true;
             mensajeConfirmacion.Visible = false;
+
+                lblresult.Text = "Resultado desde " + fini.ToString("dd/MM/yyyy") + " hasta " + ffin.ToString("dd/MM/yyyy");
             }
             catch (Exception ex)
             {
