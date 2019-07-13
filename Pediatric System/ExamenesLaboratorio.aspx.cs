@@ -345,7 +345,16 @@ namespace Pediatric_System
 
         protected void regresar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InicioUsuarioExterno.aspx");
+            if (Session["Rol"].ToString().Equals("Paciente"))
+            {
+                Response.Redirect("InicioUsuarioExterno.aspx");
+            }
+            else
+            {
+                Response.Redirect("FichaBaseExpediente.aspx");
+            }
+
+            
         }
     }
 }
