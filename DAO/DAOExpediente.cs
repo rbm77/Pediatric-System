@@ -194,7 +194,7 @@ namespace DAO
                 if (resulVerificarFactu == null)
                 {
                     SqlCommand cmdInsertarFacturante = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
-                     "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo); conexion);", conexion);
+                     "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);", conexion);
 
                     cmdInsertarFacturante.Transaction = transaccion;
 

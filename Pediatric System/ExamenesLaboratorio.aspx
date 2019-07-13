@@ -33,6 +33,35 @@
 
             <asp:Literal ID="mensajeConfirmacion" runat="server" Visible="false"></asp:Literal>
 
+            <div class="margen-general-2-top" runat="server" id="informacionPaciente">
+                <div class="col-12">
+                    <div class="form-row">
+
+                        <div class="form-group col-lg-3 col-md-6 col-sm-6 col-xs-12">
+                            <div class="alinearFoto">
+                                <asp:Image ID="imgPreview" Width="150" ImageUrl="~/images/foto_perfil_icono.jpg" runat="server" />
+                            </div>
+                        </div>
+
+                        <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
+                            <div class="form-row">
+                                <label class="info-paciente">Paciente: </label>
+                                <label runat="server" id="paciGeneral" class="nombre-input"></label>
+                            </div>
+
+                            <div class="form-row padding-info-exp">
+                                <label class="info-paciente">Cédula: </label>
+                                <label id="cedGeneral" runat="server" class="nombre-input"></label>
+                            </div>
+
+                            <div class="form-row padding-info-exp">
+                                <label class="info-paciente">Edad: </label>
+                                <label id="edaGeneral" runat="server" class="nombre-input"></label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
 
