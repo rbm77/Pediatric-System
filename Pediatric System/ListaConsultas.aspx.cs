@@ -19,7 +19,9 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
             expediente = (BLExpediente)Session["expediente"];
-            
+
+            ManejadorEdad mane = new ManejadorEdad();
+
             
 
             //Mostrar los datos generales 
@@ -33,9 +35,8 @@ namespace Pediatric_System
             }
             cargarListaGrid();
 
-            paciGeneral.InnerText = " " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
-            TimeSpan dt = DateTime.Now - expediente.FechaNacimiento;
-            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            paciGeneral.Text = "    " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
+            edaGeneral.InnerText = mane.ExtraerEdad(expediente.FechaNacimiento);
             string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(expediente.Foto);
             imgPreview.ImageUrl = imagenDataURL64;
 

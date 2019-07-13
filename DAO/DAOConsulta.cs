@@ -15,7 +15,7 @@ namespace DAO
     {
         SqlConnection conexion = new SqlConnection(Properties.Settings.Default.conexion);
 
-        public string CrearConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        public string CrearConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO, TODiagnosticoNutricional diagnostico)
         {
             string confirmacion = "La consulta se ingresó correctamente";
 
@@ -64,6 +64,14 @@ namespace DAO
                 cmdInsertarExamenFisico.Parameters.AddWithValue("@codExp", examenFisicoTO.CodigoExpediente);
                 cmdInsertarExamenFisico.Parameters.AddWithValue("@fecha", fechaConv);
                 cmdInsertarExamenFisico.ExecuteNonQuery();
+
+                SqlCommand cmdInsertarDiagnostico = new SqlCommand("INSERT INTO DIAGNOSTICO_NUTRICIONAL (CODIGO_MEDICO, CODIGO_EXPEDIENTE, FECHA_HORA) VALUES(@codMed, @codExp, @fecha);", conexion);
+                cmdInsertarDiagnostico.Transaction = transaccion;
+                cmdInsertarDiagnostico.Parameters.AddWithValue("@codMed", diagnostico.CodigoMedico);
+                cmdInsertarDiagnostico.Parameters.AddWithValue("@codExp", diagnostico.CodigoExpediente);
+                cmdInsertarDiagnostico.Parameters.AddWithValue("@fecha", fechaConv);
+                cmdInsertarDiagnostico.ExecuteNonQuery();
+
 
                 transaccion.Commit();
 
@@ -281,7 +289,7 @@ namespace DAO
             }
             else
             {
-               // confirmaciones
+                // confirmaciones
             }
 
             SqlTransaction transaccion = null;
@@ -305,7 +313,7 @@ namespace DAO
                 da.Fill(datatable); // getting value 
 
                 return datatable;
-               
+
 
             }
             catch (Exception ex)
@@ -320,7 +328,7 @@ namespace DAO
                 }
                 finally
                 {
-                   // confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
+                    // confirmacion = "Ocurrió un error y no se pudo actualizar la consulta en el sistema";
                 }
             }
             finally
@@ -490,7 +498,7 @@ namespace DAO
             return confirmacion;
         }
 
-        public string ActualizarConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        public string ActualizarConsulta(TOConsulta consultaTO, TOExamenFisico examenFisicoTO, TODiagnosticoNutricional diagnostico)
         {
             string confirmacion = "La consulta se actualizó correctamente";
 
@@ -569,6 +577,22 @@ namespace DAO
                 cmdActuExamenFisico.Parameters.AddWithValue("@fecha", fechaConv);
 
                 cmdActuExamenFisico.ExecuteNonQuery();
+
+
+                // --------------------------- Actualizar en la tabla Examen Fisico ---------------------------  //
+                SqlCommand cmdActuDiagnostico = new SqlCommand("UPDATE DIAGNOSTICO_NUTRICIONAL SET PESO_EDAD = @pesoEdad, TALLA_EDAD = @tallaEdad, PERIMETRO_CEFALICO_EDAD = @periCefaEdad, TALLA_EDAD_MAYORES = @tallaEdadMay, PESO_TALLA = @pesoTalla, IMC = @imc WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdActuDiagnostico.Transaction = transaccion;
+                cmdActuDiagnostico.Parameters.AddWithValue("@pesoEdad", diagnostico.Peso_Edad);
+                cmdActuDiagnostico.Parameters.AddWithValue("@tallaEdad", diagnostico.Talla_Edad_0);
+                cmdActuDiagnostico.Parameters.AddWithValue("@periCefaEdad", diagnostico.Cefalico_Edad);
+                cmdActuDiagnostico.Parameters.AddWithValue("@tallaEdadMay", diagnostico.Talla_Edad_5);
+                cmdActuDiagnostico.Parameters.AddWithValue("@pesoTalla", diagnostico.Peso_Talla);
+                cmdActuDiagnostico.Parameters.AddWithValue("@imc", diagnostico.IMC_Edad);
+                cmdActuDiagnostico.Parameters.AddWithValue("@codExpe", diagnostico.CodigoExpediente);
+                cmdActuDiagnostico.Parameters.AddWithValue("@fecha", fechaConv);
+
+                cmdActuDiagnostico.ExecuteNonQuery();
+
 
                 transaccion.Commit();
             }
@@ -688,7 +712,7 @@ namespace DAO
             return confirmacion;
         }
 
-        public string CargarConsulta(string codExpediente, DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        public string CargarConsulta(string codExpediente, DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO, TODiagnosticoNutricional diagnostico)
         {
             string confirmacion = "La consulta se cargó correctamente";
 
@@ -810,6 +834,31 @@ namespace DAO
                 }
                 lectorExa.Close();
 
+                // --------------------------- Buscar en la tabla Diagnostico Nutricional ---------------------------  //
+                SqlCommand cmdCargarDiag = new SqlCommand("SELECT * FROM DIAGNOSTICO_NUTRICIONAL WHERE (CODIGO_EXPEDIENTE = @codExpe) AND (FECHA_HORA = @fecha);", conexion);
+                cmdCargarDiag.Transaction = transaccion;
+                cmdCargarDiag.Parameters.AddWithValue("@codExpe", codExpediente);
+                cmdCargarDiag.Parameters.AddWithValue("@fecha", fechaConv);
+
+                SqlDataReader lectorDiag = cmdCargarDiag.ExecuteReader();
+
+                if (lectorDiag.HasRows)
+                {
+                    while (lectorDiag.Read())
+                    {
+                        diagnostico.CodigoMedico = lectorDiag["CODIGO_MEDICO"].ToString();
+                        diagnostico.CodigoExpediente = lectorDiag["CODIGO_EXPEDIENTE"].ToString();
+                        diagnostico.Fecha_Hora = DateTime.Parse(lectorDiag["FECHA_HORA"].ToString());
+                        diagnostico.Peso_Edad = lectorDiag["PESO_EDAD"].ToString();
+                        diagnostico.Talla_Edad_0 = lectorDiag["TALLA_EDAD"].ToString();
+                        diagnostico.Talla_Edad_5 = lectorDiag["TALLA_EDAD_MAYORES"].ToString();
+                        diagnostico.Cefalico_Edad = lectorDiag["PERIMETRO_CEFALICO_EDAD"].ToString();
+                        diagnostico.Peso_Talla = lectorDiag["PESO_TALLA"].ToString();
+                        diagnostico.IMC_Edad = lectorDiag["IMC"].ToString();
+                    }
+                }
+                lectorDiag.Close();
+
             }
             catch (Exception)
             {
@@ -836,7 +885,7 @@ namespace DAO
             return confirmacion;
         }
 
-        public string CargarConsultaFecha(DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO)
+        public string CargarConsultaFecha(DateTime fecha, TOConsulta consultaTO, TOExamenFisico examenFisicoTO, TODiagnosticoNutricional diagnostico)
         {
             string confirmacion = "La consulta se cargó correctamente";
 
@@ -955,6 +1004,31 @@ namespace DAO
                     }
                 }
                 lectorExa.Close();
+
+                // --------------------------- Buscar en la tabla Diagnostico Nutricional ---------------------------  //
+
+                SqlCommand cmdCargarDiag = new SqlCommand("SELECT * FROM DIAGNOSTICO_NUTRICIONAL WHERE FECHA_HORA = @fecha);", conexion);
+                cmdCargarDiag.Transaction = transaccion;
+                cmdCargarDiag.Parameters.AddWithValue("@fecha", fechaConv);
+
+                SqlDataReader lectorDiag = cmdCargarDiag.ExecuteReader();
+
+                if (lectorExa.HasRows)
+                {
+                    while (lectorExa.Read())
+                    {
+                        diagnostico.CodigoMedico = lectorDiag["CODIGO_MEDICO"].ToString();
+                        diagnostico.CodigoExpediente = lectorDiag["CODIGO_EXPEDIENTE"].ToString();
+                        diagnostico.Fecha_Hora = DateTime.Parse(lectorDiag["FECHA_HORA"].ToString());
+                        diagnostico.Peso_Edad = lectorDiag["PESO_EDAD"].ToString();
+                        diagnostico.Talla_Edad_0 = lectorDiag["TALLA_EDAD"].ToString();
+                        diagnostico.Talla_Edad_5 = lectorDiag["TALLA_EDAD_MAYORES"].ToString();
+                        diagnostico.Cefalico_Edad = lectorDiag["PERIMETRO_CEFALICO_EDAD"].ToString();
+                        diagnostico.Peso_Talla = lectorDiag["PESO_TALLA"].ToString();
+                        diagnostico.IMC_Edad = lectorDiag["IMC"].ToString();
+                    }
+                }
+                lectorDiag.Close();
 
             }
             catch (Exception)

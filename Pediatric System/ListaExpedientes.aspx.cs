@@ -105,7 +105,11 @@ namespace Pediatric_System
                 this.Cedula = cedula;
                 this.Sexo = sexo;
             }
+        }
 
+        protected void regresarMed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
         }
     }
 }

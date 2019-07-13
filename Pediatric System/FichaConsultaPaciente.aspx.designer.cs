@@ -256,6 +256,60 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea padecimientoPac;
         
         /// <summary>
+        /// pesoEdadPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText pesoEdadPac;
+        
+        /// <summary>
+        /// tallaEdad0Pac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tallaEdad0Pac;
+        
+        /// <summary>
+        /// cefaEdadPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText cefaEdadPac;
+        
+        /// <summary>
+        /// pesoTallaPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText pesoTallaPac;
+        
+        /// <summary>
+        /// imcEdadPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText imcEdadPac;
+        
+        /// <summary>
+        /// tallEdad5Pac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText tallEdad5Pac;
+        
+        /// <summary>
         /// analisisPac control.
         /// </summary>
         /// <remarks>

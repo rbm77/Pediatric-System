@@ -76,13 +76,13 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button verConsultas;
         
         /// <summary>
-        /// nuevaConsulta control.
+        /// examenesLab control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button nuevaConsulta;
+        protected global::System.Web.UI.WebControls.Button examenesLab;
         
         /// <summary>
         /// nombrePaciente control.

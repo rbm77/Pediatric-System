@@ -32,17 +32,17 @@
 
                         <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
-                                <label class="info-paciente">Paciente: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Paciente:   </pre></label>
                                 <label id="paciGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Cédula: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Cédula:   </pre></label>
                                 <label id="cedGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Edad: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Edad:   </pre></label>
                                 <label id="edaGeneral" runat="server" class="nombre-input"></label>
                             </div>
                         </div>
@@ -70,9 +70,9 @@
                         <a class="nav-link nombre-input" id="segunda-parte-tab" data-toggle="tab" href="#ef-segunda-parte" role="tab" aria-controls="ef-segunda-parte" aria-selected="false">II Parte Examen Físico</a>
                     </li>
 
-                    <%--<li class="nav-item">
+                    <li class="nav-item">
                         <a class="nav-link nombre-input" id="diagnostico-nutricional-tab" data-toggle="tab" href="#diagnostico-nutricional" role="tab" aria-controls="diagnostico-nutricional" aria-selected="false">Diagnóstico Nutricional</a>
-                    </li>--%>
+                    </li>
 
                     <li class="nav-item">
                         <a class="nav-link nombre-input" id="analisis-tab" data-toggle="tab" href="#consulta-analisis" role="tab" aria-controls="consulta-analisis" aria-selected="false">Análisis</a>
@@ -105,14 +105,14 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Talla</label>
-                                        <input runat="server" id="tallaPac" type="text" class="form-control">
+                                        <input clientidmode="Static" runat="server" id="tallaPac" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Peso</label>
-                                        <input runat="server" id="pesoPac" type="text" class="form-control">
+                                        <input clientidmode="Static" runat="server" id="pesoPac" type="text" class="form-control">
                                     </div>
                                 </div>
 
@@ -142,10 +142,10 @@
                                         <label class="nombre-input">IMC</label>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <input runat="server" id="imcPac" type="text" class="form-control">
+                                                <input clientidmode="Static" runat="server" id="imcPac" type="text" class="form-control">
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                <input type="button" ID="calcIM" class="btn btn-neutro" style="width:70%" value="Calcular"/>
+                                                <input type="button" id="calcIM" class="btn btn-neutro" style="width:70%" value="Calcular"/>
                                             </div>
                                         </div>
                                     </div>
@@ -274,7 +274,7 @@
                 </div>
                 <!-- --------------------------------------------------------------------- !-->
 
-                <%--<!-- Inicio del Diagnostico Nutricional !-->
+                <!-- Inicio del Diagnostico Nutricional !-->
 
                 <div class="tab-pane fade margen-general-1-bottom" id="diagnostico-nutricional" role="tabpanel" aria-labelledby="diagnostico-nutricional-tab">
                     <div class="col-12 border rounded">
@@ -284,57 +284,50 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Peso/Edad de 0 a 5 años</label>
-                                        <input type="text" class="form-control">
+                                        <input id="pesoEdadPac" runat="server" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Talla/Edad de 0 a 5 años</label>
-                                        <input type="text" class="form-control">
+                                        <input id="tallaEdad0Pac" runat="server"  type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">P. Cefálico/Edad de 0 a 3 años </label>
-                                        <input type="text" class="form-control">
+                                        <input id="cefaEdadPac" runat="server"  type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Peso/Talla de 0 a 5 años</label>
-                                        <input type="text" class="form-control">
+                                        <input id="pesoTallaPac" runat="server" type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-12 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">IMC/Edad de 5 a 19 años</label>
-                                        <input type="text" class="form-control">
+                                        <input id="imcEdadPac" runat="server"  type="text" class="form-control">
                                     </div>
                                 </div>
 
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Talla/Edad de 5 a 19 años</label>
-                                        <input type="text" class="form-control">
+                                        <input id="tallEdad5Pac" runat="server"  type="text" class="form-control">
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="form-row padding-general-inicio-bottom padding-general-label">
-                            <div class="btnGenerarDiagnostico form-group col-lg-3 col-md-6 col-sm-6 col-xs-6">
-                                <button type="submit" class="btn btn-info form-control">Generar Diagnostico</button>
-                            </div>
-                        </div>
+                        </div>                        
                     </div>
                 </div>
 
-                <!-- --------------------------------------------------------------------- !-->--%>
+                <!-- --------------------------------------------------------------------- !-->
 
                 <!-- Inicio del Analisis !-->
 

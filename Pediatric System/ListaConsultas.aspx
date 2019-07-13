@@ -40,17 +40,18 @@
 
                         <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
-                                <label class="info-paciente">Paciente: </label>
-                                <label runat="server" id="paciGeneral" class="nombre-input"></label>
+                                <label class="info-paciente"><pre class="info-paciente">Paciente:   </pre></label>
+                                <asp:Label ID="paciGeneral" runat="server" CssClass="nombre-input"></asp:Label>
+                                <%--<label runat="server" id="paciGeneral" class="nombre-input"></label>--%>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Cédula: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Cédula:  </pre></label>
                                 <label id="cedGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Edad: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Edad:   </pre></label>
                                 <label id="edaGeneral" runat="server" class="nombre-input"></label>
                             </div>
                         </div>
@@ -76,7 +77,7 @@
 
                                     <Columns>
                                         <asp:BoundField HeaderText="Fecha" DataField="Fecha" />
-                                        <asp:BoundField HeaderText="Doctor" DataField="Doctor" />
+                                        <asp:BoundField HeaderText="Médico" DataField="Doctor" />
                                         <asp:BoundField HeaderText="Estado" DataField="Estado" />                   
                                         <asp:ButtonField HeaderText="Acción" CommandName="seleccionar"
                                             ControlStyle-CssClass="btn btn-neutro fas fa-eye" runat="server" ControlStyle-Width="25%" />

@@ -18,6 +18,7 @@ namespace Pediatric_System
             Session["Cuenta"] = null;
             Session.Clear();
             Session["codigoMedico"] = null;
+            Session["pagina"] = "inicioSesion";
         }
 
         protected void ButtonLogin_Click(object sender, EventArgs e)
