@@ -30,8 +30,9 @@ namespace BL
             correo.Subject = asunto;
             correo.SubjectEncoding = System.Text.Encoding.UTF8;
 
+            mensaje = mensaje + "\n pediatricarobertmoya.com";
             ///Se asigna el mensaje del correo
-            correo.Body = mensaje;
+            correo.Body = mensaje 
             correo.BodyEncoding = System.Text.Encoding.UTF8;
             correo.IsBodyHtml = false;
 
