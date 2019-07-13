@@ -147,44 +147,67 @@ namespace DAO
 
                 // --------------------------- Insertar en la tabla Encargado ---------------------------  //
 
-                string sentenciaEnca = "UPDATE ENCARGADO SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo, PARENTESCO = @paren WHERE CEDULA_ENCARGADO = @cedEncar" +
-                    " IF @@ROWCOUNT = 0 INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
-                    "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);";
+                //string sentenciaEnca = "UPDATE ENCARGADO SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo, PARENTESCO = @paren WHERE CEDULA_ENCARGADO = @cedEncar" +
+                //    " IF @@ROWCOUNT = 0 INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
+                //    "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);";
+                //SqlCommand comandoEncar = new SqlCommand(sentenciaEnca, conexion);
 
-                SqlCommand comandoEncar = new SqlCommand(sentenciaEnca, conexion);
+                SqlCommand cmdVerificarEncar = new SqlCommand("SELECT CEDULA_ENCARGADO FROM ENCARGADO WHERE CEDULA_ENCARGADO = @cod;", conexion);
+                cmdVerificarEncar.Transaction = transaccion;
+                cmdVerificarEncar.Parameters.AddWithValue("@cod", encargado.Cedula);
 
-                comandoEncar.Transaction = transaccion;
+                object resulVerificarEncar = cmdVerificarEncar.ExecuteScalar();
 
-                comandoEncar.Parameters.AddWithValue("@cedEncar", encargado.Cedula);
-                comandoEncar.Parameters.AddWithValue("@codDir", encargado.Direccion);
-                comandoEncar.Parameters.AddWithValue("@nom", encargado.Nombre);
-                comandoEncar.Parameters.AddWithValue("@priApe", encargado.PrimerApellido);
-                comandoEncar.Parameters.AddWithValue("@segApe", encargado.SegundoApellido);
-                comandoEncar.Parameters.AddWithValue("@tel", encargado.Telefono);
-                comandoEncar.Parameters.AddWithValue("@correo", encargado.CorreoElectronico);
-                comandoEncar.Parameters.AddWithValue("@paren", encargado.Parentesco);
+                if (resulVerificarEncar == null)
+                {
+                    SqlCommand cmdInsertarEncargado = new SqlCommand("INSERT INTO ENCARGADO (CEDULA_ENCARGADO, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO, PARENTESCO)" +
+                        "VALUES (@cedEncar, @codDir, @nom, @priApe, @segApe, @tel, @correo, @paren);", conexion);
 
-                comandoEncar.ExecuteNonQuery();
+                    cmdInsertarEncargado.Transaction = transaccion;
+
+                    cmdInsertarEncargado.Parameters.AddWithValue("@cedEncar", encargado.Cedula);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@codDir", encargado.Direccion);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@nom", encargado.Nombre);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@priApe", encargado.PrimerApellido);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@segApe", encargado.SegundoApellido);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@tel", encargado.Telefono);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@correo", encargado.CorreoElectronico);
+                    cmdInsertarEncargado.Parameters.AddWithValue("@paren", encargado.Parentesco);
+
+                    cmdInsertarEncargado.ExecuteNonQuery();
+                }
 
                 // --------------------------- Insertar en la tabla Facturante ---------------------------  //
 
-                string sentenciaFACTU = "UPDATE FACTURANTE SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_FACTURANTE = @cedFactu" +
-                   " IF @@ROWCOUNT = 0 INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
-                   "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);";
+                //string sentenciaFACTU = "UPDATE FACTURANTE SET CODIGO_DIRECCION = @codDir, TELEFONO = @tel, CORREO = @correo WHERE CEDULA_FACTURANTE = @cedFactu" +
+                //   " IF @@ROWCOUNT = 0 INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
+                //   "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo);";
 
-                SqlCommand comandoFactu = new SqlCommand(sentenciaFACTU, conexion);
+                //SqlCommand comandoFactu = new SqlCommand(sentenciaFACTU, conexion);
 
-                comandoFactu.Transaction = transaccion;
+                SqlCommand cmdVerificarFactu = new SqlCommand("SELECT CEDULA_FACTURANTE FROM FACTURANTE WHERE CEDULA_FACTURANTE = @cod;", conexion);
+                cmdVerificarFactu.Transaction = transaccion;
+                cmdVerificarFactu.Parameters.AddWithValue("@cod", facturante.Cedula);
 
-                comandoFactu.Parameters.AddWithValue("@cedFactu", facturante.Cedula);
-                comandoFactu.Parameters.AddWithValue("@codDir", facturante.Direccion);
-                comandoFactu.Parameters.AddWithValue("@nom", facturante.Nombre);
-                comandoFactu.Parameters.AddWithValue("@priApe", facturante.PrimerApellido);
-                comandoFactu.Parameters.AddWithValue("@segApe", facturante.SegundoApellido);
-                comandoFactu.Parameters.AddWithValue("@tel", facturante.Telefono);
-                comandoFactu.Parameters.AddWithValue("@correo", facturante.CorreoElectronico);
+                object resulVerificarFactu = cmdVerificarFactu.ExecuteScalar();
 
-                comandoFactu.ExecuteNonQuery();
+                if (resulVerificarFactu == null)
+                {
+                    SqlCommand cmdInsertarFacturante = new SqlCommand("INSERT INTO FACTURANTE (CEDULA_FACTURANTE, CODIGO_DIRECCION, NOMBRE, PRIMER_APELLIDO, SEGUNDO_APELLIDO, TELEFONO, CORREO)" +
+                     "VALUES (@cedFactu, @codDir, @nom, @priApe, @segApe, @tel, @correo); conexion);", conexion);
+
+                    cmdInsertarFacturante.Transaction = transaccion;
+
+                    cmdInsertarFacturante.Parameters.AddWithValue("@cedFactu", facturante.Cedula);
+                    cmdInsertarFacturante.Parameters.AddWithValue("@codDir", facturante.Direccion);
+                    cmdInsertarFacturante.Parameters.AddWithValue("@nom", facturante.Nombre);
+                    cmdInsertarFacturante.Parameters.AddWithValue("@priApe", facturante.PrimerApellido);
+                    cmdInsertarFacturante.Parameters.AddWithValue("@segApe", facturante.SegundoApellido);
+                    cmdInsertarFacturante.Parameters.AddWithValue("@tel", facturante.Telefono);
+                    cmdInsertarFacturante.Parameters.AddWithValue("@correo", facturante.CorreoElectronico);
+
+                    cmdInsertarFacturante.ExecuteNonQuery();
+                }
 
                 // --------------------------- Insertar en la tabla Antecedentes Perinatales ---------------------------  //
 
