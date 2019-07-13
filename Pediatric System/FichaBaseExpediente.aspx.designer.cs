@@ -85,6 +85,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.Button examenesLab;
         
         /// <summary>
+        /// info_personal_paciente_tab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor info_personal_paciente_tab;
+        
+        /// <summary>
         /// nombrePaciente control.
         /// </summary>
         /// <remarks>
@@ -94,6 +103,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox nombrePaciente;
         
         /// <summary>
+        /// valiNombrePac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valiNombrePac;
+        
+        /// <summary>
         /// primerApellidoPaciente control.
         /// </summary>
         /// <remarks>
@@ -101,6 +119,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox primerApellidoPaciente;
+        
+        /// <summary>
+        /// valiPrimerApePac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valiPrimerApePac;
         
         /// <summary>
         /// segundoApellidoPaciente control.
@@ -238,6 +265,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox nombreEncargado;
         
         /// <summary>
+        /// valiNomEncar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valiNomEncar;
+        
+        /// <summary>
         /// primerApellidoEncargado control.
         /// </summary>
         /// <remarks>
@@ -245,6 +281,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox primerApellidoEncargado;
+        
+        /// <summary>
+        /// valiApeEncar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valiApeEncar;
         
         /// <summary>
         /// segundoApellidoEncargado control.
@@ -263,6 +308,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cedulaEncargado;
+        
+        /// <summary>
+        /// cedulaEncarVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator cedulaEncarVali;
         
         /// <summary>
         /// telefonoEncargado control.
@@ -373,6 +427,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox nombreFacturante;
         
         /// <summary>
+        /// valinomFactu control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valinomFactu;
+        
+        /// <summary>
         /// primerApellidoFacturante control.
         /// </summary>
         /// <remarks>
@@ -380,6 +443,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox primerApellidoFacturante;
+        
+        /// <summary>
+        /// apelliFctuVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator apelliFctuVali;
         
         /// <summary>
         /// segundoApellidoFacturante control.
@@ -398,6 +470,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox cedulaFacturante;
+        
+        /// <summary>
+        /// cedulaFactVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator cedulaFactVali;
         
         /// <summary>
         /// telefonoFacturante control.
@@ -490,6 +571,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden barFA;
         
         /// <summary>
+        /// historiaTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl historiaTab;
+        
+        /// <summary>
         /// tallaNacer control.
         /// </summary>
         /// <remarks>
@@ -497,6 +587,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox tallaNacer;
+        
+        /// <summary>
+        /// tallaVai control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator tallaVai;
         
         /// <summary>
         /// pesoNacer control.
@@ -508,6 +607,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox pesoNacer;
         
         /// <summary>
+        /// pesoVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator pesoVali;
+        
+        /// <summary>
         /// edadGestacional control.
         /// </summary>
         /// <remarks>
@@ -515,6 +623,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox edadGestacional;
+        
+        /// <summary>
+        /// gestacionalVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator gestacionalVali;
         
         /// <summary>
         /// clasificacionUniversal control.
@@ -562,6 +679,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.WebControls.TextBox apgar;
         
         /// <summary>
+        /// apgarVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator apgarVali;
+        
+        /// <summary>
         /// perimetroCefalico control.
         /// </summary>
         /// <remarks>
@@ -569,6 +695,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox perimetroCefalico;
+        
+        /// <summary>
+        /// cefalicoVali control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator cefalicoVali;
         
         /// <summary>
         /// otrasComplicacionesAP control.
@@ -731,6 +866,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea descripcionAlergia;
+        
+        /// <summary>
+        /// vacunasTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl vacunasTab;
         
         /// <summary>
         /// esquemaVacunacion control.

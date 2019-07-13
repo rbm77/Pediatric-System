@@ -21,6 +21,9 @@ namespace Pediatric_System
         BLExpediente expediente = new BLExpediente();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            validarSegunUser();
+
             imcPac.Disabled = true;
             expediente = (BLExpediente)Session["Expediente"];
 
@@ -90,6 +93,20 @@ namespace Pediatric_System
                 }
             }
             
+        }
+
+        private void validarSegunUser()
+        {
+            string rol = Session["Rol"].ToString(); ;
+
+            if(rol == "Asistente")
+            {
+                parteIITab.Visible = false;
+                impresionTab.Visible = false;
+                analisis.Visible = false;
+                nutricionalTab.Visible = false;
+                planTab.Visible = false;
+            }
         }
 
         protected void finalizarConsulta_Click(object sender, EventArgs e)
