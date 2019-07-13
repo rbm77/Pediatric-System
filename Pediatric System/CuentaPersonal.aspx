@@ -64,7 +64,7 @@
                                         <asp:DropDownList ID="Rol" runat="server" AutoPostBack="true" CssClass="custom-select" OnSelectedIndexChanged="Rol_SelectedIndexChanged">
                                             <asp:ListItem Value="Administrador"> Administrador </asp:ListItem>
                                             <asp:ListItem Value="Asistente"> Asistente </asp:ListItem>
-                                            <asp:ListItem Value="Medico"> Medico </asp:ListItem>
+                                            <asp:ListItem Value="Medico"> Médico </asp:ListItem>
                                             
                                         </asp:DropDownList>
                                     </div>
@@ -78,14 +78,14 @@
                                 </div>
                                 <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Telefono</label>
+                                        <label class="nombre-label">Teléfono</label>
                                         <asp:TextBox runat="server" ID="txtTelefono" CssClass="form-control" TextMode="Number" required="required"></asp:TextBox>
                                     </div>
                                 </div>
 
                                    <div class="form-group col-lg-4 col-md-6 col-sm-6 col-xs-12">
                                     <div class="padding-general-label">
-                                        <label class="nombre-label">Codigo Medico</label>
+                                        <label class="nombre-label">Codigo Médico</label>
                                         <asp:TextBox  runat="server" ID="txtCodigo" Enabled="false" CssClass="form-control" required="required"></asp:TextBox>
                                     </div>
                                 </div>
