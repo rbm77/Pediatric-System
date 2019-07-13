@@ -35,10 +35,11 @@ namespace Pediatric_System
                 {
                     Session["pacienteSeleccionado"] = ((BLExpediente)Session["expediente"]).Codigo;
                     mostrarDatosGenerales();
-                    nombrePaciente.Visible = false;
+                    CargarExamenes();
+                    combo.Visible = false;
                 }
             }
-            mensajeConfirmacion.Visible = false;
+            //mensajeConfirmacion.Visible = false;
 
         }
 
@@ -70,7 +71,7 @@ namespace Pediatric_System
         {
             listaExamenes.Clear();
 
-            string idExpediente = nombrePaciente.SelectedValue;
+            string idExpediente = Session["pacienteSeleccionado"].ToString();
 
             ManejadorExamenesLaboratorio manejador = new ManejadorExamenesLaboratorio();
 
@@ -202,16 +203,20 @@ namespace Pediatric_System
 
             paciente = Session["pacienteSeleccionado"].ToString();
 
-            if ((descripcion.Value.Equals("")) || (paciente.Equals("Seleccionar")) || (nombrePaciente.Items.Count == 0))
+            if ((descripcion.Value.Equals("")) || (paciente.Equals("Seleccionar")) || ((nombrePaciente.Items.Count == 0) && (Session["Rol"].ToString().Equals("Paciente"))))
             {
                 if ((descripcion.Value.Equals("")))
                 {
                     MostrarMensaje("Error. Se requiere una descripción para el examen");
                 }
-                if ((paciente.Equals("Seleccionar")) || (nombrePaciente.Items.Count == 0))
-                {
-                    MostrarMensaje("Error. Debe seleccionar un paciente");
-                }
+
+                    if (Session["Rol"].ToString().Equals("Paciente"))
+                    {
+                        if ((paciente.Equals("Seleccionar")) || (nombrePaciente.Items.Count == 0))
+                        {
+                            MostrarMensaje("Error. Debe seleccionar un paciente");
+                        }
+                    }
             }
             else
             {

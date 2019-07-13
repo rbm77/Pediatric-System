@@ -66,7 +66,7 @@
             <div class="col-12 margen-general-1-bottom paddingSidesCard">
 
 
-                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12" runat="server" id="combo">
 
                     <div class="padding-general-label">
                         <label class="nombre-input">Paciente</label>
