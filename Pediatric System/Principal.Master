@@ -76,7 +76,7 @@
                 <!-- Navbar Header Right -->
                 <ul class="navbar-nav ml-auto ml-md-0">
                     <li class="nav-item dropdown no-arrow mx-1">
-                        <%--                        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <%-- <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw fa-lg"></i>
                         </a>--%>
                     </li>
@@ -292,15 +292,15 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesion</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
                         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
                     </div>
-                    <div class="modal-body">Selecciona Salir para finalizar su sesion actual</div>
+                    <div class="modal-body">Selecciona SALIR para finalizar su sesión actual</div>
                     <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                        <a class="btn btn-primary" href="IniciarSesion.aspx">Salir</a>
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCELAR</button>
+                        <a class="btn btn-primary" href="IniciarSesion.aspx">SALIR</a>
                     </div>
                 </div>
             </div>
@@ -319,15 +319,15 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesion</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Cerrar Sesión</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Selecciona "Salir" para finalizar su sesión actual.</div>
+                <div class="modal-body">Selecciona SALIR para finalizar su sesión actual.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                    <a class="btn btn-primary" href="IniciarSesion.aspx">Salir</a>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">CANCELAR</button>
+                    <a class="btn btn-primary" href="IniciarSesion.aspx">SALIR</a>
                 </div>
             </div>
         </div>

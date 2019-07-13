@@ -569,10 +569,7 @@ namespace DAO
 
                 // Se crea un nuevo comando con la secuencia SQL y el objeto de conexión
 
-                SqlCommand comando = new SqlCommand("SELECT T1.NOMBRE, T1.PRIMER_APELLIDO, T1.SEGUNDO_APELLIDO," +
-                    " T1.FECHA_NACIMIENTO, T2.CORREO, T2.TELEFONO FROM EXPEDIENTE T1, ENCARGADO T2 " +
-                    " WHERE T1.CORREO = @cuenta AND " +
-                    "T1.CODIGO_EXPEDIENTE = T2.CODIGO_EXPEDIENTE;", conexion);
+                SqlCommand comando = new SqlCommand("SELECT T1.NOMBRE, T1.PRIMER_APELLIDO, T1.SEGUNDO_APELLIDO,T1.FECHA_NACIMIENTO, T2.CORREO, T2.TELEFONO FROM EXPEDIENTE T1, ENCARGADO T2  WHERE T1.CORREO = @cuenta AND T1.ENCARGADO = T2.CEDULA_ENCARGADO;", conexion);
 
 
                 comando.Transaction = transaccion;

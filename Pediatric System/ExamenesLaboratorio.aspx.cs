@@ -32,10 +32,30 @@ namespace Pediatric_System
                 if (!IsPostBack)
                 {
                     Session["pacienteSeleccionado"] = ((BLExpediente)Session["expediente"]).Codigo;
+                    mostrarDatosGenerales();
                 }
             }
             mensajeConfirmacion.Visible = false;
 
+        }
+
+        private void mostrarDatosGenerales()
+        {
+            BLExpediente expediente = new BLExpediente();
+
+            if (expediente.Codigo == expediente.Cedula)
+            {
+                cedGeneral.InnerText = " " + expediente.Cedula;
+            }
+            else
+            {
+                cedGeneral.InnerText = "No tiene aún";
+            }
+            paciGeneral.InnerText = " " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
+            TimeSpan dt = DateTime.Now - expediente.FechaNacimiento;
+            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+            string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(expediente.Foto);
+            imgPreview.ImageUrl = imagenDataURL64;
         }
 
         private void CargarExamenes()

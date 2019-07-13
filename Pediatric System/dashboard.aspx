@@ -138,7 +138,7 @@
                                     <a class="card-body card-dash">
                                         <i style="color: #1d5e93" class="fas fa-chart-pie fa-4x"></i>
                                     </a>
-                                    <a class="card-footer text-white clearfix small z-1" href="CrearReeportes.aspx">
+                                    <a class="card-footer text-white clearfix small z-1" href="CrearReportes.aspx">
                                         <span class="float-left">Reportes</span>
                                         <span class="float-right">
                                             <i class="fas fa-angle-right"></i>
