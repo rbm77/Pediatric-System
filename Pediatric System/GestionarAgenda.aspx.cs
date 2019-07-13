@@ -29,6 +29,10 @@ namespace Pediatric_System
 
             if (!IsPostBack)
             {
+                if (Session["Cuenta"] == null)
+                {
+                    Response.Redirect("IniciarSesion.aspx");
+                }
                 MostrarAgenda(DateTime.Now, "");
             }
 
@@ -46,7 +50,9 @@ namespace Pediatric_System
         /// <param name="presionoBoton">Presiono boton</param>
         private void MostrarAgenda(DateTime fecha, string presionoBoton)
         {
-            diaSeleccionado = fecha;
+            try
+            {
+                diaSeleccionado = fecha;
 
             string codigoMedico = Session["codigoMedico"].ToString();
 
@@ -248,6 +254,11 @@ namespace Pediatric_System
             }
 
             MostrarMensaje(confirmacion);
+            }
+            catch (Exception ex)
+            {
+                Elog.save(this, ex);
+            }
         }
 
         /// <summary>

@@ -18,7 +18,10 @@ namespace Pediatric_System
           
             if (!IsPostBack)
             {
-            
+                if (Session["Cuenta"] == null)
+                {
+                    Response.Redirect("IniciarSesion.aspx");
+                }
                 string codigoMedico = Session["codigoMedico"].ToString();
                 MostrarAgenda(new List<BLAgendaEstandar>(), codigoMedico, true);
             }
