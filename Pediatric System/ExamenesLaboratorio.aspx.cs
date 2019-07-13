@@ -25,7 +25,9 @@ namespace Pediatric_System
                 {
                     nombrePaciente.Items[0].Attributes.Add("disabled", "disabled");
                 }
-                
+
+                informacionPaciente.Visible = false;
+
             }
             else
             {
@@ -33,6 +35,7 @@ namespace Pediatric_System
                 {
                     Session["pacienteSeleccionado"] = ((BLExpediente)Session["expediente"]).Codigo;
                     mostrarDatosGenerales();
+                    nombrePaciente.Visible = false;
                 }
             }
             mensajeConfirmacion.Visible = false;
@@ -41,19 +44,24 @@ namespace Pediatric_System
 
         private void mostrarDatosGenerales()
         {
-            BLExpediente expediente = new BLExpediente();
+            BLExpediente expediente = (BLExpediente)Session["expediente"];
 
-            if (expediente.Codigo == expediente.Cedula)
+            if (expediente.Codigo == expediente.Cedula || !expediente.Cedula.Equals(""))
             {
                 cedGeneral.InnerText = " " + expediente.Cedula;
             }
             else
             {
-                cedGeneral.InnerText = "No tiene aún";
+                cedGeneral.InnerText = " No tiene aún";
             }
+            /// Esto lo cambie yo
             paciGeneral.InnerText = " " + expediente.Nombre + " " + expediente.PrimerApellido + " " + expediente.SegundoApellido;
-            TimeSpan dt = DateTime.Now - expediente.FechaNacimiento;
-            edaGeneral.InnerText = " " + Convert.ToString(dt.Days) + " días";
+
+            ManejadorEdad man = new ManejadorEdad();
+            edaGeneral.InnerText = man.ExtraerEdad(expediente.FechaNacimiento);
+
+            ///
+
             string imagenDataURL64 = "data:image/jpg;base64," + Convert.ToBase64String(expediente.Foto);
             imgPreview.ImageUrl = imagenDataURL64;
         }
