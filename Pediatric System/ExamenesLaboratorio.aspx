@@ -45,17 +45,17 @@
 
                         <div class="form-group col-lg-9 col-md-6 col-sm-6 col-xs-12">
                             <div class="form-row">
-                                <label class="info-paciente">Paciente: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Paciente:   </pre></label>
                                 <label runat="server" id="paciGeneral" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Cédula: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Cédula:    </pre></label>
                                 <label id="cedGeneral" runat="server" class="nombre-input"></label>
                             </div>
 
                             <div class="form-row padding-info-exp">
-                                <label class="info-paciente">Edad: </label>
+                                <label class="info-paciente"><pre class="info-paciente">Edad:   </pre></label>
                                 <label id="edaGeneral" runat="server" class="nombre-input"></label>
                             </div>
                         </div>

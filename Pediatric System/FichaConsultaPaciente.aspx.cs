@@ -176,6 +176,7 @@ namespace Pediatric_System
             if(consultaEnviada.Estado == false)
             {
                 finalizarConsulta.Visible = false;
+                guardarConsulta.Visible = false;
             }
 
             ManejadorConsulta manejador = new ManejadorConsulta();

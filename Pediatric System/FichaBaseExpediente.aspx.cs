@@ -100,6 +100,7 @@ namespace Pediatric_System
             perimetroCefalico.Enabled = false;
             complicacionPerinatal.Disabled = true;
             complicacionPerinatal.Disabled = true;
+            otrasComplicacionesAP.Disabled = true;
         }
 
         private void mostrarExpediente(string codigo)
