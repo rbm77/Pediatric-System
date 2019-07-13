@@ -19,6 +19,10 @@ namespace Pediatric_System
         {
             if (!IsPostBack)
             {
+                if (Session["Cuenta"] == null)
+                {
+                    Response.Redirect("IniciarSesion.aspx");
+                }
                 CargarPacientes();
                 CargarMedicos();
             }
@@ -91,7 +95,9 @@ namespace Pediatric_System
         /// </summary>
         private void CargarMedicos()
         {
-            List<BLMedico> listaMedicos = new List<BLMedico>();
+            try
+            {
+                List<BLMedico> listaMedicos = new List<BLMedico>();
             BLMedico manejador = new BLMedico();
             string confirmacion = manejador.CargarMedicos(listaMedicos);
 
@@ -123,7 +129,11 @@ namespace Pediatric_System
                 medico.SelectedIndex = 0;
                 medico.Items[0].Attributes.Add("disabled", "disabled");
             }
-
+            }
+            catch (Exception ex)
+            {
+                Elog.save(this, ex);
+            }
         }
 
         /// <summary>
@@ -131,6 +141,10 @@ namespace Pediatric_System
         /// </summary>
         private void CargarPacientes()
         {
+            try
+            {
+
+            
             listaPacientes.Clear();
             
             ManejadorCita manejador = new ManejadorCita();
@@ -155,6 +169,11 @@ namespace Pediatric_System
                 nombrePaciente.Items.Insert(0, new ListItem("Seleccionar"));
                 nombrePaciente.SelectedIndex = 0;
                 nombrePaciente.Items[0].Attributes.Add("disabled", "disabled");
+            }
+            }
+            catch (Exception ex)
+            {
+                Elog.save(this, ex);
             }
 
         }

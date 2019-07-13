@@ -37,7 +37,7 @@
                     <div class="card">
                         <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>  Lista de Expedientes Sin Cuenta Asociada</h5>
                         <div class="card-body">
-                            <div>
+                            <div class="table-responsive" style="padding-left: 0px; padding-right: 0px">
 
                                 <asp:GridView ID="gridConExpedientes" runat="server" CssClass="table" Style="text-align: center"
                                     AutoGenerateColumns="false" HeaderStyle-CssClass="thead-light"
@@ -47,8 +47,8 @@
                                         <asp:BoundField HeaderText="Paciente" DataField="Nombre" />
                                         <asp:BoundField HeaderText="Cédula" DataField="Cedula" />
                                         <asp:BoundField HeaderText="Sexo" DataField="Sexo" />
-                                        <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpedienteEspecifico" Text="Asociar"
-                                            ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="150px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
+                                        <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpedienteEspecifico"
+                                            ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="100px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
                                     </Columns>
                                 </asp:GridView>
 

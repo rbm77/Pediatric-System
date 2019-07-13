@@ -81,6 +81,12 @@
                         else
                         { %>
                     <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresarMed" OnClick="regresarMed_Click" />
+                   
+                    
+                    <% if (Session["Rol"].ToString() != "Medico" && Session["Rol"].ToString() != "Asistente" )   {%>
+                        <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" />
+                    <% } else { %>
+                        <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresarMed" OnClick="regresarMed_Click" />
                     <%}%>
                 </div>
             </div>

@@ -67,11 +67,11 @@ namespace Pediatric_System
             String mensaje = miBLCuenta.insertarCuenta();
            if (mensaje == "Correcto")
             {
-                mensajeAviso("success", "La cuenta se creo correctamente");
+                mensajeAviso("success", "La cuenta se creó correctamente");
                 listaPersonal = miBLCuenta.buscarListaCuentas();
                 gridCuentas.DataSource = listaPersonal;
                 gridCuentas.DataBind();
-                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicacion para utilizar el sistema de la Clinica Pediatrica Divino Niño, su cuenta posee el rol de Paciente y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
+                BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicación para utilizar el sistema de la Clínica Pediátrica Divino Niño, su cuenta posee el rol de Paciente y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
             } else
             {
                 mensajeAviso("danger", "La cuenta no se pudo crear debido a que el correo ingresado ya esta en uso");

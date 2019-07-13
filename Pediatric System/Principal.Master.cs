@@ -12,6 +12,10 @@ namespace Pediatric_System
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["Cuenta"] == null)
+            {
+                Response.Redirect("IniciarSesion.aspx");
+            }
         }
 
     }

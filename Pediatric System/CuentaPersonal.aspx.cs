@@ -63,19 +63,19 @@ namespace Pediatric_System
                 switch (tipo)
                 {
                     case "Medico":
-                        BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicacion para utilizar el sistema de la Clinica Pediatrica Divino Niño, su cuenta posee el rol de Medico y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
+                        BLEnviarCorreo miEnviar = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicación para utilizar el sistema de la Clínica Pediátrica Divino Niño, su cuenta posee el rol de Medico y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
                         miBLMedico.insertarMedico();
-                        mensajeAviso("success", "La cuenta de Medico se creo correctamente");
+                        mensajeAviso("success", "La cuenta de Medico se creó correctamente");
                         break;
                     case "Asistente":
-                        BLEnviarCorreo miEnviar1 = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicacion para utilizar el sistema de la Clinica Pediatrica Divino Niño, su cuenta posee el rol de Asistente y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
+                        BLEnviarCorreo miEnviar1 = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicación para utilizar el sistema de la Clínica Pediátrica Divino Niño, su cuenta posee el rol de Asistente y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
                         miBLAdministrativo.insertarAdministrativo();
-                        mensajeAviso("success", "La cuenta de Asistente se creo correctamente");
+                        mensajeAviso("success", "La cuenta de Asistente se creó correctamente");
                         break;
                     case "Administrador":
-                        BLEnviarCorreo miEnviar2 = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicacion para utilizar el sistema de la Clinica Pediatrica Divino Niño, su cuenta posee el rol de Administrador y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
+                        BLEnviarCorreo miEnviar2 = new BLEnviarCorreo(correo, "Bienvenido a PediatricSystem", "Bienvenido a Pediatric System \nLa aplicación para utilizar el sistema de la Clínica Pediátrica Divino Niño, su cuenta posee el rol de Administrador y su contraseña es: " + contrasena + "\nLe recomendamos cambiar su contraseña al iniciar sesión para mas seguridad");
                         miBLAdministrativo.insertarAdministrativo();
-                        mensajeAviso("success", "La cuenta de Administrador se creo correctamente");
+                        mensajeAviso("success", "La cuenta de Administrador se creó correctamente");
                         break;
                 }
                 txtCorreo.Text = "";

@@ -49,15 +49,16 @@
                     <div class="card">
                         <h5 class="card-header text-center" style="color: dimgray;"><i class="fas fa-list"></i>Cuentas de Usuario Externo</h5>
                         <div class="card-body">
-                            <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="gridCuentas_RowCommand"
-                                Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light">
-                                <Columns>
-                                    <asp:BoundField DataField="Correo" HeaderText="Correo" />
-                                    <asp:ButtonField HeaderText="Asociar" CommandName="AsociarExpediente" Text="Asociar Expediente(s)"
-                                        ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="190px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
-                                </Columns>
-                            </asp:GridView>
-
+                            <div class="table-responsive" style="padding-left: 0px; padding-right: 0px">
+                                <asp:GridView ID="gridCuentas" runat="server" AutoGenerateColumns="false" class="table table-hover" OnRowCommand="gridCuentas_RowCommand"
+                                    Width="100%" HeaderStyle-ForeColor="DimGray" GridLines="None" HeaderStyle-CssClass="thead-light" HeaderStyle-HorizontalAlign="center" EditRowStyle-HorizontalAlign="Center">
+                                    <Columns>
+                                        <asp:BoundField DataField="Correo" HeaderText="Correo" ItemStyle-HorizontalAlign="Center" />
+                                        <asp:ButtonField HeaderText="Asociar Expedientes" CommandName="AsociarExpediente"
+                                            ControlStyle-CssClass="btn btn-neutro fas fa-edit" runat="server" ControlStyle-Width="100px" ItemStyle-HorizontalAlign="Center" HeaderStyle-HorizontalAlign="Center" />
+                                    </Columns>
+                                </asp:GridView>
+                            </div>
                         </div>
                     </div>
                     <br>

@@ -1089,12 +1089,12 @@ namespace DAO
                 SqlCommand cmdConsultas;
                 if (codMedico == "Todos")
                 {
-                    cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
+                    cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A, FECHA_HORA  FROM CONSULTA WHERE Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
                 }
                 else
                 {
 
-                    cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A  FROM CONSULTA WHERE CODIGO_MEDICO = @cod and Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
+                    cmdConsultas = new SqlCommand("SELECT CODIGO_EXPEDIENTE, FRECUENCIA, REFERIDO_A, FECHA_HORA   FROM CONSULTA WHERE CODIGO_MEDICO = @cod and Medicina_Mixta = '1' and CAST(@ini as date) <= CAST(FECHA_HORA as date) and CAST(@fin as date) >= CAST(FECHA_HORA as date)", conexion);
                     cmdConsultas.Parameters.AddWithValue("@cod", codMedico);
                 }
 
@@ -1155,6 +1155,7 @@ namespace DAO
                             consulta.Referido_A = lector["FRECUENCIA"].ToString();
                         }
 
+                        consulta.Fecha_Hora = Convert.ToDateTime(lector["FECHA_HORA"].ToString());
 
                         toConsultas.Add(consulta);
                     }

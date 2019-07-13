@@ -111,5 +111,10 @@ namespace Pediatric_System
         {
             Response.Redirect("Dashboard.aspx");
         }
+
+        protected void regresarMed_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Dashboard.aspx");
+        }
     }
 }

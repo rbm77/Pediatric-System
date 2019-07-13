@@ -71,7 +71,7 @@
 
             <div class="visualizacionTitulo" style="margin-top: 25px;">
                 <div class="row col-12">
-                    <label style="font-size: 20px; font-weight: bold; color: dimgray">Resultado</label>
+                    <asp:label  runat="server" id="lblresult" style="font-size: 20px; font-weight: bold; color: dimgray" Text="Resultado"/>
                 </div>
             </div>
             <asp:Literal ID="Literal1" runat="server" Visible="false"></asp:Literal>
@@ -90,6 +90,7 @@
                                         <asp:BoundField HeaderText="Expediente" DataField="CodigoExpediente" />
                                         <asp:BoundField HeaderText="Frecuencia" DataField="FRECUENCIA" />
                                         <asp:BoundField HeaderText="Referido" DataField="REFERIDO_A" />
+                                        <asp:BoundField HeaderText="Fecha" DataField="Fecha_Hora" DataFormatString="{0:dd/MM/yyyy}" />
                                     </Columns>
                                 </asp:GridView>
                             </div>
