@@ -106,6 +106,8 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Talla</label>
                                         <input clientidmode="Static" runat="server" id="tallaPac" type="text" class="form-control">
+                                        <asp:RequiredFieldValidator ID="valitallaPac" ValidationGroup="consulVali" ControlToValidate="tallaPac" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+
                                     </div>
                                 </div>
 
@@ -113,6 +115,8 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Peso</label>
                                         <input clientidmode="Static" runat="server" id="pesoPac" type="text" class="form-control">
+                                        <asp:RequiredFieldValidator ID="valipesoPac" ValidationGroup="consulVali" ControlToValidate="pesoPac" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+
                                     </div>
                                 </div>
 
@@ -120,6 +124,8 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Perímetro Cefálico</label>
                                         <input runat="server" id="perimetroPac" type="text" class="form-control">
+                                        <asp:RequiredFieldValidator ID="valiperimetroPac" ValidationGroup="consulVali" ControlToValidate="perimetroPac" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+
                                     </div>
                                 </div>
 
@@ -127,6 +133,8 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Temperatura</label>
                                         <input runat="server" id="temperaturaPac" type="text" class="form-control">
+                                        <asp:RequiredFieldValidator ID="valitemperaturaPac" ValidationGroup="consulVali" ControlToValidate="temperaturaPac" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+
                                     </div>
                                 </div>
 
@@ -134,6 +142,8 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">SO2</label>
                                         <input runat="server" id="so2Pac" type="text" class="form-control">
+                                        <asp:RequiredFieldValidator ID="valiso2Pac" ValidationGroup="consulVali" ControlToValidate="so2Pac" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+
                                     </div>
                                 </div>
 
@@ -161,7 +171,7 @@
 
                 <div class="tab-pane fade margen-general-1-bottom" id="ef-segunda-parte" role="tabpanel" aria-labelledby="ef-segunda-parte-tab">
 
-                    <div class="col-12 border rounded">
+                    <div class="col-12 border rounded" runat="server" id="parteIITab">
 
                         <div class="margen-general-1-top padding-general-inicio-bottom">
                             <div class="form-row">
@@ -279,7 +289,7 @@
                 <div class="tab-pane fade margen-general-1-bottom" id="diagnostico-nutricional" role="tabpanel" aria-labelledby="diagnostico-nutricional-tab">
                     <div class="col-12 border rounded">
 
-                        <div class="margen-general-1-top padding-general-inicio-bottom">
+                        <div class="margen-general-1-top padding-general-inicio-bottom" runat="server" id="nutricionalTab">
                             <div class="form-row">
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
@@ -333,7 +343,7 @@
 
 
                 <div class="tab-pane fade margen-general-1-bottom" id="consulta-analisis" role="tabpanel" aria-labelledby="consulta-analisis-tab">
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard" runat="server" id="analisis">
                         <div class="card">
                             <label class="card-header nombre-input">Comentario</label>
 
@@ -354,7 +364,7 @@
 
                 <div class="tab-pane fade margen-general-1-bottom" id="consulta-diagnostico" role="tabpanel" aria-labelledby="consulta-diagnostico-tab">
 
-                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paddingSidesCard" runat="server" id="impresionTab">
                         <div class="card">
                             <label class="card-header nombre-input">Comentario</label>
 
@@ -374,7 +384,7 @@
                 <!-- Inicio del Plan !-->
 
                 <div class="tab-pane fade margen-general-1-bottom" id="consulta-plan" role="tabpanel" aria-labelledby="consulta-plan-tab">
-                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
+                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top" runat="server" id="planTab">
                         <div class="form-row margen-general-2-top padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="padding-general-label">

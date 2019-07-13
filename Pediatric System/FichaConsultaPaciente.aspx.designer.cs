@@ -85,6 +85,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputText tallaPac;
         
         /// <summary>
+        /// valitallaPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valitallaPac;
+        
+        /// <summary>
         /// pesoPac control.
         /// </summary>
         /// <remarks>
@@ -92,6 +101,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText pesoPac;
+        
+        /// <summary>
+        /// valipesoPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valipesoPac;
         
         /// <summary>
         /// perimetroPac control.
@@ -103,6 +121,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputText perimetroPac;
         
         /// <summary>
+        /// valiperimetroPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valiperimetroPac;
+        
+        /// <summary>
         /// temperaturaPac control.
         /// </summary>
         /// <remarks>
@@ -110,6 +137,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText temperaturaPac;
+        
+        /// <summary>
+        /// valitemperaturaPac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valitemperaturaPac;
         
         /// <summary>
         /// so2Pac control.
@@ -121,6 +157,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputText so2Pac;
         
         /// <summary>
+        /// valiso2Pac control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator valiso2Pac;
+        
+        /// <summary>
         /// imcPac control.
         /// </summary>
         /// <remarks>
@@ -128,6 +173,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText imcPac;
+        
+        /// <summary>
+        /// parteIITab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl parteIITab;
         
         /// <summary>
         /// alertaPac control.
@@ -256,6 +310,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea padecimientoPac;
         
         /// <summary>
+        /// nutricionalTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl nutricionalTab;
+        
+        /// <summary>
         /// pesoEdadPac control.
         /// </summary>
         /// <remarks>
@@ -310,6 +373,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlInputText tallEdad5Pac;
         
         /// <summary>
+        /// analisis control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl analisis;
+        
+        /// <summary>
         /// analisisPac control.
         /// </summary>
         /// <remarks>
@@ -319,6 +391,15 @@ namespace Pediatric_System {
         protected global::System.Web.UI.HtmlControls.HtmlTextArea analisisPac;
         
         /// <summary>
+        /// impresionTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl impresionTab;
+        
+        /// <summary>
         /// impresionPac control.
         /// </summary>
         /// <remarks>
@@ -326,6 +407,15 @@ namespace Pediatric_System {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTextArea impresionPac;
+        
+        /// <summary>
+        /// planTab control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl planTab;
         
         /// <summary>
         /// planPac control.

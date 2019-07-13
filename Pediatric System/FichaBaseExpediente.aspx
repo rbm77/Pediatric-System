@@ -80,7 +80,7 @@
             <div>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active nombre-input" id="info-personal-paciente-tab" data-toggle="tab" href="#info-personal-paciente" role="tab" aria-controls="info-personal-paciente" aria-selected="true">Inf. del Paciente</a>
+                        <a runat="server" class="nav-link active nombre-input" id="info_personal_paciente_tab" data-toggle="tab" href="#info_personal_paciente" role="tab" aria-controls="info_personal_paciente" aria-selected="true">Inf. del Paciente</a>
                     </li>
 
                     <li class="nav-item">
@@ -110,7 +110,7 @@
 
                 <!-- Datos para la Informacion Personal del Paciente !-->
 
-                <div class="tab-pane fade show active margen-general-1-bottom" id="info-personal-paciente" role="tabpanel" aria-labelledby="info-personal-paciente-tab">
+                <div class="tab-pane fade show active margen-general-1-bottom" id="info_personal_paciente" role="tabpanel" aria-labelledby="info_personal_paciente_tab">
 
                     <div class="col-12 border rounded">
 
@@ -120,6 +120,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nombre</label>
                                         <asp:TextBox runat="server" ID="nombrePaciente" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="valiNombrePac" ValidationGroup="expVali" ControlToValidate="nombrePaciente" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -127,6 +128,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Primer Apellido</label>
                                         <asp:TextBox runat="server" ID="primerApellidoPaciente" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="valiPrimerApePac" ValidationGroup="expVali" ControlToValidate="primerApellidoPaciente"  Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -203,10 +205,6 @@
                                             <div class="padding-general-label">
                                                 <asp:DropDownList ClientIDMode="Static" ID="distritosEX" runat="server" CssClass="browser-default custom-select listaDistritosEX"></asp:DropDownList>
                                                 <input clientidmode="Static" runat="server" type="hidden" id="disEX" />
-
-                                                <%--<select ClientIDMode="Static" runat="server" class="browser-default custom-select listaDistritosEX" id="distritosEX">
-                                                    <option value="" disabled selected>Distrito</option>
-                                                </select>--%>
                                             </div>
                                         </div>
                                     </div>
@@ -214,15 +212,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <%--<script type="application/javascript">
-                            $('#fotoPaciente').on("change", function (event) {
-                                var fileName = $(this).val();
-                                //replace the "Choose a file" label
-                                console.log("sdfsdf");
-                                $('.custom-file-label').html("DSFSF");
-                            });
-                        </script>--%>
 
                         <div class="form-row general-card padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -270,6 +259,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nombre</label>
                                         <asp:TextBox runat="server" ID="nombreEncargado" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="valiNomEncar" ValidationGroup="expVali" ControlToValidate="nombreEncargado"  Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -277,6 +267,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Primer Apellido</label>
                                         <asp:TextBox runat="server" ID="primerApellidoEncargado" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="valiApeEncar" ValidationGroup="expVali"  ControlToValidate="primerApellidoEncargado" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -291,6 +282,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Cédula</label>
                                         <asp:TextBox runat="server" ID="cedulaEncargado" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="cedulaEncarVali" ValidationGroup="expVali" ControlToValidate="cedulaEncargado" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -329,10 +321,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="provinciasEN" runat="server" CssClass="browser-default custom-select listaProvinciasEN"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="proEN" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaProvinciasEN" id="provinciasEN">
-                                                        <option value="" disabled selected>Provincia</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
 
@@ -340,10 +328,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="cantonesEN" runat="server" CssClass="browser-default custom-select listaCantonesEN"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="canEN" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaCantonesEN" id="cantonesEN">
-                                                        <option value="" disabled selected>Cantón</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
 
@@ -351,10 +335,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="distritosEN" runat="server" CssClass="browser-default custom-select listaDistritosEN"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="disEN" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaDistritosEN" id="distritosEN">
-                                                        <option value="" disabled selected>Distrito</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
 
@@ -362,10 +342,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="barriosEN" runat="server" CssClass="browser-default custom-select listaBarriosEN"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="barEN" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaBarriosEN" id="barriosEN">
-                                                        <option value="" disabled selected>Barrio</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -390,6 +366,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Nombre</label>
                                         <asp:TextBox runat="server" ID="nombreFacturante" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="valinomFactu" ValidationGroup="expVali" ControlToValidate="nombreFacturante"  Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -397,6 +374,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Primer Apelido</label>
                                         <asp:TextBox runat="server" ID="primerApellidoFacturante" CssClass="form-control"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="apelliFctuVali" ValidationGroup="expVali" ControlToValidate="primerApellidoFacturante" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -411,6 +389,7 @@
                                     <div class="padding-general-label">
                                         <label class="nombre-input">Cédula</label>
                                         <asp:TextBox runat="server" ID="cedulaFacturante" CssClass="form-control" placeholder="1-0234-0456"></asp:TextBox>
+                                        <asp:RequiredFieldValidator ID="cedulaFactVali" ValidationGroup="expVali" ControlToValidate="cedulaFacturante" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                     </div>
                                 </div>
 
@@ -442,10 +421,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="provinciasFA" runat="server" CssClass="browser-default custom-select listaProvinciasFA"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="proFA" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaProvinciasFA" id="provinciasFA">
-                                                        <option value="" disabled selected>Provincia</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
 
@@ -453,10 +428,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="cantonesFA" runat="server" CssClass="browser-default custom-select listaCantonesFA"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="canFA" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaCantonesFA" id="cantonesFA">
-                                                        <option value="" disabled selected>Cantón</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
 
@@ -464,10 +435,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="distritosFA" runat="server" CssClass="browser-default custom-select listaDistritosFA"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="disFA" />
-
-                                                    <%-- <select clientidmode="Static" runat="server" class="browser-default custom-select listaDistritosFA" id="distritosFA">
-                                                        <option value="" disabled selected>Distrito</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
 
@@ -475,10 +442,6 @@
                                                 <div class="padding-general-label">
                                                     <asp:DropDownList ClientIDMode="Static" ID="barriosFA" runat="server" CssClass="browser-default custom-select listaBarriosFA"></asp:DropDownList>
                                                     <input clientidmode="Static" runat="server" type="hidden" id="barFA" />
-
-                                                    <%--<select clientidmode="Static" runat="server" class="browser-default custom-select listaBarriosFA" id="barriosFA">
-                                                        <option value="" disabled selected>Barrio</option>
-                                                    </select>--%>
                                                 </div>
                                             </div>
                                         </div>
@@ -495,7 +458,7 @@
 
                 <div class="tab-pane fade margen-general-1-bottom" id="historia-clinica" role="tabpanel" aria-labelledby="historia-clinica-tab">
 
-                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
+                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top" runat="server" id="historiaTab">
 
                         <div class="form-row margen-general-2-top general-card padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -509,6 +472,7 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Talla al nacer</label>
                                                     <asp:TextBox runat="server" ID="tallaNacer" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="tallaVai" ValidationGroup="expVali" ControlToValidate="tallaNacer"  Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
 
@@ -516,6 +480,7 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Peso al nacer</label>
                                                     <asp:TextBox runat="server" ID="pesoNacer" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="pesoVali" ValidationGroup="expVali" ControlToValidate="pesoNacer" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
 
@@ -523,6 +488,7 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Edad gestacional</label>
                                                     <asp:TextBox runat="server" ID="edadGestacional" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="gestacionalVali" ValidationGroup="expVali" ControlToValidate="edadGestacional" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
 
@@ -540,7 +506,6 @@
                                                     <div class="form-check">
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
-                                                                <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-pequeño" value="pequeño">--%>
                                                                 <asp:RadioButton CssClass="form-check-input" ID="opcion_pequeno" GroupName="opciones_tamano" runat="server" />
                                                                 <label class="form-check-label nombre-input">Pequeño</label>
                                                             </div>
@@ -551,7 +516,6 @@
                                                         <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                             <div class="padding-general-label">
                                                                 <asp:RadioButton CssClass="form-check-input" ID="opcion_adecuado" GroupName="opciones_tamano" Checked="true" runat="server" />
-                                                                <%--<input class="form-check-input" type="radio" name="opciones-tamaño" id="opcion-adecuado" value="adecuado" checked>--%>
                                                                 <label class="form-check-label nombre-input" for="opciones-tamaño">Adecuado</label>
                                                             </div>
                                                         </div>
@@ -573,6 +537,8 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Calificación APGAR</label>
                                                     <asp:TextBox runat="server" ID="apgar" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="apgarVali" ValidationGroup="expVali" ControlToValidate="apgar" Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
+
                                                 </div>
                                             </div>
 
@@ -580,6 +546,7 @@
                                                 <div class="padding-general-label">
                                                     <label class="nombre-input">Perímetro cefálico al nacer</label>
                                                     <asp:TextBox runat="server" ID="perimetroCefalico" CssClass="form-control"></asp:TextBox>
+                                                    <asp:RequiredFieldValidator ID="cefalicoVali" ValidationGroup="expVali" ControlToValidate="perimetroCefalico"  Font-Size="Small" ForeColor="Red" runat="server" ErrorMessage="Campo requerido"></asp:RequiredFieldValidator>
                                                 </div>
                                             </div>
 
@@ -771,7 +738,7 @@
 
                 <div class="tab-pane fade margen-general-1-bottom" id="vacunas" role="tabpanel" aria-labelledby="vacunas-tab">
 
-                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top">
+                    <div class="col-12 border rounded margen-general-1-bottom padding-general-inicio-top" runat="server" id="vacunasTab">
 
                         <div class="form-row margen-general-2-top general-card padding-general-bottom">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -816,7 +783,7 @@
                 <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12 ubicacionBtn" runat="server">
                     <asp:Button type="button" runat="server" CssClass="btn btn-regresar" Text="REGRESAR" ID="regresar" OnClick="regresar_Click" />
 
-                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="validarExpediente" OnClick="guardarExpediente_Click" />
+                    <asp:Button type="button" runat="server" CssClass="btn btn-guardar" Text="GUARDAR" ID="guardarExpediente" ValidationGroup="expVali" OnClick="guardarExpediente_Click" />
                 </div>
             </div>
 

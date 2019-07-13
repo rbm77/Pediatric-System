@@ -23,7 +23,7 @@ namespace Pediatric_System
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            
+            validarSegunUser();
 
             if ((string)Session["pagina"] == "listaExpedientes-Nuevo")
             {
@@ -64,6 +64,17 @@ namespace Pediatric_System
 
             }
 
+        }
+
+        private void validarSegunUser()
+        {
+            string rol = Session["Rol"].ToString();
+
+            if (rol == "Asistente")
+            {
+                historiaTab.Visible = false;
+                vacunasTab.Visible = false;
+            }
         }
 
         private void deshabilitarCampos()
