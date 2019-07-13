@@ -61,7 +61,7 @@
             <!-- Inicio del titulo de los Tabs !-->
 
             <div>
-                <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-top:10px">
+                <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-top: 10px">
                     <li class="nav-item">
                         <a class="nav-link active nombre-input" id="primera-parte-tab" data-toggle="tab" href="#ef-primera-parte" role="tab" aria-controls="ef-primera-parte" aria-selected="true">I Parte Examen Físico</a>
                     </li>
@@ -140,7 +140,14 @@
                                 <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
                                     <div class="padding-general-label">
                                         <label class="nombre-input">IMC</label>
-                                        <input runat="server" id="imcPac" type="text" class="form-control">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <input runat="server" id="imcPac" type="text" class="form-control">
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                                <input type="button" ID="calcIM" class="btn btn-neutro" style="width:70%" value="Calcular"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -397,13 +404,13 @@
                                                 <div class="form-check">
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
-                                                            <input runat="server" ClientIDMode="Static" class="form-check-input" type="checkbox" id="reporte_medicina_mixta" value="medicna-mixta">
+                                                            <input runat="server" clientidmode="Static" class="form-check-input" type="checkbox" id="reporte_medicina_mixta" value="medicna-mixta">
                                                             <label class="form-check-label nombre-input" for="reporte_medicina_mixta">Reportar paciente a medicina mixta</label>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                                                                        
+
                                             <div class="datosReporteMedicinaMixta">
                                                 <div class="form-row">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-12 margen-1-radioB">
@@ -492,8 +499,8 @@
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <asp:Button type="submit" CssClass="btn btn-neutro" runat="server" id="btnReportarMM" OnClick="btnReportarMM_Click" Text="REPORTAR" />
-           
+                                                        <asp:Button type="submit" CssClass="btn btn-neutro" runat="server" ID="btnReportarMM" OnClick="btnReportarMM_Click" Text="REPORTAR" />
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -515,7 +522,7 @@
                                                 <div class="form-check">
                                                     <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                                         <div class="padding-general-label">
-                                                            <input runat="server" ClientIDMode="Static" class="form-check-input" type="checkbox" id="referencia_consulta_privada" value="referencia_privada">
+                                                            <input runat="server" clientidmode="Static" class="form-check-input" type="checkbox" id="referencia_consulta_privada" value="referencia_privada">
                                                             <label class="form-check-label nombre-input" for="referencia_consulta_privada">Generar referencia médica externa de consulta privada</label>
                                                         </div>
                                                     </div>
@@ -544,7 +551,7 @@
 
                                                 <div class="form-row padding-general-label padding-general-inicio-top">
                                                     <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                                                        <asp:Button ClientIDMode="Static" type="submit" CssClass="btn btn-neutro" runat="server" id="btnGenerarReferencia" OnClick="btnGenerarReferencia_Click" Text="GENERAR" />
+                                                        <asp:Button ClientIDMode="Static" type="submit" CssClass="btn btn-neutro" runat="server" ID="btnGenerarReferencia" OnClick="btnGenerarReferencia_Click" Text="GENERAR" />
                                                     </div>
                                                 </div>
                                             </div>

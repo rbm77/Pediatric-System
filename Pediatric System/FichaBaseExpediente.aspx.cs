@@ -530,7 +530,7 @@ namespace Pediatric_System
             expediente.Foto = guardarImag();
             expediente.ExpedienteAntiguo = VincExpedientePaciente.Text.Trim();
             expediente.Direccion = codigo;
-            expediente.Encargado = cedulaFacturante.Text.Trim();
+            expediente.Encargado = cedulaEncargado.Text.Trim();
             expediente.Facturante = cedulaFacturante.Text.Trim();
         }
 
