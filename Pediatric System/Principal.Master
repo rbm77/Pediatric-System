@@ -7,9 +7,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Pediatric System</title>
-    <%if (Session["Cuenta"] == null)
+    <% if (Session.Count <= 0)
         {
-            Response.Redirect("IniciarSesion.aspx");
+            if (Session["Cuenta"] == null)
+            {
+                Response.Redirect("IniciarSesion.aspx");
+            }
         } %>
 
 
