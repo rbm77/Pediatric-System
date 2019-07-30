@@ -27,10 +27,21 @@ namespace DAO.Properties {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=SQL7005.site4now.net;Initial Catalog=DB_A49CE1_PediatricSystem;User I" +
-            "d=DB_A49CE1_PediatricSystem_admin;Password=pediatrica123;")]
+            "d=DB_A49CE1_PediatricSystem_admin;Password=moya1412;")]
         public string conexion {
             get {
                 return ((string)(this["conexion"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"Data Source=SQL7005.site4now.net;Initial Catalog=DB_A49CE1_PediatricSystem;User " +
+            "Id=DB_A49CE1_PediatricSystem_admin;Password=moya1412;\"")]
+        public string ConnectionWeb {
+            get {
+                return ((string)(this["ConnectionWeb"]));
             }
         }
     }
